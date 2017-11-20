@@ -12,7 +12,7 @@ JNIEXPORT void JNICALL Java_com_example_simonppg_break_1it_1all_GameLibJNIWrappe
 
 JNIEXPORT void JNICALL Java_com_example_simonppg_break_1it_1all_GameLibJNIWrapper_on_1surface_1changed
     (JNIEnv * env, jclass cls, jint width, jint height) {
-    on_surface_changed();
+    on_surface_changed(width, height);
 }
 
 JNIEXPORT void JNICALL Java_com_example_simonppg_break_1it_1all_GameLibJNIWrapper_on_1draw_1frame

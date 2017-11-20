@@ -6,7 +6,7 @@
 #define BREAK_IT_ALL_GAME_H
 
 void on_surface_created();
-void on_surface_changed();
+void on_surface_changed(int width, int height);
 void on_draw_frame();
 
 #endif //BREAK_IT_ALL_GAME_H

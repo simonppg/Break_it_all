@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <android/log.h>
+#include <unistd.h>
 
 #include "game.h"
 
@@ -29,9 +30,9 @@ static const char glFragmentShader[] =
         "}\n";
 
 const GLfloat triangleVertices[] = {
-        0.0f, 1.0f,
-        -1.0f, -1.0f,
-        1.0f, -1.0f
+        0.0f, 0.5f,
+        -0.5f, -0.5f,
+        0.5f, -0.5f
 };
 
 GLuint simpleTriangleProgram;
@@ -108,7 +109,7 @@ GLuint createProgram(const char* vertexSource, const char * fragmentSource)
     return program;
 }
 
-bool setupGraphics(int w, int h)
+bool setupGraphics()
 {
     simpleTriangleProgram = createProgram(glVertexShader, glFragmentShader);
     if (!simpleTriangleProgram)
@@ -117,7 +118,6 @@ bool setupGraphics(int w, int h)
         return false;
     }
     vPosition = (GLuint) glGetAttribLocation(simpleTriangleProgram, "vPosition");
-    glViewport(0, 0, w, h);
     return true;
 }
 
@@ -132,13 +132,17 @@ void renderFrame()
 }
 
 void on_surface_created() {
-    setupGraphics(100, 100);
     LOGI("on_surface_created");
+    setupGraphics();
 }
 
-void on_surface_changed() {
+void on_surface_changed(int width, int height) {
+    glViewport(0, 0, width, height);
 }
 
 void on_draw_frame() {
+    /* Sleeping to avoid thrashing the Android log. */
+    usleep(500);
+    LOGI("New Frame Ready to be Drawn!!!!");
     renderFrame();
 }
