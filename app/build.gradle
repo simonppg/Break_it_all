@@ -15,6 +15,12 @@ android {
                 cppFlags ""
             }
         }
+        defaultConfig {
+            ndk {
+                moduleName "your_module_name"
+                ldLibs "log"
+            }
+        }
     }
     buildTypes {
         release {

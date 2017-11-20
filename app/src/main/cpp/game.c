@@ -2,14 +2,17 @@
 // Created by Simonppg on 11/4/2017.
 //
 
+#include <jni.h>
 #include <GLES2/gl2.h>
+#include <stdlib.h>
 #include <stdbool.h>
+#include <android/log.h>
 
 #include "game.h"
 
-#include <jni.h>
-#include <stdio.h>
-#include <stdlib.h>
+#define LOG_TAG "libNative"
+#define LOGI(...) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__)
+#define LOGE(...) __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, __VA_ARGS__)
 
 static const char glVertexShader[] =
         "attribute vec4 vPosition;\n"
@@ -24,6 +27,15 @@ static const char glFragmentShader[] =
         "{\n"
         "  gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);\n"
         "}\n";
+
+const GLfloat triangleVertices[] = {
+        0.0f, 1.0f,
+        -1.0f, -1.0f,
+        1.0f, -1.0f
+};
+
+GLuint simpleTriangleProgram;
+GLuint vPosition;
 
 GLuint loadShader(GLenum shaderType, const char* shaderSource)
 {
@@ -44,6 +56,7 @@ GLuint loadShader(GLenum shaderType, const char* shaderSource)
                 if (buf)
                 {
                     glGetShaderInfoLog(shader, infoLen, NULL, buf);
+                    LOGE("Could not Compile Shader %d:\n%s\n", shaderType, buf);
                     free(buf);
                 }
                 glDeleteShader(shader);
@@ -80,10 +93,11 @@ GLuint createProgram(const char* vertexSource, const char * fragmentSource)
             glGetProgramiv(program, GL_INFO_LOG_LENGTH, &bufLength);
             if (bufLength)
             {
-                char* buf = (char*) malloc(bufLength);
+                char* buf = (char*) malloc(sizeof(bufLength));
                 if (buf)
                 {
                     glGetProgramInfoLog(program, bufLength, NULL, buf);
+                    LOGE("Could not link program:\n%s\n", buf);
                     free(buf);
                 }
             }
@@ -94,25 +108,19 @@ GLuint createProgram(const char* vertexSource, const char * fragmentSource)
     return program;
 }
 
-GLuint simpleTriangleProgram;
-GLuint vPosition;
 bool setupGraphics(int w, int h)
 {
     simpleTriangleProgram = createProgram(glVertexShader, glFragmentShader);
     if (!simpleTriangleProgram)
     {
+        LOGE ("Could not create program");
         return false;
     }
-    vPosition = glGetAttribLocation(simpleTriangleProgram, "vPosition");
+    vPosition = (GLuint) glGetAttribLocation(simpleTriangleProgram, "vPosition");
     glViewport(0, 0, w, h);
     return true;
 }
 
-const GLfloat triangleVertices[] = {
-        0.0f, 1.0f,
-        -1.0f, -1.0f,
-        1.0f, -1.0f
-};
 void renderFrame()
 {
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -126,6 +134,7 @@ void renderFrame()
 void on_surface_created() {
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
     setupGraphics(800, 600);
+    LOGI("on_surface_created");
 }
 
 void on_surface_changed() {

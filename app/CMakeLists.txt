@@ -5,4 +5,5 @@ add_library(game SHARED
             src/main/cpp/jni.c)
 
 target_link_libraries(game
+                      -llog
                       -lGLESv2)
