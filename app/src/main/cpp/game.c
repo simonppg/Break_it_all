@@ -123,8 +123,8 @@ bool setupGraphics(int w, int h)
 
 void renderFrame()
 {
+    glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-    glClear (GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
     glUseProgram(simpleTriangleProgram);
     glVertexAttribPointer(vPosition, 2, GL_FLOAT, GL_FALSE, 0 ,triangleVertices);
     glEnableVertexAttribArray(vPosition);
@@ -132,8 +132,7 @@ void renderFrame()
 }
 
 void on_surface_created() {
-    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-    setupGraphics(800, 600);
+    setupGraphics(100, 100);
     LOGI("on_surface_created");
 }
 
@@ -141,6 +140,5 @@ void on_surface_changed() {
 }
 
 void on_draw_frame() {
-    glClear(GL_COLOR_BUFFER_BIT);
     renderFrame();
 }
