@@ -29,13 +29,26 @@ static const char glFragmentShader[] =
         "  gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);\n"
         "}\n";
 
+static const char glFragmentShaderBlue[] =
+        "precision mediump float;\n"
+        "void main()\n"
+        "{\n"
+        "  gl_FragColor = vec4(0.0, 0.0, 1.0, 1.0);\n"
+        "}\n";
+
 const GLfloat triangleVertices[] = {
         0.0f, 0.5f,
         -0.5f, -0.5f,
         0.5f, -0.5f
 };
+const GLfloat bigTriangleVertices[] = {
+        0.0f, 1.0f,
+        -1.0f, -1.0f,
+        1.0f, -1.0f
+};
 
 GLuint simpleTriangleProgram;
+GLuint simpleBlueTriangleProgram;
 GLuint vPosition;
 
 GLuint loadShader(GLenum shaderType, const char* shaderSource)
@@ -118,6 +131,14 @@ bool setupGraphics()
         return false;
     }
     vPosition = (GLuint) glGetAttribLocation(simpleTriangleProgram, "vPosition");
+
+    simpleBlueTriangleProgram = createProgram(glVertexShader, glFragmentShaderBlue);
+    if (!simpleBlueTriangleProgram)
+    {
+        LOGE ("Could not create program");
+        return false;
+    }
+    vPosition = (GLuint) glGetAttribLocation(simpleBlueTriangleProgram, "vPosition");
     return true;
 }
 
@@ -125,10 +146,18 @@ void renderFrame()
 {
     glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+
+    glUseProgram(simpleBlueTriangleProgram);
+    glVertexAttribPointer(vPosition, 2, GL_FLOAT, GL_FALSE, 0 ,bigTriangleVertices);
+    glEnableVertexAttribArray(vPosition);
+    glDrawArrays(GL_TRIANGLES, 0, 3);
+
     glUseProgram(simpleTriangleProgram);
     glVertexAttribPointer(vPosition, 2, GL_FLOAT, GL_FALSE, 0 ,triangleVertices);
     glEnableVertexAttribArray(vPosition);
     glDrawArrays(GL_TRIANGLES, 0, 3);
+
+
 }
 
 void on_surface_created() {
