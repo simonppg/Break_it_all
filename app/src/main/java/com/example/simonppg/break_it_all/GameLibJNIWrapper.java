@@ -14,4 +14,6 @@ public class GameLibJNIWrapper {
     public static native void on_surface_changed(int width, int height);
 
     public static native void on_draw_frame();
+
+    public static native boolean on_touch_event();
 }

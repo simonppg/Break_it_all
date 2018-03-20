@@ -4,6 +4,7 @@
 
 #include "game.h"
 #include <jni.h>
+#include <stdbool.h>
 
 JNIEXPORT void JNICALL Java_com_example_simonppg_break_1it_1all_GameLibJNIWrapper_on_1surface_1created
     (JNIEnv * env, jclass cls) {
@@ -19,3 +20,9 @@ JNIEXPORT void JNICALL Java_com_example_simonppg_break_1it_1all_GameLibJNIWrappe
     (JNIEnv * env, jclass cls) {
     on_draw_frame();
 }
+
+JNIEXPORT bool JNICALL Java_com_example_simonppg_break_1it_1all_GameLibJNIWrapper_on_1touch_1event
+        (JNIEnv * env, jclass cls) {
+    return on_touch_event();
+}
+
