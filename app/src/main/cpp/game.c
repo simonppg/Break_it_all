@@ -12,50 +12,28 @@
 #include "utils.h"
 #include "triangle.h"
 
-static const char glVertexShader[] =
-        "attribute vec4 vPosition;\n"
-        "void main()\n"
-        "{\n"
-        "  gl_Position = vPosition;\n"
-        "}\n";
-
-static const char glFragmentShaderRed[] =
-        "precision mediump float;\n"
-        "void main()\n"
-        "{\n"
-        "  gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);\n"
-        "}\n";
-
-static const char glFragmentShaderBlue[] =
-        "precision mediump float;\n"
-        "void main()\n"
-        "{\n"
-        "  gl_FragColor = vec4(0.0, 0.0, 1.0, 1.0);\n"
-        "}\n";
-
-const GLfloat triangleVertices[] = {
-        0.0f, 0.5f,
-        -0.5f, -0.5f,
-        0.5f, -0.5f
+GLfloat RED[] = {
+        1.0f, 0.0f, 0.0f, 1.0f,
 };
 
-GLuint simpleTriangleProgram;
-GLuint vPosition;
-Triangle *t;
+GLfloat BLUE[] = {
+        0.0f, 0.0f, 1.0f, 1.0f,
+};
+
+Triangle *t, *t2;
 
 static bool setupGraphics()
 {
-    simpleTriangleProgram = createProgram(glVertexShader, glFragmentShaderRed);
-    if (!simpleTriangleProgram)
-    {
-        LOGE ("Could not create program");
-        return false;
-    }
-    vPosition = (GLuint) glGetAttribLocation(simpleTriangleProgram, "vPosition");
-
-    t = Triangle_new(glVertexShader, glFragmentShaderBlue);
+    t = Triangle_new(RED);
+    t2 = Triangle_new(BLUE);
 
     if(!t)
+    {
+        LOGE ("Could not create Triangle");
+        return false;
+    }
+
+    if(!t2)
     {
         LOGE ("Could not create Triangle");
         return false;
@@ -68,12 +46,8 @@ static void renderFrame()
     glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
+    Triangle_draw(t2);
     Triangle_draw(t);
-
-    glUseProgram(simpleTriangleProgram);
-    glVertexAttribPointer(vPosition, 2, GL_FLOAT, GL_FALSE, 0 ,triangleVertices);
-    glEnableVertexAttribArray(vPosition);
-    glDrawArrays(GL_TRIANGLES, 0, 3);
 }
 
 void on_surface_created() {
@@ -88,12 +62,13 @@ void on_surface_changed(int width, int height) {
 void on_draw_frame() {
     /* Sleeping to avoid thrashing the Android log. */
     usleep(500);
-    LOGI("New Frame Ready to be Drawn!!!!");
+    //LOGI("New Frame Ready to be Drawn!!!!");
     renderFrame();
 }
 
 bool on_touch_event()
 {
     Triangle_update(t);
+    Triangle_update(t2);
     return true;
 }

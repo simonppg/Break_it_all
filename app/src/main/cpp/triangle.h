@@ -6,7 +6,7 @@
 #define TRIANGLE_H
 
 typedef struct _Triangle Triangle;
-Triangle* Triangle_new(const char* vertexSource, const char * fragmentSource);
+Triangle* Triangle_new(GLfloat *color);
 void Triangle_draw(Triangle *t);
 void Triangle_update(Triangle *t);
 
