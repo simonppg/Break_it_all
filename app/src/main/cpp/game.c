@@ -20,12 +20,12 @@ GLfloat BLUE[] = {
         0.0f, 0.0f, 1.0f, 1.0f,
 };
 
-Triangle *t, *t2;
+Triangle *t;//, *t2;
 
 static bool setupGraphics()
 {
     t = Triangle_new(RED);
-    t2 = Triangle_new(BLUE);
+    //t2 = Triangle_new(BLUE);
 
     if(!t)
     {
@@ -33,11 +33,11 @@ static bool setupGraphics()
         return false;
     }
 
-    if(!t2)
+    /*if(!t2)
     {
         LOGE ("Could not create Triangle");
         return false;
-    }
+    }*/
     return true;
 }
 
@@ -46,7 +46,7 @@ static void renderFrame()
     glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
-    Triangle_draw(t2);
+    //Triangle_draw(t2);
     Triangle_draw(t);
 }
 
@@ -69,6 +69,6 @@ void on_draw_frame() {
 bool on_touch_event()
 {
     Triangle_update(t);
-    Triangle_update(t2);
+    //Triangle_update(t2);
     return true;
 }

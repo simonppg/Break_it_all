@@ -3,10 +3,11 @@ package com.example.simonppg.break_it_all;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
-public class MainActivity extends Activity {
+public class GameActivity extends Activity {
 
-    private static String LOGTAG = "MainActivity";
+    private static String LOGTAG = "GameActivity";
     protected MyGLSurfaceView graphicsView;
 
     @Override protected void onCreate(Bundle savedInstanceState) {

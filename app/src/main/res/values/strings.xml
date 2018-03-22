@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Break_it_all</string>
+    <string name="welcome_message">welcome to Break it all! :-). Touch here to play!</string>
 </resources>

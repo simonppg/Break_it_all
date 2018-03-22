@@ -73,11 +73,19 @@ void Triangle_update(Triangle *t)
     if(n % 2 == 0) {
         t->vertices[1] = 1.0f;
         n = 1;
+        t->color[0] = 0;
+        t->color[1] = 0;
+        t->color[2] = 1;
     }
     else {
         t->vertices[1] = 0.0f;
         n = 2;
+        t->color[0] = 0;
+        t->color[1] = 1;
+        t->color[2] = 0;
     }
+
+
 }
 
 void Triangle_draw(Triangle *t)
