@@ -3,7 +3,6 @@ package com.example.simonppg.break_it_all;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 
 public class GameActivity extends Activity {
 

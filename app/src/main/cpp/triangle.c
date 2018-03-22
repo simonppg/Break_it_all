@@ -27,7 +27,7 @@ static const char glFragmentShader[] =
         "  gl_FragColor = vColor;\n"
         "}\n";
 
-GLfloat vertices[] = {
+static GLfloat vertices[] = {
         0.0f, 1.0f,
         -1.0f, -1.0f,
         1.0f, -1.0f

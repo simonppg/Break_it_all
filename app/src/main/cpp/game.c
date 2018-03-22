@@ -11,6 +11,7 @@
 #include "game.h"
 #include "utils.h"
 #include "triangle.h"
+#include "square.h"
 
 GLfloat RED[] = {
         1.0f, 0.0f, 0.0f, 1.0f,
@@ -21,6 +22,7 @@ GLfloat BLUE[] = {
 };
 
 Triangle *t;//, *t2;
+Square *s;
 
 static bool setupGraphics()
 {
@@ -38,6 +40,13 @@ static bool setupGraphics()
         LOGE ("Could not create Triangle");
         return false;
     }*/
+
+    s = Square_new(BLUE);
+    if(!s)
+    {
+        LOGE ("Could not create Square");
+        return false;
+    }
     return true;
 }
 
@@ -48,6 +57,7 @@ static void renderFrame()
 
     //Triangle_draw(t2);
     Triangle_draw(t);
+    Square_draw(s);
 }
 
 void on_surface_created() {
@@ -70,5 +80,6 @@ bool on_touch_event()
 {
     Triangle_update(t);
     //Triangle_update(t2);
+    Square_update(s);
     return true;
 }
