@@ -2,9 +2,11 @@
 // Created by Simonppg on 11/4/2017.
 //
 
-#include "game.h"
 #include <jni.h>
 #include <stdbool.h>
+
+#include "game.h"
+#include "utils.h"
 
 JNIEXPORT void JNICALL Java_com_example_simonppg_break_1it_1all_GameLibJNIWrapper_on_1surface_1created
     (JNIEnv * env, jclass cls) {
@@ -26,3 +28,9 @@ JNIEXPORT bool JNICALL Java_com_example_simonppg_break_1it_1all_GameLibJNIWrappe
     return on_touch_event();
 }
 
+JNIEXPORT void JNICALL
+Java_com_example_simonppg_break_1it_1all_GameLibJNIWrapper_load_1asset_1manager
+        (JNIEnv *env, jclass type, jobject mgr) {
+    AAssetManager *mgr2 = AAssetManager_fromJava(env, mgr);
+    load_asset_manager(mgr2);
+}

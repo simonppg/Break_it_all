@@ -6,7 +6,6 @@
 #include <GLES2/gl2.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <android/log.h>
 
 #include "game.h"
 #include "utils.h"
@@ -23,6 +22,7 @@ GLfloat BLUE[] = {
 
 Triangle *t;//, *t2;
 Square *s;
+AAssetManager *mgr;
 
 static bool setupGraphics()
 {
@@ -41,7 +41,7 @@ static bool setupGraphics()
         return false;
     }*/
 
-    s = Square_new(BLUE);
+    s = Square_new(mgr, "simple.vert", "square.frag", BLUE);
     if(!s)
     {
         LOGE ("Could not create Square");
@@ -82,4 +82,9 @@ bool on_touch_event()
     //Triangle_update(t2);
     Square_update(s);
     return true;
+}
+
+void load_asset_manager(AAssetManager *assetManager)
+{
+    mgr = assetManager;
 }

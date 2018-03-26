@@ -10,21 +10,6 @@
 #include "square.h"
 #include "utils.h"
 
-static const char glVertexShader[] =
-        "attribute vec4 vPosition;\n"
-                "void main()\n"
-                "{\n"
-                "  gl_Position = vPosition;\n"
-                "}\n";
-
-static const char glFragmentShader[] =
-        "precision mediump float;\n"
-                "uniform vec4 vColor;\n"
-                "void main()\n"
-                "{\n"
-                "  gl_FragColor = vColor;\n"
-                "}\n";
-
 static GLfloat vertices[] = {
         -0.5f, 0.5f,// first triangle
         0.5f, 0.5f,
@@ -44,7 +29,7 @@ struct _Square
     GLfloat *color;
 };
 
-Square* Square_new(GLfloat *color)
+Square* Square_new(AAssetManager *mgr, char* vertex_file_path, char* fragment_file_path, GLfloat *color)
 {
     Square *s;
 
@@ -54,7 +39,8 @@ Square* Square_new(GLfloat *color)
     {
         s->vertices = vertices;
         s->color = color;
-        s->program = createProgram(glVertexShader, glFragmentShader);
+        s->program = createProgram(load_file(mgr, vertex_file_path),
+                                   load_file(mgr, fragment_file_path));
         if (!s->program)
         {
             LOGE ("Could not create program");

@@ -3,14 +3,11 @@ package com.example.simonppg.break_it_all;
 import android.content.Context;
 import android.opengl.GLSurfaceView;
 import android.view.MotionEvent;
-import android.widget.Toast;
 
 import javax.microedition.khronos.egl.EGL10;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.egl.EGLContext;
 import javax.microedition.khronos.egl.EGLDisplay;
-
-import static android.app.PendingIntent.getActivity;
 
 /**
  * Created by Simonppg on 11/19/2017.

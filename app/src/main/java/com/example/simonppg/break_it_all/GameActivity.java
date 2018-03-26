@@ -1,6 +1,7 @@
 package com.example.simonppg.break_it_all;
 
 import android.app.Activity;
+import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -13,6 +14,8 @@ public class GameActivity extends Activity {
         super.onCreate(savedInstanceState);
         Log.i(LOGTAG, "Creating New Tutorial View");
         graphicsView = new MyGLSurfaceView(getApplication());
+        AssetManager mgr = getResources().getAssets();
+        GameLibJNIWrapper.load_asset_manager(mgr);
         setContentView(graphicsView);
     }
 
