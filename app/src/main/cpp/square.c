@@ -2,7 +2,6 @@
 // Created by simonppg on 21/03/18.
 //
 
-#include<GLES2/gl2.h>
 #include <stdlib.h>
 #include <android/log.h>
 #include <stdbool.h>
@@ -19,6 +18,7 @@ static GLfloat vertices[] = {
         0.5f, -0.5f,
         0.5f, 0.5f
 };
+
 
 struct _Square
 {

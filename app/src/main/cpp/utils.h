@@ -2,11 +2,11 @@
 // Created by simonppg on 19/03/18.
 //
 
-#include <GLES2/gl2.h>
 
 #ifndef BREAK_IT_ALL_UTILS_H
 #define BREAK_IT_ALL_UTILS_H
 
+#include <GLES3/gl3.h>
 #include <android/log.h>
 #include <android/asset_manager.h>
 #include <android/asset_manager_jni.h>
@@ -17,4 +17,5 @@
 
 GLuint createProgram(const char* vertexSource, const char * fragmentSource);
 char* load_file(AAssetManager *assetManager, const char *filePath);
+
 #endif //BREAK_IT_ALL_UTILS_H

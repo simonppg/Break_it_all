@@ -4,6 +4,7 @@
 
 #ifndef BREAK_IT_ALL_GAME_H
 #define BREAK_IT_ALL_GAME_H
+
 #include <stdbool.h>
 #include <android/asset_manager.h>
 

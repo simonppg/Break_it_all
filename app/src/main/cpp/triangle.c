@@ -2,7 +2,6 @@
 // Created by simonppg on 19/03/18.
 //
 
-#include<GLES2/gl2.h>
 #include <stdlib.h>
 #include <android/log.h>
 #include <stdbool.h>

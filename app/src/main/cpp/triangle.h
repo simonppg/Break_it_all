@@ -5,6 +5,8 @@
 #ifndef TRIANGLE_H
 #define TRIANGLE_H
 
+#include "utils.h"
+
 typedef struct _Triangle Triangle;
 Triangle* Triangle_new(GLfloat *color);
 void Triangle_draw(Triangle *t);

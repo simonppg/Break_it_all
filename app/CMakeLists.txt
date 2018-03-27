@@ -10,4 +10,4 @@ add_library(game SHARED
 target_link_libraries(game
                       -landroid
                       -llog
-                      -lGLESv2)
+                      -lGLESv3)

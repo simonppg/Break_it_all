@@ -7,6 +7,8 @@
 
 #include <android/asset_manager.h>
 
+#include "utils.h"
+
 typedef struct _Square Square;
 Square* Square_new(AAssetManager *mgr, char* vertex_file_path, char* fragment_file_path, GLfloat *color);
 void Square_draw(Square *t);
