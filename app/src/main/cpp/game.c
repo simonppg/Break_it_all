@@ -2,8 +2,6 @@
 // Created by Simonppg on 11/4/2017.
 //
 
-#include <jni.h>
-#include <stdlib.h>
 #include <unistd.h>
 
 #include "game.h"
