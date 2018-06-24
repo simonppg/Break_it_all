@@ -27,7 +27,11 @@ if (UNIX)
 
     add_library(triangle2 SHARED
         src/main/cpp/triangle2.c)
-    add_executable(${gameLauncher} src/main/cpp/linux/main.c)
+
+    add_executable(${gameLauncher}
+        src/main/cpp/linux/main.c
+        src/main/cpp/triangle.c
+        src/main/cpp/utils.c)
 
     target_link_libraries(triangle2
         -lGLESv2)

@@ -2,7 +2,6 @@
 #include <stdlib.h>
 
 #define GLFW_INCLUDE_ES2
-//#include <GLFW/glfw3.h>
 #include <GLES3/gl3.h>
 
 GLint common_get_shader_program(const char *vertex_shader_source, const char *fragment_shader_source) {

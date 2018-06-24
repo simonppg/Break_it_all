@@ -77,6 +77,7 @@ GLuint createProgram(const char* vertexSource, const char * fragmentSource)
     return program;
 }
 
+#ifdef ANDROID
 char* load_file(AAssetManager *assetManager, const char *filePath) {
     AAsset* file = AAssetManager_open(assetManager, filePath, AASSET_MODE_BUFFER);
 
@@ -93,3 +94,4 @@ char* load_file(AAssetManager *assetManager, const char *filePath) {
 
     return fileContent;
 }
+#endif
