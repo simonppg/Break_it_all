@@ -21,9 +21,10 @@
 char* load_file(AAssetManager *assetManager, const char *filePath);
 
 #else
+#include <stdio.h>
 
-#define LOGI(...)
-#define LOGE(...)
+#define LOGI(...) printf(__VA_ARGS__);
+#define LOGE(...) printf(__VA_ARGS__);
 
 #endif //ANDROID
 

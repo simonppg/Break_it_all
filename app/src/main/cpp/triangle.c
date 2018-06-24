@@ -3,8 +3,6 @@
 //
 
 #include <stdlib.h>
-//#include <android/log.h>
-#include <GLES3/gl3.h>
 #include <stdbool.h>
 
 #include "triangle.h"
@@ -55,7 +53,7 @@ Triangle* Triangle_new(GLfloat *color)
         t->program = createProgram(glVertexShader, glFragmentShader);
         if (!t->program)
         {
-            LOGE ("Could not create program");
+            LOGE ("Could not create program\n");
             return false;
         }
         t->aPosition = (GLuint) glGetAttribLocation(t->program, "vPosition");

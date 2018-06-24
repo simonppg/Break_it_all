@@ -4,6 +4,7 @@
 #define GLFW_INCLUDE_ES2
 #include <GLFW/glfw3.h>
 #include "../triangle2.h"
+#include "../triangle.h"
 
 static const GLuint WIDTH = 800;
 static const GLuint HEIGHT = 600;
@@ -24,10 +25,16 @@ static const GLfloat vertices[] = {
     0.0f, -0.5f, 0.0f,
 };
 
+Triangle *t;
+GLfloat RED[] = {
+        1.0f, 0.0f, 0.0f, 1.0f,
+};
+
 int main(void) {
     GLuint shader_program, vbo;
     GLint pos;
     GLFWwindow* window;
+    t = Triangle_new(RED);
 
     glfwInit();
     glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_ES_API);
@@ -36,8 +43,8 @@ int main(void) {
     window = glfwCreateWindow(WIDTH, HEIGHT, __FILE__, NULL, NULL);
     glfwMakeContextCurrent(window);
 
-    printf("GL_VERSION  : %s\n", glGetString(GL_VERSION) );
-    printf("GL_RENDERER : %s\n", glGetString(GL_RENDERER) );
+    LOGI("GL_VERSION  : %s\n", glGetString(GL_VERSION) );
+    LOGI("GL_RENDERER : %s\n", glGetString(GL_RENDERER) );
 
     shader_program = common_get_shader_program(vertex_shader_source, fragment_shader_source);
     pos = glGetAttribLocation(shader_program, "position");
@@ -57,6 +64,7 @@ int main(void) {
         glClear(GL_COLOR_BUFFER_BIT);
         glUseProgram(shader_program);
         glDrawArrays(GL_TRIANGLES, 0, 3);
+        Triangle_draw(t);
         glfwSwapBuffers(window);
     }
     glDeleteBuffers(1, &vbo);
