@@ -1,9 +1,18 @@
 cmake_minimum_required(VERSION 3.4.1)
 
+add_library(androidLogger SHARED
+    src/main/cpp/android/logger.c)
+
+add_library(logger SHARED
+    src/main/cpp/linux/logger.c)
+
+add_library(common SHARED
+    src/main/cpp/triangle.c
+    src/main/cpp/utils.c)
+
 add_library(game SHARED
     src/main/cpp/game.c
-    src/main/cpp/utils.c
-    src/main/cpp/triangle.c
+    src/main/cpp/android/logger.c
     src/main/cpp/square.c)
 
 add_library(gameLibJNIWrapper SHARED
@@ -12,36 +21,39 @@ add_library(gameLibJNIWrapper SHARED
 target_link_libraries(gameLibJNIWrapper
     game)
 
-target_link_libraries(gameLibJNIWrapper
-    -landroid
+if(ANDROID)
+target_link_libraries(androidLogger
     -llog
-    -lGLESv3)
+    -landroid)
+target_link_libraries(common
+    androidLogger)
+endif(ANDROID)
+
+if(NOT ANDROID)
+target_link_libraries(common
+    logger)
+endif(UNIX)
 
 target_link_libraries(game
+    common
     -landroid
     -llog
     -lGLESv3)
 
-if (UNIX)
-    set(gameLauncher linuxLauncher)
+set(gameLauncher linuxLauncher)
 
-    add_library(triangle2 SHARED
-        src/main/cpp/triangle2.c
-        src/main/cpp/triangle.c
-        src/main/cpp/utils.c)
+add_executable(${gameLauncher}
+    src/main/cpp/linux/main.c
+    src/main/cpp/linux/logger.c)
 
-    add_executable(${gameLauncher}
-        src/main/cpp/linux/main.c)
+target_link_libraries(common
+    -lGLESv2)
 
-    target_link_libraries(triangle2
-        -lGLESv2)
+target_link_libraries(${gameLauncher}
+    common
+    -lglfw)
 
-    target_link_libraries(${gameLauncher}
-        triangle2
-        -lglfw)
-
-    add_custom_target(run
-        COMMAND ${gameLauncher}
-        DEPENDS ${gameLauncher}
-        WORKING_DIRECTORY ${CMAKE_PROJECT_DIR})
-endif (UNIX)
+add_custom_target(run
+    COMMAND ${gameLauncher}
+    DEPENDS ${gameLauncher}
+    WORKING_DIRECTORY ${CMAKE_PROJECT_DIR})

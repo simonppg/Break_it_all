@@ -8,25 +8,14 @@
 
 #include <GLES3/gl3.h>
 
-#define LOG_TAG "libNative"
-
-#ifdef ANDROID
+#ifdef __ANDROID_NDK__
 #include <android/log.h>
 #include <android/asset_manager.h>
 #include <android/asset_manager_jni.h>
 
-#define LOGI(...) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__)
-#define LOGE(...) __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, __VA_ARGS__)
-
 char* load_file(AAssetManager *assetManager, const char *filePath);
 
-#else
-#include <stdio.h>
-
-#define LOGI(...) printf(__VA_ARGS__);
-#define LOGE(...) printf(__VA_ARGS__);
-
-#endif //ANDROID
+#endif //__ANDROID_NDK__
 
 GLuint createProgram(const char* vertexSource, const char * fragmentSource);
 

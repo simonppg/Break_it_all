@@ -3,27 +3,11 @@
 
 #define GLFW_INCLUDE_ES2
 #include <GLFW/glfw3.h>
-#include "../triangle2.h"
 #include "../triangle.h"
+#include "logger.h"
 
 static const GLuint WIDTH = 800;
 static const GLuint HEIGHT = 600;
-static const GLchar* vertex_shader_source =
-    "#version 100\n"
-    "attribute vec3 position;\n"
-    "void main() {\n"
-    "   gl_Position = vec4(position, 1.0);\n"
-    "}\n";
-static const GLchar* fragment_shader_source =
-    "#version 100\n"
-    "void main() {\n"
-    "   gl_FragColor = vec4(0.25, 0.25, 0.25, 1.0);\n"
-    "}\n";
-static const GLfloat vertices[] = {
-    -0.5f,  0.5f, 0.0f,
-    0.5f, 0.5f, 0.0f,
-    0.0f, -0.5f, 0.0f,
-};
 
 Triangle *t;
 GLfloat RED[] = {
@@ -31,10 +15,7 @@ GLfloat RED[] = {
 };
 
 int main(void) {
-    GLuint shader_program, vbo;
-    GLint pos;
     GLFWwindow* window;
-    t = Triangle_new(RED);
 
     glfwInit();
     glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_ES_API);
@@ -46,28 +27,21 @@ int main(void) {
     LOGI("GL_VERSION  : %s\n", glGetString(GL_VERSION) );
     LOGI("GL_RENDERER : %s\n", glGetString(GL_RENDERER) );
 
-    shader_program = common_get_shader_program(vertex_shader_source, fragment_shader_source);
-    pos = glGetAttribLocation(shader_program, "position");
-
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glViewport(0, 0, WIDTH, HEIGHT);
 
-    glGenBuffers(1, &vbo);
-    glBindBuffer(GL_ARRAY_BUFFER, vbo);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-    glVertexAttribPointer(pos, 3, GL_FLOAT, GL_FALSE, 0, (GLvoid*)0);
-    glEnableVertexAttribArray(pos);
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    t = Triangle_new(RED);
 
     while (!glfwWindowShouldClose(window)) {
         glfwPollEvents();
         glClear(GL_COLOR_BUFFER_BIT);
-        glUseProgram(shader_program);
-        glDrawArrays(GL_TRIANGLES, 0, 3);
+        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+
         Triangle_draw(t);
+
         glfwSwapBuffers(window);
     }
-    glDeleteBuffers(1, &vbo);
+
     glfwTerminate();
     return EXIT_SUCCESS;
 }

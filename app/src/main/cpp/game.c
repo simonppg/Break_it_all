@@ -9,6 +9,8 @@
 #include "triangle.h"
 #include "square.h"
 
+#include "android/logger.h"
+
 GLfloat RED[] = {
         1.0f, 0.0f, 0.0f, 1.0f,
 };
@@ -69,7 +71,7 @@ void on_surface_changed(int width, int height) {
 void on_draw_frame() {
     /* Sleeping to avoid thrashing the Android log. */
     usleep(500);
-    //LOGI("New Frame Ready to be Drawn!!!!");
+    LOGI("New Frame Ready to be Drawn!!!!");
     renderFrame();
 }
 

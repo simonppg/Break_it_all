@@ -8,6 +8,12 @@
 #include "triangle.h"
 #include "utils.h"
 
+#ifdef __ANDROID_NDK__
+#include "android/logger.h"
+#else
+#include "linux/logger.h"
+#endif
+
 static int n;
 
 static const char glVertexShader[] =
@@ -82,8 +88,6 @@ void Triangle_update(Triangle *t)
         t->color[1] = 1;
         t->color[2] = 0;
     }
-
-
 }
 
 void Triangle_draw(Triangle *t)

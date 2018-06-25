@@ -3,11 +3,16 @@
 //
 
 #include <stdlib.h>
-#include <android/log.h>
 #include <stdbool.h>
 
 #include "square.h"
 #include "utils.h"
+
+#ifdef __ANDROID_NDK__
+#include "android/logger.h"
+#else
+#include "linux/logger.h"
+#endif
 
 static GLfloat vertices[] = {
         -0.5f, 0.5f,// first triangle
