@@ -1,16 +1,13 @@
 cmake_minimum_required(VERSION 3.4.1)
 
+add_library(common STATIC
+    src/main/cpp/triangle.c
+    src/main/cpp/utils.c)
+
+target_link_libraries(common
+    -lGLESv2)
+
 if(ANDROID)
-
-    add_library(common SHARED
-        src/main/cpp/triangle.c
-        src/main/cpp/android/logger.c
-        src/main/cpp/utils.c)
-
-    target_link_libraries(common
-        -lGLESv2
-        -llog
-        -landroid)
 
     add_library(gameLibJNIWrapper SHARED
         src/main/cpp/jni.c
@@ -25,13 +22,6 @@ if(ANDROID)
         -lGLESv3)
 
 else(ANDROID)
-
-    add_library(common SHARED
-        src/main/cpp/triangle.c
-        src/main/cpp/utils.c)
-
-    target_link_libraries(common
-        -lGLESv2)
 
     set(gameLauncher linuxLauncher)
 
@@ -50,5 +40,3 @@ else(ANDROID)
         WORKING_DIRECTORY ${CMAKE_PROJECT_DIR})
 
 endif(ANDROID)
-
-
