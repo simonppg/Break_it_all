@@ -5,11 +5,11 @@
 #include <unistd.h>
 
 #include "game.h"
-#include "utils.h"
-#include "triangle.h"
-#include "square.h"
+#include "../utils.h"
+#include "../triangle.h"
+#include "../square.h"
 
-#include "android/logger.h"
+#include "logger.h"
 
 GLfloat RED[] = {
         1.0f, 0.0f, 0.0f, 1.0f,

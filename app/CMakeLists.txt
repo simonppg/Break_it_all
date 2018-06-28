@@ -2,18 +2,20 @@ cmake_minimum_required(VERSION 3.4.1)
 
 add_library(common STATIC
     src/main/cpp/triangle.c
-    src/main/cpp/utils.c)
+    src/main/cpp/utils.c
+    src/main/cpp/square.c)
 
 target_link_libraries(common
     -lGLESv2)
 
 if(ANDROID)
 
+    set(androidSrcDir "src/main/cpp/android")
+
     add_library(gameLibJNIWrapper SHARED
-        src/main/cpp/jni.c
-        src/main/cpp/game.c
-        src/main/cpp/android/logger.c
-        src/main/cpp/square.c)
+        ${androidSrcDir}/jni.c
+        ${androidSrcDir}/game.c
+        ${androidSrcDir}/logger.c)
 
     target_link_libraries(gameLibJNIWrapper
         common
@@ -24,10 +26,11 @@ if(ANDROID)
 else(ANDROID)
 
     set(gameLauncher linuxLauncher)
+    set(linuxSrcDir "src/main/cpp/linux")
 
     add_executable(${gameLauncher}
-        src/main/cpp/linux/main.c
-        src/main/cpp/linux/logger.c)
+        ${linuxSrcDir}/main.c
+        ${linuxSrcDir}/logger.c)
 
 
     target_link_libraries(${gameLauncher}
