@@ -15,7 +15,8 @@ if(ANDROID)
     add_library(gameLibJNIWrapper SHARED
         ${androidSrcDir}/jni.c
         ${androidSrcDir}/game.c
-        ${androidSrcDir}/logger.c)
+        ${androidSrcDir}/logger.c
+        ${androidSrcDir}/filesManager.c)
 
     target_link_libraries(gameLibJNIWrapper
         common

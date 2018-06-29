@@ -10,6 +10,7 @@
 
 #ifdef __ANDROID_NDK__
 #include "android/logger.h"
+#include "android/filesManager.h"
 #else
 #include "linux/logger.h"
 #endif

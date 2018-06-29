@@ -21,7 +21,7 @@ GLfloat BLUE[] = {
 
 Triangle *t;//, *t2;
 Square *s;
-AAssetManager *mgr;
+AAssetManager *mgr = NULL;
 
 static bool setupGraphics()
 {
