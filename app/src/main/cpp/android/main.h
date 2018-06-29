@@ -8,6 +8,8 @@
 #include <stdbool.h>
 #include <android/asset_manager.h>
 
+extern AAssetManager *g_pAssetManager;
+
 void on_surface_created();
 void on_surface_changed(int width, int height);
 void on_draw_frame();

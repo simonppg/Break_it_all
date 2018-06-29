@@ -6,7 +6,7 @@
 #include <stdbool.h>
 #include <android/asset_manager_jni.h>
 
-#include "game.h"
+#include "main.h"
 
 JNIEXPORT void JNICALL Java_com_example_simonppg_break_1it_1all_GameLibJNIWrapper_on_1surface_1created
     (JNIEnv * env, jclass cls) {

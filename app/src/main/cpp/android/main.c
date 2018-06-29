@@ -4,7 +4,7 @@
 
 #include <unistd.h>
 
-#include "game.h"
+#include "main.h"
 #include "../utils.h"
 #include "../triangle.h"
 #include "../square.h"
@@ -12,16 +12,16 @@
 #include "logger.h"
 
 GLfloat RED[] = {
-        1.0f, 0.0f, 0.0f, 1.0f,
+    1.0f, 0.0f, 0.0f, 1.0f,
 };
 
 GLfloat BLUE[] = {
-        0.0f, 0.0f, 1.0f, 1.0f,
+    0.0f, 0.0f, 1.0f, 1.0f,
 };
 
 Triangle *t;//, *t2;
 Square *s;
-AAssetManager *mgr = NULL;
+AAssetManager *g_pAssetManager = NULL;
 
 static bool setupGraphics()
 {
@@ -35,12 +35,12 @@ static bool setupGraphics()
     }
 
     /*if(!t2)
-    {
-        LOGE ("Could not create Triangle");
-        return false;
-    }*/
+      {
+      LOGE ("Could not create Triangle");
+      return false;
+      }*/
 
-    s = Square_new(mgr, "simple.vert", "square.frag", BLUE);
+    s = Square_new("simple.vert", "square.frag", BLUE);
     if(!s)
     {
         LOGE ("Could not create Square");
@@ -83,7 +83,7 @@ bool on_touch_event()
     return true;
 }
 
-void load_asset_manager(AAssetManager *assetManager)
+void load_asset_manager(AAssetManager *pAssetManager)
 {
-    mgr = assetManager;
+    g_pAssetManager = pAssetManager;
 }

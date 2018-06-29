@@ -4,14 +4,19 @@
 #define GLFW_INCLUDE_ES2
 #include <GLFW/glfw3.h>
 #include "../triangle.h"
+#include "../square.h"
 #include "logger.h"
 
 static const GLuint WIDTH = 800;
 static const GLuint HEIGHT = 600;
 
 Triangle *t;
+Square *s;
 GLfloat RED[] = {
         1.0f, 0.0f, 0.0f, 1.0f,
+};
+GLfloat BLUE[] = {
+        0.0f, 0.0f, 1.0f, 1.0f,
 };
 
 int main(void) {
@@ -31,6 +36,7 @@ int main(void) {
     glViewport(0, 0, WIDTH, HEIGHT);
 
     t = Triangle_new(RED);
+    //s = Square_new("simple.vert", "square.frag", BLUE);
 
     while (!glfwWindowShouldClose(window)) {
         glfwPollEvents();
@@ -38,6 +44,7 @@ int main(void) {
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
         Triangle_draw(t);
+        Square_draw(s);
 
         glfwSwapBuffers(window);
     }

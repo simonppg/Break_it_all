@@ -3,11 +3,14 @@
 //
 
 #include <malloc.h>
+#include <android/asset_manager.h>
 
 #include "filesManager.h"
+#include "main.h"
 
-char* load_file(AAssetManager *assetManager, const char *filePath) {
-    AAsset* file = AAssetManager_open(assetManager, filePath, AASSET_MODE_BUFFER);
+char* load_file(const char *filePath)
+{
+    AAsset* file = AAssetManager_open(g_pAssetManager, filePath, AASSET_MODE_BUFFER);
 
     size_t fileLength = (size_t) AAsset_getLength(file);
 

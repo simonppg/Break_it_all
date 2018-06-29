@@ -13,6 +13,7 @@
 #include "android/filesManager.h"
 #else
 #include "linux/logger.h"
+#include "linux/filesManager.h"
 #endif
 
 static GLfloat vertices[] = {
@@ -35,7 +36,7 @@ struct _Square
     GLfloat *color;
 };
 
-Square* Square_new(AAssetManager *mgr, char* vertex_file_path, char* fragment_file_path, GLfloat *color)
+Square* Square_new(char* vertex_file_path, char* fragment_file_path, GLfloat *color)
 {
     Square *s;
 
@@ -45,8 +46,8 @@ Square* Square_new(AAssetManager *mgr, char* vertex_file_path, char* fragment_fi
     {
         s->vertices = vertices;
         s->color = color;
-        s->program = createProgram(load_file(mgr, vertex_file_path),
-                                   load_file(mgr, fragment_file_path));
+        s->program = createProgram(load_file(vertex_file_path),
+                                   load_file(fragment_file_path));
         if (!s->program)
         {
             LOGE ("Could not create program");

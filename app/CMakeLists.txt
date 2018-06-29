@@ -14,7 +14,7 @@ if(ANDROID)
 
     add_library(gameLibJNIWrapper SHARED
         ${androidSrcDir}/jni.c
-        ${androidSrcDir}/game.c
+        ${androidSrcDir}/main.c
         ${androidSrcDir}/logger.c
         ${androidSrcDir}/filesManager.c)
 
@@ -31,7 +31,8 @@ else(ANDROID)
 
     add_executable(${gameLauncher}
         ${linuxSrcDir}/main.c
-        ${linuxSrcDir}/logger.c)
+        ${linuxSrcDir}/logger.c
+        ${linuxSrcDir}/filesManager.c)
 
 
     target_link_libraries(${gameLauncher}
