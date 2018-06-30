@@ -3,8 +3,10 @@
 
 #define GLFW_INCLUDE_ES2
 #include <GLFW/glfw3.h>
+
 #include "../triangle.h"
 #include "../square.h"
+#include "../colors.h"
 #include "logger.h"
 
 static const GLuint WIDTH = 800;
@@ -12,12 +14,6 @@ static const GLuint HEIGHT = 600;
 
 Triangle *t;
 Square *s;
-GLfloat RED[] = {
-        1.0f, 0.0f, 0.0f, 1.0f,
-};
-GLfloat BLUE[] = {
-        0.0f, 0.0f, 1.0f, 1.0f,
-};
 
 int main(void) {
     GLFWwindow* window;

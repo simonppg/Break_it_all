@@ -8,16 +8,9 @@
 #include "../utils.h"
 #include "../triangle.h"
 #include "../square.h"
+#include "../colors.h"
 
 #include "logger.h"
-
-GLfloat RED[] = {
-    1.0f, 0.0f, 0.0f, 1.0f,
-};
-
-GLfloat BLUE[] = {
-    0.0f, 0.0f, 1.0f, 1.0f,
-};
 
 Triangle *t;//, *t2;
 Square *s;
