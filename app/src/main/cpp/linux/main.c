@@ -25,14 +25,16 @@ int main(void) {
     window = glfwCreateWindow(WIDTH, HEIGHT, __FILE__, NULL, NULL);
     glfwMakeContextCurrent(window);
 
-    LOGI("GL_VERSION  : %s\n", glGetString(GL_VERSION) );
-    LOGI("GL_RENDERER : %s\n", glGetString(GL_RENDERER) );
+    LOGI("\nGL_VERSION  :")
+    LOGI((char *)glGetString(GL_VERSION));
+    LOGI("\nGL_RENDERER :");
+    LOGI((char *)glGetString(GL_RENDERER));
 
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glViewport(0, 0, WIDTH, HEIGHT);
 
     t = Triangle_new(RED);
-    //s = Square_new("simple.vert", "square.frag", BLUE);
+    s = Square_new("simple.vert", "square.frag", BLUE);
 
     while (!glfwWindowShouldClose(window)) {
         glfwPollEvents();

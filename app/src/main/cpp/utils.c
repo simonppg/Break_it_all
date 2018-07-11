@@ -44,6 +44,9 @@ static GLuint loadShader(GLenum shaderType, const char* shaderSource)
 
 GLuint createProgram(const char* vertexSource, const char * fragmentSource)
 {
+    if(vertexSource == NULL || fragmentSource == NULL)
+        return 0;
+
     GLuint vertexShader = loadShader(GL_VERTEX_SHADER, vertexSource);
     if (!vertexShader)
     {

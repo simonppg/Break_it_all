@@ -29,6 +29,9 @@ else(ANDROID)
     set(gameLauncher linuxLauncher)
     set(linuxSrcDir "src/main/cpp/linux")
 
+    add_definitions("-DPROJECT_DIR=\"${PROJECT_SOURCE_DIR}\"")
+    set(CMAKE_BUILD_TYPE Debug)
+
     add_executable(${gameLauncher}
         ${linuxSrcDir}/main.c
         ${linuxSrcDir}/logger.c
