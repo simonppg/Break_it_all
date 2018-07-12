@@ -31,7 +31,7 @@ bool setupGraphics(Game *g)
     g->t = Triangle_new(RED);
     g->s = Square_new("simple.vert", "square.frag", BLUE);
 
-    if(g->t != NULL || g->s != NULL)
+    if(g->t == NULL || g->s == NULL)
     {
         LOGE("Something went wrong!");
         return false;
