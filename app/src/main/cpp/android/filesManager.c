@@ -6,7 +6,13 @@
 #include <android/asset_manager.h>
 
 #include "filesManager.h"
-#include "main.h"
+
+AAssetManager *g_pAssetManager = NULL;
+
+void load_asset_manager(AAssetManager *pAssetManager)
+{
+    g_pAssetManager = pAssetManager;
+}
 
 char* load_file(const char *filePath)
 {
