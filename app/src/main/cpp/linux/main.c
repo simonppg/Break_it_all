@@ -42,16 +42,12 @@ int main(void) {
     glViewport(0, 0, WIDTH, HEIGHT);
 
     on_surface_created();
-    //t = Triangle_new(RED);
-    //s = Square_new("simple.vert", "square.frag", BLUE);
 
     while (!glfwWindowShouldClose(window)) {
         glfwPollEvents();
         glClear(GL_COLOR_BUFFER_BIT);
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
-        //Triangle_draw(t);
-        //Square_draw(s);
         on_draw_frame();
 
         glfwSwapBuffers(window);
