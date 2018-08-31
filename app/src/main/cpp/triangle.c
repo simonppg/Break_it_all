@@ -14,7 +14,7 @@
 #include "linux/logger.h"
 #endif
 
-static const Vertex vertex[] =
+static Vertex vertex[] =
         {
                 -1.0f, -1.0f, +0.0f,
                 +1.0f, +0.0f, +0.0f,
@@ -38,8 +38,7 @@ Triangle* Triangle_new(GLfloat *color)
         return NULL;
 
     ret->numVertices = NUM_ARRAY_ELEMENTS(vertex);
-    ret->vertices = malloc(sizeof(Vertex) * ret->numVertices);
-    memcpy(ret->vertices, vertex, sizeof(vertex));
+    ret->vertices = vertex;
     ret->numIndices = NUM_ARRAY_ELEMENTS(indices);
     ret->indices = malloc(sizeof(GLushort) * ret->numIndices);
     memcpy(ret->indices, indices, sizeof(indices));

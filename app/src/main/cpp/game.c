@@ -21,8 +21,6 @@ struct _game{
     Square *s;
 };
 
-Game *game = NULL;
-
 static const char glVertexShader[] =
     "attribute vec4 vPosition;\n"
     "attribute vec4 vColor;\n"
@@ -49,10 +47,37 @@ GLuint indexArrayBufferID;
 GLuint vertexBufferID2;
 GLuint indexArrayBufferID2;
 
-static void sendDataToOpenGL()
+static Game* Game_new()
 {
-    Triangle *tri = Triangle_new(RED);
-    Square *sqr = Square_new("simple.vert", "square.frag", BLUE);
+    Game *ret;
+
+    ret = malloc(sizeof(Game));
+
+    if(ret == NULL)
+        return NULL;
+
+    ret->t = Triangle_new(RED);
+    ret->s = Square_new("simple.vert", "square.frag", BLUE);
+
+    if(ret->t == NULL || ret->s == NULL)
+    {
+        LOGE("Something went wrong!");
+        return NULL;
+    }
+
+    return ret;
+}
+
+static void sendDataToOpenGL(Game *g)
+{
+    Triangle *tri;
+    Square *sqr;
+
+    if (g == NULL)
+        return;
+
+    tri = g->t;
+    sqr = g->s;
 
     // Triangle
     glGenBuffers(1, &vertexBufferID);
@@ -74,34 +99,16 @@ static void sendDataToOpenGL()
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexArrayBufferID2);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, INDEX_BUFFER_SIZE(sqr->numIndices), sqr->indices, GL_STATIC_DRAW);
 
+    // TODO: free buffers
 }
 
-bool setupGraphics(Game *g)
+static bool setupGraphics(Game *g)
 {
-    if(g == NULL)
-        return false;
-
-    sendDataToOpenGL();
+    sendDataToOpenGL(g);
     programID = createProgram(glVertexShader, glFragmentShader);
     glUseProgram(programID);
 
-    if(g->t == NULL || g->s == NULL)
-    {
-        LOGE("Something went wrong!");
-        return false;
-    }
-
     return true;
-}
-
-void on_surface_created() {
-    LOGI("on_surface_created");
-    game = malloc(sizeof(Game));
-
-    if(game == NULL)
-        return;
-
-    setupGraphics(game);
 }
 
 static void renderFrame()
@@ -122,6 +129,14 @@ static void renderFrame()
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 6, (char*)(sizeof(float) * 3));
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexArrayBufferID);
     glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_SHORT, 0);
+}
+
+void on_surface_created() {
+    LOGI("on_surface_created");
+
+    Game *game = Game_new();
+    setupGraphics(game);
+    // TODO: free game
 }
 
 void on_surface_changed(int width, int height) {

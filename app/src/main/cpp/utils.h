@@ -8,15 +8,27 @@
 #include <GLES3/gl3.h>
 
 struct _vector{
-    float x, y, z;
+    GLfloat x, y, z;
 };
+
 typedef struct _vector Vector;
 
 struct _vertex{
     Vector position;
     Vector color;
 };
+
 typedef struct _vertex Vertex;
+
+struct _Shape
+{
+    Vertex* vertices;
+    GLuint numVertices;
+    GLushort* indices;
+    GLuint numIndices;
+};
+
+typedef struct _Shape Shape;
 
 #define NUM_ARRAY_ELEMENTS(a) sizeof(a) / sizeof(*a)
 #define INDEX_BUFFER_SIZE(numIndices) ((GLsizeiptr)((numIndices) * (sizeof(GLushort))))

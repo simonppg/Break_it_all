@@ -16,7 +16,7 @@
 #include "linux/filesManager.h"
 #endif
 
-static const Vertex vertex[] =
+static Vertex vertex[] =
         {
                 -0.5f, -0.5f, +0.0f,
                 +1.0f, +0.0f, +0.0f,
@@ -47,8 +47,7 @@ Square* Square_new(char* vertex_file_path, char* fragment_file_path, GLfloat *co
         return NULL;
 
     ret->numVertices = NUM_ARRAY_ELEMENTS(vertex);
-    ret->vertices = malloc(sizeof(Vertex) * ret->numVertices);
-    memcpy(ret->vertices, vertex, sizeof(vertex));
+    ret->vertices = vertex;
     ret->numIndices = NUM_ARRAY_ELEMENTS(indices);
     ret->indices = malloc(sizeof(GLushort) * ret->numIndices);
     memcpy(ret->indices, indices, sizeof(indices));
