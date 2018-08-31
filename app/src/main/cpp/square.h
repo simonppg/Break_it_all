@@ -6,8 +6,18 @@
 #define BREAK_IT_ALL_SQUARE_H
 
 #include <GLES3/gl3.h>
+#include "utils.h"
+
+struct _Square
+{
+    Vertex* vertices;
+    GLuint numVertices;
+    GLushort* indices;
+    GLuint numIndices;
+};
 
 typedef struct _Square Square;
+
 Square* Square_new(char* vertex_file_path, char* fragment_file_path, GLfloat *color);
 void Square_draw(Square *t);
 void Square_update(Square *t);

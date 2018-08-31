@@ -3,7 +3,7 @@
 //
 
 #include <stdlib.h>
-#include <stdbool.h>
+#include <string.h>
 
 #include "square.h"
 #include "utils.h"
@@ -16,52 +16,51 @@
 #include "linux/filesManager.h"
 #endif
 
-static GLfloat vertices[] = {
-        -0.5f, 0.5f,// first triangle
-        0.5f, 0.5f,
-        -0.5f, -0.5f,
+static const Vertex vertex[] =
+        {
+                -0.5f, -0.5f, +0.0f,
+                +1.0f, +0.0f, +0.0f,
 
-        -0.5f, -0.5f,// second triangle
-        0.5f, -0.5f,
-        0.5f, 0.5f
-};
+                -0.5f, +0.5f, +0.0f,
+                +1.0f, +0.0f, +0.0f,
 
+                +0.5f, -0.5f, +0.0f,
+                +1.0f, +0.0f, +0.0f,
 
-struct _Square
-{
-    GLuint program;
-    GLuint aPosition;
-    GLuint uColor;
-    GLfloat *vertices;
-    GLfloat *color;
-};
+                +0.5f, +0.5f, +0.0f,
+                +1.0f, +0.0f, +0.0f
+        };
+
+static const GLushort indices[] =
+        {
+                0, 1, 2, // left triangle
+                1, 2, 3 // right triangle
+        };
 
 Square* Square_new(char* vertex_file_path, char* fragment_file_path, GLfloat *color)
 {
-    Square *s;
+    Square *ret;
 
-    s = malloc(sizeof(Square));
+    ret = malloc(sizeof(Square));
 
-    if(s != NULL)
-    {
-        s->vertices = vertices;
-        s->color = color;
-        s->program = createProgram(load_file(vertex_file_path),
-                                   load_file(fragment_file_path));
-        if (!s->program)
-        {
-            LOGE ("Could not create program");
-            return false;
-        }
-        s->aPosition = (GLuint) glGetAttribLocation(s->program, "vPosition");
-        s->uColor = (GLuint) glGetUniformLocation(s->program, "vColor");
-    }
+    if(ret == NULL)
+        return NULL;
 
-    return s;
+    ret->numVertices = NUM_ARRAY_ELEMENTS(vertex);
+    ret->vertices = malloc(sizeof(Vertex) * ret->numVertices);
+    memcpy(ret->vertices, vertex, sizeof(vertex));
+    ret->numIndices = NUM_ARRAY_ELEMENTS(indices);
+    ret->indices = malloc(sizeof(GLushort) * ret->numIndices);
+    memcpy(ret->indices, indices, sizeof(indices));
+
+    return ret;
 }
 
 void Square_update(Square *s)
 {
+    if(s == NULL)
+        return;
+
     // TODO: implement this
 }
 
@@ -70,14 +69,5 @@ void Square_draw(Square *s)
     if(s == NULL)
         return;
 
-    glUseProgram(s->program);
-
-    // Send vertex to the Shader
-    glVertexAttribPointer(s->aPosition, 2, GL_FLOAT, GL_FALSE, 0 , s->vertices);
-    glEnableVertexAttribArray(s->aPosition);
-
-    // Send color to the Shader
-    glUniform4f(s->uColor, s->color[0], s->color[1], s->color[2], s->color[3]);
-    // Draw shader
-    glDrawArrays(GL_TRIANGLES, 0, 6); // 6 vertex, 3 for each triangle
+    // TODO: implement this
 }
