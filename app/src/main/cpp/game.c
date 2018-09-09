@@ -21,6 +21,8 @@ struct _game{
     Square *s;
 };
 
+static Game *game = NULL;
+
 static const char glVertexShader[] =
     "attribute vec4 vPosition;\n"
     "attribute vec4 vColor;\n"
@@ -47,6 +49,32 @@ GLuint indexArrayBufferID;
 GLuint vertexBufferID2;
 GLuint indexArrayBufferID2;
 
+GLuint vertexBufferID3;
+GLuint indexArrayBufferID3;
+
+static Vertex frVertices[] =
+        {
+                -0.9f, +0.9f, +0.0f, //1 Top left
+                +0.0f, +0.0f, +1.0f,
+
+                +0.9f, +0.9f, +0.0f, //3 Top right
+                +0.0f, +0.0f, +1.0f,
+
+                +0.9f, -0.9f, +0.0f, //7 Bottom right
+                +0.0f, +0.0f, +1.0f,
+
+                -0.9f, -0.9f, +0.0f, //5 Bottom left
+                +0.0f, +0.0f, +1.0f,
+        };
+
+static const GLushort frIndices[] =
+        {
+                0, 1, 2, 3, 0
+        };
+
+GLuint frNumVertices;
+GLuint frNumIndices;
+
 static Game* Game_new()
 {
     Game *ret;
@@ -70,6 +98,7 @@ static Game* Game_new()
 
 static void sendDataToOpenGL(Game *g)
 {
+
     Triangle *tri;
     Square *sqr;
 
@@ -99,6 +128,18 @@ static void sendDataToOpenGL(Game *g)
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexArrayBufferID2);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, INDEX_BUFFER_SIZE(sqr->numIndices), sqr->indices, GL_STATIC_DRAW);
 
+    // frame
+    frNumVertices = NUM_ARRAY_ELEMENTS(frVertices);
+    frNumIndices = NUM_ARRAY_ELEMENTS(frIndices);
+
+    glGenBuffers(1, &vertexBufferID3);
+    glBindBuffer(GL_ARRAY_BUFFER, vertexBufferID3);
+    glBufferData(GL_ARRAY_BUFFER, VERTEX_BUFFER_SIZE(frNumVertices), frVertices, GL_STATIC_DRAW);
+
+    glGenBuffers(1, &indexArrayBufferID3);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexArrayBufferID3);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, INDEX_BUFFER_SIZE(frNumIndices), frIndices, GL_STATIC_DRAW);
+
     // TODO: free buffers
 }
 
@@ -113,28 +154,35 @@ static bool setupGraphics(Game *g)
 
 static void renderFrame()
 {
+    glClearColor(0.6f, 0.6f, 0.6f, 1.0f);
     glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+
+    // Frame
+    glBindBuffer(GL_ARRAY_BUFFER, vertexBufferID3);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 6, 0);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 6, (char*)(sizeof(float) * 3));
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexArrayBufferID3);
+    glDrawElements(GL_LINE_STRIP, frNumIndices, GL_UNSIGNED_SHORT, 0);
 
     // Square
     glBindBuffer(GL_ARRAY_BUFFER, vertexBufferID2);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 6, 0);
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 6, (char*)(sizeof(float) * 3));
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexArrayBufferID2);
-    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, 0);
+    glDrawElements(GL_TRIANGLES, game->s->numIndices, GL_UNSIGNED_SHORT, 0);
 
     // Triangle
     glBindBuffer(GL_ARRAY_BUFFER, vertexBufferID);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 6, 0);
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 6, (char*)(sizeof(float) * 3));
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexArrayBufferID);
-    glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_SHORT, 0);
+    glDrawElements(GL_TRIANGLES, game->t->numIndices, GL_UNSIGNED_SHORT, 0);
 }
 
 void on_surface_created() {
     LOGI("on_surface_created");
 
-    Game *game = Game_new();
+    game = Game_new();
     setupGraphics(game);
     // TODO: free game
 }
