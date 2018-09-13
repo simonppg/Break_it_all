@@ -2,6 +2,10 @@
 // Created by simonppg on 19/03/18.
 //
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef BREAK_IT_ALL_UTILS_H
 #define BREAK_IT_ALL_UTILS_H
 
@@ -37,3 +41,7 @@ typedef struct _Shape Shape;
 GLuint createProgram(const char* vertexSource, const char * fragmentSource);
 
 #endif //BREAK_IT_ALL_UTILS_H
+
+#ifdef __cplusplus
+}
+#endif

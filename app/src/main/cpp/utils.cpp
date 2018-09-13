@@ -2,14 +2,18 @@
 // Created by simonppg on 19/03/18.
 //
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <malloc.h>
 
-#include "utils.h"
+#include "utils.hpp"
 
 #ifdef __ANDROID_NDK__
-#include "android/logger.h"
+#include "android/logger.hpp"
 #else
-#include "linux/logger.h"
+#include "linux/logger.hpp"
 #endif
 
 static GLuint loadShader(GLenum shaderType, const char* shaderSource)
@@ -87,3 +91,7 @@ GLuint createProgram(const char* vertexSource, const char * fragmentSource)
     }
     return program;
 }
+
+#ifdef __cplusplus
+}
+#endif

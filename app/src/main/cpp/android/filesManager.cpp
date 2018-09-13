@@ -2,10 +2,14 @@
 // Created by simonppg on 28/06/18.
 //
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <malloc.h>
 #include <android/asset_manager.h>
 
-#include "filesManager.h"
+#include "filesManager.hpp"
 
 AAssetManager *g_pAssetManager = NULL;
 
@@ -20,7 +24,7 @@ char* load_file(const char *filePath)
 
     size_t fileLength = (size_t) AAsset_getLength(file);
 
-    char* fileContent = malloc(fileLength+1);
+    char* fileContent = (char *) malloc(fileLength+1);
 
     AAsset_read(file, fileContent, fileLength);
 
@@ -31,3 +35,7 @@ char* load_file(const char *filePath)
 
     return fileContent;
 }
+
+#ifdef __cplusplus
+}
+#endif

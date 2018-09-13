@@ -5,15 +5,27 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-#include "game.h"
-#include "colors.h"
-#include "triangle.h"
-#include "square.h"
+#define GLM_ENABLE_EXPERIMENTAL
+
+#include "glm/glm/glm.hpp"
+#include "glm/glm/gtc/matrix_transform.hpp"
+#include "glm/glm/gtc/type_ptr.hpp"
+#include "glm/glm/gtx/rotate_vector.hpp"
+#include "glm/glm/gtx/closest_point.hpp"
+
+#include "game.hpp"
+#include "colors.hpp"
+#include "triangle.hpp"
+#include "square.hpp"
 
 #ifdef __ANDROID_NDK__
-#include "android/logger.h"
+#include "android/logger.hpp"
 #else
-#include "linux/logger.h"
+#include "linux/logger.hpp"
+#endif
+
+#ifdef __cplusplus
+extern "C" {
 #endif
 
 struct _game{
@@ -79,7 +91,7 @@ static Game* Game_new()
 {
     Game *ret;
 
-    ret = malloc(sizeof(Game));
+    ret = (Game *) malloc(sizeof(Game));
 
     if(ret == NULL)
         return NULL;
@@ -202,3 +214,7 @@ bool on_touch_event()
 {
     return true;
 }
+
+#ifdef __cplusplus
+}
+#endif

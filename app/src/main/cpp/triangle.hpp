@@ -2,10 +2,14 @@
 // Created by simonppg on 19/03/18.
 //
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef TRIANGLE_H
 #define TRIANGLE_H
 
-#include "utils.h"
+#include "utils.hpp"
 
 struct _Triangle
 {
@@ -22,3 +26,7 @@ void Triangle_draw(Triangle *t);
 void Triangle_update(Triangle *t);
 
 #endif //TRIANGLE_H
+
+#ifdef __cplusplus
+}
+#endif

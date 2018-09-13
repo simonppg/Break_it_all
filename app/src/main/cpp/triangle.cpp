@@ -2,16 +2,20 @@
 // Created by simonppg on 19/03/18.
 //
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <stdlib.h>
 #include <string.h>
 
-#include "triangle.h"
-#include "utils.h"
+#include "triangle.hpp"
+#include "utils.hpp"
 
 #ifdef __ANDROID_NDK__
-#include "android/logger.h"
+#include "android/logger.hpp"
 #else
-#include "linux/logger.h"
+#include "linux/logger.hpp"
 #endif
 
 static Vertex vertex[] =
@@ -32,7 +36,7 @@ Triangle* Triangle_new(GLfloat *color)
 {
     Triangle *ret;
 
-    ret = malloc(sizeof(Triangle));
+    ret = (Triangle *) malloc(sizeof(Triangle));
 
     if (ret == NULL)
         return NULL;
@@ -40,7 +44,7 @@ Triangle* Triangle_new(GLfloat *color)
     ret->numVertices = NUM_ARRAY_ELEMENTS(vertex);
     ret->vertices = vertex;
     ret->numIndices = NUM_ARRAY_ELEMENTS(indices);
-    ret->indices = malloc(sizeof(GLushort) * ret->numIndices);
+    ret->indices = (GLushort *) malloc(sizeof(GLushort) * ret->numIndices);
     memcpy(ret->indices, indices, sizeof(indices));
 
     return ret;
@@ -61,3 +65,7 @@ void Triangle_draw(Triangle *t)
 
     // TODO: implement this
 }
+
+#ifdef __cplusplus
+}
+#endif

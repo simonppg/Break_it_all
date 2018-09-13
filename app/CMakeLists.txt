@@ -1,28 +1,34 @@
 cmake_minimum_required(VERSION 3.4.1)
 
+set(GLM_ENABLE_EXPERIMENTAL)
+
 add_library(common STATIC
-    src/main/cpp/triangle.c
-    src/main/cpp/utils.c
-    src/main/cpp/square.c
-    src/main/cpp/game.c)
+    src/main/cpp/triangle.cpp
+    src/main/cpp/utils.cpp
+    src/main/cpp/square.cpp
+    src/main/cpp/game.cpp)
+
+add_subdirectory(src/main/cpp/glm)
 
 target_link_libraries(common
-    -lGLESv2)
+    -lGLESv2
+    glm)
 
 if(ANDROID)
 
     set(androidSrcDir "src/main/cpp/android")
 
     add_library(gameLibJNIWrapper SHARED
-        ${androidSrcDir}/main.c
-        ${androidSrcDir}/logger.c
-        ${androidSrcDir}/filesManager.c)
+        ${androidSrcDir}/main.cpp
+        ${androidSrcDir}/logger.cpp
+        ${androidSrcDir}/filesManager.cpp)
 
     target_link_libraries(gameLibJNIWrapper
         common
         -landroid
         -llog
-        -lGLESv3)
+        -lGLESv3
+        glm)
 
 else(ANDROID)
 
@@ -33,9 +39,9 @@ else(ANDROID)
     set(CMAKE_BUILD_TYPE Debug)
 
     add_executable(${gameLauncher}
-        ${linuxSrcDir}/main.c
-        ${linuxSrcDir}/logger.c
-        ${linuxSrcDir}/filesManager.c)
+        ${linuxSrcDir}/main.cpp
+        ${linuxSrcDir}/logger.cpp
+        ${linuxSrcDir}/filesManager.cpp)
 
 
     target_link_libraries(${gameLauncher}

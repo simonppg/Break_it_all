@@ -2,12 +2,16 @@
 // Created by simonppg on 28/06/18.
 //
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <malloc.h>
 #include <stdio.h>
 #include <string.h>
 
-#include "filesManager.h"
-#include "logger.h"
+#include "filesManager.hpp"
+#include "logger.hpp"
 
 char* load_file(const char *filePath) {
     FILE *pFile;
@@ -32,7 +36,7 @@ char* load_file(const char *filePath) {
     long fsize = ftell(pFile);
     fseek(pFile, 0, SEEK_SET);  //same as rewind(f);
 
-    char *pFileContent= malloc(fsize + 1);
+    char *pFileContent = (char *) malloc(fsize + 1);
     fread(pFileContent, fsize, 1, pFile);
     fclose(pFile);
 
@@ -41,3 +45,7 @@ char* load_file(const char *filePath) {
 
     return pFileContent;
 }
+
+#ifdef __cplusplus
+}
+#endif
