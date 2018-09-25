@@ -2,6 +2,18 @@
 // Created by simonppg on 11/06/18.
 //
 
+#include "triangle.hpp"
+
+class Game
+{
+public:
+    Triangle *t;
+    int w, h;
+    void renderFrame();
+    void sendDataToOpenGL();
+    Game();
+};
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -10,8 +22,6 @@ extern "C" {
 #define GAME_H
 
 #include <stdbool.h>
-
-typedef struct _game Game;
 
 void on_surface_created();
 void on_draw_frame();

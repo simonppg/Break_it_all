@@ -34,7 +34,7 @@ struct _Shape
 
 typedef struct _Shape Shape;
 
-#define NUM_ARRAY_ELEMENTS(a) sizeof(a) / sizeof(*a)
+#define NUM_ARRAY_ELEMENTS(a) (sizeof(a) / sizeof(*a))
 #define INDEX_BUFFER_SIZE(numIndices) ((GLsizeiptr)((numIndices) * (sizeof(GLushort))))
 #define VERTEX_BUFFER_SIZE(numIndices) ((GLsizeiptr)((numIndices) * (sizeof(Vertex))))
 
