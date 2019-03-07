@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.4.1)
 set(CMAKE_VERBOSE_MAKEFILE on)
+set(CMAKE_BUILD_TYPE Debug)
+
 
 add_subdirectory(src/main/cpp/glm)
 set(GLM_ENABLE_EXPERIMENTAL)

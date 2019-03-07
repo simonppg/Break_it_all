@@ -21,8 +21,10 @@ using glm::vec3;
 
 #ifdef __ANDROID_NDK__
 #include "android/logger.hpp"
+#include "android/filesManager.hpp"
 #else
 #include "linux/logger.hpp"
+#include "linux/filesManager.hpp"
 #endif
 
 Game *game = NULL;
@@ -30,25 +32,6 @@ Game *game = NULL;
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-static const char glVertexShader[] =
-    "attribute vec3 vPosition;\n"
-    "attribute vec3 vColor;\n"
-    "varying vec3 v_Color;\n"
-    "uniform mat4 matrix;\n"
-    "void main()\n"
-    "{\n"
-    "  gl_Position = matrix * vec4(vPosition, 1.0);\n"
-       "v_Color = vColor;\n"
-    "}\n";
-
-static const char glFragmentShader[] =
-    "precision mediump float;\n"
-    "varying vec3 v_Color;\n"
-    "void main()\n"
-    "{\n"
-    "  gl_FragColor = vec4(v_Color, 1.0);\n"
-    "}\n";
 
 GLuint programID;
 
@@ -102,6 +85,11 @@ void Game::sendDataToOpenGL()
 {
     Triangle *tri;
 
+    char *vert = load_file("simple.vert");
+    char *frag = load_file("square.frag");
+
+    printf("%s\n", vert);
+
     tri = game->t;
 
     // Triangle
@@ -115,7 +103,7 @@ void Game::sendDataToOpenGL()
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexArrayBufferID);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, INDEX_BUFFER_SIZE(tri->numIndices), tri->indices, GL_STATIC_DRAW);
 
-    programID = createProgram(glVertexShader, glFragmentShader);
+    programID = createProgram(vert, frag);
     glUseProgram(programID);
 
     LOGI("send data");
