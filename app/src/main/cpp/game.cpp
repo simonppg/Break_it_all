@@ -106,6 +106,12 @@ void Game::sendDataToOpenGL()
     programID = createProgram(vert, frag);
     glUseProgram(programID);
 
+    if(vert)
+        free(vert);
+
+    if(frag)
+        free(frag);
+
     LOGI("send data");
     // TODO: free buffers
 }
@@ -121,7 +127,6 @@ void Game::renderFrame() {
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexArrayBufferID);
 
     // Triangle1
-
     mat4 perspective = glm::perspective(glm::radians(pov_in_degrees), ((float)game->w/ game->h), 0.1f, 10.0f);
     mat4 translate = glm::translate(perspective, vec3(0.0f, 0.0f, -0.8f));
     mat4 rotate = glm::rotate(translate, -0.90f, vec3(1.0f, 0.5f, 0.0f));

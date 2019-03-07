@@ -31,7 +31,7 @@ static GLuint loadShader(GLenum shaderType, const char* shaderSource)
             glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &infoLen);
             if (infoLen)
             {
-                char * buf = (char*) malloc(infoLen);
+                char * buf = (char*) malloc(sizeof(char) * infoLen);
                 if (buf)
                 {
                     glGetShaderInfoLog(shader, infoLen, NULL, buf);
@@ -77,7 +77,7 @@ GLuint createProgram(const char* vertexSource, const char * fragmentSource)
             glGetProgramiv(program, GL_INFO_LOG_LENGTH, &bufLength);
             if (bufLength)
             {
-                char* buf = (char*) malloc(sizeof(bufLength));
+                char* buf = (char*) malloc(sizeof(char) * bufLength);
                 if (buf)
                 {
                     glGetProgramInfoLog(program, bufLength, NULL, buf);
