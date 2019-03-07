@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.4.1)
+set(CMAKE_VERBOSE_MAKEFILE on)
 
+add_subdirectory(src/main/cpp/glm)
 set(GLM_ENABLE_EXPERIMENTAL)
 
 add_library(common STATIC
@@ -7,8 +9,6 @@ add_library(common STATIC
     src/main/cpp/utils.cpp
     src/main/cpp/square.cpp
     src/main/cpp/game.cpp)
-
-add_subdirectory(src/main/cpp/glm)
 
 target_link_libraries(common
     -lGLESv2
