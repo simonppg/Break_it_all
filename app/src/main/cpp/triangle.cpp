@@ -18,7 +18,7 @@ extern "C" {
 #include "linux/logger.hpp"
 #endif
 
-static Vertex vertex[] =
+static GLfloat vertex[] =
         {
                 -0.5f, -0.5f, +0.0f,
                 +1.0f, +0.0f, +0.0f,

@@ -14,7 +14,7 @@ extern "C" {
 
 struct _Square
 {
-    Vertex* vertices;
+    GLfloat * vertices;
     GLuint numVertices;
     GLushort* indices;
     GLuint numIndices;

@@ -13,7 +13,7 @@ extern "C" {
 
 struct _Triangle
 {
-    Vertex* vertices;
+    GLfloat * vertices;
     GLuint numVertices;
     GLushort* indices;
     GLuint numIndices;

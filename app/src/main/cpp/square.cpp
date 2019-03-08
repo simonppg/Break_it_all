@@ -20,7 +20,7 @@ extern "C" {
 #include "linux/filesManager.hpp"
 #endif
 
-static Vertex vertex[] =
+static GLfloat vertex[] =
         {
                 -0.4f, -0.4f, +0.0f,
                 +1.0f, +0.0f, +0.0f,
