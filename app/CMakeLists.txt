@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.4.1)
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall -Werror")
 set(CMAKE_VERBOSE_MAKEFILE on)
 set(CMAKE_BUILD_TYPE Debug)
-
 
 add_subdirectory(src/main/cpp/glm)
 set(GLM_ENABLE_EXPERIMENTAL)
@@ -31,6 +31,15 @@ if(ANDROID)
         -llog
         -lGLESv3
         glm)
+
+    # Examples
+    add_library(window SHARED
+            src/main/cpp/examples/window/main.cpp)
+
+    target_link_libraries(window
+            android
+            GLESv2
+            log)
 
 else(ANDROID)
 

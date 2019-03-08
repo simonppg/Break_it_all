@@ -9,12 +9,6 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        externalNativeBuild {
-            cmake {
-                targets "gameLibJNIWrapper"
-                cppFlags ""
-            }
-        }
         defaultConfig {
             ndk {
                 moduleName "your_module_name"
