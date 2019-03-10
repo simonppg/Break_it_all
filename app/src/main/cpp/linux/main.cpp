@@ -25,15 +25,37 @@ static void cursor_pos_callback(GLFWwindow* window, double xpos, double ypos)
     on_touch_event();
 }
 
+static void error_handler(int error, const char* description)
+{
+    LOGE("\nError glfw:");
+    LOGE(description);
+}
+
+static void onSizeChange(GLFWwindow *window, int width, int height)
+{
+    glViewport(0, 0, width, height);
+}
+
 int main(void) {
     GLFWwindow* window;
 
-    glfwInit();
+    if (!glfwInit())
+    {
+        LOGE("glfwInit failed");
+        exit(EXIT_FAILURE);
+    }
     //glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_ES_API);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
     window = glfwCreateWindow(WIDTH, HEIGHT, __FILE__, NULL, NULL);
+    if (!window)
+    {
+        LOGE("Window or OpenGL context creation failed");
+        glfwTerminate();
+        exit(EXIT_FAILURE);
+    }
     glfwMakeContextCurrent(window);
+    glfwSwapInterval(1);
 
     LOGI("\nGL_VERSION  :");
     LOGI((char *)glGetString(GL_VERSION));
@@ -41,16 +63,13 @@ int main(void) {
     LOGI((char *)glGetString(GL_RENDERER));
 
     glfwSetCursorPosCallback(window, cursor_pos_callback);
-
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-    glViewport(0, 0, WIDTH, HEIGHT);
+    glfwSetErrorCallback(error_handler);
+    glfwSetWindowSizeCallback(window, onSizeChange);
 
     on_surface_created();
 
     while (!glfwWindowShouldClose(window)) {
         glfwPollEvents();
-        glClear(GL_COLOR_BUFFER_BIT);
-        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
         on_draw_frame();
 
