@@ -81,6 +81,8 @@ bool on_touch_event()
 
 Game::Game()
 {
+    w = 800;
+    h = 600; //TODO remove hardcoded numbers
     t = Triangle_new(RED);
     s = Square_new();
     camera[0] = 0.0f;
@@ -137,6 +139,9 @@ void Game::sendDataToOpenGL()
 }
 
 void Game::renderFrame() {
+
+    if(game->w <= 0 || game->h <= 0)
+        return;
 
     glClearColor(0.6f, 0.6f, 0.6f, 1.0f);
     glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
