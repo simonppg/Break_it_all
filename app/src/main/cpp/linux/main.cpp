@@ -33,7 +33,7 @@ static void error_handler(int error, const char* description)
 
 static void onSizeChange(GLFWwindow *window, int width, int height)
 {
-    glViewport(0, 0, width, height);
+    on_surface_changed(width, height);
 }
 
 int main(void) {
