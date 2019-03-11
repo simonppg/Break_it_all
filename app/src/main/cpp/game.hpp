@@ -3,11 +3,17 @@
 //
 
 #include "triangle.hpp"
+#include "square.hpp"
 
 class Game
 {
 public:
     Triangle *t;
+    Square *s;
+
+    float camera[3];
+    float cube[3];
+
     int w, h;
     void renderFrame();
     void sendDataToOpenGL();

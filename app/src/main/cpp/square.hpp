@@ -22,7 +22,7 @@ struct _Square
 
 typedef struct _Square Square;
 
-Square* Square_new(const char* vertex_file_path, const char* fragment_file_path, GLfloat *color);
+Square* Square_new();
 void Square_draw(Square *t);
 void Square_update(Square *t);
 

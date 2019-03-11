@@ -22,26 +22,61 @@ extern "C" {
 
 static GLfloat vertex[] =
         {
-                -0.4f, -0.4f, +0.0f,
-                +1.0f, +0.0f, +0.0f,
+            1.0, -1.0, -1.0,// right down back
+            1.0, 0.0, 0.0,
 
-                -0.4f, +0.4f, +0.0f,
-                +1.0f, +0.0f, +0.0f,
+            1.0, -1.0, 1.0, // right down front
+            1.0, 0.0, 0.0,
 
-                +0.4f, -0.4f, +0.0f,
-                +1.0f, +0.0f, +0.0f,
+            -1.0, -1.0, 1.0, // left down front
+            1.0, 0.0, 0.0,
 
-                +0.4f, +0.4f, +0.0f,
-                +1.0f, +0.0f, +0.0f
+            -1.0, -1.0, -1.0, // left down back
+            1.0, 0.0, 0.0,
+
+            1.0, 1.0, -1.0, // right up back
+            1.0, 0.0, 0.0,
+
+            1.0, 1.0, 1.0, // right up front
+            1.0, 0.0, 0.0,
+
+            -1.0, 1.0, 1.0, // left up front
+            1.0, 0.0, 0.0,
+
+            -1.0, 1.0, -1.0, // left up back
+            1.0, 0.0, 0.0
         };
+
 
 static const GLushort indices[] =
         {
-                0, 1, 2, // left triangle
-                1, 2, 3 // right triangle
+            // right face 0,1,4,5
+            0, 1, 4,
+            1, 4, 5,
+
+            // left face 2,3,6,7
+            2, 3, 6,
+            3, 6, 7,
+
+            // down face 0,1,2,3
+            0, 1, 2,
+            0, 2, 3,
+
+            // up face 4,5,6,7
+            4, 5, 6,
+            4, 6, 7,
+
+            // front face 1,2,5,6
+            1, 2, 5,
+            2, 5, 6,
+
+            // back face 0,3,4,7
+            0, 3, 4,
+            3, 4, 7
+
         };
 
-Square* Square_new(const char* vertex_file_path, const char* fragment_file_path, GLfloat *color)
+Square* Square_new()
 {
     Square *ret;
 
