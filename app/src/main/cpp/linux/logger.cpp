@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 
-#include <stdio.h>
+#include <cstdio>
 
 #include "logger.hpp"
 

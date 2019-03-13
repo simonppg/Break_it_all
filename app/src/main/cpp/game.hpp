@@ -27,7 +27,7 @@ extern "C" {
 #ifndef GAME_H
 #define GAME_H
 
-#include <stdbool.h>
+//#include <stdbool.h>
 
 void on_surface_created();
 void on_draw_frame();

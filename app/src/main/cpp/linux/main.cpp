@@ -6,8 +6,8 @@
 extern "C" {
 #endif
 
-#include <stdio.h>
-#include <stdlib.h>
+#include <cstdio>
+#include <cstdlib>
 
 //#define GLFW_INCLUDE_ES2
 #include <GLFW/glfw3.h>

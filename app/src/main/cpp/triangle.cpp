@@ -6,8 +6,8 @@
 extern "C" {
 #endif
 
-#include <stdlib.h>
-#include <string.h>
+#include <cstdlib>
+#include <cstring>
 
 #include "triangle.hpp"
 #include "utils.hpp"

@@ -3,8 +3,8 @@
 //
 
 #include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
+#include <cstdlib>
+#include <cstdio>
 #include <ctime>
 
 #define GLM_ENABLE_EXPERIMENTAL

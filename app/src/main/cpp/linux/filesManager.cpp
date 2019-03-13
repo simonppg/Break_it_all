@@ -7,8 +7,8 @@ extern "C" {
 #endif
 
 #include <malloc.h>
-#include <stdio.h>
-#include <string.h>
+#include <cstdio>
+#include <cstring>
 
 #include "filesManager.hpp"
 #include "logger.hpp"
