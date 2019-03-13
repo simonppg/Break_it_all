@@ -27,8 +27,7 @@ static void cursor_pos_callback(GLFWwindow* window, double xpos, double ypos)
 
 static void error_handler(int error, const char* description)
 {
-    LOGE("\nError glfw:");
-    LOGE(description);
+    LOGE("\nError glfw: %s", description);
 }
 
 static void onSizeChange(GLFWwindow *window, int width, int height)
@@ -70,11 +69,6 @@ int main(void) {
     }
     glfwMakeContextCurrent(window);
     glfwSwapInterval(1);
-
-    LOGI("\nGL_VERSION  :");
-    LOGI((char *)glGetString(GL_VERSION));
-    LOGI("\nGL_RENDERER :");
-    LOGI((char *)glGetString(GL_RENDERER));
 
     glfwSetCursorPosCallback(window, cursor_pos_callback);
     glfwSetErrorCallback(error_handler);

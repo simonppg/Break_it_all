@@ -27,8 +27,7 @@ char* load_file(const char *filePath) {
 
     if(pFile == NULL)
     { 
-        LOGE("\nCouldn't open the file: ");
-        LOGE(absolutePath);
+        LOGE("\nCouldn't open the file: %s", absolutePath);
         return NULL;
     }
 

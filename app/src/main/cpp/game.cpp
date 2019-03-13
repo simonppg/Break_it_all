@@ -42,7 +42,7 @@ GLuint indexArrayBufferID2;
 
 void on_surface_created() {
     LOGI("on_surface_created");
-
+    LOGI("GL_VERSION: %d GL_RENDERER: %d", GL_VERSION, GL_RENDERER);
     glEnable(GL_DEPTH_TEST);
 
     game = new Game();
@@ -69,10 +69,8 @@ float pov_in_degrees = 0.0f;
 bool on_touch_event()
 {
     pov_in_degrees = pov_in_degrees + 2.5f;
-    char buffer[64];
-    snprintf(buffer, sizeof buffer, "%f", pov_in_degrees);
+    LOGI("%f", pov_in_degrees);
 
-    //LOGI(buffer);
     return true;
 }
 

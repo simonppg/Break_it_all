@@ -5,15 +5,14 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+#include <android/log.h>
+#define LOG_TAG "libNative"
 
 #ifndef BREAK_IT_ALL_LOGGER_H
 #define BREAK_IT_ALL_LOGGER_H
 
-void logi(const char* fmt, ...);
-void loge(const char* fmt, ...);
-
-#define LOGI(...) logi(__VA_ARGS__);
-#define LOGE(...) loge(__VA_ARGS__);
+#define LOGI(...) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__);
+#define LOGE(...) __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, __VA_ARGS__);
 
 #endif //BREAK_IT_ALL_LOGGER_H
 

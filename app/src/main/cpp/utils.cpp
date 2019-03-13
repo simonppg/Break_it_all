@@ -35,10 +35,7 @@ static GLuint loadShader(GLenum shaderType, const char* shaderSource)
                 if (buf)
                 {
                     glGetShaderInfoLog(shader, infoLen, NULL, buf);
-                    LOGE("\nCould not Compile Shader: ");
-                    LOGE((char *)glGetString(shaderType));
-                    LOGE(buf);
-                    LOGE(buf);
+                    LOGE("\nCould not Compile Shader: %d, %s", shaderType, buf);
                     free(buf);
                 }
                 glDeleteShader(shader);
@@ -84,8 +81,7 @@ GLuint createProgram(const char* vertexSource, const char * fragmentSource)
                 if (buf)
                 {
                     glGetProgramInfoLog(program, bufLength, NULL, buf);
-                    LOGE("\nCould not link program:\n");
-                    LOGE(buf);
+                    LOGE("\nCould not link program: %s", buf);
                     free(buf);
                 }
             }

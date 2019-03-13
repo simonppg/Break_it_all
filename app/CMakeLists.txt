@@ -22,7 +22,6 @@ if(ANDROID)
 
     add_library(gameLibJNIWrapper SHARED
         ${androidSrcDir}/main.cpp
-        ${androidSrcDir}/logger.cpp
         ${androidSrcDir}/filesManager.cpp)
 
     target_link_libraries(gameLibJNIWrapper
@@ -51,9 +50,7 @@ else(ANDROID)
 
     add_executable(${gameLauncher}
         ${linuxSrcDir}/main.cpp
-        ${linuxSrcDir}/logger.cpp
         ${linuxSrcDir}/filesManager.cpp)
-
 
     target_link_libraries(${gameLauncher}
         common
