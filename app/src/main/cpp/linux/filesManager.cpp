@@ -36,7 +36,7 @@ char* load_file(const char *filePath) {
     long fsize = ftell(pFile);
     fseek(pFile, 0, SEEK_SET);  //same as rewind(f);
 
-    char *pFileContent = (char *) malloc(fsize + 1);
+    char *pFileContent = (char *) malloc(sizeof(char) * fsize + 1);
     fread(pFileContent, fsize, 1, pFile);
     fclose(pFile);
 
