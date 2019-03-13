@@ -4,20 +4,22 @@
 
 #include "triangle.hpp"
 #include "square.hpp"
+#include "Cube.hpp"
 
 class Game
 {
 public:
     Triangle *t;
     Square *s;
-
     float camera[3];
-    float cube[3];
+    float cube2[3];
 
     int w, h;
     void renderFrame();
     void sendDataToOpenGL();
     Game();
+
+    Cube *cube;
 };
 
 #ifdef __cplusplus

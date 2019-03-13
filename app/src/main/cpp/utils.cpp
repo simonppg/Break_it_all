@@ -35,7 +35,7 @@ static GLuint loadShader(GLenum shaderType, const char* shaderSource)
                 if (buf)
                 {
                     glGetShaderInfoLog(shader, infoLen, NULL, buf);
-                    LOGE("\nCould not Compile Shader: %d, %s", shaderType, buf);
+                    LOGE("Could not Compile Shader: %d, %s", shaderType, buf);
                     free(buf);
                 }
                 glDeleteShader(shader);
@@ -54,13 +54,13 @@ GLuint createProgram(const char* vertexSource, const char * fragmentSource)
     GLuint vertexShader = loadShader(GL_VERTEX_SHADER, vertexSource);
     if (!vertexShader)
     {
-        LOGE("\nCould not load vertexShader\n");
+        LOGE("Could not load vertexShader\n");
         return 0;
     }
     GLuint fragmentShader = loadShader(GL_FRAGMENT_SHADER, fragmentSource);
     if (!fragmentShader)
     {
-        LOGE("\nCould not load fragmentShader\n");
+        LOGE("Could not load fragmentShader\n");
         return 0;
     }
     GLuint program = glCreateProgram();
@@ -81,7 +81,7 @@ GLuint createProgram(const char* vertexSource, const char * fragmentSource)
                 if (buf)
                 {
                     glGetProgramInfoLog(program, bufLength, NULL, buf);
-                    LOGE("\nCould not link program: %s", buf);
+                    LOGE("Could not link program: %s", buf);
                     free(buf);
                 }
             }

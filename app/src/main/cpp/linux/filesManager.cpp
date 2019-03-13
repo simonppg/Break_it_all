@@ -19,15 +19,15 @@ char* load_file(const char *filePath) {
 
 #ifdef PROJECT_DIR
     strcat(absolutePath, PROJECT_DIR);
+#endif
     strcat(absolutePath, "/src/main/assets/");
     strcat(absolutePath, filePath);
-#endif
 
     pFile = fopen(absolutePath, "r");
 
     if(pFile == NULL)
     { 
-        LOGE("\nCouldn't open the file: %s", absolutePath);
+        LOGE("Couldn't open the file: %s", absolutePath);
         return NULL;
     }
 
