@@ -95,6 +95,6 @@ class MyGLSurfaceView extends GLSurfaceView {
 
     @Override
     public boolean onTouchEvent(MotionEvent e) {
-        return GameLibJNIWrapper.on_touch_event();
+        return GameLibJNIWrapper.on_touch_event(e.getX(), e.getY());
     }
 }

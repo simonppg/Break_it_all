@@ -22,7 +22,7 @@ static const GLuint HEIGHT = 600;
 
 static void cursor_pos_callback(GLFWwindow* window, double xpos, double ypos)
 {
-    on_touch_event();
+    on_touch_event(xpos, ypos);
 }
 
 static void error_handler(int error, const char* description)

@@ -67,8 +67,9 @@ void on_draw_frame() {
 
 float pov_in_degrees = 0.0f;
 
-bool on_touch_event()
+bool on_touch_event(double xpos, double ypos)
 {
+    LOGI("x: %f, y: %f", xpos, ypos);
     pov_in_degrees += 2.5f;
     //LOGI("%f", pov_in_degrees);
 

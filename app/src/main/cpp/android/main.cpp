@@ -29,8 +29,8 @@ JNIEXPORT void JNICALL Java_com_example_simonppg_break_1it_1all_GameLibJNIWrappe
 }
 
 JNIEXPORT bool JNICALL Java_com_example_simonppg_break_1it_1all_GameLibJNIWrapper_on_1touch_1event
-        (JNIEnv * env, jclass cls) {
-    return on_touch_event();
+        (JNIEnv * env, jclass cls, jdouble xpos, jdouble ypos) {
+    return on_touch_event(xpos, ypos);
 }
 
 JNIEXPORT void JNICALL

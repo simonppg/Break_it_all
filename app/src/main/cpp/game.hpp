@@ -33,7 +33,7 @@ extern "C" {
 
 void on_surface_created();
 void on_draw_frame();
-bool on_touch_event();
+bool on_touch_event(double xpos, double ypos);
 void on_surface_changed(int width, int height);
 void camera_forward();
 void camera_back();

@@ -17,7 +17,7 @@ public class GameLibJNIWrapper {
 
     public static native void on_draw_frame();
 
-    public static native boolean on_touch_event();
+    public static native boolean on_touch_event(double xpos, double ypos);
 
     public static native void load_asset_manager(AssetManager mgr);
 }
