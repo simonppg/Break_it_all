@@ -33,6 +33,10 @@ void on_surface_created();
 void on_draw_frame();
 bool on_touch_event();
 void on_surface_changed(int width, int height);
+void camera_forward();
+void camera_back();
+void camera_left();
+void camera_rigth();
 
 #endif //GAME_H
 

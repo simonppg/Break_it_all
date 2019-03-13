@@ -4,7 +4,8 @@
 
 #include <unistd.h>
 #include <stdlib.h>
-#include<stdio.h>
+#include <stdio.h>
+#include <ctime>
 
 #define GLM_ENABLE_EXPERIMENTAL
 
@@ -71,13 +72,18 @@ bool on_touch_event()
     char buffer[64];
     snprintf(buffer, sizeof buffer, "%f", pov_in_degrees);
 
-    LOGI(buffer);
+    //LOGI(buffer);
     return true;
 }
 
 #ifdef __cplusplus
 }
 #endif
+
+void camera_forward() { game->camera[2]--; }
+void camera_back() { game->camera[2]++; }
+void camera_left() { game->camera[0]--; }
+void camera_rigth() { game->camera[0]++; }
 
 Game::Game()
 {
@@ -87,10 +93,10 @@ Game::Game()
     s = Square_new();
     camera[0] = 0.0f;
     camera[1] = 0.0f;
-    camera[2] = 8.0f;
+    camera[2] = 40.0f;
 
     cube[0] = 0.0f;
-    cube[1] = -2.0f;
+    cube[1] = 0.0f;
     cube[2] = 0.0f;
 }
 
@@ -138,6 +144,8 @@ void Game::sendDataToOpenGL()
     // TODO: free buffers
 }
 
+int i;
+struct tm *time2;
 void Game::renderFrame() {
 
     if(game->w <= 0 || game->h <= 0)
@@ -152,7 +160,7 @@ void Game::renderFrame() {
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexArrayBufferID);
 
     // Triangle1
-    mat4 perspective = glm::perspective(glm::radians(60.0f), ((float)game->w/ game->h), 0.9f, 10.0f);
+    mat4 perspective = glm::perspective(glm::radians(60.0f), ((float)game->w/ game->h), 0.1f, 1000.0f);
     mat4 cameraTranslate = glm::translate(perspective, vec3(-game->camera[0], -game->camera[1], -game->camera[2]));
     mat4 translate = glm::translate(cameraTranslate, vec3(game->cube[0] - 2.0f, game->cube[1], game->cube[2]));
     mat4 rotate = glm::rotate(translate, glm::radians(0.0f), vec3(1,0,0));
@@ -174,21 +182,29 @@ void Game::renderFrame() {
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 6, (char*)(sizeof(float) * 3));
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexArrayBufferID2);
 
-    translate = glm::translate(cameraTranslate, vec3(game->cube[0], game->cube[1]+2.0f, game->cube[2]));
+    translate = glm::translate(cameraTranslate, vec3(game->cube[0], game->cube[1], game->cube[2]));
     rotate = glm::rotate(translate, glm::radians(0.0f), vec3(0,0,1));
 
     glUniformMatrix4fv(uniform, 1, GL_FALSE, &rotate[0][0]);
     glDrawElements(GL_TRIANGLES, game->s->numIndices, GL_UNSIGNED_SHORT, 0);
 
+    time_t theTime = time(0);
+
     // Cube 2
-    glBindBuffer(GL_ARRAY_BUFFER, vbo[1]);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 6, 0);
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 6, (char*)(sizeof(float) * 3));
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexArrayBufferID2);
+    for (i=0; i<24; i++) {
+        time2 = localtime(&theTime);
 
-    translate = glm::translate(cameraTranslate, vec3(game->cube[0]+1.0f, game->cube[1] -0.5f, game->cube[2]));
-    rotate = glm::rotate(translate, glm::radians(45.0f), vec3(0,1,0));
+        glBindBuffer(GL_ARRAY_BUFFER, vbo[1]);
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 6, 0);
+        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 6,
+                              (char *) (sizeof(float) * 3));
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexArrayBufferID2);
 
-    glUniformMatrix4fv(uniform, 1, GL_FALSE, &rotate[0][0]);
-    glDrawElements(GL_TRIANGLES, game->s->numIndices, GL_UNSIGNED_SHORT, 0);
+        translate = glm::translate(cameraTranslate,
+                                   vec3(sin(.35f*time2->tm_sec+i)*8.0f,cos(.52f*time2->tm_sec+i)*8.0f,  sin(.70f*time2->tm_sec+i)*8.0f));
+        rotate = glm::rotate(translate, glm::radians((float)time2->tm_sec), vec3(0, 1, 0));
+
+        glUniformMatrix4fv(uniform, 1, GL_FALSE, &rotate[0][0]);
+        glDrawElements(GL_TRIANGLES, game->s->numIndices, GL_UNSIGNED_SHORT, 0);
+    }
 }

@@ -36,6 +36,20 @@ static void onSizeChange(GLFWwindow *window, int width, int height)
     on_surface_changed(width, height);
 }
 
+static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+    if(action == GLFW_REPEAT || action == GLFW_PRESS ) {
+        if (key == GLFW_KEY_W)
+            camera_forward();
+        else if (key == GLFW_KEY_S)
+            camera_back();
+        else if (key == GLFW_KEY_D)
+            camera_rigth();
+        else if (key == GLFW_KEY_A)
+            camera_left();
+    }
+}
+
 int main(void) {
     GLFWwindow* window;
 
@@ -65,6 +79,7 @@ int main(void) {
     glfwSetCursorPosCallback(window, cursor_pos_callback);
     glfwSetErrorCallback(error_handler);
     glfwSetWindowSizeCallback(window, onSizeChange);
+    glfwSetKeyCallback(window, key_callback);
 
     on_surface_created();
 
