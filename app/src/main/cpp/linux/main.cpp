@@ -2,6 +2,11 @@
 // Created by simonppg on 11/06/18.
 //
 
+#include "../game.hpp"
+#include "../triangle.hpp"
+#include "../square.hpp"
+#include "logger.hpp"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -11,14 +16,6 @@ extern "C" {
 
 //#define GLFW_INCLUDE_ES2
 #include <GLFW/glfw3.h>
-
-#include "../game.hpp"
-#include "../triangle.hpp"
-#include "../square.hpp"
-#include "logger.hpp"
-
-static const GLuint WIDTH = 800;
-static const GLuint HEIGHT = 600;
 
 static void cursor_pos_callback(GLFWwindow* window, double xpos, double ypos)
 {

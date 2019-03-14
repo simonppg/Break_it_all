@@ -8,8 +8,10 @@
 #include <GLES3/gl3.h>
 
 #include "utils.hpp"
+#include "Camera.hpp"
 
 class Cube {
+    float x,y,z;
     char *vertex_file;
     char *fragment_file;
     GLuint vbo; // vertex buffer object
@@ -71,10 +73,11 @@ class Cube {
 
             };
 
-public:
-    float x,y,z;
+    Camera *camera;
 
-    Cube();
+public:
+
+    Cube(Camera *camera);
     ~Cube();
 
     void load_model();

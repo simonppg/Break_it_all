@@ -19,7 +19,8 @@ using glm::mat4;
 using glm::vec3;
 
 
-Cube::Cube(): x{0}, y{0}, z{0} {
+Cube::Cube(Camera *camera): x{0}, y{0}, z{0} {
+    this->camera = camera;
     vertex_file = load_file("cube/cube.vert");
     fragment_file = load_file("cube/cube.frag");
     programID = createProgram(vertex_file, fragment_file);
@@ -47,10 +48,11 @@ void Cube::load_model() {
 }
 
 void Cube::draw() {
-    mat4 perspective;
+    //mat4 perspective;
     mat4 cameraTranslate;
     mat4 translate;
     mat4 rotate;
+    mat4 scale;
 
     glUseProgram(programID);
     GLint uniform = glGetUniformLocation(programID, "matrix");
@@ -61,14 +63,13 @@ void Cube::draw() {
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iab);
 
     // TODO: inject viewport width/height and camera position
-    perspective = glm::perspective(glm::radians(60.0f), ((float)800/ 600), 0.1f, 1000.0f);
-    cameraTranslate = glm::translate(perspective, vec3(-0, -0, -40.0f));
-    translate = glm::translate(cameraTranslate, vec3(x - 2.0f, y, z));
-    rotate = glm::rotate(translate, glm::radians(0.0f), vec3(1,0,0));
+    //perspective = glm::perspective(glm::radians(60.0f), ((float)800/ 600), 0.1f, 1000.0f);
+    cameraTranslate = glm::translate(camera->perspective, vec3(-camera->x, -camera->y, -camera->z));
 
     translate = glm::translate(cameraTranslate, vec3(x, y, z));
     rotate = glm::rotate(translate, glm::radians(0.0f), vec3(0,0,1));
+    scale = glm::scale(rotate, glm::vec3(1,5,1));
 
-    glUniformMatrix4fv(uniform, 1, GL_FALSE, &rotate[0][0]);
+    glUniformMatrix4fv(uniform, 1, GL_FALSE, &scale[0][0]);
     glDrawElements(GL_TRIANGLES, numIndices, GL_UNSIGNED_SHORT, 0);
 }

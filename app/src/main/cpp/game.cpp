@@ -53,8 +53,7 @@ void on_surface_created() {
 }
 
 void on_surface_changed(int width, int height) {
-    game->w = width;
-    game->h = height;
+    game->camera->update_width_height(width, height);
     glViewport(0, 0, width, height);
 }
 
@@ -80,21 +79,17 @@ bool on_touch_event(double xpos, double ypos)
 }
 #endif
 
-void camera_forward() { game->camera[2]--; }
-void camera_back() { game->camera[2]++; }
-void camera_left() { game->camera[0]--; }
-void camera_rigth() { game->camera[0]++; }
+void camera_forward() { game->camera->z--;}
+void camera_back() { game->camera->z++;}
+void camera_left() { game->camera->x--;}
+void camera_rigth() { game->camera->x++;}
 
 Game::Game()
 {
-    w = 800;
-    h = 600; //TODO remove hardcoded numbers
+    camera = new Camera(WIDTH, HEIGHT, X, Y, Z, NCP, FCP, FOV);
     t = Triangle_new(RED);
     s = Square_new();
-    cube = new Cube();
-    camera[0] = 0.0f;
-    camera[1] = 0.0f;
-    camera[2] = 40.0f;
+    cube = new Cube(camera);
     cube2[0] = 0.0f;
     cube2[1] = 0.0f;
     cube2[2] = 0.0f;
@@ -149,9 +144,6 @@ int i;
 struct tm *time2;
 void Game::renderFrame() {
 
-    if(game->w <= 0 || game->h <= 0)
-        return;
-
     glClearColor(0.6f, 0.6f, 0.6f, 1.0f);
     glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
@@ -162,8 +154,8 @@ void Game::renderFrame() {
 
     // Triangle1
     glUseProgram(programID);
-    mat4 perspective = glm::perspective(glm::radians(60.0f), ((float)game->w/ game->h), 0.1f, 1000.0f);
-    mat4 cameraTranslate = glm::translate(perspective, vec3(-game->camera[0], -game->camera[1], -game->camera[2]));
+    //mat4 perspective = glm::perspective(glm::radians(60.0f), game->camera->aspect_ratio(), 0.1f, 1000.0f);
+    mat4 cameraTranslate = glm::translate(game->camera->perspective, vec3(-game->camera->x, -game->camera->y, -game->camera->z));
     mat4 translate = glm::translate(cameraTranslate, vec3(game->cube2[0] - 2.0f, game->cube2[1], game->cube2[2]));
     mat4 rotate = glm::rotate(translate, glm::radians(0.0f), vec3(1,0,0));
 

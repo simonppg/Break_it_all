@@ -11,15 +11,14 @@ class Game
 public:
     Triangle *t;
     Square *s;
-    float camera[3];
     float cube2[3];
 
-    int w, h;
     void renderFrame();
     void sendDataToOpenGL();
     Game();
 
     Cube *cube;
+    Camera *camera;
 };
 
 #ifdef __cplusplus
