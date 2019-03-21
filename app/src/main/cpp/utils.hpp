@@ -41,8 +41,8 @@ typedef struct _Shape Shape;
 GLuint createProgram(const char* vertexSource, const char * fragmentSource);
 
 // Camera/viewport config
-static const int WIDTH = 800;
-static const int HEIGHT = 600;
+static const int WIDTH = 450;
+static const int HEIGHT = 800;
 static const float NCP = 0.1f;
 static const float FCP = 100.0f;
 static const float FOV = 60.0f;
