@@ -16,8 +16,63 @@
 using glm::mat4;
 using glm::vec3;
 
+GLuint Cube::vbo = 0;
+GLuint Cube::iab = 0;
+constexpr GLfloat Cube::vertex[48] =
+        {
+                1.0, -1.0, -1.0,// right down back
+                1.0, 0.0, 0.0,
 
-Cube::Cube(Camera *camera): x{0}, y{0}, z{0} {
+                1.0, -1.0, 1.0, // right down front
+                1.0, 0.0, 0.0,
+
+                -1.0, -1.0, 1.0, // left down front
+                1.0, 0.0, 0.0,
+
+                -1.0, -1.0, -1.0, // left down back
+                1.0, 0.0, 0.0,
+
+                1.0, 1.0, -1.0, // right up back
+                1.0, 0.0, 0.0,
+
+                1.0, 1.0, 1.0, // right up front
+                1.0, 0.0, 0.0,
+
+                -1.0, 1.0, 1.0, // left up front
+                1.0, 0.0, 0.0,
+
+                -1.0, 1.0, -1.0, // left up back
+                1.0, 0.0, 0.0
+        };
+
+constexpr GLushort Cube::indices[36] =
+        {
+                // right face 0,1,4,5
+                0, 1, 4,
+                1, 4, 5,
+
+                // left face 2,3,6,7
+                2, 3, 6,
+                3, 6, 7,
+
+                // down face 0,1,2,3
+                0, 1, 2,
+                0, 2, 3,
+
+                // up face 4,5,6,7
+                4, 5, 6,
+                4, 6, 7,
+
+                // front face 1,2,5,6
+                1, 2, 5,
+                2, 5, 6,
+
+                // back face 0,3,4,7
+                0, 3, 4,
+                3, 4, 7
+        };
+
+Cube::Cube(Camera *camera): x{0}, y{0}, z{0}, size{1} {
     this->camera = camera;
     vertex_file = load_file("cube/cube.vert");
     fragment_file = load_file("cube/cube.frag");
@@ -59,8 +114,8 @@ void Cube::draw() {
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iab);
 
     translate = glm::translate(camera->cameraTranslate, vec3(x, y, z));
-    rotate = glm::rotate(translate, glm::radians(0.0f), vec3(0,0,1));
-    scale = glm::scale(rotate, glm::vec3(.5f,.5f,.5f));
+    rotate = glm::rotate(translate, glm::radians(angle), rotation);
+    scale = glm::scale(rotate, glm::vec3(size));
 
     glUniformMatrix4fv(uniform, 1, GL_FALSE, &scale[0][0]);
     glDrawElements(GL_TRIANGLES, numIndices, GL_UNSIGNED_SHORT, 0);
@@ -70,4 +125,24 @@ void Cube::update_xyx(float x, float y, float z) {
     this->x = x;
     this->y = y;
     this->z = z;
+}
+
+void Cube::update_size(float size) {
+    this->size = size;
+}
+
+void Cube::animate_x() {
+    rotation = vec3(1, 0, 0);
+}
+
+void Cube::animate_y() {
+    rotation = vec3(0, 1, 0);
+}
+
+void Cube::animate_z() {
+    rotation = vec3(0, 0, 1);
+}
+
+void Cube::set_rotation_angle(float angle) {
+    this->angle = angle;
 }

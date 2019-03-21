@@ -96,6 +96,19 @@ Game::Game()
             cube[i][j]->update_xyx(2*j-16, 2*i-16+9, 0);
         }
     }
+
+    cube[0][0]->update_xyx(-10, 18, 0);
+    cube[0][0]->update_size(1);
+    cube[0][0]->animate_x();
+
+    cube[0][1]->update_xyx(0, 18, 0);
+    cube[0][1]->update_size(2);
+    cube[0][1]->animate_y();
+
+    cube[0][2]->update_xyx(10, 18, 0);
+    cube[0][2]->update_size(3);
+    cube[0][2]->animate_z();
+
     cube2[0] = 0.0f;
     cube2[1] = 0.0f;
     cube2[2] = 0.0f;
@@ -122,11 +135,7 @@ void Game::sendDataToOpenGL()
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, INDEX_BUFFER_SIZE(tri->numIndices), tri->indices, GL_STATIC_DRAW);
 
     // Cube
-    for (auto &i : game->cube) {
-        for (auto &j : i) {
-            j->load_model();
-        }
-    }
+    Cube::load_model();
 
     glGenBuffers(1, &vbo[1]);
     glBindBuffer(GL_ARRAY_BUFFER, vbo[1]);
@@ -173,7 +182,6 @@ void Game::renderFrame() {
     glUseProgram(programID);
 
     translate = glm::translate(game->camera->cameraTranslate, vec3(game->cube2[0] - 2.0f, game->cube2[1], game->cube2[2]));
-
     uniform = glGetUniformLocation(programID, "matrix");
     glUniformMatrix4fv(uniform, 1, GL_FALSE, &translate[0][0]);
     glDrawElements(GL_TRIANGLES, game->t->numIndices, GL_UNSIGNED_SHORT, 0);
@@ -187,11 +195,19 @@ void Game::renderFrame() {
     glDrawElements(GL_TRIANGLES, game->t->numIndices, GL_UNSIGNED_SHORT, 0);
 
     // Cube 1
-    for (auto &i : game->cube) {
+    /*for (auto &i : game->cube) {
         for (auto &j : i) {
             j->draw();
         }
-    }
+    }*/
+
+    cube[0][0]->set_rotation_angle(pov_in_degrees);
+    cube[0][1]->set_rotation_angle(pov_in_degrees);
+    cube[0][2]->set_rotation_angle(pov_in_degrees);
+
+    cube[0][0]->draw();
+    cube[0][1]->draw();
+    cube[0][2]->draw();
 
     glUseProgram(programID);
     theTime = time(0);
