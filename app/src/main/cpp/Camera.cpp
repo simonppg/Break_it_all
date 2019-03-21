@@ -24,7 +24,7 @@ Camera::Camera(int w, int h, float x, float y, float z, float ncp, float rcp, fl
     update_perspective();
 }
 
-float Camera::aspect_ratio() {
+float Camera::aspect_ratio() { // TODO: change this to a macro
     return (float) w/h;
 }
 
@@ -36,4 +36,12 @@ void Camera::update_width_height(int width, int height) {
 
 void Camera::update_perspective() {
     perspective = glm::perspective(glm::radians(fov), Camera::aspect_ratio(), ncp, fcp);
+    cameraTranslate = glm::translate(perspective, vec3(-x, -y, -z));
+}
+
+void Camera::update_xyz(float x, float y, float z) {
+    this->x = x;
+    this->y = y;
+    this->z = z;
+    update_perspective();
 }

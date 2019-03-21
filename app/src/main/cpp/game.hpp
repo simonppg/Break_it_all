@@ -17,7 +17,7 @@ public:
     void sendDataToOpenGL();
     Game();
 
-    Cube *cube;
+    Cube *cube[15][15];
     Camera *camera;
 };
 
@@ -38,6 +38,7 @@ void camera_forward();
 void camera_back();
 void camera_left();
 void camera_rigth();
+void camera_reset();
 
 #endif //GAME_H
 

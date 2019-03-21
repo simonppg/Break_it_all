@@ -43,6 +43,8 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
             camera_rigth();
         else if (key == GLFW_KEY_A)
             camera_left();
+        else if (key == GLFW_KEY_L)
+            camera_reset();
     }
 }
 

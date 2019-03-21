@@ -70,7 +70,6 @@ class Cube {
                     // back face 0,3,4,7
                     0, 3, 4,
                     3, 4, 7
-
             };
 
     Camera *camera;
@@ -84,6 +83,8 @@ public:
     void draw();
 
     GLuint programID;
+
+    void update_xyx(float x, float y, float z);
 };
 
 

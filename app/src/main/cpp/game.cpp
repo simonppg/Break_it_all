@@ -68,7 +68,7 @@ float pov_in_degrees = 0.0f;
 
 bool on_touch_event(double xpos, double ypos)
 {
-    LOGI("x: %f, y: %f", xpos, ypos);
+    //LOGI("x: %f, y: %f", xpos, ypos);
     pov_in_degrees += 2.5f;
     //LOGI("%f", pov_in_degrees);
 
@@ -83,17 +83,22 @@ void camera_forward() { game->camera->z--;}
 void camera_back() { game->camera->z++;}
 void camera_left() { game->camera->x--;}
 void camera_rigth() { game->camera->x++;}
+void camera_reset() { game->camera->update_xyz(X, Y, Z); }
 
 Game::Game()
 {
     camera = new Camera(WIDTH, HEIGHT, X, Y, Z, NCP, FCP, FOV);
     t = Triangle_new(RED);
     s = Square_new();
-    cube = new Cube(camera);
+    for (int i = 0; i < 15; i++) {
+        for(int j = 0; j < 15; j++) {
+            cube[i][j] = new Cube(camera);
+            cube[i][j]->update_xyx(2*j-16, 2*i-16+9, 0);
+        }
+    }
     cube2[0] = 0.0f;
     cube2[1] = 0.0f;
     cube2[2] = 0.0f;
-
 }
 
 void Game::sendDataToOpenGL()
@@ -117,7 +122,11 @@ void Game::sendDataToOpenGL()
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, INDEX_BUFFER_SIZE(tri->numIndices), tri->indices, GL_STATIC_DRAW);
 
     // Cube
-    game->cube->load_model();
+    for (auto &i : game->cube) {
+        for (auto &j : i) {
+            j->load_model();
+        }
+    }
 
     glGenBuffers(1, &vbo[1]);
     glBindBuffer(GL_ARRAY_BUFFER, vbo[1]);
@@ -143,6 +152,14 @@ void Game::sendDataToOpenGL()
 int i;
 struct tm *time2;
 void Game::renderFrame() {
+    GLint uniform;
+    time_t theTime;
+    mat4 translate;
+    mat4 rotate;
+    mat4 scale;
+
+    // Note: this should be called after change xyz or w/h
+    game->camera->update_perspective();
 
     glClearColor(0.6f, 0.6f, 0.6f, 1.0f);
     glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
@@ -154,38 +171,30 @@ void Game::renderFrame() {
 
     // Triangle1
     glUseProgram(programID);
-    //mat4 perspective = glm::perspective(glm::radians(60.0f), game->camera->aspect_ratio(), 0.1f, 1000.0f);
-    mat4 cameraTranslate = glm::translate(game->camera->perspective, vec3(-game->camera->x, -game->camera->y, -game->camera->z));
-    mat4 translate = glm::translate(cameraTranslate, vec3(game->cube2[0] - 2.0f, game->cube2[1], game->cube2[2]));
-    mat4 rotate = glm::rotate(translate, glm::radians(0.0f), vec3(1,0,0));
 
-    GLint uniform = glGetUniformLocation(programID, "matrix");
+    translate = glm::translate(game->camera->cameraTranslate, vec3(game->cube2[0] - 2.0f, game->cube2[1], game->cube2[2]));
+
+    uniform = glGetUniformLocation(programID, "matrix");
     glUniformMatrix4fv(uniform, 1, GL_FALSE, &translate[0][0]);
     glDrawElements(GL_TRIANGLES, game->t->numIndices, GL_UNSIGNED_SHORT, 0);
 
     // Triangle 2
-    translate = glm::translate(cameraTranslate, vec3(game->cube2[0] + 2.0f, game->cube2[1] + 2.0f, game->cube2[2]));
+    translate = glm::translate(game->camera->cameraTranslate, vec3(game->cube2[0] + 2.0f, game->cube2[1] + 2.0f, game->cube2[2]));
     rotate = glm::rotate(translate, glm::radians(pov_in_degrees), vec3(0,1,0));
+    scale = glm::scale(rotate, glm::vec3(5.0f, 5.0f, 5.0f));
 
-    glUniformMatrix4fv(uniform, 1, GL_FALSE, &rotate[0][0]);
+    glUniformMatrix4fv(uniform, 1, GL_FALSE, &scale[0][0]);
     glDrawElements(GL_TRIANGLES, game->t->numIndices, GL_UNSIGNED_SHORT, 0);
 
     // Cube 1
-    game->cube->draw();
-
-    /*glBindBuffer(GL_ARRAY_BUFFER, vbo[1]);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 6, 0);
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 6, (char*)(sizeof(float) * 3));
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexArrayBufferID2);
-
-    translate = glm::translate(cameraTranslate, vec3(game->cube2[0], game->cube2[1], game->cube2[2]));
-    rotate = glm::rotate(translate, glm::radians(0.0f), vec3(0,0,1));
-
-    glUniformMatrix4fv(uniform, 1, GL_FALSE, &rotate[0][0]);
-    glDrawElements(GL_TRIANGLES, game->s->numIndices, GL_UNSIGNED_SHORT, 0);*/
+    for (auto &i : game->cube) {
+        for (auto &j : i) {
+            j->draw();
+        }
+    }
 
     glUseProgram(programID);
-    time_t theTime = time(0);
+    theTime = time(0);
 
     // Cube 2
     for (i=0; i<24; i++) {
@@ -197,7 +206,7 @@ void Game::renderFrame() {
                               (char *) (sizeof(float) * 3));
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexArrayBufferID2);
 
-        translate = glm::translate(cameraTranslate,
+        translate = glm::translate(game->camera->cameraTranslate,
                                    vec3(sin(.35f*time2->tm_sec+i)*8.0f,cos(.52f*time2->tm_sec+i)*8.0f,  sin(.70f*time2->tm_sec+i)*8.0f));
         rotate = glm::rotate(translate, glm::radians((float)time2->tm_sec), vec3(0, 1, 0));
 

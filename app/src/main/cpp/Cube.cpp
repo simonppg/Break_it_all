@@ -8,10 +8,8 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-
 #ifdef __ANDROID_NDK__
 #include "android/filesManager.hpp"
-
 #else
 #include "linux/filesManager.hpp"
 #endif
@@ -44,32 +42,32 @@ void Cube::load_model() {
     glGenBuffers(1, &iab);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iab);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, INDEX_BUFFER_SIZE(numIndices), indices, GL_STATIC_DRAW);
-
 }
 
 void Cube::draw() {
-    //mat4 perspective;
-    mat4 cameraTranslate;
+    GLint uniform;
     mat4 translate;
     mat4 rotate;
     mat4 scale;
 
     glUseProgram(programID);
-    GLint uniform = glGetUniformLocation(programID, "matrix");
+    uniform = glGetUniformLocation(programID, "matrix");
 
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 6, 0);
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 6, (char*)(sizeof(float) * 3));
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iab);
 
-    // TODO: inject viewport width/height and camera position
-    //perspective = glm::perspective(glm::radians(60.0f), ((float)800/ 600), 0.1f, 1000.0f);
-    cameraTranslate = glm::translate(camera->perspective, vec3(-camera->x, -camera->y, -camera->z));
-
-    translate = glm::translate(cameraTranslate, vec3(x, y, z));
+    translate = glm::translate(camera->cameraTranslate, vec3(x, y, z));
     rotate = glm::rotate(translate, glm::radians(0.0f), vec3(0,0,1));
-    scale = glm::scale(rotate, glm::vec3(1,5,1));
+    scale = glm::scale(rotate, glm::vec3(.5f,.5f,.5f));
 
     glUniformMatrix4fv(uniform, 1, GL_FALSE, &scale[0][0]);
     glDrawElements(GL_TRIANGLES, numIndices, GL_UNSIGNED_SHORT, 0);
+}
+
+void Cube::update_xyx(float x, float y, float z) {
+    this->x = x;
+    this->y = y;
+    this->z = z;
 }
