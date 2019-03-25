@@ -20,11 +20,9 @@ target_link_libraries(common
 
 if(ANDROID)
 
-    set(androidSrcDir "src/main/cpp/android")
-
     add_library(gameLibJNIWrapper SHARED
-        ${androidSrcDir}/main.cpp
-        ${androidSrcDir}/filesManager.cpp)
+        src/main/cpp/android/main.cpp
+        src/main/cpp/android/filesManager.cpp)
 
     target_link_libraries(gameLibJNIWrapper
         common
@@ -41,6 +39,17 @@ if(ANDROID)
             android
             GLESv2
             log)
+
+    add_library(triangle SHARED
+            src/main/cpp/examples/triangle/triangle.cpp
+            src/main/cpp/examples/triangle/jni.cpp
+            src/main/cpp/utils.cpp
+            src/main/cpp/android/filesManager.cpp)
+
+    target_link_libraries(triangle
+            -landroid
+            -llog
+            -lGLESv3)
 
 else(ANDROID)
 

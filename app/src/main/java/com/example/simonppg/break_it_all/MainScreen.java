@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 /**
  * Created by simonppg on 21/03/18.
@@ -16,32 +15,32 @@ import android.widget.Toast;
 
 public class MainScreen extends Activity {
 
-    private static String LOGTAG = "MainScreen";
-    private ListView items_list;
+    private static String LOG_TAG = "MainScreen";
 
     @Override protected void onCreate(Bundle savedInstanceState) {
+        ListView items_list;
+
         super.onCreate(savedInstanceState);
-        Log.i(LOGTAG, "Creating "+LOGTAG);
+        Log.i(LOG_TAG, "Creating "+LOG_TAG);
         setContentView(R.layout.main_screen);
         final String[] items =
-                new String[]{"Window", "Item2"};
+                new String[]{"Window", "Triangle"};
 
-        ArrayAdapter<String> adaptador =
-                new ArrayAdapter<String>(this,
+        ArrayAdapter<String> adapter =
+                new ArrayAdapter<>(this,
                         android.R.layout.simple_list_item_1, items);
 
         items_list = (ListView)findViewById(R.id.my_list);
 
-        items_list.setAdapter(adaptador);
+        items_list.setAdapter(adapter);
 
         items_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                Toast.makeText(getApplicationContext(),
-                        "Click ListItem Number " + position, Toast.LENGTH_LONG)
-                        .show();
+
                 Intent intent = new Intent(view.getContext(), WindowActivity.class);
+                intent.putExtra("position", position);
                 startActivity(intent);
             }
         });
@@ -56,7 +55,7 @@ public class MainScreen extends Activity {
     }
 
     public void onClick(View view) {
-        Log.i(LOGTAG, "onClick");
+        Log.i(LOG_TAG, "onClick");
         Intent intent = new Intent(this, GameActivity.class);
         startActivity(intent);
     }

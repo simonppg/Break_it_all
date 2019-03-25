@@ -10,6 +10,7 @@ extern "C" {
 #define BREAK_IT_ALL_LOGGER_H
 
 #include <ctime>
+#include <cstdio>
 
 // Terminal colors
 #define KRED_COLOR  "\x1B[31m"

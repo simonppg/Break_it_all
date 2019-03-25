@@ -15,7 +15,7 @@ class Camera {
 
 public:
 
-    int w, h;
+    float w, h;
     float x, y, z;
     float ncp; // near clipping plane
     float fcp; // far clipping plane

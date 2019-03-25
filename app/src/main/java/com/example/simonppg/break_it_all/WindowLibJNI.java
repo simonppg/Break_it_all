@@ -4,7 +4,8 @@ import android.content.res.AssetManager;
 
 public class WindowLibJNI {
     static {
-        System.loadLibrary("window");
+        //System.loadLibrary("window");
+        System.loadLibrary("triangle");
     }
 
     public static native void init(AssetManager assetManager);
