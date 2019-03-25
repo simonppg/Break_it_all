@@ -40,7 +40,7 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
         else if (key == GLFW_KEY_S)
             camera_back();
         else if (key == GLFW_KEY_D)
-            camera_rigth();
+            camera_right();
         else if (key == GLFW_KEY_A)
             camera_left();
         else if (key == GLFW_KEY_L)

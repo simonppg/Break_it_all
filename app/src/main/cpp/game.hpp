@@ -37,7 +37,7 @@ void on_surface_changed(int width, int height);
 void camera_forward();
 void camera_back();
 void camera_left();
-void camera_rigth();
+void camera_right();
 void camera_reset();
 
 #endif //GAME_H

@@ -82,7 +82,7 @@ bool on_touch_event(double xpos, double ypos)
 void camera_forward() { game->camera->z--;}
 void camera_back() { game->camera->z++;}
 void camera_left() { game->camera->x--;}
-void camera_rigth() { game->camera->x++;}
+void camera_right() { game->camera->x++;}
 void camera_reset() { game->camera->update_xyz(X, Y, Z); }
 
 Game::Game()
