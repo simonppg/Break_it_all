@@ -23,8 +23,8 @@ public class MainScreen extends Activity {
         super.onCreate(savedInstanceState);
         Log.i(LOG_TAG, "Creating "+LOG_TAG);
         setContentView(R.layout.main_screen);
-        final String[] items =
-                new String[]{"Window", "Triangle"};
+
+        final String[] items = GameLibJNIWrapper.getTestsList();
 
         ArrayAdapter<String> adapter =
                 new ArrayAdapter<>(this,

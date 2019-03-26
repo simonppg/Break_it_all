@@ -20,4 +20,6 @@ public class GameLibJNIWrapper {
     public static native boolean on_touch_event(double xpos, double ypos);
 
     public static native void load_asset_manager(AssetManager mgr);
+
+    public static native String[] getTestsList();
 }
