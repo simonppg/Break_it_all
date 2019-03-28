@@ -7,6 +7,8 @@
 #include "../square.hpp"
 #include "logger.hpp"
 
+Game *game;
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -29,22 +31,22 @@ static void error_handler(int error, const char* description)
 
 static void onSizeChange(GLFWwindow *window, int width, int height)
 {
-    on_surface_changed(width, height);
+    game->surfaceChanged(width, height);
 }
 
 static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
     if(action == GLFW_REPEAT || action == GLFW_PRESS ) {
         if (key == GLFW_KEY_W)
-            camera_forward();
+            game->camera_forward();
         else if (key == GLFW_KEY_S)
-            camera_back();
+            game->camera_back();
         else if (key == GLFW_KEY_D)
-            camera_right();
+            game->camera_right();
         else if (key == GLFW_KEY_A)
-            camera_left();
+            game->camera_left();
         else if (key == GLFW_KEY_L)
-            camera_reset();
+            game->camera_reset();
     }
 }
 
@@ -74,12 +76,14 @@ int main(void) {
     glfwSetWindowSizeCallback(window, onSizeChange);
     glfwSetKeyCallback(window, key_callback);
 
-    on_surface_created();
+    game = Game::init(0);
+    game->surfaceCreated();
 
     while (!glfwWindowShouldClose(window)) {
         glfwPollEvents();
 
-        on_draw_frame();
+        game->update();
+        game->render();
 
         glfwSwapBuffers(window);
     }

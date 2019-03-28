@@ -9,12 +9,11 @@ extern "C" {
 #ifndef _FILES_MANAGER_H_
 #define _FILES_MANAGER_H_
 
-#include <stdbool.h>
 #include <android/asset_manager.h>
 
 extern AAssetManager *g_pAssetManager;
 
-void load_asset_manager(AAssetManager *assetManager);
+void load_asset_manager(AAssetManager *);
 char* load_file(const char *filePath);
 
 #endif //_FILES_MANAGER_H_

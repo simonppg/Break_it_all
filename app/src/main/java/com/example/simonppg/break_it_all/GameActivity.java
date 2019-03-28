@@ -13,9 +13,19 @@ public class GameActivity extends Activity {
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.i(LOGTAG, "Creating New Tutorial View");
-        graphicsView = new MyGLSurfaceView(getApplication());
+        Bundle extras = getIntent().getExtras();
+
+        if (extras == null) {
+            // TODO: handle error
+        }
+
+        final int position = extras.getInt("position");
+
         AssetManager mgr = getResources().getAssets();
-        GameLibJNIWrapper.load_asset_manager(mgr);
+        GameLibJNIWrapper.init(position, mgr);
+        //GameLibJNIWrapper.load_asset_manager(mgr);
+
+        graphicsView = new MyGLSurfaceView(getApplication());
         setContentView(graphicsView);
     }
 

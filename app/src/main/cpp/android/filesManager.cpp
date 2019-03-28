@@ -2,6 +2,8 @@
 // Created by simonppg on 28/06/18.
 //
 
+#include <cassert>
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -15,11 +17,15 @@ AAssetManager *g_pAssetManager = NULL;
 
 void load_asset_manager(AAssetManager *pAssetManager)
 {
+    assert(pAssetManager != NULL);
+
     g_pAssetManager = pAssetManager;
 }
 
 char* load_file(const char *filePath)
 {
+    assert(g_pAssetManager != NULL);
+
     AAsset* file = AAssetManager_open(g_pAssetManager, filePath, AASSET_MODE_BUFFER);
 
     size_t fileLength = (size_t) AAsset_getLength(file);

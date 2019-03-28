@@ -6,8 +6,8 @@
 extern "C" {
 #endif
 
-#ifndef COLORS_H
-#define COLORS_H
+#ifndef BREAK_IT_ALL_COLORS_H
+#define BREAK_IT_ALL_COLORS_H
 
 #include <GLES3/gl3.h>
 
@@ -19,7 +19,7 @@ GLfloat BLUE[] = {
     0.0f, 0.0f, 1.0f, 1.0f
 };
 
-#endif //COLORS_H
+#endif //BREAK_IT_ALL_COLORS_H
 
 #ifdef __cplusplus
 }

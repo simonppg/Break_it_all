@@ -57,6 +57,7 @@ public class MainScreen extends Activity {
     public void onClick(View view) {
         Log.i(LOG_TAG, "onClick");
         Intent intent = new Intent(this, GameActivity.class);
+        intent.putExtra("position", 0);
         startActivity(intent);
     }
 }

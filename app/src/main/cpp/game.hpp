@@ -2,46 +2,51 @@
 // Created by simonppg on 11/06/18.
 //
 
+#ifndef BREAK_IT_ALL_GAME_H
+#define BREAK_IT_ALL_GAME_H
+
 #include "triangle.hpp"
 #include "square.hpp"
 #include "Cube.hpp"
+#include "IScene.hpp"
 
 class Game
 {
 public:
+    Game(int pos, IScene *pScene);
+
     Triangle *t;
     Square *s;
     float cube2[3];
-
-    void renderFrame();
-    void sendDataToOpenGL();
-    Game();
+    IScene *pScene;
 
     Cube *cube[15][15];
     Camera *camera;
+
+    static Game * init(int);
+
+    // OpenGL context is in this functions
+    void surfaceCreated();
+    void surfaceChanged(int width, int height);
+    void update();
+    void render();
+
+    void camera_forward();
+    void camera_back();
+    void camera_left();
+    void camera_right();
+    void camera_reset();
 };
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#ifndef GAME_H
-#define GAME_H
-
-//#include <stdbool.h>
-
-void on_surface_created();
-void on_draw_frame();
 bool on_touch_event(double xpos, double ypos);
-void on_surface_changed(int width, int height);
-void camera_forward();
-void camera_back();
-void camera_left();
-void camera_right();
-void camera_reset();
 
-#endif //GAME_H
 
 #ifdef __cplusplus
 }
 #endif
+
+#endif //BREAK_IT_ALL_GAME_H

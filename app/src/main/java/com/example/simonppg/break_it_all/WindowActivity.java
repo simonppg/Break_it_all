@@ -17,9 +17,9 @@ public class WindowActivity extends Activity {
         Bundle extras = getIntent().getExtras();
 
         if (extras != null) {
-            int position = extras.getInt("position");
+            final int position = extras.getInt("position");
             Toast.makeText(getApplicationContext(),
-                    "Click ListItem Number " + position, Toast.LENGTH_LONG)
+                    "Click ListItem Number " + position, Toast.LENGTH_SHORT)
                     .show();
 
             mView = new GLSurfaceView(getApplication());
@@ -27,23 +27,23 @@ public class WindowActivity extends Activity {
             mView.setRenderer(new GLSurfaceView.Renderer() {
                 @Override
                 public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-                    WindowLibJNI.surfaceCreated();
+                    GameLibJNIWrapper.surfaceCreated();
                 }
 
                 @Override
                 public void onSurfaceChanged(GL10 gl, int width, int height) {
-                    WindowLibJNI.surfaceChanged(width, height);
+                    GameLibJNIWrapper.surfaceChanged(width, height);
                 }
 
                 @Override
                 public void onDrawFrame(GL10 gl) {
-                    WindowLibJNI.drawFrame();
+                    GameLibJNIWrapper.drawFrame();
                 }
             });
             mView.queueEvent(new Runnable() {
                 @Override
                 public void run() {
-                    WindowLibJNI.init(getAssets());
+                    GameLibJNIWrapper.init(position, getAssets());
                 }
             });
             setContentView(mView);
@@ -56,7 +56,7 @@ public class WindowActivity extends Activity {
         mView.queueEvent(new Runnable() {
             @Override
             public void run() {
-                WindowLibJNI.pause();
+                GameLibJNIWrapper.pause();
             }
         });
     }
@@ -67,7 +67,7 @@ public class WindowActivity extends Activity {
         mView.queueEvent(new Runnable() {
             @Override
             public void run() {
-                WindowLibJNI.resume();
+                GameLibJNIWrapper.resume();
             }
         });
     }

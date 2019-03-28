@@ -5,6 +5,8 @@
 #include "../game.hpp"
 #include "filesManager.hpp"
 
+Game *game;
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -12,19 +14,20 @@ extern "C" {
 #include <jni.h>
 #include <android/asset_manager_jni.h>
 
-JNIEXPORT void JNICALL Java_com_example_simonppg_break_1it_1all_GameLibJNIWrapper_on_1surface_1created
+JNIEXPORT void JNICALL Java_com_example_simonppg_break_1it_1all_GameLibJNIWrapper_surfaceCreated
         (JNIEnv * env, jclass cls) {
-    on_surface_created();
+    game->surfaceCreated();
 }
 
-JNIEXPORT void JNICALL Java_com_example_simonppg_break_1it_1all_GameLibJNIWrapper_on_1surface_1changed
+JNIEXPORT void JNICALL Java_com_example_simonppg_break_1it_1all_GameLibJNIWrapper_surfaceChanged
         (JNIEnv * env, jclass cls, jint width, jint height) {
-    on_surface_changed(width, height);
+    game->surfaceChanged(width, height);
 }
 
-JNIEXPORT void JNICALL Java_com_example_simonppg_break_1it_1all_GameLibJNIWrapper_on_1draw_1frame
+JNIEXPORT void JNICALL Java_com_example_simonppg_break_1it_1all_GameLibJNIWrapper_drawFrame
         (JNIEnv * env, jclass cls) {
-    on_draw_frame();
+    game->update();
+    game->render();
 }
 
 JNIEXPORT bool JNICALL Java_com_example_simonppg_break_1it_1all_GameLibJNIWrapper_on_1touch_1event
@@ -32,18 +35,19 @@ JNIEXPORT bool JNICALL Java_com_example_simonppg_break_1it_1all_GameLibJNIWrappe
     return on_touch_event(xpos, ypos);
 }
 
+//TODO Remove this function
 JNIEXPORT void JNICALL
 Java_com_example_simonppg_break_1it_1all_GameLibJNIWrapper_load_1asset_1manager
         (JNIEnv *env, jclass type, jobject mgr) {
-    AAssetManager *mgr2 = AAssetManager_fromJava(env, mgr);
-    load_asset_manager(mgr2);
+    //AAssetManager *mgr2 = AAssetManager_fromJava(env, mgr);
+    //load_asset_manager(mgr2);
 }
 
 JNIEXPORT jobjectArray JNICALL Java_com_example_simonppg_break_1it_1all_GameLibJNIWrapper_getTestsList
         (JNIEnv * env, jclass cls) {
 
-#define LEN 2
-    const char *tests[LEN]={"Window", "Triangle"};
+#define LEN 3
+    const char *tests[LEN]={"SandBox", "Window", "Triangle"};
 
     jstring str;
     jobjectArray test = 0;
@@ -59,6 +63,29 @@ JNIEXPORT jobjectArray JNICALL Java_com_example_simonppg_break_1it_1all_GameLibJ
     }
 
     return test;
+}
+
+JNIEXPORT void JNICALL
+Java_com_example_simonppg_break_1it_1all_GameLibJNIWrapper_init(JNIEnv *env, jclass type,
+                                                                jint position, jobject mgr) {
+    AAssetManager *mgr2 = AAssetManager_fromJava(env, mgr);
+    assert(mgr2);
+    load_asset_manager(mgr2);
+    game = Game::init(position);
+}
+
+JNIEXPORT void JNICALL
+Java_com_example_simonppg_break_1it_1all_GameLibJNIWrapper_pause(JNIEnv *env, jclass type) {
+
+    // TODO
+
+}
+
+JNIEXPORT void JNICALL
+Java_com_example_simonppg_break_1it_1all_GameLibJNIWrapper_resume(JNIEnv *env, jclass type) {
+
+    // TODO
+
 }
 
 #ifdef __cplusplus

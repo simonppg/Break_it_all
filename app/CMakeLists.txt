@@ -7,29 +7,31 @@ add_subdirectory(src/main/cpp/glm)
 set(GLM_ENABLE_EXPERIMENTAL)
 
 add_library(common STATIC
-    src/main/cpp/triangle.cpp
-    src/main/cpp/utils.cpp
-    src/main/cpp/square.cpp
-    src/main/cpp/Cube.cpp
-    src/main/cpp/Camera.cpp
-    src/main/cpp/game.cpp)
+        src/main/cpp/triangle.cpp
+        src/main/cpp/utils.cpp
+        src/main/cpp/square.cpp
+        src/main/cpp/Cube.cpp
+        src/main/cpp/Camera.cpp
+        src/main/cpp/Test2.cpp
+        src/main/cpp/SandBox.cpp
+        src/main/cpp/game.cpp)
 
 target_link_libraries(common
-    -lGLESv2
-    glm)
+        -lGLESv2
+        glm)
 
 if(ANDROID)
 
     add_library(gameLibJNIWrapper SHARED
-        src/main/cpp/android/main.cpp
-        src/main/cpp/android/filesManager.cpp)
+            src/main/cpp/android/main.cpp
+            src/main/cpp/android/filesManager.cpp)
 
     target_link_libraries(gameLibJNIWrapper
-        common
-        -landroid
-        -llog
-        -lGLESv3
-        glm)
+            common
+            -landroid
+            -llog
+            -lGLESv3
+            glm)
 
     # Examples
     add_library(window SHARED
@@ -53,23 +55,20 @@ if(ANDROID)
 
 else(ANDROID)
 
-    set(gameLauncher linuxLauncher)
-    set(linuxSrcDir "src/main/cpp/linux")
-
     add_definitions("-DPROJECT_DIR=\"${PROJECT_SOURCE_DIR}\"")
     set(CMAKE_BUILD_TYPE Debug)
 
-    add_executable(${gameLauncher}
-        ${linuxSrcDir}/main.cpp
-        ${linuxSrcDir}/filesManager.cpp)
+    add_executable(linuxLauncher
+            src/main/cpp/linux/main.cpp
+            src/main/cpp/linux/filesManager.cpp)
 
-    target_link_libraries(${gameLauncher}
-        common
-        -lglfw)
+    target_link_libraries(linuxLauncher
+            common
+            -lglfw)
 
     add_custom_target(run
-        COMMAND ${gameLauncher}
-        DEPENDS ${gameLauncher}
-        WORKING_DIRECTORY ${CMAKE_PROJECT_DIR})
+            COMMAND linuxLauncher
+            DEPENDS linuxLauncher
+            WORKING_DIRECTORY ${CMAKE_PROJECT_DIR})
 
 endif(ANDROID)
