@@ -5,6 +5,8 @@
 #ifndef BREAK_IT_ALL_ISCENE_H
 #define BREAK_IT_ALL_ISCENE_H
 
+#include "utils.hpp"
+
 #ifdef __ANDROID_NDK__
 #include "android/logger.hpp"
 #include "android/filesManager.hpp"

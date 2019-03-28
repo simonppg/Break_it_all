@@ -7,13 +7,14 @@ add_subdirectory(src/main/cpp/glm)
 set(GLM_ENABLE_EXPERIMENTAL)
 
 add_library(common STATIC
+        src/main/cpp/SandBox.cpp
+        src/main/cpp/Test1.cpp
+        src/main/cpp/Test2.cpp
         src/main/cpp/triangle.cpp
         src/main/cpp/utils.cpp
         src/main/cpp/square.cpp
         src/main/cpp/Cube.cpp
         src/main/cpp/Camera.cpp
-        src/main/cpp/Test2.cpp
-        src/main/cpp/SandBox.cpp
         src/main/cpp/game.cpp)
 
 target_link_libraries(common
@@ -34,24 +35,24 @@ if(ANDROID)
             glm)
 
     # Examples
-    add_library(window SHARED
-            src/main/cpp/examples/window/main.cpp)
+    #add_library(window SHARED
+    #       src/main/cpp/examples/window/main.cpp)
 
-    target_link_libraries(window
-            android
-            GLESv2
-            log)
+    #target_link_libraries(window
+    #        android
+    #        GLESv2
+    #        log)
 
-    add_library(triangle SHARED
-            src/main/cpp/examples/triangle/triangle.cpp
-            src/main/cpp/examples/triangle/jni.cpp
-            src/main/cpp/utils.cpp
-            src/main/cpp/android/filesManager.cpp)
+    #add_library(triangle SHARED
+    #        src/main/cpp/examples/triangle/triangle.cpp
+    #        src/main/cpp/examples/triangle/jni.cpp
+    #        src/main/cpp/utils.cpp
+    #        src/main/cpp/android/filesManager.cpp)
 
-    target_link_libraries(triangle
-            -landroid
-            -llog
-            -lGLESv3)
+    #target_link_libraries(triangle
+    #        -landroid
+    #        -llog
+    #        -lGLESv3)
 
 else(ANDROID)
 

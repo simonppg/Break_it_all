@@ -20,8 +20,11 @@ using glm::vec3;
 #include "colors.hpp"
 #include "triangle.hpp"
 #include "square.hpp"
-#include "Test2.hpp"
+
+//Examples
 #include "SandBox.hpp"
+#include "Test1.hpp"
+#include "Test2.hpp"
 
 #ifdef __ANDROID_NDK__
 #include "android/logger.hpp"
@@ -67,8 +70,11 @@ Game * Game::init(int pos) {
 
     if(pos == 0)
         game = new Game(pos, new SandBox());
+    else if(pos == 1)
+        game = new Game(pos, new Test1());
     else
         game = new Game(pos, new Test2());
+
 
     return game;
 }

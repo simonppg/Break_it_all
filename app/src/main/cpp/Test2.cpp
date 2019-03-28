@@ -2,12 +2,9 @@
 // Created by simonppg on 3/27/19.
 //
 
-#include <GLES3/gl3.h>
-
 #include "Test2.hpp"
-#include "utils.hpp"
 
-GLfloat vVertices[] = { 0.0f, 0.5f, 0.0f,
+static GLfloat vVertices[] = { 0.0f, 0.5f, 0.0f,
                         -0.5f, -0.5f, 0.0f,
                         0.5f, -0.5f, 0.0f };
 Test2::Test2() {
