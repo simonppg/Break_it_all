@@ -15,16 +15,16 @@ import android.widget.ListView;
 
 public class MainScreen extends Activity {
 
-    private static String LOG_TAG = "MainScreen";
-
     @Override protected void onCreate(Bundle savedInstanceState) {
         ListView items_list;
+        String LOG_TAG = "MainScreen";
+        final String[] items;
 
         super.onCreate(savedInstanceState);
-        Log.i(LOG_TAG, "Creating "+LOG_TAG);
         setContentView(R.layout.main_screen);
 
-        final String[] items = GameLibJNIWrapper.getTestsList();
+        Log.i(LOG_TAG, "Creating " + LOG_TAG);
+        items = GameLibJNIWrapper.getTestsList();
 
         ArrayAdapter<String> adapter =
                 new ArrayAdapter<>(this,
@@ -39,7 +39,7 @@ public class MainScreen extends Activity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
 
-                Intent intent = new Intent(view.getContext(), WindowActivity.class);
+                Intent intent = new Intent(view.getContext(), GameActivity.class);
                 intent.putExtra("position", position);
                 startActivity(intent);
             }
@@ -52,12 +52,5 @@ public class MainScreen extends Activity {
 
     @Override protected void onResume() {
         super.onResume();
-    }
-
-    public void onClick(View view) {
-        Log.i(LOG_TAG, "onClick");
-        Intent intent = new Intent(this, GameActivity.class);
-        intent.putExtra("position", 0);
-        startActivity(intent);
     }
 }
