@@ -14,7 +14,6 @@ using glm::vec3;
 GLuint vbo[2]; //TODO: remove hardcoded number
 GLuint indexArrayBufferID;
 GLuint indexArrayBufferID2;
-GLuint programID;
 float pov_in_degrees = 0.0f;
 int i;
 struct tm *time2;
@@ -31,6 +30,25 @@ SandBox::SandBox() {
     t = Triangle_new(COLOR);
     s = Square_new();
 
+    for (int i = 0; i < 15; i++) {
+        for(int j = 0; j < 15; j++) {
+            cube[i][j] = new Cube(camera);
+            cube[i][j]->update_xyx(2 * j - 16, 2 * i - 16 + 9, 0);
+        }
+    }
+
+    cube[0][0]->update_xyx(-10, 18, 0);
+    cube[0][0]->update_size(1);
+    cube[0][0]->animate_x();
+
+    cube[0][1]->update_xyx(0, 18, 0);
+    cube[0][1]->update_size(2);
+    cube[0][1]->animate_y();
+
+    cube[0][2]->update_xyx(10, 18, 0);
+    cube[0][2]->update_size(3);
+    cube[0][2]->animate_z();
+
     cube2[0] = 0.0f;
     cube2[1] = 0.0f;
     cube2[2] = 0.0f;
@@ -39,6 +57,11 @@ SandBox::SandBox() {
 void SandBox::surfaceCreated()
 {
     Triangle *tri;
+    for (auto &i : this->cube) {
+        for (auto &j : i) {
+            j->createProgram();
+        }
+    }
 
     char *vert = load_file("simple.vert");
     char *frag = load_file("square.frag");
@@ -67,8 +90,7 @@ void SandBox::surfaceCreated()
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexArrayBufferID2);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, INDEX_BUFFER_SIZE(this->s->numIndices), this->s->indices, GL_STATIC_DRAW);
 
-
-    programID = createProgram(vert, frag);
+    programID = Utils::createProgram(vert, frag);
 
     if(vert)
         free(vert);
@@ -115,19 +137,19 @@ void SandBox::render() {
     glDrawElements(GL_TRIANGLES, this->t->numIndices, GL_UNSIGNED_SHORT, 0);
 
     // Cube 1
-    /*for (auto &i : game->cube) {
+    /*for (auto &i : this->cube) {
         for (auto &j : i) {
             j->draw();
         }
     }*/
 
-    /*cube[0][0]->set_rotation_angle(pov_in_degrees);
+    cube[0][0]->set_rotation_angle(pov_in_degrees);
     cube[0][1]->set_rotation_angle(pov_in_degrees);
     cube[0][2]->set_rotation_angle(pov_in_degrees);
 
     cube[0][0]->draw();
     cube[0][1]->draw();
-    cube[0][2]->draw();*/
+    cube[0][2]->draw();
 
     glUseProgram(programID);
     theTime = time(0);
@@ -154,4 +176,15 @@ void SandBox::render() {
 void SandBox::surfaceChanged(int width, int height) {
     this->camera->update_width_height(width, height);
     glViewport(0, 0, width, height);
+}
+
+void SandBox::pause() {}
+
+void SandBox::resume() {}
+
+void SandBox::update() {}
+
+bool SandBox::events(double xpos, double ypos) {
+    pov_in_degrees += 2.5f;
+    return true;
 }

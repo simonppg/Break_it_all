@@ -16,11 +16,16 @@
 #endif
 
 class IScene {
+protected:
+    GLuint programID;
 public:
     virtual void surfaceCreated() = 0;
     virtual void render() = 0;
     virtual void surfaceChanged(int width, int height) = 0;
+    virtual void pause() = 0;
+    virtual void resume() = 0;
+    virtual void update() = 0;
+    virtual bool events(double d, double d1) = 0;
 };
-
 
 #endif //BREAK_IT_ALL_ISCENE_H

@@ -30,12 +30,14 @@ public:
     void surfaceChanged(int width, int height);
     void update();
     void render();
-
+    void pause();
+    void resume();
     void camera_forward();
     void camera_back();
     void camera_left();
     void camera_right();
     void camera_reset();
+    bool on_touch_event(double xpos, double ypos);
 };
 
 #ifdef __cplusplus

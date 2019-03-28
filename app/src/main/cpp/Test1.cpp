@@ -17,5 +17,15 @@ void Test1::surfaceChanged(int width, int height) {
 
 void Test1::render() {
     glClearColor(0.6f, 0.6f, 0.6f, 1.0f);
-    glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT);
+}
+
+void Test1::pause() {}
+
+void Test1::resume() {}
+
+void Test1::update() {}
+
+bool Test1::events(double xpos, double ypos) {
+    return false;
 }

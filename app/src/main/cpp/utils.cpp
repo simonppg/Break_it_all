@@ -2,9 +2,7 @@
 // Created by simonppg on 19/03/18.
 //
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+#include "utils.hpp"
 
 #include <malloc.h>
 
@@ -16,7 +14,7 @@ extern "C" {
 #include "linux/logger.hpp"
 #endif
 
-static GLuint loadShader(GLenum shaderType, const char* shaderSource)
+GLuint Utils::loadShader(GLenum shaderType, const char* shaderSource)
 {
     GLuint shader = glCreateShader(shaderType);
     if (shader)
@@ -46,7 +44,7 @@ static GLuint loadShader(GLenum shaderType, const char* shaderSource)
     return shader;
 }
 
-GLuint createProgram(const char* vertexSource, const char * fragmentSource)
+GLuint Utils::createProgram(const char* vertexSource, const char * fragmentSource)
 {
     if(vertexSource == NULL || fragmentSource == NULL)
         return 0;
@@ -91,7 +89,3 @@ GLuint createProgram(const char* vertexSource, const char * fragmentSource)
     }
     return program;
 }
-
-#ifdef __cplusplus
-}
-#endif

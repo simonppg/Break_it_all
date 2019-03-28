@@ -76,7 +76,6 @@ Cube::Cube(Camera *camera): x{0}, y{0}, z{0}, size{1} {
     this->camera = camera;
     vertex_file = load_file("cube/cube.vert");
     fragment_file = load_file("cube/cube.frag");
-    programID = createProgram(vertex_file, fragment_file);
 }
 
 Cube::~Cube() {
@@ -145,4 +144,8 @@ void Cube::animate_z() {
 
 void Cube::set_rotation_angle(float angle) {
     this->angle = angle;
+}
+
+void Cube::createProgram() {
+    programID = Utils::createProgram(vertex_file, fragment_file);
 }

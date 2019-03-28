@@ -34,30 +34,9 @@ if(ANDROID)
             -lGLESv3
             glm)
 
-    # Examples
-    #add_library(window SHARED
-    #       src/main/cpp/examples/window/main.cpp)
-
-    #target_link_libraries(window
-    #        android
-    #        GLESv2
-    #        log)
-
-    #add_library(triangle SHARED
-    #        src/main/cpp/examples/triangle/triangle.cpp
-    #        src/main/cpp/examples/triangle/jni.cpp
-    #        src/main/cpp/utils.cpp
-    #        src/main/cpp/android/filesManager.cpp)
-
-    #target_link_libraries(triangle
-    #        -landroid
-    #        -llog
-    #        -lGLESv3)
-
 else(ANDROID)
 
     add_definitions("-DPROJECT_DIR=\"${PROJECT_SOURCE_DIR}\"")
-    set(CMAKE_BUILD_TYPE Debug)
 
     add_executable(linuxLauncher
             src/main/cpp/linux/main.cpp

@@ -3,6 +3,7 @@ package com.example.simonppg.break_it_all;
 import android.app.Activity;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.widget.Toast;
 
 import javax.microedition.khronos.egl.EGLConfig;
@@ -70,5 +71,27 @@ public class GameActivity extends Activity {
                 GameLibJNIWrapper.resume();
             }
         });
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mView.queueEvent(new Runnable() {
+            @Override
+            public void run() {
+                GameLibJNIWrapper.stop();
+            }
+        });
+    }
+
+    @Override
+    public boolean onTouchEvent(final MotionEvent e) {
+        mView.queueEvent(new Runnable() {
+            @Override
+            public void run() {
+                GameLibJNIWrapper.on_touch_event(e.getX(), e.getY());
+            }
+        });
+        return super.onTouchEvent(e);
     }
 }

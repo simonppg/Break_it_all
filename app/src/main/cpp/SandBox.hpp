@@ -9,6 +9,7 @@
 #include "Camera.hpp"
 #include "triangle.hpp"
 #include "square.hpp"
+#include "Cube.hpp"
 
 class SandBox : public IScene {
 
@@ -17,11 +18,16 @@ public:
     void surfaceCreated() override;
     void surfaceChanged(int width, int height) override;
     void render() override;
+    void pause() override;
+    void resume() override;
+    void update() override;
+    bool events(double xpos, double ypos) override;
 
     Camera *camera;
     float cube2[3];
     Triangle *t;
     Square *s;
+    Cube *cube[15][15];
 };
 
 

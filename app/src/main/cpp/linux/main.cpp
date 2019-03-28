@@ -21,7 +21,7 @@ extern "C" {
 
 static void cursor_pos_callback(GLFWwindow* window, double xpos, double ypos)
 {
-    on_touch_event(xpos, ypos);
+    game->on_touch_event(xpos, ypos);
 }
 
 static void error_handler(int error, const char* description)
@@ -50,8 +50,16 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
     }
 }
 
-int main(void) {
+int main(int argc, char **argv) {
     GLFWwindow* window;
+    int test_number = 0;
+
+    LOGI("%d", argc);
+    if(argc > 1)
+    {
+        test_number = atoi(argv[1]);
+    }
+    LOGI("%d", test_number);
 
     if (!glfwInit())
     {
@@ -76,7 +84,14 @@ int main(void) {
     glfwSetWindowSizeCallback(window, onSizeChange);
     glfwSetKeyCallback(window, key_callback);
 
-    game = Game::init(0);
+    if(game) {
+        delete game;
+        game = nullptr;
+    }
+
+    assert(game == nullptr);
+    game = Game::init(test_number);
+
     game->surfaceCreated();
 
     while (!glfwWindowShouldClose(window)) {

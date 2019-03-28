@@ -47,6 +47,8 @@ public:
     void animate_z();
 
     void set_rotation_angle(float angle);
+
+    void createProgram();
 };
 
 #endif //BREAK_IT_ALL_CUBE_H

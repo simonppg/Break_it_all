@@ -32,15 +32,7 @@ JNIEXPORT void JNICALL Java_com_example_simonppg_break_1it_1all_GameLibJNIWrappe
 
 JNIEXPORT bool JNICALL Java_com_example_simonppg_break_1it_1all_GameLibJNIWrapper_on_1touch_1event
         (JNIEnv * env, jclass cls, jdouble xpos, jdouble ypos) {
-    return on_touch_event(xpos, ypos);
-}
-
-//TODO Remove this function
-JNIEXPORT void JNICALL
-Java_com_example_simonppg_break_1it_1all_GameLibJNIWrapper_load_1asset_1manager
-        (JNIEnv *env, jclass type, jobject mgr) {
-    //AAssetManager *mgr2 = AAssetManager_fromJava(env, mgr);
-    //load_asset_manager(mgr2);
+    return game->on_touch_event(xpos, ypos);
 }
 
 JNIEXPORT jobjectArray JNICALL Java_com_example_simonppg_break_1it_1all_GameLibJNIWrapper_getTestsList
@@ -50,7 +42,7 @@ JNIEXPORT jobjectArray JNICALL Java_com_example_simonppg_break_1it_1all_GameLibJ
     const char *tests[LEN]={"SandBox", "Window", "Triangle"};
 
     jstring str;
-    jobjectArray test = 0;
+    jobjectArray test = nullptr;
     jsize len = LEN;
     int i;
 
@@ -69,23 +61,28 @@ JNIEXPORT void JNICALL
 Java_com_example_simonppg_break_1it_1all_GameLibJNIWrapper_init(JNIEnv *env, jclass type,
                                                                 jint position, jobject mgr) {
     AAssetManager *mgr2 = AAssetManager_fromJava(env, mgr);
-    assert(mgr2);
+    assert(mgr2 != nullptr);
     load_asset_manager(mgr2);
+
+    assert(game == nullptr);
     game = Game::init(position);
 }
 
 JNIEXPORT void JNICALL
 Java_com_example_simonppg_break_1it_1all_GameLibJNIWrapper_pause(JNIEnv *env, jclass type) {
-
-    // TODO
-
+    game->pause();
+    delete game;
+    game = nullptr;
 }
 
 JNIEXPORT void JNICALL
 Java_com_example_simonppg_break_1it_1all_GameLibJNIWrapper_resume(JNIEnv *env, jclass type) {
+    game->resume();
+}
 
-    // TODO
-
+JNIEXPORT void JNICALL
+Java_com_example_simonppg_break_1it_1all_GameLibJNIWrapper_stop(JNIEnv *env, jclass type) {
+    delete game;
 }
 
 #ifdef __cplusplus
