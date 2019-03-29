@@ -5,7 +5,7 @@
 #ifndef BREAK_IT_ALL_GAME_H
 #define BREAK_IT_ALL_GAME_H
 
-#include "triangle.hpp"
+#include "Triangle.hpp"
 #include "square.hpp"
 #include "Cube.hpp"
 #include "IScene.hpp"

@@ -7,7 +7,7 @@
 
 #include "IScene.hpp"
 #include "Camera.hpp"
-#include "triangle.hpp"
+#include "Triangle.hpp"
 #include "square.hpp"
 #include "Cube.hpp"
 
@@ -25,9 +25,9 @@ public:
 
     Camera *camera;
     float cube2[3];
-    Triangle *t;
+    Triangle *triangle[2];
     Square *s;
-    Cube *cube[15][15];
+    Cube *cube[3];
 };
 
 

@@ -3,7 +3,7 @@
 //
 
 #include "../game.hpp"
-#include "../triangle.hpp"
+#include "../Triangle.hpp"
 #include "../square.hpp"
 #include "logger.hpp"
 
