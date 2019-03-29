@@ -29,10 +29,6 @@ SandBox::SandBox() {
     triangle[1]->update_xyx(2.0f, 2.0f, 0);
     triangle[1]->update_size(2);
 
-    for (auto &i : circle_of_cubes) {
-        i = new Cube(camera);
-    }
-
     for (auto &i : cube) {
         i = new Cube(camera);
     }
@@ -48,10 +44,6 @@ SandBox::SandBox() {
     cube[2]->update_xyx(10, 5, 0);
     cube[2]->update_size(3);
     cube[2]->animate_z();
-
-    cube2[0] = 0.0f;
-    cube2[1] = 0.0f;
-    cube2[2] = 0.0f;
 }
 
 void SandBox::surfaceCreated()

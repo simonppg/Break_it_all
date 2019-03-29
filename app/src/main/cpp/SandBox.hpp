@@ -23,10 +23,8 @@ public:
     bool events(double xpos, double ypos) override;
 
     Camera *camera;
-    float cube2[3];
     Triangle *triangle[2];
     Cube *cube[3];
-    Cube *circle_of_cubes[24];
 };
 
 
