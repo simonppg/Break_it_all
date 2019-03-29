@@ -8,6 +8,7 @@
 #include "SandBox.hpp"
 #include "Test1.hpp"
 #include "Test2.hpp"
+#include "Test3.hpp"
 
 void Game::camera_forward() { this->camera->z--;}
 void Game::camera_back() { this->camera->z++;}
@@ -23,8 +24,10 @@ Game * Game::init(int pos) {
         return new Game(pos, new SandBox());
     else if (pos == 1)
         return new Game(pos, new Test1());
-    else
+    else if (pos == 2)
         return new Game(pos, new Test2());
+    else
+        return new Game(pos, new Test3());
 }
 
 Game::Game(int pos, IScene *pScene)

@@ -37,15 +37,15 @@ SandBox::SandBox() {
         i = new Cube(camera);
     }
 
-    cube[0]->update_xyx(-10, 18, 0);
+    cube[0]->update_xyx(-10, 5, 0);
     cube[0]->update_size(1);
     cube[0]->animate_x();
 
-    cube[1]->update_xyx(0, 18, 0);
+    cube[1]->update_xyx(0, 5, 0);
     cube[1]->update_size(2);
     cube[1]->animate_y();
 
-    cube[2]->update_xyx(10, 18, 0);
+    cube[2]->update_xyx(10, 5, 0);
     cube[2]->update_size(3);
     cube[2]->animate_z();
 

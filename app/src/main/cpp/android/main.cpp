@@ -38,8 +38,8 @@ JNIEXPORT bool JNICALL Java_com_example_simonppg_break_1it_1all_GameLibJNIWrappe
 JNIEXPORT jobjectArray JNICALL Java_com_example_simonppg_break_1it_1all_GameLibJNIWrapper_getTestsList
         (JNIEnv * env, jclass cls) {
 
-#define LEN 3
-    const char *tests[LEN]={"SandBox", "Window", "Triangle"};
+#define LEN 4
+    const char *tests[LEN]={"SandBox", "Window", "Triangle", "Circle"};
 
     jstring str;
     jobjectArray test = nullptr;

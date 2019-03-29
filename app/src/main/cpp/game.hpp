@@ -34,15 +34,4 @@ public:
     bool on_touch_event(double xpos, double ypos);
 };
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-bool on_touch_event(double xpos, double ypos);
-
-
-#ifdef __cplusplus
-}
-#endif
-
 #endif //BREAK_IT_ALL_GAME_H

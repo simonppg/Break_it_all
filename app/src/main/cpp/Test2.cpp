@@ -2,8 +2,9 @@
 // Created by simonppg on 3/27/19.
 //
 
-#include <cstdlib>
 #include "Test2.hpp"
+
+#include <cstdlib>
 
 static GLfloat vVertices[] = { 0.0f, 0.5f, 0.0f,
                                -0.5f, -0.5f, 0.0f,
