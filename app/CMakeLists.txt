@@ -12,7 +12,6 @@ add_library(common STATIC
         src/main/cpp/Test2.cpp
         src/main/cpp/Triangle.cpp
         src/main/cpp/utils.cpp
-        src/main/cpp/square.cpp
         src/main/cpp/Cube.cpp
         src/main/cpp/Camera.cpp
         src/main/cpp/game.cpp)

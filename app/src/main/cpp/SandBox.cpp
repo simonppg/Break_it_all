@@ -11,11 +11,7 @@
 using glm::mat4;
 using glm::vec3;
 
-GLuint vbo; //TODO: remove hardcoded number
-GLuint iab;
 float pov_in_degrees = 0.0f;
-int i;
-struct tm *time2;
 
 #include "SandBox.hpp"
 #include "Cube.hpp"
@@ -33,7 +29,9 @@ SandBox::SandBox() {
     triangle[1]->update_xyx(2.0f, 2.0f, 0);
     triangle[1]->update_size(2);
 
-    s = Square_new();
+    for (auto &i : circle_of_cubes) {
+        i = new Cube(camera);
+    }
 
     for (auto &i : cube) {
         i = new Cube(camera);
@@ -58,9 +56,6 @@ SandBox::SandBox() {
 
 void SandBox::surfaceCreated()
 {
-    char *vert = load_file("simple.vert");
-    char *frag = load_file("square.frag");
-
     // Triangle
     for(auto &i : triangle)
     {
@@ -74,32 +69,10 @@ void SandBox::surfaceCreated()
     }
     Cube::load_model();
 
-    glGenBuffers(1, &vbo);
-    glBindBuffer(GL_ARRAY_BUFFER, vbo);
-    glBufferData(GL_ARRAY_BUFFER, VERTEX_BUFFER_SIZE(this->s->numVertices), this->s->vertices, GL_STATIC_DRAW);
-
-    glGenBuffers(1, &iab);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iab);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, INDEX_BUFFER_SIZE(this->s->numIndices), this->s->indices, GL_STATIC_DRAW);
-
-    programID = Utils::createProgram(vert, frag);
-
-    if(vert)
-        free(vert);
-
-    if(frag)
-        free(frag);
-
-    LOGI("send data");
     // TODO: free buffers
 }
 
 void SandBox::render() {
-    GLint uniform;
-    time_t theTime;
-    mat4 translate;
-    mat4 rotate;
-
     // Note: this should be called after change xyz or w/h
     this->camera->update_perspective();
 
@@ -114,31 +87,7 @@ void SandBox::render() {
 
     // Cube 1
     for (auto &i : cube) {
-        i->set_rotation_angle(pov_in_degrees);
         i->draw();
-    }
-
-    glUseProgram(programID);
-    theTime = time(0);
-
-    // Cube 2
-    uniform = glGetUniformLocation(programID, "matrix");
-
-    for (i=0; i<24; i++) {
-        time2 = localtime(&theTime);
-
-        glBindBuffer(GL_ARRAY_BUFFER, vbo);
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 6, 0);
-        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 6,
-                              (char *) (sizeof(float) * 3));
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iab);
-
-        translate = glm::translate(this->camera->cameraTranslate,
-                                   vec3(sin(.35f*time2->tm_sec+i)*8.0f,cos(.52f*time2->tm_sec+i)*8.0f,  sin(.70f*time2->tm_sec+i)*8.0f));
-        rotate = glm::rotate(translate, glm::radians((float)time2->tm_sec), vec3(0, 1, 0));
-
-        glUniformMatrix4fv(uniform, 1, GL_FALSE, &rotate[0][0]);
-        glDrawElements(GL_TRIANGLES, this->s->numIndices, GL_UNSIGNED_SHORT, 0);
     }
 }
 
@@ -151,9 +100,13 @@ void SandBox::pause() {}
 
 void SandBox::resume() {}
 
-void SandBox::update() {}
+void SandBox::update() {
+    for (auto &i : cube) {
+        i->set_rotation_angle(pov_in_degrees);
+    }
+}
 
 bool SandBox::events(double xpos, double ypos) {
-    pov_in_degrees += 2.5f;
+    pov_in_degrees += 5.0f;
     return true;
 }

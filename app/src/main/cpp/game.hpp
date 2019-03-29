@@ -6,7 +6,6 @@
 #define BREAK_IT_ALL_GAME_H
 
 #include "Triangle.hpp"
-#include "square.hpp"
 #include "Cube.hpp"
 #include "IScene.hpp"
 
@@ -15,12 +14,7 @@ class Game
 public:
     Game(int pos, IScene *pScene);
 
-    Triangle *t;
-    Square *s;
-    float cube2[3];
     IScene *pScene;
-
-    Cube *cube[15][15];
     Camera *camera;
 
     static Game * init(int);

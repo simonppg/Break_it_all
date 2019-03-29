@@ -3,8 +3,6 @@
 //
 
 #include "../game.hpp"
-#include "../Triangle.hpp"
-#include "../square.hpp"
 #include "logger.hpp"
 
 Game *game;

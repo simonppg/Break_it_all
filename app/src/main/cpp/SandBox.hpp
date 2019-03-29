@@ -8,7 +8,6 @@
 #include "IScene.hpp"
 #include "Camera.hpp"
 #include "Triangle.hpp"
-#include "square.hpp"
 #include "Cube.hpp"
 
 class SandBox : public IScene {
@@ -26,8 +25,8 @@ public:
     Camera *camera;
     float cube2[3];
     Triangle *triangle[2];
-    Square *s;
     Cube *cube[3];
+    Cube *circle_of_cubes[24];
 };
 
 
