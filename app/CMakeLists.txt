@@ -51,4 +51,19 @@ else(ANDROID)
             DEPENDS linuxLauncher
             WORKING_DIRECTORY ${CMAKE_PROJECT_DIR})
 
+    # Unit Tests
+    enable_testing()
+    find_package(GTest REQUIRED)
+    include_directories(${GTEST_INCLUDE_DIRS})
+
+    add_executable(executeTests
+            src/main/cpp/tests/sqrt_test.cpp)
+
+    target_link_libraries(executeTests
+            ${GTEST_LIBRARIES}
+            pthread)
+
+    add_test(NAME executeTests
+            COMMAND executeTests)
+    
 endif(ANDROID)
