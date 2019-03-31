@@ -24,25 +24,25 @@ constexpr GLfloat Cube::vertex[48] =
                 1.0, 0.0, 0.0,
 
                 1.0, -1.0, 1.0, // right down front
-                1.0, 0.0, 0.0,
+                1.0, 1.0, 0.0,
 
                 -1.0, -1.0, 1.0, // left down front
-                1.0, 0.0, 0.0,
+                0.0, 1.0, 0.0,
 
                 -1.0, -1.0, -1.0, // left down back
-                1.0, 0.0, 0.0,
+                0.0, 0.0, 0.0,
 
                 1.0, 1.0, -1.0, // right up back
-                1.0, 0.0, 0.0,
+                1.0, 0.0, 1.0,
 
                 1.0, 1.0, 1.0, // right up front
-                1.0, 0.0, 0.0,
+                1.0, 1.0, 1.0,
 
                 -1.0, 1.0, 1.0, // left up front
-                1.0, 0.0, 0.0,
+                0.0, 1.0, 1.0,
 
                 -1.0, 1.0, -1.0, // left up back
-                1.0, 0.0, 0.0
+                0.0, 0.0, 1.0
         };
 
 constexpr GLushort Cube::indices[36] =
@@ -74,8 +74,8 @@ constexpr GLushort Cube::indices[36] =
 
 Cube::Cube(Camera *camera): x{0}, y{0}, z{0}, size{1} {
     this->camera = camera;
-    vertex_file = load_file("cube/cube.vert");
-    fragment_file = load_file("cube/cube.frag");
+    vertex_file = load_file("simple.vert");
+    fragment_file = load_file("simple.frag");
 }
 
 Cube::~Cube() {

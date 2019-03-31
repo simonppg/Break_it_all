@@ -22,9 +22,8 @@ public:
     void update() override;
     bool events(double xpos, double ypos) override;
 
-    Camera *camera;
-    Triangle *triangle[2];
-    Cube *cube[3];
+    Triangle *triangle[10];
+    Cube *cube[20];
 };
 
 

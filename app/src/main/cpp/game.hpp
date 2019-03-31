@@ -12,10 +12,9 @@
 class Game
 {
 public:
-    Game(int pos, IScene *pScene);
+    Game(IScene *pScene);
 
     IScene *pScene;
-    Camera *camera;
 
     static Game * init(int);
 

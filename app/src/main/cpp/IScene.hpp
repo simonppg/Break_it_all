@@ -6,6 +6,7 @@
 #define BREAK_IT_ALL_ISCENE_H
 
 #include "utils.hpp"
+#include "Camera.hpp"
 
 #ifdef __ANDROID_NDK__
 #include "android/logger.hpp"
@@ -26,6 +27,8 @@ public:
     virtual void resume() = 0;
     virtual void update() = 0;
     virtual bool events(double d, double d1) = 0;
+
+    Camera *camera;
 };
 
 #endif //BREAK_IT_ALL_ISCENE_H

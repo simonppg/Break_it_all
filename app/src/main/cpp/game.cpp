@@ -10,27 +10,29 @@
 #include "Test2.hpp"
 #include "Test3.hpp"
 
-void Game::camera_forward() { this->camera->z--;}
-void Game::camera_back() { this->camera->z++;}
-void Game::camera_left() { this->camera->x--;}
-void Game::camera_right() { this->camera->x++;}
-void Game::camera_reset() { this->camera->update_xyz(X, Y, Z); }
+void Game::camera_forward() { pScene->camera->z--;
+    //LOGI("%.2f",pScene->camera->z);
+}
+void Game::camera_back() { pScene->camera->z++;}
+void Game::camera_left() { pScene->camera->x--;}
+void Game::camera_right() { pScene->camera->x++;}
+void Game::camera_reset() { pScene->camera->update_xyz(X, Y, Z); }
 
 Game * Game::init(int pos) {
     // Don't call OpenGL functions here
     LOGI("Game::init %d", pos);
 
     if (pos == 0)
-        return new Game(pos, new SandBox());
+        return new Game(new SandBox());
     else if (pos == 1)
-        return new Game(pos, new Test1());
+        return new Game(new Test1());
     else if (pos == 2)
-        return new Game(pos, new Test2());
+        return new Game(new Test2());
     else
-        return new Game(pos, new Test3());
+        return new Game(new Test3());
 }
 
-Game::Game(int pos, IScene *pScene)
+Game::Game(IScene *pScene)
 {
     this->pScene = pScene;
 }

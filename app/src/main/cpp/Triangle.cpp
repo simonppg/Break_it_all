@@ -38,7 +38,7 @@ constexpr GLushort Triangle::indices[3] = { 0, 1, 2 };
 Triangle::Triangle(Camera *camera) : x{0}, y{0}, z{0}, size{1} {
     this->camera = camera;
     vertex_file = load_file("simple.vert");
-    fragment_file = load_file("square.frag");
+    fragment_file = load_file("simple.frag");
 }
 
 Triangle::~Triangle() {

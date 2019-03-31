@@ -21,20 +21,23 @@ SandBox::SandBox() {
 
     for (auto &i : triangle) {
         i = new Triangle(camera);
+        i->update_xyx(sin(rand() % 20 -10) + rand() % 20 -10,
+                cos(rand() % 36 -18) + rand() % 36 -18,
+                tan(rand() % 100 + 1) + rand() % 100 -10);
+        i->update_size(rand() % 3);
     }
-
-    triangle[0]->update_xyx(-2.0f, 0, 0);
-    triangle[0]->update_size(1);
-
-    triangle[1]->update_xyx(2.0f, 2.0f, 0);
-    triangle[1]->update_size(2);
 
     for (auto &i : cube) {
         i = new Cube(camera);
+        i->update_xyx(sin(rand() % 20 -10) + rand() % 20 -10,
+                      cos(rand() % 36 -18) + rand() % 36 -18,
+                      rand() % 100 -10);
+        i->update_size(rand() % 3);
+        i->animate_x();
     }
 
     cube[0]->update_xyx(-10, 5, 0);
-    cube[0]->update_size(1);
+    cube[0]->update_size(5);
     cube[0]->animate_x();
 
     cube[1]->update_xyx(0, 5, 0);
@@ -48,6 +51,7 @@ SandBox::SandBox() {
 
 void SandBox::surfaceCreated()
 {
+    glEnable(GL_DEPTH_TEST);
     // Triangle
     for(auto &i : triangle)
     {
