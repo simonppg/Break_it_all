@@ -28,7 +28,7 @@ public:
     virtual void update() = 0;
     virtual bool events(double d, double d1) = 0;
 
-    Camera *camera;
+    Camera *camera = nullptr;
 };
 
 #endif //BREAK_IT_ALL_ISCENE_H

@@ -91,7 +91,6 @@ void Cube::load_model() {
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
     glBufferData(GL_ARRAY_BUFFER, VERTEX_BUFFER_SIZE(numVertices), vertex, GL_STATIC_DRAW);
     glEnableVertexAttribArray(0);
-    glEnableVertexAttribArray(1);
 
     glGenBuffers(1, &iab);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iab);

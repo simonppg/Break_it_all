@@ -36,6 +36,7 @@ void Camera::update_width_height(int width, int height) {
 
 void Camera::update_perspective() {
     perspective = glm::perspective(glm::radians(fov), Camera::aspect_ratio(), ncp, fcp);
+    //perspective = glm::ortho(-10.0f,10.0f,-5.0f,5.0f, ncp, fcp);
     cameraTranslate = glm::translate(perspective, vec3(-x, -y, -z));
 }
 
