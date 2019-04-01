@@ -11,10 +11,11 @@
 using glm::mat4;
 using glm::vec3;
 
+#define PERSPECTIVE 0
+#define ORTHO 1
 class Camera {
-
+    int projection_type = PERSPECTIVE;
 public:
-
     float w, h;
     float x, y, z;
     float ncp; // near clipping plane
@@ -30,7 +31,8 @@ public:
     void update_width_height(int width, int height);
     void update_xyz(float x, float y, float z);
 
-    void update_perspective();
+    void update_projection();
+    void set_projection_type(int projection);
 };
 
 #endif //BREAK_IT_ALL_CAMERA_H

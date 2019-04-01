@@ -7,7 +7,7 @@
 
 Camera::Camera() : w{WIDTH}, h{HEIGHT}, x{X}, y{Y}, z{Z}, ncp{NCP}, fcp {FCP}, fov{FOV}
 {
-    update_perspective();
+    update_projection();
 }
 
 Camera::Camera(int w, int h, float x, float y, float z, float ncp, float rcp, float fov)
@@ -21,7 +21,7 @@ Camera::Camera(int w, int h, float x, float y, float z, float ncp, float rcp, fl
     this->ncp = ncp;
     this->fcp = rcp;
     this->fov = fov;
-    update_perspective();
+    update_projection();
 }
 
 float Camera::aspect_ratio() { // TODO: change this to a macro
@@ -31,12 +31,15 @@ float Camera::aspect_ratio() { // TODO: change this to a macro
 void Camera::update_width_height(int width, int height) {
     this->w = width;
     this->h = height;
-    update_perspective();
+    update_projection();
 }
 
-void Camera::update_perspective() {
-    perspective = glm::perspective(glm::radians(fov), Camera::aspect_ratio(), ncp, fcp);
-    //perspective = glm::ortho(-10.0f,10.0f,-5.0f,5.0f, ncp, fcp);
+void Camera::update_projection() {
+    if(projection_type == PERSPECTIVE)
+        perspective = glm::perspective(glm::radians(fov), Camera::aspect_ratio(), ncp, fcp);
+    else
+        perspective = glm::ortho(-w/2, w/2,-h/2, h/2, ncp, fcp);
+
     cameraTranslate = glm::translate(perspective, vec3(-x, -y, -z));
 }
 
@@ -44,5 +47,10 @@ void Camera::update_xyz(float x, float y, float z) {
     this->x = x;
     this->y = y;
     this->z = z;
-    update_perspective();
+    update_projection();
+}
+
+void Camera::set_projection_type(int projection) {
+    this->projection_type = projection;
+    update_projection();
 }
