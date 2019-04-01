@@ -9,6 +9,7 @@
 #include "Test1.hpp"
 #include "Test2.hpp"
 #include "Test3.hpp"
+#include "Test4.hpp"
 
 void Game::camera_forward() { pScene->camera->z--;
     //LOGI("%.2f",pScene->camera->z);
@@ -28,8 +29,10 @@ Game * Game::init(int pos) {
         return new Game(new Test1());
     else if (pos == 2)
         return new Game(new Test2());
-    else
+    else if (pos == 3)
         return new Game(new Test3());
+    else
+        return new Game(new Test4());
 }
 
 Game::Game(IScene *pScene)

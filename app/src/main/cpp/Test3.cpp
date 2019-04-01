@@ -49,8 +49,8 @@ void Test3::render() {
 void Test3::surfaceCreated() {
     char *vert, *frag;
 
-    vert = load_file("simple.vert");
-    frag = load_file("simple.frag");
+    vert = load_file("examples/triangle/triangle.vert");
+    frag = load_file("examples/triangle/triangle.frag");
     programID = Utils::createProgram(vert, frag);
 
     if (vert)
