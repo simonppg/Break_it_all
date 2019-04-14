@@ -48,3 +48,8 @@ $ sudo cmake CMakeLists.txt
 $ sudo make
 $ sudo cp *.a /usr/lib
 ```
+
+## Run tests
+```console
+$ make check
+```

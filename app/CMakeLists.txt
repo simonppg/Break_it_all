@@ -10,19 +10,27 @@ else()
 endif()
 
 include(DownloadProject.cmake)
-download_project(PROJ   googletest
-        GIT_REPOSITORY  https://github.com/google/googletest.git
-        GIT_TAG         master
-        ${UPDATE_DISCONNECTED_IF_AVAILABLE})
 
+# Get glm
 download_project(PROJ   glm
         GIT_REPOSITORY  https://github.com/g-truc/glm.git
         GIT_TAG         master
         ${UPDATE_DISCONNECTED_IF_AVAILABLE})
-
+set(GLM_TEST_ENABLE OFF CACHE BOOL "" FORCE)
 add_subdirectory(${glm_SOURCE_DIR} ${glm_BINARY_DIR})
 if (CMAKE_VERSION VERSION_LESS 2.8.11)
     include_directories("${glm_SOURCE_DIR}/include")
+endif()
+
+# Get googletest
+download_project(PROJ   googletest
+        GIT_REPOSITORY  https://github.com/google/googletest.git
+        GIT_TAG         master
+        ${UPDATE_DISCONNECTED_IF_AVAILABLE})
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+add_subdirectory(${googletest_SOURCE_DIR} ${googletest_BINARY_DIR})
+if (CMAKE_VERSION VERSION_LESS 2.8.11)
+    include_directories("${gtest_SOURCE_DIR}/include" "${gmock_SOURCE_DIR}/include")
 endif()
 
 add_library(common STATIC
@@ -51,9 +59,7 @@ if(ANDROID)
     target_link_libraries(gameLibJNIWrapper
             common
             -landroid
-            -llog
-            -lGLESv3
-            glm)
+            -llog)
 
 else(ANDROID)
 
@@ -73,12 +79,6 @@ else(ANDROID)
             WORKING_DIRECTORY ${CMAKE_PROJECT_DIR})
 
     # Unit Tests
-    set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-    add_subdirectory(${googletest_SOURCE_DIR} ${googletest_BINARY_DIR})
-    if (CMAKE_VERSION VERSION_LESS 2.8.11)
-        include_directories("${gtest_SOURCE_DIR}/include"
-                "${gmock_SOURCE_DIR}/include")
-    endif()
     enable_testing()
     add_executable(executeTests
             src/main/cpp/tests/sqrt_test.cpp)
@@ -89,5 +89,9 @@ else(ANDROID)
 
     add_test(NAME executeTests
             COMMAND executeTests)
-    
+
+    add_custom_target(check
+            COMMAND env CTEST_OUTPUT_ON_FAILURE=1 GTEST_COLOR=1 ${CMAKE_CTEST_COMMAND}
+            DEPENDS executeTests)
+
 endif(ANDROID)
