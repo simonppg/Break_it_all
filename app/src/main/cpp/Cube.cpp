@@ -72,7 +72,7 @@ constexpr GLushort Cube::indices[36] =
                 3, 4, 7
         };
 
-Cube::Cube(Camera *camera): x{0}, y{0}, z{0}, size{1} {
+Cube::Cube(Camera *camera): x{0}, y{0}, z{0}, size_x{1}, size_y{1}, size_z{1} {
     this->camera = camera;
     vertex_file = load_file("simple.vert");
     fragment_file = load_file("simple.frag");
@@ -113,7 +113,7 @@ void Cube::draw() {
 
     translate = glm::translate(camera->cameraTranslate, vec3(x, y, z));
     rotate = glm::rotate(translate, glm::radians(angle), rotation);
-    scale = glm::scale(rotate, glm::vec3(size));
+    scale = glm::scale(rotate, glm::vec3(size_x, size_y, size_z));
 
     glUniformMatrix4fv(uniform, 1, GL_FALSE, &scale[0][0]);
     glDrawElements(GL_TRIANGLES, numIndices, GL_UNSIGNED_SHORT, 0);
@@ -125,8 +125,10 @@ void Cube::update_xyx(float x, float y, float z) {
     this->z = z;
 }
 
-void Cube::update_size(float size) {
-    this->size = size;
+void Cube::update_size(float size_x, float size_y, float size_z) {
+    this->size_x = size_x;
+    this->size_y = size_y;
+    this->size_z = size_z;
 }
 
 void Cube::animate_x() {

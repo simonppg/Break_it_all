@@ -12,7 +12,7 @@
 
 class Cube {
     float x,y,z;
-    float size;
+    float size_x, size_y, size_z;
     char *vertex_file;
     char *fragment_file;
     static GLuint vbo; // vertex buffer object
@@ -38,7 +38,7 @@ public:
 
     void update_xyx(float x, float y, float z);
 
-    void update_size(float size);
+    void update_size(float size_x, float size_y, float size_z);
 
     void animate_x();
 

@@ -22,7 +22,9 @@ public:
     bool events(double xpos, double ypos) override;
 
     Square *square;
-    Cube *cube[10][15];
+#define ROW 10
+#define COL 9
+    Cube *cube[ROW][COL];
 };
 
 #endif //BREAK_IT_ALL_TEST4_H
