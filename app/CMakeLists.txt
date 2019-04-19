@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10.2)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall -Werror")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 -g --coverage -std=c++11 -Wall -Werror")
 set(CMAKE_VERBOSE_MAKEFILE on)
 set(CMAKE_BUILD_TYPE Debug)
 
@@ -44,6 +44,7 @@ add_library(common STATIC
         src/main/cpp/utils.cpp
         src/main/cpp/Cube.cpp
         src/main/cpp/Camera.cpp
+        src/main/cpp/math_utils.cpp
         src/main/cpp/game.cpp)
 
 target_link_libraries(common
@@ -81,7 +82,9 @@ else(ANDROID)
     # Unit Tests
     enable_testing()
     add_executable(executeTests
-            src/main/cpp/tests/sqrt_test.cpp)
+            src/main/cpp/tests/sqrt_test.cpp
+            src/main/cpp/math_utils.cpp
+            src/main/cpp/tests/game_test.cpp)
 
     target_link_libraries(executeTests
             gtest
@@ -91,7 +94,7 @@ else(ANDROID)
             COMMAND executeTests)
 
     add_custom_target(check
-            COMMAND env CTEST_OUTPUT_ON_FAILURE=1 GTEST_COLOR=1 ${CMAKE_CTEST_COMMAND}
+            COMMAND env CTEST_OUTPUT_ON_FAILURE=1 GTEST_COLOR=1 ${CMAKE_CTEST_COMMAND} -VV
             DEPENDS executeTests)
 
 endif(ANDROID)

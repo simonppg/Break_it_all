@@ -3,7 +3,7 @@
 //
 
 #include "Test4.hpp"
-#include <cstdlib>
+#include "math_utils.hpp"
 
 Test4::Test4() {
     camera = new Camera(WIDTH, HEIGHT, X, Y, Z, NCP, FCP, FOV);
@@ -15,9 +15,7 @@ Test4::Test4() {
     square->animate_x();
 
     for (auto &i : cube) {
-        for (auto &j : i) {
-            j = new Cube(camera);
-        }
+        i = new Cube(camera);
     }
 }
 
@@ -33,9 +31,7 @@ void Test4::render() {
 
     // Cube
     for (auto &i : cube) {
-        for (auto &j : i) {
-            j->draw();
-        }
+        i->draw();
     }
 }
 
@@ -46,51 +42,30 @@ void Test4::surfaceCreated() {
 
     // Cube
     for (auto &i : cube) {
-        for (auto &j : i) {
-            j->createProgram();
-        }
+        i->createProgram();
     }
     Cube::load_model();
     Square::load_model();
 }
 
 void Test4::surfaceChanged(int width, int height) {
-    float total_gaps, gap_size, x_size, y_size;
-
     glViewport(0, 0, width, height);
     camera->update_width_height(width, height);
 
-    total_gaps = COL + 1;
-    gap_size = (10.0f * width / 100) / total_gaps;
-    x_size = ((width - (total_gaps * gap_size)) / COL) / 2;
-    y_size = ((((2*height)/3) - (total_gaps * gap_size)) / ROW) / 2;
+    float h = (float)height/2;
+    vector<float> vPos = Math::get_grid(width, h, ROW, COL);
+    float x_size = 90.0f*((float)width/COL)/100;
+    float y_size = 80.0f*(h/ROW)/100;
 
-    assert(x_size > 0);
-    assert(y_size > 0);
-    assert((total_gaps * gap_size) + (COL * x_size)*2 == width);
-    assert((total_gaps * gap_size) + (ROW * y_size)*2 + height/3== height);
-
-    float x_offset = -width/2 + gap_size + x_size;
-    float y_offset = height/2 - gap_size - y_size;
-    for (auto &i : cube) {
-        for (auto &j : i)
-        {
-            j->update_size(x_size, y_size/2, 1);
-            j->update_xyx(x_offset, y_offset, 0);
-            x_offset = x_offset + (x_size*2) + gap_size;
-        }
-        x_offset = -width/2 + gap_size + x_size;
-        y_offset = y_offset - (y_size) - gap_size;
+    for (int i = 0; i < ROW * COL; i++) {
+        cube[i]->update_size(x_size/2, y_size/2, 1);
+        cube[i]->update_xyx(vPos[i * 2], vPos[i * 2 + 1], 0);
     }
 }
 
-void Test4::pause() {
-    //glDeleteProgram(programID);
-}
+void Test4::pause() {}
 
-void Test4::resume() {
-    //glUseProgram(programID);
-}
+void Test4::resume() {}
 
 void Test4::update() {}
 
