@@ -97,4 +97,11 @@ else(ANDROID)
             COMMAND env CTEST_OUTPUT_ON_FAILURE=1 GTEST_COLOR=1 ${CMAKE_CTEST_COMMAND} -VV
             DEPENDS executeTests)
 
+    add_custom_target(coverage
+            COMMAND lcov -c -d CMakeFiles -o cov.info
+            COMMAND genhtml cov.info -o out
+            COMMAND google-chrome out/index.html
+            DEPENDS check
+            WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
+
 endif(ANDROID)
