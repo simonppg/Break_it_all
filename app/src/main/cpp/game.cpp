@@ -41,8 +41,8 @@ Game::Game(IScene *pScene)
 }
 
 void Game::surfaceCreated() {
-    LOGI("on_surface_created");
-    LOGI("GL_VERSION: %d GL_RENDERER: %d", GL_VERSION, GL_RENDERER);
+    LOGE("OpenGL version: %s", glGetString(GL_VERSION));
+    LOGE("GLSL version: %s", glGetString(GL_SHADING_LANGUAGE_VERSION));
     pScene->surfaceCreated();
 }
 

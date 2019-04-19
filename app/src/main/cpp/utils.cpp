@@ -34,6 +34,7 @@ GLuint Utils::loadShader(GLenum shaderType, const char* shaderSource)
                 {
                     glGetShaderInfoLog(shader, infoLen, NULL, buf);
                     LOGE("Could not Compile Shader: %d, %s", shaderType, buf);
+                    LOGE("Shader src: %s", shaderSource);
                     free(buf);
                 }
                 glDeleteShader(shader);
