@@ -4,6 +4,8 @@
 
 #include "math_utils.hpp"
 
+#include <cmath>
+
 float Math::get_sections_size(float segment, float spaces) {
     return segment/spaces;
 }
@@ -23,6 +25,16 @@ vector<float> Math::get_grid(float width, float height, float row, float col) {
         }
         x_offset = -width/2 + x_section/2;
         y_offset = y_offset - y_section;
+    }
+    return v;
+}
+
+vector<float> Math::get_circle(float radius, int number_of_vertices) {
+    vector<float> v;
+    for(double i = 0; i < 2 * M_PI; i += 2 * M_PI / number_of_vertices) {
+        v.push_back(cos(i) * radius);    //X coordinate
+        v.push_back(sin(i) * radius);    //Y coordinate
+        v.push_back(0.0);                //Z coordinate
     }
     return v;
 }

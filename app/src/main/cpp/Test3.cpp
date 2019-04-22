@@ -5,19 +5,16 @@
 #include "Test3.hpp"
 
 #include <vector>
-#include <cmath>
+
+#include "math_utils.hpp"
 
 #define NUMBER_OF_VERTICES 160
 float radius = 0.5;
-std::vector<float> vertexBuffer;
+std::vector<float> v;
 
 Test3::Test3() {
     camera = new Camera(WIDTH, HEIGHT, X, Y, Z, NCP, FCP, FOV);
-    for(double i = 0; i < 2 * M_PI; i += 2 * M_PI / NUMBER_OF_VERTICES) {
-        vertexBuffer.push_back(cos(i) * radius);    //X coordinate
-        vertexBuffer.push_back(sin(i) * radius);    //Y coordinate
-        vertexBuffer.push_back(0.0);                //Z coordinate
-    }
+    v = Math::get_circle(radius, NUMBER_OF_VERTICES);
 }
 
 void Test3::render() {
@@ -33,7 +30,7 @@ void Test3::render() {
     glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
     glBindBuffer(GL_ARRAY_BUFFER, 0);
-    glVertexAttribPointer(0 , 3, GL_FLOAT, GL_FALSE, 12, vertexBuffer.data());
+    glVertexAttribPointer(0 , 3, GL_FLOAT, GL_FALSE, 12, v.data());
     glEnableVertexAttribArray(0);
 
     translate = glm::translate(camera->cameraTranslate, vec3(0, 0, 0));
