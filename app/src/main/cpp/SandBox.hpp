@@ -9,6 +9,7 @@
 #include "Camera.hpp"
 #include "Triangle.hpp"
 #include "Cube.hpp"
+#include "Mesh.hpp"
 
 class SandBox : public IScene {
 

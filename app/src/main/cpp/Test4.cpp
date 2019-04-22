@@ -10,9 +10,9 @@ Test4::Test4() {
     camera->set_projection_type(ORTHO);
 
     square = new Square(camera);
-    square->update_xyx(-200, -100, 0);
-    square->update_size(20);
-    square->animate_x();
+    ((Mesh*)square)->update_xyx(-200, -100, 0);
+    ((Mesh*)square)->update_size(20, 1, 1);
+    ((Mesh*)square)->animate_x();
 
     for (auto &i : cube) {
         i = new Cube(camera);
@@ -58,8 +58,8 @@ void Test4::surfaceChanged(int width, int height) {
     float y_size = 80.0f*(h/ROW)/100;
 
     for (int i = 0; i < ROW * COL; i++) {
-        cube[i]->update_size(x_size/2, y_size/2, 1);
-        cube[i]->update_xyx(vPos[i * 2], vPos[i * 2 + 1], 0);
+        ((Mesh*)cube[i])->update_size(x_size/2, y_size/2, 1);
+        ((Mesh*)cube[i])->update_xyx(vPos[i * 2], vPos[i * 2 + 1], 0);
     }
 }
 

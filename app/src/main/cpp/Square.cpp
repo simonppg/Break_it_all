@@ -33,36 +33,10 @@ constexpr GLushort Square::indices[6] =
                 1, 2, 3
         };
 
-Square::Square(Camera *camera): x{0}, y{0}, z{0}, size{1} {
+Square::Square(Camera *camera) : Mesh() {
     this->camera = camera;
     vertex_file = load_file("simple.vert");
     fragment_file = load_file("simple.frag");
-}
-
-void Square::update_xyx(float x, float y, float z) {
-    this->x = x;
-    this->y = y;
-    this->z = z;
-}
-
-void Square::update_size(float size) {
-    this->size = size;
-}
-
-void Square::animate_x() {
-    rotation = vec3(1, 0, 0);
-}
-
-void Square::animate_y() {
-    rotation = vec3(0, 1, 0);
-}
-
-void Square::animate_z() {
-    rotation = vec3(0, 0, 1);
-}
-
-void Square::set_rotation_angle(float angle) {
-    this->angle = angle;
 }
 
 void Square::createProgram() {
@@ -97,7 +71,7 @@ void Square::draw() {
 
     translate = glm::translate(camera->cameraTranslate, vec3(x, y, z));
     rotate = glm::rotate(translate, glm::radians(angle), rotation);
-    scale = glm::scale(rotate, glm::vec3(size));
+    scale = glm::scale(rotate, glm::vec3(size_x, size_y, size_z));
 
     glUniformMatrix4fv(uniform, 1, GL_FALSE, &scale[0][0]);
     glDrawElements(GL_TRIANGLES, numIndices, GL_UNSIGNED_SHORT, 0);

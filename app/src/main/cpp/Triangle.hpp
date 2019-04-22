@@ -7,6 +7,7 @@
 
 #include "utils.hpp"
 #include "Camera.hpp"
+#include "Mesh.hpp"
 
 class Triangle {
     float x,y,z;

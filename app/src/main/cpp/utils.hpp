@@ -11,33 +11,6 @@
 extern "C" {
 #endif
 
-struct _vector{
-    GLfloat x, y, z;
-};
-
-typedef struct _vector Vector;
-
-struct _vertex{
-    Vector position;
-    Vector color;
-};
-
-typedef struct _vertex Vertex;
-
-struct _Shape
-{
-    Vertex* vertices;
-    GLuint numVertices;
-    GLushort* indices;
-    GLuint numIndices;
-};
-
-typedef struct _Shape Shape;
-
-#define NUM_ARRAY_ELEMENTS(a) (sizeof(a) / sizeof(*a))
-#define INDEX_BUFFER_SIZE(numIndices) ((GLsizeiptr)((numIndices) * (sizeof(GLushort))))
-#define VERTEX_BUFFER_SIZE(numIndices) ((GLsizeiptr)((numIndices) * (sizeof(Vertex))))
-
 // Camera/viewport config
 static const int WIDTH = 450;
 static const int HEIGHT = 800;

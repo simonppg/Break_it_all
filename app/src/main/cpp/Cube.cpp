@@ -72,7 +72,7 @@ constexpr GLushort Cube::indices[36] =
                 3, 4, 7
         };
 
-Cube::Cube(Camera *camera): x{0}, y{0}, z{0}, size_x{1}, size_y{1}, size_z{1} {
+Cube::Cube(Camera *camera) : Mesh() {
     this->camera = camera;
     vertex_file = load_file("simple.vert");
     fragment_file = load_file("simple.frag");
@@ -91,6 +91,7 @@ void Cube::load_model() {
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
     glBufferData(GL_ARRAY_BUFFER, VERTEX_BUFFER_SIZE(numVertices), vertex, GL_STATIC_DRAW);
     glEnableVertexAttribArray(0);
+    glEnableVertexAttribArray(1);
 
     glGenBuffers(1, &iab);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iab);
@@ -117,34 +118,6 @@ void Cube::draw() {
 
     glUniformMatrix4fv(uniform, 1, GL_FALSE, &scale[0][0]);
     glDrawElements(GL_TRIANGLES, numIndices, GL_UNSIGNED_SHORT, 0);
-}
-
-void Cube::update_xyx(float x, float y, float z) {
-    this->x = x;
-    this->y = y;
-    this->z = z;
-}
-
-void Cube::update_size(float size_x, float size_y, float size_z) {
-    this->size_x = size_x;
-    this->size_y = size_y;
-    this->size_z = size_z;
-}
-
-void Cube::animate_x() {
-    rotation = vec3(1, 0, 0);
-}
-
-void Cube::animate_y() {
-    rotation = vec3(0, 1, 0);
-}
-
-void Cube::animate_z() {
-    rotation = vec3(0, 0, 1);
-}
-
-void Cube::set_rotation_angle(float angle) {
-    this->angle = angle;
 }
 
 void Cube::createProgram() {

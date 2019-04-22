@@ -45,7 +45,8 @@ add_library(common STATIC
         src/main/cpp/Cube.cpp
         src/main/cpp/Camera.cpp
         src/main/cpp/math_utils.cpp
-        src/main/cpp/game.cpp)
+        src/main/cpp/game.cpp
+        src/main/cpp/Mesh.cpp)
 
 target_link_libraries(common
         -lGLESv2
