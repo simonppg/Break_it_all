@@ -10,6 +10,8 @@
 #include "Triangle.hpp"
 #include "Cube.hpp"
 #include "Mesh.hpp"
+#include "Object.hpp"
+#include "ShaderProg.hpp"
 
 class SandBox : public IScene {
 
@@ -23,8 +25,9 @@ public:
     void update() override;
     bool events(double xpos, double ypos) override;
 
-    Triangle *triangle[10];
-    Cube *cube[20];
+    Mesh *meshes[1];
+    Object *cubo[40];
+    ShaderProg *shaderProgs[1];
 };
 
 

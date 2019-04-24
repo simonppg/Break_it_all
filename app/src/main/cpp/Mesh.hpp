@@ -16,29 +16,16 @@ using glm::vec3;
 #define VERTEX_BUFFER_SIZE(numIndices) ((GLsizeiptr)((numIndices) * (sizeof(float) * 6)))
 
 class Mesh {
-protected:
-    float x,y,z;
-    float size_x, size_y, size_z;
-
-    vec3 rotation;
-    float angle;
 public:
-
-    Mesh();
-
+    Mesh(float *vertex, int v_size, short *indices, int i_size);
+    void load_model();
     GLuint programID;
-
-    void update_xyx(float x, float y, float z);
-
-    void update_size(float size_x, float size_y, float size_z);
-
-    void animate_x();
-
-    void animate_y();
-
-    void animate_z();
-
-    void set_rotation_angle(float angle);
+    GLuint vbo; // vertex buffer object
+    GLuint iab; // index array buffer
+    float *vertex;
+    short *indices;
+    int numVertices;
+    int numIndices;
 };
 
 #endif //BREAK_IT_ALL_MESH_HPP

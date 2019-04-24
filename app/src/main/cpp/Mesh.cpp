@@ -4,32 +4,22 @@
 
 #include "Mesh.hpp"
 
-Mesh::Mesh(): x{0}, y{0}, z{0}, size_x{1}, size_y{1}, size_z{1} {}
+Mesh::Mesh(float *vertex, int v_size, short *indices, int i_size) {
+    this->vertex = vertex;
+    this->numVertices = v_size;
 
-void Mesh::update_xyx(float x, float y, float z) {
-    this->x = x;
-    this->y = y;
-    this->z = z;
+    this->indices = indices;
+    this->numIndices = i_size;
 }
 
-void Mesh::update_size(float size_x, float size_y, float size_z) {
-    this->size_x = size_x;
-    this->size_y = size_y;
-    this->size_z = size_z;
-}
+void Mesh::load_model() {
+    glGenBuffers(1, &vbo);
+    glBindBuffer(GL_ARRAY_BUFFER, vbo);
+    glBufferData(GL_ARRAY_BUFFER, VERTEX_BUFFER_SIZE(numVertices), vertex, GL_STATIC_DRAW);
+    glEnableVertexAttribArray(0);
+    glEnableVertexAttribArray(1);
 
-void Mesh::animate_x() {
-    rotation = vec3(1, 0, 0);
-}
-
-void Mesh::animate_y() {
-    rotation = vec3(0, 1, 0);
-}
-
-void Mesh::animate_z() {
-    rotation = vec3(0, 0, 1);
-}
-
-void Mesh::set_rotation_angle(float angle) {
-    this->angle = angle;
+    glGenBuffers(1, &iab);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iab);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, INDEX_BUFFER_SIZE(numIndices), indices, GL_STATIC_DRAW);
 }

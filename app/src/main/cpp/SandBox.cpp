@@ -15,56 +15,33 @@ float pov_in_degrees = 0.0f;
 
 #include "SandBox.hpp"
 #include "Cube.hpp"
+#include "math_utils.hpp"
 
 SandBox::SandBox() {
     camera = new Camera(WIDTH, HEIGHT, X, Y, Z, NCP, FCP, FOV);
 
-    for (auto &i : triangle) {
-        i = new Triangle(camera);
-        i->update_xyx(sin(rand() % 20 -10) + rand() % 20 -10,
-                cos(rand() % 36 -18) + rand() % 36 -18,
-                tan(rand() % 100 + 1) + rand() % 100 -10);
-        i->update_size(rand() % 3);
+    shaderProgs[0] = new ShaderProg("simple.vert", "simple.frag");
+
+    meshes[0] = new Mesh(Math::get_cube(), 48, Math::get_cube_index(), 36);
+
+    for (auto &i : cubo) {
+        i = new Object(camera);
+        i->mesh = meshes[0];
+        i->prog = shaderProgs[0];
+        i->update_size(1, 1, 1);
+        i->update_xyz(sin(rand() % 20 -10) + rand() % 20 -10,
+                            cos(rand() % 36 -18) + rand() % 36 -18,
+                            tan(rand() % 100 + 1) + rand() % 100 -10);
+        i->animate_y();
     }
-
-    for (auto &i : cube) {
-        i = new Cube(camera);
-        ((Mesh*)i)->update_xyx(sin(rand() % 20 -10) + rand() % 20 -10,
-                      cos(rand() % 36 -18) + rand() % 36 -18,
-                      rand() % 100 -10);
-        ((Mesh*)i)->update_size(rand() % 3, rand() % 3, rand() % 3);
-        ((Mesh*)i)->animate_x();
-    }
-
-    ((Mesh*)cube[0])->update_xyx(-10, 5, 0);
-    ((Mesh*)cube[0])->update_size(5, 1, 1);
-    ((Mesh*)cube[0])->animate_x();
-
-    ((Mesh*)cube[1])->update_xyx(0, 5, 0);
-    ((Mesh*)cube[1])->update_size(2, 1, 1);
-    ((Mesh*)cube[1])->animate_y();
-
-    ((Mesh*)cube[2])->update_xyx(10, 5, 0);
-    ((Mesh*)cube[2])->update_size(3, 1, 1);
-    ((Mesh*)cube[2])->animate_z();
 }
 
 void SandBox::surfaceCreated()
 {
     glEnable(GL_DEPTH_TEST);
-    // Triangle
-    for(auto &i : triangle)
-    {
-        i->createProgram();
-    }
-    Triangle::load_model();
 
-    // Cube
-    for (auto &i : cube) {
-        i->createProgram();
-    }
-    Cube::load_model();
-
+    shaderProgs[0]->createProgram();
+    meshes[0]->load_model();
     // TODO: free buffers
 }
 
@@ -75,14 +52,8 @@ void SandBox::render() {
     glClearColor(0.6f, 0.6f, 0.6f, 1.0f);
     glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
-    // Triangle1
-    for(auto &i : triangle)
+    for(auto &i : cubo)
     {
-        i->draw();
-    }
-
-    // Cube 1
-    for (auto &i : cube) {
         i->draw();
     }
 }
@@ -97,8 +68,9 @@ void SandBox::pause() {}
 void SandBox::resume() {}
 
 void SandBox::update() {
-    for (auto &i : cube) {
-        ((Mesh*)i)->set_rotation_angle(pov_in_degrees);
+    for(auto &i : cubo)
+    {
+        i->set_rotation_angle(pov_in_degrees);
     }
 }
 
