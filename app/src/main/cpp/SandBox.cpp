@@ -24,11 +24,11 @@ SandBox::SandBox() {
 
     meshes[0] = new Mesh(Math::get_cube(), 48, Math::get_cube_index(), 36);
 
-    for (auto &i : cubo) {
+    for (auto &i : objects) {
         i = new Object(camera);
         i->mesh = meshes[0];
         i->prog = shaderProgs[0];
-        i->update_size(1, 1, 1);
+        i->update_size(2, 1, 1);
         i->update_xyz(sin(rand() % 20 -10) + rand() % 20 -10,
                             cos(rand() % 36 -18) + rand() % 36 -18,
                             tan(rand() % 100 + 1) + rand() % 100 -10);
@@ -52,7 +52,7 @@ void SandBox::render() {
     glClearColor(0.6f, 0.6f, 0.6f, 1.0f);
     glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
-    for(auto &i : cubo)
+    for(auto &i : objects)
     {
         i->draw();
     }
@@ -68,7 +68,7 @@ void SandBox::pause() {}
 void SandBox::resume() {}
 
 void SandBox::update() {
-    for(auto &i : cubo)
+    for(auto &i : objects)
     {
         i->set_rotation_angle(pov_in_degrees);
     }

@@ -35,10 +35,10 @@ endif()
 
 add_library(common STATIC
         src/main/cpp/SandBox.cpp
-        #src/main/cpp/Test1.cpp
-        #src/main/cpp/Test2.cpp
-        #src/main/cpp/Test3.cpp
-        #src/main/cpp/Test4.cpp
+        src/main/cpp/Test1.cpp
+        src/main/cpp/Test2.cpp
+        src/main/cpp/Test3.cpp
+        src/main/cpp/Test4.cpp
         src/main/cpp/Triangle.cpp
         #src/main/cpp/Square.cpp
         src/main/cpp/utils.cpp

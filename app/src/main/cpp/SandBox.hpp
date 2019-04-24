@@ -26,7 +26,7 @@ public:
     bool events(double xpos, double ypos) override;
 
     Mesh *meshes[1];
-    Object *cubo[40];
+    Object *objects[40];
     ShaderProg *shaderProgs[1];
 };
 

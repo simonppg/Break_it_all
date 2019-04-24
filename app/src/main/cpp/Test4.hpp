@@ -8,6 +8,8 @@
 #include "IScene.hpp"
 #include "Square.hpp"
 #include "Cube.hpp"
+#include "Object.hpp"
+#include "ShaderProg.hpp"
 
 class Test4 : public IScene {
 
@@ -21,10 +23,12 @@ public:
     void update() override;
     bool events(double xpos, double ypos) override;
 
-    Square *square;
 #define ROW 15
 #define COL 9
-    Cube *cube[ROW * COL];
+    Mesh *meshes[2];
+    Object *objects[ROW * COL];
+    ShaderProg *shaderProgs[2];
+    Object *circle;
 };
 
 #endif //BREAK_IT_ALL_TEST4_H

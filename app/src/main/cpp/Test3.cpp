@@ -10,7 +10,7 @@
 
 #define NUMBER_OF_VERTICES 160
 float radius = 0.5;
-std::vector<float> v;
+float *v;
 
 Test3::Test3() {
     camera = new Camera(WIDTH, HEIGHT, X, Y, Z, NCP, FCP, FOV);
@@ -29,8 +29,6 @@ void Test3::render() {
     glClearColor(0.6f, 0.6f, 0.6f, 1.0f);
     glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
-    glVertexAttribPointer(0 , 3, GL_FLOAT, GL_FALSE, 12, v.data());
     glEnableVertexAttribArray(0);
 
     translate = glm::translate(camera->cameraTranslate, vec3(0, 0, 0));
@@ -49,6 +47,9 @@ void Test3::surfaceCreated() {
     vert = load_file("examples/triangle/triangle.vert");
     frag = load_file("examples/triangle/triangle.frag");
     programID = Utils::createProgram(vert, frag);
+
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glVertexAttribPointer(0 , 3, GL_FLOAT, GL_FALSE, 12, v);
 
     if (vert)
         free(vert);

@@ -29,13 +29,18 @@ vector<float> Math::get_grid(float width, float height, float row, float col) {
     return v;
 }
 
-vector<float> Math::get_circle(float radius, int number_of_vertices) {
-    vector<float> v;
+float* Math::get_circle(float radius, int number_of_vertices) {
+    float *v;
+
+    v = (float *) malloc(sizeof(float) * 3 * number_of_vertices);
+    int j = 0;
+
     for(double i = 0; i < 2 * M_PI; i += 2 * M_PI / number_of_vertices) {
-        v.push_back(cos(i) * radius);    //X coordinate
-        v.push_back(sin(i) * radius);    //Y coordinate
-        v.push_back(0.0);                //Z coordinate
+        v[j++] = cos(i) * radius;    //X coordinate
+        v[j++] = sin(i) * radius;    //Y coordinate
+        v[j++] = 0.0;                //Z coordinate
     }
+
     return v;
 }
 
