@@ -25,7 +25,7 @@ endif()
 # Get googletest
 download_project(PROJ   googletest
         GIT_REPOSITORY  https://github.com/google/googletest.git
-        GIT_TAG         master
+        GIT_TAG         v1.8.x
         ${UPDATE_DISCONNECTED_IF_AVAILABLE})
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 add_subdirectory(${googletest_SOURCE_DIR} ${googletest_BINARY_DIR})
@@ -80,29 +80,28 @@ else(ANDROID)
             DEPENDS linuxLauncher
             WORKING_DIRECTORY ${CMAKE_PROJECT_DIR})
 
-    # Unit Tests
-    enable_testing()
-    add_executable(executeTests
-            src/main/cpp/tests/sqrt_test.cpp
-            src/main/cpp/math_utils.cpp
-            src/main/cpp/tests/game_test.cpp)
-
-    target_link_libraries(executeTests
-            gtest
-            pthread)
-
-    add_test(NAME executeTests
-            COMMAND executeTests)
-
-    add_custom_target(check
-            COMMAND env CTEST_OUTPUT_ON_FAILURE=1 GTEST_COLOR=1 ${CMAKE_CTEST_COMMAND} -VV
-            DEPENDS executeTests)
-
-    add_custom_target(coverage
-            COMMAND lcov -c -d CMakeFiles -o cov.info
-            COMMAND genhtml cov.info -o out
-            COMMAND google-chrome out/index.html
-            DEPENDS check
-            WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
-
 endif(ANDROID)
+
+# Unit Tests
+enable_testing()
+add_executable(executeTests
+        src/main/cpp/tests/sqrt_test.cpp
+        src/main/cpp/math_utils.cpp
+        src/main/cpp/tests/game_test.cpp)
+
+target_link_libraries(executeTests
+        gtest)
+
+add_test(NAME executeTests
+        COMMAND executeTests)
+
+add_custom_target(check
+        COMMAND env CTEST_OUTPUT_ON_FAILURE=1 GTEST_COLOR=1 ${CMAKE_CTEST_COMMAND} -VV
+        DEPENDS executeTests)
+
+add_custom_target(coverage
+        COMMAND lcov -c -d CMakeFiles -o cov.info
+        COMMAND genhtml cov.info -o out
+        COMMAND google-chrome out/index.html
+        DEPENDS check
+        WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
