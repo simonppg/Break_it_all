@@ -39,15 +39,13 @@ add_library(common STATIC
         src/main/cpp/Test2.cpp
         src/main/cpp/Test3.cpp
         src/main/cpp/Test4.cpp
-        src/main/cpp/Triangle.cpp
-        #src/main/cpp/Square.cpp
         src/main/cpp/utils.cpp
-        #src/main/cpp/Cube.cpp
         src/main/cpp/Camera.cpp
         src/main/cpp/math_utils.cpp
         src/main/cpp/Object.cpp
         src/main/cpp/ShaderProg.cpp
         src/main/cpp/game.cpp
+        src/main/cpp/Renderer.cpp
         src/main/cpp/Mesh.cpp)
 
 target_link_libraries(common

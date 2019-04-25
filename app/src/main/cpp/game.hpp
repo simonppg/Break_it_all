@@ -5,8 +5,6 @@
 #ifndef BREAK_IT_ALL_GAME_H
 #define BREAK_IT_ALL_GAME_H
 
-#include "Triangle.hpp"
-#include "Cube.hpp"
 #include "IScene.hpp"
 
 class Game

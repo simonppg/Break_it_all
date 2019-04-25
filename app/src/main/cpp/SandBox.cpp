@@ -2,32 +2,22 @@
 // Created by simonppg on 3/27/19.
 //
 
-#include <GLES3/gl3.h>
-#include <ctime>
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <cstdlib>
+#include "SandBox.hpp"
+
+#include "math_utils.hpp"
 
 using glm::mat4;
 using glm::vec3;
 
 float pov_in_degrees = 0.0f;
 
-#include "SandBox.hpp"
-#include "Cube.hpp"
-#include "math_utils.hpp"
-
 SandBox::SandBox() {
     camera = new Camera(WIDTH, HEIGHT, X, Y, Z, NCP, FCP, FOV);
-
     shaderProgs[0] = new ShaderProg("simple.vert", "simple.frag");
-
-    meshes[0] = new Mesh(Math::get_cube(), 48, Math::get_cube_index(), 36);
+    meshes[0] = new Mesh(Math::get_cube(), 8, Math::get_cube_index(), 36);
 
     for (auto &i : objects) {
-        i = new Object(camera);
-        i->mesh = meshes[0];
-        i->prog = shaderProgs[0];
+        i = new Object(camera, shaderProgs[0], meshes[0]);
         i->update_size(2, 1, 1);
         i->update_xyz(sin(rand() % 20 -10) + rand() % 20 -10,
                             cos(rand() % 36 -18) + rand() % 36 -18,
@@ -41,7 +31,10 @@ void SandBox::surfaceCreated()
     glEnable(GL_DEPTH_TEST);
 
     shaderProgs[0]->createProgram();
-    meshes[0]->load_model();
+    for(auto &i : meshes)
+    {
+        renderer->load_model(i);
+    }
     // TODO: free buffers
 }
 

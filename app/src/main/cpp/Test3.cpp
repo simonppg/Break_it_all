@@ -49,7 +49,7 @@ void Test3::surfaceCreated() {
     programID = Utils::createProgram(vert, frag);
 
     glBindBuffer(GL_ARRAY_BUFFER, 0);
-    glVertexAttribPointer(0 , 3, GL_FLOAT, GL_FALSE, 12, v);
+    glVertexAttribPointer(0 , 3, GL_FLOAT, GL_FALSE, 0, v);
 
     if (vert)
         free(vert);

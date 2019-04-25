@@ -7,8 +7,6 @@
 
 #include "IScene.hpp"
 #include "Camera.hpp"
-#include "Triangle.hpp"
-#include "Cube.hpp"
 #include "Mesh.hpp"
 #include "Object.hpp"
 #include "ShaderProg.hpp"
@@ -28,6 +26,7 @@ public:
     Mesh *meshes[1];
     Object *objects[40];
     ShaderProg *shaderProgs[1];
+    Renderer *renderer;
 };
 
 
