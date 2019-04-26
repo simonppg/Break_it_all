@@ -17,7 +17,8 @@ protected:
     Mesh *meshes[2];
     ShaderProg *shaderProgs[2];
     Object *objects[ROW * COL];
-    Object *circle;
+    Object *ball;
+    Object *paddle;
     Renderer *renderer;
 public:
     Test4();
