@@ -87,6 +87,7 @@ enable_testing()
 add_executable(executeTests
         src/main/cpp/tests/sqrt_test.cpp
         src/main/cpp/math_utils.cpp
+        src/main/cpp/Vector.cpp
         src/main/cpp/tests/game_test.cpp)
 
 target_link_libraries(executeTests

@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 
 #include "../math_utils.hpp"
+#include "../Vector.hpp"
 
 TEST(GameTest, getSectionsSize) {
     float size;
@@ -69,4 +70,49 @@ TEST(GameTest, gridYPos) {
         }
         y_offset -= 10;
     }
+}
+
+TEST(GameTest, vectorNew) {
+    Vector *v;
+
+    v = new Vector(1, 1, 1);
+    ASSERT_FLOAT_EQ(v->x, 1);
+    ASSERT_FLOAT_EQ(v->y, 1);
+    ASSERT_FLOAT_EQ(v->z, 1);
+    delete v;
+
+    v = new Vector(5, 25, 30);
+    ASSERT_FLOAT_EQ(v->x, 5);
+    ASSERT_FLOAT_EQ(v->y, 25);
+    ASSERT_FLOAT_EQ(v->z, 30);
+    delete v;
+
+}
+
+TEST(GameTest, vectorLength) {
+    Vector *v;
+
+    v = new Vector(0, 0, 0);
+    ASSERT_FLOAT_EQ(v->length(), 0);
+    delete v;
+
+    v = new Vector(1, 0, 0);
+    ASSERT_FLOAT_EQ(v->length(), 1);
+    delete v;
+
+    v = new Vector(0, 1, 0);
+    ASSERT_FLOAT_EQ(v->length(), 1);
+    delete v;
+
+    v = new Vector(0, 0, 1);
+    ASSERT_FLOAT_EQ(v->length(), 1);
+    delete v;
+
+    v = new Vector(1, 1, 0);
+    ASSERT_FLOAT_EQ(v->length(), 1.4142135);
+    delete v;
+
+    v = new Vector(1, 1, 1);
+    ASSERT_FLOAT_EQ(v->length(), 1.7320508);
+    delete v;
 }
