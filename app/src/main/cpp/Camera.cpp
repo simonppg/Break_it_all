@@ -29,16 +29,29 @@ float Camera::aspect_ratio() { // TODO: change this to a macro
 }
 
 void Camera::update_width_height(int width, int height) {
-    this->w = width;
-    this->h = height;
+    w = width;
+    h = height;
     update_projection();
 }
 
 void Camera::update_projection() {
     if(projection_type == PERSPECTIVE)
         perspective = glm::perspective(glm::radians(fov), Camera::aspect_ratio(), ncp, fcp);
-    else
-        perspective = glm::ortho(-w/2, w/2, -h/2, h/2, ncp, fcp);
+    else {
+        if (w > h) {
+            top = w/2;
+            bottom = -top;
+            right = top * aspect_ratio();
+            left = -right;
+        }
+        else {
+            right = w/2;
+            left = -right;
+            top = right / aspect_ratio();
+            bottom = -top;
+        }
+        perspective = glm::ortho(left, right, bottom, top, ncp, fcp);
+    }
 
     cameraTranslate = glm::translate(perspective, vec3(-x, -y, -z));
 }

@@ -33,6 +33,8 @@ public:
 
     void update_projection();
     void set_projection_type(int projection);
+
+    float top, bottom, right, left;
 };
 
 #endif //BREAK_IT_ALL_CAMERA_H
