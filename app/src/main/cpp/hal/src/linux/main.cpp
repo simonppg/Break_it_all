@@ -2,7 +2,7 @@
 // Created by simonppg on 11/06/18.
 //
 
-#include "../game.hpp"
+#include "common/game.hpp"
 #include "logger.hpp"
 
 Game *game;

@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 
-#include "../math_utils.hpp"
-#include "../Vector.hpp"
+#include "common/math_utils.hpp"
+#include "common/Vector.hpp"
 
 TEST(GameTest, getSectionsSize) {
     float size;

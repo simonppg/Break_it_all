@@ -42,76 +42,31 @@ if (CMAKE_VERSION VERSION_LESS 2.8.11)
     include_directories("${gtest_SOURCE_DIR}/include" "${gmock_SOURCE_DIR}/include")
 endif()
 
-add_library(common STATIC
-        SandBox.cpp
-        Test1.cpp
-        Test2.cpp
-        Test3.cpp
-        Test4.cpp
-        utils.cpp
-        Camera.cpp
-        math_utils.cpp
-        Object.cpp
-        ShaderProg.cpp
-        game.cpp
-        Renderer.cpp
-        Mesh.cpp)
-
-target_link_libraries(common
-        -lGLESv2
-        glm)
-
-if(ANDROID)
-
-    add_library(gameLibJNIWrapper SHARED
-            android/main.cpp
-            android/filesManager.cpp)
-
-    target_link_libraries(gameLibJNIWrapper
-            common
-            -landroid
-            -llog)
-
-else(ANDROID)
-
-    add_definitions("-DPROJECT_DIR=\"${PROJECT_SOURCE_DIR}\"")
-
-    add_executable(linuxLauncher
-            linux/main.cpp
-            linux/filesManager.cpp)
-
-    target_link_libraries(linuxLauncher
-            common
-            -lglfw)
-
-    add_custom_target(run
-            COMMAND linuxLauncher
-            DEPENDS linuxLauncher
-            WORKING_DIRECTORY ${CMAKE_PROJECT_DIR})
-
-endif(ANDROID)
+add_subdirectory(hal)
+add_subdirectory(common)
 
 # Unit Tests
 enable_testing()
 add_executable(executeTests
         tests/sqrt_test.cpp
-        math_utils.cpp
-        Vector.cpp
+        common/src/common/math_utils.cpp
+        common/src/common/Vector.cpp
         tests/game_test.cpp)
 
 target_link_libraries(executeTests
+        common
         gtest)
 
 add_test(NAME executeTests
-        COMMAND executeTests)
+     COMMAND executeTests)
 
 add_custom_target(check
-        COMMAND env CTEST_OUTPUT_ON_FAILURE=1 GTEST_COLOR=1 ${CMAKE_CTEST_COMMAND} -VV
-        DEPENDS executeTests)
+     COMMAND env CTEST_OUTPUT_ON_FAILURE=1 GTEST_COLOR=1 ${CMAKE_CTEST_COMMAND} -VV
+     DEPENDS executeTests)
 
 add_custom_target(coverage
-        COMMAND lcov -c -d CMakeFiles -o cov.info
-        COMMAND genhtml cov.info -o out
-        COMMAND google-chrome out/index.html
-        DEPENDS check
-        WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
+     COMMAND lcov -c -d CMakeFiles -o cov.info
+     COMMAND genhtml cov.info -o out
+     COMMAND google-chrome out/index.html
+     DEPENDS check
+     WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
