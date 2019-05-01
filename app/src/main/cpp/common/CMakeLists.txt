@@ -11,6 +11,7 @@ add_library(common STATIC
         src/common/ShaderProg.cpp
         src/common/game.cpp
         src/common/Renderer.cpp
+        src/common/Vector.cpp
         src/common/Mesh.cpp)
 
 target_link_libraries(common

@@ -116,3 +116,9 @@ TEST(GameTest, vectorLength) {
     ASSERT_FLOAT_EQ(v->length(), 1.7320508);
     delete v;
 }
+
+int main(int argc, char **argv)
+{
+    testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
+}
