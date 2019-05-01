@@ -8,28 +8,28 @@ You can build a Android version using Android Studio or a desktop version buildi
 Clone the project in your home directory
 ```console
 $ git clone https://github.com/simonppg/Break_it_all.git
-$ cd Break_it_all/app
-$ mkdir linux
-$ cd linux
+$ cd Break_it_all/app/src/main/cpp/
+$ mkdir linux-build
+$ cd linux-build
 $ cmake ..
 $ make all
 ```
 run the tests
 ```console
-$ cd Break_it_all/app/linux
+$ cd Break_it_all/app/src/main/cpp/linux-build
 $ make all test
 ```
 
 to run the examples
 ```console
-$ cd Break_it_all/app/linux
+$ cd Break_it_all/app/src/main/cpp/linux-build
 $ make run
 ```
 
 or
 
 ```console
-$ cd Break_it_all/app/linux
+$ cd Break_it_all/app/src/main/cpp/linux-build
 $ make all
 $ ./linuxLauncher <no_example>
 ```

@@ -20,7 +20,8 @@ char* load_file(const char *filePath) {
 #ifdef PROJECT_DIR
     strcat(absolutePath, PROJECT_DIR);
 #endif
-    strcat(absolutePath, "/src/main/assets/");
+    //strcat(absolutePath, "/src/main/assets/");
+    strcat(absolutePath, "/../assets/");
     strcat(absolutePath, filePath);
 
     pFile = fopen(absolutePath, "r");

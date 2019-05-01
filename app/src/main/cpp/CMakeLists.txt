@@ -1,4 +1,7 @@
 cmake_minimum_required(VERSION 3.10.2)
+
+project(Break_it_all VERSION 0.0.1)
+
 set(CMAKE_VERBOSE_MAKEFILE on)
 set(CMAKE_BUILD_TYPE Debug)
 
@@ -40,19 +43,19 @@ if (CMAKE_VERSION VERSION_LESS 2.8.11)
 endif()
 
 add_library(common STATIC
-        src/main/cpp/SandBox.cpp
-        src/main/cpp/Test1.cpp
-        src/main/cpp/Test2.cpp
-        src/main/cpp/Test3.cpp
-        src/main/cpp/Test4.cpp
-        src/main/cpp/utils.cpp
-        src/main/cpp/Camera.cpp
-        src/main/cpp/math_utils.cpp
-        src/main/cpp/Object.cpp
-        src/main/cpp/ShaderProg.cpp
-        src/main/cpp/game.cpp
-        src/main/cpp/Renderer.cpp
-        src/main/cpp/Mesh.cpp)
+        SandBox.cpp
+        Test1.cpp
+        Test2.cpp
+        Test3.cpp
+        Test4.cpp
+        utils.cpp
+        Camera.cpp
+        math_utils.cpp
+        Object.cpp
+        ShaderProg.cpp
+        game.cpp
+        Renderer.cpp
+        Mesh.cpp)
 
 target_link_libraries(common
         -lGLESv2
@@ -61,8 +64,8 @@ target_link_libraries(common
 if(ANDROID)
 
     add_library(gameLibJNIWrapper SHARED
-            src/main/cpp/android/main.cpp
-            src/main/cpp/android/filesManager.cpp)
+            android/main.cpp
+            android/filesManager.cpp)
 
     target_link_libraries(gameLibJNIWrapper
             common
@@ -74,8 +77,8 @@ else(ANDROID)
     add_definitions("-DPROJECT_DIR=\"${PROJECT_SOURCE_DIR}\"")
 
     add_executable(linuxLauncher
-            src/main/cpp/linux/main.cpp
-            src/main/cpp/linux/filesManager.cpp)
+            linux/main.cpp
+            linux/filesManager.cpp)
 
     target_link_libraries(linuxLauncher
             common
@@ -91,10 +94,10 @@ endif(ANDROID)
 # Unit Tests
 enable_testing()
 add_executable(executeTests
-        src/main/cpp/tests/sqrt_test.cpp
-        src/main/cpp/math_utils.cpp
-        src/main/cpp/Vector.cpp
-        src/main/cpp/tests/game_test.cpp)
+        tests/sqrt_test.cpp
+        math_utils.cpp
+        Vector.cpp
+        tests/game_test.cpp)
 
 target_link_libraries(executeTests
         gtest)
