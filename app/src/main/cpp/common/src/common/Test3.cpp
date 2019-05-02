@@ -6,7 +6,8 @@
 
 #include <vector>
 
-#include "math_utils.hpp"
+#include "math/math_utils.hpp"
+#include "Renderer.hpp"
 
 #define NUMBER_OF_VERTICES 160
 float radius = 0.5;
@@ -46,7 +47,7 @@ void Test3::surfaceCreated() {
 
     vert = load_file("examples/triangle/triangle.vert");
     frag = load_file("examples/triangle/triangle.frag");
-    programID = Utils::createProgram(vert, frag);
+    programID = Renderer::createProgram(vert, frag);
 
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glVertexAttribPointer(0 , 3, GL_FLOAT, GL_FALSE, 0, v);

@@ -4,6 +4,8 @@
 
 #include "ShaderProg.hpp"
 
+#include "Renderer.hpp"
+
 #ifdef __ANDROID_NDK__
 #include "android/filesManager.hpp"
 #else
@@ -16,5 +18,5 @@ ShaderProg::ShaderProg(const char *vertShaderPath, const char *fragShaderPath) {
 }
 
 void ShaderProg::createProgram() {
-    programID = Utils::createProgram(vertex_file, fragment_file);
+    programID = Renderer::createProgram(vertex_file, fragment_file);
 }

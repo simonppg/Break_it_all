@@ -4,18 +4,16 @@ add_library(common STATIC
         src/common/Test2.cpp
         src/common/Test3.cpp
         src/common/Test4.cpp
-        src/common/utils.cpp
         src/common/Camera.cpp
-        src/common/math_utils.cpp
         src/common/Object.cpp
         src/common/ShaderProg.cpp
         src/common/game.cpp
         src/common/Renderer.cpp
-        src/common/Vector.cpp
         src/common/Mesh.cpp)
 
 target_link_libraries(common
         hal
+        math
         -lGLESv2
         glm)
 

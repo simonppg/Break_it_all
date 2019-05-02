@@ -12,6 +12,8 @@ class Renderer {
 public:
     void load_model(Mesh *pMesh);
     void draw(DrawContext *pDrawContex);
+    static unsigned int loadShader(unsigned int shaderType, const char *shaderSource);
+    static unsigned int createProgram(const char *vertexSource, const char *fragmentSource);
 };
 
 #endif //BREAK_IT_ALL_RENDERER_HPP

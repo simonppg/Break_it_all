@@ -3,6 +3,7 @@
 //
 
 #include "Test2.hpp"
+#include "Renderer.hpp"
 
 #include <cstdlib>
 
@@ -27,7 +28,7 @@ void Test2::surfaceCreated() {
 
     vert = load_file("examples/triangle/triangle.vert");
     frag = load_file("examples/triangle/triangle.frag");
-    programID = Utils::createProgram(vert, frag);
+    programID = Renderer::createProgram(vert, frag);
     glUseProgram(programID);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, vVertices);
     glEnableVertexAttribArray(0);

@@ -3,7 +3,6 @@
 //
 
 #include "Camera.hpp"
-#include "utils.hpp"
 
 Camera::Camera() : w{WIDTH}, h{HEIGHT}, x{X}, y{Y}, z{Z}, ncp{NCP}, fcp {FCP}, fov{FOV}
 {

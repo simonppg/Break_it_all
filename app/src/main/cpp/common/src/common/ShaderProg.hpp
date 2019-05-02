@@ -4,7 +4,6 @@
 
 #ifndef BREAK_IT_ALL_SHADERPROG_HPP
 #define BREAK_IT_ALL_SHADERPROG_HPP
-#include "utils.hpp"
 
 class ShaderProg {
 public:
@@ -15,7 +14,7 @@ public:
 
     void createProgram();
 
-    GLuint programID;
+    unsigned int programID;
 };
 
 #endif //BREAK_IT_ALL_SHADERPROG_HPP

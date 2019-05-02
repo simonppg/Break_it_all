@@ -43,5 +43,6 @@ if (CMAKE_VERSION VERSION_LESS 2.8.11)
 endif()
 
 add_subdirectory(hal)
+add_subdirectory(math)
 add_subdirectory(common)
 add_subdirectory(tests)

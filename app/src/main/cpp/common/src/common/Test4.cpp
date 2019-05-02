@@ -4,7 +4,7 @@
 
 #include "Test4.hpp"
 
-#include "math_utils.hpp"
+#include "math/math_utils.hpp"
 
 static float pov_in_degrees = 0.0f;
 #define NUMBER_OF_VERTICES 15

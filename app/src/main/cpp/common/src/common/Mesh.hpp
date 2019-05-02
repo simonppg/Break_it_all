@@ -7,8 +7,6 @@
 
 #include "Camera.hpp"
 
-#include <GLES3/gl3.h>
-
 using glm::vec3;
 
 #define NUM_ARRAY_ELEMENTS(a) (sizeof(a) / sizeof(*a))
@@ -27,8 +25,8 @@ public:
     short *indices;
     int numVertices;
     int numIndices;
-    GLuint vbo; // vertex buffer object
-    GLuint iab; // index array buffer
+    unsigned int vbo; // vertex buffer object
+    unsigned int iab; // index array buffer
 };
 
 #endif //BREAK_IT_ALL_MESH_HPP

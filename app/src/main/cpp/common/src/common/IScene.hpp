@@ -5,7 +5,6 @@
 #ifndef BREAK_IT_ALL_ISCENE_H
 #define BREAK_IT_ALL_ISCENE_H
 
-#include "utils.hpp"
 #include "Camera.hpp"
 
 #ifdef __ANDROID_NDK__
@@ -16,9 +15,11 @@
 #include "linux/filesManager.hpp"
 #endif
 
+#include <GLES3/gl3.h>
+
 class IScene {
 protected:
-    GLuint programID;
+    unsigned int programID;
 public:
     virtual void surfaceCreated() = 0;
     virtual void render() = 0;

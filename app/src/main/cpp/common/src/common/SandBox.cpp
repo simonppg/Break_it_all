@@ -4,7 +4,7 @@
 
 #include "SandBox.hpp"
 
-#include "math_utils.hpp"
+#include "math/math_utils.hpp"
 
 using glm::mat4;
 using glm::vec3;
