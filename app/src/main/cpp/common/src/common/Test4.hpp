@@ -29,6 +29,8 @@ public:
     void resume() override;
     void update() override;
     bool events(double xpos, double ypos) override;
+
+    Object *ball2;
 };
 
 #endif //BREAK_IT_ALL_TEST4_H

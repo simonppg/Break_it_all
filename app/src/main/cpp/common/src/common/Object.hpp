@@ -17,7 +17,7 @@ protected:
     Renderer *renderer;
     DrawContext *draw_context;
     Camera *camera;
-    float x,y,z;
+    float y,z;
     float size_x, size_y, size_z;
     vec3 rotation;
     float angle;
@@ -33,6 +33,11 @@ public:
     void animate_x();
     void animate_y();
     void animate_z();
+
+    float x;
+    float velocity;
+    float acceleration = 0;
+    float x_direction = 1;
 };
 
 #endif //BREAK_IT_ALL_OBJECT_HPP

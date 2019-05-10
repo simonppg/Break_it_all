@@ -3,16 +3,19 @@
 //
 
 #include "Object.hpp"
+#include <GLES3/gl3.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-Object::Object(Camera *pCamera, ShaderProg *pProg, Mesh *pMesh): x{0}, y{0}, z{0},
-    size_x{2}, size_y{1}, size_z{1}, angle{0} {
+Object::Object(Camera *pCamera, ShaderProg *pProg, Mesh *pMesh):  y{0}, z{0},
+    size_x{2}, size_y{1}, size_z{1}, angle{0}, x{0}{
 
     rotation = vec3(1);
     this->camera = pCamera;
     this->prog = pProg;
     this->mesh = pMesh;
+    acceleration = 0;
+    velocity = 500.0;
     draw_context = new DrawContext();
 }
 
