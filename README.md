@@ -53,3 +53,6 @@ $ sudo cp *.a /usr/lib
 ```console
 $ make check
 ```
+
+## Build for Windows
+TODO
