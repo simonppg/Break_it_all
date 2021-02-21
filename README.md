@@ -4,6 +4,12 @@ I am trying to create a simple brick breaking game.
 
 You can build a Android version using Android Studio or a desktop version building it using CMake on Linux.
 
+## Dependencies
+- g++
+- cmake
+- libglfw3-dev
+- libgles2-mesa-dev
+
 ## Build in Linux
 Clone the project in your home directory
 ```console
