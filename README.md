@@ -9,6 +9,14 @@ You can build a Android version using Android Studio or a desktop version buildi
 - cmake
 - libglfw3-dev
 - libgles2-mesa-dev
+- androind studio
+
+### Android Studio installation
+```
+$ sudo add-apt-repository ppa:maarten-fonville/android-studio
+$ sudo apt update
+$ sudo apt install android-studio
+```
 
 ## Build in Linux
 Clone the project in your home directory
