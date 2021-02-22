@@ -21,8 +21,8 @@ $ sudo apt install android-studio
 ## Build in Linux
 Clone the project in your home directory
 ```console
-$ git clone https://github.com/simonppg/Break_it_all.git
-$ cd Break_it_all/app/src/main/cpp/
+$ git clone https://github.com/simonppg/Break_it_all.git ~/Break_it_all
+$ cd Break_it_all
 $ mkdir linux-build
 $ cd linux-build
 $ cmake ..
@@ -30,20 +30,20 @@ $ make all
 ```
 run the tests
 ```console
-$ cd Break_it_all/app/src/main/cpp/linux-build
-$ make all test
+$ cd Break_it_all/linux-build
+$ make check
 ```
 
 to run the examples
 ```console
-$ cd Break_it_all/app/src/main/cpp/linux-build
+$ cd Break_it_all/linux-build
 $ make run
 ```
 
 or
 
 ```console
-$ cd Break_it_all/app/src/main/cpp/linux-build
+$ cd Break_it_all/linux-build/app/src/main/cpp/hal
 $ make all
 $ ./linuxLauncher <no_example>
 ```
