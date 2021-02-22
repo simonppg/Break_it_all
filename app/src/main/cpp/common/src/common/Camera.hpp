@@ -11,6 +11,8 @@
 using glm::mat4;
 using glm::vec3;
 
+#include "Point3D.hpp"
+
 static const int WIDTH = 450;
 static const int HEIGHT = 800;
 static const float NCP = 0.1f;
@@ -24,6 +26,7 @@ static const float Z = 40.0f;
 #define ORTHO 1
 class Camera {
     int projection_type = PERSPECTIVE;
+    Point3D position;
 public:
     float w, h;
     float x, y, z;
@@ -35,10 +38,12 @@ public:
 
     Camera();
     Camera(int w, int h, float x, float y, float z, float ncp, float fcp, float fov);
+    Camera(int w, int h, Point3D position, float ncp, float fcp, float fov);
 
     float aspect_ratio();
     void update_width_height(int width, int height);
     void update_xyz(float x, float y, float z);
+    void update_position(Point3D position);
 
     void update_projection();
     void set_projection_type(int projection);
