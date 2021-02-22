@@ -23,6 +23,21 @@ Camera::Camera(int w, int h, float x, float y, float z, float ncp, float rcp, fl
     update_projection();
 }
 
+Camera::Camera(int w, int h, Point3D position, float ncp, float rcp, float fov)
+: w{WIDTH}, h{HEIGHT}, ncp{NCP}, fcp {FCP}, fov{FOV}
+{
+    this->w = w;
+    this->h = h;
+    this->x = X;
+    this->y = Y;
+    this->z = Z;
+    this->position = position;
+    this->ncp = ncp;
+    this->fcp = rcp;
+    this->fov = fov;
+    update_projection();
+}
+
 float Camera::aspect_ratio() { // TODO: change this to a macro
     return w/h;
 }
@@ -60,6 +75,10 @@ void Camera::update_xyz(float x, float y, float z) {
     this->y = y;
     this->z = z;
     update_projection();
+}
+
+void Camera::update_position(Point3D position) {
+    this->position = position;
 }
 
 void Camera::set_projection_type(int projection) {

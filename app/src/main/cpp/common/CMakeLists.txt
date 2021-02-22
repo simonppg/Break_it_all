@@ -9,7 +9,8 @@ add_library(common STATIC
         src/common/ShaderProg.cpp
         src/common/game.cpp
         src/common/Renderer.cpp
-        src/common/Mesh.cpp)
+        src/common/Mesh.cpp
+        src/common/Point3D.cpp)
 
 target_link_libraries(common
         hal

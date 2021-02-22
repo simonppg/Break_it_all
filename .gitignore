@@ -9,3 +9,4 @@
 *.out
 .*
 !/.gitignore
+linux-build
