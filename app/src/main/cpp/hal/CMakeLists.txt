@@ -8,6 +8,7 @@ if(ANDROID)
                 -llog)
 
         add_library(gameLibJNIWrapper
+                SHARED
                 src/android/main.cpp)
 
         target_link_libraries(gameLibJNIWrapper
