@@ -4,6 +4,7 @@
 
 #include "common/game.hpp"
 #include "logger.hpp"
+#include "WindowManager.hpp"
 
 Game *game;
 
@@ -14,10 +15,7 @@ extern "C" {
 #include <cstdio>
 #include <cstdlib>
 
-//#define GLFW_INCLUDE_ES2
-#include <GLFW/glfw3.h>
-
-static void cursor_pos_callback(GLFWwindow* window, double xpos, double ypos)
+static void cursor_pos_callback(double xpos, double ypos)
 {
     game->on_touch_event(xpos, ypos);
 }
@@ -27,12 +25,12 @@ static void error_handler(int error, const char* description)
     LOGE("\nError glfw: %s", description);
 }
 
-static void onSizeChange(GLFWwindow *window, int width, int height)
+static void onSizeChange(int width, int height)
 {
     game->surfaceChanged(width, height);
 }
 
-static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+static void key_callback(int key, int scancode, int action, int mods)
 {
     if(action == GLFW_REPEAT || action == GLFW_PRESS ) {
         if (key == GLFW_KEY_W)
@@ -49,7 +47,8 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
 }
 
 int main(int argc, char **argv) {
-    GLFWwindow* window;
+    WindowManager *wm = new WindowManager();
+
     int test_number = 0;
 
     LOGI("%d", argc);
@@ -59,28 +58,15 @@ int main(int argc, char **argv) {
     }
     LOGI("%d", test_number);
 
-    if (!glfwInit())
-    {
-        LOGE("glfwInit failed");
+    if(wm->createWindow(WIDTH, HEIGHT) != 0) {
+        LOGE("Window can not be created");
         exit(EXIT_FAILURE);
     }
-    //glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_ES_API);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
-    window = glfwCreateWindow(WIDTH, HEIGHT, __FILE__, NULL, NULL);
-    if (!window)
-    {
-        LOGE("Window or OpenGL context creation failed");
-        glfwTerminate();
-        exit(EXIT_FAILURE);
-    }
-    glfwMakeContextCurrent(window);
-    glfwSwapInterval(1);
 
-    glfwSetCursorPosCallback(window, cursor_pos_callback);
-    glfwSetErrorCallback(error_handler);
-    glfwSetWindowSizeCallback(window, onSizeChange);
-    glfwSetKeyCallback(window, key_callback);
+    wm->setCursorCallback(cursor_pos_callback);
+    wm->setErrorCallback(error_handler);
+    wm->setWindowSizeCallback(onSizeChange);
+    wm->setKeyCallback(key_callback);
 
     if(game) {
         delete game;
@@ -92,16 +78,17 @@ int main(int argc, char **argv) {
 
     game->surfaceCreated();
 
-    while (!glfwWindowShouldClose(window)) {
-        glfwPollEvents();
+    while (!wm->shouldClose()) {
+        wm->pollEvents();
 
         game->update();
         game->render();
 
-        glfwSwapBuffers(window);
+        wm->refreshWindow();
     }
-    glfwDestroyWindow(window);
-    glfwTerminate();
+
+    wm->destroyWindow();
+
     return EXIT_SUCCESS;
 }
 
