@@ -3,20 +3,20 @@
 #include "WindowManager.hpp"
 
 int main() {
-    BreakItAll *p = new BreakItAll();
-
-    p->init();
-
     int width = 450, height = 800;
-
     WindowManager *wm = new WindowManager();
 
     if(wm->createWindow(width, height) != 0) {
         exit(EXIT_FAILURE);
     }
 
+    BreakItAll *p = new BreakItAll();
+    p->init();
+
     while (!wm->shouldClose()) {
         wm->pollEvents();
+
+        p->render();
         
         wm->refreshWindow();
     }
