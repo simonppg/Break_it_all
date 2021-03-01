@@ -1,5 +1,0 @@
-if(ANDROID)
-    add_subdirectory(android)
-else(ANDROID)
-    add_subdirectory(linux)
-endif(ANDROID)
