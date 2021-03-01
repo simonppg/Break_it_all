@@ -1,3 +1,10 @@
+# Wrapper library for glfw
+add_library(WindowManager STATIC
+            WindowManager.cpp)
+
+target_link_libraries(WindowManager
+                      -lglfw)
+
 # Executable code and src files
 add_executable(linuxVersion
                 main.cpp)
@@ -7,7 +14,8 @@ add_subdirectory(../BreakItAll ../BreakItAll)
 
 # Link library BreakItAll to linuxVersion executable
 target_link_libraries(linuxVersion
-                      BreakItAll)
+                      BreakItAll
+                      WindowManager)
 
 # Custome commad to run in terminal, $ make runNew
 add_custom_target(runNew
