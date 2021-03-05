@@ -122,3 +122,7 @@ void BreakItAll::render() {
 void BreakItAll::pause() {}
 
 void BreakItAll::resume() {}
+
+void BreakItAll::exampleList(vector<string> *examples) {
+    *examples = this->examples;
+}

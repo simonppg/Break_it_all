@@ -24,7 +24,7 @@ public class MainScreen extends Activity {
         setContentView(R.layout.main_screen);
 
         Log.i(LOG_TAG, "Creating " + LOG_TAG);
-        items = GameLibJNIWrapper.getTestsList();
+        items = BreakItAllLibJNIWrapper.getTestsList();
 
         ArrayAdapter<String> adapter =
                 new ArrayAdapter<>(this,
