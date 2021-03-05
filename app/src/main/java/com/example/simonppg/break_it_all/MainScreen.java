@@ -39,6 +39,7 @@ public class MainScreen extends Activity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
 
+                // Intent intent = new Intent(view.getContext(), BreakItAllActivity.class);
                 Intent intent = new Intent(view.getContext(), GameActivity.class);
                 intent.putExtra("position", position);
                 startActivity(intent);
