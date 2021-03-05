@@ -2,6 +2,8 @@
 #include "BreakItAll.hpp"
 #include "WindowManager.hpp"
 
+using namespace std;
+
 int main() {
     int width = 450, height = 800;
     WindowManager *wm = new WindowManager();
@@ -13,6 +15,14 @@ int main() {
     BreakItAll *p = new BreakItAll();
     p->init();
 
+    vector<string> examplesList;
+    
+    p->exampleList(&examplesList);
+    
+    for(long unsigned int i = 0; i < examplesList.size(); i++){
+        cout << examplesList[i] << endl;
+    }
+
     while (!wm->shouldClose()) {
         wm->pollEvents();
 
@@ -22,7 +32,8 @@ int main() {
     }
 
     wm->destroyWindow();
-    std::cout << std::endl << "Hello World!" << std::endl << std::endl;
+    cout << endl << "Hello World!" << endl << endl;
+
     return 0;
 }
 

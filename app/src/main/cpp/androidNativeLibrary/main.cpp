@@ -39,18 +39,17 @@ JNIEXPORT bool JNICALL Java_com_example_simonppg_break_1it_1all_BreakItAllLibJNI
 
 JNIEXPORT jobjectArray JNICALL Java_com_example_simonppg_break_1it_1all_BreakItAllLibJNIWrapper_getTestsList
         (JNIEnv * env, jclass cls) {
-#define LEN 5
-    const char *tests[LEN]={"SandBox", "Window", "Triangle", "Circle", "orthographic"};
     jstring str;
     jobjectArray test = nullptr;
-    jsize len = LEN;
-    int i;
+    vector<string> examplesList;
+    
+    game->exampleList(&examplesList);
 
-    test = (*env).NewObjectArray(len, (*env).FindClass("java/lang/String"), 0);
+    test = (*env).NewObjectArray(examplesList.size(), (*env).FindClass("java/lang/String"), 0);
 
-    for(i = 0; i < LEN; i++)
-    {
-        str = (*env).NewStringUTF(tests[i]);
+    for(long unsigned int i = 0; i < examplesList.size(); i++) {
+        cout << examplesList[i] << endl;
+        str = (*env).NewStringUTF(examplesList[i].c_str());
         (*env).SetObjectArrayElement(test, i, str);
     }
 
