@@ -118,3 +118,7 @@ void BreakItAll::render() {
     glDrawArrays(GL_TRIANGLES, 0, 3);
     glUseProgram(0);
 }
+
+void BreakItAll::pause() {}
+
+void BreakItAll::resume() {}
