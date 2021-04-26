@@ -4,7 +4,7 @@ add_library(WindowManager STATIC
 
 # Link glfw library to WindowManager
 target_link_libraries(WindowManager
-                      -lglfw)
+                      glfw)
 
 # Make library public available
 target_include_directories(WindowManager PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/linux)

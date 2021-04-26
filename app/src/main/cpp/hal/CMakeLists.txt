@@ -22,14 +22,14 @@ else(ANDROID)
                 src/linux/filesManager.cpp)
         
         target_link_libraries(hal
-                -lglfw)
+                glfw)
 
         add_executable(linuxLauncher
                 src/linux/main.cpp)
 
         target_link_libraries(linuxLauncher
                 common
-                -lglfw)
+                glfw)
 
         add_custom_target(run
                 COMMAND linuxLauncher
