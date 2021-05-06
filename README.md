@@ -10,6 +10,7 @@ You can build a Android version using Android Studio or a desktop version buildi
 - libglfw3-dev
 - libgles2-mesa-dev
 - androind studio
+- xorg-dev
 
 ### Android Studio installation
 ```
