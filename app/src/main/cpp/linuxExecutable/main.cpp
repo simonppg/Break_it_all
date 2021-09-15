@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 #include "BreakItAll.hpp"
 #include "WindowManager.hpp"
 
