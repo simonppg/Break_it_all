@@ -9,5 +9,10 @@ add_subdirectory(common)
 add_subdirectory(tests)
 add_subdirectory(BreakItAll)
 
-# Target
-add_subdirectory(androidNativeLibrary)
+add_library(BreakItAllLibJNIWrapper
+            SHARED
+            androidNativeLibrary/main.cpp)
+
+target_link_libraries(BreakItAllLibJNIWrapper
+                      BreakItAll
+                      -landroid)
