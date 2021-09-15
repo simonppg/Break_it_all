@@ -11,6 +11,7 @@ You can build a Android version using Android Studio or a desktop version buildi
 - libgles2-mesa-dev
 - androind studio
 - xorg-dev
+- adb
 
 ### Android Studio installation
 ```
