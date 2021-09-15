@@ -2,10 +2,6 @@
 add_executable(linuxVersion
                 main.cpp)
 
-# Tell cmake to look for more CMakeLists.txt files in those directories
-add_subdirectory(../BreakItAll ../BreakItAll)
-add_subdirectory(../platform ../platform)
-
 # Link library BreakItAll and WindowManager to linuxVersion executable
 target_link_libraries(linuxVersion
                       BreakItAll
