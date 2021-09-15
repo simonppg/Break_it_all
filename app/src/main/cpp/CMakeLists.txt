@@ -24,20 +24,8 @@ endif()
 
 include(DownloadProject.cmake)
 
-add_subdirectory(hal)
-add_subdirectory(math)
-add_subdirectory(common)
-add_subdirectory(tests)
-
 if(ANDROID)
-    include(glm.cmake)
-    include(googletest.cmake)
-
-    add_subdirectory(androidNativeLibrary)
+    include(androidTarget.cmake)
 else(ANDROID)
-    include(glm.cmake)
-    include(googletest.cmake)
-    include(glfw.cmake)
-
-    add_subdirectory(linuxExecutable)
+    include(linuxTarget.cmake)
 endif(ANDROID)
