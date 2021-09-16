@@ -14,21 +14,19 @@ import android.widget.ListView;
  */
 
 public class MainScreen extends Activity {
+    private final String LOG_TAG = "MainScreen";
 
     @Override protected void onCreate(Bundle savedInstanceState) {
         ListView items_list;
-        String LOG_TAG = "MainScreen";
-        final String[] items;
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_screen);
 
         Log.i(LOG_TAG, "Creating " + LOG_TAG);
-        items = BreakItAllLibJNIWrapper.getTestsList();
 
         ArrayAdapter<String> adapter =
                 new ArrayAdapter<>(this,
-                        android.R.layout.simple_list_item_1, items);
+                        android.R.layout.simple_list_item_1, BreakItAllLibJNIWrapper.getTestsList());
 
         items_list = (ListView)findViewById(R.id.my_list);
 
@@ -45,13 +43,5 @@ public class MainScreen extends Activity {
                 startActivity(intent);
             }
         });
-    }
-
-    @Override protected void onPause() {
-        super.onPause();
-    }
-
-    @Override protected void onResume() {
-        super.onResume();
     }
 }
