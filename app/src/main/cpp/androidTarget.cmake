@@ -10,7 +10,12 @@ add_subdirectory(math)
 add_subdirectory(common)
 add_subdirectory(tests)
 add_subdirectory(BreakItAll)
-add_subdirectory(platform)
+
+add_library(AndroidPlatform STATIC
+    platform/android/AndroidLogger.cpp)
+
+target_link_libraries(AndroidPlatform
+    -llog)
 
 add_library(BreakItAllLibJNIWrapper
             SHARED
