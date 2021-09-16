@@ -11,7 +11,26 @@ add_subdirectory(math)
 add_subdirectory(common)
 add_subdirectory(tests)
 add_subdirectory(BreakItAll)
-add_subdirectory(platform)
+
+# Wrapper library for glfw
+add_library(WindowManager STATIC
+            platform/linux/WindowManager.cpp)
+
+# Link glfw library to WindowManager
+target_link_libraries(WindowManager
+                      glfw)
+
+# Make library public available
+target_include_directories(WindowManager PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/platform/linux)
+
+
+# Platform specific code
+add_library(LinuxPlatform STATIC
+    platform/linux/LinuxLogger.cpp)
+
+target_link_libraries(LinuxPlatform
+    WindowManager)
+
 
 # Executable code and src files
 add_executable(linuxVersion
