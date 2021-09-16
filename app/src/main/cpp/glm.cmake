@@ -1,3 +1,5 @@
+include(DownloadProject.cmake)
+
 # Get glm
 download_project(PROJ   glm
         GIT_REPOSITORY  https://github.com/g-truc/glm.git

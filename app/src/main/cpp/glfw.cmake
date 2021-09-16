@@ -1,3 +1,5 @@
+include(DownloadProject.cmake)
+
 # Get glfw3
 download_project(PROJ   glfw
         GIT_REPOSITORY  https://github.com/glfw/glfw.git
