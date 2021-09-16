@@ -10,6 +10,7 @@ add_subdirectory(math)
 add_subdirectory(common)
 add_subdirectory(tests)
 add_subdirectory(BreakItAll)
+add_subdirectory(platform)
 
 add_library(BreakItAllLibJNIWrapper
             SHARED
@@ -17,4 +18,5 @@ add_library(BreakItAllLibJNIWrapper
 
 target_link_libraries(BreakItAllLibJNIWrapper
                       BreakItAll
-                      -landroid)
+                      -landroid
+                      AndroidPlatform)

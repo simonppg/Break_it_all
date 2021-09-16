@@ -1,4 +1,5 @@
 #include <iostream>
+#include "platform/android/AndroidLogger.hpp"
 #include "BreakItAll.hpp"
 
 // #include "common/game.hpp"
@@ -6,6 +7,7 @@
 
 // Game *game;
 
+Logger *logger = new AndroidLogger();
 BreakItAll *game = new BreakItAll();
 
 #ifdef __cplusplus
@@ -17,6 +19,7 @@ extern "C" {
 
 JNIEXPORT void JNICALL Java_com_example_simonppg_break_1it_1all_BreakItAllLibJNIWrapper_surfaceCreated
         (JNIEnv * env, jclass cls) {
+    logger->sayHello();
     // game->surfaceCreated();
     game->init();
 }
