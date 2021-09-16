@@ -1,6 +1,8 @@
+include(cmake/DownloadProject.cmake)
+
 # Dependencies
-include(glm.cmake)
-include(googletest.cmake)
+include(cmake/glm.cmake)
+include(cmake/googletest.cmake)
 
 # Local dependencies
 add_subdirectory(hal)
