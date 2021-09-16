@@ -1,11 +1,15 @@
 #include <iostream>
 #include <vector>
+#include "platform/linux/LinuxLogger.hpp"
 #include "BreakItAll.hpp"
 #include "WindowManager.hpp"
 
 using namespace std;
 
 int main() {
+    Logger *logger = new LinuxLogger();
+    logger->sayHello();
+
     int width = 450, height = 800;
     WindowManager *wm = new WindowManager();
 
