@@ -22,8 +22,6 @@ else()
     set(UPDATE_DISCONNECTED_IF_AVAILABLE "UPDATE_DISCONNECTED 1")
 endif()
 
-include(DownloadProject.cmake)
-
 if(ANDROID)
     include(androidTarget.cmake)
 else(ANDROID)

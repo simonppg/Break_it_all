@@ -1,6 +1,8 @@
+include(cmake/DownloadProject.cmake)
+
 # Dependencies
-include(glm.cmake)
-include(googletest.cmake)
+include(cmake/glm.cmake)
+include(cmake/googletest.cmake)
 
 # Local dependencies
 add_subdirectory(hal)
@@ -9,5 +11,10 @@ add_subdirectory(common)
 add_subdirectory(tests)
 add_subdirectory(BreakItAll)
 
-# Target
-add_subdirectory(androidNativeLibrary)
+add_library(BreakItAllLibJNIWrapper
+            SHARED
+            androidLib.cpp)
+
+target_link_libraries(BreakItAllLibJNIWrapper
+                      BreakItAll
+                      -landroid)
