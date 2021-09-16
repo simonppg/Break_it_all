@@ -13,7 +13,7 @@ add_subdirectory(platform)
 
 # Executable code and src files
 add_executable(linuxVersion
-                linuxExecutable/main.cpp)
+                linuxBin.cpp)
 
 # Link library BreakItAll and WindowManager to linuxVersion executable
 target_link_libraries(linuxVersion

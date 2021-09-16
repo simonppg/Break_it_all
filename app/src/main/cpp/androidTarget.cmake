@@ -11,7 +11,7 @@ add_subdirectory(BreakItAll)
 
 add_library(BreakItAllLibJNIWrapper
             SHARED
-            androidNativeLibrary/main.cpp)
+            androidLib.cpp)
 
 target_link_libraries(BreakItAllLibJNIWrapper
                       BreakItAll
