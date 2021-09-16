@@ -20,7 +20,6 @@ add_executable(linuxVersion
 # Link library BreakItAll and WindowManager to linuxVersion executable
 target_link_libraries(linuxVersion
                       BreakItAll
-                      WindowManager
                       LinuxPlatform)
 
 # Custom command to run in the linuxVersion in the terminal, e.g. $ make runNew
