@@ -7,14 +7,6 @@
 
 #include "Camera.hpp"
 
-#ifdef __ANDROID_NDK__
-#include "android/logger.hpp"
-#include "android/filesManager.hpp"
-#else
-#include "linux/logger.hpp"
-#include "linux/filesManager.hpp"
-#endif
-
 #include <GLES3/gl3.h>
 
 class IScene {
