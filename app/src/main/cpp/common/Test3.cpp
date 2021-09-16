@@ -6,7 +6,7 @@
 
 #include <vector>
 
-#include "math/math_utils.hpp"
+#include "math_utils.hpp"
 #include "Renderer.hpp"
 
 #define NUMBER_OF_VERTICES 160
