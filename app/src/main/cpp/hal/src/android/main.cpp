@@ -2,7 +2,7 @@
 // Created by Simonppg on 11/4/2017.
 //
 
-#include "common/game.hpp"
+#include "game.hpp"
 #include "filesManager.hpp"
 
 Game *game;

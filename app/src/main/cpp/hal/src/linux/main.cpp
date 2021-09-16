@@ -2,7 +2,7 @@
 // Created by simonppg on 11/06/18.
 //
 
-#include "common/game.hpp"
+#include "game.hpp"
 #include "logger.hpp"
 #include "WindowManager.hpp"
 

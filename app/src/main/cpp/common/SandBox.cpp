@@ -4,7 +4,7 @@
 
 #include "SandBox.hpp"
 
-#include "math/math_utils.hpp"
+#include "math_utils.hpp"
 #include "Point3D.hpp"
 
 using glm::mat4;
