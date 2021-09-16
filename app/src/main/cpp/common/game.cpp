@@ -11,6 +11,12 @@
 #include "Test3.hpp"
 #include "Test4.hpp"
 
+#ifdef __ANDROID_NDK__
+#include "android/logger.hpp"
+#else
+#include "linux/logger.hpp"
+#endif
+
 void Game::camera_forward() { pScene->camera->z--;
     //LOGI("%.2f",pScene->camera->z);
 }

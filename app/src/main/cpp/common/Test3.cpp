@@ -9,6 +9,12 @@
 #include "math_utils.hpp"
 #include "Renderer.hpp"
 
+#ifdef __ANDROID_NDK__
+#include "android/filesManager.hpp"
+#else
+#include "linux/filesManager.hpp"
+#endif
+
 #define NUMBER_OF_VERTICES 160
 float radius = 0.5;
 float *v;
