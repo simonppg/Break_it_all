@@ -1,14 +1,10 @@
 include(cmake/DownloadProject.cmake)
-
-# Dependencies
 include(cmake/glm.cmake)
-include(cmake/googletest.cmake)
 
-# Local dependencies
 add_subdirectory(common)
-# add_subdirectory(tests)
 
-add_library(Platform STATIC
+add_library(Platform
+    STATIC
     android/logger.hpp
     android/filesManager.cpp
     android/AndroidLogger.cpp)
@@ -18,18 +14,15 @@ target_link_libraries(Platform
     -llog)
 
 add_library(BreakItAllLibJNIWrapper
-            SHARED
-            android/androidLib.cpp)
-
-target_link_libraries(BreakItAllLibJNIWrapper
-    common
-    -landroid
-    Platform)
+    SHARED
+    android/androidLib.cpp)
 
 add_library(gameLibJNIWrapper
-        SHARED
-        android/main.cpp)
+    SHARED
+    android/main.cpp)
+
+target_link_libraries(BreakItAllLibJNIWrapper
+    common)
 
 target_link_libraries(gameLibJNIWrapper
-        common)
-
+    common)
