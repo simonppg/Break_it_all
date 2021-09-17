@@ -20,14 +20,15 @@ target_link_libraries(WindowManager
 # Make library public available
 target_include_directories(WindowManager PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/platform/linux)
 
-
 # Platform specific code
 add_library(Platform STATIC
+    hal/src/linux/logger.hpp
+    hal/src/linux/filesManager.cpp
     platform/linux/LinuxLogger.cpp)
 
 target_link_libraries(Platform
+    glfw
     WindowManager)
-
 
 # Executable code and src files
 add_executable(linuxVersion
@@ -48,12 +49,6 @@ add_custom_target(runNew
 
 add_definitions("-DPROJECT_DIR=\"${PROJECT_SOURCE_DIR}\"")
 
-add_library(hal
-        hal/src/linux/logger.hpp
-        hal/src/linux/filesManager.cpp)
-
-target_link_libraries(hal
-        glfw)
 
 add_executable(linuxLauncher
         hal/src/linux/main.cpp)
