@@ -9,9 +9,9 @@ add_subdirectory(common)
 # add_subdirectory(tests)
 
 add_library(Platform STATIC
-    hal/src/android/logger.hpp
-    hal/src/android/filesManager.cpp
-    platform/android/AndroidLogger.cpp)
+    android/logger.hpp
+    android/filesManager.cpp
+    android/AndroidLogger.cpp)
 
 target_link_libraries(Platform
     -landroid
@@ -19,7 +19,7 @@ target_link_libraries(Platform
 
 add_library(BreakItAllLibJNIWrapper
             SHARED
-            androidLib.cpp)
+            android/androidLib.cpp)
 
 target_link_libraries(BreakItAllLibJNIWrapper
     common
@@ -28,7 +28,7 @@ target_link_libraries(BreakItAllLibJNIWrapper
 
 add_library(gameLibJNIWrapper
         SHARED
-        hal/src/android/main.cpp)
+        android/main.cpp)
 
 target_link_libraries(gameLibJNIWrapper
         common)

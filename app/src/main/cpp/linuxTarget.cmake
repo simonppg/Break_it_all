@@ -11,7 +11,7 @@ add_subdirectory(common)
 
 # Wrapper library for glfw
 add_library(WindowManager STATIC
-            platform/linux/WindowManager.cpp)
+    linux/WindowManager.cpp)
 
 # Link glfw library to WindowManager
 target_link_libraries(WindowManager
@@ -22,9 +22,9 @@ target_include_directories(WindowManager PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/plat
 
 # Platform specific code
 add_library(Platform STATIC
-    hal/src/linux/logger.hpp
-    hal/src/linux/filesManager.cpp
-    platform/linux/LinuxLogger.cpp)
+    linux/logger.hpp
+    linux/filesManager.cpp
+    linux/LinuxLogger.cpp)
 
 target_link_libraries(Platform
     glfw
@@ -32,7 +32,7 @@ target_link_libraries(Platform
 
 # Executable code and src files
 add_executable(linuxVersion
-                linuxBin.cpp)
+    linux/linuxBin.cpp)
 
 # Link library BreakItAll and WindowManager to linuxVersion executable
 target_link_libraries(linuxVersion
@@ -51,7 +51,7 @@ add_definitions("-DPROJECT_DIR=\"${PROJECT_SOURCE_DIR}\"")
 
 
 add_executable(linuxLauncher
-        hal/src/linux/main.cpp)
+        linux/main.cpp)
 
 target_link_libraries(linuxLauncher
         common
