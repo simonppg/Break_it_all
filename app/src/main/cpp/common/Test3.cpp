@@ -10,9 +10,9 @@
 #include "Renderer.hpp"
 
 #ifdef __ANDROID_NDK__
-#include "android/filesManager.hpp"
+#include "../hal/src/android/filesManager.hpp"
 #else
-#include "linux/filesManager.hpp"
+#include "../hal/src/linux/filesManager.hpp"
 #endif
 
 #define NUMBER_OF_VERTICES 160

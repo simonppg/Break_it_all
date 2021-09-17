@@ -8,9 +8,9 @@
 #include <cstdlib>
 
 #ifdef __ANDROID_NDK__
-#include "android/filesManager.hpp"
+#include "../hal/src/android/filesManager.hpp"
 #else
-#include "linux/filesManager.hpp"
+#include "../hal/src/linux/filesManager.hpp"
 #endif
 
 static GLfloat vVertices[] = { 0.0f, 0.5f, 0.0f,

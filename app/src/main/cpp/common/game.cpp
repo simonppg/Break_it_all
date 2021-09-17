@@ -12,9 +12,9 @@
 #include "Test4.hpp"
 
 #ifdef __ANDROID_NDK__
-#include "android/logger.hpp"
+#include "../hal/src/android/logger.hpp"
 #else
-#include "linux/logger.hpp"
+#include "../hal/src/linux/logger.hpp"
 #endif
 
 void Game::camera_forward() { pScene->camera->z--;
