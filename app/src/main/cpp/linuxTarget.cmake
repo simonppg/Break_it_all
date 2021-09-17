@@ -22,8 +22,8 @@ target_include_directories(WindowManager PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/plat
 
 # Platform specific code
 add_library(Platform STATIC
-    hal/src/linux/logger.hpp
-    hal/src/linux/filesManager.cpp
+    linux/logger.hpp
+    linux/filesManager.cpp
     linux/LinuxLogger.cpp)
 
 target_link_libraries(Platform

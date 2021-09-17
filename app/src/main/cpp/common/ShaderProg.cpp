@@ -7,9 +7,9 @@
 #include "Renderer.hpp"
 
 #ifdef __ANDROID_NDK__
-#include "../hal/src/android/filesManager.hpp"
+#include "../android/filesManager.hpp"
 #else
-#include "../hal/src/linux/filesManager.hpp"
+#include "../linux/filesManager.hpp"
 #endif
 
 ShaderProg::ShaderProg(const char *vertShaderPath, const char *fragShaderPath) {

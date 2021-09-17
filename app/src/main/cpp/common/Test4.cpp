@@ -4,9 +4,9 @@
 
 #include "Test4.hpp"
 #ifdef __ANDROID_NDK__
-#include "../hal/src/android/logger.hpp"
+#include "../android/logger.hpp"
 #else
-#include "../hal/src/linux/logger.hpp"
+#include "../linux/logger.hpp"
 #endif
 
 #include "math_utils.hpp"
