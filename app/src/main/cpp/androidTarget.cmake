@@ -17,15 +17,12 @@ add_library(BreakItAllLibJNIWrapper
     SHARED
     android/androidLib.cpp)
 
-target_link_libraries(BreakItAllLibJNIWrapper
-    common
-    -landroid
-    Platform)
-
 add_library(gameLibJNIWrapper
     SHARED
     android/main.cpp)
 
-target_link_libraries(gameLibJNIWrapper
+target_link_libraries(BreakItAllLibJNIWrapper
     common)
 
+target_link_libraries(gameLibJNIWrapper
+    common)
