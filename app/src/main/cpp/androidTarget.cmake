@@ -19,7 +19,7 @@ target_link_libraries(Platform
 
 add_library(BreakItAllLibJNIWrapper
             SHARED
-            androidLib.cpp)
+            android/androidLib.cpp)
 
 target_link_libraries(BreakItAllLibJNIWrapper
     common
@@ -28,7 +28,7 @@ target_link_libraries(BreakItAllLibJNIWrapper
 
 add_library(gameLibJNIWrapper
         SHARED
-        hal/src/android/main.cpp)
+        android/main.cpp)
 
 target_link_libraries(gameLibJNIWrapper
         common)

@@ -32,7 +32,7 @@ target_link_libraries(Platform
 
 # Executable code and src files
 add_executable(linuxVersion
-                linuxBin.cpp)
+    linux/linuxBin.cpp)
 
 # Link library BreakItAll and WindowManager to linuxVersion executable
 target_link_libraries(linuxVersion
@@ -51,7 +51,7 @@ add_definitions("-DPROJECT_DIR=\"${PROJECT_SOURCE_DIR}\"")
 
 
 add_executable(linuxLauncher
-        hal/src/linux/main.cpp)
+        linux/main.cpp)
 
 target_link_libraries(linuxLauncher
         common

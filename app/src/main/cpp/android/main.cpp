@@ -3,7 +3,7 @@
 //
 
 #include "game.hpp"
-#include "filesManager.hpp"
+#include "../hal/src/android/filesManager.hpp"
 
 Game *game;
 

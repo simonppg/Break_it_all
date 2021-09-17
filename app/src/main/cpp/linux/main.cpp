@@ -3,7 +3,7 @@
 //
 
 #include "game.hpp"
-#include "logger.hpp"
+#include "../hal/src/linux/logger.hpp"
 #include "WindowManager.hpp"
 
 Game *game;
