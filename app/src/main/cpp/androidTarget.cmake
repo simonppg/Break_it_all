@@ -9,12 +9,11 @@ add_subdirectory(hal)
 add_subdirectory(math)
 add_subdirectory(common)
 # add_subdirectory(tests)
-add_subdirectory(BreakItAll)
 
-add_library(AndroidPlatform STATIC
+add_library(Platform STATIC
     platform/android/AndroidLogger.cpp)
 
-target_link_libraries(AndroidPlatform
+target_link_libraries(Platform
     -llog)
 
 add_library(BreakItAllLibJNIWrapper
@@ -22,6 +21,6 @@ add_library(BreakItAllLibJNIWrapper
             androidLib.cpp)
 
 target_link_libraries(BreakItAllLibJNIWrapper
-                      BreakItAll
-                      -landroid
-                      AndroidPlatform)
+    common
+    -landroid
+    Platform)

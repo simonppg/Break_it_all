@@ -17,7 +17,6 @@ else(ANDROID)
         add_definitions("-DPROJECT_DIR=\"${PROJECT_SOURCE_DIR}\"")
 
         add_library(hal
-                src/linux/WindowManager.cpp
                 src/linux/logger.hpp
                 src/linux/filesManager.cpp)
         
