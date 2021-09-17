@@ -3,6 +3,7 @@
 //
 
 #include "Camera.hpp"
+#include "Projection.hpp"
 
 Camera::Camera() : w{WIDTH}, h{HEIGHT}, x{X}, y{Y}, z{Z}, ncp{NCP}, fcp {FCP}, fov{FOV}
 {
@@ -49,7 +50,7 @@ void Camera::update_width_height(int width, int height) {
 }
 
 void Camera::update_projection() {
-    if(projection_type == PERSPECTIVE)
+    if(projection == PERSPECTIVE)
         perspective = glm::perspective(glm::radians(fov), Camera::aspect_ratio(), ncp, fcp);
     else {
         if (w > h) {
@@ -81,7 +82,7 @@ void Camera::update_position(Point3D position) {
     this->position = position;
 }
 
-void Camera::set_projection_type(int projection) {
-    this->projection_type = projection;
+void Camera::setProjection(Projection projection) {
+    this->projection = projection;
     update_projection();
 }

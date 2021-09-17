@@ -29,7 +29,7 @@ static clock_t last_time;
 
 Test4::Test4() {
     camera = new Camera(WIDTH, HEIGHT, X, Y, Z, NCP, FCP, FOV);
-    camera->set_projection_type(ORTHOGRAPHIC);
+    camera->setProjection(ORTHOGRAPHIC);
     renderer = new Renderer();
 
     shaderProgs[0] = new ShaderProg("simple.vert", "simple.frag");

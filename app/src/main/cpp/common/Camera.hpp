@@ -24,7 +24,7 @@ static const float Y = 0.0f;
 static const float Z = 40.0f;
 
 class Camera {
-    int projection_type = PERSPECTIVE;
+    Projection projection = PERSPECTIVE;
     Point3D position;
 public:
     float w, h;
@@ -45,7 +45,7 @@ public:
     void update_position(Point3D position);
 
     void update_projection();
-    void set_projection_type(int projection);
+    void setProjection(Projection projection);
 
     float top, bottom, right, left;
 };
