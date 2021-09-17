@@ -9,8 +9,7 @@ include(cmake/glfw.cmake)
 add_subdirectory(hal)
 add_subdirectory(math)
 add_subdirectory(common)
-add_subdirectory(tests)
-add_subdirectory(BreakItAll)
+# add_subdirectory(tests)
 
 # Wrapper library for glfw
 add_library(WindowManager STATIC
@@ -25,10 +24,10 @@ target_include_directories(WindowManager PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/plat
 
 
 # Platform specific code
-add_library(LinuxPlatform STATIC
+add_library(Platform STATIC
     platform/linux/LinuxLogger.cpp)
 
-target_link_libraries(LinuxPlatform
+target_link_libraries(Platform
     WindowManager)
 
 
@@ -38,8 +37,8 @@ add_executable(linuxVersion
 
 # Link library BreakItAll and WindowManager to linuxVersion executable
 target_link_libraries(linuxVersion
-                      BreakItAll
-                      LinuxPlatform)
+    common
+    Platform)
 
 # Custom command to run in the linuxVersion in the terminal, e.g. $ make runNew
 add_custom_target(runNew

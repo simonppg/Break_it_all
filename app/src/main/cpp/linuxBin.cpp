@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include "platform/linux/LinuxLogger.hpp"
-#include "BreakItAll.hpp"
+#include "common/BreakItAll.hpp"
 #include "WindowManager.hpp"
 
 using namespace std;

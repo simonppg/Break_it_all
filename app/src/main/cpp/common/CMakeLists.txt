@@ -1,4 +1,5 @@
 add_library(common STATIC
+        BreakItAll.cpp
         SandBox.cpp
         Test1.cpp
         Test2.cpp
@@ -13,6 +14,7 @@ add_library(common STATIC
         Point3D.cpp)
 
 target_link_libraries(common
+        Platform
         hal
         math
         -lGLESv2
