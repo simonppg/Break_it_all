@@ -13,6 +13,18 @@
 #include "linux/logger.hpp"
 #endif
 
+bool isCompilationOk(GLenum shader) {
+    GLint compiled = 0;
+    glGetShaderiv(shader, GL_COMPILE_STATUS, &compiled);
+    return compiled;
+}
+
+int getInfoLogLenght(GLenum shader) {
+    GLint infoLen = 0;
+    glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &infoLen);
+    return infoLen;
+}
+
 void Renderer::load_model(Mesh *pMesh) {
     glGenBuffers(1, &pMesh->vbo);
     glBindBuffer(GL_ARRAY_BUFFER, pMesh->vbo);
@@ -55,36 +67,41 @@ void Renderer::draw(DrawContext *pDrawContex) {
     glUseProgram(0);
 }
 
+GLuint Renderer::loadShader(GLenum shaderType, const char* shaderSource) {
+    // In this function 0 is and error
+    int error = 0;
 
-GLuint Renderer::loadShader(GLenum shaderType, const char* shaderSource)
-{
+    // glCreateShader return 0 when there is an error 
     GLuint shader = glCreateShader(shaderType);
-    if (shader)
-    {
-        glShaderSource(shader, 1, &shaderSource, NULL);
-        glCompileShader(shader);
-        GLint compiled = 0;
-        glGetShaderiv(shader, GL_COMPILE_STATUS, &compiled);
-        if (!compiled)
-        {
-            GLint infoLen = 0;
-            glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &infoLen);
-            if (infoLen)
-            {
-                char * buf = (char*) malloc(sizeof(char) * infoLen);
-                if (buf)
-                {
-                    glGetShaderInfoLog(shader, infoLen, NULL, buf);
-                    LOGE("Could not Compile Shader: %d, %s", shaderType, buf);
-                    LOGE("Shader src: %s", shaderSource);
-                    free(buf);
-                }
-                glDeleteShader(shader);
-                shader = 0;
-            }
-        }
+
+    if(!shader) { return error; }
+
+    glShaderSource(shader, 1, &shaderSource, NULL);
+    glCompileShader(shader);
+
+    if(isCompilationOk(shader)) { return shader; }
+
+    int infoLen = getInfoLogLenght(shader);
+
+    if (!infoLen) {
+        glDeleteShader(shader);
+        return error;
     }
-    return shader;
+
+    char *buf = (char*) malloc(sizeof(char) * infoLen);
+
+    if (!buf) {
+      glDeleteShader(shader);
+      return error;
+    }
+
+    glGetShaderInfoLog(shader, infoLen, NULL, buf);
+    LOGE("Could not Compile Shader: %d, %s", shaderType, buf);
+    LOGE("Shader src: %s", shaderSource);
+    free(buf);
+
+    glDeleteShader(shader);
+    return error;
 }
 
 GLuint Renderer::createProgram(const char* vertexSource, const char * fragmentSource)
