@@ -25,6 +25,18 @@ int getInfoLogLenght(GLenum shader) {
     return infoLen;
 }
 
+void showShaderInfoLog(GLenum shader) {
+    int infoLen = getInfoLogLenght(shader);
+    if (!infoLen) { return; }
+
+    char *buf = (char*) malloc(sizeof(char) * infoLen);
+    if (!buf) { return; }
+
+    glGetShaderInfoLog(shader, infoLen, NULL, buf);
+    LOGE("%s", buf);
+    free(buf);
+}
+
 void Renderer::load_model(Mesh *pMesh) {
     glGenBuffers(1, &pMesh->vbo);
     glBindBuffer(GL_ARRAY_BUFFER, pMesh->vbo);
@@ -73,7 +85,6 @@ GLuint Renderer::loadShader(GLenum shaderType, const char* shaderSource) {
 
     // glCreateShader return 0 when there is an error 
     GLuint shader = glCreateShader(shaderType);
-
     if(!shader) { return error; }
 
     glShaderSource(shader, 1, &shaderSource, NULL);
@@ -81,26 +92,9 @@ GLuint Renderer::loadShader(GLenum shaderType, const char* shaderSource) {
 
     if(isCompilationOk(shader)) { return shader; }
 
-    int infoLen = getInfoLogLenght(shader);
-
-    if (!infoLen) {
-        glDeleteShader(shader);
-        return error;
-    }
-
-    char *buf = (char*) malloc(sizeof(char) * infoLen);
-
-    if (!buf) {
-      glDeleteShader(shader);
-      return error;
-    }
-
-    glGetShaderInfoLog(shader, infoLen, NULL, buf);
-    LOGE("Could not Compile Shader: %d, %s", shaderType, buf);
-    LOGE("Shader src: %s", shaderSource);
-    free(buf);
-
+    showShaderInfoLog(shader);
     glDeleteShader(shader);
+
     return error;
 }
 
