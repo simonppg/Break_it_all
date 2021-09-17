@@ -11,12 +11,13 @@ add_library(common STATIC
         game.cpp
         Renderer.cpp
         Mesh.cpp
+        math_utils.cpp
+        Vector.cpp
         Point3D.cpp)
 
 target_link_libraries(common
         Platform
         hal
-        math
         -lGLESv2
         glm)
 

@@ -5,7 +5,6 @@ include(cmake/glm.cmake)
 include(cmake/googletest.cmake)
 
 # Local dependencies
-add_subdirectory(math)
 add_subdirectory(common)
 # add_subdirectory(tests)
 
