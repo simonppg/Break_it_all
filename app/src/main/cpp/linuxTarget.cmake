@@ -2,7 +2,6 @@ include(cmake/DownloadProject.cmake)
 
 # Dependencies
 include(cmake/glm.cmake)
-include(cmake/googletest.cmake)
 include(cmake/glfw.cmake)
 
 # Local dependencies
