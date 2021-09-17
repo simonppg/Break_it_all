@@ -2,35 +2,47 @@
 #include <iostream>
 #include <GLES3/gl3.h>
 
-static GLuint loadShader(GLenum shaderType, const char* shaderSource)
-{
+bool isCompilationOk(GLenum shader) {
+    GLint compiled = 0;
+    glGetShaderiv(shader, GL_COMPILE_STATUS, &compiled);
+    return compiled;
+}
+
+int getInfoLogLenght(GLenum shader) {
+    GLint infoLen = 0;
+    glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &infoLen);
+    return infoLen;
+}
+
+void showShaderInfoLog(GLenum shader) {
+    int infoLen = getInfoLogLenght(shader);
+    if (!infoLen) { return; }
+
+    char *buf = (char*) malloc(sizeof(char) * infoLen);
+    if (!buf) { return; }
+
+    glGetShaderInfoLog(shader, infoLen, NULL, buf);
+    // LOGE("%s", buf);
+    free(buf);
+}
+
+static GLuint loadShader(GLenum shaderType, const char* shaderSource) {
+    // In this function 0 is and error
+    int error = 0;
+
+    // glCreateShader return 0 when there is an error
     GLuint shader = glCreateShader(shaderType);
-    if (shader)
-    {
-        glShaderSource(shader, 1, &shaderSource, NULL);
-        glCompileShader(shader);
-        GLint compiled = 0;
-        glGetShaderiv(shader, GL_COMPILE_STATUS, &compiled);
-        if (!compiled)
-        {
-            GLint infoLen = 0;
-            glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &infoLen);
-            if (infoLen)
-            {
-                char * buf = (char*) malloc(sizeof(char) * infoLen);
-                if (buf)
-                {
-                    glGetShaderInfoLog(shader, infoLen, NULL, buf);
-                    // LOGE("Could not Compile Shader: %d, %s", shaderType, buf);
-                    // LOGE("Shader src: %s", shaderSource);
-                    free(buf);
-                }
-                glDeleteShader(shader);
-                shader = 0;
-            }
-        }
-    }
-    return shader;
+    if(!shader) { return error; }
+
+    glShaderSource(shader, 1, &shaderSource, NULL);
+    glCompileShader(shader);
+
+    if(isCompilationOk(shader)) { return shader; }
+
+    showShaderInfoLog(shader);
+    glDeleteShader(shader);
+
+    return error;
 }
 
 static GLuint createProgram(const char* vertexSource, const char * fragmentSource)
