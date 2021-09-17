@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../platform/android/AndroidLogger.hpp"
+#include "AndroidLogger.hpp"
 #include "../common/BreakItAll.hpp"
 
 // #include "common/game.hpp"

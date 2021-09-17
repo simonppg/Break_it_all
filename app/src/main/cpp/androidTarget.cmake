@@ -11,7 +11,7 @@ add_subdirectory(common)
 add_library(Platform STATIC
     hal/src/android/logger.hpp
     hal/src/android/filesManager.cpp
-    platform/android/AndroidLogger.cpp)
+    android/AndroidLogger.cpp)
 
 target_link_libraries(Platform
     -landroid

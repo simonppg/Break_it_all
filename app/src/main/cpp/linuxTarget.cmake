@@ -11,7 +11,7 @@ add_subdirectory(common)
 
 # Wrapper library for glfw
 add_library(WindowManager STATIC
-            platform/linux/WindowManager.cpp)
+    linux/WindowManager.cpp)
 
 # Link glfw library to WindowManager
 target_link_libraries(WindowManager
@@ -24,7 +24,7 @@ target_include_directories(WindowManager PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/plat
 add_library(Platform STATIC
     hal/src/linux/logger.hpp
     hal/src/linux/filesManager.cpp
-    platform/linux/LinuxLogger.cpp)
+    linux/LinuxLogger.cpp)
 
 target_link_libraries(Platform
     glfw
