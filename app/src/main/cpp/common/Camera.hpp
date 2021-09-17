@@ -7,6 +7,7 @@
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+#include "Projection.hpp"
 
 using glm::mat4;
 using glm::vec3;
@@ -22,8 +23,6 @@ static const float X = 0.0f;
 static const float Y = 0.0f;
 static const float Z = 40.0f;
 
-#define PERSPECTIVE 0
-#define ORTHO 1
 class Camera {
     int projection_type = PERSPECTIVE;
     Point3D position;

@@ -10,6 +10,7 @@
 #endif
 
 #include "math_utils.hpp"
+#include "Projection.hpp"
 
 static float pov_in_degrees = 0.0f;
 #define NUMBER_OF_VERTICES 15
@@ -28,7 +29,7 @@ static clock_t last_time;
 
 Test4::Test4() {
     camera = new Camera(WIDTH, HEIGHT, X, Y, Z, NCP, FCP, FOV);
-    camera->set_projection_type(ORTHO);
+    camera->set_projection_type(ORTHOGRAPHIC);
     renderer = new Renderer();
 
     shaderProgs[0] = new ShaderProg("simple.vert", "simple.frag");
