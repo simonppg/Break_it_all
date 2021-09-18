@@ -3,34 +3,17 @@
 //
 
 #include "Camera.hpp"
+#include "Projection.hpp"
 
-Camera::Camera() : w{WIDTH}, h{HEIGHT}, x{X}, y{Y}, z{Z}, ncp{NCP}, fcp {FCP}, fov{FOV}
-{
+Camera::Camera() : w{WIDTH}, h{HEIGHT}, ncp{NCP}, fcp {FCP}, fov{FOV} {
     update_projection();
 }
 
-Camera::Camera(int w, int h, float x, float y, float z, float ncp, float rcp, float fov)
-: w{WIDTH}, h{HEIGHT}, x{X}, y{Y}, z{Z}, ncp{NCP}, fcp {FCP}, fov{FOV}
-{
-    this->w = w;
-    this->h = h;
-    this->x = x;
-    this->y = y;
-    this->z = z;
-    this->ncp = ncp;
-    this->fcp = rcp;
-    this->fov = fov;
-    update_projection();
-}
-
-Camera::Camera(int w, int h, Point3D position, float ncp, float rcp, float fov)
+Camera::Camera(int w, int h, Point3D *position, float ncp, float rcp, float fov)
 : w{WIDTH}, h{HEIGHT}, ncp{NCP}, fcp {FCP}, fov{FOV}
 {
     this->w = w;
     this->h = h;
-    this->x = X;
-    this->y = Y;
-    this->z = Z;
     this->position = position;
     this->ncp = ncp;
     this->fcp = rcp;
@@ -49,7 +32,7 @@ void Camera::update_width_height(int width, int height) {
 }
 
 void Camera::update_projection() {
-    if(projection_type == PERSPECTIVE)
+    if(projection == PERSPECTIVE)
         perspective = glm::perspective(glm::radians(fov), Camera::aspect_ratio(), ncp, fcp);
     else {
         if (w > h) {
@@ -67,21 +50,21 @@ void Camera::update_projection() {
         perspective = glm::ortho(left, right, bottom, top, ncp, fcp);
     }
 
-    cameraTranslate = glm::translate(perspective, vec3(-x, -y, -z));
+    cameraTranslate = glm::translate(perspective, vec3(-position->getX(), -position->getY(), -position->getZ()));
 }
 
-void Camera::update_xyz(float x, float y, float z) {
-    this->x = x;
-    this->y = y;
-    this->z = z;
+void Camera::updatePosition(Point3D *position) {
+    if(this->position != nullptr) { delete this->position; }
+
+    this->position = position;
     update_projection();
 }
 
-void Camera::update_position(Point3D position) {
-    this->position = position;
+Point3D * Camera::getPosition() {
+    return position;
 }
 
-void Camera::set_projection_type(int projection) {
-    this->projection_type = projection;
+void Camera::setProjection(Projection projection) {
+    this->projection = projection;
     update_projection();
 }

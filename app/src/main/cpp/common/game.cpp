@@ -17,13 +17,29 @@
 #include "../linux/logger.hpp"
 #endif
 
-void Game::camera_forward() { pScene->camera->z--;
-    //LOGI("%.2f",pScene->camera->z);
+void Game::camera_forward() {
+    Point3D *cameraPosition = pScene->camera->getPosition();
+    pScene->camera->updatePosition(cameraPosition->decrementZ(1));
 }
-void Game::camera_back() { pScene->camera->z++;}
-void Game::camera_left() { pScene->camera->x--;}
-void Game::camera_right() { pScene->camera->x++;}
-void Game::camera_reset() { pScene->camera->update_xyz(X, Y, Z); }
+
+void Game::camera_back() {
+    Point3D *cameraPosition = pScene->camera->getPosition();
+    pScene->camera->updatePosition(cameraPosition->incrementZ(1));
+}
+
+void Game::camera_left() {
+    Point3D *cameraPosition = pScene->camera->getPosition();
+    pScene->camera->updatePosition(cameraPosition->decrementX(1));
+}
+
+void Game::camera_right() {
+    Point3D *cameraPosition = pScene->camera->getPosition();
+    pScene->camera->updatePosition(cameraPosition->incrementX(1));
+}
+
+void Game::camera_reset() {
+    pScene->camera->updatePosition(new Point3D(X, Y, Z));
+}
 
 Game * Game::init(int pos) {
     // Don't call OpenGL functions here
