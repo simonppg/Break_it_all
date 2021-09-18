@@ -25,10 +25,9 @@ static const float Z = 40.0f;
 
 class Camera {
     Projection projection = PERSPECTIVE;
-    Point3D position;
+    Point3D *position = nullptr;
 public:
     float w, h;
-    float x, y, z;
     float ncp; // near clipping plane
     float fcp; // far clipping plane
     float fov; // field of view
@@ -36,13 +35,12 @@ public:
     mat4 cameraTranslate;
 
     Camera();
-    Camera(int w, int h, float x, float y, float z, float ncp, float fcp, float fov);
-    Camera(int w, int h, Point3D position, float ncp, float fcp, float fov);
+    Camera(int w, int h, Point3D *position, float ncp, float fcp, float fov);
 
     float aspect_ratio();
     void update_width_height(int width, int height);
-    void update_xyz(float x, float y, float z);
-    void update_position(Point3D position);
+    void updatePosition(Point3D *position);
+    Point3D* getPosition();
 
     void update_projection();
     void setProjection(Projection projection);

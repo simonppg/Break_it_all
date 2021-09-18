@@ -20,7 +20,7 @@ float radius = 0.5;
 float *v;
 
 Test3::Test3() {
-    camera = new Camera(WIDTH, HEIGHT, X, Y, Z, NCP, FCP, FOV);
+    camera = new Camera(WIDTH, HEIGHT, new Point3D(X, Y, Z), NCP, FCP, FOV);
     v = Math::get_circle(radius, NUMBER_OF_VERTICES);
 }
 
