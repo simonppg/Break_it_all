@@ -4,16 +4,16 @@
 
 #include "Camera.hpp"
 #include "Projection.hpp"
+#include "CanvasSize.hpp"
 
-Camera::Camera() : w{WIDTH}, h{HEIGHT}, ncp{NCP}, fcp {FCP}, fov{FOV} {
+Camera::Camera() : size{new CanvasSize()}, ncp{NCP}, fcp {FCP}, fov{FOV} {
     update_projection();
 }
 
-Camera::Camera(int w, int h, Point3D *position, float ncp, float rcp, float fov)
-: w{WIDTH}, h{HEIGHT}, ncp{NCP}, fcp {FCP}, fov{FOV}
+Camera::Camera(CanvasSize *size, Point3D *position, float ncp, float rcp, float fov)
+: size{size}, ncp{NCP}, fcp {FCP}, fov{FOV}
 {
-    this->w = w;
-    this->h = h;
+    this->size = size;
     this->position = position;
     this->ncp = ncp;
     this->fcp = rcp;
@@ -21,28 +21,22 @@ Camera::Camera(int w, int h, Point3D *position, float ncp, float rcp, float fov)
     update_projection();
 }
 
-float Camera::aspect_ratio() { // TODO: change this to a macro
-    return w/h;
-}
-
-void Camera::update_width_height(int width, int height) {
-    w = width;
-    h = height;
-    update_projection();
-}
+CanvasSize* Camera::getSize() { return size; }
+Point3D * Camera::getPosition() { return position; }
+float Camera::aspect_ratio() { return size->aspectRatio(); }
 
 void Camera::update_projection() {
     if(projection == PERSPECTIVE)
         perspective = glm::perspective(glm::radians(fov), Camera::aspect_ratio(), ncp, fcp);
     else {
-        if (w > h) {
-            top = w/2;
+        if (size->getWidth() > size->getHeight()) {
+            top = size->getWidth()/2;
             bottom = -top;
             right = top * aspect_ratio();
             left = -right;
         }
         else {
-            right = w/2;
+            right = size->getWidth()/2;
             left = -right;
             top = right / aspect_ratio();
             bottom = -top;
@@ -53,15 +47,18 @@ void Camera::update_projection() {
     cameraTranslate = glm::translate(perspective, vec3(-position->getX(), -position->getY(), -position->getZ()));
 }
 
+void Camera::updateSize(CanvasSize *size) {
+  if (this->size != nullptr) { delete this->size; }
+
+  this->size = size;
+  update_projection();
+}
+
 void Camera::updatePosition(Point3D *position) {
     if(this->position != nullptr) { delete this->position; }
 
     this->position = position;
     update_projection();
-}
-
-Point3D * Camera::getPosition() {
-    return position;
 }
 
 void Camera::setProjection(Projection projection) {

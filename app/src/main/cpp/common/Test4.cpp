@@ -11,6 +11,8 @@
 
 #include "math_utils.hpp"
 #include "Projection.hpp"
+#include "Point3D.hpp"
+#include "CanvasSize.hpp"
 
 static float pov_in_degrees = 0.0f;
 #define NUMBER_OF_VERTICES 15
@@ -28,7 +30,7 @@ static float cube_y_size = cube_x_size/7;
 static clock_t last_time;
 
 Test4::Test4() {
-    camera = new Camera(WIDTH, HEIGHT, new Point3D(X, Y, Z), NCP, FCP, FOV);
+    camera = new Camera(new CanvasSize(WIDTH, HEIGHT), new Point3D(X, Y, Z), NCP, FCP, FOV);
     camera->setProjection(ORTHOGRAPHIC);
     renderer = new Renderer();
 
@@ -89,7 +91,7 @@ void Test4::surfaceCreated() {
 
 void Test4::surfaceChanged(int width, int height) {
     glViewport(0, 0, width, height);
-    camera->update_width_height(width, height);
+    camera->updateSize(new CanvasSize(width, height));
 
     //h = (float)height/2;
     //h = camera->top;
@@ -120,9 +122,9 @@ void Test4::update() {
     float dt = (float) ((double) clock() - last_time) / CLOCKS_PER_SEC;
 
     ball->velocity += ball->acceleration * dt;
-    if (ball->x >= camera->w / 2)
+    if (ball->x >= camera->getSize()->getWidth() / 2)
         ball->x_direction = -1;
-    if(ball->x <= -camera->w / 2)
+    if(ball->x <= -camera->getSize()->getWidth() / 2)
         ball->x_direction = 1;
 
     ball->x += ball->velocity * dt * ball->x_direction;
@@ -137,7 +139,7 @@ bool Test4::events(double xpos, double ypos) {
     LOGI("%.2f, %.2f", xpos, ypos);
 
     //ball->update_xyz((-camera->w/2) + xpos, (camera->h / 2) - ypos, 0);
-    paddle->update_xyz((-camera->w/2) + xpos, (-camera->h/2) + cube_y_size*2, 0);
+    paddle->update_xyz((-camera->getSize()->getWidth()/2) + xpos, (-camera->getSize()->getHeight()/2) + cube_y_size*2, 0);
     pov_in_degrees += 5.0f;
     return true;
 }
