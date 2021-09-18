@@ -1,15 +1,32 @@
 #include "Point3D.hpp"
 
-Point3D::Point3D(void)
-{ 
-    this->x = 0.0;
-    this->y = 0.0;
-    this->z = 0.0;
+Point3D::Point3D(void) : x(0.0), y(0.0), z(0.0) {}
+Point3D::Point3D(float x, float y, float z) : x(x), y(y), z(z) {}
+
+float Point3D::getX() { return x; }
+float Point3D::getY() { return y; }
+float Point3D::getZ() { return z; }
+
+Point3D * Point3D::incrementX(float delta){
+    return new Point3D(x + delta, y, z);
 }
 
-Point3D::Point3D(float x, float y, float z)
-{
-    this->x = x;
-    this->y = y;
-    this->z = z;
+Point3D * Point3D::decrementX(float delta) {
+    return new Point3D(x - delta, y, z);
+}
+
+Point3D * Point3D::incrementY(float delta){
+    return new Point3D(x, y + delta, z);
+}
+
+Point3D * Point3D::decrementY(float delta) {
+    return new Point3D(x, y - delta, z);
+}
+
+Point3D * Point3D::incrementZ(float delta){
+    return new Point3D(x, y, z + delta);
+}
+
+Point3D * Point3D::decrementZ(float delta) {
+    return new Point3D(x, y, z - delta);
 }
