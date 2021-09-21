@@ -12,8 +12,6 @@ using glm::vec3;
 #define NUM_ARRAY_ELEMENTS(a) (sizeof(a) / sizeof(*a))
 #define INDEX_BUFFER_SIZE(numIndices) ((GLsizeiptr)((numIndices) * (sizeof(GLushort))))
 #define VERTEX_BUFFER_SIZE(numIndices) ((GLsizeiptr)((numIndices) * (sizeof(float) * 6)))
-#define ONE 1
-#define TWO 2
 
 class Mesh {
 public:

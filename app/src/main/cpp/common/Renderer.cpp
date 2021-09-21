@@ -3,6 +3,7 @@
 //
 
 #include "Renderer.hpp"
+#include "MeshType.hpp"
 
 #include <GLES3/gl3.h>
 #include <malloc.h>
