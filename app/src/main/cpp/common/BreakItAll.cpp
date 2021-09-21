@@ -8,20 +8,44 @@ bool isCompilationOk(GLenum shader) {
     return compiled;
 }
 
-int getInfoLogLenght(GLenum shader) {
+bool isProgramLinkOk(GLuint program) {
+    GLint linkStatus = GL_FALSE;
+    glGetProgramiv(program, GL_LINK_STATUS, &linkStatus);
+    return linkStatus;
+}
+
+int getInfoLogLength(GLenum shader) {
     GLint infoLen = 0;
     glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &infoLen);
     return infoLen;
 }
 
-void showShaderInfoLog(GLenum shader) {
-    int infoLen = getInfoLogLenght(shader);
-    if (!infoLen) { return; }
+int getProgramInfoLength(GLuint program) {
+    GLint bufLength = 0;
+    glGetProgramiv(program, GL_INFO_LOG_LENGTH, &bufLength);
+    return bufLength;
+}
 
-    char *buf = (char*) malloc(sizeof(char) * infoLen);
+void showShaderInfoLog(GLenum shader) {
+    int infoLength = getInfoLogLength(shader);
+    if (!infoLength) { return; }
+
+    char *buf = (char*) malloc(sizeof(char) * infoLength);
     if (!buf) { return; }
 
-    glGetShaderInfoLog(shader, infoLen, NULL, buf);
+    glGetShaderInfoLog(shader, infoLength, NULL, buf);
+    // LOGE("%s", buf);
+    free(buf);
+}
+
+void showProgramInfoLog(GLuint program) {
+    int infoLength = getProgramInfoLength(program);
+    if(!infoLength) { return; }
+
+    char *buf = (char *)malloc(sizeof(char) * infoLength);
+    if (!buf) { return; }
+
+    glGetProgramInfoLog(program, infoLength, NULL, buf);
     // LOGE("%s", buf);
     free(buf);
 }
@@ -45,49 +69,40 @@ static GLuint loadShader(GLenum shaderType, const char* shaderSource) {
     return error;
 }
 
-static GLuint createProgram(const char* vertexSource, const char * fragmentSource)
-{
-    if(vertexSource == NULL || fragmentSource == NULL)
-        return 0;
+static GLuint createProgram(const char* vertexSource, const char * fragmentSource) {
+    // In this function 0 is and error
+    const int error = 0;
+
+    if (vertexSource == NULL) { return error; }
+    if (fragmentSource == NULL) { return error; }
 
     GLuint vertexShader = loadShader(GL_VERTEX_SHADER, vertexSource);
-    if (!vertexShader)
-    {
+    if (!vertexShader) {
         // LOGE("Could not load vertexShader\n");
-        return 0;
+        return error;
     }
+
     GLuint fragmentShader = loadShader(GL_FRAGMENT_SHADER, fragmentSource);
-    if (!fragmentShader)
-    {
+    if (!fragmentShader) {
         // LOGE("Could not load fragmentShader\n");
-        return 0;
+        return error;
     }
+
     GLuint program = glCreateProgram();
-    if (program)
-    {
-        glAttachShader(program , vertexShader);
-        glAttachShader(program, fragmentShader);
-        glLinkProgram(program);
-        GLint linkStatus = GL_FALSE;
-        glGetProgramiv(program , GL_LINK_STATUS, &linkStatus);
-        if( linkStatus != GL_TRUE)
-        {
-            GLint bufLength = 0;
-            glGetProgramiv(program, GL_INFO_LOG_LENGTH, &bufLength);
-            if (bufLength)
-            {
-                char* buf = (char*) malloc(sizeof(char) * bufLength);
-                if (buf)
-                {
-                    glGetProgramInfoLog(program, bufLength, NULL, buf);
-                    // LOGE("Could not link program: %s", buf);
-                    free(buf);
-                }
-            }
-            glDeleteProgram(program);
-            program = 0;
-        }
+    if (!program) { return error; }
+
+    glAttachShader(program, vertexShader);
+    glAttachShader(program, fragmentShader);
+    glLinkProgram(program);
+    GLint linkStatus = GL_FALSE;
+    glGetProgramiv(program, GL_LINK_STATUS, &linkStatus);
+
+    if (!isProgramLinkOk(program)) {
+      showProgramInfoLog(program);
+      glDeleteProgram(program);
+      program = error;
     }
+
     return program;
 }
 
