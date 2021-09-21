@@ -2,9 +2,14 @@
 // Created by simonppg on 3/13/19.
 //
 
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+
 #include "Camera.hpp"
 #include "Projection.hpp"
 #include "CanvasSize.hpp"
+
+using glm::mat4;
 
 Camera::Camera() : size{new CanvasSize()}, ncp{NCP}, fcp {FCP}, fov{FOV} {
     update_projection();
@@ -26,6 +31,8 @@ Point3D * Camera::getPosition() { return position; }
 float Camera::aspect_ratio() { return size->aspectRatio(); }
 
 void Camera::update_projection() {
+    mat4 perspective;
+
     if(projection == PERSPECTIVE)
         perspective = glm::perspective(glm::radians(fov), Camera::aspect_ratio(), ncp, fcp);
     else {
