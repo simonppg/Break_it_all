@@ -3,6 +3,7 @@
 //
 
 #include "Mesh.hpp"
+#include "MeshType.hpp"
 
 Mesh::Mesh(float *vertex, int v_size) {
     this->vertex = vertex;

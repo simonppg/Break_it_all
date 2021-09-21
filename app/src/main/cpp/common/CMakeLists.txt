@@ -12,7 +12,7 @@ add_library(common STATIC
         game.cpp
         Renderer.cpp
         Mesh.cpp
-        math_utils.cpp
+        Math.cpp
         Vector.cpp
         Point3D.cpp)
 

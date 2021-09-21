@@ -3,13 +3,14 @@
 //
 
 #include "Object.hpp"
+#include "Point3D.hpp"
 #include <GLES3/gl3.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-Object::Object(Camera *pCamera, ShaderProg *pProg, Mesh *pMesh):  y{0}, z{0},
-    size_x{2}, size_y{1}, size_z{1}, angle{0}, x{0}{
-
+Object::Object(Camera *pCamera, ShaderProg *pProg, Mesh *pMesh):
+    size_x{2}, size_y{1}, size_z{1}, angle{0} {
+    this->position = new Point3D();
     rotation = vec3(1);
     this->camera = pCamera;
     this->prog = pProg;
@@ -19,12 +20,14 @@ Object::Object(Camera *pCamera, ShaderProg *pProg, Mesh *pMesh):  y{0}, z{0},
     draw_context = new DrawContext();
 }
 
+Point3D * Object::getPosition() { return position; }
+
 void Object::draw() {
     mat4 translate;
     mat4 rotate;
     mat4 scale;
 
-    translate = glm::translate(camera->cameraTranslate, vec3(x, y, z));
+    translate = glm::translate(camera->cameraTranslate, vec3(position->getX(), position->getY(), position->getZ()));
     rotate = glm::rotate(translate, glm::radians(angle), rotation);
     scale = glm::scale(rotate, glm::vec3(size_x, size_y, size_z));
 
@@ -41,10 +44,9 @@ void Object::draw() {
     renderer->draw(draw_context);
 }
 
-void Object::update_xyz(float x, float y, float z) {
-    this->x = x;
-    this->y = y;
-    this->z = z;
+void Object::updatePosition(Point3D *position) {
+    if(this->position != nullptr) { delete this->position; }
+    this->position = position;
 }
 
 void Object::update_size(float size_x, float size_y, float size_z) {

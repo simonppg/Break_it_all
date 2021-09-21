@@ -33,7 +33,6 @@ public:
     float ncp; // near clipping plane
     float fcp; // far clipping plane
     float fov; // field of view
-    mat4 perspective;
     mat4 cameraTranslate;
 
     Camera();
