@@ -21,9 +21,9 @@ SandBox::SandBox() {
     for (auto &i : objects) {
         i = new Object(camera, shaderProgs[0], meshes[0]);
         i->update_size(2, 1, 1);
-        i->update_xyz(sin(rand() % 20 -10) + rand() % 20 -10,
+        i->updatePosition(new Point3D(sin(rand() % 20 -10) + rand() % 20 -10,
                             cos(rand() % 36 -18) + rand() % 36 -18,
-                            tan(rand() % 100 + 1) + rand() % 100 -10);
+                            tan(rand() % 100 + 1) + rand() % 100 -10));
         i->animate_y();
     }
 }
