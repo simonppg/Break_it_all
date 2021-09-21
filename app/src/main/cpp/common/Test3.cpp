@@ -6,7 +6,7 @@
 
 #include <vector>
 
-#include "math_utils.hpp"
+#include "Math.hpp"
 #include "Renderer.hpp"
 #include "Point3D.hpp"
 #include "CanvasSize.hpp"

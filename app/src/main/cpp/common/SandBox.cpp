@@ -4,7 +4,7 @@
 
 #include "SandBox.hpp"
 
-#include "math_utils.hpp"
+#include "Math.hpp"
 #include "Point3D.hpp"
 #include "CanvasSize.hpp"
 

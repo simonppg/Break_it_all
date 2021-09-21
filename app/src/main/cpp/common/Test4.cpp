@@ -9,7 +9,7 @@
 #include "../linux/logger.hpp"
 #endif
 
-#include "math_utils.hpp"
+#include "Math.hpp"
 #include "Projection.hpp"
 #include "Point3D.hpp"
 #include "CanvasSize.hpp"

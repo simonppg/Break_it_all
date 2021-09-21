@@ -2,7 +2,7 @@
 // Created by simonppg on 4/19/19.
 //
 
-#include "math_utils.hpp"
+#include "Math.hpp"
 
 #include <cmath>
 
