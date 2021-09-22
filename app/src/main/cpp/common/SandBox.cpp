@@ -14,7 +14,7 @@ using glm::vec3;
 float pov_in_degrees = 0.0f;
 
 SandBox::SandBox() {
-    camera = new Camera(new Dimension(WIDTH, HEIGHT), new Point3D(0, 0, 40));
+    camera = new Camera(new Dimension(), new Point3D(0, 0, 40));
     shaderProgs[0] = new ShaderProg("simple.vert", "simple.frag");
     meshes[0] = new Mesh(Math::get_cube(), 8, Math::get_cube_index(), 36);
 

@@ -7,16 +7,12 @@
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+#include "Point3D.hpp"
 #include "Projection.hpp"
 #include "Dimension.hpp"
 
 using glm::mat4;
 using glm::vec3;
-
-#include "Point3D.hpp"
-
-static const int WIDTH = 450;
-static const int HEIGHT = 800;
 
 class Camera {
     Projection projection = PERSPECTIVE;

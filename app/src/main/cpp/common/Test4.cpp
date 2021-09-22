@@ -15,23 +15,25 @@
 #include "Dimension.hpp"
 #include "Object.hpp"
 
+static const int CAMERA_WIDTH = 450;
+static const int CAMERA_HEIGHT = 800;
 static float pov_in_degrees = 0.0f;
 #define NUMBER_OF_VERTICES 15
 static float radius = 1.0;
 
-static float h = (float)HEIGHT/2;
-static vector<float> vPos = Math::get_grid(WIDTH, h, ROW, COL);
-static float x_size = 90.0f*((float)WIDTH/COL)/100;
+static float h = (float)CAMERA_HEIGHT/2;
+static vector<float> vPos = Math::get_grid(CAMERA_WIDTH, h, ROW, COL);
+static float x_size = 90.0f*((float)CAMERA_WIDTH/COL)/100;
 static float y_size = 80.0f*(h/ROW)/100;
 
-static float ball_size = (float)WIDTH/30;
-static float cube_x_size = ((float)WIDTH/2)/3;
+static float ball_size= (float)CAMERA_WIDTH/30;
+static float cube_x_size = ((float)CAMERA_WIDTH/2)/3;
 static float cube_y_size = cube_x_size/7;
 
 static clock_t last_time;
 
 Test4::Test4() {
-    camera = new Camera(new Dimension(WIDTH, HEIGHT), new Point3D(0, 0, 40));
+    camera = new Camera(new Dimension(CAMERA_WIDTH, CAMERA_HEIGHT), new Point3D(0, 0, 40));
     camera->setProjection(ORTHOGRAPHIC);
     renderer = new Renderer();
 
