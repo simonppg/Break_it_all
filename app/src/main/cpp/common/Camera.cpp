@@ -7,7 +7,7 @@
 
 #include "Camera.hpp"
 #include "Projection.hpp"
-#include "CanvasSize.hpp"
+#include "Dimension.hpp"
 
 using glm::mat4;
 
@@ -16,23 +16,23 @@ static const float FCP = 100.0f;
 static const float FOV = 60.0f;
 
 Camera::Camera()
-    : size(new CanvasSize()), position(new Point3D()), ncp(NCP), fcp(FCP), fov(FOV) {
+    : dimension(new Dimension()), position(new Point3D()), ncp(NCP), fcp(FCP), fov(FOV) {
   update_projection();
 }
 
-Camera::Camera(CanvasSize *size, Point3D *position)
-    : size(size), position(new Point3D()), ncp(NCP), fcp(FCP), fov(FOV) {
+Camera::Camera(Dimension *dimension, Point3D *position)
+    : dimension(dimension), position(new Point3D()), ncp(NCP), fcp(FCP), fov(FOV) {
   update_projection();
 }
 
-Camera::Camera(CanvasSize *size, Point3D *position, float ncp, float fcp, float fov)
-    : size(size), position(new Point3D()), ncp(ncp), fcp(fcp), fov(fov) {
+Camera::Camera(Dimension *dimension, Point3D *position, float ncp, float fcp, float fov)
+    : dimension(dimension), position(new Point3D()), ncp(ncp), fcp(fcp), fov(fov) {
   update_projection();
 }
 
-CanvasSize* Camera::getSize() { return size; }
+Dimension* Camera::getDimension() { return dimension; }
 Point3D * Camera::getPosition() { return position; }
-float Camera::aspect_ratio() { return size->aspectRatio(); }
+float Camera::aspect_ratio() { return dimension->aspectRatio(); }
 
 void Camera::update_projection() {
     mat4 perspective;
@@ -40,14 +40,14 @@ void Camera::update_projection() {
     if(projection == PERSPECTIVE)
         perspective = glm::perspective(glm::radians(fov), Camera::aspect_ratio(), ncp, fcp);
     else {
-        if (size->getWidth() > size->getHeight()) {
-            top = size->getWidth()/2;
+        if (dimension->getWidth() > dimension->getHeight()) {
+            top = dimension->getWidth()/2;
             bottom = -top;
             right = top * aspect_ratio();
             left = -right;
         }
         else {
-            right = size->getWidth()/2;
+            right = dimension->getWidth()/2;
             left = -right;
             top = right / aspect_ratio();
             bottom = -top;
@@ -58,10 +58,10 @@ void Camera::update_projection() {
     cameraTranslate = glm::translate(perspective, vec3(-position->getX(), -position->getY(), -position->getZ()));
 }
 
-void Camera::updateSize(CanvasSize *size) {
-  if (this->size != nullptr) { delete this->size; }
+void Camera::updateDimension(Dimension *dimension) {
+  if (this->dimension != nullptr) { delete this->dimension; }
 
-  this->size = size;
+  this->dimension = dimension;
   update_projection();
 }
 

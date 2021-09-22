@@ -12,7 +12,7 @@
 #include "Math.hpp"
 #include "Projection.hpp"
 #include "Point3D.hpp"
-#include "CanvasSize.hpp"
+#include "Dimension.hpp"
 #include "Object.hpp"
 
 static float pov_in_degrees = 0.0f;
@@ -31,7 +31,7 @@ static float cube_y_size = cube_x_size/7;
 static clock_t last_time;
 
 Test4::Test4() {
-    camera = new Camera(new CanvasSize(WIDTH, HEIGHT), new Point3D(0, 0, 40));
+    camera = new Camera(new Dimension(WIDTH, HEIGHT), new Point3D(0, 0, 40));
     camera->setProjection(ORTHOGRAPHIC);
     renderer = new Renderer();
 
@@ -92,7 +92,7 @@ void Test4::surfaceCreated() {
 
 void Test4::surfaceChanged(int width, int height) {
     glViewport(0, 0, width, height);
-    camera->updateSize(new CanvasSize(width, height));
+    camera->updateDimension(new Dimension(width, height));
 
     //h = (float)height/2;
     //h = camera->top;
@@ -124,9 +124,9 @@ void Test4::update() {
 
     Point3D *ballPosition = ball->getPosition();
     ball->velocity += ball->acceleration * dt;
-    if (ballPosition->getX() >= camera->getSize()->getWidth() / 2)
+    if (ballPosition->getX() >= camera->getDimension()->getWidth() / 2)
         ball->x_direction = -1;
-    if(ballPosition->getX() <= -camera->getSize()->getWidth() / 2)
+    if(ballPosition->getX() <= -camera->getDimension()->getWidth() / 2)
         ball->x_direction = 1;
 
     Point3D *newBallPosition = ballPosition->incrementX(ball->velocity * dt * ball->x_direction);
@@ -142,7 +142,7 @@ bool Test4::events(double xpos, double ypos) {
     LOGI("%.2f, %.2f", xpos, ypos);
 
     //ball->update_xyz((-camera->w/2) + xpos, (camera->h / 2) - ypos, 0);
-    paddle->updatePosition(new Point3D((-camera->getSize()->getWidth()/2) + xpos, (-camera->getSize()->getHeight()/2) + cube_y_size*2, 0));
+    paddle->updatePosition(new Point3D((-camera->getDimension()->getWidth()/2) + xpos, (-camera->getDimension()->getHeight()/2) + cube_y_size*2, 0));
     pov_in_degrees += 5.0f;
     return true;
 }

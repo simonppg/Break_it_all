@@ -8,7 +8,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include "Projection.hpp"
-#include "CanvasSize.hpp"
+#include "Dimension.hpp"
 
 using glm::mat4;
 using glm::vec3;
@@ -20,7 +20,7 @@ static const int HEIGHT = 800;
 
 class Camera {
     Projection projection = PERSPECTIVE;
-    CanvasSize *size;
+    Dimension *dimension;
     Point3D *position;
 
 public:
@@ -30,14 +30,14 @@ public:
     mat4 cameraTranslate;
 
     Camera();
-    Camera(CanvasSize *size, Point3D *position);
-    Camera(CanvasSize *size, Point3D *position, float ncp, float fcp, float fov);
+    Camera(Dimension *dimension, Point3D *position);
+    Camera(Dimension *dimension, Point3D *position, float ncp, float fcp, float fov);
 
     Point3D* getPosition();
-    CanvasSize* getSize();
+    Dimension* getDimension();
     float aspect_ratio();
 
-    void updateSize(CanvasSize *size);
+    void updateDimension(Dimension *dimension);
     void updatePosition(Point3D *position);
     void update_projection();
     void setProjection(Projection projection);

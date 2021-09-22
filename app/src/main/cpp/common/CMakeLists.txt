@@ -1,5 +1,5 @@
 add_library(common STATIC
-        CanvasSize.cpp
+        Dimension.cpp
         BreakItAll.cpp
         SandBox.cpp
         Test1.cpp

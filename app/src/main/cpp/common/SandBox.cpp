@@ -6,7 +6,7 @@
 
 #include "Math.hpp"
 #include "Point3D.hpp"
-#include "CanvasSize.hpp"
+#include "Dimension.hpp"
 
 using glm::mat4;
 using glm::vec3;
@@ -14,7 +14,7 @@ using glm::vec3;
 float pov_in_degrees = 0.0f;
 
 SandBox::SandBox() {
-    camera = new Camera(new CanvasSize(WIDTH, HEIGHT), new Point3D(0, 0, 40));
+    camera = new Camera(new Dimension(WIDTH, HEIGHT), new Point3D(0, 0, 40));
     shaderProgs[0] = new ShaderProg("simple.vert", "simple.frag");
     meshes[0] = new Mesh(Math::get_cube(), 8, Math::get_cube_index(), 36);
 
@@ -54,7 +54,7 @@ void SandBox::render() {
 }
 
 void SandBox::surfaceChanged(int width, int height) {
-    this->camera->updateSize(new CanvasSize(width, height));
+    this->camera->updateDimension(new Dimension(width, height));
     glViewport(0, 0, width, height);
 }
 
