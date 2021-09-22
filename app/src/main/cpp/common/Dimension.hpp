@@ -1,5 +1,5 @@
-#ifndef COMMON_CANVASSIZE_H
-#define COMMON_CANVASSIZE_H
+#ifndef COMMON_DIMENSION_H
+#define COMMON_DIMENSION_H
 
 class Dimension {
 public:
@@ -14,4 +14,4 @@ private:
     const float width, height;
 };
 
-#endif //COMMON_CANVASSIZE_H
+#endif //COMMON_DIMENSION_H
