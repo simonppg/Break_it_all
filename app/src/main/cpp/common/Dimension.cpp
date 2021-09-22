@@ -1,6 +1,6 @@
 #include "Dimension.hpp"
 
-Dimension::Dimension(void) : width(0.0), height(0.0) {}
+Dimension::Dimension(void) : width(450.0f), height(800.0f) {}
 Dimension::Dimension(float width, float height) : width(width), height(height) {}
 
 float Dimension::getWidth() { return width; }
