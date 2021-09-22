@@ -10,6 +10,7 @@
 #include "Point3D.hpp"
 #include "Projection.hpp"
 #include "Dimension.hpp"
+#include "FieldOfView.hpp"
 
 using glm::mat4;
 using glm::vec3;
@@ -19,16 +20,14 @@ private:
     Projection projection = PERSPECTIVE;
     Dimension *dimension;
     Point3D *position;
-    float ncp; // near clipping plane
-    float fcp; // far clipping plane
-    float fov; // field of view
+    FieldOfView *fov;
 
 public:
     mat4 cameraTranslate;
 
     Camera();
     Camera(Dimension *dimension, Point3D *position);
-    Camera(Dimension *dimension, Point3D *position, float ncp, float fcp, float fov);
+    Camera(Dimension *dimension, Point3D *position, FieldOfView *fov);
 
     Point3D* getPosition();
     Dimension* getDimension();

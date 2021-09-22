@@ -1,5 +1,6 @@
 add_library(common STATIC
         Dimension.cpp
+        FieldOfView.cpp
         BreakItAll.cpp
         SandBox.cpp
         Test1.cpp
