@@ -15,14 +15,15 @@ using glm::mat4;
 using glm::vec3;
 
 class Camera {
+private:
     Projection projection = PERSPECTIVE;
     Dimension *dimension;
     Point3D *position;
-
-public:
     float ncp; // near clipping plane
     float fcp; // far clipping plane
     float fov; // field of view
+
+public:
     mat4 cameraTranslate;
 
     Camera();
