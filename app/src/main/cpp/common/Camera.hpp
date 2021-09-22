@@ -2,8 +2,8 @@
 // Created by simonppg on 3/13/19.
 //
 
-#ifndef BREAK_IT_ALL_CAMERA_H
-#define BREAK_IT_ALL_CAMERA_H
+#ifndef COMMON_CAMERA_H
+#define COMMON_CAMERA_H
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -41,4 +41,4 @@ public:
     float top, bottom, right, left;
 };
 
-#endif //BREAK_IT_ALL_CAMERA_H
+#endif //COMMON_CAMERA_H
