@@ -14,24 +14,44 @@ using glm::mat4;
 
 Camera::Camera()
     : dimension(new Dimension()), position(new Point3D()), fov(new FieldOfView()) {
-  update_projection();
+  updateProjection();
 }
 
 Camera::Camera(Dimension *dimension, Point3D *position)
     : dimension(dimension), position(new Point3D()), fov(new FieldOfView()) {
-  update_projection();
+  updateProjection();
 }
 
 Camera::Camera(Dimension *dimension, Point3D *position, FieldOfView *fov)
     : dimension(dimension), position(new Point3D()), fov(fov) {
-  update_projection();
+  updateProjection();
 }
 
 Dimension* Camera::getDimension() { return dimension; }
 Point3D * Camera::getPosition() { return position; }
 float Camera::aspect_ratio() { return dimension->aspectRatio(); }
 
-void Camera::update_projection() {
+void Camera::updateDimension(Dimension *dimension) {
+  if (this->dimension != nullptr) { delete this->dimension; }
+
+  this->dimension = dimension;
+  updateProjection();
+}
+
+void Camera::updatePosition(Point3D *position) {
+    if(this->position != nullptr) { delete this->position; }
+
+    this->position = position;
+    updateProjection();
+}
+
+void Camera::setProjection(Projection projection) {
+    this->projection = projection;
+    updateProjection();
+}
+
+// NOTE: MUST be called after change position, dimension or fov
+void Camera::updateProjection() {
     mat4 perspective;
 
     if(projection == PERSPECTIVE)
@@ -55,21 +75,3 @@ void Camera::update_projection() {
     cameraTranslate = glm::translate(perspective, vec3(-position->getX(), -position->getY(), -position->getZ()));
 }
 
-void Camera::updateDimension(Dimension *dimension) {
-  if (this->dimension != nullptr) { delete this->dimension; }
-
-  this->dimension = dimension;
-  update_projection();
-}
-
-void Camera::updatePosition(Point3D *position) {
-    if(this->position != nullptr) { delete this->position; }
-
-    this->position = position;
-    update_projection();
-}
-
-void Camera::setProjection(Projection projection) {
-    this->projection = projection;
-    update_projection();
-}

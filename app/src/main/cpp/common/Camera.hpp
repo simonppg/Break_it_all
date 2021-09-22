@@ -22,6 +22,9 @@ private:
     Point3D *position;
     FieldOfView *fov;
 
+    // NOTE: MUST be called after change position, dimension or fov
+    void updateProjection();
+
 public:
     mat4 cameraTranslate;
 
@@ -35,7 +38,6 @@ public:
 
     void updateDimension(Dimension *dimension);
     void updatePosition(Point3D *position);
-    void update_projection();
     void setProjection(Projection projection);
 
     float top, bottom, right, left;

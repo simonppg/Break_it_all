@@ -41,9 +41,6 @@ void SandBox::surfaceCreated()
 }
 
 void SandBox::render() {
-    // Note: this should be called after change xyz or w/h
-    this->camera->update_projection();
-
     glClearColor(0.6f, 0.6f, 0.6f, 1.0f);
     glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
