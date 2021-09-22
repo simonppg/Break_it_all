@@ -11,19 +11,23 @@
 
 using glm::mat4;
 
-Camera::Camera() : size{new CanvasSize()}, ncp{NCP}, fcp {FCP}, fov{FOV} {
-    update_projection();
+static const float NCP = 0.1f;
+static const float FCP = 100.0f;
+static const float FOV = 60.0f;
+
+Camera::Camera()
+    : size(new CanvasSize()), position(new Point3D()), ncp(NCP), fcp(FCP), fov(FOV) {
+  update_projection();
 }
 
-Camera::Camera(CanvasSize *size, Point3D *position, float ncp, float rcp, float fov)
-: size{size}, ncp{NCP}, fcp {FCP}, fov{FOV}
-{
-    this->size = size;
-    this->position = position;
-    this->ncp = ncp;
-    this->fcp = rcp;
-    this->fov = fov;
-    update_projection();
+Camera::Camera(CanvasSize *size, Point3D *position)
+    : size(size), position(new Point3D()), ncp(NCP), fcp(FCP), fov(FOV) {
+  update_projection();
+}
+
+Camera::Camera(CanvasSize *size, Point3D *position, float ncp, float fcp, float fov)
+    : size(size), position(new Point3D()), ncp(ncp), fcp(fcp), fov(fov) {
+  update_projection();
 }
 
 CanvasSize* Camera::getSize() { return size; }

@@ -17,14 +17,11 @@ using glm::vec3;
 
 static const int WIDTH = 450;
 static const int HEIGHT = 800;
-static const float NCP = 0.1f;
-static const float FCP = 100.0f;
-static const float FOV = 60.0f;
 
 class Camera {
     Projection projection = PERSPECTIVE;
-    Point3D *position = nullptr;
-    CanvasSize *size = nullptr;
+    CanvasSize *size;
+    Point3D *position;
 
 public:
     float ncp; // near clipping plane
@@ -33,6 +30,7 @@ public:
     mat4 cameraTranslate;
 
     Camera();
+    Camera(CanvasSize *size, Point3D *position);
     Camera(CanvasSize *size, Point3D *position, float ncp, float fcp, float fov);
 
     Point3D* getPosition();
