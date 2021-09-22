@@ -31,7 +31,7 @@ static float cube_y_size = cube_x_size/7;
 static clock_t last_time;
 
 Test4::Test4() {
-    camera = new Camera(new CanvasSize(WIDTH, HEIGHT), new Point3D(X, Y, Z), NCP, FCP, FOV);
+    camera = new Camera(new CanvasSize(WIDTH, HEIGHT), new Point3D(0, 0, 40), NCP, FCP, FOV);
     camera->setProjection(ORTHOGRAPHIC);
     renderer = new Renderer();
 

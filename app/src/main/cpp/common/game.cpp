@@ -38,7 +38,7 @@ void Game::camera_right() {
 }
 
 void Game::camera_reset() {
-    pScene->camera->updatePosition(new Point3D(X, Y, Z));
+    pScene->camera->updatePosition(new Point3D());
 }
 
 Game * Game::init(int pos) {

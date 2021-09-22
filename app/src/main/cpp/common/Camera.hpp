@@ -20,9 +20,6 @@ static const int HEIGHT = 800;
 static const float NCP = 0.1f;
 static const float FCP = 100.0f;
 static const float FOV = 60.0f;
-static const float X = 0.0f;
-static const float Y = 0.0f;
-static const float Z = 40.0f;
 
 class Camera {
     Projection projection = PERSPECTIVE;
