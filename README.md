@@ -75,6 +75,12 @@ $ make check
 This commands would build and run the app on your android phone and then show the logcat on the console.
 
 ```shell
+./gradlew log
+```
+
+or if you want to change the filters, connect to you phone running a shell session using adb and then run logcat with different options.
+
+```shell
 ./gradlew appStart
 adb shell
 logcat libNative:I *:S

@@ -50,3 +50,8 @@ task appStart(type: Exec, dependsOn: 'installDebug') {
     // windows
     // commandLine 'cmd', '/c', 'adb', 'shell', 'am', 'start', '-n', 'com.example.simonppg.break_it_all/.MainScreen'
 }
+
+task log(type: Exec, dependsOn: 'appStart') {
+    // linux
+    commandLine 'adb', 'shell', 'logcat', 'libNative:I', '*:S'
+}
