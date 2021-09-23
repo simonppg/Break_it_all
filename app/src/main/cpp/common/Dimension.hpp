@@ -5,13 +5,14 @@ class Dimension {
 public:
     Dimension(void);
     Dimension(float width, float height);
+    Dimension(const Dimension &dimension);
 
     float getWidth();
     float getHeight();
     float aspectRatio();
 
 private:
-    const float width, height;
+    float width, height;
 };
 
 #endif //COMMON_DIMENSION_H

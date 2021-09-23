@@ -14,9 +14,9 @@ using glm::vec3;
 class Camera {
 private:
     Projection projection = PERSPECTIVE;
-    Dimension *dimension;
-    Point3D *position;
-    FieldOfView *fov;
+    Dimension dimension;
+    Point3D position;
+    FieldOfView fov;
 
     // NOTE: MUST be called after change position, dimension or fov
     void updateProjection();
@@ -25,15 +25,15 @@ public:
     mat4 cameraTranslate;
 
     Camera();
-    Camera(Dimension *dimension, Point3D *position);
-    Camera(Dimension *dimension, Point3D *position, FieldOfView *fov);
+    Camera(Dimension dimension, Point3D position);
+    Camera(Dimension dimension, Point3D position, FieldOfView fov);
 
-    Point3D* getPosition();
-    Dimension* getDimension();
+    Point3D getPosition();
+    Dimension getDimension();
     float aspectRatio();
 
-    void updateDimension(Dimension *dimension);
-    void updatePosition(Point3D *position);
+    void updateDimension(Dimension dimension);
+    void updatePosition(Point3D position);
     void setProjection(Projection projection);
 
     float top, bottom, right, left;

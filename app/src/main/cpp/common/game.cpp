@@ -3,6 +3,7 @@
 //
 
 #include "game.hpp"
+#include "Point3D.hpp"
 
 //Examples
 #include "SandBox.hpp"
@@ -18,27 +19,27 @@
 #endif
 
 void Game::camera_forward() {
-    Point3D *cameraPosition = pScene->camera->getPosition();
-    pScene->camera->updatePosition(cameraPosition->decrementZ(1));
+    Point3D cameraPosition = pScene->camera->getPosition();
+    pScene->camera->updatePosition(cameraPosition.decrementZ(1));
 }
 
 void Game::camera_back() {
-    Point3D *cameraPosition = pScene->camera->getPosition();
-    pScene->camera->updatePosition(cameraPosition->incrementZ(1));
+    Point3D cameraPosition = pScene->camera->getPosition();
+    pScene->camera->updatePosition(cameraPosition.incrementZ(1));
 }
 
 void Game::camera_left() {
-    Point3D *cameraPosition = pScene->camera->getPosition();
-    pScene->camera->updatePosition(cameraPosition->decrementX(1));
+    Point3D cameraPosition = pScene->camera->getPosition();
+    pScene->camera->updatePosition(cameraPosition.decrementX(1));
 }
 
 void Game::camera_right() {
-    Point3D *cameraPosition = pScene->camera->getPosition();
-    pScene->camera->updatePosition(cameraPosition->incrementX(1));
+    Point3D cameraPosition = pScene->camera->getPosition();
+    pScene->camera->updatePosition(cameraPosition.incrementX(1));
 }
 
 void Game::camera_reset() {
-    pScene->camera->updatePosition(new Point3D());
+    pScene->camera->updatePosition(Point3D());
 }
 
 Game * Game::init(int pos) {
