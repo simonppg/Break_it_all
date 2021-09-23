@@ -34,7 +34,7 @@ public:
 
     Point3D* getPosition();
     Dimension* getDimension();
-    float aspect_ratio();
+    float aspectRatio();
 
     void updateDimension(Dimension *dimension);
     void updatePosition(Point3D *position);

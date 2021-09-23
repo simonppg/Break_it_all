@@ -29,7 +29,7 @@ Camera::Camera(Dimension *dimension, Point3D *position, FieldOfView *fov)
 
 Dimension* Camera::getDimension() { return dimension; }
 Point3D * Camera::getPosition() { return position; }
-float Camera::aspect_ratio() { return dimension->aspectRatio(); }
+float Camera::aspectRatio() { return dimension->aspectRatio(); }
 
 void Camera::updateDimension(Dimension *dimension) {
   if (this->dimension != nullptr) { delete this->dimension; }
@@ -55,18 +55,18 @@ void Camera::updateProjection() {
     mat4 perspective;
 
     if(projection == PERSPECTIVE)
-        perspective = glm::perspective(glm::radians(fov->getFov()), Camera::aspect_ratio(), fov->getNcp(), fov->getFcp());
+        perspective = glm::perspective(glm::radians(fov->getFov()), aspectRatio(), fov->getNcp(), fov->getFcp());
     else {
         if (dimension->getWidth() > dimension->getHeight()) {
             top = dimension->getWidth()/2;
             bottom = -top;
-            right = top * aspect_ratio();
+            right = top * aspectRatio();
             left = -right;
         }
         else {
             right = dimension->getWidth()/2;
             left = -right;
-            top = right / aspect_ratio();
+            top = right / aspectRatio();
             bottom = -top;
         }
         perspective = glm::ortho(left, right, bottom, top, fov->getNcp(),fov->getFcp());
