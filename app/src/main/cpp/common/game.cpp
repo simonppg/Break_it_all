@@ -2,6 +2,8 @@
 // Created by Simonppg on 11/6/2018.
 //
 
+#include <sstream>
+
 #include "game.hpp"
 #include "Point3D.hpp"
 
@@ -70,6 +72,11 @@ void Game::surfaceCreated() {
 }
 
 void Game::surfaceChanged(int width, int height) {
+    Dimension dimension = Dimension(width, height);
+    std::stringstream sstream;
+    sstream << dimension;
+    LOGI("%s", sstream.str().c_str());
+    
     pScene->surfaceChanged(width, height);
 }
 

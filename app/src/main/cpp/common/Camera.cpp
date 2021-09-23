@@ -1,3 +1,8 @@
+#include <iostream>
+
+using std::cout;
+using std::endl;
+
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
@@ -28,6 +33,7 @@ Point3D Camera::getPosition() { return position; }
 float Camera::aspectRatio() { return dimension.aspectRatio(); }
 
 void Camera::updateDimension(Dimension dimension) {
+    cout << "old: " << this->dimension << ",new: "<< dimension << endl;
   this->dimension = Dimension(dimension);
   updateProjection();
 }
