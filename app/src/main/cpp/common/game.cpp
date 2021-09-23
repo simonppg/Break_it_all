@@ -2,7 +2,10 @@
 // Created by Simonppg on 11/6/2018.
 //
 
+#include <sstream>
+
 #include "game.hpp"
+#include "Point3D.hpp"
 
 //Examples
 #include "SandBox.hpp"
@@ -18,27 +21,27 @@
 #endif
 
 void Game::camera_forward() {
-    Point3D *cameraPosition = pScene->camera->getPosition();
-    pScene->camera->updatePosition(cameraPosition->decrementZ(1));
+    Point3D cameraPosition = pScene->camera->getPosition();
+    pScene->camera->updatePosition(cameraPosition.decrementZ(1));
 }
 
 void Game::camera_back() {
-    Point3D *cameraPosition = pScene->camera->getPosition();
-    pScene->camera->updatePosition(cameraPosition->incrementZ(1));
+    Point3D cameraPosition = pScene->camera->getPosition();
+    pScene->camera->updatePosition(cameraPosition.incrementZ(1));
 }
 
 void Game::camera_left() {
-    Point3D *cameraPosition = pScene->camera->getPosition();
-    pScene->camera->updatePosition(cameraPosition->decrementX(1));
+    Point3D cameraPosition = pScene->camera->getPosition();
+    pScene->camera->updatePosition(cameraPosition.decrementX(1));
 }
 
 void Game::camera_right() {
-    Point3D *cameraPosition = pScene->camera->getPosition();
-    pScene->camera->updatePosition(cameraPosition->incrementX(1));
+    Point3D cameraPosition = pScene->camera->getPosition();
+    pScene->camera->updatePosition(cameraPosition.incrementX(1));
 }
 
 void Game::camera_reset() {
-    pScene->camera->updatePosition(new Point3D());
+    pScene->camera->updatePosition(Point3D());
 }
 
 Game * Game::init(int pos) {
@@ -69,6 +72,11 @@ void Game::surfaceCreated() {
 }
 
 void Game::surfaceChanged(int width, int height) {
+    Dimension dimension = Dimension(width, height);
+    std::stringstream sstream;
+    sstream << dimension;
+    LOGI("%s", sstream.str().c_str());
+    
     pScene->surfaceChanged(width, height);
 }
 

@@ -22,7 +22,7 @@ float radius = 0.5;
 float *v;
 
 Test3::Test3() {
-    camera = new Camera(new Dimension(), new Point3D());
+    camera = new Camera(Dimension(), Point3D());
     v = math->get_circle(radius, NUMBER_OF_VERTICES);
 }
 

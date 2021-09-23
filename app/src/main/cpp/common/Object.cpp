@@ -10,7 +10,7 @@
 
 Object::Object(Camera *pCamera, ShaderProg *pProg, Mesh *pMesh):
     size_x{2}, size_y{1}, size_z{1}, angle{0} {
-    this->position = new Point3D();
+    this->position = Point3D();
     rotation = vec3(1);
     this->camera = pCamera;
     this->prog = pProg;
@@ -20,14 +20,14 @@ Object::Object(Camera *pCamera, ShaderProg *pProg, Mesh *pMesh):
     draw_context = new DrawContext();
 }
 
-Point3D * Object::getPosition() { return position; }
+Point3D Object::getPosition() { return position; }
 
 void Object::draw() {
     mat4 translate;
     mat4 rotate;
     mat4 scale;
 
-    translate = glm::translate(camera->cameraTranslate, vec3(position->getX(), position->getY(), position->getZ()));
+    translate = glm::translate(camera->cameraTranslate, vec3(position.getX(), position.getY(), position.getZ()));
     rotate = glm::rotate(translate, glm::radians(angle), rotation);
     scale = glm::scale(rotate, glm::vec3(size_x, size_y, size_z));
 
@@ -44,8 +44,7 @@ void Object::draw() {
     renderer->draw(draw_context);
 }
 
-void Object::updatePosition(Point3D *position) {
-    if(this->position != nullptr) { delete this->position; }
+void Object::updatePosition(Point3D position) {
     this->position = position;
 }
 
