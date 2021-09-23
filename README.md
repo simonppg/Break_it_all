@@ -70,5 +70,16 @@ $ sudo cp *.a /usr/lib
 $ make check
 ```
 
+## Android
+
+This commands would build and run the app on your android phone and then show the logcat on the console.
+
+```shell
+./gradlew appStart
+adb shell
+logcat libNative:I *:S
+```
+
+
 ## Build for Windows
 TODO
