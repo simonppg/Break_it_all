@@ -10,10 +10,7 @@ Dimension::Dimension(const Dimension &dimension): width{dimension.width}, height
 
 float Dimension::getWidth() { return width; }
 float Dimension::getHeight() { return height; }
-
-float Dimension::aspectRatio() {
-    return width / height;
-}
+float Dimension::aspectRatio() { return width / height; }
 
 ostream& operator<<(ostream &strm, const Dimension &dimension) {
     return strm << "Dimension(width:" << dimension.width << ",height:" << dimension.height << ")";
