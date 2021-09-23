@@ -1,5 +1,5 @@
-#ifndef BREAK_IT_ALL_MATH_H
-#define BREAK_IT_ALL_MATH_H
+#ifndef COMMON_MATH_H
+#define COMMON_MATH_H
 
 #include <vector>
 
@@ -14,4 +14,4 @@ public:
     static short * get_cube_index();
 };
 
-#endif //BREAK_IT_ALL_MATH_H
+#endif //COMMON_MATH_H
