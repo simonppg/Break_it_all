@@ -22,7 +22,6 @@ static float pov_in_degrees = 0.0f;
 static float radius = 1.0;
 
 static float h = (float)CAMERA_HEIGHT/2;
-static vector<float> vPos = Math::get_grid(CAMERA_WIDTH, h, ROW, COL);
 static float x_size = 90.0f*((float)CAMERA_WIDTH/COL)/100;
 static float y_size = 80.0f*(h/ROW)/100;
 
@@ -39,9 +38,10 @@ Test4::Test4() {
 
     shaderProgs[0] = new ShaderProg("simple.vert", "simple.frag");
     shaderProgs[1] = new ShaderProg("circle.vert", "circle.frag");
-    meshes[0] = new Mesh(Math::get_cube(), 16, Math::get_cube_index(), 36);
-    meshes[1] = new Mesh(Math::get_circle(radius, NUMBER_OF_VERTICES), NUMBER_OF_VERTICES);
+    meshes[0] = new Mesh(math->get_cube(), 16, math->get_cube_index(), 36);
+    meshes[1] = new Mesh(math->get_circle(radius, NUMBER_OF_VERTICES), NUMBER_OF_VERTICES);
 
+    vPos = math->get_grid(CAMERA_WIDTH, h, ROW, COL);
     for (int i = 0; i < ROW * COL; i++) {
         objects[i] = new Object(camera, shaderProgs[1], meshes[0]);
         objects[i]->update_size(x_size/2, y_size/2, 1);
@@ -95,7 +95,7 @@ void Test4::surfaceChanged(int width, int height) {
 
     //h = (float)height/2;
     //h = camera->top;
-    vPos = Math::get_grid(width, camera->top, ROW, COL);
+    vPos = math->get_grid(width, camera->top, ROW, COL);
     x_size = 90.0f*((float)width/COL)/100;
     y_size = 80.0f*(camera->top/ROW)/100;
 

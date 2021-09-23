@@ -23,7 +23,7 @@ float *v;
 
 Test3::Test3() {
     camera = new Camera(new Dimension(), new Point3D());
-    v = Math::get_circle(radius, NUMBER_OF_VERTICES);
+    v = math->get_circle(radius, NUMBER_OF_VERTICES);
 }
 
 void Test3::render() {

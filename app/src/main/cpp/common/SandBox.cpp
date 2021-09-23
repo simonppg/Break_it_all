@@ -16,7 +16,7 @@ float pov_in_degrees = 0.0f;
 SandBox::SandBox() {
     camera = new Camera(new Dimension(), new Point3D(0, 0, 40));
     shaderProgs[0] = new ShaderProg("simple.vert", "simple.frag");
-    meshes[0] = new Mesh(Math::get_cube(), 8, Math::get_cube_index(), 36);
+    meshes[0] = new Mesh(math->get_cube(), 8, math->get_cube_index(), 36);
 
     for (auto &i : objects) {
         i = new Object(camera, shaderProgs[0], meshes[0]);
