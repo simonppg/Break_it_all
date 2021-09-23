@@ -1,74 +1,73 @@
-//
-// Created by simonppg on 3/13/19.
-//
-
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
 #include "Camera.hpp"
 #include "Projection.hpp"
-#include "CanvasSize.hpp"
+#include "Dimension.hpp"
+#include "FieldOfView.hpp"
 
 using glm::mat4;
 
-Camera::Camera() : size{new CanvasSize()}, ncp{NCP}, fcp {FCP}, fov{FOV} {
-    update_projection();
+Camera::Camera()
+    : dimension(new Dimension()), position(new Point3D()), fov(new FieldOfView()) {
+  updateProjection();
 }
 
-Camera::Camera(CanvasSize *size, Point3D *position, float ncp, float rcp, float fov)
-: size{size}, ncp{NCP}, fcp {FCP}, fov{FOV}
-{
-    this->size = size;
-    this->position = position;
-    this->ncp = ncp;
-    this->fcp = rcp;
-    this->fov = fov;
-    update_projection();
+Camera::Camera(Dimension *dimension, Point3D *position)
+    : dimension(dimension), position(new Point3D()), fov(new FieldOfView()) {
+  updateProjection();
 }
 
-CanvasSize* Camera::getSize() { return size; }
+Camera::Camera(Dimension *dimension, Point3D *position, FieldOfView *fov)
+    : dimension(dimension), position(new Point3D()), fov(fov) {
+  updateProjection();
+}
+
+Dimension* Camera::getDimension() { return dimension; }
 Point3D * Camera::getPosition() { return position; }
-float Camera::aspect_ratio() { return size->aspectRatio(); }
+float Camera::aspectRatio() { return dimension->aspectRatio(); }
 
-void Camera::update_projection() {
-    mat4 perspective;
+void Camera::updateDimension(Dimension *dimension) {
+  if (this->dimension != nullptr) { delete this->dimension; }
 
-    if(projection == PERSPECTIVE)
-        perspective = glm::perspective(glm::radians(fov), Camera::aspect_ratio(), ncp, fcp);
-    else {
-        if (size->getWidth() > size->getHeight()) {
-            top = size->getWidth()/2;
-            bottom = -top;
-            right = top * aspect_ratio();
-            left = -right;
-        }
-        else {
-            right = size->getWidth()/2;
-            left = -right;
-            top = right / aspect_ratio();
-            bottom = -top;
-        }
-        perspective = glm::ortho(left, right, bottom, top, ncp, fcp);
-    }
-
-    cameraTranslate = glm::translate(perspective, vec3(-position->getX(), -position->getY(), -position->getZ()));
-}
-
-void Camera::updateSize(CanvasSize *size) {
-  if (this->size != nullptr) { delete this->size; }
-
-  this->size = size;
-  update_projection();
+  this->dimension = dimension;
+  updateProjection();
 }
 
 void Camera::updatePosition(Point3D *position) {
     if(this->position != nullptr) { delete this->position; }
 
     this->position = position;
-    update_projection();
+    updateProjection();
 }
 
 void Camera::setProjection(Projection projection) {
     this->projection = projection;
-    update_projection();
+    updateProjection();
 }
+
+// NOTE: MUST be called after change position, dimension or fov
+void Camera::updateProjection() {
+    mat4 perspective;
+
+    if(projection == PERSPECTIVE)
+        perspective = glm::perspective(glm::radians(fov->getFov()), aspectRatio(), fov->getNcp(), fov->getFcp());
+    else {
+        if (dimension->getWidth() > dimension->getHeight()) {
+            top = dimension->getWidth()/2;
+            bottom = -top;
+            right = top * aspectRatio();
+            left = -right;
+        }
+        else {
+            right = dimension->getWidth()/2;
+            left = -right;
+            top = right / aspectRatio();
+            bottom = -top;
+        }
+        perspective = glm::ortho(left, right, bottom, top, fov->getNcp(),fov->getFcp());
+    }
+
+    cameraTranslate = glm::translate(perspective, vec3(-position->getX(), -position->getY(), -position->getZ()));
+}
+

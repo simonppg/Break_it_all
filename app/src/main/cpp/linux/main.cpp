@@ -47,6 +47,8 @@ static void key_callback(int key, int scancode, int action, int mods)
 }
 
 int main(int argc, char **argv) {
+    const int WINDOW_WIDTH = 450;
+    const int WINDOW_HEIGHT = 800;
     WindowManager *wm = new WindowManager();
 
     int test_number = 0;
@@ -58,7 +60,7 @@ int main(int argc, char **argv) {
     }
     LOGI("%d", test_number);
 
-    if(wm->createWindow(WIDTH, HEIGHT) != 0) {
+    if(wm->createWindow(WINDOW_WIDTH, WINDOW_HEIGHT) != 0) {
         LOGE("Window can not be created");
         exit(EXIT_FAILURE);
     }
