@@ -5,9 +5,12 @@
 #ifndef BREAK_IT_ALL_TEST3_H
 #define BREAK_IT_ALL_TEST3_H
 
+#include "Math.hpp"
 #include "IScene.hpp"
 
 class Test3 : public IScene {
+private:
+    Math *math = new Math();
 
 public:
     Test3();

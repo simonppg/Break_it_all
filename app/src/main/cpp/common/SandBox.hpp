@@ -10,8 +10,11 @@
 #include "Mesh.hpp"
 #include "Object.hpp"
 #include "ShaderProg.hpp"
+#include "Math.hpp"
 
 class SandBox : public IScene {
+private:
+    Math *math = new Math();
 
 public:
     SandBox();

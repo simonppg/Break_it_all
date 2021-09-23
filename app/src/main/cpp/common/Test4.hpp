@@ -5,12 +5,17 @@
 #ifndef BREAK_IT_ALL_TEST4_H
 #define BREAK_IT_ALL_TEST4_H
 
+#include "Math.hpp"
 #include "IScene.hpp"
 #include "Object.hpp"
 #include "ShaderProg.hpp"
 #include "Renderer.hpp"
 
 class Test4 : public IScene {
+private:
+    vector<float> vPos; 
+    Math *math = new Math();
+
 protected:
 #define ROW 15
 #define COL 9
@@ -20,6 +25,7 @@ protected:
     Object *ball;
     Object *paddle;
     Renderer *renderer;
+
 public:
     Test4();
     void surfaceCreated() override;
