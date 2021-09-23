@@ -41,7 +41,9 @@ Test4::Test4() {
     meshes[0] = new Mesh(math->get_cube(), 16, math->get_cube_index(), 36);
     meshes[1] = new Mesh(math->get_circle(radius, NUMBER_OF_VERTICES), NUMBER_OF_VERTICES);
 
-    vPos = math->get_grid(CAMERA_WIDTH, h, ROW, COL);
+    Dimension gridDimension (CAMERA_WIDTH, h);
+
+    vPos = math->generateGrid(gridDimension, ROW, COL);
     for (int i = 0; i < ROW * COL; i++) {
         objects[i] = new Object(camera, shaderProgs[1], meshes[0]);
         objects[i]->update_size(x_size/2, y_size/2, 1);
@@ -95,7 +97,9 @@ void Test4::surfaceChanged(int width, int height) {
 
     //h = (float)height/2;
     //h = camera->top;
-    vPos = math->get_grid(width, camera->top, ROW, COL);
+    Dimension gridDimension (width, camera->top);
+
+    vPos = math->generateGrid(gridDimension, ROW, COL);
     x_size = 90.0f*((float)width/COL)/100;
     y_size = 80.0f*(camera->top/ROW)/100;
 

@@ -2,13 +2,13 @@
 #define COMMON_MATH_H
 
 #include <vector>
+#include "Dimension.hpp"
 
 using std::vector;
 
 class Math {
 public:
-    vector<float> get_grid(float width, float height, float row, float col);
-    float get_sections_size(float segment, float spaces);
+    vector<float> generateGrid(Dimension dimension, float row, float col);
     float * get_circle(float radius, int number_of_vertices);
     float * get_cube();
     short * get_cube_index();
