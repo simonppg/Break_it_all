@@ -1,7 +1,3 @@
-//
-// Created by simonppg on 3/13/19.
-//
-
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 

@@ -1,7 +1,3 @@
-//
-// Created by simonppg on 3/13/19.
-//
-
 #ifndef COMMON_CAMERA_H
 #define COMMON_CAMERA_H
 
