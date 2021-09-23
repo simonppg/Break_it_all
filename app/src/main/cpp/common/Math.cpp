@@ -1,7 +1,3 @@
-//
-// Created by simonppg on 4/19/19.
-//
-
 #include "Math.hpp"
 
 #include <cmath>
