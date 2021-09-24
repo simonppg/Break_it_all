@@ -8,9 +8,6 @@
 
 Game *game;
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 #include <cstdio>
 #include <cstdlib>
@@ -94,6 +91,3 @@ int main(int argc, char **argv) {
     return EXIT_SUCCESS;
 }
 
-#ifdef __cplusplus
-}
-#endif
