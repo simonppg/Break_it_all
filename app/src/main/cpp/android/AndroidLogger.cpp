@@ -1,11 +1,34 @@
+#include <cstdarg>
+#include <sstream>
+
 #include "AndroidLogger.hpp"
-#include <iostream>
 #include <android/log.h>
+#include <iostream>
 
-#define LOG_TAG "libNative"
+#include "../shared/strings/StringFormatter.hpp"
 
-using namespace std;
+using std::string;
+using std::stringstream;
 
 void AndroidLogger::sayHello() {
-    __android_log_print(ANDROID_LOG_INFO, LOG_TAG, "AndroidLogger: Hello");
+  __android_log_print(ANDROID_LOG_INFO, LOG_TAG.c_str(), "AndroidLogger: Hello");
+}
+
+void AndroidLogger::logi(char aChar) {
+  __android_log_print(ANDROID_LOG_INFO, LOG_TAG.c_str(), "%c", aChar);
+}
+
+void AndroidLogger::logi(const char *format, ...) {
+  va_list args;
+  va_start(args, format);
+
+  logi(formatter.format(format, args));
+
+  va_end(args);
+}
+
+void AndroidLogger::logi(string aString) {
+  stringstream sstream;
+  sstream << aString;
+  __android_log_print(ANDROID_LOG_INFO, LOG_TAG.c_str(), "%s", sstream.str().c_str());
 }

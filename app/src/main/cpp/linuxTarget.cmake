@@ -4,6 +4,7 @@ include(cmake/DownloadProject.cmake)
 include(cmake/glm.cmake)
 include(cmake/glfw.cmake)
 
+add_subdirectory(shared/strings)
 add_subdirectory(common)
 
 add_library(WindowManager
@@ -20,6 +21,7 @@ add_library(Platform
     linux/LinuxLogger.cpp)
 
 target_link_libraries(Platform
+    StringFormatter
     WindowManager)
 
 add_executable(linuxVersion

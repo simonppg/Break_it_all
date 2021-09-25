@@ -2,9 +2,21 @@
 #define _ANDROID_LOGGER_H_
 
 #include "../shared/Logger.hpp"
+#include <string>
 
-class AndroidLogger : public Logger { 
-    void sayHello();
+#include "../shared/strings/StringFormatter.hpp"
+
+using std::string;
+
+class AndroidLogger : public Logger {
+private:
+  StringFormatter formatter;
+
+public:
+  void sayHello();
+  void logi(char aChar);
+  void logi(const char *fortmat, ...);
+  void logi(string aString);
 };
 
 #endif //_ANDROID_LOGGER_H_
