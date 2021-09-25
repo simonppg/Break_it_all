@@ -6,6 +6,7 @@
 
 using std::cout;
 using std::endl;
+using std::string;
 
 void LinuxLogger::sayHello() {
     cout << endl << "LinuxLogger: Hello" << endl << endl;
@@ -37,6 +38,6 @@ void LinuxLogger::logi(const char* format, ...) {
     va_end(args);
 }
 
-void LinuxLogger::logi(std::string aString) {
+void LinuxLogger::logi(string aString) {
     cout << LOG_TAG << ": " << aString << endl;
 }

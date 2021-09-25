@@ -3,11 +3,13 @@
 
 #include "../shared/Logger.hpp"
 
+using std::string;
+
 class LinuxLogger : public Logger { 
 public:
     void sayHello();
     void logi(const char* fortmat, ...);
-    void logi(std::string aString);
+    void logi(string aString);
 };
 
 #endif //_LINUX_LOGGER_H_

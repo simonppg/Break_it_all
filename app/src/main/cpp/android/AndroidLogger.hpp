@@ -4,11 +4,13 @@
 #include <string>
 #include "../shared/Logger.hpp"
 
+using std::string;
+
 class AndroidLogger : public Logger { 
 public:
     void sayHello();
     void logi(const char* fortmat, ...);
-    void logi(std::string aString);
+    void logi(string aString);
 };
 
 #endif //_ANDROID_LOGGER_H_
