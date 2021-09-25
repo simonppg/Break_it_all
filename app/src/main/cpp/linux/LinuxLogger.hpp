@@ -7,15 +7,15 @@
 
 using std::string;
 
-class LinuxLogger : public Logger { 
+class LinuxLogger : public Logger {
 private:
-    StringFormatter formatter;
+  StringFormatter formatter;
 
 public:
-    void sayHello();
-    void logi(char aChar);
-    void logi(const char* fortmat, ...);
-    void logi(string aString);
+  void sayHello();
+  void logi(char aChar);
+  void logi(const char *fortmat, ...);
+  void logi(string aString);
 };
 
 #endif //_LINUX_LOGGER_H_

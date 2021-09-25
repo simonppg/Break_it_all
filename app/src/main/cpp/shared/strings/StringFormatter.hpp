@@ -10,4 +10,4 @@ public:
   string format(const char *format, va_list args);
 };
 
-#endif //STRINGS_STRING_FORMATTER_H
+#endif // STRINGS_STRING_FORMATTER_H

@@ -2,8 +2,8 @@
 #include <iostream>
 #include <sstream>
 
-#include "LinuxLogger.hpp"
 #include "../shared/strings/StringFormatter.hpp"
+#include "LinuxLogger.hpp"
 
 using std::cout;
 using std::endl;
@@ -14,9 +14,7 @@ void LinuxLogger::sayHello() {
   cout << endl << "LinuxLogger: Hello" << endl << endl;
 }
 
-void LinuxLogger::logi(char aChar) {
-  cout << LOG_TAG << ": " << aChar << endl;
-}
+void LinuxLogger::logi(char aChar) { cout << LOG_TAG << ": " << aChar << endl; }
 
 void LinuxLogger::logi(const char *format, ...) {
   va_list args;
