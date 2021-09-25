@@ -23,46 +23,45 @@ void AndroidLogger::logi(const char *format, ...) {
 
   const char *p;
   char *sval;
+  char cval;
   int ival;
   double dval;
-  string buffer;
+  stringstream sstream;
 
   for (p = format; *p; p++) {
 
     if (*p != '%') {
-      buffer.push_back(*p);
+      sstream << *p;
       continue;
     }
 
     switch (*++p) {
+    case 'c':
+      cval = (char) va_arg(args, int);
+      sstream << cval;
+      break;
     case 'd':
-      logi(buffer);
-      buffer.clear();
-
       ival = va_arg(args, int);
-      __android_log_print(ANDROID_LOG_INFO, LOG_TAG.c_str(), "%d", ival);
+      sstream << ival;
       break;
     case 'f':
-      logi(buffer);
-      buffer.clear();
-
       dval = va_arg(args, double);
-      __android_log_print(ANDROID_LOG_INFO, LOG_TAG.c_str(), "%f", dval);
+      sstream << dval;
       break;
     case 's':
       for (sval = va_arg(args, char *); *sval; sval++) {
-        buffer.push_back(*sval);
+      sstream << *sval;
       }
       break;
     default:
-      buffer.push_back(*p);
+      sstream << *p;
       break;
     }
 
     ++format;
   }
 
-  logi(buffer);
+  logi(sstream.str());
 
   va_end(args);
 }

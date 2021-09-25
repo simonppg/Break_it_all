@@ -7,6 +7,7 @@
 using std::cout;
 using std::endl;
 using std::string;
+using std::stringstream;
 
 void LinuxLogger::sayHello() {
   cout << endl << "LinuxLogger: Hello" << endl << endl;
@@ -17,47 +18,51 @@ void LinuxLogger::logi(char aChar) {
 }
 
 void LinuxLogger::logi(const char *format, ...) {
-  va_list args;
+va_list args;
 
   va_start(args, format);
 
   const char *p;
   char *sval;
+  char cval;
   int ival;
   double dval;
-
-  cout << LOG_TAG << ": ";
+  stringstream sstream;
 
   for (p = format; *p; p++) {
 
     if (*p != '%') {
-      putchar(*p);
+      sstream << *p;
       continue;
     }
 
     switch (*++p) {
+    case 'c':
+      cval = (char) va_arg(args, int);
+      sstream << cval;
+      break;
     case 'd':
       ival = va_arg(args, int);
-      cout << ival;
+      sstream << ival;
       break;
     case 'f':
       dval = va_arg(args, double);
-      cout << dval;
+      sstream << dval;
       break;
     case 's':
       for (sval = va_arg(args, char *); *sval; sval++) {
-        putchar(*sval);
+      sstream << *sval;
       }
       break;
     default:
-      putchar(*p);
+      sstream << *p;
       break;
     }
 
     ++format;
   }
 
-  cout << endl;
+  logi(sstream.str());
 
   va_end(args);
 }
