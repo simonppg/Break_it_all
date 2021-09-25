@@ -44,14 +44,18 @@ int main(int argc, char **argv) {
     Logger * logger = new LinuxLogger();
     logger->sayHello();
     logger->logi("SurfaceCreated");
+    logger->logi("%s","SurfaceCreated2");
+    logger->logi("%s %d %s %f","aInt: ", 15, "aFloat: ", 123.123);
     std::string str = "This is a better test, print std::string str";
     logger->logi(str);
     int val = 101;
     logger->logi("%d", val);
     float pi = 3.1416f;
     logger->logi("%f", pi);
-    const char *c_str = "a C string, char*";
+    const char *c_str = "a C string, const char*";
     logger->logi("%s", c_str);
+    char aChar ='A';
+    logger->logi(aChar);
 
 
     const int WINDOW_WIDTH = 450;

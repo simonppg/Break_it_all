@@ -9,6 +9,7 @@ using std::string;
 class AndroidLogger : public Logger { 
 public:
     void sayHello();
+    void logi(char aChar);
     void logi(const char* fortmat, ...);
     void logi(string aString);
 };

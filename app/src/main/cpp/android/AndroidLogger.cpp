@@ -12,31 +12,59 @@ void AndroidLogger::sayHello() {
     __android_log_print(ANDROID_LOG_INFO, LOG_TAG.c_str(), "AndroidLogger: Hello");
 }
 
-void AndroidLogger::logi(const char* format, ...) {
-    va_list args;
+void AndroidLogger::logi(char aChar) {
+  __android_log_print(ANDROID_LOG_INFO, LOG_TAG.c_str(), "%c", aChar);
+}
 
-    va_start(args, format);
-    while (*format != '\0') {
-      if (*format == 'd') {
-        int i = va_arg(args, int);
-        __android_log_print(ANDROID_LOG_INFO, LOG_TAG.c_str(), "%d", i);
-      } else if (*format == 'c') {
-        // note automatic conversion to integral type
-        int c = va_arg(args, int);
-        __android_log_print(ANDROID_LOG_INFO, LOG_TAG.c_str(), "%c", static_cast<char>(c));
-      } else if (*format == 'f') {
-        double d = va_arg(args, double);
-        // std::cout << d << '\n';
-        __android_log_print(ANDROID_LOG_INFO, LOG_TAG.c_str(), "%lf", d);
-      } else if(*format == 's') {
-        const char * str = va_arg(args, const char *);
-        __android_log_print(ANDROID_LOG_INFO, LOG_TAG.c_str(), "%s", str);
-      }
+void AndroidLogger::logi(const char *format, ...) {
+  va_list args;
 
-      ++format;
+  va_start(args, format);
+
+  const char *p;
+  char *sval;
+  int ival;
+  double dval;
+  string buffer;
+
+  for (p = format; *p; p++) {
+
+    if (*p != '%') {
+      buffer.push_back(*p);
+      continue;
     }
 
-    va_end(args);
+    switch (*++p) {
+    case 'd':
+      logi(buffer);
+      buffer.clear();
+
+      ival = va_arg(args, int);
+      __android_log_print(ANDROID_LOG_INFO, LOG_TAG.c_str(), "%d", ival);
+      break;
+    case 'f':
+      logi(buffer);
+      buffer.clear();
+
+      dval = va_arg(args, double);
+      __android_log_print(ANDROID_LOG_INFO, LOG_TAG.c_str(), "%f", dval);
+      break;
+    case 's':
+      for (sval = va_arg(args, char *); *sval; sval++) {
+        buffer.push_back(*sval);
+      }
+      break;
+    default:
+      buffer.push_back(*p);
+      break;
+    }
+
+    ++format;
+  }
+
+  logi(buffer);
+
+  va_end(args);
 }
 
 void AndroidLogger::logi(string aString) {

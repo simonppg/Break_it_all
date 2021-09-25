@@ -1,6 +1,6 @@
 #include <cstdarg>
-#include <sstream>
 #include <iostream>
+#include <sstream>
 
 #include "LinuxLogger.hpp"
 
@@ -9,35 +9,59 @@ using std::endl;
 using std::string;
 
 void LinuxLogger::sayHello() {
-    cout << endl << "LinuxLogger: Hello" << endl << endl;
+  cout << endl << "LinuxLogger: Hello" << endl << endl;
 }
 
-void LinuxLogger::logi(const char* format, ...) {
-    va_list args;
+void LinuxLogger::logi(char aChar) {
+  cout << LOG_TAG << ": " << aChar << endl;
+}
 
-    va_start(args, format);
-    while (*format != '\0') {
-      if (*format == 'd') {
-        int i = va_arg(args, int);
-        cout << LOG_TAG << ": " << i << endl;
-      } else if (*format == 'c') {
-        // note automatic conversion to integral type
-        int c = va_arg(args, int);
-        cout << LOG_TAG << ": " << static_cast<char>(c) << endl;
-      } else if (*format == 'f') {
-        double d = va_arg(args, double);
-        cout << LOG_TAG << ": " <<  d << endl;
-      } else if(*format == 's') {
-        const char * str = va_arg(args, const char *);
-        cout << LOG_TAG << ": " << str << endl;
-      }
+void LinuxLogger::logi(const char *format, ...) {
+  va_list args;
 
-      ++format;
+  va_start(args, format);
+
+  const char *p;
+  char *sval;
+  int ival;
+  double dval;
+
+  cout << LOG_TAG << ": ";
+
+  for (p = format; *p; p++) {
+
+    if (*p != '%') {
+      putchar(*p);
+      continue;
     }
 
-    va_end(args);
+    switch (*++p) {
+    case 'd':
+      ival = va_arg(args, int);
+      cout << ival;
+      break;
+    case 'f':
+      dval = va_arg(args, double);
+      cout << dval;
+      break;
+    case 's':
+      for (sval = va_arg(args, char *); *sval; sval++) {
+        putchar(*sval);
+      }
+      break;
+    default:
+      putchar(*p);
+      break;
+    }
+
+    ++format;
+  }
+
+  cout << endl;
+
+  va_end(args);
 }
 
 void LinuxLogger::logi(string aString) {
-    cout << LOG_TAG << ": " << aString << endl;
+  cout << LOG_TAG << ": " << aString << endl;
 }

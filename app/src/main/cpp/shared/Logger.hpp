@@ -11,6 +11,7 @@ protected:
 
 public:
     virtual void sayHello() = 0;
+    virtual void logi(char aChar) = 0;
     virtual void logi(const char* fortmat, ...) = 0;
     virtual void logi(string aString) = 0;
 };
