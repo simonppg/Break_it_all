@@ -10,6 +10,8 @@ using std::string;
 class LinuxLogger : public Logger {
 private:
   StringFormatter formatter;
+  string CONSOLE_GREEN_COLOR = "\x1B[32m";
+  string CONSOLE_DEFAULT_COLOR = "\x1B[0m";
 
 public:
   void sayHello();
