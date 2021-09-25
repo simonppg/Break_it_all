@@ -4,8 +4,12 @@
 
 #include "game.hpp"
 #include "filesManager.hpp"
+#include "AndroidLogger.hpp"
+#include "../shared/Logger.hpp"
 
 Game *game;
+
+Logger *logger = new AndroidLogger();
 
 #ifdef __cplusplus
 extern "C" {
@@ -16,6 +20,17 @@ extern "C" {
 
 JNIEXPORT void JNICALL Java_com_example_simonppg_break_1it_1all_GameLibJNIWrapper_surfaceCreated
         (JNIEnv * env, jclass cls) {
+    logger->sayHello();
+    logger->logi("SurfaceCreated");
+    std::string str = "This is a better test, print std::string str";
+    logger->logi(str);
+    int val = 101;
+    logger->logi("%d", val);
+    float pi = 3.1416f;
+    logger->logi("%f", pi);
+    const char *c_str = "a C string, char*";
+    logger->logi("%s", c_str);
+
     game->surfaceCreated();
 }
 

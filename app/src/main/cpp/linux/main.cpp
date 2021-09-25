@@ -1,6 +1,7 @@
 #include "game.hpp"
 #include "logger.hpp"
 #include "WindowManager.hpp"
+#include "LinuxLogger.hpp"
 
 Game *game;
 
@@ -40,6 +41,19 @@ static void key_callback(int key, int scancode, int action, int mods)
 }
 
 int main(int argc, char **argv) {
+    Logger * logger = new LinuxLogger();
+    logger->sayHello();
+    logger->logi("SurfaceCreated");
+    std::string str = "This is a better test, print std::string str";
+    logger->logi(str);
+    int val = 101;
+    logger->logi("%d", val);
+    float pi = 3.1416f;
+    logger->logi("%f", pi);
+    const char *c_str = "a C string, char*";
+    logger->logi("%s", c_str);
+
+
     const int WINDOW_WIDTH = 450;
     const int WINDOW_HEIGHT = 800;
     WindowManager *wm = new WindowManager();
