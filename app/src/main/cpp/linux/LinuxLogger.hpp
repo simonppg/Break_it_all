@@ -3,9 +3,14 @@
 
 #include "../shared/Logger.hpp"
 
+#include "../shared/strings/StringFormatter.hpp"
+
 using std::string;
 
 class LinuxLogger : public Logger { 
+private:
+    StringFormatter formatter;
+
 public:
     void sayHello();
     void logi(char aChar);
