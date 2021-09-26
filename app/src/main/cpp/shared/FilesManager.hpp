@@ -3,6 +3,8 @@
 
 class FilesManager {
 public:
+    virtual ~FilesManager() = default;
+
     virtual char* loadFile(const char *filePath) = 0;
 };
 
