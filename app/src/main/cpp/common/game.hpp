@@ -1,20 +1,21 @@
-//
-// Created by simonppg on 11/06/18.
-//
-
 #ifndef BREAK_IT_ALL_GAME_H
 #define BREAK_IT_ALL_GAME_H
 
 #include "IScene.hpp"
+#include "../shared/Logger.hpp"
 
 class Game
 {
+private:
+    Logger *logger;
+
 public:
-    Game(IScene *pScene);
+    // Game(IScene *pScene);
+    Game(IScene *pScene, Logger *logger);
 
     IScene *pScene;
 
-    static Game * init(int);
+    static Game * init(int, Logger *logger);
 
     // OpenGL context is in this functions
     void surfaceCreated();

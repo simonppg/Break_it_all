@@ -93,7 +93,7 @@ Java_com_example_simonppg_break_1it_1all_GameLibJNIWrapper_init(JNIEnv *env, jcl
     load_asset_manager(mgr2);
 
     assert(game == nullptr);
-    game = Game::init(position);
+    game = Game::init(position, new AndroidLogger());
 }
 
 JNIEXPORT void JNICALL

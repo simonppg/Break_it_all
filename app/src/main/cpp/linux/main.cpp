@@ -100,7 +100,7 @@ int main(int argc, char **argv) {
     }
 
     assert(game == nullptr);
-    game = Game::init(test_number);
+    game = Game::init(test_number, new LinuxLogger());
 
     game->surfaceCreated();
 
