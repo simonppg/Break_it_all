@@ -2,20 +2,24 @@
 #define BREAK_IT_ALL_GAME_H
 
 #include "IScene.hpp"
+#include "../shared/Platform.hpp"
 #include "../shared/Logger.hpp"
+#include "../shared/FilesManager.hpp"
 
 class Game
 {
 private:
+    Platform *platform;
     Logger *logger;
+    FilesManager *fileManager;
 
 public:
     // Game(IScene *pScene);
-    Game(IScene *pScene, Logger *logger);
+    Game(IScene *pScene, Platform *platform);
 
     IScene *pScene;
 
-    static Game * init(int, Logger *logger);
+    static Game * init(int, Platform *platform);
 
     // OpenGL context is in this functions
     void surfaceCreated();

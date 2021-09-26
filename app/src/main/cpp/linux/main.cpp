@@ -1,10 +1,12 @@
 #include "game.hpp"
 #include "logger.hpp"
 #include "WindowManager.hpp"
-#include "LinuxLogger.hpp"
+#include "LinuxPlatform.hpp"
+#include "../shared/Platform.hpp"
+#include "../shared/Logger.hpp"
+#include "../shared/FilesManager.hpp"
 
 Game *game;
-
 
 #include <cstdio>
 #include <cstdlib>
@@ -41,35 +43,11 @@ static void key_callback(int key, int scancode, int action, int mods)
 }
 
 int main(int argc, char **argv) {
-    Logger * logger = new LinuxLogger();
+    Platform *platform = new LinuxPlatform();
+    FilesManager *filesManager = platform->filesManager();
+    Logger * logger = platform->logger();
 
-    logger->sayHello();
-    logger->logi("SurfaceCreated");
-    logger->logi("%s","SurfaceCreated2");
-    logger->logi("%s %d %s %f","aInt:", 15, "aFloat:", 123.123);
-    std::string str = "This is a better test, print std::string str";
-    logger->logi(str);
-    int val = 101;
-    logger->logi("%d", val);
-    float pi = 3.1416f;
-    logger->logi("%f", pi);
-    const char *c_str = "a C string, const char*";
-    logger->logi("%s", c_str);
-    char aChar ='A';
-    logger->logi(aChar);
-     logger->logi("%s", c_str);
-     logger->logi("%s %d", c_str, val);
-     logger->logi("%s %d %f", c_str, val, pi);
-     logger->logi("%s", "myNewStr");
-     logger->logi("%s %d", "myNewStr", val);
-     logger->logi("%s %d %f", "myNewStr", val, pi);
-     logger->logi("%s %c", "myNewStr", 'F');
-     logger->logi("%s %d %c", "myNewStr", val, 'F');
-     logger->logi("%s %d %f %c", "myNewStr", val, pi, 'F');
-     logger->logi("%c %s", 'R',c_str);
-     logger->logi("%c %s %d", 'R',c_str, val);
-     logger->logi("%c %s %d %f", 'R',c_str, val, pi);
-
+    logger->logi(filesManager->loadFile("simple.frag"));
 
     const int WINDOW_WIDTH = 450;
     const int WINDOW_HEIGHT = 800;
@@ -100,7 +78,7 @@ int main(int argc, char **argv) {
     }
 
     assert(game == nullptr);
-    game = Game::init(test_number, new LinuxLogger());
+    game = Game::init(test_number, platform);
 
     game->surfaceCreated();
 
