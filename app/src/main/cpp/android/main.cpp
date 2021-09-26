@@ -1,7 +1,3 @@
-//
-// Created by Simonppg on 11/4/2017.
-//
-
 #include "game.hpp"
 #include "filesManager.hpp"
 #include "AndroidLogger.hpp"
