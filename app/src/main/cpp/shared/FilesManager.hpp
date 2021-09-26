@@ -1,9 +1,9 @@
-#ifndef _FILES_MANAGER_H_
-#define _FILES_MANAGER_H_
+#ifndef FILES_MANAGER_H
+#define FILES_MANAGER_H
 
 class FilesManager {
 public:
     virtual char* loadFile(const char *filePath) = 0;
 };
 
-#endif // _FILES_MANAGER_H_
+#endif // FILES_MANAGER_H
