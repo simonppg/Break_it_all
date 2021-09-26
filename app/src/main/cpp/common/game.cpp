@@ -1,11 +1,9 @@
-//
-// Created by Simonppg on 11/6/2018.
-//
-
 #include <sstream>
 
 #include "game.hpp"
 #include "Point3D.hpp"
+#include "Dimension.hpp"
+#include "../shared/Logger.hpp"
 
 //Examples
 #include "SandBox.hpp"
@@ -13,12 +11,6 @@
 #include "Test2.hpp"
 #include "Test3.hpp"
 #include "Test4.hpp"
-
-#ifdef __ANDROID_NDK__
-#include "../android/logger.hpp"
-#else
-#include "../linux/logger.hpp"
-#endif
 
 void Game::camera_forward() {
     Point3D cameraPosition = pScene->camera->getPosition();
@@ -44,25 +36,25 @@ void Game::camera_reset() {
     pScene->camera->updatePosition(Point3D());
 }
 
-Game * Game::init(int pos) {
+Game * Game::init(int pos, Logger *logger) {
     // Don't call OpenGL functions here
-    LOGI("Game::init %d", pos);
+    logger->logi("Game::init %d", pos);
 
     if (pos == 0)
-        return new Game(new SandBox());
+        return new Game(new SandBox(), logger);
     else if (pos == 1)
-        return new Game(new Test1());
+        return new Game(new Test1(), logger);
     else if (pos == 2)
-        return new Game(new Test2());
+        return new Game(new Test2(), logger);
     else if (pos == 3)
-        return new Game(new Test3());
+        return new Game(new Test3(), logger);
     else
-        return new Game(new Test4());
+        return new Game(new Test4(), logger);
 }
 
-Game::Game(IScene *pScene)
-{
+Game::Game(IScene *pScene, Logger *logger) {
     this->pScene = pScene;
+    this->logger = logger;
 }
 
 void Game::surfaceCreated() {
@@ -75,7 +67,7 @@ void Game::surfaceChanged(int width, int height) {
     Dimension dimension = Dimension(width, height);
     std::stringstream sstream;
     sstream << dimension;
-    LOGI("%s", sstream.str().c_str());
+    logger->logi(sstream.str());
     
     pScene->surfaceChanged(width, height);
 }
