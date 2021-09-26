@@ -1,5 +1,5 @@
-#ifndef _FILES_MANAGER_H_
-#define _FILES_MANAGER_H_
+#ifndef _LINUX_FILES_MANAGER_H_
+#define _LINUX_FILES_MANAGER_H_
 
 #include "../shared/FilesManager.hpp"
 
@@ -8,4 +8,4 @@ public:
     char* loadFile(const char *filePath);
 };
 
-#endif //_FILES_MANAGER_H_
+#endif //_LINUX_FILES_MANAGER_H_
