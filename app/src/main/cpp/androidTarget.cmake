@@ -8,6 +8,7 @@ add_library(Platform
     STATIC
     android/logger.hpp
     android/filesManager.cpp
+    android/AndroidFilesManager.cpp
     android/AndroidLogger.cpp)
 
 target_link_libraries(Platform
