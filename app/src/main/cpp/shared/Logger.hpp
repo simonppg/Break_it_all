@@ -10,6 +10,8 @@ protected:
     const string LOG_TAG = "libNative";
 
 public:
+    virtual ~Logger() = default;
+
     virtual void sayHello() = 0;
     virtual void logi(char aChar) = 0;
     virtual void logi(const char* fortmat, ...) = 0;

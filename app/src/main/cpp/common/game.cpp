@@ -3,7 +3,9 @@
 #include "game.hpp"
 #include "Point3D.hpp"
 #include "Dimension.hpp"
+#include "../shared/Platform.hpp"
 #include "../shared/Logger.hpp"
+#include "../shared/FilesManager.hpp"
 
 //Examples
 #include "SandBox.hpp"
@@ -36,25 +38,29 @@ void Game::camera_reset() {
     pScene->camera->updatePosition(Point3D());
 }
 
-Game * Game::init(int pos, Logger *logger) {
-    // Don't call OpenGL functions here
+Game * Game::init(int pos, Platform *platform) {
+    //NOTE: Don't call OpenGL functions here
+    Logger *logger = platform->logger();
+
     logger->logi("Game::init %d", pos);
 
     if (pos == 0)
-        return new Game(new SandBox(), logger);
+        return new Game(new SandBox(), platform);
     else if (pos == 1)
-        return new Game(new Test1(), logger);
+        return new Game(new Test1(), platform);
     else if (pos == 2)
-        return new Game(new Test2(), logger);
+        return new Game(new Test2(), platform);
     else if (pos == 3)
-        return new Game(new Test3(), logger);
+        return new Game(new Test3(), platform);
     else
-        return new Game(new Test4(), logger);
+        return new Game(new Test4(), platform);
 }
 
-Game::Game(IScene *pScene, Logger *logger) {
+Game::Game(IScene *pScene, Platform *platform) {
     this->pScene = pScene;
-    this->logger = logger;
+    this->platform = platform;
+    this->logger = platform->logger();
+    this->fileManager = platform->filesManager();
 }
 
 void Game::surfaceCreated() {
