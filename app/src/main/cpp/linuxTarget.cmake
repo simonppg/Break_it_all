@@ -19,6 +19,7 @@ add_library(Platform
     linux/logger.hpp
     linux/filesManager.cpp
     linux/LinuxFilesManager.cpp
+    linux/LinuxPlatform.cpp
     linux/LinuxLogger.cpp)
 
 target_link_libraries(Platform

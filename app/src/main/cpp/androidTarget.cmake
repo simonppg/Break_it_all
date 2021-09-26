@@ -9,6 +9,7 @@ add_library(Platform
     android/logger.hpp
     android/filesManager.cpp
     android/AndroidFilesManager.cpp
+    android/AndroidPlatform.cpp
     android/AndroidLogger.cpp)
 
 target_link_libraries(Platform
