@@ -1,0 +1,9 @@
+@startuml diagram
+Game *-- Platform
+Game *-- Scenes
+
+abstract class Platform {
+    +logger(): Logger
+    +filesManager(): FilesManager
+}
+@enduml

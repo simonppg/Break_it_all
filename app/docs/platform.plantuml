@@ -1,0 +1,21 @@
+@startuml diagram
+Platform *-- Logger
+Platform *-- FilesManager
+
+abstract class Platform
+abstract class Logger
+abstract class FilesManager
+
+package AndroidPlatform {
+    Platform <|-- AndroidPlatform
+    Logger <|-- AndroidLogger
+    FilesManager <|-- AndroidFilesManager
+}
+
+package LinuxPlatform {
+    Platform <|-- LinuxPlatform
+    Logger <|-- LinuxLogger
+    FilesManager <|-- LinuxFilesManager
+}
+
+@enduml
