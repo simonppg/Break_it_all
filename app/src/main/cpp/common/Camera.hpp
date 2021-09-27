@@ -13,7 +13,7 @@ using glm::vec3;
 
 class Camera {
 private:
-    Projection projection = PERSPECTIVE;
+    Projection projection = Projection::PERSPECTIVE;
     Dimension dimension;
     Point3D position;
     FieldOfView fov;

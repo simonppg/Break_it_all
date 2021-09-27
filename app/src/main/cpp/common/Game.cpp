@@ -7,6 +7,8 @@
 #include "../shared/Logger.hpp"
 #include "../shared/FilesManager.hpp"
 #include "CursorPositionChanged.hpp"
+#include "KeyPressed.hpp"
+#include "Key.hpp"
 
 //Examples
 #include "SandBox.hpp"
@@ -33,6 +35,28 @@ void Game::camera_left() {
 void Game::camera_right() {
     Point3D cameraPosition = pScene->camera->getPosition();
     pScene->camera->updatePosition(cameraPosition.incrementX(1));
+}
+
+void Game::cursorPositionChangedHanlder(CursorPositionChanged *event) {
+    pScene->events(event->getXPosition(), event->getYPosition());
+}
+
+void Game::keyPressedHandler(KeyPressed *event){
+    Key key = event->key();
+    PressState pressState = event->pressState();
+
+    if(pressState == PressState::KEY_PRESSED || pressState == PressState::KEY_HOLDED) {
+        if (key == Key::W_KEY)
+          camera_forward();
+        else if (key == Key::S_KEY)
+          camera_back();
+        else if (key == Key::D_KEY)
+          camera_right();
+        else if (key == Key::A_KEY)
+          camera_left();
+        else if (key == Key::L_KEY)
+          camera_reset();
+    }
 }
 
 void Game::camera_reset() {
@@ -88,7 +112,22 @@ void Game::pause() { pScene->pause(); }
 void Game::resume() { pScene->resume(); }
 
 void Game:: dispatchEvent(Event *event) {
-    CursorPositionChanged *pos = (CursorPositionChanged *) event;
+  EventType eventType = event->type();
 
-    pScene->events(pos->getXPosition(), pos->getYPosition());
+  if (eventType == EventType::CURSOR_POSITION_CHANGED) {
+    logger->logi("CURSOR_POSITION_CHANGED");
+
+    cursorPositionChangedHanlder((CursorPositionChanged *) event);
+    return;
+  }
+
+  if (eventType == EventType::KEY_PRESSED) {
+    logger->logi("KEY_PRESSED");
+
+    keyPressedHandler((KeyPressed *) event);
+    return;
+  }
+
+  logger->logi("Event type: %d, was not handled", event->type());
 } 
+

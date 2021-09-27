@@ -2,6 +2,6 @@
 #define _MESH_TYPE_H_
 
 // TODO: use better names
-enum MeshType { ONE, TWO };
+enum class MeshType { ONE, TWO };
 
 #endif //_MESH_TYPE_H_

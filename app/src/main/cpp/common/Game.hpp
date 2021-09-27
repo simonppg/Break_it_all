@@ -6,12 +6,22 @@
 #include "../shared/Logger.hpp"
 #include "../shared/FilesManager.hpp"
 #include "Event.hpp"
+#include "CursorPositionChanged.hpp"
+#include "KeyPressed.hpp"
 
 class Game {
 private:
     Platform *platform;
     Logger *logger;
     FilesManager *fileManager;
+
+    void camera_forward();
+    void camera_back();
+    void camera_left();
+    void camera_right();
+
+    void cursorPositionChangedHanlder(CursorPositionChanged *event);
+    void keyPressedHandler(KeyPressed *event);
 
 public:
     Game(IScene *pScene, Platform *platform);
@@ -27,10 +37,6 @@ public:
     void render();
     void pause();
     void resume();
-    void camera_forward();
-    void camera_back();
-    void camera_left();
-    void camera_right();
     void camera_reset();
     void dispatchEvent(Event *event);
 };

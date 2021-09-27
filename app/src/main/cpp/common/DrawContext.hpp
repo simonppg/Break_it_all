@@ -1,11 +1,8 @@
-//
-// Created by simonppg on 4/25/19.
-//
-
 #ifndef BREAK_IT_ALL_CONTEXT_HPP
 #define BREAK_IT_ALL_CONTEXT_HPP
 
 #include <glm/glm.hpp>
+#include "MeshType.hpp"
 
 using glm::mat4;
 
@@ -13,7 +10,7 @@ class DrawContext {
 
 public:
     unsigned int programID;
-    int type;
+    MeshType type;
     unsigned int vbo;
     unsigned int iab;
     const void *vertex;

@@ -52,7 +52,7 @@ void Camera::setProjection(Projection projection) {
 void Camera::updateProjection() {
     mat4 perspective;
 
-    if(projection == PERSPECTIVE)
+    if(projection == Projection::PERSPECTIVE)
         perspective = glm::perspective(glm::radians(fov.getFov()), aspectRatio(), fov.getNcp(), fov.getFcp());
     else {
         if (dimension.getWidth() > dimension.getHeight()) {
