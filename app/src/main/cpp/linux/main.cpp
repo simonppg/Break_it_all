@@ -7,7 +7,7 @@
 #include "../shared/FilesManager.hpp"
 #include "../common/EventFactory.hpp"
 
-Game *game;
+Game *game = nullptr;
 
 #include <cstdio>
 #include <cstdlib>
@@ -66,12 +66,6 @@ int main(int argc, char **argv) {
       }
     });
 
-    if(game) {
-        delete game;
-        game = nullptr;
-    }
-
-    assert(game == nullptr);
     game = Game::init(test_number, platform);
 
     game->surfaceCreated();
