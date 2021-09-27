@@ -25,17 +25,17 @@ private:
 public:
     WindowManager(void *appContext);
 
-    void *getAppContext();
-    int createWindow(int width, int height);
-    void destroyWindow();
+    void* getAppContext();
     bool shouldClose();
-    void pollEvents();
-    void refreshWindow();
-    void cursorCallback();
 
     void setCursorCallback(CursorPosCallback);
     void setWindowSizeCallback(WindowSizeCallback);
     void setKeyCallback(KeyCallback);
+
+    int createWindow(int width, int height);
+    void destroyWindow();
+    void pollEvents();
+    void refreshWindow();
 };
 
 #endif // WINDOW_MANAGER_H
