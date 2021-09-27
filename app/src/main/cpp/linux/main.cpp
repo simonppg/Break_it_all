@@ -1,21 +1,23 @@
-#include "../common/Game.hpp"
-#include "logger.hpp"
-#include "WindowManager.hpp"
-#include "LinuxPlatform.hpp"
-#include "../shared/Platform.hpp"
-#include "../shared/Logger.hpp"
-#include "../shared/FilesManager.hpp"
 #include "../common/EventFactory.hpp"
+#include "../common/Game.hpp"
+#include "../shared/FilesManager.hpp"
+#include "../shared/Logger.hpp"
+#include "../shared/Platform.hpp"
+#include "LinuxPlatform.hpp"
+#include "WindowManager.hpp"
+#include "logger.hpp"
 
 Game *game = nullptr;
 
 #include <cstdio>
 #include <cstdlib>
 
-int main(int argc, char **argv) {
+class App {
+public:
+  void start(int sceneNumber) {
     Platform *platform = new LinuxPlatform();
     FilesManager *filesManager = platform->filesManager();
-    Logger * logger = platform->logger();
+    Logger *logger = platform->logger();
 
     logger->logi(filesManager->loadFile("simple.frag"));
 
@@ -23,18 +25,11 @@ int main(int argc, char **argv) {
     const int WINDOW_HEIGHT = 800;
     WindowManager *wm = new WindowManager();
 
-    int test_number = 0;
+    LOGI("%d", sceneNumber);
 
-    LOGI("%d", argc);
-    if(argc > 1)
-    {
-        test_number = atoi(argv[1]);
-    }
-    LOGI("%d", test_number);
-
-    if(wm->createWindow(WINDOW_WIDTH, WINDOW_HEIGHT) != 0) {
-        LOGE("Window can not be created");
-        exit(EXIT_FAILURE);
+    if (wm->createWindow(WINDOW_WIDTH, WINDOW_HEIGHT) != 0) {
+      LOGE("Window can not be created");
+      exit(EXIT_FAILURE);
     }
 
     wm->setCursorCallback([](double xpos, double ypos) -> void {
@@ -66,21 +61,31 @@ int main(int argc, char **argv) {
       }
     });
 
-    game = Game::init(test_number, platform);
+    game = Game::init(sceneNumber, platform);
 
     game->surfaceCreated();
 
     while (!wm->shouldClose()) {
-        wm->pollEvents();
+      wm->pollEvents();
 
-        game->update();
-        game->render();
+      game->update();
+      game->render();
 
-        wm->refreshWindow();
+      wm->refreshWindow();
     }
 
     wm->destroyWindow();
+  }
+};
 
-    return EXIT_SUCCESS;
+int main(int argc, char **argv) {
+  int sceneNumber = 0;
+
+  if (argc > 1) {
+    sceneNumber = atoi(argv[1]);
+  }
+
+  App().start(sceneNumber);
+
+  return EXIT_SUCCESS;
 }
-
