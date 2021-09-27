@@ -11,7 +11,7 @@ int main() {
     logger->sayHello();
 
     int width = 450, height = 800;
-    WindowManager *wm = new WindowManager();
+    WindowManager *wm = new WindowManager(NULL);
 
     if(wm->createWindow(width, height) != 0) {
         exit(EXIT_FAILURE);
