@@ -10,6 +10,7 @@ private:
 public:
     CursorPositionChanged (double xPosition, double yPosition);
 
+    EventType type();
     double getXPosition();
     double getYPosition();
 };

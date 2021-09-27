@@ -2,6 +2,7 @@ add_library(common STATIC
         Dimension.cpp
         FieldOfView.cpp
         CursorPositionChanged.cpp
+        KeyPressed.cpp
         EventFactory.cpp
         BreakItAll.cpp
         SandBox.cpp

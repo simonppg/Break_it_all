@@ -5,7 +5,8 @@
 
 class EventFactory {
 public:
-    Event cursorPositionChanged(double xPos, double yPos);
+    Event* cursorPositionChanged(double xPos, double yPos);
+    Event* keyPressed(int key, int scancode, int action, int mods);
 };
 
 #endif //EVENT_FACTORY_H
