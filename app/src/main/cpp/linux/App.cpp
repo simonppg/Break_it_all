@@ -11,44 +11,35 @@
 #include <cstdlib>
 #include <map>
 
-Game *game = nullptr;
-
 using std::map;
 
-void App::start(int sceneNumber) {
-  Platform *platform = new LinuxPlatform();
-  FilesManager *filesManager = platform->filesManager();
-  Logger *logger = platform->logger();
+App::App() {
+  platform = new LinuxPlatform();
+  filesManager = platform->filesManager();
+  logger = platform->logger();
+  eventFactory = new EventFactory();
+}
 
-  logger->logi(filesManager->loadFile("simple.frag"));
+void App::cursorCallback(void *appContext, double x, double y) {
+  App *app = (App *)appContext;
+  EventFactory *eventFactory = app->eventFactory;
+  Game *game = app->game;
 
-  const int WINDOW_WIDTH = 450;
-  const int WINDOW_HEIGHT = 800;
-  WindowManager *wm = new WindowManager();
+  auto event = eventFactory->cursorPositionChanged(x, y);
+  game->dispatchEvent(event);
+}
 
-  LOGI("%d", sceneNumber);
+void App::windowSizeCallback(void *appContext, int width, int height) {
+  App *app = (App *)appContext;
+  Game *game = app->game;
 
-  if (wm->createWindow(WINDOW_WIDTH, WINDOW_HEIGHT) != 0) {
-    LOGE("Window can not be created");
-    exit(EXIT_FAILURE);
-  }
+  game->surfaceChanged(width, height);
+}
 
-  wm->setCursorCallback([](double xpos, double ypos) -> void {
-    EventFactory eventFactory = EventFactory();
-    auto event = eventFactory.cursorPositionChanged(xpos, ypos);
-    game->dispatchEvent(event);
-  });
-
-  wm->setErrorCallback([](int error, const char *description) -> void {
-    LOGE("\nError glfw: %s", description);
-  });
-
-  wm->setWindowSizeCallback([](int width, int height) -> void {
-    game->surfaceChanged(width, height);
-  });
-
-  wm->setKeyCallback([](int key, int scancode, int action, int mods) -> void {
-    EventFactory eventFactory = EventFactory();
+void App::keyCallback(void *appContext, int key, int scancode, int action, int mods) {
+  App *app = (App *)appContext;
+  EventFactory *eventFactory = app->eventFactory;
+  Game *game = app->game;
 
     map<int, Key> keyMap = {{GLFW_KEY_W, Key::W_KEY},
                             {GLFW_KEY_A, Key::A_KEY},
@@ -78,9 +69,25 @@ void App::start(int sceneNumber) {
       pressState = PressState::UNKNOWN;
     }
 
-    auto event = eventFactory.keyPressed(myKey, pressState);
+    auto event = eventFactory->keyPressed(myKey, pressState);
     game->dispatchEvent(event);
-  });
+}
+
+void App::start(int sceneNumber) {
+  const int WINDOW_WIDTH = 450;
+  const int WINDOW_HEIGHT = 800;
+  WindowManager *wm = new WindowManager(this);
+
+  LOGI("%d", sceneNumber);
+
+  if (wm->createWindow(WINDOW_WIDTH, WINDOW_HEIGHT) != 0) {
+    LOGE("Window can not be created");
+    exit(EXIT_FAILURE);
+  }
+
+  wm->setCursorCallback(cursorCallback);
+  wm->setWindowSizeCallback(windowSizeCallback);
+  wm->setKeyCallback(keyCallback);
 
   game = Game::init(sceneNumber, platform);
 
