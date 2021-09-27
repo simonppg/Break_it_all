@@ -78,23 +78,14 @@ void Game::surfaceChanged(int width, int height) {
     pScene->surfaceChanged(width, height);
 }
 
-void Game::update() {
-    pScene->update();
-}
+void Game::update() { pScene->update(); }
 
-void Game::render() {
-    pScene->render();
-}
+void Game::render() { pScene->render(); }
 
-void Game::pause() {
-    pScene->pause();
-}
+void Game::pause() { pScene->pause(); }
 
-void Game::resume() {
-    pScene->resume();
-}
+void Game::resume() { pScene->resume(); }
 
-bool Game::on_touch_event(double xpos, double ypos)
-{
+bool Game::on_touch_event(double xpos, double ypos) {
     return pScene->events(xpos, ypos);;
 }
