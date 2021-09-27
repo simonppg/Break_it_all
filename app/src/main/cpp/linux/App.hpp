@@ -5,11 +5,13 @@
 #include "../shared/Logger.hpp"
 #include "../shared/FilesManager.hpp"
 #include "../common/EventFactory.hpp"
+#include "WindowManager.hpp"
 #include "../common/Game.hpp"
 
 class App {
 private:
   Game *game;
+  WindowManager *windowManager;
   Platform *platform;
   FilesManager *filesManager;
   Logger *logger;

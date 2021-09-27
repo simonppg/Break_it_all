@@ -6,7 +6,6 @@
 #include "../shared/Platform.hpp"
 #include "LinuxPlatform.hpp"
 #include "WindowManager.hpp"
-#include "logger.hpp"
 
 #include <cstdlib>
 #include <map>
@@ -14,6 +13,7 @@
 using std::map;
 
 App::App() {
+  windowManager = new WindowManager(this);
   platform = new LinuxPlatform();
   filesManager = platform->filesManager();
   logger = platform->logger();
@@ -76,31 +76,30 @@ void App::keyCallback(void *appContext, int key, int scancode, int action, int m
 void App::start(int sceneNumber) {
   const int WINDOW_WIDTH = 450;
   const int WINDOW_HEIGHT = 800;
-  WindowManager *wm = new WindowManager(this);
 
-  LOGI("%d", sceneNumber);
+  logger->logi("%d", sceneNumber);
 
-  if (wm->createWindow(WINDOW_WIDTH, WINDOW_HEIGHT) != 0) {
-    LOGE("Window can not be created");
+  if (windowManager->createWindow(WINDOW_WIDTH, WINDOW_HEIGHT) != 0) {
+    logger->logi("Window can not be created");
     exit(EXIT_FAILURE);
   }
 
-  wm->setCursorCallback(cursorCallback);
-  wm->setWindowSizeCallback(windowSizeCallback);
-  wm->setKeyCallback(keyCallback);
+  windowManager->setCursorCallback(cursorCallback);
+  windowManager->setWindowSizeCallback(windowSizeCallback);
+  windowManager->setKeyCallback(keyCallback);
 
   game = Game::init(sceneNumber, platform);
 
   game->surfaceCreated();
 
-  while (!wm->shouldClose()) {
-    wm->pollEvents();
+  while (!windowManager->shouldClose()) {
+    windowManager->pollEvents();
 
     game->update();
     game->render();
 
-    wm->refreshWindow();
+    windowManager->refreshWindow();
   }
 
-  wm->destroyWindow();
+  windowManager->destroyWindow();
 }
