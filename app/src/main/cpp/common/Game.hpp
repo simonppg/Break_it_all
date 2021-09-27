@@ -5,6 +5,7 @@
 #include "../shared/Platform.hpp"
 #include "../shared/Logger.hpp"
 #include "../shared/FilesManager.hpp"
+#include "Event.hpp"
 
 class Game {
 private:
@@ -31,7 +32,7 @@ public:
     void camera_left();
     void camera_right();
     void camera_reset();
-    bool on_touch_event(double xpos, double ypos);
+    void dispatchEvent(Event *event);
 };
 
 #endif // GAME_H

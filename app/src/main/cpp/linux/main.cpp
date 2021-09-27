@@ -5,42 +5,12 @@
 #include "../shared/Platform.hpp"
 #include "../shared/Logger.hpp"
 #include "../shared/FilesManager.hpp"
+#include "../common/CursorPositionChanged.hpp"
 
 Game *game;
 
 #include <cstdio>
 #include <cstdlib>
-
-static void cursor_pos_callback(double xpos, double ypos)
-{
-    game->on_touch_event(xpos, ypos);
-}
-
-static void error_handler(int error, const char* description)
-{
-    LOGE("\nError glfw: %s", description);
-}
-
-static void onSizeChange(int width, int height)
-{
-    game->surfaceChanged(width, height);
-}
-
-static void key_callback(int key, int scancode, int action, int mods)
-{
-    if(action == GLFW_REPEAT || action == GLFW_PRESS ) {
-        if (key == GLFW_KEY_W)
-            game->camera_forward();
-        else if (key == GLFW_KEY_S)
-            game->camera_back();
-        else if (key == GLFW_KEY_D)
-            game->camera_right();
-        else if (key == GLFW_KEY_A)
-            game->camera_left();
-        else if (key == GLFW_KEY_L)
-            game->camera_reset();
-    }
-}
 
 int main(int argc, char **argv) {
     Platform *platform = new LinuxPlatform();
@@ -67,10 +37,32 @@ int main(int argc, char **argv) {
         exit(EXIT_FAILURE);
     }
 
-    wm->setCursorCallback(cursor_pos_callback);
-    wm->setErrorCallback(error_handler);
-    wm->setWindowSizeCallback(onSizeChange);
-    wm->setKeyCallback(key_callback);
+    wm->setCursorCallback([](double xpos, double ypos) -> void {
+      game->dispatchEvent(new CursorPositionChanged(xpos, ypos));
+    });
+
+    wm->setErrorCallback([](int error, const char *description) -> void {
+      LOGE("\nError glfw: %s", description);
+    });
+
+    wm->setWindowSizeCallback([](int width, int height) -> void {
+      game->surfaceChanged(width, height);
+    });
+
+    wm->setKeyCallback([](int key, int scancode, int action, int mods) -> void {
+      if (action == GLFW_REPEAT || action == GLFW_PRESS) {
+        if (key == GLFW_KEY_W)
+          game->camera_forward();
+        else if (key == GLFW_KEY_S)
+          game->camera_back();
+        else if (key == GLFW_KEY_D)
+          game->camera_right();
+        else if (key == GLFW_KEY_A)
+          game->camera_left();
+        else if (key == GLFW_KEY_L)
+          game->camera_reset();
+      }
+    });
 
     if(game) {
         delete game;

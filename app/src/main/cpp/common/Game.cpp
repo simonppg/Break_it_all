@@ -6,6 +6,7 @@
 #include "../shared/Platform.hpp"
 #include "../shared/Logger.hpp"
 #include "../shared/FilesManager.hpp"
+#include "CursorPositionChanged.hpp"
 
 //Examples
 #include "SandBox.hpp"
@@ -86,6 +87,8 @@ void Game::pause() { pScene->pause(); }
 
 void Game::resume() { pScene->resume(); }
 
-bool Game::on_touch_event(double xpos, double ypos) {
-    return pScene->events(xpos, ypos);;
-}
+void Game:: dispatchEvent(Event *event) {
+    CursorPositionChanged *pos = (CursorPositionChanged *) event;
+
+    pScene->events(pos->getXPosition(), pos->getYPosition());
+} 

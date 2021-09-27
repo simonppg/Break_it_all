@@ -1,6 +1,7 @@
 add_library(common STATIC
         Dimension.cpp
         FieldOfView.cpp
+        CursorPositionChanged.cpp
         BreakItAll.cpp
         SandBox.cpp
         Test1.cpp
