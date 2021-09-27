@@ -5,7 +5,7 @@
 #include "../shared/Platform.hpp"
 #include "../shared/Logger.hpp"
 #include "../shared/FilesManager.hpp"
-#include "../common/CursorPositionChanged.hpp"
+#include "../common/EventFactory.hpp"
 
 Game *game;
 
@@ -38,7 +38,9 @@ int main(int argc, char **argv) {
     }
 
     wm->setCursorCallback([](double xpos, double ypos) -> void {
-      game->dispatchEvent(new CursorPositionChanged(xpos, ypos));
+      EventFactory eventFactory = EventFactory();
+      auto event = eventFactory.cursorPositionChanged(xpos, ypos);
+      game->dispatchEvent(&event);
     });
 
     wm->setErrorCallback([](int error, const char *description) -> void {
