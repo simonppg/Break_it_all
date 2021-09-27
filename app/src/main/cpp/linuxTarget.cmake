@@ -30,6 +30,7 @@ add_executable(linuxVersion
     linux/linuxBin.cpp)
 
 add_executable(linuxLauncher
+    linux/App.cpp
     linux/main.cpp)
 
 target_link_libraries(linuxVersion
