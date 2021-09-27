@@ -38,7 +38,7 @@ void Game::camera_right() {
     pScene->camera->updatePosition(cameraPosition.incrementX(1));
 }
 
-void Game::cursorPositionChangedHanlder(CursorPositionChanged *event) {
+void Game::cursorPositionChangedHandler(CursorPositionChanged *event) {
     pScene->events(event->getXPosition(), event->getYPosition());
 }
 
@@ -122,7 +122,7 @@ void Game:: dispatchEvent(Event *event) {
   if (eventType == EventType::CURSOR_POSITION_CHANGED) {
     logger->logi("CURSOR_POSITION_CHANGED");
 
-    cursorPositionChangedHanlder((CursorPositionChanged *) event);
+    cursorPositionChangedHandler((CursorPositionChanged *) event);
     return;
   }
 
