@@ -1,9 +1,11 @@
-#include "game.hpp"
+#include "../common/Game.hpp"
 #include "filesManager.hpp"
 #include "AndroidPlatform.hpp"
 #include "../shared/Platform.hpp"
 #include "../shared/Logger.hpp"
 #include "../shared/FilesManager.hpp"
+#include "../common/EventFactory.hpp"
+#include "../common/ScreenTouched.hpp"
 
 Game *game;
 
@@ -32,7 +34,10 @@ JNIEXPORT void JNICALL Java_com_example_simonppg_break_1it_1all_GameLibJNIWrappe
 
 JNIEXPORT bool JNICALL Java_com_example_simonppg_break_1it_1all_GameLibJNIWrapper_on_1touch_1event
         (JNIEnv * env, jclass cls, jdouble xpos, jdouble ypos) {
-    return game->on_touch_event(xpos, ypos);
+    EventFactory eventFactory = EventFactory();
+    ScreenTouched *event = new ScreenTouched(xpos, ypos);
+    game->dispatchEvent(event);
+    return true;
 }
 
 JNIEXPORT jobjectArray JNICALL Java_com_example_simonppg_break_1it_1all_GameLibJNIWrapper_getTestsList

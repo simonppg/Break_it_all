@@ -1,51 +1,26 @@
-#include "game.hpp"
-#include "logger.hpp"
-#include "WindowManager.hpp"
-#include "LinuxPlatform.hpp"
-#include "../shared/Platform.hpp"
-#include "../shared/Logger.hpp"
+#include "../common/EventFactory.hpp"
+#include "../common/Game.hpp"
 #include "../shared/FilesManager.hpp"
+#include "../shared/Logger.hpp"
+#include "../shared/Platform.hpp"
+#include "LinuxPlatform.hpp"
+#include "WindowManager.hpp"
+#include "logger.hpp"
+#include <map>
 
-Game *game;
+Game *game = nullptr;
 
 #include <cstdio>
 #include <cstdlib>
 
-static void cursor_pos_callback(double xpos, double ypos)
-{
-    game->on_touch_event(xpos, ypos);
-}
+using std::map;
 
-static void error_handler(int error, const char* description)
-{
-    LOGE("\nError glfw: %s", description);
-}
-
-static void onSizeChange(int width, int height)
-{
-    game->surfaceChanged(width, height);
-}
-
-static void key_callback(int key, int scancode, int action, int mods)
-{
-    if(action == GLFW_REPEAT || action == GLFW_PRESS ) {
-        if (key == GLFW_KEY_W)
-            game->camera_forward();
-        else if (key == GLFW_KEY_S)
-            game->camera_back();
-        else if (key == GLFW_KEY_D)
-            game->camera_right();
-        else if (key == GLFW_KEY_A)
-            game->camera_left();
-        else if (key == GLFW_KEY_L)
-            game->camera_reset();
-    }
-}
-
-int main(int argc, char **argv) {
+class App {
+public:
+  void start(int sceneNumber) {
     Platform *platform = new LinuxPlatform();
     FilesManager *filesManager = platform->filesManager();
-    Logger * logger = platform->logger();
+    Logger *logger = platform->logger();
 
     logger->logi(filesManager->loadFile("simple.frag"));
 
@@ -53,46 +28,87 @@ int main(int argc, char **argv) {
     const int WINDOW_HEIGHT = 800;
     WindowManager *wm = new WindowManager();
 
-    int test_number = 0;
+    LOGI("%d", sceneNumber);
 
-    LOGI("%d", argc);
-    if(argc > 1)
-    {
-        test_number = atoi(argv[1]);
-    }
-    LOGI("%d", test_number);
-
-    if(wm->createWindow(WINDOW_WIDTH, WINDOW_HEIGHT) != 0) {
-        LOGE("Window can not be created");
-        exit(EXIT_FAILURE);
+    if (wm->createWindow(WINDOW_WIDTH, WINDOW_HEIGHT) != 0) {
+      LOGE("Window can not be created");
+      exit(EXIT_FAILURE);
     }
 
-    wm->setCursorCallback(cursor_pos_callback);
-    wm->setErrorCallback(error_handler);
-    wm->setWindowSizeCallback(onSizeChange);
-    wm->setKeyCallback(key_callback);
+    wm->setCursorCallback([](double xpos, double ypos) -> void {
+      EventFactory eventFactory = EventFactory();
+      auto event = eventFactory.cursorPositionChanged(xpos, ypos);
+      game->dispatchEvent(event);
+    });
 
-    if(game) {
-        delete game;
-        game = nullptr;
-    }
+    wm->setErrorCallback([](int error, const char *description) -> void {
+      LOGE("\nError glfw: %s", description);
+    });
 
-    assert(game == nullptr);
-    game = Game::init(test_number, platform);
+    wm->setWindowSizeCallback([](int width, int height) -> void {
+      game->surfaceChanged(width, height);
+    });
+
+    wm->setKeyCallback([](int key, int scancode, int action, int mods) -> void {
+      EventFactory eventFactory = EventFactory();
+
+      map<int, Key> keyMap = {{GLFW_KEY_W, Key::W_KEY},
+                              {GLFW_KEY_A, Key::A_KEY},
+                              {GLFW_KEY_S, Key::S_KEY},
+                              {GLFW_KEY_D, Key::D_KEY},
+                              {GLFW_KEY_L, Key::L_KEY}};
+
+      map<int, PressState> pressStateMap = {
+          {GLFW_PRESS, PressState::KEY_PRESSED},
+          {GLFW_REPEAT, PressState::KEY_HOLDED},
+          {GLFW_RELEASE, PressState::KEY_RELEASED}};
+
+      Key myKey;
+      PressState pressState;
+
+      auto keyFound = keyMap.find(key);
+      if (keyFound != keyMap.end()) {
+        myKey = keyFound->second;
+      } else {
+        myKey = Key::UNKNOWN;
+      }
+      
+      auto pressStateFound = pressStateMap.find(action);
+      if (pressStateFound != pressStateMap.end()) {
+        pressState = pressStateFound->second;
+      } else {
+        pressState = PressState::UNKNOWN;
+      }
+
+      auto event = eventFactory.keyPressed(myKey, pressState);
+      game->dispatchEvent(event);
+    });
+
+    game = Game::init(sceneNumber, platform);
 
     game->surfaceCreated();
 
     while (!wm->shouldClose()) {
-        wm->pollEvents();
+      wm->pollEvents();
 
-        game->update();
-        game->render();
+      game->update();
+      game->render();
 
-        wm->refreshWindow();
+      wm->refreshWindow();
     }
 
     wm->destroyWindow();
+  }
+};
 
-    return EXIT_SUCCESS;
+int main(int argc, char **argv) {
+  int sceneNumber = 0;
+
+  if (argc > 1) {
+    sceneNumber = atoi(argv[1]);
+  }
+
+  App().start(sceneNumber);
+
+  return EXIT_SUCCESS;
 }
-

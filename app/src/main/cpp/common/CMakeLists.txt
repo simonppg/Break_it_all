@@ -1,6 +1,10 @@
 add_library(common STATIC
         Dimension.cpp
         FieldOfView.cpp
+        CursorPositionChanged.cpp
+        KeyPressed.cpp
+        ScreenTouched.cpp
+        EventFactory.cpp
         BreakItAll.cpp
         SandBox.cpp
         Test1.cpp
@@ -10,7 +14,7 @@ add_library(common STATIC
         Camera.cpp
         Object.cpp
         ShaderProg.cpp
-        game.cpp
+        Game.cpp
         Renderer.cpp
         Mesh.cpp
         Math.cpp
