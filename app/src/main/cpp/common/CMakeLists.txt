@@ -3,6 +3,7 @@ add_library(common STATIC
         FieldOfView.cpp
         CursorPositionChanged.cpp
         KeyPressed.cpp
+        ScreenTouched.cpp
         EventFactory.cpp
         BreakItAll.cpp
         SandBox.cpp

@@ -8,6 +8,7 @@
 #include "Event.hpp"
 #include "CursorPositionChanged.hpp"
 #include "KeyPressed.hpp"
+#include "ScreenTouched.hpp"
 
 class Game {
 private:
@@ -22,6 +23,7 @@ private:
 
     void cursorPositionChangedHanlder(CursorPositionChanged *event);
     void keyPressedHandler(KeyPressed *event);
+    void screenTouchedHandler(ScreenTouched *event);
 
 public:
     Game(IScene *pScene, Platform *platform);

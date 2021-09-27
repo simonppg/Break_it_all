@@ -8,6 +8,7 @@
 #include "../shared/FilesManager.hpp"
 #include "CursorPositionChanged.hpp"
 #include "KeyPressed.hpp"
+#include "ScreenTouched.hpp"
 #include "Key.hpp"
 
 //Examples
@@ -38,6 +39,10 @@ void Game::camera_right() {
 }
 
 void Game::cursorPositionChangedHanlder(CursorPositionChanged *event) {
+    pScene->events(event->getXPosition(), event->getYPosition());
+}
+
+void Game::screenTouchedHandler(ScreenTouched *event) {
     pScene->events(event->getXPosition(), event->getYPosition());
 }
 
@@ -125,6 +130,13 @@ void Game:: dispatchEvent(Event *event) {
     logger->logi("KEY_PRESSED");
 
     keyPressedHandler((KeyPressed *) event);
+    return;
+  }
+
+  if (eventType == EventType::SCREEN_TOUCHED) {
+    logger->logi("SCREEN_TOUCHED");
+
+    screenTouchedHandler((ScreenTouched *) event);
     return;
   }
 
