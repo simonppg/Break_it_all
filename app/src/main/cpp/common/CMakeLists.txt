@@ -10,7 +10,7 @@ add_library(common STATIC
         Camera.cpp
         Object.cpp
         ShaderProg.cpp
-        game.cpp
+        Game.cpp
         Renderer.cpp
         Mesh.cpp
         Math.cpp

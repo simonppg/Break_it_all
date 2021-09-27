@@ -1,20 +1,18 @@
-#ifndef BREAK_IT_ALL_GAME_H
-#define BREAK_IT_ALL_GAME_H
+#ifndef GAME_H
+#define GAME_H
 
 #include "IScene.hpp"
 #include "../shared/Platform.hpp"
 #include "../shared/Logger.hpp"
 #include "../shared/FilesManager.hpp"
 
-class Game
-{
+class Game {
 private:
     Platform *platform;
     Logger *logger;
     FilesManager *fileManager;
 
 public:
-    // Game(IScene *pScene);
     Game(IScene *pScene, Platform *platform);
 
     IScene *pScene;
@@ -36,4 +34,4 @@ public:
     bool on_touch_event(double xpos, double ypos);
 };
 
-#endif //BREAK_IT_ALL_GAME_H
+#endif // GAME_H

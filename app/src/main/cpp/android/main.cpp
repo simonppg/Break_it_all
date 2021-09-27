@@ -1,4 +1,4 @@
-#include "game.hpp"
+#include "../common/Game.hpp"
 #include "filesManager.hpp"
 #include "AndroidPlatform.hpp"
 #include "../shared/Platform.hpp"

@@ -1,4 +1,4 @@
-#include "game.hpp"
+#include "../common/Game.hpp"
 #include "logger.hpp"
 #include "WindowManager.hpp"
 #include "LinuxPlatform.hpp"

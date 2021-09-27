@@ -1,6 +1,6 @@
 #include <sstream>
 
-#include "game.hpp"
+#include "Game.hpp"
 #include "Point3D.hpp"
 #include "Dimension.hpp"
 #include "../shared/Platform.hpp"
