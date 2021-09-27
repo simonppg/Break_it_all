@@ -12,6 +12,7 @@
 
 class Game {
 private:
+    IScene *pScene;
     Platform *platform;
     Logger *logger;
     FilesManager *fileManager;
@@ -21,14 +22,12 @@ private:
     void camera_left();
     void camera_right();
 
-    void cursorPositionChangedHanlder(CursorPositionChanged *event);
+    void cursorPositionChangedHandler(CursorPositionChanged *event);
     void keyPressedHandler(KeyPressed *event);
     void screenTouchedHandler(ScreenTouched *event);
 
 public:
     Game(IScene *pScene, Platform *platform);
-
-    IScene *pScene;
 
     static Game * init(int, Platform *platform);
 
