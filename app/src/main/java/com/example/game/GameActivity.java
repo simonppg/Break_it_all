@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.widget.Toast;
 
-import com.example.game.jni.GameLibJNIWrapper;
+import com.example.game.jni.Game;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -30,23 +30,23 @@ public class GameActivity extends Activity {
             mView.setRenderer(new GLSurfaceView.Renderer() {
                 @Override
                 public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-                    GameLibJNIWrapper.surfaceCreated();
+                    Game.surfaceCreated();
                 }
 
                 @Override
                 public void onSurfaceChanged(GL10 gl, int width, int height) {
-                    GameLibJNIWrapper.surfaceChanged(width, height);
+                    Game.surfaceChanged(width, height);
                 }
 
                 @Override
                 public void onDrawFrame(GL10 gl) {
-                    GameLibJNIWrapper.drawFrame();
+                    Game.drawFrame();
                 }
             });
             mView.queueEvent(new Runnable() {
                 @Override
                 public void run() {
-                    GameLibJNIWrapper.init(position, getAssets());
+                    Game.init(position, getAssets());
                 }
             });
             setContentView(mView);
@@ -59,7 +59,7 @@ public class GameActivity extends Activity {
         mView.queueEvent(new Runnable() {
             @Override
             public void run() {
-                GameLibJNIWrapper.pause();
+                Game.pause();
             }
         });
     }
@@ -70,7 +70,7 @@ public class GameActivity extends Activity {
         mView.queueEvent(new Runnable() {
             @Override
             public void run() {
-                GameLibJNIWrapper.resume();
+                Game.resume();
             }
         });
     }
@@ -81,7 +81,7 @@ public class GameActivity extends Activity {
         mView.queueEvent(new Runnable() {
             @Override
             public void run() {
-                GameLibJNIWrapper.stop();
+                Game.stop();
             }
         });
     }
@@ -91,7 +91,7 @@ public class GameActivity extends Activity {
         mView.queueEvent(new Runnable() {
             @Override
             public void run() {
-                GameLibJNIWrapper.on_touch_event(e.getX(), e.getY());
+                Game.on_touch_event(e.getX(), e.getY());
             }
         });
         return super.onTouchEvent(e);

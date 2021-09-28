@@ -2,9 +2,9 @@ package com.example.game.jni;
 
 import android.content.res.AssetManager;
 
-public class BreakItAllLibJNIWrapper {
+public class Game {
     static {
-        System.loadLibrary("BreakItAllLibJNIWrapper");
+        System.loadLibrary("Game");
     }
 
     public static native void init(int position, AssetManager mgr);
