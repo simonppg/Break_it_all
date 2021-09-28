@@ -2,10 +2,6 @@ package com.example.game.jni;
 
 import android.content.res.AssetManager;
 
-/**
- * Created by Simonppg on 11/4/2017.
- */
-
 public class GameLibJNIWrapper {
     static {
         System.loadLibrary("gameLibJNIWrapper");

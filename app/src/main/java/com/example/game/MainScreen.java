@@ -11,10 +11,6 @@ import android.widget.ListView;
 
 import com.example.game.jni.BreakItAllLibJNIWrapper;
 
-/**
- * Created by simonppg on 21/03/18.
- */
-
 public class MainScreen extends Activity {
     private final String LOG_TAG = "MainScreen";
 
