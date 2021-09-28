@@ -1,4 +1,4 @@
-package com.example.simonppg.break_it_all;
+package com.example.game;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,9 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-/**
- * Created by simonppg on 21/03/18.
- */
+import com.example.game.jni.BreakItAll;
 
 public class MainScreen extends Activity {
     private final String LOG_TAG = "MainScreen";
@@ -26,7 +24,7 @@ public class MainScreen extends Activity {
 
         ArrayAdapter<String> adapter =
                 new ArrayAdapter<>(this,
-                        android.R.layout.simple_list_item_1, BreakItAllLibJNIWrapper.getTestsList());
+                        android.R.layout.simple_list_item_1, BreakItAll.getTestsList());
 
         items_list = (ListView)findViewById(R.id.my_list);
 

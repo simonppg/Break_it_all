@@ -1,10 +1,10 @@
-package com.example.simonppg.break_it_all;
+package com.example.game.jni;
 
 import android.content.res.AssetManager;
 
-public class BreakItAllLibJNIWrapper {
+public class BreakItAll {
     static {
-        System.loadLibrary("BreakItAllLibJNIWrapper");
+        System.loadLibrary("BreakItAll");
     }
 
     public static native void init(int position, AssetManager mgr);

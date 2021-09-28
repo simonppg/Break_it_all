@@ -1,4 +1,4 @@
-package com.example.simonppg.break_it_all;
+package com.example.game;
 
 import android.app.Activity;
 import android.content.Context;
@@ -7,6 +7,8 @@ import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.widget.Toast;
+
+import com.example.game.jni.BreakItAll;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -27,7 +29,7 @@ public class BreakItAllActivity extends Activity {
         mView.queueEvent(new Runnable() {
                 @Override
                 public void run() {
-                    BreakItAllLibJNIWrapper.init(position, getAssets());
+                    BreakItAll.init(position, getAssets());
                 }
             });
         setContentView(mView);
@@ -37,17 +39,17 @@ public class BreakItAllActivity extends Activity {
         return new GLSurfaceView.Renderer() {
             @Override
             public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-                BreakItAllLibJNIWrapper.surfaceCreated();
+                BreakItAll.surfaceCreated();
             }
 
             @Override
             public void onSurfaceChanged(GL10 gl, int width, int height) {
-                BreakItAllLibJNIWrapper.surfaceChanged(width, height);
+                BreakItAll.surfaceChanged(width, height);
             }
 
             @Override
             public void onDrawFrame(GL10 gl) {
-                BreakItAllLibJNIWrapper.drawFrame();
+                BreakItAll.drawFrame();
             }
         };
     }
@@ -77,7 +79,7 @@ public class BreakItAllActivity extends Activity {
         mView.queueEvent(new Runnable() {
             @Override
             public void run() {
-                BreakItAllLibJNIWrapper.pause();
+                BreakItAll.pause();
             }
         });
     }
@@ -88,7 +90,7 @@ public class BreakItAllActivity extends Activity {
         mView.queueEvent(new Runnable() {
             @Override
             public void run() {
-                BreakItAllLibJNIWrapper.resume();
+                BreakItAll.resume();
             }
         });
     }
@@ -99,7 +101,7 @@ public class BreakItAllActivity extends Activity {
         mView.queueEvent(new Runnable() {
             @Override
             public void run() {
-                BreakItAllLibJNIWrapper.stop();
+                BreakItAll.stop();
             }
         });
     }
@@ -109,7 +111,7 @@ public class BreakItAllActivity extends Activity {
         mView.queueEvent(new Runnable() {
             @Override
             public void run() {
-                BreakItAllLibJNIWrapper.on_touch_event(e.getX(), e.getY());
+                BreakItAll.on_touch_event(e.getX(), e.getY());
             }
         });
         return super.onTouchEvent(e);

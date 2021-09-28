@@ -27,9 +27,7 @@ private:
     void screenTouchedHandler(ScreenTouched *event);
 
 public:
-    Game(IScene *pScene, Platform *platform);
-
-    static Game * init(int, Platform *platform);
+    Game(int sceneNumber, Platform *platform);
 
     // OpenGL context is in this functions
     void surfaceCreated();
