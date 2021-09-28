@@ -77,23 +77,6 @@ Java_com_example_game_jni_Game_init(JNIEnv *env, jclass type,
     game = new Game(position, platform);
 }
 
-JNIEXPORT void JNICALL
-Java_com_example_game_jni_Game_pause(JNIEnv *env, jclass type) {
-    game->pause();
-    delete game;
-    game = nullptr;
-}
-
-JNIEXPORT void JNICALL
-Java_com_example_game_jni_Game_resume(JNIEnv *env, jclass type) {
-    game->resume();
-}
-
-JNIEXPORT void JNICALL
-Java_com_example_game_jni_Game_stop(JNIEnv *env, jclass type) {
-    delete game;
-}
-
 // ===== Activity lifecycle Hooks =====
 JNIEXPORT void JNICALL
 Java_com_example_game_jni_Game_notifyCreate(JNIEnv *env, jclass type) {
@@ -108,6 +91,7 @@ Java_com_example_game_jni_Game_notifyStart(JNIEnv *env, jclass type) {
 JNIEXPORT void JNICALL
 Java_com_example_game_jni_Game_notifyResume(JNIEnv *env, jclass type) {
     logger->logi("notifyResume");
+    game->resume();
 }
 
 JNIEXPORT void JNICALL
@@ -118,11 +102,15 @@ Java_com_example_game_jni_Game_notifyRestart(JNIEnv *env, jclass type) {
 JNIEXPORT void JNICALL
 Java_com_example_game_jni_Game_notifyPause(JNIEnv *env, jclass type) {
     logger->logi("notifyPause");
+    game->pause();
+    delete game;
+    game = nullptr;
 }
 
 JNIEXPORT void JNICALL
 Java_com_example_game_jni_Game_notifyStop(JNIEnv *env, jclass type) {
     logger->logi("notifyStop");
+    delete game;
 }
 
 JNIEXPORT void JNICALL

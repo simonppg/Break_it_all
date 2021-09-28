@@ -64,25 +64,12 @@ public class GameActivity extends Activity {
         });
     }
 
-    @Override protected void onPause() {
-        super.onPause();
-        mView.onPause();
-        mView.queueEvent(new Runnable() {
-            @Override
-            public void run() {
-                Game.pause();
-                Game.notifyPause();
-            }
-        });
-    }
-
     @Override protected void onResume() {
         super.onResume();
         mView.onResume();
         mView.queueEvent(new Runnable() {
             @Override
             public void run() {
-                Game.resume();
                 Game.notifyResume();
             }
         });
@@ -98,13 +85,23 @@ public class GameActivity extends Activity {
         });
     }
 
+    @Override protected void onPause() {
+        super.onPause();
+        mView.onPause();
+        mView.queueEvent(new Runnable() {
+            @Override
+            public void run() {
+                Game.notifyPause();
+            }
+        });
+    }
+
     @Override
     protected void onStop() {
         super.onStop();
         mView.queueEvent(new Runnable() {
             @Override
             public void run() {
-                Game.stop();
                 Game.notifyStop();
             }
         });

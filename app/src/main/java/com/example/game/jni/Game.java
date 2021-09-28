@@ -14,19 +14,6 @@ public class Game {
     public static native boolean on_touch_event(double xpos, double ypos);
     public static native String[] getTestsList();
 
-    /**
-     * @deprecated use notifyPause instead
-     */
-    public static native void pause();
-    /**
-     * @deprecated use notifyResume instead
-     */
-    public static native void resume();
-    /**
-     * @deprecated use notifyStop instead
-     */
-    public static native void stop();
-
     // Activity lifecycle hooks notifiers
     public static native void notifyCreate();
     public static native void notifyStart();
