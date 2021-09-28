@@ -30,6 +30,7 @@ add_executable(linuxVersion
     linux/linuxBin.cpp)
 
 add_executable(linuxLauncher
+    linux/GLFWKeyMapper.cpp
     linux/App.cpp
     linux/main.cpp)
 

@@ -7,6 +7,7 @@
 #include "../common/EventFactory.hpp"
 #include "WindowManager.hpp"
 #include "../common/Game.hpp"
+#include "GLFWKeyMapper.hpp"
 
 class App {
 private:
@@ -16,6 +17,7 @@ private:
   FilesManager *filesManager;
   Logger *logger;
   EventFactory *eventFactory;
+  GLFWKeyMapper *keyMapper;
 
   static void cursorCallback(void *appContext, double x, double y);
   static void windowSizeCallback(void *appContext, int width, int height);

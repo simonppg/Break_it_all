@@ -6,6 +6,7 @@
 #include "../shared/Platform.hpp"
 #include "LinuxPlatform.hpp"
 #include "WindowManager.hpp"
+#include "GLFWKeyMapper.hpp"
 
 #include <cstdlib>
 #include <map>
@@ -18,6 +19,7 @@ App::App() {
   filesManager = platform->filesManager();
   logger = platform->logger();
   eventFactory = new EventFactory();
+  keyMapper = new GLFWKeyMapper();
 }
 
 void App::cursorCallback(void *appContext, double x, double y) {
@@ -40,37 +42,13 @@ void App::keyCallback(void *appContext, int key, int scancode, int action, int m
   App *app = (App *)appContext;
   EventFactory *eventFactory = app->eventFactory;
   Game *game = app->game;
+  GLFWKeyMapper *keyMapper = app->keyMapper;
 
-    map<int, Key> keyMap = {{GLFW_KEY_W, Key::W_KEY},
-                            {GLFW_KEY_A, Key::A_KEY},
-                            {GLFW_KEY_S, Key::S_KEY},
-                            {GLFW_KEY_D, Key::D_KEY},
-                            {GLFW_KEY_L, Key::L_KEY}};
+  Key myKey = keyMapper->mapKey(key);
+  PressState pressState = keyMapper->mapPressState(action);
 
-    map<int, PressState> pressStateMap = {
-        {GLFW_PRESS, PressState::KEY_PRESSED},
-        {GLFW_REPEAT, PressState::KEY_HOLDED},
-        {GLFW_RELEASE, PressState::KEY_RELEASED}};
-
-    Key myKey;
-    PressState pressState;
-
-    auto keyFound = keyMap.find(key);
-    if (keyFound != keyMap.end()) {
-      myKey = keyFound->second;
-    } else {
-      myKey = Key::UNKNOWN;
-    }
-
-    auto pressStateFound = pressStateMap.find(action);
-    if (pressStateFound != pressStateMap.end()) {
-      pressState = pressStateFound->second;
-    } else {
-      pressState = PressState::UNKNOWN;
-    }
-
-    auto event = eventFactory->keyPressed(myKey, pressState);
-    game->dispatchEvent(event);
+  auto event = eventFactory->keyPressed(myKey, pressState);
+  game->dispatchEvent(event);
 }
 
 void App::start(int sceneNumber) {
