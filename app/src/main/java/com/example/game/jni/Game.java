@@ -13,7 +13,26 @@ public class Game {
     public static native void drawFrame();
     public static native boolean on_touch_event(double xpos, double ypos);
     public static native String[] getTestsList();
+
+    /**
+     * @deprecated use notifyPause instead
+     */
     public static native void pause();
+    /**
+     * @deprecated use notifyResume instead
+     */
     public static native void resume();
+    /**
+     * @deprecated use notifyStop instead
+     */
     public static native void stop();
+
+    // Activity lifecycle hooks notifiers
+    public static native void notifyCreate();
+    public static native void notifyStart();
+    public static native void notifyResume();
+    public static native void notifyRestart();
+    public static native void notifyPause();
+    public static native void notifyStop();
+    public static native void notifyDestroy();
 }

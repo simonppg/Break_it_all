@@ -94,6 +94,29 @@ Java_com_example_game_jni_Game_stop(JNIEnv *env, jclass type) {
     delete game;
 }
 
+// ===== Activity lifecycle Hooks =====
+JNIEXPORT void JNICALL
+Java_com_example_game_jni_Game_notifyCreate(JNIEnv *env, jclass type) { }
+
+JNIEXPORT void JNICALL
+Java_com_example_game_jni_Game_notifyStart(JNIEnv *env, jclass type) { }
+
+JNIEXPORT void JNICALL
+Java_com_example_game_jni_Game_notifyResume(JNIEnv *env, jclass type) { }
+
+JNIEXPORT void JNICALL
+Java_com_example_game_jni_Game_notifyRestart(JNIEnv *env, jclass type) { }
+
+JNIEXPORT void JNICALL
+Java_com_example_game_jni_Game_notifyPause(JNIEnv *env, jclass type) { }
+
+JNIEXPORT void JNICALL
+Java_com_example_game_jni_Game_notifyStop(JNIEnv *env, jclass type) { }
+
+JNIEXPORT void JNICALL
+Java_com_example_game_jni_Game_notifyDestroy(JNIEnv *env, jclass type) { }
+// ===== Activity lifecycle Hooks =====
+
 #ifdef __cplusplus
 }
 #endif
