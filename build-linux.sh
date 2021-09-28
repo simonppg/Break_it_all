@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x # echo commands
 
 BUILD_DIR=linux-build
 
