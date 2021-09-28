@@ -4,88 +4,98 @@ I am trying to create a simple brick breaking game.
 
 You can build a Android version using Android Studio or a desktop version building it using CMake on Linux.
 
-## Dependencies
+# Run it on Linux
+
+## Linux Dependencies
+
+- java # to run gradle wrapper
 - g++
 - cmake
 - libglfw3-dev
 - libgles2-mesa-dev
-- androind studio
 - xorg-dev
 - adb
+- android sdk version 30
+- androind studio # to download the SDK, still don't know how to make gradle download it before the build
 
-### Android Studio installation
-```
-$ sudo add-apt-repository ppa:maarten-fonville/android-studio
-$ sudo apt update
-$ sudo apt install android-studio
-```
+### Build in Linux
 
-## Build in Linux
-Clone the project in your home directory
-```console
-$ git clone https://github.com/simonppg/Break_it_all.git ~/Break_it_all
-$ cd Break_it_all
-$ mkdir linux-build
-$ cd linux-build
-$ cmake ..
-$ make all
-```
-run the tests
-```console
-$ cd Break_it_all/linux-build
-$ make check
+1. First you need to have the android sdk install somewhere.
+2. Then clone the project.
+3. Now manualy create a `local.properties` file in the root of the project with the android sdk directory like this: `sdk.dir=/home/<User>/Android/Sdk`, **NOTE**: replace <User> with your user name.
+4. Finally you can run the build script `build-linux.sh` to build and run the app.
+
+
+```shell
+git clone https://github.com/simonppg/Break_it_all.git ~/Break_it_all
+cd Break_it_all
+touch local.properties
+echo "sdk.dir=/home/<User>/Android/Sdk" >> local.properties
+./build-linux.sh
 ```
 
-to run the examples
-```console
-$ cd Break_it_all/linux-build
-$ make run
+### """Features available so far"""
+
+If everything when well, the app should start running, and a new window will show a "sandbox scene".
+
+- Handle window resize.
+- Cursor position change detection.
+- Key press detections only for W,A,S,D and L keys.
+- Touch screen detection (Android only).
+
+### Recompile app
+
+After running the build script `build-linux.sh` you should have a `Break_it_all/linux-build` directory, there you can run `make` commands. So you can recompile again without waiting for `cmake` configurations.
+
+```shell
+cd Break_it_all/linux-build
+make run
 ```
 
-or
-
-```console
-$ cd Break_it_all/linux-build/app/src/main/cpp/hal
-$ make all
-$ ./linuxLauncher <no_example>
-```
-
-### build dependencies
-I am using the GLFW and mesa libs, so install it first.
-```console
-$ sudo apt-get install libglfw3-dev libgles2-mesa-dev
-```
-### test dependencies
-```console
-$ sudo apt-get install libgtest-dev
-$ sudo apt-get install cmake
-$ cd /usr/src/gtest
-$ sudo cmake CMakeLists.txt
-$ sudo make
-$ sudo cp *.a /usr/lib
-```
-
-## Run tests
-```console
-$ make check
-```
-
-## Android
+## Run it on android phone from terminal
 
 This commands would build and run the app on your android phone and then show the logcat on the console.
 
 ```shell
-./gradlew log
+./gradlew run
 ```
 
 or if you want to change the filters, connect to you phone running a shell session using adb and then run logcat with different options.
 
 ```shell
-./gradlew appStart
+./gradlew runApp
 adb shell
 logcat libNative:I *:S
 ```
 
+Other useful gradle tasks:
 
-## Build for Windows
-TODO
+```shell
+./gradlew installDebug
+./gradlew runApp
+./gradlew clearLogcat
+./gradlew run
+```
+
+## Android Studio
+
+If non of that works, you still can build with android studio.
+
+### Android studio dependencies
+
+- android studio of course.
+- cmake
+- android sdk version 30
+- android ndk
+
+You can stall android studio with this commands:
+
+```shell
+sudo add-apt-repository ppa:maarten-fonville/android-studio
+sudo apt update
+sudo apt install android-studio
+```
+
+Then just click on the run button I guess :see_no_evil:.
+
+TODO: finish this part of the docs.
