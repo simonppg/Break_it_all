@@ -1,4 +1,4 @@
-package com.example.simonppg.break_it_all;
+package com.example.game;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.example.game.jni.BreakItAllLibJNIWrapper;
 
 /**
  * Created by simonppg on 21/03/18.

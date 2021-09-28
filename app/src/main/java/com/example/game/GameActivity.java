@@ -1,10 +1,12 @@
-package com.example.simonppg.break_it_all;
+package com.example.game;
 
 import android.app.Activity;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.widget.Toast;
+
+import com.example.game.jni.GameLibJNIWrapper;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;

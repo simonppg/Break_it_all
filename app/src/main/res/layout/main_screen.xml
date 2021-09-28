@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.simonppg.break_it_all.MainScreen">
+    tools:context="com.example.game.MainScreen">
 
     <ListView
         android:id="@+id/my_list"
