@@ -15,6 +15,8 @@ extern "C" {
 #include <android/asset_manager_jni.h>
 
 Game *game;
+Platform *platform;
+Logger *logger;
 
 JNIEXPORT void JNICALL Java_com_example_game_jni_Game_surfaceCreated
         (JNIEnv * env, jclass cls) {
@@ -67,11 +69,9 @@ Java_com_example_game_jni_Game_init(JNIEnv *env, jclass type,
     assert(mgr2 != nullptr);
     load_asset_manager(mgr2);
 
-    Platform *platform = new AndroidPlatform(mgr2);
+    platform = new AndroidPlatform(mgr2);
     FilesManager *filesManager = platform->filesManager();
-    Logger * logger = platform->logger();
-
-    logger->logi(filesManager->loadFile("simple.frag"));
+    logger = platform->logger();
 
     assert(game == nullptr);
     game = new Game(position, platform);
@@ -96,25 +96,39 @@ Java_com_example_game_jni_Game_stop(JNIEnv *env, jclass type) {
 
 // ===== Activity lifecycle Hooks =====
 JNIEXPORT void JNICALL
-Java_com_example_game_jni_Game_notifyCreate(JNIEnv *env, jclass type) { }
+Java_com_example_game_jni_Game_notifyCreate(JNIEnv *env, jclass type) {
+    logger->logi("notifyCreate");
+}
 
 JNIEXPORT void JNICALL
-Java_com_example_game_jni_Game_notifyStart(JNIEnv *env, jclass type) { }
+Java_com_example_game_jni_Game_notifyStart(JNIEnv *env, jclass type) {
+    logger->logi("notifyStart");
+}
 
 JNIEXPORT void JNICALL
-Java_com_example_game_jni_Game_notifyResume(JNIEnv *env, jclass type) { }
+Java_com_example_game_jni_Game_notifyResume(JNIEnv *env, jclass type) {
+    logger->logi("notifyResume");
+}
 
 JNIEXPORT void JNICALL
-Java_com_example_game_jni_Game_notifyRestart(JNIEnv *env, jclass type) { }
+Java_com_example_game_jni_Game_notifyRestart(JNIEnv *env, jclass type) {
+    logger->logi("notifyRestart");
+}
 
 JNIEXPORT void JNICALL
-Java_com_example_game_jni_Game_notifyPause(JNIEnv *env, jclass type) { }
+Java_com_example_game_jni_Game_notifyPause(JNIEnv *env, jclass type) {
+    logger->logi("notifyPause");
+}
 
 JNIEXPORT void JNICALL
-Java_com_example_game_jni_Game_notifyStop(JNIEnv *env, jclass type) { }
+Java_com_example_game_jni_Game_notifyStop(JNIEnv *env, jclass type) {
+    logger->logi("notifyStop");
+}
 
 JNIEXPORT void JNICALL
-Java_com_example_game_jni_Game_notifyDestroy(JNIEnv *env, jclass type) { }
+Java_com_example_game_jni_Game_notifyDestroy(JNIEnv *env, jclass type) {
+    logger->logi("notifyDestroy");
+}
 // ===== Activity lifecycle Hooks =====
 
 #ifdef __cplusplus

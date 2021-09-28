@@ -47,10 +47,21 @@ public class GameActivity extends Activity {
                 @Override
                 public void run() {
                     Game.init(position, getAssets());
+                    Game.notifyCreate();
                 }
             });
             setContentView(mView);
         }
+    }
+
+    @Override protected void onStart() {
+        super.onStart();
+        mView.queueEvent(new Runnable() {
+            @Override
+            public void run() {
+                Game.notifyStart();
+            }
+        });
     }
 
     @Override protected void onPause() {
@@ -60,6 +71,7 @@ public class GameActivity extends Activity {
             @Override
             public void run() {
                 Game.pause();
+                Game.notifyPause();
             }
         });
     }
@@ -71,6 +83,17 @@ public class GameActivity extends Activity {
             @Override
             public void run() {
                 Game.resume();
+                Game.notifyResume();
+            }
+        });
+    }
+
+    @Override protected void onRestart() {
+        super.onRestart();
+        mView.queueEvent(new Runnable() {
+            @Override
+            public void run() {
+                Game.notifyRestart();
             }
         });
     }
@@ -82,6 +105,17 @@ public class GameActivity extends Activity {
             @Override
             public void run() {
                 Game.stop();
+                Game.notifyStop();
+            }
+        });
+    }
+
+    @Override protected void onDestroy() {
+        super.onDestroy();
+        mView.queueEvent(new Runnable() {
+            @Override
+            public void run() {
+                Game.notifyDestroy();
             }
         });
     }
