@@ -18,6 +18,24 @@
 #include "Test3.hpp"
 #include "Test4.hpp"
 
+Game::Game(int sceneNumber, Platform *platform) {
+  // NOTE: Don't call OpenGL functions here
+  this->platform = platform;
+  this->logger = platform->logger();
+  this->fileManager = platform->filesManager();
+
+  if (sceneNumber == 0)
+    this->pScene = new SandBox();
+  else if (sceneNumber == 1)
+    this->pScene = new Test1();
+  else if (sceneNumber == 2)
+    this->pScene = new Test2();
+  else if (sceneNumber == 3)
+    this->pScene = new Test3();
+  else
+    this->pScene = new Test4();
+}
+
 void Game::camera_forward() {
     Point3D cameraPosition = pScene->camera->getPosition();
     pScene->camera->updatePosition(cameraPosition.decrementZ(1));
@@ -66,31 +84,6 @@ void Game::keyPressedHandler(KeyPressed *event){
 
 void Game::camera_reset() {
     pScene->camera->updatePosition(Point3D());
-}
-
-Game * Game::init(int pos, Platform *platform) {
-    //NOTE: Don't call OpenGL functions here
-    Logger *logger = platform->logger();
-
-    logger->logi("Game::init %d", pos);
-
-    if (pos == 0)
-        return new Game(new SandBox(), platform);
-    else if (pos == 1)
-        return new Game(new Test1(), platform);
-    else if (pos == 2)
-        return new Game(new Test2(), platform);
-    else if (pos == 3)
-        return new Game(new Test3(), platform);
-    else
-        return new Game(new Test4(), platform);
-}
-
-Game::Game(IScene *pScene, Platform *platform) {
-    this->pScene = pScene;
-    this->platform = platform;
-    this->logger = platform->logger();
-    this->fileManager = platform->filesManager();
 }
 
 void Game::surfaceCreated() {

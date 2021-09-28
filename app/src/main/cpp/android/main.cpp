@@ -7,14 +7,14 @@
 #include "../common/EventFactory.hpp"
 #include "../common/ScreenTouched.hpp"
 
-Game *game;
-
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 #include <jni.h>
 #include <android/asset_manager_jni.h>
+
+Game *game;
 
 JNIEXPORT void JNICALL Java_com_example_simonppg_break_1it_1all_GameLibJNIWrapper_surfaceCreated
         (JNIEnv * env, jclass cls) {
@@ -74,7 +74,7 @@ Java_com_example_simonppg_break_1it_1all_GameLibJNIWrapper_init(JNIEnv *env, jcl
     logger->logi(filesManager->loadFile("simple.frag"));
 
     assert(game == nullptr);
-    game = Game::init(position, platform);
+    game = new Game(position, platform);
 }
 
 JNIEXPORT void JNICALL
