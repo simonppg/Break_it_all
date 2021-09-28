@@ -88,7 +88,7 @@ void App::start(int sceneNumber) {
   windowManager->setWindowSizeCallback(windowSizeCallback);
   windowManager->setKeyCallback(keyCallback);
 
-  game = Game::init(sceneNumber, platform);
+  game = new Game(sceneNumber, platform);
 
   game->surfaceCreated();
 
