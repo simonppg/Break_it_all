@@ -14,9 +14,9 @@ extern "C" {
 #include <jni.h>
 #include <android/asset_manager_jni.h>
 
-Game *game;
-Platform *platform;
-Logger *logger;
+static Game *game = nullptr;
+static Platform *platform = nullptr;
+static Logger *logger = nullptr;
 
 JNIEXPORT void JNICALL Java_com_example_game_jni_Game_surfaceCreated
         (JNIEnv * env, jclass cls) {
@@ -103,19 +103,25 @@ JNIEXPORT void JNICALL
 Java_com_example_game_jni_Game_notifyPause(JNIEnv *env, jclass type) {
     logger->logi("notifyPause");
     game->pause();
-    delete game;
-    game = nullptr;
 }
 
 JNIEXPORT void JNICALL
 Java_com_example_game_jni_Game_notifyStop(JNIEnv *env, jclass type) {
     logger->logi("notifyStop");
-    delete game;
 }
 
 JNIEXPORT void JNICALL
 Java_com_example_game_jni_Game_notifyDestroy(JNIEnv *env, jclass type) {
     logger->logi("notifyDestroy");
+
+    if (game) {
+      delete game;
+      game = nullptr;
+    }
+    if (platform) {
+      delete platform;
+      platform = nullptr;
+    }
 }
 // ===== Activity lifecycle Hooks =====
 
