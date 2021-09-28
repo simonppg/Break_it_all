@@ -7,7 +7,8 @@ enum class Key {
     S_KEY,
     D_KEY,
     W_KEY,
-    L_KEY
+    L_KEY,
+    ESCAPE_KEY
 };
 
 enum class PressState {

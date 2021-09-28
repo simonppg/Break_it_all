@@ -79,6 +79,8 @@ void Game::keyPressedHandler(KeyPressed *event){
           camera_left();
         else if (key == Key::L_KEY)
           camera_reset();
+        else if (key == Key::ESCAPE_KEY)
+          exit(0); // TODO: Should we save state before exit?
     }
 }
 

@@ -7,7 +7,8 @@ GLFWKeyMapper::GLFWKeyMapper(){
             {GLFW_KEY_A, Key::A_KEY},
             {GLFW_KEY_S, Key::S_KEY},
             {GLFW_KEY_D, Key::D_KEY},
-            {GLFW_KEY_L, Key::L_KEY}};
+            {GLFW_KEY_L, Key::L_KEY},
+            {GLFW_KEY_ESCAPE, Key::ESCAPE_KEY}};
 
   pressStateMap = {{GLFW_PRESS, PressState::KEY_PRESSED},
                    {GLFW_REPEAT, PressState::KEY_HOLDED},
