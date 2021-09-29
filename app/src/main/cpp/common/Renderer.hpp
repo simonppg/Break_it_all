@@ -1,7 +1,3 @@
-//
-// Created by simonppg on 4/25/19.
-//
-
 #ifndef BREAK_IT_ALL_RENDERER_HPP
 #define BREAK_IT_ALL_RENDERER_HPP
 
