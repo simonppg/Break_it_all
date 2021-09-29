@@ -1,9 +1,5 @@
-//
-// Created by simonppg on 3/27/19.
-//
-
-#ifndef BREAK_IT_ALL_SANDBOX_H
-#define BREAK_IT_ALL_SANDBOX_H
+#ifndef COMMON_SANDBOX_HPP
+#define COMMON_SANDBOX_HPP
 
 #include "IScene.hpp"
 #include "Camera.hpp"
@@ -33,4 +29,4 @@ public:
 };
 
 
-#endif //BREAK_IT_ALL_SANDBOX_H
+#endif // COMMON_SANDBOX_HPP

@@ -8,13 +8,13 @@ extern "C" {
 #include <android/log.h>
 #define LOG_TAG "libNative"
 
-#ifndef BREAK_IT_ALL_LOGGER_H
-#define BREAK_IT_ALL_LOGGER_H
+#ifndef BREAK_IT_ALL_LOGGER_HPP
+#define BREAK_IT_ALL_LOGGER_HPP
 
 #define LOGI(...) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__);
 #define LOGE(...) __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, __VA_ARGS__);
 
-#endif //BREAK_IT_ALL_LOGGER_H
+#endif //BREAK_IT_ALL_LOGGER_HPP
 
 #ifdef __cplusplus
 }

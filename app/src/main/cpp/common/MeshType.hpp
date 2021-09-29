@@ -1,7 +1,7 @@
-#ifndef _MESH_TYPE_H_
-#define _MESH_TYPE_H_
+#ifndef COMMON_MESH_TYPE_HPP
+#define COMMON_MESH_TYPE_HPP
 
 // TODO: use better names
 enum class MeshType { ONE, TWO };
 
-#endif //_MESH_TYPE_H_
+#endif // COMMON_MESH_TYPE_HPP

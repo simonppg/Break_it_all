@@ -1,9 +1,5 @@
-//
-// Created by simonppg on 3/28/19.
-//
-
-#ifndef BREAK_IT_ALL_TEST1_H
-#define BREAK_IT_ALL_TEST1_H
+#ifndef COMMON_TEST1_HPP
+#define COMMON_TEST1_HPP
 
 #include "IScene.hpp"
 
@@ -20,4 +16,4 @@ public:
     bool events(double xpos, double ypos) override;
 };
 
-#endif //BREAK_IT_ALL_TEST1_H
+#endif // COMMON_TEST1_HPP

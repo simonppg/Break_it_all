@@ -1,5 +1,5 @@
-#ifndef STRINGS_STRING_FORMATTER_H
-#define STRINGS_STRING_FORMATTER_H
+#ifndef STRINGS_STRING_FORMATTER_HPP
+#define STRINGS_STRING_FORMATTER_HPP
 
 #include <string>
 
@@ -10,4 +10,4 @@ public:
   string format(const char *format, va_list args);
 };
 
-#endif // STRINGS_STRING_FORMATTER_H
+#endif // STRINGS_STRING_FORMATTER_HPP

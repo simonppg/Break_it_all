@@ -1,5 +1,5 @@
-#ifndef BREAK_IT_ALL_TEST2_H
-#define BREAK_IT_ALL_TEST2_H
+#ifndef COMMON_TEST2_HPP
+#define COMMON_TEST2_HPP
 
 #include "IScene.hpp"
 #include "Renderer.hpp"
@@ -19,4 +19,4 @@ public:
     bool events(double xpos, double ypos) override;
 };
 
-#endif //BREAK_IT_ALL_TEST2_H
+#endif // COMMON_TEST2_HPP

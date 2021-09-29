@@ -1,5 +1,5 @@
-#ifndef COMMON_CAMERA_H
-#define COMMON_CAMERA_H
+#ifndef COMMON_CAMERA_HPP
+#define COMMON_CAMERA_HPP
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -39,4 +39,4 @@ public:
     float top, bottom, right, left;
 };
 
-#endif //COMMON_CAMERA_H
+#endif //COMMON_CAMERA_HPP

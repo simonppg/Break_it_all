@@ -1,17 +1,13 @@
-//
-// Created by simonppg on 28/06/18.
-//
-
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#ifndef _FILES_MANAGER_H_
-#define _FILES_MANAGER_H_
+#ifndef FILES_MANAGER_HPP
+#define FILES_MANAGER_HPP
 
 char* load_file(const char *filePath);
 
-#endif //_FILES_MANAGER_H_
+#endif // FILES_MANAGER_HPP
 
 #ifdef __cplusplus
 }

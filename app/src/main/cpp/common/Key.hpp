@@ -1,5 +1,5 @@
-#ifndef KEY_H
-#define KEY_H
+#ifndef COMMON_KEY_HPP
+#define COMMON_KEY_HPP
 
 enum class Key {
     UNKNOWN,
@@ -18,4 +18,4 @@ enum class PressState {
     KEY_RELEASED
 };
 
-#endif // KEY_H
+#endif // COMMON_KEY_HPP

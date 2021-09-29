@@ -1,5 +1,5 @@
-#ifndef EVENT_TYPE_H
-#define EVENT_TYPE_H
+#ifndef COMMON_EVENT_TYPE_HPP
+#define COMMON_EVENT_TYPE_HPP
 
 enum class EventType {
     CURSOR_POSITION_CHANGED,
@@ -7,4 +7,4 @@ enum class EventType {
     SCREEN_TOUCHED
 };
 
-#endif // EVENT_TYPE_H
+#endif // COMMON_EVENT_TYPE_HPP

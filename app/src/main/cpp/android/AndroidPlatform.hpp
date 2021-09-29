@@ -1,5 +1,5 @@
-#ifndef ANDROID_PLATFORM_H
-#define ANDROID_PLATFORM_H
+#ifndef ANDROID_PLATFORM_HPP
+#define ANDROID_PLATFORM_HPP
 
 #include <android/asset_manager.h>
 
@@ -23,4 +23,4 @@ public:
     FilesManager* filesManager();
 };
 
-#endif // ANDROID_PLATFORM_H
+#endif // ANDROID_PLATFORM_HPP

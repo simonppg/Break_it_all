@@ -1,9 +1,5 @@
-//
-// Created by simonppg on 3/31/19.
-//
-
-#ifndef BREAK_IT_ALL_TEST4_H
-#define BREAK_IT_ALL_TEST4_H
+#ifndef COMMON_TEST4_HPP
+#define COMMON_TEST4_HPP
 
 #include "Math.hpp"
 #include "IScene.hpp"
@@ -13,7 +9,7 @@
 
 class Test4 : public IScene {
 private:
-    vector<float> vPos; 
+    vector<float> vPos;
     Math *math = new Math();
 
 protected:
@@ -39,4 +35,4 @@ public:
     Object *ball2;
 };
 
-#endif //BREAK_IT_ALL_TEST4_H
+#endif // COMMON_TEST4_HPP

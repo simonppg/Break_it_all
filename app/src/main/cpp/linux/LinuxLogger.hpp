@@ -1,5 +1,5 @@
-#ifndef _LINUX_LOGGER_H_
-#define _LINUX_LOGGER_H_
+#ifndef LINUX_LOGGER_HPP
+#define LINUX_LOGGER_HPP
 
 #include "../shared/Logger.hpp"
 
@@ -20,4 +20,4 @@ public:
   void logi(string aString);
 };
 
-#endif //_LINUX_LOGGER_H_
+#endif // LINUX_LOGGER_HPP

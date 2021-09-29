@@ -1,5 +1,5 @@
-#ifndef _LOGGER_H_
-#define _LOGGER_H_
+#ifndef LOGGER_HPP
+#define LOGGER_HPP
 
 #include <string>
 
@@ -18,4 +18,4 @@ public:
     virtual void logi(string aString) = 0;
 };
 
-#endif //_LOGGER_H_
+#endif // LOGGER_HPP

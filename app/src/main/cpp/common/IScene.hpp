@@ -1,9 +1,5 @@
-//
-// Created by simonppg on 3/27/19.
-//
-
-#ifndef BREAK_IT_ALL_ISCENE_H
-#define BREAK_IT_ALL_ISCENE_H
+#ifndef COMMON_ISCENE_HPP
+#define COMMON_ISCENE_HPP
 
 #include "Camera.hpp"
 
@@ -24,4 +20,4 @@ public:
     Camera *camera = nullptr;
 };
 
-#endif //BREAK_IT_ALL_ISCENE_H
+#endif // COMMON_ISCENE_HPP

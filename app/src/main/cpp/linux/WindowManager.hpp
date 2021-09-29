@@ -1,5 +1,5 @@
-#ifndef WINDOW_MANAGER_H
-#define WINDOW_MANAGER_H
+#ifndef WINDOW_MANAGER_HPP
+#define WINDOW_MANAGER_HPP
 
 #include <GLFW/glfw3.h>
 
@@ -38,4 +38,4 @@ public:
     void refreshWindow();
 };
 
-#endif // WINDOW_MANAGER_H
+#endif // WINDOW_MANAGER_HPP

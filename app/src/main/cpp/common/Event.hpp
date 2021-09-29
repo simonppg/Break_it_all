@@ -1,5 +1,5 @@
-#ifndef EVENT_H
-#define EVENT_H
+#ifndef COMMON_EVENT_HPP
+#define COMMON_EVENT_HPP
 
 #include "EventType.hpp"
 
@@ -8,4 +8,4 @@ public:
     virtual EventType type() = 0;
 };
 
-#endif // EVENT_H
+#endif // COMMON_EVENT_HPP

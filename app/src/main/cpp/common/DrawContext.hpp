@@ -1,5 +1,5 @@
-#ifndef BREAK_IT_ALL_CONTEXT_HPP
-#define BREAK_IT_ALL_CONTEXT_HPP
+#ifndef COMMON_DRAW_CONTEXT_HPP
+#define COMMON_DRAW_CONTEXT_HPP
 
 #include <glm/glm.hpp>
 #include "MeshType.hpp"
@@ -20,4 +20,4 @@ public:
     short *indices;
 };
 
-#endif //BREAK_IT_ALL_CONTEXT_HPP
+#endif // COMMON_DRAW_CONTEXT_HPP

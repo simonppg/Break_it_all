@@ -1,5 +1,5 @@
-#ifndef BREAK_IT_ALL_POINT3D_H
-#define BREAK_IT_ALL_POINT3D_H
+#ifndef COMMON_POINT3D_HPP
+#define COMMON_POINT3D_HPP
 
 class Point3D {
 public:
@@ -21,4 +21,4 @@ private:
     float x, y, z;
 };
 
-#endif //BREAK_IT_ALL_POINT3D_H
+#endif // COMMON_POINT3D_HPP

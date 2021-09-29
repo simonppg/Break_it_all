@@ -1,6 +1,6 @@
-#ifndef _PROJECTION_H_
-#define _PROJECTION_H_
+#ifndef COMMON_PROJECTION_HPP
+#define COMMON_PROJECTION_HPP
 
 enum class Projection { PERSPECTIVE, ORTHOGRAPHIC };
 
-#endif //_PROJECTION_H_
+#endif // COMMON_PROJECTION_HPP

@@ -1,5 +1,5 @@
-#ifndef FILES_MANAGER_H
-#define FILES_MANAGER_H
+#ifndef FILES_MANAGER_HPP
+#define FILES_MANAGER_HPP
 
 class FilesManager {
 public:
@@ -8,4 +8,4 @@ public:
     virtual char* loadFile(const char *filePath) = 0;
 };
 
-#endif // FILES_MANAGER_H
+#endif // FILES_MANAGER_HPP

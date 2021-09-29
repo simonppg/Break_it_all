@@ -1,13 +1,9 @@
-//
-// Created by simonppg on 23/06/18.
-//
-
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#ifndef BREAK_IT_ALL_LOGGER_H
-#define BREAK_IT_ALL_LOGGER_H
+#ifndef BREAK_IT_ALL_LOGGER_HPP
+#define BREAK_IT_ALL_LOGGER_HPP
 
 #include <ctime>
 #include <cstdio>
@@ -39,7 +35,7 @@ void loge(const char* fmt, ...);
                             } while (0)
 
 
-#endif //BREAK_IT_ALL_LOGGER_H
+#endif //BREAK_IT_ALL_LOGGER_HPP
 
 #ifdef __cplusplus
 }
