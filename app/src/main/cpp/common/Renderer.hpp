@@ -1,5 +1,5 @@
-#ifndef BREAK_IT_ALL_RENDERER_HPP
-#define BREAK_IT_ALL_RENDERER_HPP
+#ifndef COMMON_RENDERER_HPP
+#define COMMON_RENDERER_HPP
 
 #include "Mesh.hpp"
 #include "DrawContext.hpp"
@@ -12,4 +12,4 @@ public:
     static unsigned int createProgram(const char *vertexSource, const char *fragmentSource);
 };
 
-#endif //BREAK_IT_ALL_RENDERER_HPP
+#endif // COMMON_RENDERER_HPP
