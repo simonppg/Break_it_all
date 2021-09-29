@@ -5,13 +5,13 @@
 
 class ShaderLoader {
 private:
-    bool isCompilationOk(GLenum shader);
-    int getInfoLogLength(GLenum shader);
+  bool isCompilationOk(GLenum shader);
+  int getInfoLogLength(GLenum shader);
 
-    void showShaderInfoLog(GLenum shader);
+  void showShaderInfoLog(GLenum shader);
 
 public:
-    GLuint loadShader(GLenum shaderType, const char* shaderSource);
+  GLuint loadShader(GLenum shaderType, const char *shaderSource);
 };
 
 #endif // COMMON_SHEADER_LOADER_HPP
