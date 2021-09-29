@@ -1,7 +1,3 @@
-//
-// Created by simonppg on 4/25/19.
-//
-
 #include "Renderer.hpp"
 #include "MeshType.hpp"
 
