@@ -1,0 +1,33 @@
+@startuml diagram
+
+[AppOrLib] ..> [Game] : use
+[AppOrLib] ..> [Platform] : use
+[AppOrLib] ..> [Utils] : use
+
+[Game] ..> [Platform] : use
+[Game] ..> [Utils] : use
+
+[Platform] .right.> [Utils] : use
+
+note left of [AppOrLib]
+  Android JNI native library
+  or Linux executable
+end note
+
+note bottom of [Game]
+  Multi-platform
+  core module
+end note
+
+note left of [Platform]
+  Platform specific
+  implementations
+  but same API
+end note
+
+note right of [Utils]
+  Multi-platform
+  zero dependencies
+end note
+
+@enduml
