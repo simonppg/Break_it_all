@@ -1,5 +1,5 @@
-#ifndef _ANDROID_LOGGER_H_
-#define _ANDROID_LOGGER_H_
+#ifndef ANDROID_LOGGER_HPP
+#define ANDROID_LOGGER_HPP
 
 #include "../shared/Logger.hpp"
 #include <string>
@@ -19,4 +19,4 @@ public:
   void logi(string aString);
 };
 
-#endif //_ANDROID_LOGGER_H_
+#endif //ANDROID_LOGGER_HPP

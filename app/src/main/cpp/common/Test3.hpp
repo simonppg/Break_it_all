@@ -1,5 +1,5 @@
-#ifndef BREAK_IT_ALL_TEST3_H
-#define BREAK_IT_ALL_TEST3_H
+#ifndef COMMON_TEST3_HPP
+#define COMMON_TEST3_HPP
 
 #include "Math.hpp"
 #include "IScene.hpp"
@@ -22,4 +22,4 @@ public:
 };
 
 
-#endif //BREAK_IT_ALL_TEST3_H
+#endif // COMMON_TEST3_HPP

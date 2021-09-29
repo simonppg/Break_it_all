@@ -1,5 +1,5 @@
-#ifndef COMMON_MATH_H
-#define COMMON_MATH_H
+#ifndef COMMON_MATH_HPP
+#define COMMON_MATH_HPP
 
 #include <vector>
 #include "Dimension.hpp"
@@ -14,4 +14,4 @@ public:
     short * get_cube_index();
 };
 
-#endif //COMMON_MATH_H
+#endif // COMMON_MATH_HPP

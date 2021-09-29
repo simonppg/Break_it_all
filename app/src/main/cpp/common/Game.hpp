@@ -1,5 +1,5 @@
-#ifndef GAME_H
-#define GAME_H
+#ifndef COMMON_GAME_HPP
+#define COMMON_GAME_HPP
 
 #include "IScene.hpp"
 #include "../shared/Platform.hpp"
@@ -40,4 +40,4 @@ public:
     void dispatchEvent(Event *event);
 };
 
-#endif // GAME_H
+#endif // COMMON_GAME_HPP

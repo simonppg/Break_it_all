@@ -1,5 +1,5 @@
-#ifndef EVENT_FACTORY_H
-#define EVENT_FACTORY_H
+#ifndef COMMON_EVENT_FACTORY_HPP
+#define COMMON_EVENT_FACTORY_HPP
 
 #include "Event.hpp"
 #include "Key.hpp"
@@ -10,4 +10,4 @@ public:
     Event* keyPressed(Key key, PressState pressState);
 };
 
-#endif //EVENT_FACTORY_H
+#endif // COMMON_EVENT_FACTORY_HPP

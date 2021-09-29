@@ -1,5 +1,5 @@
-#ifndef KEY_PRESSED_H
-#define KEY_PRESSED_H
+#ifndef COMMON_KEY_PRESSED_HPP
+#define COMMON_KEY_PRESSED_HPP
 
 #include "Event.hpp"
 #include "Key.hpp"
@@ -17,4 +17,4 @@ public:
     PressState pressState();
 };
 
-#endif //KEY_PRESSED_H
+#endif // COMMON_KEY_PRESSED_HPP

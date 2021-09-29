@@ -1,5 +1,5 @@
-#ifndef BREAK_IT_ALL_MESH_HPP
-#define BREAK_IT_ALL_MESH_HPP
+#ifndef COMMON_MESH_HPP
+#define COMMON_MESH_HPP
 
 #include "Camera.hpp"
 #include "MeshType.hpp"
@@ -24,4 +24,4 @@ public:
     unsigned int iab; // index array buffer
 };
 
-#endif //BREAK_IT_ALL_MESH_HPP
+#endif // COMMON_MESH_HPP

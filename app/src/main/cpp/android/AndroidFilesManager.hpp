@@ -1,5 +1,5 @@
-#ifndef _ANDROID_FILES_MANAGER_H_
-#define _ANDROID_FILES_MANAGER_H_
+#ifndef ANDROID_FILES_MANAGER_HPP
+#define ANDROID_FILES_MANAGER_HPP
 
 #include <android/asset_manager.h>
 
@@ -15,4 +15,4 @@ public:
     char* loadFile(const char *filePath);
 };
 
-#endif //_ANDROID_FILES_MANAGER_H_
+#endif //ANDROID_FILES_MANAGER_HPP

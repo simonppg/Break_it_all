@@ -1,5 +1,5 @@
-#ifndef COMMON_DIMENSION_H
-#define COMMON_DIMENSION_H
+#ifndef COMMON_DIMENSION_HPP
+#define COMMON_DIMENSION_HPP
 
 #include <iostream>
 
@@ -20,4 +20,4 @@ private:
     friend ostream& operator<<(ostream &strm, const Dimension &dimension);
 };
 
-#endif //COMMON_DIMENSION_H
+#endif // COMMON_DIMENSION_HPP

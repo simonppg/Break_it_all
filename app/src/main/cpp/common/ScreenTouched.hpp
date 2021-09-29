@@ -1,5 +1,5 @@
-#ifndef SCREEN_TOUCHED_H
-#define SCREEN_TOUCHED_H
+#ifndef COMMON_SCREEN_TOUCHED_HPP
+#define COMMON_SCREEN_TOUCHED_HPP
 
 #include "Event.hpp"
 
@@ -15,4 +15,4 @@ public:
     double getYPosition();
 };
 
-#endif // SCREEN_TOUCHED_H
+#endif // COMMON_SCREEN_TOUCHED_HPP

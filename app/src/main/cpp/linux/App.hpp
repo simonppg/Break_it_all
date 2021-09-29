@@ -1,5 +1,5 @@
-#ifndef APP_H
-#define APP_H
+#ifndef APP_HPP
+#define APP_HPP
 
 #include "../shared/Platform.hpp"
 #include "../shared/Logger.hpp"
@@ -21,7 +21,7 @@ private:
 
   static void cursorCallback(void *appContext, double x, double y);
   static void windowSizeCallback(void *appContext, int width, int height);
-  static void keyCallback(void *appContext, int key, int scancode, int action, int mods); 
+  static void keyCallback(void *appContext, int key, int scancode, int action, int mods);
 
 public:
   App();
@@ -29,4 +29,4 @@ public:
   void start(int sceneNumber);
 };
 
-#endif // APP_H
+#endif // APP_HPP

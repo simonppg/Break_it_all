@@ -1,5 +1,5 @@
-#ifndef LINUX_PLATFORM_H
-#define LINUX_PLATFORM_H
+#ifndef LINUX_PLATFORM_HPP
+#define LINUX_PLATFORM_HPP
 
 #include "LinuxLogger.hpp"
 #include "LinuxFilesManager.hpp"
@@ -21,4 +21,4 @@ public:
     FilesManager* filesManager();
 };
 
-#endif // LINUX_PLATFORM_H
+#endif // LINUX_PLATFORM_HPP

@@ -1,5 +1,5 @@
-#ifndef BREAK_IT_ALL_SHADERPROG_HPP
-#define BREAK_IT_ALL_SHADERPROG_HPP
+#ifndef COMMON_SHADERPROG_HPP
+#define COMMON_SHADERPROG_HPP
 
 #include "Renderer.hpp"
 
@@ -18,4 +18,4 @@ public:
     unsigned int programID;
 };
 
-#endif //BREAK_IT_ALL_SHADERPROG_HPP
+#endif // COMMON_SHADERPROG_HPP

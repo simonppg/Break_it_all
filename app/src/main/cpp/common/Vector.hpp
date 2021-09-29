@@ -1,9 +1,5 @@
-//
-// Created by simonppg on 4/29/19.
-//
-
-#ifndef BREAK_IT_ALL_VECTOR_HPP
-#define BREAK_IT_ALL_VECTOR_HPP
+#ifndef COMMON_VECTOR_HPP
+#define COMMON_VECTOR_HPP
 
 class Vector {
 public:
@@ -13,4 +9,4 @@ public:
     float length();
 };
 
-#endif //BREAK_IT_ALL_VECTOR_HPP
+#endif // COMMON_VECTOR_HPP

@@ -1,9 +1,5 @@
-//
-// Created by simonppg on 4/23/19.
-//
-
-#ifndef BREAK_IT_ALL_OBJECT_HPP
-#define BREAK_IT_ALL_OBJECT_HPP
+#ifndef COMMON_OBJECT_HPP
+#define COMMON_OBJECT_HPP
 
 #include "Camera.hpp"
 #include "Mesh.hpp"
@@ -42,4 +38,4 @@ public:
     float x_direction = 1;
 };
 
-#endif //BREAK_IT_ALL_OBJECT_HPP
+#endif // COMMON_OBJECT_HPP

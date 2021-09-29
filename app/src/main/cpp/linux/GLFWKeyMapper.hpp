@@ -1,5 +1,5 @@
-#ifndef GLFW_KEY_MAPPER_H
-#define GLFW_KEY_MAPPER_H
+#ifndef GLFW_KEY_MAPPER_HPP
+#define GLFW_KEY_MAPPER_HPP
 
 #include "../common/Key.hpp"
 #include <map>
@@ -18,4 +18,4 @@ public:
   PressState mapPressState(int action);
 };
 
-#endif // GLFW_KEY_MAPPER_H
+#endif // GLFW_KEY_MAPPER_HPP

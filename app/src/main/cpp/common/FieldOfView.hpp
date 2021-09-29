@@ -1,5 +1,5 @@
-#ifndef COMMON_FIELD_OF_VIEW_H
-#define COMMON_FIELD_OF_VIEW_H
+#ifndef COMMON_FIELD_OF_VIEW_HPP
+#define COMMON_FIELD_OF_VIEW_HPP
 
 class FieldOfView {
 private:
@@ -15,4 +15,4 @@ public:
     float getFov();
 };
 
-#endif //COMMON_FIELD_OF_VIEW_H
+#endif // COMMON_FIELD_OF_VIEW_HPP

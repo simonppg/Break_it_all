@@ -6,8 +6,8 @@
 extern "C" {
 #endif
 
-#ifndef _FILES_MANAGER_H_
-#define _FILES_MANAGER_H_
+#ifndef FILES_MANAGER_HPP
+#define FILES_MANAGER_HPP
 
 #include <android/asset_manager.h>
 
@@ -16,7 +16,7 @@ extern AAssetManager *g_pAssetManager;
 void load_asset_manager(AAssetManager *);
 char* load_file(const char *filePath);
 
-#endif //_FILES_MANAGER_H_
+#endif // FILES_MANAGER_HPP
 
 #ifdef __cplusplus
 }

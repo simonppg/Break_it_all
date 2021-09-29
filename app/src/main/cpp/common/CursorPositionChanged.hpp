@@ -1,5 +1,5 @@
-#ifndef CURSOR_POSITION_CHANGED_H
-#define CURSOR_POSITION_CHANGED_H
+#ifndef COMMON_CURSOR_POSITION_CHANGED_HPP
+#define COMMON_CURSOR_POSITION_CHANGED_HPP
 
 #include "Event.hpp"
 
@@ -15,4 +15,4 @@ public:
     double getYPosition();
 };
 
-#endif // CURSOR_POSITION_CHANGED_H
+#endif // COMMON_CURSOR_POSITION_CHANGED_HPP

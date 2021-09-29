@@ -1,5 +1,5 @@
-#ifndef PLATFORM_H
-#define PLATFORM_H
+#ifndef PLATFORM_HPP
+#define PLATFORM_HPP
 
 #include "Logger.hpp"
 #include "FilesManager.hpp"
@@ -10,4 +10,4 @@ public:
     virtual FilesManager* filesManager() = 0;
 };
 
-#endif // PLATFORM_H
+#endif // PLATFORM_HPP

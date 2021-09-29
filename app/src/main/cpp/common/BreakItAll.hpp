@@ -1,5 +1,5 @@
-#ifndef _BREAK_IT_ALL_H_
-#define _BREAK_IT_ALL_H_
+#ifndef COMMON_BREAK_IT_ALL_HPP
+#define COMMON_BREAK_IT_ALL_HPP
 
 #include <string.h>
 #include <iostream>
@@ -23,4 +23,4 @@ public:
     void exampleList(vector<string>*);
 };
 
-#endif //_BREAK_IT_ALL_H_
+#endif // COMMON_BREAK_IT_ALL_HPP
