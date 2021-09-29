@@ -1,7 +1,3 @@
-//
-// Created by simonppg on 3/27/19.
-//
-
 #include "Test2.hpp"
 #include "Renderer.hpp"
 

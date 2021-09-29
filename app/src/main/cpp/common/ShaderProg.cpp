@@ -1,9 +1,4 @@
-//
-// Created by simonppg on 4/23/19.
-//
-
 #include "ShaderProg.hpp"
-
 #include "Renderer.hpp"
 
 #ifdef __ANDROID_NDK__

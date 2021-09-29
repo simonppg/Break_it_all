@@ -1,7 +1,3 @@
-//
-// Created by simonppg on 3/28/19.
-//
-
 #ifndef BREAK_IT_ALL_TEST3_H
 #define BREAK_IT_ALL_TEST3_H
 

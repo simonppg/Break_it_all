@@ -1,7 +1,3 @@
-//
-// Created by simonppg on 3/28/19.
-//
-
 #include "Test3.hpp"
 
 #include <vector>
