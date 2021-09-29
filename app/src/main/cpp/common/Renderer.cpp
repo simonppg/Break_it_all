@@ -148,8 +148,6 @@ GLuint Renderer::createProgram(const char* vertexSource, const char * fragmentSo
     glAttachShader(program, vertexShader);
     glAttachShader(program, fragmentShader);
     glLinkProgram(program);
-    GLint linkStatus = GL_FALSE;
-    glGetProgramiv(program, GL_LINK_STATUS, &linkStatus);
 
     if (!isProgramLinkOk(program)) {
       showProgramInfoLog(program);
