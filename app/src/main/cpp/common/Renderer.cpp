@@ -1,7 +1,3 @@
-//
-// Created by simonppg on 4/25/19.
-//
-
 #include "Renderer.hpp"
 #include "MeshType.hpp"
 
@@ -14,40 +10,16 @@
 #include "../linux/logger.hpp"
 #endif
 
-bool isCompilationOk(GLenum shader) {
-    GLint compiled = 0;
-    glGetShaderiv(shader, GL_COMPILE_STATUS, &compiled);
-    return compiled;
-}
-
 bool isProgramLinkOk(GLuint program) {
     GLint linkStatus = GL_FALSE;
     glGetProgramiv(program, GL_LINK_STATUS, &linkStatus);
     return linkStatus;
 }
 
-int getInfoLogLength(GLenum shader) {
-    GLint infoLen = 0;
-    glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &infoLen);
-    return infoLen;
-}
-
 int getProgramInfoLength(GLuint program) {
     GLint bufLength = 0;
     glGetProgramiv(program, GL_INFO_LOG_LENGTH, &bufLength);
     return bufLength;
-}
-
-void showShaderInfoLog(GLenum shader) {
-    int infoLength = getInfoLogLength(shader);
-    if (!infoLength) { return; }
-
-    char *buf = (char*) malloc(sizeof(char) * infoLength);
-    if (!buf) { return; }
-
-    glGetShaderInfoLog(shader, infoLength, NULL, buf);
-    LOGE("%s", buf);
-    free(buf);
 }
 
 void showProgramInfoLog(GLuint program) {
@@ -104,25 +76,6 @@ void Renderer::draw(DrawContext *pDrawContex) {
     glUseProgram(0);
 }
 
-GLuint Renderer::loadShader(GLenum shaderType, const char* shaderSource) {
-    // In this function 0 is and error
-    int error = 0;
-
-    // glCreateShader return 0 when there is an error 
-    GLuint shader = glCreateShader(shaderType);
-    if(!shader) { return error; }
-
-    glShaderSource(shader, 1, &shaderSource, NULL);
-    glCompileShader(shader);
-
-    if(isCompilationOk(shader)) { return shader; }
-
-    showShaderInfoLog(shader);
-    glDeleteShader(shader);
-
-    return error;
-}
-
 GLuint Renderer::createProgram(const char* vertexSource, const char * fragmentSource) {
     // In this function 0 is and error
     const int error = 0;
@@ -130,13 +83,13 @@ GLuint Renderer::createProgram(const char* vertexSource, const char * fragmentSo
     if (vertexSource == NULL) { return error; }
     if (fragmentSource == NULL) { return error; }
 
-    GLuint vertexShader = loadShader(GL_VERTEX_SHADER, vertexSource);
+    GLuint vertexShader = shaderLoader.loadShader(GL_VERTEX_SHADER, vertexSource);
     if (!vertexShader) {
         LOGE("Could not load vertexShader\n");
         return error;
     }
 
-    GLuint fragmentShader = loadShader(GL_FRAGMENT_SHADER, fragmentSource);
+    GLuint fragmentShader = shaderLoader.loadShader(GL_FRAGMENT_SHADER, fragmentSource);
     if (!fragmentShader) {
         LOGE("Could not load fragmentShader\n");
         return error;
@@ -148,8 +101,6 @@ GLuint Renderer::createProgram(const char* vertexSource, const char * fragmentSo
     glAttachShader(program, vertexShader);
     glAttachShader(program, fragmentShader);
     glLinkProgram(program);
-    GLint linkStatus = GL_FALSE;
-    glGetProgramiv(program, GL_LINK_STATUS, &linkStatus);
 
     if (!isProgramLinkOk(program)) {
       showProgramInfoLog(program);

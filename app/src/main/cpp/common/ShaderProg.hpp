@@ -1,11 +1,12 @@
-//
-// Created by simonppg on 4/23/19.
-//
-
 #ifndef BREAK_IT_ALL_SHADERPROG_HPP
 #define BREAK_IT_ALL_SHADERPROG_HPP
 
+#include "Renderer.hpp"
+
 class ShaderProg {
+private:
+    Renderer renderer;
+
 public:
     ShaderProg(const char *vertShaderPath, const char *fragShaderPath);
 

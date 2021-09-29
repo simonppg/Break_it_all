@@ -1,9 +1,4 @@
-//
-// Created by simonppg on 4/23/19.
-//
-
 #include "ShaderProg.hpp"
-
 #include "Renderer.hpp"
 
 #ifdef __ANDROID_NDK__
@@ -15,8 +10,9 @@
 ShaderProg::ShaderProg(const char *vertShaderPath, const char *fragShaderPath) {
     vertex_file = load_file(vertShaderPath);
     fragment_file = load_file(fragShaderPath);
+    renderer = Renderer();
 }
 
 void ShaderProg::createProgram() {
-    programID = Renderer::createProgram(vertex_file, fragment_file);
+    programID = renderer.createProgram(vertex_file, fragment_file);
 }

@@ -16,6 +16,7 @@ add_library(common STATIC
         ShaderProg.cpp
         Game.cpp
         Renderer.cpp
+        ShaderLoader.cpp
         Mesh.cpp
         Math.cpp
         Vector.cpp

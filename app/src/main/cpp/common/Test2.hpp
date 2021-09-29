@@ -1,13 +1,12 @@
-//
-// Created by simonppg on 3/27/19.
-//
-
 #ifndef BREAK_IT_ALL_TEST2_H
 #define BREAK_IT_ALL_TEST2_H
 
 #include "IScene.hpp"
+#include "Renderer.hpp"
 
 class Test2 : public IScene {
+private:
+    Renderer renderer;
 
 public:
     Test2();

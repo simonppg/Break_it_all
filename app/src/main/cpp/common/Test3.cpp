@@ -1,7 +1,3 @@
-//
-// Created by simonppg on 3/28/19.
-//
-
 #include "Test3.hpp"
 
 #include <vector>
@@ -24,6 +20,7 @@ float *v;
 Test3::Test3() {
     camera = new Camera(Dimension(), Point3D());
     v = math->get_circle(radius, NUMBER_OF_VERTICES);
+    renderer = Renderer();
 }
 
 void Test3::render() {
@@ -55,7 +52,7 @@ void Test3::surfaceCreated() {
 
     vert = load_file("examples/triangle/triangle.vert");
     frag = load_file("examples/triangle/triangle.frag");
-    programID = Renderer::createProgram(vert, frag);
+    programID = renderer.createProgram(vert, frag);
 
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glVertexAttribPointer(0 , 3, GL_FLOAT, GL_FALSE, 0, v);
