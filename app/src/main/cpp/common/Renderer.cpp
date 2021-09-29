@@ -10,40 +10,16 @@
 #include "../linux/logger.hpp"
 #endif
 
-bool isCompilationOk(GLenum shader) {
-    GLint compiled = 0;
-    glGetShaderiv(shader, GL_COMPILE_STATUS, &compiled);
-    return compiled;
-}
-
 bool isProgramLinkOk(GLuint program) {
     GLint linkStatus = GL_FALSE;
     glGetProgramiv(program, GL_LINK_STATUS, &linkStatus);
     return linkStatus;
 }
 
-int getInfoLogLength(GLenum shader) {
-    GLint infoLen = 0;
-    glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &infoLen);
-    return infoLen;
-}
-
 int getProgramInfoLength(GLuint program) {
     GLint bufLength = 0;
     glGetProgramiv(program, GL_INFO_LOG_LENGTH, &bufLength);
     return bufLength;
-}
-
-void showShaderInfoLog(GLenum shader) {
-    int infoLength = getInfoLogLength(shader);
-    if (!infoLength) { return; }
-
-    char *buf = (char*) malloc(sizeof(char) * infoLength);
-    if (!buf) { return; }
-
-    glGetShaderInfoLog(shader, infoLength, NULL, buf);
-    LOGE("%s", buf);
-    free(buf);
 }
 
 void showProgramInfoLog(GLuint program) {
@@ -98,25 +74,6 @@ void Renderer::draw(DrawContext *pDrawContex) {
     }
 
     glUseProgram(0);
-}
-
-GLuint Renderer::loadShader(GLenum shaderType, const char* shaderSource) {
-    // In this function 0 is and error
-    int error = 0;
-
-    // glCreateShader return 0 when there is an error 
-    GLuint shader = glCreateShader(shaderType);
-    if(!shader) { return error; }
-
-    glShaderSource(shader, 1, &shaderSource, NULL);
-    glCompileShader(shader);
-
-    if(isCompilationOk(shader)) { return shader; }
-
-    showShaderInfoLog(shader);
-    glDeleteShader(shader);
-
-    return error;
 }
 
 GLuint Renderer::createProgram(const char* vertexSource, const char * fragmentSource) {

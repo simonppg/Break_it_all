@@ -4,12 +4,16 @@
 #include <string.h>
 #include <iostream>
 #include <vector>
+#include "ShaderLoader.hpp"
 
 using namespace std;
 
 class BreakItAll {
 private:
+    ShaderLoader shaderLoader = ShaderLoader();
     std::vector<std::string> examples {"SandBox New", "Window", "Triangle", "Circle", "orthographic"};
+    GLuint createProgram(const char* vertexSource, const char * fragmentSource);
+
 public:
     void init();
     void render();

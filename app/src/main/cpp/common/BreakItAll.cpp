@@ -2,40 +2,16 @@
 #include <iostream>
 #include <GLES3/gl3.h>
 
-bool isCompilationOk(GLenum shader) {
-    GLint compiled = 0;
-    glGetShaderiv(shader, GL_COMPILE_STATUS, &compiled);
-    return compiled;
-}
-
 bool isProgramLinkOk(GLuint program) {
     GLint linkStatus = GL_FALSE;
     glGetProgramiv(program, GL_LINK_STATUS, &linkStatus);
     return linkStatus;
 }
 
-int getInfoLogLength(GLenum shader) {
-    GLint infoLen = 0;
-    glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &infoLen);
-    return infoLen;
-}
-
 int getProgramInfoLength(GLuint program) {
     GLint bufLength = 0;
     glGetProgramiv(program, GL_INFO_LOG_LENGTH, &bufLength);
     return bufLength;
-}
-
-void showShaderInfoLog(GLenum shader) {
-    int infoLength = getInfoLogLength(shader);
-    if (!infoLength) { return; }
-
-    char *buf = (char*) malloc(sizeof(char) * infoLength);
-    if (!buf) { return; }
-
-    glGetShaderInfoLog(shader, infoLength, NULL, buf);
-    // LOGE("%s", buf);
-    free(buf);
 }
 
 void showProgramInfoLog(GLuint program) {
@@ -50,39 +26,20 @@ void showProgramInfoLog(GLuint program) {
     free(buf);
 }
 
-static GLuint loadShader(GLenum shaderType, const char* shaderSource) {
-    // In this function 0 is and error
-    int error = 0;
-
-    // glCreateShader return 0 when there is an error
-    GLuint shader = glCreateShader(shaderType);
-    if(!shader) { return error; }
-
-    glShaderSource(shader, 1, &shaderSource, NULL);
-    glCompileShader(shader);
-
-    if(isCompilationOk(shader)) { return shader; }
-
-    showShaderInfoLog(shader);
-    glDeleteShader(shader);
-
-    return error;
-}
-
-static GLuint createProgram(const char* vertexSource, const char * fragmentSource) {
+GLuint BreakItAll::createProgram(const char* vertexSource, const char * fragmentSource) {
     // In this function 0 is and error
     const int error = 0;
 
     if (vertexSource == NULL) { return error; }
     if (fragmentSource == NULL) { return error; }
 
-    GLuint vertexShader = loadShader(GL_VERTEX_SHADER, vertexSource);
+    GLuint vertexShader = shaderLoader.loadShader(GL_VERTEX_SHADER, vertexSource);
     if (!vertexShader) {
         // LOGE("Could not load vertexShader\n");
         return error;
     }
 
-    GLuint fragmentShader = loadShader(GL_FRAGMENT_SHADER, fragmentSource);
+    GLuint fragmentShader = shaderLoader.loadShader(GL_FRAGMENT_SHADER, fragmentSource);
     if (!fragmentShader) {
         // LOGE("Could not load fragmentShader\n");
         return error;
