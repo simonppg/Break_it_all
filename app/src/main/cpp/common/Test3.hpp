@@ -3,9 +3,11 @@
 
 #include "Math.hpp"
 #include "IScene.hpp"
+#include "Renderer.hpp"
 
 class Test3 : public IScene {
 private:
+    Renderer renderer;
     Math *math = new Math();
 
 public:

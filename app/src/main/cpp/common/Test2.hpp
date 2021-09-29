@@ -2,8 +2,11 @@
 #define BREAK_IT_ALL_TEST2_H
 
 #include "IScene.hpp"
+#include "Renderer.hpp"
 
 class Test2 : public IScene {
+private:
+    Renderer renderer;
 
 public:
     Test2();

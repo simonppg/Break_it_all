@@ -126,13 +126,13 @@ GLuint Renderer::createProgram(const char* vertexSource, const char * fragmentSo
     if (vertexSource == NULL) { return error; }
     if (fragmentSource == NULL) { return error; }
 
-    GLuint vertexShader = loadShader(GL_VERTEX_SHADER, vertexSource);
+    GLuint vertexShader = shaderLoader.loadShader(GL_VERTEX_SHADER, vertexSource);
     if (!vertexShader) {
         LOGE("Could not load vertexShader\n");
         return error;
     }
 
-    GLuint fragmentShader = loadShader(GL_FRAGMENT_SHADER, fragmentSource);
+    GLuint fragmentShader = shaderLoader.loadShader(GL_FRAGMENT_SHADER, fragmentSource);
     if (!fragmentShader) {
         LOGE("Could not load fragmentShader\n");
         return error;

@@ -13,7 +13,7 @@ static GLfloat vVertices[] = { 0.0f, 0.5f, 0.0f,
                                -0.5f, -0.5f, 0.0f,
                                0.5f, -0.5f, 0.0f };
 Test2::Test2() {
-
+    renderer = Renderer();
 }
 
 void Test2::render() {
@@ -30,7 +30,7 @@ void Test2::surfaceCreated() {
 
     vert = load_file("examples/triangle/triangle.vert");
     frag = load_file("examples/triangle/triangle.frag");
-    programID = Renderer::createProgram(vert, frag);
+    programID = renderer.createProgram(vert, frag);
     glUseProgram(programID);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, vVertices);
     glEnableVertexAttribArray(0);
