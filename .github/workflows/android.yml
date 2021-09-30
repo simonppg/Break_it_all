@@ -20,6 +20,8 @@ jobs:
         distribution: 'adopt'
         cache: gradle
 
+    - name: Echo ANDROID env var
+      run: echo "${ANDROID}"
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle
