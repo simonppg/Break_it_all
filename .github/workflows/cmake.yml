@@ -21,6 +21,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
+    - name: Update
+      run: sudo apt-get update -q -y
+    
     - name: Install xorg-dev and libgles2-mesa-dev
       run: sudo apt-get install -y xorg-dev libglu1-mesa-dev
 
