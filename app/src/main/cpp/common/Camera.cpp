@@ -16,7 +16,6 @@ using glm::mat4;
 Camera::Camera()
     : dimension(Dimension()), position(Point3D()), fov(FieldOfView()) {
   updateProjection();
-}
 
 Camera::Camera(Dimension dimension, Point3D position)
     : dimension(dimension), position(position), fov(FieldOfView()) {
