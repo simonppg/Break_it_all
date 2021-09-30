@@ -10,3 +10,4 @@
 .*
 !/.gitignore
 linux-build
+compile_commands.json
