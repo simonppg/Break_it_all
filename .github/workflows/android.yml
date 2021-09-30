@@ -19,6 +19,7 @@ jobs:
         java-version: '11'
         distribution: 'adopt'
         cache: gradle
+        ANDROID: true
 
     - name: Echo ANDROID env var
       run: echo "${ANDROID}"
