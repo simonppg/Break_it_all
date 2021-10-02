@@ -1,4 +1,4 @@
-// Copyright (c) 2019 Simon Puente
+// Copyright (c) 2021 Simon Puente
 #include <sstream>
 
 #include "../shared/FilesManager.hpp"
