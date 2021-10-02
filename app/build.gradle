@@ -64,3 +64,9 @@ task run(type: Exec, dependsOn: 'clearLogcat') {
 
     commandLine 'adb', 'shell', 'logcat',  'libNative:I', '*:S'
 }
+
+task ls(type: Exec) {
+  commandLine 'ls'
+}
+
+build.dependsOn ls
