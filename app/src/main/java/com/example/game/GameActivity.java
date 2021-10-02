@@ -125,6 +125,7 @@ public class GameActivity extends Activity {
                 Game.on_touch_event(e.getX(), e.getY());
             }
         });
+
         return super.onTouchEvent(e);
     }
 }
