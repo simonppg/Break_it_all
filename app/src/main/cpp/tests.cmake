@@ -4,6 +4,7 @@ include(cmake/DownloadProject.cmake)
 include(cmake/googletest.cmake)
 
 add_executable(executeTests
+        tests/sqrt_test.cpp
         tests/game_test.cpp)
 
 target_link_libraries(executeTests
