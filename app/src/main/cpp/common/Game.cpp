@@ -20,7 +20,7 @@
 
 Game::Game(int sceneNumber, Platform *platform) {
   // NOTE: Don't call OpenGL functions here
-  this->platform = platform;
+                        this->platform = platform;
   this->logger = platform->logger();
   this->fileManager = platform->filesManager();
 
