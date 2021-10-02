@@ -30,7 +30,8 @@ public final class GameActivity extends Activity {
       }
 
       @Override
-      public void onSurfaceChanged(final GL10 gl, final int width, final int height) {
+      public void onSurfaceChanged(final GL10 gl, final int width,
+          final int height) {
         Game.surfaceChanged(width, height);
       }
 
@@ -42,7 +43,8 @@ public final class GameActivity extends Activity {
 
     if (extras != null) {
       final int position = extras.getInt("position");
-      Toast.makeText(getApplicationContext(), "Click ListItem Number " + position,
+      String string = "Click ListItem Number " + position;
+      Toast.makeText(getApplicationContext(), string,
           Toast.LENGTH_SHORT).show();
 
       mView = new GLSurfaceView(getApplication());
