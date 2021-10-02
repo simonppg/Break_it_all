@@ -28,4 +28,4 @@ else(ANDROID)
     include(linuxTarget.cmake)
 endif(ANDROID)
 
-add_subdirectory(tests)
+include(tests.cmake)

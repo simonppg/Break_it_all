@@ -1,10 +1,10 @@
 enable_testing()
 
-include(../cmake/DownloadProject.cmake)
-include(../cmake/googletest.cmake)
+include(cmake/DownloadProject.cmake)
+include(cmake/googletest.cmake)
 
 add_executable(executeTests
-        game_test.cpp)
+        tests/game_test.cpp)
 
 target_link_libraries(executeTests
         common
@@ -18,7 +18,7 @@ add_custom_target(check
         DEPENDS executeTests)
 
 add_custom_target(coverage
-        COMMAND lcov -c -d ${math_binary_dir} -o cov.info
+        COMMAND lcov -c -d ${common_binary_dir} -o cov.info
         COMMAND genhtml cov.info -o out
         COMMAND google-chrome out/index.html
         DEPENDS check
