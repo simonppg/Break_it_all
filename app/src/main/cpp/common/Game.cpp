@@ -1,16 +1,16 @@
 // Copyright (c) 2019 Simon Puente
 #include <sstream>
 
-#include "Game.hpp"
-#include "Point3D.hpp"
-#include "Dimension.hpp"
-#include "../shared/Platform.hpp"
-#include "../shared/Logger.hpp"
 #include "../shared/FilesManager.hpp"
+#include "../shared/Logger.hpp"
+#include "../shared/Platform.hpp"
 #include "CursorPositionChanged.hpp"
-#include "KeyPressed.hpp"
-#include "ScreenTouched.hpp"
+#include "Dimension.hpp"
+#include "Game.hpp"
 #include "Key.hpp"
+#include "KeyPressed.hpp"
+#include "Point3D.hpp"
+#include "ScreenTouched.hpp"
 
 // Examples
 #include "SandBox.hpp"
@@ -21,7 +21,7 @@
 
 Game::Game(int sceneNumber, Platform *platform) {
   // NOTE: Don't call OpenGL functions here
-                        this->platform = platform;
+  this->platform = platform;
   this->logger = platform->logger();
   this->fileManager = platform->filesManager();
 
@@ -38,31 +38,31 @@ Game::Game(int sceneNumber, Platform *platform) {
 }
 
 void Game::camera_forward() {
-    Point3D cameraPosition = pScene->camera->getPosition();
-    pScene->camera->updatePosition(cameraPosition.decrementZ(1));
+  Point3D cameraPosition = pScene->camera->getPosition();
+  pScene->camera->updatePosition(cameraPosition.decrementZ(1));
 }
 
 void Game::camera_back() {
-    Point3D cameraPosition = pScene->camera->getPosition();
-    pScene->camera->updatePosition(cameraPosition.incrementZ(1));
+  Point3D cameraPosition = pScene->camera->getPosition();
+  pScene->camera->updatePosition(cameraPosition.incrementZ(1));
 }
 
 void Game::camera_left() {
-    Point3D cameraPosition = pScene->camera->getPosition();
-    pScene->camera->updatePosition(cameraPosition.decrementX(1));
+  Point3D cameraPosition = pScene->camera->getPosition();
+  pScene->camera->updatePosition(cameraPosition.decrementX(1));
 }
 
 void Game::camera_right() {
-    Point3D cameraPosition = pScene->camera->getPosition();
-    pScene->camera->updatePosition(cameraPosition.incrementX(1));
+  Point3D cameraPosition = pScene->camera->getPosition();
+  pScene->camera->updatePosition(cameraPosition.incrementX(1));
 }
 
 void Game::cursorPositionChangedHandler(CursorPositionChanged *event) {
-    pScene->events(event->getXPosition(), event->getYPosition());
+  pScene->events(event->getXPosition(), event->getYPosition());
 }
 
 void Game::screenTouchedHandler(ScreenTouched *event) {
-    pScene->events(event->getXPosition(), event->getYPosition());
+  pScene->events(event->getXPosition(), event->getYPosition());
 }
 
 void Game::keyPressedHandler(KeyPressed *event) {
@@ -81,28 +81,28 @@ void Game::keyPressedHandler(KeyPressed *event) {
       camera_left();
     else if (key == Key::L_KEY)
       camera_reset();
-    else if (key == Key::ESCAPE_KEY)
-      exit(0); // TODO: Should we save state before exit?
+    else if (key == Key::ESCAPE_KEY) {
+      // TODO(simon): Should we save state before exit?
+      exit(0);
+    }
   }
 }
 
-void Game::camera_reset() {
-    pScene->camera->updatePosition(Point3D());
-}
+void Game::camera_reset() { pScene->camera->updatePosition(Point3D()); }
 
 void Game::surfaceCreated() {
-    //LOGE("OpenGL version: %s", glGetString(GL_VERSION));
-    //LOGE("GLSL version: %s", glGetString(GL_SHADING_LANGUAGE_VERSION));
-    pScene->surfaceCreated();
+  // LOGE("OpenGL version: %s", glGetString(GL_VERSION));
+  // LOGE("GLSL version: %s", glGetString(GL_SHADING_LANGUAGE_VERSION));
+  pScene->surfaceCreated();
 }
 
 void Game::surfaceChanged(int width, int height) {
-    Dimension dimension = Dimension(width, height);
-    std::stringstream sstream;
-    sstream << dimension;
-    logger->logi(sstream.str());
+  Dimension dimension = Dimension(width, height);
+  std::stringstream sstream;
+  sstream << dimension;
+  logger->logi(sstream.str());
 
-    pScene->surfaceChanged(width, height);
+  pScene->surfaceChanged(width, height);
 }
 
 void Game::update() { pScene->update(); }
@@ -113,30 +113,29 @@ void Game::pause() { pScene->pause(); }
 
 void Game::resume() { pScene->resume(); }
 
-void Game:: dispatchEvent(Event *event) {
+void Game::dispatchEvent(Event *event) {
   EventType eventType = event->type();
 
   if (eventType == EventType::CURSOR_POSITION_CHANGED) {
     logger->logi("CURSOR_POSITION_CHANGED");
 
-    cursorPositionChangedHandler((CursorPositionChanged *) event);
+    cursorPositionChangedHandler((CursorPositionChanged *)event);
     return;
   }
 
   if (eventType == EventType::KEY_PRESSED) {
     logger->logi("KEY_PRESSED");
 
-    keyPressedHandler((KeyPressed *) event);
+    keyPressedHandler((KeyPressed *)event);
     return;
   }
 
   if (eventType == EventType::SCREEN_TOUCHED) {
     logger->logi("SCREEN_TOUCHED");
 
-    screenTouchedHandler((ScreenTouched *) event);
+    screenTouchedHandler((ScreenTouched *)event);
     return;
   }
 
   logger->logi("Event type: %d, was not handled", event->type());
 }
-
