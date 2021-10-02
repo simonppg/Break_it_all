@@ -1,3 +1,4 @@
+// Copyright (c) 2019 Simon Puente
 #include <sstream>
 
 #include "Game.hpp"
@@ -11,7 +12,7 @@
 #include "ScreenTouched.hpp"
 #include "Key.hpp"
 
-//Examples
+// Examples
 #include "SandBox.hpp"
 #include "Test1.hpp"
 #include "Test2.hpp"
@@ -64,24 +65,25 @@ void Game::screenTouchedHandler(ScreenTouched *event) {
     pScene->events(event->getXPosition(), event->getYPosition());
 }
 
-void Game::keyPressedHandler(KeyPressed *event){
-    Key key = event->key();
-    PressState pressState = event->pressState();
+void Game::keyPressedHandler(KeyPressed *event) {
+  Key key = event->key();
+  PressState pressState = event->pressState();
 
-    if(pressState == PressState::KEY_PRESSED || pressState == PressState::KEY_HOLDED) {
-        if (key == Key::W_KEY)
-          camera_forward();
-        else if (key == Key::S_KEY)
-          camera_back();
-        else if (key == Key::D_KEY)
-          camera_right();
-        else if (key == Key::A_KEY)
-          camera_left();
-        else if (key == Key::L_KEY)
-          camera_reset();
-        else if (key == Key::ESCAPE_KEY)
-          exit(0); // TODO: Should we save state before exit?
-    }
+  if (pressState == PressState::KEY_PRESSED ||
+      pressState == PressState::KEY_HOLDED) {
+    if (key == Key::W_KEY)
+      camera_forward();
+    else if (key == Key::S_KEY)
+      camera_back();
+    else if (key == Key::D_KEY)
+      camera_right();
+    else if (key == Key::A_KEY)
+      camera_left();
+    else if (key == Key::L_KEY)
+      camera_reset();
+    else if (key == Key::ESCAPE_KEY)
+      exit(0); // TODO: Should we save state before exit?
+  }
 }
 
 void Game::camera_reset() {
@@ -99,7 +101,7 @@ void Game::surfaceChanged(int width, int height) {
     std::stringstream sstream;
     sstream << dimension;
     logger->logi(sstream.str());
-    
+
     pScene->surfaceChanged(width, height);
 }
 
@@ -136,5 +138,5 @@ void Game:: dispatchEvent(Event *event) {
   }
 
   logger->logi("Event type: %d, was not handled", event->type());
-} 
+}
 
