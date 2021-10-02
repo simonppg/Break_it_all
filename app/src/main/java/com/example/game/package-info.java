@@ -3,8 +3,4 @@
  * and all the Activities
  *
  */
-/**
- * @author simonppg
- *
- */
 package com.example.game;
