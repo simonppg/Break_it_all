@@ -11,9 +11,12 @@ import com.example.game.jni.Game;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-public class GameActivity extends Activity {
+public final class GameActivity extends Activity {
 
-    GLSurfaceView mView;
+    /**
+     * GLSurfaceView
+     * */
+    private GLSurfaceView mView;
 
     @Override protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
@@ -29,17 +32,17 @@ public class GameActivity extends Activity {
             mView.setEGLContextClientVersion(2);
             mView.setRenderer(new GLSurfaceView.Renderer() {
                 @Override
-                public void onSurfaceCreated(GL10 gl, EGLConfig config) {
+                public void onSurfaceCreated(final GL10 gl, final EGLConfig config) {
                     Game.surfaceCreated();
                 }
 
                 @Override
-                public void onSurfaceChanged(GL10 gl, int width, int height) {
+                public void onSurfaceChanged(final GL10 gl, final int width, final int height) {
                     Game.surfaceChanged(width, height);
                 }
 
                 @Override
-                public void onDrawFrame(GL10 gl) {
+                public void onDrawFrame(final GL10 gl) {
                     Game.drawFrame();
                 }
             });
