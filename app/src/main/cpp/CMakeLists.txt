@@ -27,3 +27,5 @@ if(ANDROID)
 else(ANDROID)
     include(linuxTarget.cmake)
 endif(ANDROID)
+
+include(tests.cmake)
