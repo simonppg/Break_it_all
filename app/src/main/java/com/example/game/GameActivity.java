@@ -13,122 +13,131 @@ import javax.microedition.khronos.opengles.GL10;
 
 public final class GameActivity extends Activity {
 
-    /**
-     * GLSurfaceView
-     * */
-    private GLSurfaceView mView;
+	/**
+	 * GLSurfaceView.
+	 */
+	private GLSurfaceView mView;
 
-    @Override protected void onCreate(Bundle icicle) {
-        super.onCreate(icicle);
-        Bundle extras = getIntent().getExtras();
+	@Override
+	protected void onCreate(final Bundle icicle) {
+		super.onCreate(icicle);
+		Bundle extras = getIntent().getExtras();
 
-        if (extras != null) {
-            final int position = extras.getInt("position");
-            Toast.makeText(getApplicationContext(),
-                    "Click ListItem Number " + position, Toast.LENGTH_SHORT)
-                    .show();
+		GLSurfaceView.Renderer renderer = new GLSurfaceView.Renderer() {
+			@Override
+			public void onSurfaceCreated(final GL10 gl, final EGLConfig config) {
+				Game.surfaceCreated();
+			}
 
-            mView = new GLSurfaceView(getApplication());
-            mView.setEGLContextClientVersion(2);
-            mView.setRenderer(new GLSurfaceView.Renderer() {
-                @Override
-                public void onSurfaceCreated(final GL10 gl, final EGLConfig config) {
-                    Game.surfaceCreated();
-                }
+			@Override
+			public void onSurfaceChanged(final GL10 gl, final int width, final int height) {
+				Game.surfaceChanged(width, height);
+			}
 
-                @Override
-                public void onSurfaceChanged(final GL10 gl, final int width, final int height) {
-                    Game.surfaceChanged(width, height);
-                }
+			@Override
+			public void onDrawFrame(final GL10 gl) {
+				Game.drawFrame();
+			}
+		};
 
-                @Override
-                public void onDrawFrame(final GL10 gl) {
-                    Game.drawFrame();
-                }
-            });
-            mView.queueEvent(new Runnable() {
-                @Override
-                public void run() {
-                    Game.init(position, getAssets());
-                    Game.notifyCreate();
-                }
-            });
-            setContentView(mView);
-        }
-    }
+		if (extras != null) {
+			final int position = extras.getInt("position");
+			Toast.makeText(getApplicationContext(), "Click ListItem Number " + position,
+					Toast.LENGTH_SHORT).show();
 
-    @Override protected void onStart() {
-        super.onStart();
-        mView.queueEvent(new Runnable() {
-            @Override
-            public void run() {
-                Game.notifyStart();
-            }
-        });
-    }
+			mView = new GLSurfaceView(getApplication());
 
-    @Override protected void onResume() {
-        super.onResume();
-        mView.onResume();
-        mView.queueEvent(new Runnable() {
-            @Override
-            public void run() {
-                Game.notifyResume();
-            }
-        });
-    }
+			mView.setEGLContextClientVersion(2);
+			mView.setRenderer(renderer);
+			mView.queueEvent(new Runnable() {
+				@Override
+				public void run() {
+					Game.init(position, getAssets());
+					Game.notifyCreate();
+				}
+			});
 
-    @Override protected void onRestart() {
-        super.onRestart();
-        mView.queueEvent(new Runnable() {
-            @Override
-            public void run() {
-                Game.notifyRestart();
-            }
-        });
-    }
+			setContentView(mView);
+		}
+	}
 
-    @Override protected void onPause() {
-        super.onPause();
-        mView.onPause();
-        mView.queueEvent(new Runnable() {
-            @Override
-            public void run() {
-                Game.notifyPause();
-            }
-        });
-    }
+	@Override
+	protected void onStart() {
+		super.onStart();
+		mView.queueEvent(new Runnable() {
+			@Override
+			public void run() {
+				Game.notifyStart();
+			}
+		});
+	}
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        mView.queueEvent(new Runnable() {
-            @Override
-            public void run() {
-                Game.notifyStop();
-            }
-        });
-    }
+	@Override
+	protected void onResume() {
+		super.onResume();
+		mView.onResume();
+		mView.queueEvent(new Runnable() {
+			@Override
+			public void run() {
+				Game.notifyResume();
+			}
+		});
+	}
 
-    @Override protected void onDestroy() {
-        super.onDestroy();
-        mView.queueEvent(new Runnable() {
-            @Override
-            public void run() {
-                Game.notifyDestroy();
-            }
-        });
-    }
+	@Override
+	protected void onRestart() {
+		super.onRestart();
+		mView.queueEvent(new Runnable() {
+			@Override
+			public void run() {
+				Game.notifyRestart();
+			}
+		});
+	}
 
-    @Override
-    public boolean onTouchEvent(final MotionEvent e) {
-        mView.queueEvent(new Runnable() {
-            @Override
-            public void run() {
-                Game.on_touch_event(e.getX(), e.getY());
-            }
-        });
+	@Override
+	protected void onPause() {
+		super.onPause();
+		mView.onPause();
+		mView.queueEvent(new Runnable() {
+			@Override
+			public void run() {
+				Game.notifyPause();
+			}
+		});
+	}
 
-        return super.onTouchEvent(e);
-    }
+	@Override
+	protected void onStop() {
+		super.onStop();
+		mView.queueEvent(new Runnable() {
+			@Override
+			public void run() {
+				Game.notifyStop();
+			}
+		});
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		mView.queueEvent(new Runnable() {
+			@Override
+			public void run() {
+				Game.notifyDestroy();
+			}
+		});
+	}
+
+	@Override
+	public boolean onTouchEvent(final MotionEvent e) {
+		mView.queueEvent(new Runnable() {
+			@Override
+			public void run() {
+				Game.on_touch_event(e.getX(), e.getY());
+			}
+		});
+
+		return super.onTouchEvent(e);
+	}
 }
