@@ -71,17 +71,17 @@ void Game::keyPressedHandler(KeyPressed *event) {
 
   if (pressState == PressState::KEY_PRESSED ||
       pressState == PressState::KEY_HOLDED) {
-    if (key == Key::W_KEY)
+    if (key == Key::W_KEY) {
       camera_forward();
-    else if (key == Key::S_KEY)
+    } else if (key == Key::S_KEY) {
       camera_back();
-    else if (key == Key::D_KEY)
+    } else if (key == Key::D_KEY) {
       camera_right();
-    else if (key == Key::A_KEY)
+    } else if (key == Key::A_KEY) {
       camera_left();
-    else if (key == Key::L_KEY)
+    } else if (key == Key::L_KEY) {
       camera_reset();
-    else if (key == Key::ESCAPE_KEY) {
+    } else if (key == Key::ESCAPE_KEY) {
       // TODO(simon): Should we save state before exit?
       exit(0);
     }
@@ -119,21 +119,21 @@ void Game::dispatchEvent(Event *event) {
   if (eventType == EventType::CURSOR_POSITION_CHANGED) {
     logger->logi("CURSOR_POSITION_CHANGED");
 
-    cursorPositionChangedHandler((CursorPositionChanged *)event);
+    cursorPositionChangedHandler(reinterpret_cast<CursorPositionChanged *>(event));
     return;
   }
 
   if (eventType == EventType::KEY_PRESSED) {
     logger->logi("KEY_PRESSED");
 
-    keyPressedHandler((KeyPressed *)event);
+    keyPressedHandler(reinterpret_cast<KeyPressed *>(event));
     return;
   }
 
   if (eventType == EventType::SCREEN_TOUCHED) {
     logger->logi("SCREEN_TOUCHED");
 
-    screenTouchedHandler((ScreenTouched *)event);
+    screenTouchedHandler(reinterpret_cast<ScreenTouched *>(event));
     return;
   }
 
