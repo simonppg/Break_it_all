@@ -119,7 +119,8 @@ void Game::dispatchEvent(Event *event) {
   if (eventType == EventType::CURSOR_POSITION_CHANGED) {
     logger->logi("CURSOR_POSITION_CHANGED");
 
-    cursorPositionChangedHandler(reinterpret_cast<CursorPositionChanged *>(event));
+    auto realEvent = reinterpret_cast<CursorPositionChanged *>(event);
+    cursorPositionChangedHandler(realEvent);
     return;
   }
 
