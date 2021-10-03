@@ -5,11 +5,13 @@ I am trying to create a simple brick breaking game.
 
 You can build a Android version using Android Studio or a desktop version building it using CMake on Linux.
 
-[![CMake](https://github.com/simonppg/Break_it_all/actions/workflows/cmake.yml/badge.svg)](https://github.com/simonppg/Break_it_all/actions/workflows/cmake.yml) [![Android CI](https://github.com/simonppg/Break_it_all/actions/workflows/android.yml/badge.svg)](https://github.com/simonppg/Break_it_all/actions/workflows/android.yml)
+[![CMake](https://github.com/simonppg/Break_it_all/actions/workflows/cmake.yml/badge.svg)](https://github.com/simonppg/Break_it_all/actions/workflows/cmake.yml)
+[![Android CI](https://github.com/simonppg/Break_it_all/actions/workflows/android.yml/badge.svg)](https://github.com/simonppg/Break_it_all/actions/workflows/android.yml)
+[![Lint Code Base](https://github.com/simonppg/Break_it_all/actions/workflows/linter.yml/badge.svg)](https://github.com/simonppg/Break_it_all/actions/workflows/linter.yml)
 
-# Run it on Linux
+## Run it on Linux
 
-## Linux Dependencies
+### Linux Dependencies
 
 - java # to run gradle wrapper
 - g++
@@ -43,7 +45,7 @@ If everything when well, the app should start running, and a new window will sho
 
 - Handle window resize.
 - Cursor position change detection.
-- Key press detections only for W,A,S,D and L keys.
+- Key press detections only for ESC, W, A, S, D and L keys.
 - Touch screen detection (Android only).
 
 ### Recompile app
@@ -55,7 +57,9 @@ cd Break_it_all/linux-build
 make run
 ```
 
-## Run it on android phone from terminal
+## Run it on Android
+
+### From terminal
 
 This commands would build and run the app on your android phone and then show the logcat on the console.
 
@@ -80,7 +84,7 @@ Other useful gradle tasks:
 ./gradlew run
 ```
 
-## Android Studio
+### From Android Studio
 
 If non of that works, you still can build with android studio.
 
