@@ -6,6 +6,7 @@ I am trying to create a simple brick breaking game.
 You can build a Android version using Android Studio or a desktop version building it using CMake on Linux.
 
 [![CMake](https://github.com/simonppg/Break_it_all/actions/workflows/cmake.yml/badge.svg)](https://github.com/simonppg/Break_it_all/actions/workflows/cmake.yml) [![Android CI](https://github.com/simonppg/Break_it_all/actions/workflows/android.yml/badge.svg)](https://github.com/simonppg/Break_it_all/actions/workflows/android.yml)
+[![Lint Code Base](https://github.com/simonppg/Break_it_all/actions/workflows/linter.yml/badge.svg)](https://github.com/simonppg/Break_it_all/actions/workflows/linter.yml)
 
 # Run it on Linux
 
