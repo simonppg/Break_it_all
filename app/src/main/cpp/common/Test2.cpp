@@ -1,14 +1,16 @@
 // Copyright (c) 2021 Simon Puente
 #include "Test2.hpp"
 #include "Renderer.hpp"
+#include "../shared/FilesManager.hpp"
 
 #include <cstdlib>
 
 static GLfloat vVertices[] = { 0.0f, 0.5f, 0.0f,
                                -0.5f, -0.5f, 0.0f,
                                0.5f, -0.5f, 0.0f };
-Test2::Test2() {
+Test2::Test2(FilesManager *filesManager) {
     renderer = Renderer();
+    this->filesManager = filesManager;
 }
 
 void Test2::render() {
@@ -23,8 +25,8 @@ void Test2::render() {
 void Test2::surfaceCreated() {
     char *vert, *frag;
 
-    vert = load_file("examples/triangle/triangle.vert");
-    frag = load_file("examples/triangle/triangle.frag");
+    vert = filesManager->loadFile("examples/triangle/triangle.vert");
+    frag = filesManager->loadFile("examples/triangle/triangle.frag");
     programID = renderer.createProgram(vert, frag);
     glUseProgram(programID);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, vVertices);

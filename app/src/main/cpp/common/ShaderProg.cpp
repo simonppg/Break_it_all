@@ -1,15 +1,9 @@
 #include "ShaderProg.hpp"
 #include "Renderer.hpp"
 
-#ifdef __ANDROID_NDK__
-#include "../android/filesManager.hpp"
-#else
-#include "../linux/filesManager.hpp"
-#endif
-
-ShaderProg::ShaderProg(const char *vertShaderPath, const char *fragShaderPath) {
-    vertex_file = load_file(vertShaderPath);
-    fragment_file = load_file(fragShaderPath);
+ShaderProg::ShaderProg(const char *vertShaderStr, const char *fragShaderStr) {
+    vertex_file = vertShaderStr;
+    fragment_file = fragShaderStr;
     renderer = Renderer();
 }
 

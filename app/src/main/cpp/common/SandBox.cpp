@@ -1,21 +1,20 @@
-//
-// Created by simonppg on 3/27/19.
-//
-
 #include "SandBox.hpp"
 
 #include "Math.hpp"
 #include "Point3D.hpp"
 #include "Dimension.hpp"
+#include "../shared/FilesManager.hpp"
 
 using glm::mat4;
 using glm::vec3;
 
 float pov_in_degrees = 0.0f;
 
-SandBox::SandBox() {
+SandBox::SandBox(FilesManager *filesManager) {
+  const char *vertexFileStr = filesManager->loadFile("simple.vert");
+  const char *fragmentFileStr = filesManager->loadFile("simple.frag");
     camera = new Camera(Dimension(), Point3D(0, 0, 40));
-    shaderProgs[0] = new ShaderProg("simple.vert", "simple.frag");
+    shaderProgs[0] = new ShaderProg(vertexFileStr, fragmentFileStr);
     meshes[0] = new Mesh(math->get_cube(), 8, math->get_cube_index(), 36);
 
     for (auto &i : objects) {

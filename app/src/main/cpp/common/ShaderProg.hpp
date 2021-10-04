@@ -6,12 +6,11 @@
 class ShaderProg {
 private:
     Renderer renderer;
+    const char *vertex_file;
+    const char *fragment_file;
 
 public:
-    ShaderProg(const char *vertShaderPath, const char *fragShaderPath);
-
-    char *vertex_file;
-    char *fragment_file;
+    ShaderProg(const char *vertShaderStr, const char *fragShaderStr);
 
     void createProgram();
 

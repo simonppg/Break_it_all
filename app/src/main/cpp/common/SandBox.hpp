@@ -7,13 +7,14 @@
 #include "Object.hpp"
 #include "ShaderProg.hpp"
 #include "Math.hpp"
+#include "../shared/FilesManager.hpp"
 
 class SandBox : public IScene {
 private:
     Math *math = new Math();
 
 public:
-    SandBox();
+    SandBox(FilesManager *filesManager);
     void surfaceCreated() override;
     void surfaceChanged(int width, int height) override;
     void render() override;

@@ -1,14 +1,4 @@
-//
-// Created by simonppg on 3/31/19.
-//
-
 #include "Test4.hpp"
-#ifdef __ANDROID_NDK__
-#include "../android/logger.hpp"
-#else
-#include "../linux/logger.hpp"
-#endif
-
 #include "Math.hpp"
 #include "Projection.hpp"
 #include "Point3D.hpp"
@@ -142,8 +132,6 @@ void Test4::update() {
 }
 
 bool Test4::events(double xpos, double ypos) {
-    LOGI("%.2f, %.2f", xpos, ypos);
-
     Dimension cameraDimension = camera->getDimension();
 
     float newX = (-cameraDimension.getWidth() / 2) + xpos;

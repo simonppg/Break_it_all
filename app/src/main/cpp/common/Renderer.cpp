@@ -4,12 +4,6 @@
 #include <GLES3/gl3.h>
 #include <malloc.h>
 
-#ifdef __ANDROID_NDK__
-#include "../android/logger.hpp"
-#else
-#include "../linux/logger.hpp"
-#endif
-
 bool isProgramLinkOk(GLuint program) {
     GLint linkStatus = GL_FALSE;
     glGetProgramiv(program, GL_LINK_STATUS, &linkStatus);
@@ -30,7 +24,7 @@ void showProgramInfoLog(GLuint program) {
     if (!buf) { return; }
 
     glGetProgramInfoLog(program, infoLength, NULL, buf);
-    LOGE("%s", buf);
+    // LOGE("%s", buf);
     free(buf);
 }
 
@@ -85,13 +79,13 @@ GLuint Renderer::createProgram(const char* vertexSource, const char * fragmentSo
 
     GLuint vertexShader = shaderLoader.loadShader(GL_VERTEX_SHADER, vertexSource);
     if (!vertexShader) {
-        LOGE("Could not load vertexShader\n");
+        // LOGE("Could not load vertexShader\n");
         return error;
     }
 
     GLuint fragmentShader = shaderLoader.loadShader(GL_FRAGMENT_SHADER, fragmentSource);
     if (!fragmentShader) {
-        LOGE("Could not load fragmentShader\n");
+        // LOGE("Could not load fragmentShader\n");
         return error;
     }
 

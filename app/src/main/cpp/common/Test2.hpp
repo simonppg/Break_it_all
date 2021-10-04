@@ -3,13 +3,15 @@
 
 #include "IScene.hpp"
 #include "Renderer.hpp"
+#include "../shared/FilesManager.hpp"
 
 class Test2 : public IScene {
 private:
     Renderer renderer;
+    FilesManager *filesManager;
 
 public:
-    Test2();
+    Test2(FilesManager *filesManager);
     void surfaceCreated() override;
     void surfaceChanged(int width, int height) override;
     void render() override;

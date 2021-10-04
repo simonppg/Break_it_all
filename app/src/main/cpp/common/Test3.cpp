@@ -6,21 +6,17 @@
 #include "Renderer.hpp"
 #include "Point3D.hpp"
 #include "Dimension.hpp"
-
-#ifdef __ANDROID_NDK__
-#include "../android/filesManager.hpp"
-#else
-#include "../linux/filesManager.hpp"
-#endif
+#include "../shared/FilesManager.hpp"
 
 #define NUMBER_OF_VERTICES 160
 float radius = 0.5;
 float *v;
 
-Test3::Test3() {
+Test3::Test3(FilesManager *filesManager) {
     camera = new Camera(Dimension(), Point3D());
     v = math->get_circle(radius, NUMBER_OF_VERTICES);
     renderer = Renderer();
+    this->filesManager = filesManager;
 }
 
 void Test3::render() {
@@ -50,8 +46,8 @@ void Test3::render() {
 void Test3::surfaceCreated() {
     char *vert, *frag;
 
-    vert = load_file("examples/triangle/triangle.vert");
-    frag = load_file("examples/triangle/triangle.frag");
+    vert = filesManager->loadFile("examples/triangle/triangle.vert");
+    frag = filesManager->loadFile("examples/triangle/triangle.frag");
     programID = renderer.createProgram(vert, frag);
 
     glBindBuffer(GL_ARRAY_BUFFER, 0);

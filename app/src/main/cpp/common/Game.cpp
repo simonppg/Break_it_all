@@ -26,13 +26,13 @@ Game::Game(int sceneNumber, Platform *platform) {
   this->fileManager = platform->filesManager();
 
   if (sceneNumber == 0)
-    this->pScene = new SandBox();
+    this->pScene = new SandBox(this->fileManager);
   else if (sceneNumber == 1)
     this->pScene = new Test1();
   else if (sceneNumber == 2)
-    this->pScene = new Test2();
+    this->pScene = new Test2(this->fileManager);
   else if (sceneNumber == 3)
-    this->pScene = new Test3();
+    this->pScene = new Test3(this->fileManager);
   else
     this->pScene = new Test4();
 }
