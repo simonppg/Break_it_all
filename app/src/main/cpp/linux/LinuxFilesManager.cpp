@@ -3,9 +3,8 @@
 
 #include <cstdint>
 #include <cstdio>
+#include <cstdlib>
 #include <cstring>
-
-#include <malloc.h>
 
 #include "logger.hpp"
 
@@ -33,7 +32,8 @@ char* LinuxFilesManager::loadFile(const char *filePath) {
   // same as rewind(f);
   fseek(pFile, 0, SEEK_SET);
 
-  char *pFileContent = (char *)malloc(sizeof(char) * fsize + 1);
+  auto dummy = malloc(sizeof(char) * fsize + 1);
+  char *pFileContent = reinterpret_cast<char *>(dummy);
   fread(pFileContent, fsize, 1, pFile);
   fclose(pFile);
 

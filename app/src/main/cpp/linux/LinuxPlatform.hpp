@@ -23,4 +23,4 @@ class LinuxPlatform : public Platform {
   FilesManager *filesManager();
 };
 
-#endif // APP_SRC_MAIN_CPP_LINUX_LINUXPLATFORM_HPP_
+#endif  // APP_SRC_MAIN_CPP_LINUX_LINUXPLATFORM_HPP_

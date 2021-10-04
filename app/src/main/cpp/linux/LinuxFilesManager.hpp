@@ -13,4 +13,4 @@ class LinuxFilesManager : public FilesManager {
   char* loadFile(const char *filePath);
 };
 
-#endif // APP_SRC_MAIN_CPP_LINUX_LINUXFILESMANAGER_HPP_
+#endif  // APP_SRC_MAIN_CPP_LINUX_LINUXFILESMANAGER_HPP_
