@@ -1,3 +1,5 @@
+// Copyright (c) 2021 Simon Puente
+#include <cstdint>
 #include <malloc.h>
 #include <cstdio>
 #include <cstring>
@@ -10,11 +12,11 @@ LinuxFilesManager::LinuxFilesManager(const char *projectPath)
 
 char* LinuxFilesManager::loadFile(const char *filePath) {
   FILE *pFile;
-  char absolutePath[80] = "\0";
+#define PATH_SIZE 100
+  char absolutePath[PATH_SIZE] = "\0";
 
-  strcat(absolutePath, projectPath);
-  strcat(absolutePath, "/../assets/");
-  strcat(absolutePath, filePath);
+  snprintf(absolutePath, PATH_SIZE, "%s%s%s", projectPath, "/../assets/", filePath);
+#undef PATH_SIZE
 
   pFile = fopen(absolutePath, "r");
 
@@ -24,7 +26,7 @@ char* LinuxFilesManager::loadFile(const char *filePath) {
   }
 
   fseek(pFile, 0, SEEK_END);
-  long fsize = ftell(pFile);
+  int64_t fsize = ftell(pFile);
   fseek(pFile, 0, SEEK_SET); // same as rewind(f);
 
   char *pFileContent = (char *)malloc(sizeof(char) * fsize + 1);

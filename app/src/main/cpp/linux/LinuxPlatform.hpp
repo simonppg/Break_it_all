@@ -1,7 +1,7 @@
 // Copyright (c) 2021 Simon Puente
 
-#ifndef LINUX_PLATFORM_HPP
-#define LINUX_PLATFORM_HPP
+#ifndef APP_SRC_MAIN_CPP_LINUX_LINUXPLATFORM_HPP_
+#define APP_SRC_MAIN_CPP_LINUX_LINUXPLATFORM_HPP_
 
 #include "LinuxFilesManager.hpp"
 #include "LinuxLogger.hpp"
@@ -11,11 +11,11 @@
 #include "../shared/Platform.hpp"
 
 class LinuxPlatform : public Platform {
-private:
+ private:
   LinuxLogger *aLogger;
   LinuxFilesManager *aFilesManager;
 
-public:
+ public:
   LinuxPlatform();
   ~LinuxPlatform();
 
@@ -23,4 +23,4 @@ public:
   FilesManager *filesManager();
 };
 
-#endif // LINUX_PLATFORM_HPP
+#endif // APP_SRC_MAIN_CPP_LINUX_LINUXPLATFORM_HPP_

@@ -8,7 +8,7 @@ private:
   const char *projectPath;
 
 public:
-  LinuxFilesManager(const char *projectPath);
+  explicit LinuxFilesManager(const char *projectPath);
 
   char* loadFile(const char *filePath);
 };
