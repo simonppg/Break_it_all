@@ -9,7 +9,7 @@
 #include "logger.hpp"
 
 LinuxFilesManager::LinuxFilesManager(const char *projectPath)
-    : projectPath(projectPath) {}
+  : projectPath(projectPath) {}
 
 char* LinuxFilesManager::loadFile(const char *filePath) {
   FILE *pFile;
