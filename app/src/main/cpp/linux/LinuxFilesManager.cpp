@@ -3,7 +3,6 @@
 #include <cstring>
 
 #include "LinuxFilesManager.hpp"
-#include "logger.hpp"
 
 char* LinuxFilesManager::loadFile(const char *filePath) {
     FILE *pFile;
