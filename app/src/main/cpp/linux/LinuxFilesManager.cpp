@@ -18,10 +18,7 @@ char* LinuxFilesManager::loadFile(const char *filePath) {
 
     pFile = fopen(absolutePath, "r");
 
-    if(pFile == NULL) { 
-        LOGE("Couldn't open the file: %s", absolutePath);
-        return NULL;
-    }
+    if(pFile == NULL) { return NULL; }
 
     fseek(pFile, 0, SEEK_END);
     long fsize = ftell(pFile);
