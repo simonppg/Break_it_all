@@ -1,3 +1,5 @@
+// Copyright (c) 2021 Simon Puente
+
 #ifndef LINUX_PLATFORM_HPP
 #define LINUX_PLATFORM_HPP
 
