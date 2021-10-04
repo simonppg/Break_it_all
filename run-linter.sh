@@ -7,6 +7,6 @@ SCRIPT_PATH="${0%/*}"
 cd "$SCRIPT_PATH" || exit
 
 docker run \
-    -e RUN_LOCAL=ture \
-    -v "$PWD":/tmp/lint \
-    github/super-linter
+  -e RUN_LOCAL=ture \
+  -v "$PWD":/tmp/lint \
+  github/super-linter
