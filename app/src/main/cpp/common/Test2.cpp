@@ -1,3 +1,4 @@
+// Copyright (c) 2021 Simon Puente
 #include "Test2.hpp"
 #include "Renderer.hpp"
 
