@@ -1,10 +1,11 @@
 // Copyright (c) 2021 Simon Puente
 #include "SandBox.hpp"
 
+#include <cstdlib>
+
 #include "Dimension.hpp"
 #include "Math.hpp"
 #include "Point3D.hpp"
-#include <cstdlib>
 
 using glm::mat4;
 using glm::vec3;
