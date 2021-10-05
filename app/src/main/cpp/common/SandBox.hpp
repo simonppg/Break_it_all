@@ -2,7 +2,6 @@
 #ifndef APP_SRC_MAIN_CPP_COMMON_SANDBOX_HPP_
 #define APP_SRC_MAIN_CPP_COMMON_SANDBOX_HPP_
 
-#include "../shared/FilesManager.hpp"
 #include "Camera.hpp"
 #include "IScene.hpp"
 #include "Math.hpp"
@@ -10,12 +9,15 @@
 #include "Object.hpp"
 #include "ShaderProg.hpp"
 
+#include "../shared/FilesManager.hpp"
+
 class SandBox : public IScene {
 private:
   Math *math = new Math();
 
 public:
   explicit SandBox(FilesManager *filesManager);
+  
   void surfaceCreated() override;
   void surfaceChanged(int width, int height) override;
   void render() override;
