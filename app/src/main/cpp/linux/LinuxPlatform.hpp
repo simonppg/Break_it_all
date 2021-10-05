@@ -11,11 +11,11 @@
 #include "../shared/Platform.hpp"
 
 class LinuxPlatform : public Platform {
- private:
+private:
   LinuxLogger *aLogger;
   LinuxFilesManager *aFilesManager;
 
- public:
+public:
   LinuxPlatform();
   ~LinuxPlatform();
 
