@@ -21,7 +21,9 @@ char *LinuxFilesManager::loadFile(const char *filePath) {
 #undef PATH_SIZE
 
   pFile = fopen(absolutePath, "r");
-  if(pFile == NULL) { return NULL; }
+  if (pFile == NULL) {
+    return NULL;
+  }
 
   fseek(pFile, 0, SEEK_END);
   int64_t fsize = ftell(pFile);
