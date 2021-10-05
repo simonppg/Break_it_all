@@ -10,7 +10,7 @@ private:
 public:
   explicit LinuxFilesManager(const char *projectPath);
 
-  char* loadFile(const char *filePath);
+  char *loadFile(const char *filePath);
 };
 
 #endif  // APP_SRC_MAIN_CPP_LINUX_LINUXFILESMANAGER_HPP_
