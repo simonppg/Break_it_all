@@ -15,9 +15,11 @@ char* LinuxFilesManager::loadFile(const char *filePath) {
   FILE *pFile;
 #define PATH_SIZE 100
   char absolutePath[PATH_SIZE] = "\0";
+  const char *assetsDir = "/../assets/";
 
-  snprintf(absolutePath, PATH_SIZE, "%s%s%s", projectPath, "/../assets/",
-           filePath);
+  snprintf(absolutePath, PATH_SIZE, "%s", projectPath);
+  snprintf(absolutePath, PATH_SIZE, "%s", assetsDir);
+  snprintf(absolutePath, PATH_SIZE, "%s", filePath);
 #undef PATH_SIZE
 
   pFile = fopen(absolutePath, "r");
