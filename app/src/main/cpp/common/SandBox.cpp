@@ -21,9 +21,11 @@ SandBox::SandBox(FilesManager *filesManager) {
   for (auto &i : objects) {
     i = new Object(camera, shaderProgs[0], meshes[0]);
     i->update_size(2, 1, 1);
-    Point3D position = Point3D(sin(rand() % 20 - 10) + rand() % 20 - 10,
-                               cos(rand() % 36 - 18) + rand() % 36 - 18,
-                               tan(rand() % 100 + 1) + rand() % 100 - 10);
+    float x = sin(rand() % 20 - 10) + rand() % 20 - 10;
+    float y = cos(rand() % 36 - 18) + rand() % 36 - 18;
+    float z = tan(rand() % 100 + 1) + rand() % 100 - 10;
+
+    Point3D position = Point3D(x, y, z);
 
     i->updatePosition(position);
     i->animate_y();
