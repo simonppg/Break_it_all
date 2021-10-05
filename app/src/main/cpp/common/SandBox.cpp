@@ -4,11 +4,13 @@
 #include "Dimension.hpp"
 #include "Math.hpp"
 #include "Point3D.hpp"
+#include <cstdlib>
 
 using glm::mat4;
 using glm::vec3;
 
 float pov_in_degrees = 0.0f;
+unsigned int seed = time(NULL);
 
 SandBox::SandBox() {
   camera = new Camera(Dimension(), Point3D(0, 0, 40));
@@ -18,9 +20,9 @@ SandBox::SandBox() {
   for (auto &i : objects) {
     i = new Object(camera, shaderProgs[0], meshes[0]);
     i->update_size(2, 1, 1);
-    float x = sin(rand() % 20 - 10) + rand() % 20 - 10;
-    float y = cos(rand() % 36 - 18) + rand() % 36 - 18;
-    float z = tan(rand() % 100 + 1) + rand() % 100 - 10;
+    float x = sin(rand_r(&seed) % 20 - 10) + rand_r(&seed) % 20 - 10;
+    float y = cos(rand_r(&seed) % 36 - 18) + rand_r(&seed) % 36 - 18;
+    float z = tan(rand_r(&seed) % 100 + 1) + rand_r(&seed) % 100 - 10;
 
     Point3D position = Point3D(x, y, z);
 
