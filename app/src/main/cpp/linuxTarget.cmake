@@ -8,45 +8,45 @@ add_subdirectory(shared/strings)
 add_subdirectory(common)
 
 add_library(WindowManager
-    STATIC
-    linux/WindowManager.cpp)
+  STATIC
+  linux/WindowManager.cpp)
 
 target_link_libraries(WindowManager
-    glfw)
+  glfw)
 
 add_library(Platform
-    STATIC
-    linux/logger.hpp
-    linux/filesManager.cpp
-    linux/LinuxFilesManager.cpp
-    linux/LinuxPlatform.cpp
-    linux/LinuxLogger.cpp)
+  STATIC
+  linux/logger.hpp
+  linux/filesManager.cpp
+  linux/LinuxFilesManager.cpp
+  linux/LinuxPlatform.cpp
+  linux/LinuxLogger.cpp)
 
 target_link_libraries(Platform
-    StringFormatter
-    WindowManager)
+  StringFormatter
+  WindowManager)
 
 add_executable(linuxVersion
-    linux/linuxBin.cpp)
+  linux/linuxBin.cpp)
 
 add_executable(linuxLauncher
-    linux/GLFWKeyMapper.cpp
-    linux/App.cpp
-    linux/main.cpp)
+  linux/GLFWKeyMapper.cpp
+  linux/App.cpp
+  linux/main.cpp)
 
 target_link_libraries(linuxVersion
-    common)
+  common)
 
 target_link_libraries(linuxLauncher
-    common)
+  common)
 
 add_custom_target(runNew
-    COMMAND linuxVersion
-    DEPENDS linuxVersion
-    WORKING_DIRECTORY ${CMAKE_PROJECT_DIR})
+  COMMAND linuxVersion
+  DEPENDS linuxVersion
+  WORKING_DIRECTORY ${CMAKE_PROJECT_DIR})
 
 add_custom_target(run
-    COMMAND linuxLauncher
-    DEPENDS linuxLauncher
-    WORKING_DIRECTORY ${CMAKE_PROJECT_DIR})
+  COMMAND linuxLauncher
+  DEPENDS linuxLauncher
+  WORKING_DIRECTORY ${CMAKE_PROJECT_DIR})
 
