@@ -2,12 +2,12 @@
 #ifndef APP_SRC_MAIN_CPP_COMMON_TEST4_HPP_
 #define APP_SRC_MAIN_CPP_COMMON_TEST4_HPP_
 
+#include "../shared/FilesManager.hpp"
 #include "IScene.hpp"
 #include "Math.hpp"
 #include "Object.hpp"
 #include "Renderer.hpp"
 #include "ShaderProg.hpp"
-#include "../shared/FilesManager.hpp"
 
 class Test4 : public IScene {
 private:

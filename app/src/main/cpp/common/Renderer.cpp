@@ -3,7 +3,7 @@
 #include "MeshType.hpp"
 
 #include <GLES3/gl3.h>
-#include <malloc.h>
+#include <cstdlib>
 
 bool isProgramLinkOk(GLuint program) {
   GLint linkStatus = GL_FALSE;

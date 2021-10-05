@@ -1,11 +1,11 @@
 // Copyright (c) 2021 Simon Puente
 #include "Test4.hpp"
+#include "../shared/FilesManager.hpp"
 #include "Dimension.hpp"
 #include "Math.hpp"
 #include "Object.hpp"
 #include "Point3D.hpp"
 #include "Projection.hpp"
-#include "../shared/FilesManager.hpp"
 
 static const int CAMERA_WIDTH = 450;
 static const int CAMERA_HEIGHT = 800;
