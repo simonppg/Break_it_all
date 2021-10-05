@@ -1,5 +1,4 @@
 #include "../common/Game.hpp"
-#include "filesManager.hpp"
 #include "AndroidPlatform.hpp"
 #include "../shared/Platform.hpp"
 #include "../shared/Logger.hpp"
@@ -67,7 +66,6 @@ Java_com_example_game_jni_Game_init(JNIEnv *env, jclass type,
                                                                 jint position, jobject mgr) {
     AAssetManager *mgr2 = AAssetManager_fromJava(env, mgr);
     assert(mgr2 != nullptr);
-    load_asset_manager(mgr2);
 
     platform = new AndroidPlatform(mgr2);
     FilesManager *filesManager = platform->filesManager();
