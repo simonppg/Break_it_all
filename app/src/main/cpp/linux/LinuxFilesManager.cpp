@@ -11,7 +11,7 @@
 LinuxFilesManager::LinuxFilesManager(const char *projectPath)
   : projectPath(projectPath) {}
 
-char* LinuxFilesManager::loadFile(const char *filePath) {
+char *LinuxFilesManager::loadFile(const char *filePath) {
   FILE *pFile;
 #define PATH_SIZE 100
   char absolutePath[PATH_SIZE] = "\0";
