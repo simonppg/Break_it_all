@@ -10,4 +10,5 @@
 .*
 !/.gitignore
 linux-build
+test-build
 compile_commands.json
