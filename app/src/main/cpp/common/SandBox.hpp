@@ -1,6 +1,6 @@
 // Copyright (c) 2021 Simon Puente
-#ifndef COMMON_SANDBOX_HPP
-#define COMMON_SANDBOX_HPP
+#ifndef APP_SRC_MAIN_CPP_COMMON_SANDBOX_HPP_
+#define APP_SRC_MAIN_CPP_COMMON_SANDBOX_HPP_
 
 #include "../shared/FilesManager.hpp"
 #include "Camera.hpp"
