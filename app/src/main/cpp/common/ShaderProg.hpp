@@ -1,5 +1,6 @@
-#ifndef COMMON_SHADERPROG_HPP
-#define COMMON_SHADERPROG_HPP
+// Copyright (c) 2021 Simon Puente
+#ifndef APP_SRC_MAIN_CPP_COMMON_SHADERPROG_HPP_
+#define APP_SRC_MAIN_CPP_COMMON_SHADERPROG_HPP_
 
 #include "Renderer.hpp"
 
@@ -17,4 +18,4 @@ public:
   unsigned int programID;
 };
 
-#endif // COMMON_SHADERPROG_HPP
+#endif // APP_SRC_MAIN_CPP_COMMON_SHADERPROG_HPP_

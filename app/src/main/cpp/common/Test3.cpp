@@ -1,3 +1,4 @@
+// Copyright (c) 2021 Simon Puente
 #include "Test3.hpp"
 
 #include <vector>

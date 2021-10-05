@@ -1,3 +1,4 @@
+// Copyright (c) 2021 Simon Puente
 #ifndef COMMON_SANDBOX_HPP
 #define COMMON_SANDBOX_HPP
 
@@ -14,7 +15,7 @@ private:
   Math *math = new Math();
 
 public:
-  SandBox(FilesManager *filesManager);
+  explicit SandBox(FilesManager *filesManager);
   void surfaceCreated() override;
   void surfaceChanged(int width, int height) override;
   void render() override;
@@ -29,4 +30,4 @@ public:
   Renderer *renderer;
 };
 
-#endif // COMMON_SANDBOX_HPP
+#endif // APP_SRC_MAIN_CPP_COMMON_SANDBOX_HPP_

@@ -1,9 +1,10 @@
 // Copyright (c) 2021 Simon Puente
 #include "Test2.hpp"
-#include "../shared/FilesManager.hpp"
-#include "Renderer.hpp"
 
 #include <cstdlib>
+
+#include "../shared/FilesManager.hpp"
+#include "Renderer.hpp"
 
 static GLfloat vVertices[] = {0.0f, 0.5f, 0.0f,  -0.5f, -0.5f,
                               0.0f, 0.5f, -0.5f, 0.0f};

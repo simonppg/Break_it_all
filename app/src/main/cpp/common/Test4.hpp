@@ -1,5 +1,6 @@
-#ifndef COMMON_TEST4_HPP
-#define COMMON_TEST4_HPP
+// Copyright (c) 2021 Simon Puente
+#ifndef APP_SRC_MAIN_CPP_COMMON_TEST4_HPP_
+#define APP_SRC_MAIN_CPP_COMMON_TEST4_HPP_
 
 #include "Math.hpp"
 #include "IScene.hpp"
@@ -35,4 +36,4 @@ public:
     Object *ball2;
 };
 
-#endif // COMMON_TEST4_HPP
+#endif // APP_SRC_MAIN_CPP_COMMON_TEST4_HPP_

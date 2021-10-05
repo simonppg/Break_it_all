@@ -1,3 +1,4 @@
+// Copyright (c) 2021 Simon Puente
 #include "SandBox.hpp"
 
 #include "../shared/FilesManager.hpp"
@@ -36,7 +37,7 @@ void SandBox::surfaceCreated() {
   for (auto &i : meshes) {
     renderer->load_model(i);
   }
-  // TODO: free buffers
+  // TODO(simonpp): free buffers
 }
 
 void SandBox::render() {

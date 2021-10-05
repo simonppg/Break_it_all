@@ -1,3 +1,4 @@
+// Copyright (c) 2021 Simon Puente
 #include "Renderer.hpp"
 #include "MeshType.hpp"
 
@@ -22,7 +23,7 @@ void showProgramInfoLog(GLuint program) {
     return;
   }
 
-  char *buf = (char *)malloc(sizeof(char) * infoLength);
+  char *buf = reinterpret_cast<char *>(malloc(sizeof(char) * infoLength));
   if (!buf) {
     return;
   }
@@ -58,7 +59,7 @@ void Renderer::draw(DrawContext *pDrawContex) {
     glEnableVertexAttribArray(1);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 6, 0);
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 6,
-                          (char *)(sizeof(float) * 3));
+                          reinterpret_cast<char *>((sizeof(float) * 3)));
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, pDrawContex->iab);
 
     glUniformMatrix4fv(uniform, 1, GL_FALSE,

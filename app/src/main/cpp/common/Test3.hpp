@@ -1,5 +1,6 @@
-#ifndef COMMON_TEST3_HPP
-#define COMMON_TEST3_HPP
+// Copyright (c) 2021 Simon Puente
+#ifndef APP_SRC_MAIN_CPP_COMMON_TEST3_HPP_
+#define APP_SRC_MAIN_CPP_COMMON_TEST3_HPP_
 
 #include "../shared/FilesManager.hpp"
 #include "IScene.hpp"
@@ -13,7 +14,7 @@ private:
   Math *math = new Math();
 
 public:
-  Test3(FilesManager *filesManager);
+  explicit Test3(FilesManager *filesManager);
   void surfaceCreated() override;
   void surfaceChanged(int width, int height) override;
   void render() override;
@@ -23,4 +24,4 @@ public:
   bool events(double xpos, double ypos) override;
 };
 
-#endif // COMMON_TEST3_HPP
+#endif // APP_SRC_MAIN_CPP_COMMON_TEST3_HPP_

@@ -1,3 +1,4 @@
+// Copyright (c) 2021 Simon Puente
 #include "../common/EventFactory.hpp"
 #include "../common/Game.hpp"
 #include "../common/ScreenTouched.hpp"
