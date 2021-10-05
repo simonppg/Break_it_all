@@ -4,7 +4,7 @@ set -x # echo commands
 SCRIPT_PATH="${0%/*}"
 
 # No matter where you are, the script always runs in this directory
-cd $SCRIPT_PATH
+cd $SCRIPT_PATH || exit
 
 BUILD_DIR=test-build
 BUILD_TYPE=Release
