@@ -34,7 +34,7 @@ Game::Game(int sceneNumber, Platform *platform) {
   else if (sceneNumber == 3)
     this->pScene = new Test3(this->fileManager);
   else
-    this->pScene = new Test4();
+    this->pScene = new Test4(this->fileManager);
 }
 
 void Game::camera_forward() {

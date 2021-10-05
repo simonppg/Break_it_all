@@ -7,6 +7,7 @@
 #include "Object.hpp"
 #include "Renderer.hpp"
 #include "ShaderProg.hpp"
+#include "../shared/FilesManager.hpp"
 
 class Test4 : public IScene {
 private:
@@ -24,7 +25,7 @@ protected:
   Renderer *renderer;
 
 public:
-  Test4();
+  explicit Test4(FilesManager *filesManager);
   void surfaceCreated() override;
   void surfaceChanged(int width, int height) override;
   void render() override;
