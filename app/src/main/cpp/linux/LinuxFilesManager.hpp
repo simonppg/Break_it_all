@@ -4,10 +4,10 @@
 #include "../shared/FilesManager.hpp"
 
 class LinuxFilesManager : public FilesManager {
-  private:
+private:
   const char *projectPath;
 
-  public:
+public:
   explicit LinuxFilesManager(const char *projectPath);
 
   char* loadFile(const char *filePath);
