@@ -63,10 +63,9 @@ Java_com_example_game_jni_Game_getTestsList(JNIEnv *env, jclass cls) {
   return test;
 }
 
-JNIEXPORT void JNICALL Java_com_example_game_jni_Game_init(JNIEnv *env,
-                                                           jclass type,
-                                                           jint position,
-                                                           jobject mgr) {
+JNIEXPORT void JNICALL
+Java_com_example_game_jni_Game_init(JNIEnv *env, jclass type,
+                                    jint position, jobject mgr) {
   AAssetManager *mgr2 = AAssetManager_fromJava(env, mgr);
   assert(mgr2 != nullptr);
   load_asset_manager(mgr2);
@@ -107,8 +106,8 @@ JNIEXPORT void JNICALL Java_com_example_game_jni_Game_notifyPause(JNIEnv *env,
   game->pause();
 }
 
-JNIEXPORT void JNICALL Java_com_example_game_jni_Game_notifyStop(JNIEnv *env,
-                                                                 jclass type) {
+JNIEXPORT void JNICALL
+Java_com_example_game_jni_Game_notifyStop(JNIEnv *env, jclass type) {
   logger->logi("notifyStop");
 }
 
