@@ -17,7 +17,7 @@ private:
 
 public:
   explicit SandBox(FilesManager *filesManager);
-  
+
   void surfaceCreated() override;
   void surfaceChanged(int width, int height) override;
   void render() override;
