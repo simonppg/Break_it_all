@@ -37,8 +37,8 @@ Test4::Test4(FilesManager *filesManager) {
   shaderProgs[0] = new ShaderProg(simpleVert, simpleFrag);
   shaderProgs[1] = new ShaderProg(circleVert, circleFrag);
   meshes[0] = new Mesh(math->get_cube(), 16, math->get_cube_index(), 36);
-  meshes[1] = new Mesh(math->get_circle(radius, NUMBER_OF_VERTICES),
-                       NUMBER_OF_VERTICES);
+  auto circle = math->get_circle(radius, NUMBER_OF_VERTICES);
+  meshes[1] = new Mesh(circle, NUMBER_OF_VERTICES);
 
   Dimension gridDimension(CAMERA_WIDTH, h);
 
