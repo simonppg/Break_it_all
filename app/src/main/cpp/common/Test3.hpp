@@ -3,6 +3,7 @@
 #define APP_SRC_MAIN_CPP_COMMON_TEST3_HPP_
 
 #include "../shared/FilesManager.hpp"
+
 #include "IScene.hpp"
 #include "Math.hpp"
 #include "Renderer.hpp"
@@ -15,6 +16,7 @@ private:
 
 public:
   explicit Test3(FilesManager *filesManager);
+
   void surfaceCreated() override;
   void surfaceChanged(int width, int height) override;
   void render() override;
