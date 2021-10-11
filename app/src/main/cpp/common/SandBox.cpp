@@ -3,10 +3,10 @@
 
 #include <cstdlib>
 
+#include "../shared/FilesManager.hpp"
 #include "Dimension.hpp"
 #include "Math.hpp"
 #include "Point3D.hpp"
-#include "../shared/FilesManager.hpp"
 
 using glm::mat4;
 using glm::vec3;
