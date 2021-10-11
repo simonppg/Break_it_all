@@ -1,7 +1,10 @@
+// Copyright (c) 2021 Simon Puente
 #include "Test2.hpp"
-#include "Renderer.hpp"
 
 #include <cstdlib>
+
+#include "../shared/FilesManager.hpp"
+#include "Renderer.hpp"
 
 #ifdef __ANDROID_NDK__
 #include "../android/filesManager.hpp"
@@ -9,52 +12,43 @@
 #include "../linux/filesManager.hpp"
 #endif
 
-static GLfloat vVertices[] = { 0.0f, 0.5f, 0.0f,
-                               -0.5f, -0.5f, 0.0f,
-                               0.5f, -0.5f, 0.0f };
-Test2::Test2() {
-    renderer = Renderer();
-}
+static GLfloat vVertices[] = {0.0f, 0.5f, 0.0f,  -0.5f, -0.5f,
+                              0.0f, 0.5f, -0.5f, 0.0f};
+Test2::Test2() { renderer = Renderer(); }
 
 void Test2::render() {
-    glUseProgram(programID);
-    glClearColor(0.6f, 0.6f, 0.6f, 1.0f);
-    glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+  glUseProgram(programID);
+  glClearColor(0.6f, 0.6f, 0.6f, 1.0f);
+  glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
-    glDrawArrays(GL_TRIANGLES, 0, 3);
-    glUseProgram(0);
+  glDrawArrays(GL_TRIANGLES, 0, 3);
+  glUseProgram(0);
 }
 
 void Test2::surfaceCreated() {
-    char *vert, *frag;
+  char *vert, *frag;
 
-    vert = load_file("examples/triangle/triangle.vert");
-    frag = load_file("examples/triangle/triangle.frag");
-    programID = renderer.createProgram(vert, frag);
-    glUseProgram(programID);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, vVertices);
-    glEnableVertexAttribArray(0);
+  vert = load_file("examples/triangle/triangle.vert");
+  frag = load_file("examples/triangle/triangle.frag");
+  programID = renderer.createProgram(vert, frag);
+  glUseProgram(programID);
+  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, vVertices);
+  glEnableVertexAttribArray(0);
 
-    if (vert)
-        free(vert);
-    if (frag)
-        free(frag);
+  if (vert)
+    free(vert);
+  if (frag)
+    free(frag);
 }
 
 void Test2::surfaceChanged(int width, int height) {
-    glViewport(0, 0, width, height);
+  glViewport(0, 0, width, height);
 }
 
-void Test2::pause() {
-    glDeleteProgram(programID);
-}
+void Test2::pause() { glDeleteProgram(programID); }
 
-void Test2::resume() {
-    glUseProgram(programID);
-}
+void Test2::resume() { glUseProgram(programID); }
 
 void Test2::update() {}
 
-bool Test2::events(double xpos, double ypos) {
-    return false;
-}
+bool Test2::events(double xpos, double ypos) { return false; }
