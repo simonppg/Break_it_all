@@ -7,18 +7,18 @@
 #include "Point3D.hpp"
 #include "Projection.hpp"
 
-static const int CAMERA_WIDTH = 450;
-static const int CAMERA_HEIGHT = 800;
+static const float CAMERA_WIDTH = 450.0f;
+static const float CAMERA_HEIGHT = 800.0f;
 static float pov_in_degrees = 0.0f;
 #define NUMBER_OF_VERTICES 15
 static float radius = 1.0;
 
-static float h = (float)CAMERA_HEIGHT / 2;
-static float x_size = 90.0f * ((float)CAMERA_WIDTH / COL) / 100;
+static float h = CAMERA_HEIGHT / 2;
+static float x_size = 90.0f * (CAMERA_WIDTH / COL) / 100;
 static float y_size = 80.0f * (h / ROW) / 100;
 
-static float ball_size = (float)CAMERA_WIDTH / 30;
-static float cube_x_size = ((float)CAMERA_WIDTH / 2) / 3;
+static float ball_size = CAMERA_WIDTH / 30;
+static float cube_x_size = (CAMERA_WIDTH / 2) / 3;
 static float cube_y_size = cube_x_size / 7;
 
 static clock_t last_time;
@@ -93,7 +93,7 @@ void Test4::surfaceChanged(int width, int height) {
   Dimension gridDimension(width, camera->top);
 
   vPos = math->generateGrid(gridDimension, ROW, COL);
-  x_size = 90.0f * ((float)width / COL) / 100;
+  x_size = 90.0f * (static_cast<float>(width) / COL) / 100;
   y_size = 80.0f * (camera->top / ROW) / 100;
 
   for (int i = 0; i < ROW * COL; i++) {
@@ -101,8 +101,8 @@ void Test4::surfaceChanged(int width, int height) {
     objects[i]->updatePosition(Point3D(vPos[i * 2], vPos[i * 2 + 1], 0));
   }
 
-  ball_size = (float)width / 30;
-  cube_x_size = ((float)width / 2) / 3;
+  ball_size = static_cast<float>(width)/ 30;
+  cube_x_size = (static_cast<float>(width)/ 2) / 3;
   cube_y_size = cube_x_size / 7;
 
   ball->update_size(ball_size, ball_size, 1);
@@ -116,7 +116,8 @@ void Test4::surfaceChanged(int width, int height) {
 
 void Test4::update() {
   // dt = time_since last_update
-  float dt = (float)((double)clock() - last_time) / CLOCKS_PER_SEC;
+  auto time = static_cast<double>(clock());
+  float dt = static_cast<float>((time - last_time) / CLOCKS_PER_SEC);
 
   Point3D ballPosition = ball->getPosition();
   ball->velocity += ball->acceleration * dt;
