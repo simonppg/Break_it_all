@@ -27,6 +27,7 @@ void Test2::surfaceCreated() {
 
   vert = filesManager->loadFile("examples/triangle/triangle.vert");
   frag = filesManager->loadFile("examples/triangle/triangle.frag");
+
   programID = renderer.createProgram(vert, frag);
   glUseProgram(programID);
   glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, vVertices);
