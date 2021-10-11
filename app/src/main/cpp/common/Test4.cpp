@@ -101,8 +101,8 @@ void Test4::surfaceChanged(int width, int height) {
     objects[i]->updatePosition(Point3D(vPos[i * 2], vPos[i * 2 + 1], 0));
   }
 
-  ball_size = static_cast<float>(width)/ 30;
-  cube_x_size = (static_cast<float>(width)/ 2) / 3;
+  ball_size = static_cast<float>(width) / 30;
+  cube_x_size = (static_cast<float>(width) / 2) / 3;
   cube_y_size = cube_x_size / 7;
 
   ball->update_size(ball_size, ball_size, 1);

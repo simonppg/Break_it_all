@@ -8,6 +8,7 @@
 #include "Object.hpp"
 #include "Renderer.hpp"
 #include "ShaderProg.hpp"
+#include <vector>
 
 class Test4 : public IScene {
 private:
