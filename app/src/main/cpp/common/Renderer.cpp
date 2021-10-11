@@ -1,9 +1,10 @@
 // Copyright (c) 2021 Simon Puente
 #include "Renderer.hpp"
-#include "MeshType.hpp"
 
 #include <GLES3/gl3.h>
 #include <cstdlib>
+
+#include "MeshType.hpp"
 
 bool isProgramLinkOk(GLuint program) {
   GLint linkStatus = GL_FALSE;
