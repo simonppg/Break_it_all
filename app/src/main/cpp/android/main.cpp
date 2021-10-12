@@ -6,7 +6,6 @@
 #include "../shared/Logger.hpp"
 #include "../shared/Platform.hpp"
 #include "AndroidPlatform.hpp"
-#include "filesManager.hpp"
 
 #ifdef __cplusplus
 extern "C" {
@@ -69,7 +68,6 @@ JNIEXPORT void JNICALL Java_com_example_game_jni_Game_init(JNIEnv *env,
                                                            jobject mgr) {
   AAssetManager *mgr2 = AAssetManager_fromJava(env, mgr);
   assert(mgr2 != nullptr);
-  load_asset_manager(mgr2);
 
   platform = new AndroidPlatform(mgr2);
   FilesManager *filesManager = platform->filesManager();

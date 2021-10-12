@@ -16,8 +16,6 @@ target_link_libraries(WindowManager
 
 add_library(Platform
   STATIC
-  linux/logger.hpp
-  linux/filesManager.cpp
   linux/LinuxFilesManager.cpp
   linux/LinuxPlatform.cpp
   linux/LinuxLogger.cpp)

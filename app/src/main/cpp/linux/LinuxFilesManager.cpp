@@ -5,27 +5,20 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
+#include <string>
 
-#include "logger.hpp"
+using std::string;
 
 LinuxFilesManager::LinuxFilesManager(const char *projectPath)
     : projectPath(projectPath) {}
 
 char *LinuxFilesManager::loadFile(const char *filePath) {
   FILE *pFile;
-#define PATH_SIZE 100
-  char absolutePath[PATH_SIZE] = "\0";
-  const char *assetsDir = "/../assets/";
+  string assetsDir("/../assets/");
+  string absolutePath(projectPath + assetsDir + filePath);
 
-  snprintf(absolutePath, PATH_SIZE, "%s", projectPath);
-  snprintf(absolutePath, PATH_SIZE, "%s", assetsDir);
-  snprintf(absolutePath, PATH_SIZE, "%s", filePath);
-#undef PATH_SIZE
-
-  pFile = fopen(absolutePath, "r");
-
+  pFile = fopen(absolutePath.c_str(), "r");
   if (pFile == NULL) {
-    LOGE("Couldn't open the file: %s", absolutePath);
     return NULL;
   }
 

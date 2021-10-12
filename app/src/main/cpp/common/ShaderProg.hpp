@@ -1,21 +1,21 @@
-#ifndef COMMON_SHADERPROG_HPP
-#define COMMON_SHADERPROG_HPP
+// Copyright (c) 2021 Simon Puente
+#ifndef APP_SRC_MAIN_CPP_COMMON_SHADERPROG_HPP_
+#define APP_SRC_MAIN_CPP_COMMON_SHADERPROG_HPP_
 
 #include "Renderer.hpp"
 
 class ShaderProg {
 private:
-    Renderer renderer;
+  Renderer renderer;
+  const char *vertex_file;
+  const char *fragment_file;
 
 public:
-    ShaderProg(const char *vertShaderPath, const char *fragShaderPath);
+  ShaderProg(const char *vertShaderStr, const char *fragShaderStr);
 
-    char *vertex_file;
-    char *fragment_file;
+  void createProgram();
 
-    void createProgram();
-
-    unsigned int programID;
+  unsigned int programID;
 };
 
-#endif // COMMON_SHADERPROG_HPP
+#endif // APP_SRC_MAIN_CPP_COMMON_SHADERPROG_HPP_

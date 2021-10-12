@@ -6,15 +6,12 @@
 #include "../shared/FilesManager.hpp"
 #include "Renderer.hpp"
 
-#ifdef __ANDROID_NDK__
-#include "../android/filesManager.hpp"
-#else
-#include "../linux/filesManager.hpp"
-#endif
-
 static GLfloat vVertices[] = {0.0f, 0.5f, 0.0f,  -0.5f, -0.5f,
                               0.0f, 0.5f, -0.5f, 0.0f};
-Test2::Test2() { renderer = Renderer(); }
+Test2::Test2(FilesManager *filesManager) {
+  renderer = Renderer();
+  this->filesManager = filesManager;
+}
 
 void Test2::render() {
   glUseProgram(programID);
@@ -28,8 +25,9 @@ void Test2::render() {
 void Test2::surfaceCreated() {
   char *vert, *frag;
 
-  vert = load_file("examples/triangle/triangle.vert");
-  frag = load_file("examples/triangle/triangle.frag");
+  vert = filesManager->loadFile("examples/triangle/triangle.vert");
+  frag = filesManager->loadFile("examples/triangle/triangle.frag");
+
   programID = renderer.createProgram(vert, frag);
   glUseProgram(programID);
   glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, vVertices);

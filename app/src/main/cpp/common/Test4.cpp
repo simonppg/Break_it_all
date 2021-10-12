@@ -23,14 +23,19 @@ static float cube_y_size = cube_x_size / 7;
 
 static clock_t last_time;
 
-Test4::Test4() {
+Test4::Test4(FilesManager *filesManager) {
   camera =
       new Camera(Dimension(CAMERA_WIDTH, CAMERA_HEIGHT), Point3D(0, 0, 40));
   camera->setProjection(Projection::ORTHOGRAPHIC);
   renderer = new Renderer();
 
-  shaderProgs[0] = new ShaderProg("simple.vert", "simple.frag");
-  shaderProgs[1] = new ShaderProg("circle.vert", "circle.frag");
+  const char *simpleVert = filesManager->loadFile("simple.vert");
+  const char *simpleFrag = filesManager->loadFile("simple.frag");
+  const char *circleVert = filesManager->loadFile("circle.vert");
+  const char *circleFrag = filesManager->loadFile("circle.frag");
+
+  shaderProgs[0] = new ShaderProg(simpleVert, simpleFrag);
+  shaderProgs[1] = new ShaderProg(circleVert, circleFrag);
   meshes[0] = new Mesh(math->get_cube(), 16, math->get_cube_index(), 36);
   auto circle = math->get_circle(radius, NUMBER_OF_VERTICES);
   meshes[1] = new Mesh(circle, NUMBER_OF_VERTICES);

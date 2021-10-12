@@ -9,12 +9,15 @@
 #include "Object.hpp"
 #include "ShaderProg.hpp"
 
+#include "../shared/FilesManager.hpp"
+
 class SandBox : public IScene {
 private:
   Math *math = new Math();
 
 public:
-  SandBox();
+  explicit SandBox(FilesManager *filesManager);
+
   void surfaceCreated() override;
   void surfaceChanged(int width, int height) override;
   void render() override;

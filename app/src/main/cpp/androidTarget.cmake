@@ -6,8 +6,6 @@ add_subdirectory(common)
 
 add_library(Platform
   STATIC
-  android/logger.hpp
-  android/filesManager.cpp
   android/AndroidFilesManager.cpp
   android/AndroidPlatform.cpp
   android/AndroidLogger.cpp)

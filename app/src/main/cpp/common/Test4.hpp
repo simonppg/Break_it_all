@@ -27,7 +27,7 @@ protected:
   Renderer *renderer;
 
 public:
-  Test4();
+  explicit Test4(FilesManager *filesManager);
   void surfaceCreated() override;
   void surfaceChanged(int width, int height) override;
   void render() override;
