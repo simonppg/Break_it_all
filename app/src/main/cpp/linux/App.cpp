@@ -23,7 +23,7 @@ App::App() {
 }
 
 void App::cursorCallback(void *appContext, double x, double y) {
-  App *app = (App *)appContext;
+  App *app = reinterpret_cast<App *>(appContext);
   EventFactory *eventFactory = app->eventFactory;
   Game *game = app->game;
 
@@ -32,7 +32,7 @@ void App::cursorCallback(void *appContext, double x, double y) {
 }
 
 void App::windowSizeCallback(void *appContext, int width, int height) {
-  App *app = (App *)appContext;
+  App *app = reinterpret_cast<App *>(appContext);
   Game *game = app->game;
 
   game->surfaceChanged(width, height);
@@ -40,7 +40,7 @@ void App::windowSizeCallback(void *appContext, int width, int height) {
 
 void App::keyCallback(void *appContext, int key, int scancode, int action,
                       int mods) {
-  App *app = (App *)appContext;
+  App *app = reinterpret_cast<App *>(appContext);
   EventFactory *eventFactory = app->eventFactory;
   Game *game = app->game;
   GLFWKeyMapper *keyMapper = app->keyMapper;
