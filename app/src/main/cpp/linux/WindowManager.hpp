@@ -25,7 +25,7 @@ private:
   static void errorCallback(int, const char *);
 
 public:
-  WindowManager(void *appContext);
+  explicit WindowManager(void *appContext);
 
   void *getAppContext();
   bool shouldClose();

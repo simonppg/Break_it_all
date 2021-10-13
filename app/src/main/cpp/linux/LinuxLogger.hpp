@@ -2,6 +2,8 @@
 #ifndef APP_SRC_MAIN_CPP_LINUX_LINUXLOGGER_HPP_
 #define APP_SRC_MAIN_CPP_LINUX_LINUXLOGGER_HPP_
 
+#include <string>
+
 #include "../shared/Logger.hpp"
 
 #include "../shared/strings/StringFormatter.hpp"

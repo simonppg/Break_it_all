@@ -6,7 +6,8 @@
 #include "LinuxLogger.hpp"
 #include "WindowManager.hpp"
 
-using namespace std;
+using std::cout;
+using std::endl;
 
 int main() {
   Logger *logger = new LinuxLogger();
