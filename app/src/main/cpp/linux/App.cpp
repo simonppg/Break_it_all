@@ -1,17 +1,17 @@
+// Copyright (c) 2021 Simon Puente
 #include "App.hpp"
+
+#include <cstdlib>
+#include <map>
+
 #include "../common/EventFactory.hpp"
 #include "../common/Game.hpp"
 #include "../shared/FilesManager.hpp"
 #include "../shared/Logger.hpp"
 #include "../shared/Platform.hpp"
+#include "GLFWKeyMapper.hpp"
 #include "LinuxPlatform.hpp"
 #include "WindowManager.hpp"
-#include "GLFWKeyMapper.hpp"
-
-#include <cstdlib>
-#include <map>
-
-using std::map;
 
 App::App() {
   windowManager = new WindowManager(this);
@@ -23,7 +23,7 @@ App::App() {
 }
 
 void App::cursorCallback(void *appContext, double x, double y) {
-  App *app = (App *)appContext;
+  App *app = reinterpret_cast<App *>(appContext);
   EventFactory *eventFactory = app->eventFactory;
   Game *game = app->game;
 
@@ -32,14 +32,15 @@ void App::cursorCallback(void *appContext, double x, double y) {
 }
 
 void App::windowSizeCallback(void *appContext, int width, int height) {
-  App *app = (App *)appContext;
+  App *app = reinterpret_cast<App *>(appContext);
   Game *game = app->game;
 
   game->surfaceChanged(width, height);
 }
 
-void App::keyCallback(void *appContext, int key, int scancode, int action, int mods) {
-  App *app = (App *)appContext;
+void App::keyCallback(void *appContext, int key, int scancode, int action,
+                      int mods) {
+  App *app = reinterpret_cast<App *>(appContext);
   EventFactory *eventFactory = app->eventFactory;
   Game *game = app->game;
   GLFWKeyMapper *keyMapper = app->keyMapper;
