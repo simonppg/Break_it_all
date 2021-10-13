@@ -1,4 +1,9 @@
+// Copyright (c) 2021 Simon Puente
 #include "App.hpp"
+
+#include <cstdlib>
+#include <map>
+
 #include "../common/EventFactory.hpp"
 #include "../common/Game.hpp"
 #include "../shared/FilesManager.hpp"
@@ -7,9 +12,6 @@
 #include "GLFWKeyMapper.hpp"
 #include "LinuxPlatform.hpp"
 #include "WindowManager.hpp"
-
-#include <cstdlib>
-#include <map>
 
 App::App() {
   windowManager = new WindowManager(this);

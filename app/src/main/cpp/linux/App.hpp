@@ -1,5 +1,6 @@
-#ifndef APP_HPP
-#define APP_HPP
+// Copyright (c) 2021 Simon Puente
+#ifndef APP_SRC_MAIN_CPP_LINUX_APP_HPP_
+#define APP_SRC_MAIN_CPP_LINUX_APP_HPP_
 
 #include "../common/EventFactory.hpp"
 #include "../common/Game.hpp"
@@ -30,4 +31,4 @@ public:
   void start(int sceneNumber);
 };
 
-#endif // APP_HPP
+#endif // APP_SRC_MAIN_CPP_LINUX_APP_HPP_
