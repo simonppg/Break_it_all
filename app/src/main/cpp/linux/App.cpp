@@ -4,14 +4,12 @@
 #include "../shared/FilesManager.hpp"
 #include "../shared/Logger.hpp"
 #include "../shared/Platform.hpp"
+#include "GLFWKeyMapper.hpp"
 #include "LinuxPlatform.hpp"
 #include "WindowManager.hpp"
-#include "GLFWKeyMapper.hpp"
 
 #include <cstdlib>
 #include <map>
-
-using std::map;
 
 App::App() {
   windowManager = new WindowManager(this);
@@ -38,7 +36,8 @@ void App::windowSizeCallback(void *appContext, int width, int height) {
   game->surfaceChanged(width, height);
 }
 
-void App::keyCallback(void *appContext, int key, int scancode, int action, int mods) {
+void App::keyCallback(void *appContext, int key, int scancode, int action,
+                      int mods) {
   App *app = (App *)appContext;
   EventFactory *eventFactory = app->eventFactory;
   Game *game = app->game;

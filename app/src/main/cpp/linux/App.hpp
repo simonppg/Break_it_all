@@ -1,13 +1,13 @@
 #ifndef APP_HPP
 #define APP_HPP
 
-#include "../shared/Platform.hpp"
-#include "../shared/Logger.hpp"
-#include "../shared/FilesManager.hpp"
 #include "../common/EventFactory.hpp"
-#include "WindowManager.hpp"
 #include "../common/Game.hpp"
+#include "../shared/FilesManager.hpp"
+#include "../shared/Logger.hpp"
+#include "../shared/Platform.hpp"
 #include "GLFWKeyMapper.hpp"
+#include "WindowManager.hpp"
 
 class App {
 private:
@@ -21,7 +21,8 @@ private:
 
   static void cursorCallback(void *appContext, double x, double y);
   static void windowSizeCallback(void *appContext, int width, int height);
-  static void keyCallback(void *appContext, int key, int scancode, int action, int mods);
+  static void keyCallback(void *appContext, int key, int scancode, int action,
+                          int mods);
 
 public:
   App();
