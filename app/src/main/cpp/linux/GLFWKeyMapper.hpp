@@ -1,3 +1,4 @@
+// Copyright (c) 2021 Simon Puente
 #ifndef GLFW_KEY_MAPPER_HPP
 #define GLFW_KEY_MAPPER_HPP
 
@@ -8,8 +9,8 @@ using std::map;
 
 class GLFWKeyMapper {
 private:
-    map<int, Key> keyMap;
-    map<int, PressState> pressStateMap;
+  map<int, Key> keyMap;
+  map<int, PressState> pressStateMap;
 
 public:
   GLFWKeyMapper();

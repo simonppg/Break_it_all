@@ -1,3 +1,4 @@
+// Copyright (c) 2021 Simon Puente
 #include <cstdarg>
 #include <cstring>
 #include <ctime>

@@ -1,3 +1,4 @@
+// Copyright (c) 2021 Simon Puente
 #ifndef LINUX_LOGGER_HPP
 #define LINUX_LOGGER_HPP
 
