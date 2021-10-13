@@ -1,9 +1,10 @@
 // Copyright (c) 2021 Simon Puente
+#include <iostream>
+#include <vector>
+
 #include "../common/BreakItAll.hpp"
 #include "LinuxLogger.hpp"
 #include "WindowManager.hpp"
-#include <iostream>
-#include <vector>
 
 using namespace std;
 

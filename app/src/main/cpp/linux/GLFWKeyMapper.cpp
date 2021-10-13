@@ -1,7 +1,9 @@
 // Copyright (c) 2021 Simon Puente
 #include "GLFWKeyMapper.hpp"
-#include "../common/Key.hpp"
+
 #include <GLFW/glfw3.h>
+
+#include "../common/Key.hpp"
 
 GLFWKeyMapper::GLFWKeyMapper() {
   keyMap = {{GLFW_KEY_W, Key::W_KEY}, {GLFW_KEY_A, Key::A_KEY},

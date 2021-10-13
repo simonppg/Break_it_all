@@ -1,6 +1,6 @@
 // Copyright (c) 2021 Simon Puente
-#ifndef LINUX_LOGGER_HPP
-#define LINUX_LOGGER_HPP
+#ifndef APP_SRC_MAIN_CPP_LINUX_LINUXLOGGER_HPP_
+#define APP_SRC_MAIN_CPP_LINUX_LINUXLOGGER_HPP_
 
 #include "../shared/Logger.hpp"
 
@@ -21,4 +21,4 @@ public:
   void logi(string aString);
 };
 
-#endif // LINUX_LOGGER_HPP
+#endif // APP_SRC_MAIN_CPP_LINUX_LINUXLOGGER_HPP_

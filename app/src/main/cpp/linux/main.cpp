@@ -1,6 +1,7 @@
 // Copyright (c) 2021 Simon Puente
-#include "App.hpp"
 #include <cstdlib>
+
+#include "App.hpp"
 
 int main(int argc, char **argv) {
   int sceneNumber = 0;

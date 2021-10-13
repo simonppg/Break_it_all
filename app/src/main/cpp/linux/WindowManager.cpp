@@ -8,7 +8,7 @@ WindowManager::WindowManager(void *appContext)
 void *WindowManager::getAppContext() { return appContext; }
 
 WindowManager *WindowManager::getWindowManger(GLFWwindow *window) {
-  return (WindowManager *)glfwGetWindowUserPointer(window);
+  return reinterpret_cast<WindowManager *>(glfwGetWindowUserPointer(window));
 }
 
 void WindowManager::notifyCursorPosition(GLFWwindow *window, double x,
@@ -39,7 +39,7 @@ void WindowManager::notifyKey(GLFWwindow *window, int key, int scancode,
 }
 
 void WindowManager::errorCallback(int error, const char *description) {
-  // TODO: handle error here
+  // TODO(simonpp): handle error here
 }
 
 int WindowManager::createWindow(int width, int height) {
