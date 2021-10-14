@@ -1,13 +1,12 @@
 // Copyright (c) 2021 Simon Puente
+#include <chrono>
 #include <cstdarg>
 #include <cstring>
 #include <ctime>
+#include <iomanip>
 #include <iostream>
 #include <sstream>
 #include <string>
-#include <chrono>
-#include <iomanip>
-#include <cstdarg>
 
 #include "../shared/strings/StringFormatter.hpp"
 #include "LinuxLogger.hpp"
