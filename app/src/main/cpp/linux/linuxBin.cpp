@@ -27,7 +27,7 @@ int main() {
 
   p->exampleList(&examplesList);
 
-  for (string example: examplesList) {
+  for (string example : examplesList) {
     cout << example << endl;
   }
 
