@@ -5,6 +5,8 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <chrono>
+#include <iomanip>
 
 #include "../shared/strings/StringFormatter.hpp"
 #include "LinuxLogger.hpp"
@@ -29,15 +31,15 @@ void LinuxLogger::logi(const char *format, ...) {
 }
 
 void LinuxLogger::logi(string aString) {
-  time_t now;
-  time(&now);
-  char *ctime_no_newline;
-  time_t tm = time(NULL);
+  auto nows = std::chrono::system_clock::now();
+  auto in_time_t = std::chrono::system_clock::to_time_t(nows);
 
-  ctime_no_newline = strtok(ctime(&tm), "\n");
+  std::stringstream ss;
+  ss << std::put_time(std::localtime(&in_time_t), "%a %b %d %X %Y");
 
   cout << CONSOLE_GREEN_COLOR;
-  cout << ctime_no_newline << CONSOLE_DEFAULT_COLOR;
+  cout << ss.str() << CONSOLE_DEFAULT_COLOR;
   cout << " " << LOG_TAG << ": " << aString;
+  cout << CONSOLE_DEFAULT_COLOR << endl;
   cout << CONSOLE_DEFAULT_COLOR << endl;
 }
