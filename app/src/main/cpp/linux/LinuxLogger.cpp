@@ -7,6 +7,7 @@
 #include <string>
 #include <chrono>
 #include <iomanip>
+#include <cstdarg>
 
 #include "../shared/strings/StringFormatter.hpp"
 #include "LinuxLogger.hpp"
