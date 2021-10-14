@@ -27,8 +27,8 @@ int main() {
 
   p->exampleList(&examplesList);
 
-  for (long unsigned int i = 0; i < examplesList.size(); i++) {
-    cout << examplesList[i] << endl;
+  for (string example: examplesList) {
+    cout << example << endl;
   }
 
   while (!wm->shouldClose()) {
