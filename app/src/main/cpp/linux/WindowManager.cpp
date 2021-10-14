@@ -1,15 +1,18 @@
+// Copyright (c) 2021 Simon Puente
 #include "WindowManager.hpp"
 
 WindowManager::WindowManager(void *appContext)
-    : appContext(appContext), cursorPosCallback(NULL), windowSizeCallback(NULL), keyCallback(NULL) {}
+    : appContext(appContext), cursorPosCallback(NULL), windowSizeCallback(NULL),
+      keyCallback(NULL) {}
 
 void *WindowManager::getAppContext() { return appContext; }
 
 WindowManager *WindowManager::getWindowManger(GLFWwindow *window) {
-  return (WindowManager *)glfwGetWindowUserPointer(window);
+  return reinterpret_cast<WindowManager *>(glfwGetWindowUserPointer(window));
 }
 
-void WindowManager::notifyCursorPosition(GLFWwindow *window, double x, double y) {
+void WindowManager::notifyCursorPosition(GLFWwindow *window, double x,
+                                         double y) {
   WindowManager *manager = getWindowManger(window);
 
   if (manager->cursorPosCallback != NULL) {
@@ -17,7 +20,8 @@ void WindowManager::notifyCursorPosition(GLFWwindow *window, double x, double y)
   }
 }
 
-void WindowManager::notifyWindowSize(GLFWwindow *window, int width, int height) {
+void WindowManager::notifyWindowSize(GLFWwindow *window, int width,
+                                     int height) {
   WindowManager *manager = getWindowManger(window);
 
   if (manager->windowSizeCallback != NULL) {
@@ -25,7 +29,8 @@ void WindowManager::notifyWindowSize(GLFWwindow *window, int width, int height) 
   }
 }
 
-void WindowManager::notifyKey(GLFWwindow *window, int key, int scancode, int action, int mods) {
+void WindowManager::notifyKey(GLFWwindow *window, int key, int scancode,
+                              int action, int mods) {
   WindowManager *manager = getWindowManger(window);
 
   if (manager->keyCallback != NULL) {
@@ -34,11 +39,13 @@ void WindowManager::notifyKey(GLFWwindow *window, int key, int scancode, int act
 }
 
 void WindowManager::errorCallback(int error, const char *description) {
-  // TODO: handle error here
+  // TODO(simonpp): handle error here
 }
 
 int WindowManager::createWindow(int width, int height) {
-  if (!glfwInit()) { return -1; }
+  if (!glfwInit()) {
+    return -1;
+  }
 
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
@@ -74,6 +81,12 @@ bool WindowManager::shouldClose() {
 void WindowManager::pollEvents() { glfwPollEvents(); }
 void WindowManager::refreshWindow() { glfwSwapBuffers(this->window); }
 
-void WindowManager::setCursorCallback(CursorPosCallback callback) { cursorPosCallback = callback; }
-void WindowManager::setWindowSizeCallback(WindowSizeCallback callback) { windowSizeCallback = callback; }
-void WindowManager::setKeyCallback(KeyCallback callback) { keyCallback = callback; }
+void WindowManager::setCursorCallback(CursorPosCallback callback) {
+  cursorPosCallback = callback;
+}
+void WindowManager::setWindowSizeCallback(WindowSizeCallback callback) {
+  windowSizeCallback = callback;
+}
+void WindowManager::setKeyCallback(KeyCallback callback) {
+  keyCallback = callback;
+}

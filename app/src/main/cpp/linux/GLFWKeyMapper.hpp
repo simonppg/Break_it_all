@@ -1,15 +1,17 @@
-#ifndef GLFW_KEY_MAPPER_HPP
-#define GLFW_KEY_MAPPER_HPP
+// Copyright (c) 2021 Simon Puente
+#ifndef APP_SRC_MAIN_CPP_LINUX_GLFWKEYMAPPER_HPP_
+#define APP_SRC_MAIN_CPP_LINUX_GLFWKEYMAPPER_HPP_
+
+#include <map>
 
 #include "../common/Key.hpp"
-#include <map>
 
 using std::map;
 
 class GLFWKeyMapper {
 private:
-    map<int, Key> keyMap;
-    map<int, PressState> pressStateMap;
+  map<int, Key> keyMap;
+  map<int, PressState> pressStateMap;
 
 public:
   GLFWKeyMapper();
@@ -18,4 +20,4 @@ public:
   PressState mapPressState(int action);
 };
 
-#endif // GLFW_KEY_MAPPER_HPP
+#endif // APP_SRC_MAIN_CPP_LINUX_GLFWKEYMAPPER_HPP_
