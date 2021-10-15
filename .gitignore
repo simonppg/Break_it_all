@@ -7,8 +7,27 @@
 .externalNativeBuild
 /caches
 *.out
-.*
+.cache/
+.project
+.settings/
+app/.classpath
+app/.cxx/
+app/.project
+app/.settings/
+
 !/.gitignore
+
+# build script generated folder
 linux-build
+
+# test script generated forlder
 test-build
+
+# nvim LSP needs it for intellisense
 compile_commands.json
+
+# vscode
+.vscode/
+
+# node tools
+node_modules
