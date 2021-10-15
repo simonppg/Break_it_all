@@ -1,0 +1,6 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+SCRIPT_PATH="${0}"
+
+echo "Write pre commit commands in this file: $SCRIPT_PATH."
