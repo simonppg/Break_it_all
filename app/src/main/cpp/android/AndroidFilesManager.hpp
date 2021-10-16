@@ -5,14 +5,14 @@
 
 #include "../shared/FilesManager.hpp"
 
-class AndroidFilesManager: public FilesManager {
+class AndroidFilesManager : public FilesManager {
 private:
-    AAssetManager *assetManager;
+  AAssetManager *assetManager;
 
 public:
-    AndroidFilesManager(AAssetManager *);
+  AndroidFilesManager(AAssetManager *);
 
-    char* loadFile(const char *filePath);
+  char *loadFile(const char *filePath);
 };
 
-#endif //ANDROID_FILES_MANAGER_HPP
+#endif // ANDROID_FILES_MANAGER_HPP

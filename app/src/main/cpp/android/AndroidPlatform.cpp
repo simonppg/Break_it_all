@@ -1,22 +1,21 @@
 #include "AndroidPlatform.hpp"
 
-#include "AndroidLogger.hpp"
 #include "AndroidFilesManager.hpp"
+#include "AndroidLogger.hpp"
 
-#include "../shared/Platform.hpp"
-#include "../shared/Logger.hpp"
 #include "../shared/FilesManager.hpp"
+#include "../shared/Logger.hpp"
+#include "../shared/Platform.hpp"
 
 AndroidPlatform::AndroidPlatform(AAssetManager *assetManager) {
-    aLogger = new AndroidLogger();
-    aFilesManager = new AndroidFilesManager(assetManager);
+  aLogger = new AndroidLogger();
+  aFilesManager = new AndroidFilesManager(assetManager);
 }
 
-AndroidPlatform::~AndroidPlatform () {
-    delete aLogger;
-    delete aFilesManager;
+AndroidPlatform::~AndroidPlatform() {
+  delete aLogger;
+  delete aFilesManager;
 }
 
-Logger* AndroidPlatform::logger() { return aLogger; }
-FilesManager* AndroidPlatform::filesManager() { return aFilesManager; }
-
+Logger *AndroidPlatform::logger() { return aLogger; }
+FilesManager *AndroidPlatform::filesManager() { return aFilesManager; }

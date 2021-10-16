@@ -19,4 +19,4 @@ public:
   void logi(string aString);
 };
 
-#endif //ANDROID_LOGGER_HPP
+#endif // ANDROID_LOGGER_HPP
