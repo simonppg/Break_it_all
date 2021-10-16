@@ -11,9 +11,9 @@ AndroidFilesManager::AndroidFilesManager(AAssetManager *assetManager) {
 char *AndroidFilesManager::loadFile(const char *filePath) {
   AAsset *file = AAssetManager_open(assetManager, filePath, AASSET_MODE_BUFFER);
 
-  size_t fileLength = (size_t)AAsset_getLength(file);
+  size_t fileLength = static_cast<size_t>(AAsset_getLength(file));
 
-  char *fileContent = (char *)malloc(fileLength + 1);
+  char *fileContent = static_cast<char *>(malloc(fileLength + 1));
 
   AAsset_read(file, fileContent, fileLength);
 
