@@ -1,12 +1,8 @@
 // Copyright (c) 2021 Simon Puente
-#include "../common/BreakItAll.hpp"
-#include "AndroidLogger.hpp"
 #include <iostream>
 
-// #include "common/game.hpp"
-// #include "filesManager.hpp"
-
-// Game *game;
+#include "../common/BreakItAll.hpp"
+#include "AndroidLogger.hpp"
 
 Logger *logger = new AndroidLogger();
 BreakItAll *game = new BreakItAll();
