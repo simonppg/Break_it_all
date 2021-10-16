@@ -49,7 +49,7 @@ Java_com_example_game_jni_BreakItAll_getTestsList(JNIEnv *env, jclass cls) {
   test = (*env).NewObjectArray(examplesList.size(),
                                (*env).FindClass("java/lang/String"), 0);
 
-  for (long unsigned int i = 0; i < examplesList.size(); i++) {
+  for (auto i = 0; i < examplesList.size(); i++) {
     cout << examplesList[i] << endl;
     str = (*env).NewStringUTF(examplesList[i].c_str());
     (*env).SetObjectArrayElement(test, i, str);
