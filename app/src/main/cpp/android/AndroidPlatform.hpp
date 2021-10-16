@@ -17,7 +17,7 @@ private:
   AndroidFilesManager *aFilesManager;
 
 public:
-  AndroidPlatform(AAssetManager *assetManager);
+  explicit AndroidPlatform(AAssetManager *assetManager);
   ~AndroidPlatform();
 
   Logger *logger();

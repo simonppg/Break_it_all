@@ -11,7 +11,7 @@ private:
   AAssetManager *assetManager;
 
 public:
-  AndroidFilesManager(AAssetManager *);
+  explicit AndroidFilesManager(AAssetManager *);
 
   char *loadFile(const char *filePath);
 };
