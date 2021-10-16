@@ -3,8 +3,8 @@
 
 #include <android/log.h>
 #include <cstdarg>
-#include <sstream>
 #include <iostream>
+#include <sstream>
 
 #include "../shared/strings/StringFormatter.hpp"
 
