@@ -2,9 +2,9 @@
 #ifndef APP_SRC_MAIN_CPP_ANDROID_ANDROIDLOGGER_HPP_
 #define APP_SRC_MAIN_CPP_ANDROID_ANDROIDLOGGER_HPP_
 
-#include "../shared/Logger.hpp"
 #include <string>
 
+#include "../shared/Logger.hpp"
 #include "../shared/strings/StringFormatter.hpp"
 
 using std::string;

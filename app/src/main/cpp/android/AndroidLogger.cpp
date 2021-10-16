@@ -1,9 +1,9 @@
 // Copyright (c) 2021 Simon Puente
+#include "AndroidLogger.hpp"
+
+#include <android/log.h>
 #include <cstdarg>
 #include <sstream>
-
-#include "AndroidLogger.hpp"
-#include <android/log.h>
 #include <iostream>
 
 #include "../shared/strings/StringFormatter.hpp"
