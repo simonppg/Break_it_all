@@ -1,5 +1,6 @@
-#ifndef ANDROID_LOGGER_HPP
-#define ANDROID_LOGGER_HPP
+// Copyright (c) 2021 Simon Puente
+#ifndef APP_SRC_MAIN_CPP_ANDROID_ANDROIDLOGGER_HPP_
+#define APP_SRC_MAIN_CPP_ANDROID_ANDROIDLOGGER_HPP_
 
 #include "../shared/Logger.hpp"
 #include <string>
@@ -19,4 +20,4 @@ public:
   void logi(string aString);
 };
 
-#endif // ANDROID_LOGGER_HPP
+#endif // APP_SRC_MAIN_CPP_ANDROID_ANDROIDLOGGER_HPP_

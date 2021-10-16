@@ -1,3 +1,4 @@
+// Copyright (c) 2021 Simon Puente
 #include "../common/BreakItAll.hpp"
 #include "AndroidLogger.hpp"
 #include <iostream>

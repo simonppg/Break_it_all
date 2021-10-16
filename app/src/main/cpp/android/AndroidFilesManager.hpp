@@ -1,5 +1,6 @@
-#ifndef ANDROID_FILES_MANAGER_HPP
-#define ANDROID_FILES_MANAGER_HPP
+// Copyright (c) 2021 Simon Puente
+#ifndef APP_SRC_MAIN_CPP_ANDROID_ANDROIDFILESMANAGER_HPP_
+#define APP_SRC_MAIN_CPP_ANDROID_ANDROIDFILESMANAGER_HPP_
 
 #include <android/asset_manager.h>
 
@@ -15,4 +16,4 @@ public:
   char *loadFile(const char *filePath);
 };
 
-#endif // ANDROID_FILES_MANAGER_HPP
+#endif // APP_SRC_MAIN_CPP_ANDROID_ANDROIDFILESMANAGER_HPP_

@@ -1,5 +1,6 @@
-#ifndef ANDROID_PLATFORM_HPP
-#define ANDROID_PLATFORM_HPP
+// Copyright (c) 2021 Simon Puente
+#ifndef APP_SRC_MAIN_CPP_ANDROID_ANDROIDPLATFORM_HPP_
+#define APP_SRC_MAIN_CPP_ANDROID_ANDROIDPLATFORM_HPP_
 
 #include <android/asset_manager.h>
 
@@ -23,4 +24,4 @@ public:
   FilesManager *filesManager();
 };
 
-#endif // ANDROID_PLATFORM_HPP
+#endif // APP_SRC_MAIN_CPP_ANDROID_ANDROIDPLATFORM_HPP_
