@@ -1,9 +1,10 @@
-#include <cstdarg>
-#include <sstream>
-
+// Copyright (c) 2021 Simon Puente
 #include "AndroidLogger.hpp"
+
 #include <android/log.h>
+#include <cstdarg>
 #include <iostream>
+#include <sstream>
 
 #include "../shared/strings/StringFormatter.hpp"
 
@@ -11,7 +12,8 @@ using std::string;
 using std::stringstream;
 
 void AndroidLogger::sayHello() {
-  __android_log_print(ANDROID_LOG_INFO, LOG_TAG.c_str(), "AndroidLogger: Hello");
+  __android_log_print(ANDROID_LOG_INFO, LOG_TAG.c_str(),
+                      "AndroidLogger: Hello");
 }
 
 void AndroidLogger::logi(char aChar) {
@@ -30,5 +32,6 @@ void AndroidLogger::logi(const char *format, ...) {
 void AndroidLogger::logi(string aString) {
   stringstream sstream;
   sstream << aString;
-  __android_log_print(ANDROID_LOG_INFO, LOG_TAG.c_str(), "%s", sstream.str().c_str());
+  __android_log_print(ANDROID_LOG_INFO, LOG_TAG.c_str(), "%s",
+                      sstream.str().c_str());
 }

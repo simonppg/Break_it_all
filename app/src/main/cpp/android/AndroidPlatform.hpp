@@ -1,26 +1,27 @@
-#ifndef ANDROID_PLATFORM_HPP
-#define ANDROID_PLATFORM_HPP
+// Copyright (c) 2021 Simon Puente
+#ifndef APP_SRC_MAIN_CPP_ANDROID_ANDROIDPLATFORM_HPP_
+#define APP_SRC_MAIN_CPP_ANDROID_ANDROIDPLATFORM_HPP_
 
 #include <android/asset_manager.h>
 
-#include "AndroidLogger.hpp"
 #include "AndroidFilesManager.hpp"
+#include "AndroidLogger.hpp"
 
-#include "../shared/Platform.hpp"
-#include "../shared/Logger.hpp"
 #include "../shared/FilesManager.hpp"
+#include "../shared/Logger.hpp"
+#include "../shared/Platform.hpp"
 
 class AndroidPlatform : public Platform {
 private:
-    AndroidLogger *aLogger;
-    AndroidFilesManager *aFilesManager;
+  AndroidLogger *aLogger;
+  AndroidFilesManager *aFilesManager;
 
 public:
-    AndroidPlatform(AAssetManager *assetManager);
-    ~AndroidPlatform();
+  explicit AndroidPlatform(AAssetManager *assetManager);
+  ~AndroidPlatform();
 
-    Logger* logger();
-    FilesManager* filesManager();
+  Logger *logger();
+  FilesManager *filesManager();
 };
 
-#endif // ANDROID_PLATFORM_HPP
+#endif // APP_SRC_MAIN_CPP_ANDROID_ANDROIDPLATFORM_HPP_
