@@ -2,8 +2,9 @@
 #ifndef APP_SRC_MAIN_CPP_LINUX_WINDOWMANAGER_WINDOWMANAGER_HPP_
 #define APP_SRC_MAIN_CPP_LINUX_WINDOWMANAGER_WINDOWMANAGER_HPP_
 
-#include "WindowCanNotBeCreated.hpp"
 #include <GLFW/glfw3.h>
+
+#include "WindowCanNotBeCreated.hpp"
 
 typedef void (*CursorPosCallback)(void *appContext, double, double);
 typedef void (*WindowSizeCallback)(void *appContext, int, int);
