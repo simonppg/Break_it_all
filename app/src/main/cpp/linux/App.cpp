@@ -11,8 +11,8 @@
 #include "../shared/Platform.hpp"
 #include "GLFWKeyMapper.hpp"
 #include "LinuxPlatform.hpp"
-#include "windowmanager/WindowManager.hpp"
 #include "windowmanager/WindowCanNotBeCreated.hpp"
+#include "windowmanager/WindowManager.hpp"
 
 App::App() {
   windowManager = new WindowManager(this);
@@ -61,7 +61,7 @@ void App::start(int sceneNumber) {
 
   try {
     windowManager->createWindow(WINDOW_WIDTH, WINDOW_HEIGHT);
-  } catch (const WindowCanNotBeCreated& ex) {
+  } catch (const WindowCanNotBeCreated &ex) {
     logger->logi("%s", ex.what());
     exit(EXIT_FAILURE);
   }

@@ -4,8 +4,8 @@
 
 #include "../common/BreakItAll.hpp"
 #include "LinuxLogger.hpp"
-#include "windowmanager/WindowManager.hpp"
 #include "windowmanager/WindowCanNotBeCreated.hpp"
+#include "windowmanager/WindowManager.hpp"
 
 using std::cout;
 using std::endl;
@@ -19,7 +19,7 @@ int main() {
 
   try {
     wm->createWindow(width, height);
-  } catch (const WindowCanNotBeCreated& ex) {
+  } catch (const WindowCanNotBeCreated &ex) {
     logger->logi("%s", ex.what());
     exit(EXIT_FAILURE);
   }
