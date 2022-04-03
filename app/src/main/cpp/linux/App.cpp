@@ -59,7 +59,7 @@ void App::start(int sceneNumber) {
 
   logger->logi("%d", sceneNumber);
 
-  try{
+  try {
     windowManager->createWindow(WINDOW_WIDTH, WINDOW_HEIGHT);
   } catch (const WindowCanNotBeCreated& ex) {
     logger->logi("%s", ex.what());

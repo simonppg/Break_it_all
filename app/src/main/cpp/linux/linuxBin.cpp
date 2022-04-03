@@ -17,7 +17,7 @@ int main() {
   int width = 450, height = 800;
   WindowManager *wm = new WindowManager(NULL);
 
-  try{
+  try {
     wm->createWindow(width, height);
   } catch (const WindowCanNotBeCreated& ex) {
     logger->logi("%s", ex.what());
