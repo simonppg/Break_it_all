@@ -8,7 +8,7 @@
 #include "../shared/Logger.hpp"
 #include "../shared/Platform.hpp"
 #include "GLFWKeyMapper.hpp"
-#include "WindowManager.hpp"
+#include "windowmanager/WindowManager.hpp"
 
 class App {
 private:

@@ -6,13 +6,7 @@ include(cmake/glfw.cmake)
 
 add_subdirectory(shared/strings)
 add_subdirectory(common)
-
-add_library(WindowManager
-  STATIC
-  linux/WindowManager.cpp)
-
-target_link_libraries(WindowManager
-  glfw)
+add_subdirectory(linux/windowmanager)
 
 add_library(Platform
   STATIC
