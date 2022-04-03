@@ -46,7 +46,7 @@ If everything when well, the app should start running, and a new window will sho
 - Handle window resize.
 - Cursor position change detection.
 - Key press detections only for ESC, W, A, S, D and L keys.
-- Touch screen detection (Android only).
+- Touchscreen detection (Android only).
 
 ### Recompile app
 
