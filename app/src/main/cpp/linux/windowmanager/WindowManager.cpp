@@ -1,6 +1,6 @@
 // Copyright (c) 2021 Simon Puente
 #include "WindowManager.hpp"
-#include "windowmanager/WindowCanNotBeCreated.hpp"
+#include "WindowCanNotBeCreated.hpp"
 
 WindowManager::WindowManager(void *appContext)
     : appContext(appContext), cursorPosCallback(NULL), windowSizeCallback(NULL),
