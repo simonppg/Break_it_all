@@ -44,7 +44,7 @@ jobs:
 
     - name: Coverage
       working-directory: ${{github.workspace}}/build
-      run: pwd && make coverage && pwd && ls -l
+      run: make coverage && ls -l && pwd
 
     - name: Report code coverage
       uses: zgosalvez/github-actions-report-lcov@v1
