@@ -11,7 +11,6 @@
 #include "../shared/Platform.hpp"
 #include "GLFWKeyMapper.hpp"
 #include "LinuxPlatform.hpp"
-#include "windowmanager/WindowCanNotBeCreated.hpp"
 #include "windowmanager/WindowManager.hpp"
 
 App::App() {

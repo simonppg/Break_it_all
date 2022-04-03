@@ -4,6 +4,8 @@
 
 #include <GLFW/glfw3.h>
 
+#include "WindowCanNotBeCreated.hpp"
+
 typedef void (*CursorPosCallback)(void *appContext, double, double);
 typedef void (*WindowSizeCallback)(void *appContext, int, int);
 typedef void (*KeyCallback)(void *appContext, int, int, int, int);
