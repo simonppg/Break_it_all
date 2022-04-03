@@ -4,7 +4,7 @@
 
 #include <exception>
 
-using namespace std;
+using std::exception;
 
 class WindowCanNotBeCreated : public exception {
   public:
