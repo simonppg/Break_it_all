@@ -4,7 +4,6 @@
 
 #include "../common/BreakItAll.hpp"
 #include "LinuxLogger.hpp"
-#include "windowmanager/WindowCanNotBeCreated.hpp"
 #include "windowmanager/WindowManager.hpp"
 
 using std::cout;
