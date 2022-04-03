@@ -95,7 +95,7 @@ If non of that works, you still can build with android studio.
 - android sdk version 30
 - android ndk
 
-You can stall android studio with this commands:
+You can install android studio with this commands:
 
 ```shell
 sudo add-apt-repository ppa:maarten-fonville/android-studio
