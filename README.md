@@ -20,14 +20,14 @@ You can build a Android version using Android Studio or a desktop version buildi
 - libgles2-mesa-dev
 - xorg-dev
 - adb
-- android sdk version 30
+- Android sdk version 30
 - androind studio # to download the SDK, still don't know how to make gradle download it before the build
 
 ### Build in Linux
 
-1. First you need to have the android sdk install somewhere.
+1. First you need to have the Android sdk install somewhere.
 2. Then clone the project.
-3. Now manualy create a `local.properties` file in the root of the project with the android sdk directory like this: `sdk.dir=/home/<User>/Android/Sdk`, **NOTE**: replace <User> with your user name.
+3. Now manualy create a `local.properties` file in the root of the project with the Android sdk directory like this: `sdk.dir=/home/<User>/Android/Sdk`, **NOTE**: replace <User> with your username.
 4. Finally you can run the build script `build-linux.sh` to build and run the app.
 
 
@@ -61,7 +61,7 @@ make run
 
 ### From terminal
 
-This commands would build and run the app on your android phone and then show the logcat on the console.
+This commands would build and run the app on your Android phone and then show the logcat on the console.
 
 ```shell
 ./gradlew run
@@ -86,16 +86,16 @@ Other useful gradle tasks:
 
 ### From Android Studio
 
-If non of that works, you still can build with android studio.
+If non of that works, you still can build with Android studio.
 
 ### Android studio dependencies
 
-- android studio of course.
+- Android studio of course.
 - cmake
-- android sdk version 30
-- android ndk
+- Android sdk version 30
+- Android ndk
 
-You can install android studio with this commands:
+You can install Android studio with this commands:
 
 ```shell
 sudo add-apt-repository ppa:maarten-fonville/android-studio
