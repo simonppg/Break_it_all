@@ -19,8 +19,11 @@ add_custom_target(check
         DEPENDS executeTests)
 
 add_custom_target(coverage
-        COMMAND lcov -c -d ${common_binary_dir} -o cov.info
+        COMMAND lcov -c -i -d ${CMAKE_BINARY_DIR} -o base.info
+        COMMAND executeTests
+        COMMAND lcov -c -d ${CMAKE_BINARY_DIR} -o test.info
+        COMMAND lcov -a base.info -a test.info -o cov.info
         COMMAND genhtml cov.info -o out
         COMMAND google-chrome out/index.html
-        DEPENDS check
+        DEPENDS executeTests
         WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
