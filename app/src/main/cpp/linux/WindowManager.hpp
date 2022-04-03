@@ -34,7 +34,7 @@ public:
   void setWindowSizeCallback(WindowSizeCallback);
   void setKeyCallback(KeyCallback);
 
-  int createWindow(int width, int height);
+  void createWindow(int width, int height);
   void destroyWindow();
   void pollEvents();
   void refreshWindow();

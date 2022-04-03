@@ -1,5 +1,6 @@
 // Copyright (c) 2021 Simon Puente
 #include "WindowManager.hpp"
+#include "windowmanager/WindowCanNotBeCreated.hpp"
 
 WindowManager::WindowManager(void *appContext)
     : appContext(appContext), cursorPosCallback(NULL), windowSizeCallback(NULL),
@@ -42,9 +43,9 @@ void WindowManager::errorCallback(int error, const char *description) {
   // TODO(simonpp): handle error here
 }
 
-int WindowManager::createWindow(int width, int height) {
+void WindowManager::createWindow(int width, int height) {
   if (!glfwInit()) {
-    return -1;
+    throw WindowCanNotBeCreated();
   }
 
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
@@ -54,7 +55,7 @@ int WindowManager::createWindow(int width, int height) {
 
   if (!this->window) {
     glfwTerminate();
-    return -1;
+    throw WindowCanNotBeCreated();
   }
 
   glfwMakeContextCurrent(this->window);
@@ -65,8 +66,6 @@ int WindowManager::createWindow(int width, int height) {
   glfwSetWindowSizeCallback(this->window, notifyWindowSize);
   glfwSetKeyCallback(this->window, notifyKey);
   glfwSetErrorCallback(this->errorCallback);
-
-  return 0;
 }
 
 void WindowManager::destroyWindow() {

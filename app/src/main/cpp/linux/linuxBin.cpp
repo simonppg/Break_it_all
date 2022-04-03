@@ -5,6 +5,7 @@
 #include "../common/BreakItAll.hpp"
 #include "LinuxLogger.hpp"
 #include "WindowManager.hpp"
+#include "windowmanager/WindowCanNotBeCreated.hpp"
 
 using std::cout;
 using std::endl;
@@ -16,7 +17,10 @@ int main() {
   int width = 450, height = 800;
   WindowManager *wm = new WindowManager(NULL);
 
-  if (wm->createWindow(width, height) != 0) {
+  try{
+    wm->createWindow(width, height);
+  } catch (const WindowCanNotBeCreated& ex) {
+    logger->logi("%s", ex.what());
     exit(EXIT_FAILURE);
   }
 
