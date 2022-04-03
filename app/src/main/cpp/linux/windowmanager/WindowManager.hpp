@@ -1,6 +1,6 @@
 // Copyright (c) 2021 Simon Puente
-#ifndef APP_SRC_MAIN_CPP_LINUX_WINDOWMANAGER_HPP_
-#define APP_SRC_MAIN_CPP_LINUX_WINDOWMANAGER_HPP_
+#ifndef APP_SRC_MAIN_CPP_LINUX_WINDOWMANAGER_WINDOWMANAGER_HPP_
+#define APP_SRC_MAIN_CPP_LINUX_WINDOWMANAGER_WINDOWMANAGER_HPP_
 
 #include <GLFW/glfw3.h>
 
@@ -34,10 +34,10 @@ public:
   void setWindowSizeCallback(WindowSizeCallback);
   void setKeyCallback(KeyCallback);
 
-  int createWindow(int width, int height);
+  void createWindow(int width, int height);
   void destroyWindow();
   void pollEvents();
   void refreshWindow();
 };
 
-#endif // APP_SRC_MAIN_CPP_LINUX_WINDOWMANAGER_HPP_
+#endif // APP_SRC_MAIN_CPP_LINUX_WINDOWMANAGER_WINDOWMANAGER_HPP_
