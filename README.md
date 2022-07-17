@@ -21,7 +21,7 @@ You can build a Android version using Android Studio or a desktop version buildi
 - xorg-dev
 - adb
 - Android sdk version 30
-- androind studio # to download the SDK, still don't know how to make gradle download it before the build
+- Android Studio # to download the SDK, still don't know how to make gradle download it before the build
 
 ### Build in Linux
 
