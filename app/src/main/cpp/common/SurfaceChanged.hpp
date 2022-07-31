@@ -5,14 +5,14 @@
 
 class SurfaceChanged : public Event {
 private:
-    double w, h;
+  double w, h;
 
 public:
-    SurfaceChanged (double w, double h);
+  SurfaceChanged(double w, double h);
 
-    EventType type();
-    double width();
-    double height();
+  EventType type();
+  double width();
+  double height();
 };
 
 #endif // COMMON_SURFACE_CHANGED_HPP
