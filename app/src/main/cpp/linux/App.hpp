@@ -4,6 +4,7 @@
 
 #include "../common/EventFactory.hpp"
 #include "../common/Game.hpp"
+#include "../common/Event.hpp"
 #include "../shared/FilesManager.hpp"
 #include "../shared/Logger.hpp"
 #include "../shared/Platform.hpp"
@@ -24,6 +25,7 @@ private:
   static void windowSizeCallback(void *appContext, int width, int height);
   static void keyCallback(void *appContext, int key, int scancode, int action,
                           int mods);
+  void publish(Event *e);
 
 public:
   App();

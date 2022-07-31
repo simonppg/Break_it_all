@@ -5,6 +5,7 @@
 #include "../shared/Logger.hpp"
 #include "../shared/Platform.hpp"
 #include "CursorPositionChanged.hpp"
+#include "SurfaceChanged.hpp"
 #include "Dimension.hpp"
 #include "Game.hpp"
 #include "Key.hpp"
@@ -105,6 +106,15 @@ void Game::surfaceChanged(int width, int height) {
   pScene->surfaceChanged(width, height);
 }
 
+void Game::surfaceChangedHandler(SurfaceChanged *event) {
+  Dimension dimension = Dimension(event->width(), event->height());
+  std::stringstream sstream;
+  sstream << dimension;
+  logger->logi(sstream.str());
+
+  pScene->surfaceChanged(event->width(), event->height());
+}
+
 void Game::update() { pScene->update(); }
 
 void Game::render() { pScene->render(); }
@@ -115,6 +125,14 @@ void Game::resume() { pScene->resume(); }
 
 void Game::dispatchEvent(Event *event) {
   EventType eventType = event->type();
+
+  if (eventType == EventType::SURFACE_CHANGED) {
+    logger->logi("SURFACE_CHANGED");
+
+    auto realEvent = reinterpret_cast<SurfaceChanged *>(event);
+    surfaceChangedHandler(realEvent);
+    return;
+  }
 
   if (eventType == EventType::CURSOR_POSITION_CHANGED) {
     logger->logi("CURSOR_POSITION_CHANGED");

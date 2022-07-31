@@ -24,18 +24,16 @@ App::App() {
 
 void App::cursorCallback(void *appContext, double x, double y) {
   App *app = reinterpret_cast<App *>(appContext);
-  EventFactory *eventFactory = app->eventFactory;
-  Game *game = app->game;
-
-  auto event = eventFactory->cursorPositionChanged(x, y);
-  game->dispatchEvent(event);
+  app->publish(new CursorPositionChanged(x, y));
 }
 
 void App::windowSizeCallback(void *appContext, int width, int height) {
   App *app = reinterpret_cast<App *>(appContext);
-  Game *game = app->game;
+  app->publish(new SurfaceChanged(width, height));
+}
 
-  game->surfaceChanged(width, height);
+void App::publish(Event *event) {
+  game->dispatchEvent(event);
 }
 
 void App::keyCallback(void *appContext, int key, int scancode, int action,

@@ -7,6 +7,7 @@
 #include "../shared/FilesManager.hpp"
 #include "Event.hpp"
 #include "CursorPositionChanged.hpp"
+#include "SurfaceChanged.hpp"
 #include "KeyPressed.hpp"
 #include "ScreenTouched.hpp"
 
@@ -25,6 +26,7 @@ private:
     void cursorPositionChangedHandler(CursorPositionChanged *event);
     void keyPressedHandler(KeyPressed *event);
     void screenTouchedHandler(ScreenTouched *event);
+    void surfaceChangedHandler(SurfaceChanged *event);
 
 public:
     Game(int sceneNumber, Platform *platform);
