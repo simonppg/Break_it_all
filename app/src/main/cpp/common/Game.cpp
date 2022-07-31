@@ -97,15 +97,6 @@ void Game::surfaceCreated() {
   pScene->surfaceCreated();
 }
 
-void Game::surfaceChanged(int width, int height) {
-  Dimension dimension = Dimension(width, height);
-  std::stringstream sstream;
-  sstream << dimension;
-  logger->logi(sstream.str());
-
-  pScene->surfaceChanged(width, height);
-}
-
 void Game::surfaceChangedHandler(SurfaceChanged *event) {
   Dimension dimension = Dimension(event->width(), event->height());
   std::stringstream sstream;

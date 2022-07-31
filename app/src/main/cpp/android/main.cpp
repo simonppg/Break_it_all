@@ -25,7 +25,7 @@ Java_com_example_game_jni_Game_surfaceCreated(JNIEnv *env, jclass cls) {
 
 JNIEXPORT void JNICALL Java_com_example_game_jni_Game_surfaceChanged(
     JNIEnv *env, jclass cls, jint width, jint height) {
-  game->surfaceChanged(width, height);
+  game->dispatchEvent(new SurfaceChanged(width, height));
 }
 
 JNIEXPORT void JNICALL Java_com_example_game_jni_Game_drawFrame(JNIEnv *env,
