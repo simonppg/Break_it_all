@@ -40,7 +40,7 @@ void Test2::surfaceCreated() {
 }
 
 void Test2::surfaceChanged(Dimension dimension) {
-    glViewport(0, 0, dimension.getWidth(), dimension.getHeight());
+  glViewport(0, 0, dimension.getWidth(), dimension.getHeight());
 }
 
 void Test2::pause() { glDeleteProgram(programID); }
