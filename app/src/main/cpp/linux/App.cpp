@@ -32,21 +32,20 @@ void App::windowSizeCallback(void *appContext, int width, int height) {
   app->publish(new SurfaceChanged(width, height));
 }
 
-void App::publish(Event *event) {
-  game->dispatchEvent(event);
-}
-
 void App::keyCallback(void *appContext, int key, int scancode, int action,
                       int mods) {
   App *app = reinterpret_cast<App *>(appContext);
   EventFactory *eventFactory = app->eventFactory;
-  Game *game = app->game;
   GLFWKeyMapper *keyMapper = app->keyMapper;
 
   Key myKey = keyMapper->mapKey(key);
   PressState pressState = keyMapper->mapPressState(action);
 
   auto event = eventFactory->keyPressed(myKey, pressState);
+  app->publish(event);
+}
+
+void App::publish(Event *event) {
   game->dispatchEvent(event);
 }
 
