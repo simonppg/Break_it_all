@@ -2,6 +2,7 @@ add_library(common STATIC
         Dimension.cpp
         FieldOfView.cpp
         CursorPositionChanged.cpp
+        SurfaceChanged.cpp
         KeyPressed.cpp
         ScreenTouched.cpp
         EventFactory.cpp

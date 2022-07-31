@@ -11,6 +11,7 @@
 #include "KeyPressed.hpp"
 #include "Point3D.hpp"
 #include "ScreenTouched.hpp"
+#include "SurfaceChanged.hpp"
 
 // Examples
 #include "SandBox.hpp"
@@ -96,13 +97,13 @@ void Game::surfaceCreated() {
   pScene->surfaceCreated();
 }
 
-void Game::surfaceChanged(int width, int height) {
-  Dimension dimension = Dimension(width, height);
+void Game::surfaceChangedHandler(SurfaceChanged *event) {
+  Dimension dimension = Dimension(event->width(), event->height());
   std::stringstream sstream;
   sstream << dimension;
   logger->logi(sstream.str());
 
-  pScene->surfaceChanged(width, height);
+  pScene->surfaceChanged(event->width(), event->height());
 }
 
 void Game::update() { pScene->update(); }
@@ -115,6 +116,14 @@ void Game::resume() { pScene->resume(); }
 
 void Game::dispatchEvent(Event *event) {
   EventType eventType = event->type();
+
+  if (eventType == EventType::SURFACE_CHANGED) {
+    logger->logi("SURFACE_CHANGED");
+
+    auto realEvent = reinterpret_cast<SurfaceChanged *>(event);
+    surfaceChangedHandler(realEvent);
+    return;
+  }
 
   if (eventType == EventType::CURSOR_POSITION_CHANGED) {
     logger->logi("CURSOR_POSITION_CHANGED");

@@ -24,33 +24,28 @@ App::App() {
 
 void App::cursorCallback(void *appContext, double x, double y) {
   App *app = reinterpret_cast<App *>(appContext);
-  EventFactory *eventFactory = app->eventFactory;
-  Game *game = app->game;
-
-  auto event = eventFactory->cursorPositionChanged(x, y);
-  game->dispatchEvent(event);
+  app->publish(new CursorPositionChanged(x, y));
 }
 
 void App::windowSizeCallback(void *appContext, int width, int height) {
   App *app = reinterpret_cast<App *>(appContext);
-  Game *game = app->game;
-
-  game->surfaceChanged(width, height);
+  app->publish(new SurfaceChanged(width, height));
 }
 
 void App::keyCallback(void *appContext, int key, int scancode, int action,
                       int mods) {
   App *app = reinterpret_cast<App *>(appContext);
   EventFactory *eventFactory = app->eventFactory;
-  Game *game = app->game;
   GLFWKeyMapper *keyMapper = app->keyMapper;
 
   Key myKey = keyMapper->mapKey(key);
   PressState pressState = keyMapper->mapPressState(action);
 
   auto event = eventFactory->keyPressed(myKey, pressState);
-  game->dispatchEvent(event);
+  app->publish(event);
 }
+
+void App::publish(Event *event) { game->dispatchEvent(event); }
 
 void App::start(int sceneNumber) {
   const int WINDOW_WIDTH = 450;
