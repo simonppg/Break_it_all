@@ -2,9 +2,9 @@
 #ifndef APP_SRC_MAIN_CPP_LINUX_APP_HPP_
 #define APP_SRC_MAIN_CPP_LINUX_APP_HPP_
 
+#include "../common/Event.hpp"
 #include "../common/EventFactory.hpp"
 #include "../common/Game.hpp"
-#include "../common/Event.hpp"
 #include "../shared/FilesManager.hpp"
 #include "../shared/Logger.hpp"
 #include "../shared/Platform.hpp"

@@ -45,9 +45,7 @@ void App::keyCallback(void *appContext, int key, int scancode, int action,
   app->publish(event);
 }
 
-void App::publish(Event *event) {
-  game->dispatchEvent(event);
-}
+void App::publish(Event *event) { game->dispatchEvent(event); }
 
 void App::start(int sceneNumber) {
   const int WINDOW_WIDTH = 450;
