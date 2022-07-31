@@ -5,13 +5,13 @@
 #include "../shared/Logger.hpp"
 #include "../shared/Platform.hpp"
 #include "CursorPositionChanged.hpp"
-#include "SurfaceChanged.hpp"
 #include "Dimension.hpp"
 #include "Game.hpp"
 #include "Key.hpp"
 #include "KeyPressed.hpp"
 #include "Point3D.hpp"
 #include "ScreenTouched.hpp"
+#include "SurfaceChanged.hpp"
 
 // Examples
 #include "SandBox.hpp"
