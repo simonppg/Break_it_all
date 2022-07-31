@@ -1,5 +1,6 @@
-#ifndef COMMON_EVENT_TYPE_HPP
-#define COMMON_EVENT_TYPE_HPP
+// Copyright (c) 2022 Simon Puente
+#ifndef APP_SRC_MAIN_CPP_COMMON_EVENTTYPE_HPP_
+#define APP_SRC_MAIN_CPP_COMMON_EVENTTYPE_HPP_
 
 enum class EventType {
   CURSOR_POSITION_CHANGED,
@@ -8,4 +9,4 @@ enum class EventType {
   SURFACE_CHANGED
 };
 
-#endif // COMMON_EVENT_TYPE_HPP
+#endif // APP_SRC_MAIN_CPP_COMMON_EVENTTYPE_HPP_
