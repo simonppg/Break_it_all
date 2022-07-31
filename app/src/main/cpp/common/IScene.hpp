@@ -1,5 +1,6 @@
-#ifndef COMMON_ISCENE_HPP
-#define COMMON_ISCENE_HPP
+// Copyright (c) 2022 Simon Puente
+#ifndef APP_SRC_MAIN_CPP_COMMON_ISCENE_HPP_
+#define APP_SRC_MAIN_CPP_COMMON_ISCENE_HPP_
 
 #include "Camera.hpp"
 
@@ -7,17 +8,18 @@
 
 class IScene {
 protected:
-    unsigned int programID;
-public:
-    virtual void surfaceCreated() = 0;
-    virtual void render() = 0;
-    virtual void surfaceChanged(Dimension) = 0;
-    virtual void pause() = 0;
-    virtual void resume() = 0;
-    virtual void update() = 0;
-    virtual bool events(double d, double d1) = 0;
+  unsigned int programID;
 
-    Camera *camera = nullptr;
+public:
+  virtual void surfaceCreated() = 0;
+  virtual void render() = 0;
+  virtual void surfaceChanged(Dimension) = 0;
+  virtual void pause() = 0;
+  virtual void resume() = 0;
+  virtual void update() = 0;
+  virtual bool events(double d, double d1) = 0;
+
+  Camera *camera = nullptr;
 };
 
-#endif // COMMON_ISCENE_HPP
+#endif // APP_SRC_MAIN_CPP_COMMON_ISCENE_HPP_

@@ -1,5 +1,6 @@
-#ifndef COMMON_TEST1_HPP
-#define COMMON_TEST1_HPP
+// Copyright (c) 2022 Simon Puente
+#ifndef APP_SRC_MAIN_CPP_COMMON_TEST1_HPP_
+#define APP_SRC_MAIN_CPP_COMMON_TEST1_HPP_
 
 #include "IScene.hpp"
 
@@ -16,4 +17,4 @@ public:
   bool events(double xpos, double ypos) override;
 };
 
-#endif // COMMON_TEST1_HPP
+#endif // APP_SRC_MAIN_CPP_COMMON_TEST1_HPP_

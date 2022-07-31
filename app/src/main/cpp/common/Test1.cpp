@@ -1,7 +1,4 @@
-//
-// Created by simonppg on 3/28/19.
-//
-
+// Copyright (c) 2022 Simon Puente
 #include "Test1.hpp"
 
 Test1::Test1() {}
