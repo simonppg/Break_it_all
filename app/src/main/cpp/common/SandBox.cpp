@@ -54,9 +54,9 @@ void SandBox::render() {
   }
 }
 
-void SandBox::surfaceChanged(int width, int height) {
-  this->camera->updateDimension(Dimension(width, height));
-  glViewport(0, 0, width, height);
+void SandBox::surfaceChanged(Dimension dimension) {
+  this->camera->updateDimension(dimension);
+  glViewport(0, 0, dimension.getWidth(), dimension.getHeight());
 }
 
 void SandBox::pause() {}

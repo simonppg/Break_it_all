@@ -60,8 +60,8 @@ void Test3::surfaceCreated() {
     free(frag);
 }
 
-void Test3::surfaceChanged(int width, int height) {
-  glViewport(0, 0, width, height);
+void Test3::surfaceChanged(Dimension dimension) {
+    glViewport(0, 0, dimension.getWidth(), dimension.getHeight());
 }
 
 void Test3::pause() { glDeleteProgram(programID); }

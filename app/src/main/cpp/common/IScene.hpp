@@ -11,7 +11,7 @@ protected:
 public:
     virtual void surfaceCreated() = 0;
     virtual void render() = 0;
-    virtual void surfaceChanged(int width, int height) = 0;
+    virtual void surfaceChanged(Dimension) = 0;
     virtual void pause() = 0;
     virtual void resume() = 0;
     virtual void update() = 0;
