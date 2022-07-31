@@ -1,5 +1,6 @@
-#ifndef COMMON_GAME_HPP
-#define COMMON_GAME_HPP
+// Copyright (c) 2022 Simon Puente
+#ifndef APP_SRC_MAIN_CPP_COMMON_GAME_HPP_
+#define APP_SRC_MAIN_CPP_COMMON_GAME_HPP_
 
 #include "../shared/FilesManager.hpp"
 #include "../shared/Logger.hpp"
@@ -41,4 +42,4 @@ public:
   void dispatchEvent(Event *event);
 };
 
-#endif // COMMON_GAME_HPP
+#endif // APP_SRC_MAIN_CPP_COMMON_GAME_HPP_

@@ -1,5 +1,6 @@
-#ifndef COMMON_SURFACE_CHANGED_HPP
-#define COMMON_SURFACE_CHANGED_HPP
+// Copyright (c) 2022 Simon Puente
+#ifndef APP_SRC_MAIN_CPP_COMMON_SURFACECHANGED_HPP_
+#define APP_SRC_MAIN_CPP_COMMON_SURFACECHANGED_HPP_
 
 #include "Event.hpp"
 
@@ -15,4 +16,4 @@ public:
   double height();
 };
 
-#endif // COMMON_SURFACE_CHANGED_HPP
+#endif // APP_SRC_MAIN_CPP_COMMON_SURFACECHANGED_HPP_
