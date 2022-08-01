@@ -69,7 +69,7 @@ void SandBox::update() {
   }
 }
 
-bool SandBox::events(double xpos, double ypos) {
+bool SandBox::events(Point2D point) {
   pov_in_degrees += 5.0f;
   return true;
 }

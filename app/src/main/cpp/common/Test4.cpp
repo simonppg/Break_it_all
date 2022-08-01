@@ -4,6 +4,7 @@
 #include "Dimension.hpp"
 #include "Math.hpp"
 #include "Object.hpp"
+#include "Point2D.hpp"
 #include "Point3D.hpp"
 #include "Projection.hpp"
 
@@ -143,10 +144,10 @@ void Test4::update() {
   last_time = clock();
 }
 
-bool Test4::events(double xpos, double ypos) {
+bool Test4::events(Point2D point) {
   Dimension cameraDimension = camera->getDimension();
 
-  float newX = (-cameraDimension.getWidth() / 2) + xpos;
+  float newX = (-cameraDimension.getWidth() / 2) + point.getX();
   float newY = (-cameraDimension.getHeight() / 2) + cube_y_size * 2;
 
   paddle->updatePosition(Point3D(newX, newY, 0));

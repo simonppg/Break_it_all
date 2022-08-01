@@ -34,7 +34,7 @@ public:
   void pause() override;
   void resume() override;
   void update() override;
-  bool events(double xpos, double ypos) override;
+  bool events(Point2D) override;
 
   Object *ball2;
 };
