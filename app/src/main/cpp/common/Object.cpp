@@ -1,12 +1,10 @@
-//
-// Created by simonppg on 4/23/19.
-//
-
-#include "Object.hpp"
-#include "Point3D.hpp"
+// Copyright (c) 2022 Simon Puente
 #include <GLES3/gl3.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+
+#include "Object.hpp"
+#include "Point3D.hpp"
 
 Object::Object(Camera *pCamera, ShaderProg *pProg, Mesh *pMesh)
     : angle{0}, size{Point3D(2, 1, 1)} {

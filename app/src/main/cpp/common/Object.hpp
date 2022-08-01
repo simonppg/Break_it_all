@@ -1,5 +1,6 @@
-#ifndef COMMON_OBJECT_HPP
-#define COMMON_OBJECT_HPP
+// Copyright (c) 2022 Simon Puente
+#ifndef APP_SRC_MAIN_CPP_COMMON_OBJECT_HPP_
+#define APP_SRC_MAIN_CPP_COMMON_OBJECT_HPP_
 
 #include "Camera.hpp"
 #include "DrawContext.hpp"
@@ -38,4 +39,4 @@ public:
   float x_direction = 1;
 };
 
-#endif // COMMON_OBJECT_HPP
+#endif // APP_SRC_MAIN_CPP_COMMON_OBJECT_HPP_
