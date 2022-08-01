@@ -59,11 +59,11 @@ void Game::camera_right() {
 }
 
 void Game::cursorPositionChangedHandler(CursorPositionChanged *event) {
-  pScene->events(event->getXPosition(), event->getYPosition());
+  pScene->events(Point2D(event->getXPosition(), event->getYPosition()));
 }
 
 void Game::screenTouchedHandler(ScreenTouched *event) {
-  pScene->events(event->getXPosition(), event->getYPosition());
+  pScene->events(Point2D(event->getXPosition(), event->getYPosition()));
 }
 
 void Game::keyPressedHandler(KeyPressed *event) {

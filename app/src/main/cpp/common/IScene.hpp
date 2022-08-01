@@ -5,6 +5,7 @@
 #include <GLES3/gl3.h>
 
 #include "Camera.hpp"
+#include "Point2D.hpp"
 
 class IScene {
 protected:
@@ -17,7 +18,7 @@ public:
   virtual void pause() = 0;
   virtual void resume() = 0;
   virtual void update() = 0;
-  virtual bool events(double d, double d1) = 0;
+  virtual bool events(Point2D) = 0;
 
   Camera *camera = nullptr;
 };

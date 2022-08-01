@@ -13,7 +13,7 @@ public:
   void pause() override;
   void resume() override;
   void update() override;
-  bool events(double xpos, double ypos) override;
+  bool events(Point2D) override;
 };
 
 #endif // APP_SRC_MAIN_CPP_COMMON_TEST1_HPP_

@@ -70,4 +70,4 @@ void Test3::resume() { glUseProgram(programID); }
 
 void Test3::update() {}
 
-bool Test3::events(double xpos, double ypos) { return false; }
+bool Test3::events(Point2D point) { return false; }
