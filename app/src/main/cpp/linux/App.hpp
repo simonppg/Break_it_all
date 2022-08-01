@@ -2,6 +2,7 @@
 #ifndef APP_SRC_MAIN_CPP_LINUX_APP_HPP_
 #define APP_SRC_MAIN_CPP_LINUX_APP_HPP_
 
+#include "../common/Event.hpp"
 #include "../common/EventFactory.hpp"
 #include "../common/Game.hpp"
 #include "../shared/FilesManager.hpp"
@@ -24,6 +25,7 @@ private:
   static void windowSizeCallback(void *appContext, int width, int height);
   static void keyCallback(void *appContext, int key, int scancode, int action,
                           int mods);
+  void publish(Event *e);
 
 public:
   App();

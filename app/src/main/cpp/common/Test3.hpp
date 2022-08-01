@@ -18,7 +18,7 @@ public:
   explicit Test3(FilesManager *filesManager);
 
   void surfaceCreated() override;
-  void surfaceChanged(int width, int height) override;
+  void surfaceChanged(Dimension) override;
   void render() override;
   void pause() override;
   void resume() override;
