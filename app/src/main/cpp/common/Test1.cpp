@@ -20,4 +20,4 @@ void Test1::resume() {}
 
 void Test1::update() {}
 
-bool Test1::events(double xpos, double ypos) { return false; }
+bool Test1::events(Point2D point) { return false; }
