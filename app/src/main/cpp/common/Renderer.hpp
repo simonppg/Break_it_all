@@ -12,8 +12,10 @@ private:
 public:
   void load_model(Mesh *pMesh);
   void draw(DrawContext *pDrawContex);
-  static unsigned int loadShader(unsigned int shaderType, const char *shaderSource);
-  unsigned int createProgram(const char *vertexSource, const char *fragmentSource);
+  static unsigned int loadShader(unsigned int shaderType,
+                                 const char *shaderSource);
+  unsigned int createProgram(const char *vertexSource,
+                             const char *fragmentSource);
 };
 
 #endif // COMMON_RENDERER_HPP

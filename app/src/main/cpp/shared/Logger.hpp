@@ -7,15 +7,15 @@ using std::string;
 
 class Logger {
 protected:
-    const string LOG_TAG = "libNative";
+  const string LOG_TAG = "libNative";
 
 public:
-    virtual ~Logger() = default;
+  virtual ~Logger() = default;
 
-    virtual void sayHello() = 0;
-    virtual void logi(char aChar) = 0;
-    virtual void logi(const char* fortmat, ...) = 0;
-    virtual void logi(string aString) = 0;
+  virtual void sayHello() = 0;
+  virtual void logi(char aChar) = 0;
+  virtual void logi(const char *fortmat, ...) = 0;
+  virtual void logi(string aString) = 0;
 };
 
 #endif // LOGGER_HPP

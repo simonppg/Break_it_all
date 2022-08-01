@@ -7,9 +7,9 @@ using std::endl;
 #include <glm/gtc/matrix_transform.hpp>
 
 #include "Camera.hpp"
-#include "Projection.hpp"
 #include "Dimension.hpp"
 #include "FieldOfView.hpp"
+#include "Projection.hpp"
 
 using glm::mat4;
 
@@ -33,43 +33,44 @@ Point3D Camera::getPosition() { return position; }
 float Camera::aspectRatio() { return dimension.aspectRatio(); }
 
 void Camera::updateDimension(Dimension dimension) {
-    cout << "old: " << this->dimension << ",new: "<< dimension << endl;
+  cout << "old: " << this->dimension << ",new: " << dimension << endl;
   this->dimension = Dimension(dimension);
   updateProjection();
 }
 
 void Camera::updatePosition(Point3D position) {
-    this->position = Point3D(position);
-    updateProjection();
+  this->position = Point3D(position);
+  updateProjection();
 }
 
 void Camera::setProjection(Projection projection) {
-    this->projection = projection;
-    updateProjection();
+  this->projection = projection;
+  updateProjection();
 }
 
 // NOTE: MUST be called after change position, dimension or fov
 void Camera::updateProjection() {
-    mat4 perspective;
+  mat4 perspective;
 
-    if(projection == Projection::PERSPECTIVE)
-        perspective = glm::perspective(glm::radians(fov.getFov()), aspectRatio(), fov.getNcp(), fov.getFcp());
-    else {
-        if (dimension.getWidth() > dimension.getHeight()) {
-            top = dimension.getWidth()/2;
-            bottom = -top;
-            right = top * aspectRatio();
-            left = -right;
-        }
-        else {
-            right = dimension.getWidth()/2;
-            left = -right;
-            top = right / aspectRatio();
-            bottom = -top;
-        }
-        perspective = glm::ortho(left, right, bottom, top, fov.getNcp(),fov.getFcp());
+  if (projection == Projection::PERSPECTIVE)
+    perspective = glm::perspective(glm::radians(fov.getFov()), aspectRatio(),
+                                   fov.getNcp(), fov.getFcp());
+  else {
+    if (dimension.getWidth() > dimension.getHeight()) {
+      top = dimension.getWidth() / 2;
+      bottom = -top;
+      right = top * aspectRatio();
+      left = -right;
+    } else {
+      right = dimension.getWidth() / 2;
+      left = -right;
+      top = right / aspectRatio();
+      bottom = -top;
     }
+    perspective =
+        glm::ortho(left, right, bottom, top, fov.getNcp(), fov.getFcp());
+  }
 
-    cameraTranslate = glm::translate(perspective, vec3(-position.getX(), -position.getY(), -position.getZ()));
+  cameraTranslate = glm::translate(
+      perspective, vec3(-position.getX(), -position.getY(), -position.getZ()));
 }
-

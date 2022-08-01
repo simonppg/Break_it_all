@@ -5,7 +5,7 @@
 
 class Event {
 public:
-    virtual EventType type() = 0;
+  virtual EventType type() = 0;
 };
 
 #endif // COMMON_EVENT_HPP

@@ -5,14 +5,14 @@
 
 class CursorPositionChanged : public Event {
 private:
-    double xPosition, yPosition;
+  double xPosition, yPosition;
 
 public:
-    CursorPositionChanged (double xPosition, double yPosition);
+  CursorPositionChanged(double xPosition, double yPosition);
 
-    EventType type();
-    double getXPosition();
-    double getYPosition();
+  EventType type();
+  double getXPosition();
+  double getYPosition();
 };
 
 #endif // COMMON_CURSOR_POSITION_CHANGED_HPP

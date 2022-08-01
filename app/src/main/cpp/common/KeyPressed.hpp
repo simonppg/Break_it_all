@@ -6,15 +6,15 @@
 
 class KeyPressed : public Event {
 private:
-    Key aKey;
-    PressState aPressState;
+  Key aKey;
+  PressState aPressState;
 
 public:
-    KeyPressed(Key key, PressState pressState);
+  KeyPressed(Key key, PressState pressState);
 
-    EventType type();
-    Key key();
-    PressState pressState();
+  EventType type();
+  Key key();
+  PressState pressState();
 };
 
 #endif // COMMON_KEY_PRESSED_HPP

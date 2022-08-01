@@ -5,14 +5,14 @@
 
 class ScreenTouched : public Event {
 private:
-    double xPosition, yPosition;
+  double xPosition, yPosition;
 
 public:
-    ScreenTouched(double xPosition, double yPosition);
+  ScreenTouched(double xPosition, double yPosition);
 
-    EventType type();
-    double getXPosition();
-    double getYPosition();
+  EventType type();
+  double getXPosition();
+  double getYPosition();
 };
 
 #endif // COMMON_SCREEN_TOUCHED_HPP

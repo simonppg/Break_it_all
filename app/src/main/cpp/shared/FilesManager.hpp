@@ -3,9 +3,9 @@
 
 class FilesManager {
 public:
-    virtual ~FilesManager() = default;
+  virtual ~FilesManager() = default;
 
-    virtual char* loadFile(const char *filePath) = 0;
+  virtual char *loadFile(const char *filePath) = 0;
 };
 
 #endif // FILES_MANAGER_HPP

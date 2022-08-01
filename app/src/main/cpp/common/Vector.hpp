@@ -3,10 +3,10 @@
 
 class Vector {
 public:
-    float x, y, z;
+  float x, y, z;
 
-    Vector(float x, float y, float z);
-    float length();
+  Vector(float x, float y, float z);
+  float length();
 };
 
 #endif // COMMON_VECTOR_HPP

@@ -6,8 +6,8 @@
 
 class EventFactory {
 public:
-    Event* cursorPositionChanged(double xPos, double yPos);
-    Event* keyPressed(Key key, PressState pressState);
+  Event *cursorPositionChanged(double xPos, double yPos);
+  Event *keyPressed(Key key, PressState pressState);
 };
 
 #endif // COMMON_EVENT_FACTORY_HPP
