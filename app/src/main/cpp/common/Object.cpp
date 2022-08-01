@@ -9,7 +9,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 Object::Object(Camera *pCamera, ShaderProg *pProg, Mesh *pMesh):
-    size_x{2}, size_y{1}, size_z{1}, angle{0} {
+    angle{0}, size{Point3D(2,1,1)} {
     this->position = Point3D();
     rotation = vec3(1);
     this->camera = pCamera;
@@ -29,7 +29,7 @@ void Object::draw() {
 
     translate = glm::translate(camera->cameraTranslate, vec3(position.getX(), position.getY(), position.getZ()));
     rotate = glm::rotate(translate, glm::radians(angle), rotation);
-    scale = glm::scale(rotate, glm::vec3(size_x, size_y, size_z));
+    scale = glm::scale(rotate, glm::vec3(size.getX(), size.getY(), size.getZ()));
 
     draw_context->programID = prog->programID;
     draw_context->type = mesh->type;
@@ -48,10 +48,8 @@ void Object::updatePosition(Point3D position) {
     this->position = position;
 }
 
-void Object::update_size(float size_x, float size_y, float size_z) {
-    this->size_x = size_x;
-    this->size_y = size_y;
-    this->size_z = size_z;
+void Object::updateSize(Point3D size) {
+    this->size = size;
 }
 
 void Object::set_rotation_angle(float angle) {

@@ -14,11 +14,11 @@ protected:
     Renderer *renderer;
     DrawContext *draw_context;
     Camera *camera;
-    float size_x, size_y, size_z;
     vec3 rotation;
     float angle;
     Mesh *mesh;
     Point3D position;
+    Point3D size;
 
 public:
     Object(Camera *pCamera, ShaderProg *pProg, Mesh *pMesh);
@@ -27,7 +27,7 @@ public:
 
     void draw();
     void updatePosition(Point3D position);
-    void update_size(float size_x, float size_y, float size_z);
+    void updateSize(Point3D size);
     void set_rotation_angle(float angle);
     void animate_x();
     void animate_y();
