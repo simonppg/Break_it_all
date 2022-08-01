@@ -103,7 +103,7 @@ void Game::surfaceChangedHandler(SurfaceChanged *event) {
   sstream << dimension;
   logger->logi(sstream.str());
 
-  pScene->surfaceChanged(event->width(), event->height());
+  pScene->surfaceChanged(dimension);
 }
 
 void Game::update() { pScene->update(); }

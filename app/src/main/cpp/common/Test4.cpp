@@ -89,9 +89,12 @@ void Test4::surfaceCreated() {
   }
 }
 
-void Test4::surfaceChanged(int width, int height) {
+void Test4::surfaceChanged(Dimension dimension) {
+  double width = dimension.getWidth();
+  double height = dimension.getHeight();
+
   glViewport(0, 0, width, height);
-  camera->updateDimension(Dimension(width, height));
+  camera->updateDimension(dimension);
 
   // h = (float)height/2;
   // h = camera->top;
