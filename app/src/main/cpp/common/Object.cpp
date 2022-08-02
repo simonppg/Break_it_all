@@ -24,9 +24,8 @@ void Object::draw(mat4 cameraTranslate) {
   mat4 rotate;
   mat4 scale;
 
-  translate =
-      glm::translate(cameraTranslate,
-                     vec3(position.getX(), position.getY(), position.getZ()));
+  translate = glm::translate(
+      cameraTranslate, vec3(position.getX(), position.getY(), position.getZ()));
   rotate = glm::rotate(translate, glm::radians(angle), rotation);
   scale = glm::scale(rotate, glm::vec3(size.getX(), size.getY(), size.getZ()));
 
