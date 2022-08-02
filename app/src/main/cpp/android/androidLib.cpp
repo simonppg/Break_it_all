@@ -7,6 +7,9 @@
 Logger *logger = new AndroidLogger();
 BreakItAll *game = new BreakItAll();
 
+using std::cout;
+using std::endl;
+
 #ifdef __cplusplus
 extern "C" {
 #endif
