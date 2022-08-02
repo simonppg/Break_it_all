@@ -138,7 +138,6 @@ void Test4::update() {
   auto time = static_cast<double>(clock());
   float dt = static_cast<float>((time - last_time) / CLOCKS_PER_SEC);
 
-
   Point3D ballPosition = ball->getPosition();
   ball->velocity += ball->acceleration * dt;
 
@@ -155,7 +154,6 @@ void Test4::update() {
 
   last_time = clock();
 }
-
 
 bool Test4::events(Point2D point) {
   Dimension cameraDimension = camera->getDimension();
