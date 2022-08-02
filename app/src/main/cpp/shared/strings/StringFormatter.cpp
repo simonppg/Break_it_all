@@ -1,3 +1,4 @@
+// Copyright (c) 2022 Simon Puente
 #include <cstdarg>
 #include <sstream>
 #include <string>
@@ -16,7 +17,6 @@ string StringFormatter::format(const char *format, va_list args) {
   stringstream sstream;
 
   for (p = format; *p; p++) {
-
     if (*p != '%') {
       sstream << *p;
       continue;
@@ -24,7 +24,7 @@ string StringFormatter::format(const char *format, va_list args) {
 
     switch (*++p) {
     case 'c':
-      cval = (char)va_arg(args, int);
+      cval = static_cast<char>(va_arg(args, int));
       sstream << cval;
       break;
     case 'd':

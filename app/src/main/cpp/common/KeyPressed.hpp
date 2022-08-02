@@ -1,20 +1,21 @@
-#ifndef COMMON_KEY_PRESSED_HPP
-#define COMMON_KEY_PRESSED_HPP
+// Copyright (c) 2022 Simon Puente
+#ifndef APP_SRC_MAIN_CPP_COMMON_KEYPRESSED_HPP_
+#define APP_SRC_MAIN_CPP_COMMON_KEYPRESSED_HPP_
 
 #include "Event.hpp"
 #include "Key.hpp"
 
 class KeyPressed : public Event {
 private:
-    Key aKey;
-    PressState aPressState;
+  Key aKey;
+  PressState aPressState;
 
 public:
-    KeyPressed(Key key, PressState pressState);
+  KeyPressed(Key key, PressState pressState);
 
-    EventType type();
-    Key key();
-    PressState pressState();
+  EventType type();
+  Key key();
+  PressState pressState();
 };
 
-#endif // COMMON_KEY_PRESSED_HPP
+#endif // APP_SRC_MAIN_CPP_COMMON_KEYPRESSED_HPP_

@@ -1,26 +1,30 @@
-#ifndef COMMON_BREAK_IT_ALL_HPP
-#define COMMON_BREAK_IT_ALL_HPP
+// Copyright (c) 2022 Simon Puente
+#ifndef APP_SRC_MAIN_CPP_COMMON_BREAKITALL_HPP_
+#define APP_SRC_MAIN_CPP_COMMON_BREAKITALL_HPP_
 
-#include <string.h>
 #include <iostream>
+#include <string>
 #include <vector>
+
 #include "ShaderLoader.hpp"
 
-using namespace std;
+using std::string;
+using std::vector;
 
 class BreakItAll {
 private:
-    ShaderLoader shaderLoader = ShaderLoader();
-    std::vector<std::string> examples {"SandBox New", "Window", "Triangle", "Circle", "orthographic"};
-    GLuint createProgram(const char* vertexSource, const char * fragmentSource);
+  ShaderLoader shaderLoader = ShaderLoader();
+  vector<string> examples{"SandBox New", "Window", "Triangle", "Circle",
+                          "orthographic"};
+  GLuint createProgram(const char *vertexSource, const char *fragmentSource);
 
 public:
-    void init();
-    void render();
-    void resume();
-    void pause();
-    string* exampleList();
-    void exampleList(vector<string>*);
+  void init();
+  void render();
+  void resume();
+  void pause();
+  string *exampleList();
+  void exampleList(vector<string> *);
 };
 
-#endif // COMMON_BREAK_IT_ALL_HPP
+#endif // APP_SRC_MAIN_CPP_COMMON_BREAKITALL_HPP_

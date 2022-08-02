@@ -1,3 +1,4 @@
+// Copyright (c) 2022 Simon Puente
 #include "ShaderLoader.hpp"
 #include <malloc.h>
 
@@ -15,10 +16,14 @@ int ShaderLoader::getInfoLogLength(GLenum shader) {
 
 void ShaderLoader::showShaderInfoLog(GLenum shader) {
   int infoLength = getInfoLogLength(shader);
-  if (!infoLength) { return; }
+  if (!infoLength) {
+    return;
+  }
 
-  char *buf = (char *)malloc(sizeof(char) * infoLength);
-  if (!buf) { return; }
+  char *buf = reinterpret_cast<char *>(malloc(sizeof(char) * infoLength));
+  if (!buf) {
+    return;
+  }
 
   glGetShaderInfoLog(shader, infoLength, NULL, buf);
   // LOGE("%s", buf);
@@ -31,12 +36,16 @@ GLuint ShaderLoader::loadShader(GLenum shaderType, const char *shaderSource) {
 
   // glCreateShader return 0 when there is an error
   GLuint shader = glCreateShader(shaderType);
-  if (!shader) { return error; }
+  if (!shader) {
+    return error;
+  }
 
   glShaderSource(shader, 1, &shaderSource, NULL);
   glCompileShader(shader);
 
-  if (isCompilationOk(shader)) { return shader; }
+  if (isCompilationOk(shader)) {
+    return shader;
+  }
 
   showShaderInfoLog(shader);
   glDeleteShader(shader);

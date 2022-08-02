@@ -1,11 +1,12 @@
-#ifndef COMMON_EVENT_HPP
-#define COMMON_EVENT_HPP
+// Copyright (c) 2022 Simon Puente
+#ifndef APP_SRC_MAIN_CPP_COMMON_EVENT_HPP_
+#define APP_SRC_MAIN_CPP_COMMON_EVENT_HPP_
 
 #include "EventType.hpp"
 
 class Event {
 public:
-    virtual EventType type() = 0;
+  virtual EventType type() = 0;
 };
 
-#endif // COMMON_EVENT_HPP
+#endif // APP_SRC_MAIN_CPP_COMMON_EVENT_HPP_

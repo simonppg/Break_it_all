@@ -1,13 +1,14 @@
-#ifndef PLATFORM_HPP
-#define PLATFORM_HPP
+// Copyright (c) 2022 Simon Puente
+#ifndef APP_SRC_MAIN_CPP_SHARED_PLATFORM_HPP_
+#define APP_SRC_MAIN_CPP_SHARED_PLATFORM_HPP_
 
-#include "Logger.hpp"
 #include "FilesManager.hpp"
+#include "Logger.hpp"
 
 class Platform {
 public:
-    virtual Logger* logger() = 0;
-    virtual FilesManager* filesManager() = 0;
+  virtual Logger *logger() = 0;
+  virtual FilesManager *filesManager() = 0;
 };
 
-#endif // PLATFORM_HPP
+#endif // APP_SRC_MAIN_CPP_SHARED_PLATFORM_HPP_

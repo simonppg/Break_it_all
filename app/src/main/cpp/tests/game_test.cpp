@@ -1,8 +1,9 @@
+// Copyright (c) 2022 Simon Puente
 #include <gtest/gtest.h>
 
+#include "../common/Dimension.hpp"
 #include "../common/Math.hpp"
 #include "../common/Vector.hpp"
-#include "../common/Dimension.hpp"
 
 // TEST(GameTest, getSectionsSize) {
 //     float size;
@@ -22,22 +23,22 @@
 // }
 
 TEST(GameTest, gridSize) {
-    int row = 10;
-    int col = 9;
-    vector<float> Va, Vb, Vc, Vd;
-    Math math = Math();
+  int row = 10;
+  int col = 9;
+  vector<float> Va, Vb, Vc, Vd;
+  Math math = Math();
 
-    Va = math.generateGrid(Dimension(400, 800), 2, 2);
-    ASSERT_EQ(Va.size(), 2 * 2 * 2);
+  Va = math.generateGrid(Dimension(400, 800), 2, 2);
+  ASSERT_EQ(Va.size(), 2 * 2 * 2);
 
-    Vb = math.generateGrid(Dimension(400, 800), row, col);
-    ASSERT_EQ(Vb.size(), row * col * 2);
+  Vb = math.generateGrid(Dimension(400, 800), row, col);
+  ASSERT_EQ(Vb.size(), row * col * 2);
 
-    Vc = math.generateGrid(Dimension(400, 800), row + 10, col + 10);
-    ASSERT_EQ(Vc.size(), (row + 10) * (col + 10) * 2);
+  Vc = math.generateGrid(Dimension(400, 800), row + 10, col + 10);
+  ASSERT_EQ(Vc.size(), (row + 10) * (col + 10) * 2);
 
-    Vd = math.generateGrid(Dimension(10, 10), 10, 10);
-    ASSERT_EQ(Vd.size(), 200);
+  Vd = math.generateGrid(Dimension(10, 10), 10, 10);
+  ASSERT_EQ(Vd.size(), 200);
 }
 
 // TEST(GameTest, gridXPos) {
@@ -76,52 +77,50 @@ TEST(GameTest, gridSize) {
 // }
 
 TEST(GameTest, vectorNew) {
-    Vector *v;
+  Vector *v;
 
-    v = new Vector(1, 1, 1);
-    ASSERT_FLOAT_EQ(v->x, 1);
-    ASSERT_FLOAT_EQ(v->y, 1);
-    ASSERT_FLOAT_EQ(v->z, 1);
-    delete v;
+  v = new Vector(1, 1, 1);
+  ASSERT_FLOAT_EQ(v->x, 1);
+  ASSERT_FLOAT_EQ(v->y, 1);
+  ASSERT_FLOAT_EQ(v->z, 1);
+  delete v;
 
-    v = new Vector(5, 25, 30);
-    ASSERT_FLOAT_EQ(v->x, 5);
-    ASSERT_FLOAT_EQ(v->y, 25);
-    ASSERT_FLOAT_EQ(v->z, 30);
-    delete v;
-
+  v = new Vector(5, 25, 30);
+  ASSERT_FLOAT_EQ(v->x, 5);
+  ASSERT_FLOAT_EQ(v->y, 25);
+  ASSERT_FLOAT_EQ(v->z, 30);
+  delete v;
 }
 
 TEST(GameTest, vectorLength) {
-    Vector *v;
+  Vector *v;
 
-    v = new Vector(0, 0, 0);
-    ASSERT_FLOAT_EQ(v->length(), 0);
-    delete v;
+  v = new Vector(0, 0, 0);
+  ASSERT_FLOAT_EQ(v->length(), 0);
+  delete v;
 
-    v = new Vector(1, 0, 0);
-    ASSERT_FLOAT_EQ(v->length(), 1);
-    delete v;
+  v = new Vector(1, 0, 0);
+  ASSERT_FLOAT_EQ(v->length(), 1);
+  delete v;
 
-    v = new Vector(0, 1, 0);
-    ASSERT_FLOAT_EQ(v->length(), 1);
-    delete v;
+  v = new Vector(0, 1, 0);
+  ASSERT_FLOAT_EQ(v->length(), 1);
+  delete v;
 
-    v = new Vector(0, 0, 1);
-    ASSERT_FLOAT_EQ(v->length(), 1);
-    delete v;
+  v = new Vector(0, 0, 1);
+  ASSERT_FLOAT_EQ(v->length(), 1);
+  delete v;
 
-    v = new Vector(1, 1, 0);
-    ASSERT_FLOAT_EQ(v->length(), 1.4142135);
-    delete v;
+  v = new Vector(1, 1, 0);
+  ASSERT_FLOAT_EQ(v->length(), 1.4142135);
+  delete v;
 
-    v = new Vector(1, 1, 1);
-    ASSERT_FLOAT_EQ(v->length(), 1.7320508);
-    delete v;
+  v = new Vector(1, 1, 1);
+  ASSERT_FLOAT_EQ(v->length(), 1.7320508);
+  delete v;
 }
 
-int main(int argc, char **argv)
-{
-    testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
+int main(int argc, char **argv) {
+  testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
 }

@@ -1,9 +1,12 @@
+// Copyright (c) 2022 Simon Puente
 #include "CursorPositionChanged.hpp"
 #include "EventType.hpp"
 
-CursorPositionChanged::CursorPositionChanged (double xPosition, double yPosition) : xPosition(xPosition), yPosition (yPosition) {}
+CursorPositionChanged::CursorPositionChanged(double xPosition, double yPosition)
+    : xPosition(xPosition), yPosition(yPosition) {}
 
-EventType CursorPositionChanged::type() { return EventType::CURSOR_POSITION_CHANGED; }
+EventType CursorPositionChanged::type() {
+  return EventType::CURSOR_POSITION_CHANGED;
+}
 double CursorPositionChanged::getXPosition() { return xPosition; }
 double CursorPositionChanged::getYPosition() { return yPosition; }
-

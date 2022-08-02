@@ -1,5 +1,6 @@
-#ifndef STRINGS_STRING_FORMATTER_HPP
-#define STRINGS_STRING_FORMATTER_HPP
+// Copyright (c) 2022 Simon Puente
+#ifndef APP_SRC_MAIN_CPP_SHARED_STRINGS_STRINGFORMATTER_HPP_
+#define APP_SRC_MAIN_CPP_SHARED_STRINGS_STRINGFORMATTER_HPP_
 
 #include <string>
 
@@ -10,4 +11,4 @@ public:
   string format(const char *format, va_list args);
 };
 
-#endif // STRINGS_STRING_FORMATTER_HPP
+#endif // APP_SRC_MAIN_CPP_SHARED_STRINGS_STRINGFORMATTER_HPP_
