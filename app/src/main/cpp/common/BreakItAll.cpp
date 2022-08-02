@@ -3,6 +3,8 @@
 #include <GLES3/gl3.h>
 #include <iostream>
 
+using std::string;
+
 bool isProgramLinkOk(GLuint program) {
   GLint linkStatus = GL_FALSE;
   glGetProgramiv(program, GL_LINK_STATUS, &linkStatus);
@@ -82,23 +84,25 @@ void BreakItAll::init() {
   // TODO(Simon Puente): Move all GLES code to a GLESWrapper lib
   glEnable(GL_DEPTH_TEST);
 
-  const char *vert = "attribute vec3 vPosition;\n\
-                void main(void) {\n\
-                    gl_Position = vec4(vPosition, 1.0);\n\
-                }";
+  const string vert =
+    "attribute vec3 vPosition;\n"
+    "void main(void) {\n"
+      "gl_Position = vec4(vPosition, 1.0);\n"
+    "}";
 
-  const char *frag = "#ifdef GL_ES\n\
-                precision mediump float;\n\
-                #endif // GL_ES\n\
-                void main()\n\
-                {\n\
-                    gl_FragColor = vec4(1.0);\n\
-                }";
+  const string frag =
+    "#ifdef GL_ES\n"
+    "precision mediump float;\n"
+    "#endif // GL_ES\n"
+    "void main()\n"
+    "{\n"
+        "gl_FragColor = vec4(1.0);\n"
+    "}";
 
   static GLfloat vVertices[] = {0.0f, 0.5f, 0.0f,  -0.5f, -0.5f,
                                 0.0f, 0.5f, -0.5f, 0.0f};
 
-  programID = createProgram(vert, frag);
+  programID = createProgram(vert.c_str(), frag.c_str());
   glUseProgram(programID);
   glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, vVertices);
   glEnableVertexAttribArray(0);
