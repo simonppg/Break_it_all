@@ -37,7 +37,6 @@ public:
 
   float velocity;
   float acceleration = 0;
-  float x_direction = 1;
 };
 
 #endif // APP_SRC_MAIN_CPP_COMMON_OBJECT_HPP_

@@ -24,6 +24,15 @@ static float cube_y_size = cube_x_size / 7;
 
 static clock_t last_time;
 static Point3D ballSize(ball_size, ball_size, 1);
+static int xDirection = 1;
+
+static bool hitRightLimit(Dimension dimension, Point3D point) {
+  return point.getX() >= dimension.getWidth() / 2;
+}
+
+static bool hitLeftLimit(Dimension dimension, Point3D point) {
+  return point.getX() <= -dimension.getWidth() / 2;
+}
 
 Test4::Test4(FilesManager *filesManager) {
   camera =
@@ -131,13 +140,14 @@ void Test4::update() {
 
   Point3D ballPosition = ball->getPosition();
   ball->velocity += ball->acceleration * dt;
-  if (ballPosition.getX() >= camera->getDimension().getWidth() / 2)
-    ball->x_direction = -1;
-  if (ballPosition.getX() <= -camera->getDimension().getWidth() / 2)
-    ball->x_direction = 1;
+
+  if (hitRightLimit(camera->getDimension(), ballPosition))
+    xDirection = -1;
+  if (hitLeftLimit(camera->getDimension(), ballPosition))
+    xDirection = 1;
 
   Point3D newBallPosition =
-      ballPosition.incrementX(ball->velocity * dt * ball->x_direction);
+      ballPosition.incrementX(ball->velocity * dt * xDirection);
   ball->updatePosition(newBallPosition);
 
   // LOGI("%f, %f, %f, %f", dt, ball->velocity, ball->velocity * dt, ball->x);
