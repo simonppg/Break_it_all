@@ -8,7 +8,7 @@ Mesh::Mesh(float *vertex, int v_size) {
   type = MeshType::TWO;
 }
 
-Mesh::Mesh(float *vertex, int v_size, short *indices, int i_size) {
+Mesh::Mesh(float *vertex, int v_size, int16_t *indices, int i_size) {
   this->vertex = vertex;
   this->numVertices = v_size;
 

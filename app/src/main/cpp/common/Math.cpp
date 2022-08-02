@@ -43,10 +43,10 @@ float *Math::get_circle(float radius, int number_of_vertices) {
   return v;
 }
 
-short *Math::get_cube_index() {
-  short *indices;
+int16_t *Math::get_cube_index() {
+  int16_t *indices;
 #define size 36
-  indices = (short *)malloc(sizeof(short) * size);
+  indices = (int16_t *)malloc(sizeof(int16_t) * size);
 
   short p[] = {// right face 0,1,4,5
                0, 1, 4, 1, 4, 5,

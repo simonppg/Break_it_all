@@ -20,7 +20,7 @@ void ShaderLoader::showShaderInfoLog(GLenum shader) {
     return;
   }
 
-  char *buf = (char *)malloc(sizeof(char) * infoLength);
+  char *buf = reinterpret_cast<char *>(malloc(sizeof(char) * infoLength));
   if (!buf) {
     return;
   }

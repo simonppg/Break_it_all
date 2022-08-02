@@ -16,11 +16,11 @@ using glm::vec3;
 class Mesh {
 public:
   Mesh(float *pDouble, int i);
-  Mesh(float *vertex, int v_size, short *indices, int i_size);
+  Mesh(float *vertex, int v_size, int16_t *indices, int i_size);
 
   MeshType type;
   float *vertex;
-  short *indices;
+  int16_t *indices;
   int numVertices;
   int numIndices;
   unsigned int vbo; // vertex buffer object

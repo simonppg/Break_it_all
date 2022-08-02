@@ -2,17 +2,19 @@
 #ifndef APP_SRC_MAIN_CPP_COMMON_BREAKITALL_HPP_
 #define APP_SRC_MAIN_CPP_COMMON_BREAKITALL_HPP_
 
-#include "ShaderLoader.hpp"
 #include <iostream>
-#include <string.h>
+#include <string>
 #include <vector>
 
-using namespace std;
+#include "ShaderLoader.hpp"
+
+using std::string;
+using std::vector;
 
 class BreakItAll {
 private:
   ShaderLoader shaderLoader = ShaderLoader();
-  std::vector<std::string> examples{"SandBox New", "Window", "Triangle",
+  vector<string> examples{"SandBox New", "Window", "Triangle",
                                     "Circle", "orthographic"};
   GLuint createProgram(const char *vertexSource, const char *fragmentSource);
 

@@ -18,7 +18,7 @@ public:
   int32_t numIndices;
   mat4 matrix_transform;
   int32_t numVertices;
-  short *indices;
+  int16_t *indices;
 };
 
 #endif // APP_SRC_MAIN_CPP_COMMON_DRAWCONTEXT_HPP_
