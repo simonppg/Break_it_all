@@ -84,20 +84,18 @@ void BreakItAll::init() {
   // TODO(Simon Puente): Move all GLES code to a GLESWrapper lib
   glEnable(GL_DEPTH_TEST);
 
-  const string vert =
-    "attribute vec3 vPosition;\n"
-    "void main(void) {\n"
-      "gl_Position = vec4(vPosition, 1.0);\n"
-    "}";
+  const string vert = "attribute vec3 vPosition;\n"
+                      "void main(void) {\n"
+                      "gl_Position = vec4(vPosition, 1.0);\n"
+                      "}";
 
-  const string frag =
-    "#ifdef GL_ES\n"
-    "precision mediump float;\n"
-    "#endif // GL_ES\n"
-    "void main()\n"
-    "{\n"
-        "gl_FragColor = vec4(1.0);\n"
-    "}";
+  const string frag = "#ifdef GL_ES\n"
+                      "precision mediump float;\n"
+                      "#endif // GL_ES\n"
+                      "void main()\n"
+                      "{\n"
+                      "gl_FragColor = vec4(1.0);\n"
+                      "}";
 
   static GLfloat vVertices[] = {0.0f, 0.5f, 0.0f,  -0.5f, -0.5f,
                                 0.0f, 0.5f, -0.5f, 0.0f};
