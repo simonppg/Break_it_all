@@ -1,3 +1,4 @@
+// Copyright (c) 2022 Simon Puente
 #ifndef COMMON_DIMENSION_HPP
 #define COMMON_DIMENSION_HPP
 

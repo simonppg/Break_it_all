@@ -1,3 +1,4 @@
+// Copyright (c) 2022 Simon Puente
 #include <cmath>
 
 // Get the Square root of a number.

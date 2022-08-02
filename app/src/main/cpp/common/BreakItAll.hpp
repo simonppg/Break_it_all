@@ -1,3 +1,4 @@
+// Copyright (c) 2022 Simon Puente
 #ifndef COMMON_BREAK_IT_ALL_HPP
 #define COMMON_BREAK_IT_ALL_HPP
 

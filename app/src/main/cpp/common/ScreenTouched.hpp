@@ -1,3 +1,4 @@
+// Copyright (c) 2022 Simon Puente
 #ifndef COMMON_SCREEN_TOUCHED_HPP
 #define COMMON_SCREEN_TOUCHED_HPP
 

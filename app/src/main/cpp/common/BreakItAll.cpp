@@ -1,3 +1,4 @@
+// Copyright (c) 2022 Simon Puente
 #include "BreakItAll.hpp"
 #include <GLES3/gl3.h>
 #include <iostream>

@@ -1,3 +1,4 @@
+// Copyright (c) 2022 Simon Puente
 #ifndef COMMON_EVENT_FACTORY_HPP
 #define COMMON_EVENT_FACTORY_HPP
 

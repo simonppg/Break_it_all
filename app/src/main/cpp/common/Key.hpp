@@ -1,3 +1,4 @@
+// Copyright (c) 2022 Simon Puente
 #ifndef COMMON_KEY_HPP
 #define COMMON_KEY_HPP
 

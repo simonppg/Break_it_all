@@ -1,3 +1,4 @@
+// Copyright (c) 2022 Simon Puente
 #ifndef LOGGER_HPP
 #define LOGGER_HPP
 

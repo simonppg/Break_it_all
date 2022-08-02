@@ -1,3 +1,4 @@
+// Copyright (c) 2022 Simon Puente
 #ifndef COMMON_FIELD_OF_VIEW_HPP
 #define COMMON_FIELD_OF_VIEW_HPP
 

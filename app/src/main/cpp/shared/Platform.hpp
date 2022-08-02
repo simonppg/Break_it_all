@@ -1,3 +1,4 @@
+// Copyright (c) 2022 Simon Puente
 #ifndef PLATFORM_HPP
 #define PLATFORM_HPP
 

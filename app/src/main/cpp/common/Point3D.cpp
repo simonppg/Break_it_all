@@ -1,3 +1,4 @@
+// Copyright (c) 2022 Simon Puente
 #include "Point3D.hpp"
 
 Point3D::Point3D(void) : x(0.0), y(0.0), z(0.0) {}

@@ -1,3 +1,4 @@
+// Copyright (c) 2022 Simon Puente
 #ifndef COMMON_VECTOR_HPP
 #define COMMON_VECTOR_HPP
 

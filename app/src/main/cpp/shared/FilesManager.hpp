@@ -1,3 +1,4 @@
+// Copyright (c) 2022 Simon Puente
 #ifndef FILES_MANAGER_HPP
 #define FILES_MANAGER_HPP
 

@@ -1,3 +1,4 @@
+// Copyright (c) 2022 Simon Puente
 #ifndef COMMON_CURSOR_POSITION_CHANGED_HPP
 #define COMMON_CURSOR_POSITION_CHANGED_HPP
 

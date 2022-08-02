@@ -1,3 +1,4 @@
+// Copyright (c) 2022 Simon Puente
 #ifndef COMMON_POINT3D_HPP
 #define COMMON_POINT3D_HPP
 

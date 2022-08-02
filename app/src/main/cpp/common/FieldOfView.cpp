@@ -1,3 +1,4 @@
+// Copyright (c) 2022 Simon Puente
 #include "FieldOfView.hpp"
 
 FieldOfView::FieldOfView() : ncp(0.1f), fcp(100.0f), fov(60.0f) {}

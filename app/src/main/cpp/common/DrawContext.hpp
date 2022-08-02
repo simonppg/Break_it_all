@@ -1,3 +1,4 @@
+// Copyright (c) 2022 Simon Puente
 #ifndef COMMON_DRAW_CONTEXT_HPP
 #define COMMON_DRAW_CONTEXT_HPP
 

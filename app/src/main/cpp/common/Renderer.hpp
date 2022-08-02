@@ -1,3 +1,4 @@
+// Copyright (c) 2022 Simon Puente
 #ifndef COMMON_RENDERER_HPP
 #define COMMON_RENDERER_HPP
 

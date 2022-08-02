@@ -1,3 +1,4 @@
+// Copyright (c) 2022 Simon Puente
 #include "EventFactory.hpp"
 
 #include "CursorPositionChanged.hpp"

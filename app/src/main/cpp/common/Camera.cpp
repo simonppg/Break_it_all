@@ -1,3 +1,4 @@
+// Copyright (c) 2022 Simon Puente
 #include <iostream>
 
 using std::cout;

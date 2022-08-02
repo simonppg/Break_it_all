@@ -1,7 +1,4 @@
-//
-// Created by simonppg on 4/29/19.
-//
-
+// Copyright (c) 2022 Simon Puente
 #include "Vector.hpp"
 #include <cmath>
 

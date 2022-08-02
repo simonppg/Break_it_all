@@ -1,3 +1,4 @@
+// Copyright (c) 2022 Simon Puente
 #include "KeyPressed.hpp"
 #include "EventType.hpp"
 #include "Key.hpp"
