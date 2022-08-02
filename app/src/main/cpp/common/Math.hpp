@@ -3,6 +3,7 @@
 #define APP_SRC_MAIN_CPP_COMMON_MATH_HPP_
 
 #include <vector>
+
 #include "Dimension.hpp"
 
 using std::vector;

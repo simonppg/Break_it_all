@@ -14,8 +14,8 @@ using std::vector;
 class BreakItAll {
 private:
   ShaderLoader shaderLoader = ShaderLoader();
-  vector<string> examples{"SandBox New", "Window", "Triangle",
-                                    "Circle", "orthographic"};
+  vector<string> examples{"SandBox New", "Window", "Triangle", "Circle",
+                          "orthographic"};
   GLuint createProgram(const char *vertexSource, const char *fragmentSource);
 
 public:

@@ -1,8 +1,8 @@
 // Copyright (c) 2022 Simon Puente
 #include <cmath>
 
-#include "Math.hpp"
 #include "Dimension.hpp"
+#include "Math.hpp"
 
 vector<float> Math::generateGrid(Dimension dimension, float row, float col) {
   float width = dimension.getWidth();
@@ -49,22 +49,22 @@ int16_t *Math::get_cube_index() {
   indices = reinterpret_cast<int16_t *>(malloc(sizeof(int16_t) * size));
 
   int16_t p[] = {// right face 0,1,4,5
-               0, 1, 4, 1, 4, 5,
+                 0, 1, 4, 1, 4, 5,
 
-               // left face 2,3,6,7
-               2, 3, 6, 3, 6, 7,
+                 // left face 2,3,6,7
+                 2, 3, 6, 3, 6, 7,
 
-               // down face 0,1,2,3
-               0, 1, 2, 0, 2, 3,
+                 // down face 0,1,2,3
+                 0, 1, 2, 0, 2, 3,
 
-               // up face 4,5,6,7
-               4, 5, 6, 4, 6, 7,
+                 // up face 4,5,6,7
+                 4, 5, 6, 4, 6, 7,
 
-               // front face 1,2,5,6
-               1, 2, 5, 2, 5, 6,
+                 // front face 1,2,5,6
+                 1, 2, 5, 2, 5, 6,
 
-               // back face 0,3,4,7
-               0, 3, 4, 3, 4, 7};
+                 // back face 0,3,4,7
+                 0, 3, 4, 3, 4, 7};
 
   for (int i = 0; i < size; ++i) {
     indices[i] = p[i];
