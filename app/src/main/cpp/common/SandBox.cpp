@@ -22,7 +22,7 @@ SandBox::SandBox(FilesManager *filesManager) {
   meshes[0] = new Mesh(math->get_cube(), 8, math->get_cube_index(), 36);
 
   for (auto &i : objects) {
-    i = new Object(camera, shaderProgs[0], meshes[0]);
+    i = new Object(shaderProgs[0], meshes[0]);
     i->updateSize(Point3D(2, 1, 1));
     float x = sin(rand_r(&seed) % 20 - 10) + rand_r(&seed) % 20 - 10;
     float y = cos(rand_r(&seed) % 36 - 18) + rand_r(&seed) % 36 - 18;
@@ -50,7 +50,7 @@ void SandBox::render() {
   glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
   for (auto &i : objects) {
-    i->draw();
+    i->draw(camera->cameraTranslate);
   }
 }
 
