@@ -21,7 +21,7 @@ void showProgramInfoLog(GLuint program) {
     return;
   }
 
-  char *buf = (char *)malloc(sizeof(char) * infoLength);
+  char *buf = reinterpret_cast<char *>(malloc(sizeof(char) * infoLength));
   if (!buf) {
     return;
   }
@@ -79,7 +79,7 @@ unsigned int programID;
 void BreakItAll::init() {
   std::cout << std::endl << "Break it all" << std::endl << std::endl;
 
-  // TODO: Move all GLES code to a GLESWrapper lib
+  // TODO(Simon Puente): Move all GLES code to a GLESWrapper lib
   glEnable(GL_DEPTH_TEST);
 
   const char *vert = "attribute vec3 vPosition;\n\
@@ -89,7 +89,7 @@ void BreakItAll::init() {
 
   const char *frag = "#ifdef GL_ES\n\
                 precision mediump float;\n\
-                #endif\n\
+                #endif // GL_ES\n\
                 void main()\n\
                 {\n\
                     gl_FragColor = vec4(1.0);\n\

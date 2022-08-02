@@ -8,7 +8,6 @@
 using glm::mat4;
 
 class DrawContext {
-
 public:
   unsigned int programID;
   MeshType type;

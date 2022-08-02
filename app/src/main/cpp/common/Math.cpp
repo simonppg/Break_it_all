@@ -1,8 +1,8 @@
 // Copyright (c) 2022 Simon Puente
+#include <cmath>
+
 #include "Math.hpp"
 #include "Dimension.hpp"
-
-#include <cmath>
 
 vector<float> Math::generateGrid(Dimension dimension, float row, float col) {
   float width = dimension.getWidth();
@@ -31,7 +31,7 @@ vector<float> Math::generateGrid(Dimension dimension, float row, float col) {
 float *Math::get_circle(float radius, int number_of_vertices) {
   float *v;
 
-  v = (float *)malloc(sizeof(float) * 3 * number_of_vertices);
+  v = reinterpret_cast<float *>(malloc(sizeof(float) * 3 * number_of_vertices));
   int j = 0;
 
   for (double i = 0; i < 2 * M_PI; i += 2 * M_PI / number_of_vertices) {
@@ -46,9 +46,9 @@ float *Math::get_circle(float radius, int number_of_vertices) {
 int16_t *Math::get_cube_index() {
   int16_t *indices;
 #define size 36
-  indices = (int16_t *)malloc(sizeof(int16_t) * size);
+  indices = reinterpret_cast<int16_t *>(malloc(sizeof(int16_t) * size));
 
-  short p[] = {// right face 0,1,4,5
+  int16_t p[] = {// right face 0,1,4,5
                0, 1, 4, 1, 4, 5,
 
                // left face 2,3,6,7
@@ -77,7 +77,7 @@ int16_t *Math::get_cube_index() {
 float *Math::get_cube() {
   float *vertex;
 #define size 48
-  vertex = (float *)malloc(sizeof(float) * size);
+  vertex = reinterpret_cast<float *>(malloc(sizeof(float) * size));
 
   float p[size] = {1.0,  -1.0, -1.0, // right down back
                    1.0,  0.0,  0.0,
