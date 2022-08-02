@@ -6,11 +6,10 @@
 #include "Object.hpp"
 #include "Point3D.hpp"
 
-Object::Object(Camera *pCamera, ShaderProg *pProg, Mesh *pMesh)
+Object::Object(ShaderProg *pProg, Mesh *pMesh)
     : angle{0}, size{Point3D(2, 1, 1)} {
   this->position = Point3D();
   rotation = vec3(1);
-  this->camera = pCamera;
   this->prog = pProg;
   this->mesh = pMesh;
   acceleration = 0;
@@ -20,13 +19,13 @@ Object::Object(Camera *pCamera, ShaderProg *pProg, Mesh *pMesh)
 
 Point3D Object::getPosition() { return position; }
 
-void Object::draw() {
+void Object::draw(mat4 cameraTranslate) {
   mat4 translate;
   mat4 rotate;
   mat4 scale;
 
   translate =
-      glm::translate(camera->cameraTranslate,
+      glm::translate(cameraTranslate,
                      vec3(position.getX(), position.getY(), position.getZ()));
   rotate = glm::rotate(translate, glm::radians(angle), rotation);
   scale = glm::scale(rotate, glm::vec3(size.getX(), size.getY(), size.getZ()));

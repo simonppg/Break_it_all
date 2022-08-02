@@ -9,12 +9,13 @@
 #include "Renderer.hpp"
 #include "ShaderProg.hpp"
 
+using glm::mat4;
+
 class Object {
 protected:
   ShaderProg *prog;
   Renderer *renderer;
   DrawContext *draw_context;
-  Camera *camera;
   vec3 rotation;
   float angle;
   Mesh *mesh;
@@ -22,11 +23,11 @@ protected:
   Point3D size;
 
 public:
-  Object(Camera *pCamera, ShaderProg *pProg, Mesh *pMesh);
+  Object(ShaderProg *pProg, Mesh *pMesh);
 
   Point3D getPosition();
 
-  void draw();
+  void draw(mat4);
   void updatePosition(Point3D position);
   void updateSize(Point3D size);
   void set_rotation_angle(float angle);

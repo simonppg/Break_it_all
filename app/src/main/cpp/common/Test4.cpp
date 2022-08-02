@@ -46,22 +46,22 @@ Test4::Test4(FilesManager *filesManager) {
 
   vPos = math->generateGrid(gridDimension, ROW, COL);
   for (int i = 0; i < ROW * COL; i++) {
-    objects[i] = new Object(camera, shaderProgs[1], meshes[0]);
+    objects[i] = new Object(shaderProgs[1], meshes[0]);
     objects[i]->updateSize(Point3D(x_size / 2, y_size / 2, 1));
     objects[i]->updatePosition(Point3D(vPos[i * 2], vPos[i * 2 + 1], 0));
   }
 
-  ball = new Object(camera, shaderProgs[1], meshes[1]);
+  ball = new Object(shaderProgs[1], meshes[1]);
   ball->updateSize(ballSize);
   ball->updatePosition(Point3D(0, camera->bottom + camera->top / 3, 0));
   ball->animate_x();
 
-  paddle = new Object(camera, shaderProgs[1], meshes[0]);
+  paddle = new Object(shaderProgs[1], meshes[0]);
   paddle->updateSize(Point3D(cube_x_size, cube_y_size, 1));
   paddle->updatePosition(Point3D(0, camera->bottom + cube_y_size * 2, 1));
   paddle->animate_y();
 
-  ball2 = new Object(camera, shaderProgs[1], meshes[1]);
+  ball2 = new Object(shaderProgs[1], meshes[1]);
   ball2->updateSize(ballSize);
   ball2->updatePosition(Point3D(camera->left, camera->top, 0));
   ball2->animate_x();
@@ -72,11 +72,11 @@ void Test4::render() {
   glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
   for (auto &i : objects) {
-    i->draw();
+    i->draw(camera->cameraTranslate);
   }
-  ball->draw();
-  paddle->draw();
-  ball2->draw();
+  ball->draw(camera->cameraTranslate);
+  paddle->draw(camera->cameraTranslate);
+  ball2->draw(camera->cameraTranslate);
 }
 
 void Test4::surfaceCreated() {
