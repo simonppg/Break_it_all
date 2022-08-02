@@ -1,6 +1,6 @@
 // Copyright (c) 2022 Simon Puente
-#ifndef PLATFORM_HPP
-#define PLATFORM_HPP
+#ifndef APP_SRC_MAIN_CPP_SHARED_PLATFORM_HPP_
+#define APP_SRC_MAIN_CPP_SHARED_PLATFORM_HPP_
 
 #include "FilesManager.hpp"
 #include "Logger.hpp"
@@ -11,4 +11,4 @@ public:
   virtual FilesManager *filesManager() = 0;
 };
 
-#endif // PLATFORM_HPP
+#endif // APP_SRC_MAIN_CPP_SHARED_PLATFORM_HPP_

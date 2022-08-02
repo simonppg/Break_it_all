@@ -1,6 +1,6 @@
 // Copyright (c) 2022 Simon Puente
-#ifndef COMMON_BREAK_IT_ALL_HPP
-#define COMMON_BREAK_IT_ALL_HPP
+#ifndef APP_SRC_MAIN_CPP_COMMON_BREAKITALL_HPP_
+#define APP_SRC_MAIN_CPP_COMMON_BREAKITALL_HPP_
 
 #include "ShaderLoader.hpp"
 #include <iostream>
@@ -25,4 +25,4 @@ public:
   void exampleList(vector<string> *);
 };
 
-#endif // COMMON_BREAK_IT_ALL_HPP
+#endif // APP_SRC_MAIN_CPP_COMMON_BREAKITALL_HPP_

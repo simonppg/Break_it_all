@@ -1,9 +1,9 @@
 // Copyright (c) 2022 Simon Puente
-#ifndef COMMON_KEY_HPP
-#define COMMON_KEY_HPP
+#ifndef APP_SRC_MAIN_CPP_COMMON_KEY_HPP_
+#define APP_SRC_MAIN_CPP_COMMON_KEY_HPP_
 
 enum class Key { UNKNOWN, A_KEY, S_KEY, D_KEY, W_KEY, L_KEY, ESCAPE_KEY };
 
 enum class PressState { UNKNOWN, KEY_PRESSED, KEY_HOLDED, KEY_RELEASED };
 
-#endif // COMMON_KEY_HPP
+#endif // APP_SRC_MAIN_CPP_COMMON_KEY_HPP_

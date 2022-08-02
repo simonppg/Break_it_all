@@ -1,6 +1,6 @@
 // Copyright (c) 2022 Simon Puente
-#ifndef COMMON_POINT3D_HPP
-#define COMMON_POINT3D_HPP
+#ifndef APP_SRC_MAIN_CPP_COMMON_POINT3D_HPP_
+#define APP_SRC_MAIN_CPP_COMMON_POINT3D_HPP_
 
 class Point3D {
 public:
@@ -23,4 +23,4 @@ private:
   float x, y, z;
 };
 
-#endif // COMMON_POINT3D_HPP
+#endif // APP_SRC_MAIN_CPP_COMMON_POINT3D_HPP_

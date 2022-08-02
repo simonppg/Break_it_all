@@ -1,6 +1,6 @@
 // Copyright (c) 2022 Simon Puente
-#ifndef COMMON_VECTOR_HPP
-#define COMMON_VECTOR_HPP
+#ifndef APP_SRC_MAIN_CPP_COMMON_VECTOR_HPP_
+#define APP_SRC_MAIN_CPP_COMMON_VECTOR_HPP_
 
 class Vector {
 public:
@@ -10,4 +10,4 @@ public:
   float length();
 };
 
-#endif // COMMON_VECTOR_HPP
+#endif // APP_SRC_MAIN_CPP_COMMON_VECTOR_HPP_

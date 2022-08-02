@@ -1,6 +1,6 @@
 // Copyright (c) 2022 Simon Puente
-#ifndef FILES_MANAGER_HPP
-#define FILES_MANAGER_HPP
+#ifndef APP_SRC_MAIN_CPP_SHARED_FILESMANAGER_HPP_
+#define APP_SRC_MAIN_CPP_SHARED_FILESMANAGER_HPP_
 
 class FilesManager {
 public:
@@ -9,4 +9,4 @@ public:
   virtual char *loadFile(const char *filePath) = 0;
 };
 
-#endif // FILES_MANAGER_HPP
+#endif // APP_SRC_MAIN_CPP_SHARED_FILESMANAGER_HPP_

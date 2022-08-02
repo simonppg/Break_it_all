@@ -1,6 +1,6 @@
 // Copyright (c) 2022 Simon Puente
-#ifndef COMMON_EVENT_FACTORY_HPP
-#define COMMON_EVENT_FACTORY_HPP
+#ifndef APP_SRC_MAIN_CPP_COMMON_EVENTFACTORY_HPP_
+#define APP_SRC_MAIN_CPP_COMMON_EVENTFACTORY_HPP_
 
 #include "Event.hpp"
 #include "Key.hpp"
@@ -11,4 +11,4 @@ public:
   Event *keyPressed(Key key, PressState pressState);
 };
 
-#endif // COMMON_EVENT_FACTORY_HPP
+#endif // APP_SRC_MAIN_CPP_COMMON_EVENTFACTORY_HPP_

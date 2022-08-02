@@ -1,6 +1,6 @@
 // Copyright (c) 2022 Simon Puente
-#ifndef COMMON_MATH_HPP
-#define COMMON_MATH_HPP
+#ifndef APP_SRC_MAIN_CPP_COMMON_MATH_HPP_
+#define APP_SRC_MAIN_CPP_COMMON_MATH_HPP_
 
 #include "Dimension.hpp"
 #include <vector>
@@ -15,4 +15,4 @@ public:
   short *get_cube_index();
 };
 
-#endif // COMMON_MATH_HPP
+#endif // APP_SRC_MAIN_CPP_COMMON_MATH_HPP_

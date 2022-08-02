@@ -1,6 +1,6 @@
 // Copyright (c) 2022 Simon Puente
-#ifndef COMMON_FIELD_OF_VIEW_HPP
-#define COMMON_FIELD_OF_VIEW_HPP
+#ifndef APP_SRC_MAIN_CPP_COMMON_FIELDOFVIEW_HPP_
+#define APP_SRC_MAIN_CPP_COMMON_FIELDOFVIEW_HPP_
 
 class FieldOfView {
 private:
@@ -16,4 +16,4 @@ public:
   float getFov();
 };
 
-#endif // COMMON_FIELD_OF_VIEW_HPP
+#endif // APP_SRC_MAIN_CPP_COMMON_FIELDOFVIEW_HPP_

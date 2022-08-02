@@ -1,6 +1,6 @@
 // Copyright (c) 2022 Simon Puente
-#ifndef COMMON_SCREEN_TOUCHED_HPP
-#define COMMON_SCREEN_TOUCHED_HPP
+#ifndef APP_SRC_MAIN_CPP_COMMON_SCREENTOUCHED_HPP_
+#define APP_SRC_MAIN_CPP_COMMON_SCREENTOUCHED_HPP_
 
 #include "Event.hpp"
 
@@ -16,4 +16,4 @@ public:
   double getYPosition();
 };
 
-#endif // COMMON_SCREEN_TOUCHED_HPP
+#endif // APP_SRC_MAIN_CPP_COMMON_SCREENTOUCHED_HPP_

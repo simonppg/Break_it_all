@@ -1,6 +1,6 @@
 // Copyright (c) 2022 Simon Puente
-#ifndef COMMON_RENDERER_HPP
-#define COMMON_RENDERER_HPP
+#ifndef APP_SRC_MAIN_CPP_COMMON_RENDERER_HPP_
+#define APP_SRC_MAIN_CPP_COMMON_RENDERER_HPP_
 
 #include "DrawContext.hpp"
 #include "Mesh.hpp"
@@ -19,4 +19,4 @@ public:
                              const char *fragmentSource);
 };
 
-#endif // COMMON_RENDERER_HPP
+#endif // APP_SRC_MAIN_CPP_COMMON_RENDERER_HPP_

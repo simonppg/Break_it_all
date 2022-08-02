@@ -1,6 +1,6 @@
 // Copyright (c) 2022 Simon Puente
-#ifndef COMMON_KEY_PRESSED_HPP
-#define COMMON_KEY_PRESSED_HPP
+#ifndef APP_SRC_MAIN_CPP_COMMON_KEYPRESSED_HPP_
+#define APP_SRC_MAIN_CPP_COMMON_KEYPRESSED_HPP_
 
 #include "Event.hpp"
 #include "Key.hpp"
@@ -18,4 +18,4 @@ public:
   PressState pressState();
 };
 
-#endif // COMMON_KEY_PRESSED_HPP
+#endif // APP_SRC_MAIN_CPP_COMMON_KEYPRESSED_HPP_

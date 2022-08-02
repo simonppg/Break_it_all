@@ -1,6 +1,6 @@
 // Copyright (c) 2022 Simon Puente
-#ifndef COMMON_MESH_HPP
-#define COMMON_MESH_HPP
+#ifndef APP_SRC_MAIN_CPP_COMMON_MESH_HPP_
+#define APP_SRC_MAIN_CPP_COMMON_MESH_HPP_
 
 #include "Camera.hpp"
 #include "MeshType.hpp"
@@ -27,4 +27,4 @@ public:
   unsigned int iab; // index array buffer
 };
 
-#endif // COMMON_MESH_HPP
+#endif // APP_SRC_MAIN_CPP_COMMON_MESH_HPP_

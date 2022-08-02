@@ -1,6 +1,6 @@
 // Copyright (c) 2022 Simon Puente
-#ifndef COMMON_DRAW_CONTEXT_HPP
-#define COMMON_DRAW_CONTEXT_HPP
+#ifndef APP_SRC_MAIN_CPP_COMMON_DRAWCONTEXT_HPP_
+#define APP_SRC_MAIN_CPP_COMMON_DRAWCONTEXT_HPP_
 
 #include "MeshType.hpp"
 #include <glm/glm.hpp>
@@ -21,4 +21,4 @@ public:
   short *indices;
 };
 
-#endif // COMMON_DRAW_CONTEXT_HPP
+#endif // APP_SRC_MAIN_CPP_COMMON_DRAWCONTEXT_HPP_

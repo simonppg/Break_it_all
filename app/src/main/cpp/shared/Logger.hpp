@@ -1,6 +1,6 @@
 // Copyright (c) 2022 Simon Puente
-#ifndef LOGGER_HPP
-#define LOGGER_HPP
+#ifndef APP_SRC_MAIN_CPP_SHARED_LOGGER_HPP_
+#define APP_SRC_MAIN_CPP_SHARED_LOGGER_HPP_
 
 #include <string>
 
@@ -19,4 +19,4 @@ public:
   virtual void logi(string aString) = 0;
 };
 
-#endif // LOGGER_HPP
+#endif // APP_SRC_MAIN_CPP_SHARED_LOGGER_HPP_

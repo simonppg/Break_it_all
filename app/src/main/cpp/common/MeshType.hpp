@@ -1,7 +1,7 @@
-#ifndef COMMON_MESH_TYPE_HPP
-#define COMMON_MESH_TYPE_HPP
+#ifndef APP_SRC_MAIN_CPP_COMMON_MESHTYPE_HPP_
+#define APP_SRC_MAIN_CPP_COMMON_MESHTYPE_HPP_
 
 // TODO: use better names
 enum class MeshType { ONE, TWO };
 
-#endif // COMMON_MESH_TYPE_HPP
+#endif // APP_SRC_MAIN_CPP_COMMON_MESHTYPE_HPP_

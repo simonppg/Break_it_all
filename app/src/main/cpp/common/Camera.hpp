@@ -1,6 +1,6 @@
 // Copyright (c) 2022 Simon Puente
-#ifndef COMMON_CAMERA_HPP
-#define COMMON_CAMERA_HPP
+#ifndef APP_SRC_MAIN_CPP_COMMON_CAMERA_HPP_
+#define APP_SRC_MAIN_CPP_COMMON_CAMERA_HPP_
 
 #include "Dimension.hpp"
 #include "FieldOfView.hpp"
@@ -40,4 +40,4 @@ public:
   float top, bottom, right, left;
 };
 
-#endif // COMMON_CAMERA_HPP
+#endif // APP_SRC_MAIN_CPP_COMMON_CAMERA_HPP_

@@ -1,6 +1,6 @@
 // Copyright (c) 2022 Simon Puente
-#ifndef COMMON_DIMENSION_HPP
-#define COMMON_DIMENSION_HPP
+#ifndef APP_SRC_MAIN_CPP_COMMON_DIMENSION_HPP_
+#define APP_SRC_MAIN_CPP_COMMON_DIMENSION_HPP_
 
 #include <iostream>
 
@@ -21,4 +21,4 @@ private:
   friend ostream &operator<<(ostream &strm, const Dimension &dimension);
 };
 
-#endif // COMMON_DIMENSION_HPP
+#endif // APP_SRC_MAIN_CPP_COMMON_DIMENSION_HPP_
