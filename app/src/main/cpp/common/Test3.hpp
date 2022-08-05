@@ -22,7 +22,7 @@ public:
   void render() override;
   void pause() override;
   void resume() override;
-  void update() override;
+  void update(double) override;
   bool events(Point2D) override;
 };
 

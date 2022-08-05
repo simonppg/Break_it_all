@@ -6,12 +6,13 @@
 #include "../common/EventFactory.hpp"
 #include "../common/Game.hpp"
 #include "../shared/FilesManager.hpp"
+#include "../common/Iterable.hpp"
 #include "../shared/Logger.hpp"
 #include "../shared/Platform.hpp"
 #include "GLFWKeyMapper.hpp"
 #include "windowmanager/WindowManager.hpp"
 
-class App {
+class App : public Iterable {
 private:
   Game *game;
   WindowManager *windowManager;
@@ -31,6 +32,15 @@ public:
   App();
 
   void start(int sceneNumber);
+
+  // Iterable
+  void beforeLoop() override;
+  void beforeIteration() override;
+  void afterIteration() override;
+  void afterLoop() override;
+  void update(double) override;
+  void draw() override;
+  bool isRunning() override;
 };
 
 #endif // APP_SRC_MAIN_CPP_LINUX_APP_HPP_

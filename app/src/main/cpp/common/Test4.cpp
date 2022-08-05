@@ -11,7 +11,7 @@
 static const float CAMERA_WIDTH = 450.0f;
 static const float CAMERA_HEIGHT = 800.0f;
 static float pov_in_degrees = 0.0f;
-#define NUMBER_OF_VERTICES 15
+static int NUMBER_OF_VERTICES = 15;
 static float radius = 1.0;
 
 static float h = CAMERA_HEIGHT / 2;
@@ -64,6 +64,7 @@ Test4::Test4(FilesManager *filesManager) {
   ball->updateSize(ballSize);
   ball->updatePosition(Point3D(0, camera->bottom + camera->top / 3, 0));
   ball->animate_x();
+  ball->velocity = 0.01;
 
   paddle = new Object(shaderProgs[1], meshes[0]);
   paddle->updateSize(Point3D(cube_x_size, cube_y_size, 1));
@@ -133,10 +134,10 @@ void Test4::surfaceChanged(Dimension dimension) {
   ball2->updatePosition(Point3D(camera->right, camera->bottom, 0));
 }
 
-void Test4::update() {
+void Test4::update(double dt) {
   // dt = time_since last_update
-  auto time = static_cast<double>(clock());
-  float dt = static_cast<float>((time - last_time) / CLOCKS_PER_SEC);
+  // auto time = static_cast<double>(clock());
+  // float dt = static_cast<float>((time - last_time) / CLOCKS_PER_SEC);
 
   Point3D ballPosition = ball->getPosition();
   ball->velocity += ball->acceleration * dt;

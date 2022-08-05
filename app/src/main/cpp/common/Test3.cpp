@@ -68,6 +68,6 @@ void Test3::pause() { glDeleteProgram(programID); }
 
 void Test3::resume() { glUseProgram(programID); }
 
-void Test3::update() {}
+void Test3::update(double dt) {}
 
 bool Test3::events(Point2D point) { return false; }

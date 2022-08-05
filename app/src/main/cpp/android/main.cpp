@@ -30,7 +30,7 @@ JNIEXPORT void JNICALL Java_com_example_game_jni_Game_surfaceChanged(
 
 JNIEXPORT void JNICALL Java_com_example_game_jni_Game_drawFrame(JNIEnv *env,
                                                                 jclass cls) {
-  game->update();
+  game->update(600);
   game->render();
 }
 

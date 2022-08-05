@@ -106,7 +106,7 @@ void Game::surfaceChangedHandler(SurfaceChanged *event) {
   pScene->surfaceChanged(dimension);
 }
 
-void Game::update() { pScene->update(); }
+void Game::update(double dt) { pScene->update(dt); }
 
 void Game::render() { pScene->render(); }
 

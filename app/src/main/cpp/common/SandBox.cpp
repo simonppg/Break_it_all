@@ -63,7 +63,7 @@ void SandBox::pause() {}
 
 void SandBox::resume() {}
 
-void SandBox::update() {
+void SandBox::update(double dt) {
   for (auto &i : objects) {
     i->set_rotation_angle(pov_in_degrees);
   }
