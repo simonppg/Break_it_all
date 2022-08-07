@@ -3,7 +3,6 @@
 #define APP_SRC_MAIN_CPP_LINUX_APP_HPP_
 
 #include "../common/Event.hpp"
-#include "../common/EventFactory.hpp"
 #include "../common/Game.hpp"
 #include "../common/Iterable.hpp"
 #include "../shared/FilesManager.hpp"
@@ -19,7 +18,6 @@ private:
   Platform *platform;
   FilesManager *filesManager;
   Logger *logger;
-  EventFactory *eventFactory;
   GLFWKeyMapper *keyMapper;
 
   static void cursorCallback(void *appContext, double x, double y);

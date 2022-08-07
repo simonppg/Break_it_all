@@ -4,7 +4,7 @@
 
 #include "Event.hpp"
 
-class CursorPositionChanged : public Event {
+class CursorPositionChanged final : public Event {
 private:
   double xPosition, yPosition;
 
