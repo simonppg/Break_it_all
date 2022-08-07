@@ -14,7 +14,6 @@
 class Game final {
 private:
   IScene *pScene;
-  Platform *platform;
   Logger *logger;
 
   void camera_forward();
