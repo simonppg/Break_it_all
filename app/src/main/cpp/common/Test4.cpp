@@ -70,7 +70,35 @@ Test4::Test4(FilesManager *filesManager, Camera *camera) {
   ball2->animate_x();
 }
 
-void Test4::terminate() {}
+Test4::~Test4() {
+  for (auto &object : objects) {
+    delete object;
+    object = nullptr;
+  }
+  delete ball;
+  ball = nullptr;
+  delete ball2;
+  ball2 = nullptr;
+  delete paddle;
+  paddle = nullptr;
+  delete renderer;
+  renderer = nullptr;
+}
+
+void Test4::terminate() {
+  for (auto &object : objects) {
+    delete object;
+    object = nullptr;
+  }
+  delete ball;
+  ball = nullptr;
+  delete ball2;
+  ball2 = nullptr;
+  delete paddle;
+  paddle = nullptr;
+  delete renderer;
+  renderer = nullptr;
+}
 
 void Test4::render() {
   glClearColor(0.6f, 0.6f, 0.6f, 1.0f);
