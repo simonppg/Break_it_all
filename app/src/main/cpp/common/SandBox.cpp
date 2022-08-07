@@ -8,6 +8,7 @@
 #include "Dimension.hpp"
 #include "Math.hpp"
 #include "Point3D.hpp"
+#include "Renderer.hpp"
 
 using glm::mat4;
 using glm::vec3;
@@ -18,19 +19,20 @@ SandBox::SandBox(FilesManager *filesManager, Camera *camera) {
   this->camera = camera;
   shaderProg = new ShaderProg(vertexFileStr, fragmentFileStr);
   mesh = new Mesh(math->generateCube(), 8, math->generateCubeIndexs(), 36);
+  renderer = new Renderer();
 
-  unsigned int seed = time(NULL);
-  for (auto &i : objects) {
-    i = new Object(shaderProg, mesh);
-    i->updateSize(Point3D(2, 1, 1));
+  unsigned int seed = (unsigned int)time(NULL);
+  for (auto &object : objects) {
+    object = new Object(shaderProg, mesh);
+    object->updateSize(Point3D(2, 1, 1));
     float x = sin(rand_r(&seed) % 20 - 10) + rand_r(&seed) % 20 - 10;
     float y = cos(rand_r(&seed) % 36 - 18) + rand_r(&seed) % 36 - 18;
     float z = tan(rand_r(&seed) % 100 + 1) + rand_r(&seed) % 100 - 10;
 
     Point3D position = Point3D(x, y, z);
 
-    i->updatePosition(position);
-    i->animate_y();
+    object->updatePosition(position);
+    object->animate_y();
   }
 }
 
@@ -43,6 +45,8 @@ SandBox::~SandBox() {
   mesh = nullptr;
   delete shaderProg;
   shaderProg = nullptr;
+  delete renderer;
+  renderer = nullptr;
 }
 
 void SandBox::surfaceCreated() {

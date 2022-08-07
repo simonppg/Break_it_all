@@ -15,6 +15,10 @@ class SandBox final : public IScene {
 private:
   Math *math = new Math();
   float povInDegrees = 0.0f;
+  Mesh *mesh;
+  Object *objects[40];
+  ShaderProg *shaderProg;
+  Renderer *renderer;
 
 public:
   explicit SandBox(FilesManager *, Camera *);
@@ -27,11 +31,6 @@ public:
   void resume() override;
   void update(double) override;
   bool events(Point2D) override;
-
-  Mesh *mesh;
-  Object *objects[40];
-  ShaderProg *shaderProg;
-  Renderer *renderer;
 };
 
 #endif // APP_SRC_MAIN_CPP_COMMON_SANDBOX_HPP_
