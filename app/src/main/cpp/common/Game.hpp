@@ -34,7 +34,7 @@ public:
 
   // OpenGL context is in this functions
   void surfaceCreated();
-  void update();
+  void update(double);
   void render();
   void pause();
   void resume();

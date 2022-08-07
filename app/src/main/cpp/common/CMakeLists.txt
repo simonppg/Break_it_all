@@ -21,6 +21,7 @@ add_library(common STATIC
         Mesh.cpp
         Math.cpp
         Vector.cpp
+        GameLoop.cpp
         Point2D.cpp
         Point3D.cpp)
 

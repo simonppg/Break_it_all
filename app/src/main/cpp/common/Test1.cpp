@@ -18,6 +18,6 @@ void Test1::pause() {}
 
 void Test1::resume() {}
 
-void Test1::update() {}
+void Test1::update(double dt) {}
 
 bool Test1::events(Point2D point) { return false; }

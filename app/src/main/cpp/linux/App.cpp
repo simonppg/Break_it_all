@@ -6,6 +6,7 @@
 
 #include "../common/EventFactory.hpp"
 #include "../common/Game.hpp"
+#include "../common/GameLoop.hpp"
 #include "../shared/FilesManager.hpp"
 #include "../shared/Logger.hpp"
 #include "../shared/Platform.hpp"
@@ -47,11 +48,11 @@ void App::keyCallback(void *appContext, int key, int scancode, int action,
 
 void App::publish(Event *event) { game->dispatchEvent(event); }
 
-void App::start(int sceneNumber) {
+bool App::isRunning() { return !windowManager->shouldClose(); }
+
+void App::beforeLoop() {
   const int WINDOW_WIDTH = 450;
   const int WINDOW_HEIGHT = 800;
-
-  logger->logi("%d", sceneNumber);
 
   try {
     windowManager->createWindow(WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -64,18 +65,23 @@ void App::start(int sceneNumber) {
   windowManager->setWindowSizeCallback(windowSizeCallback);
   windowManager->setKeyCallback(keyCallback);
 
+  game->surfaceCreated();
+}
+
+void App::beforeIteration() { windowManager->pollEvents(); }
+
+void App::afterIteration() { windowManager->refreshWindow(); }
+
+void App::afterLoop() { windowManager->destroyWindow(); }
+
+void App::update(double dt) { game->update(dt); }
+
+void App::draw() { game->render(); }
+
+void App::start(int sceneNumber) {
+  logger->logi("%d", sceneNumber);
+
   game = new Game(sceneNumber, platform);
 
-  game->surfaceCreated();
-
-  while (!windowManager->shouldClose()) {
-    windowManager->pollEvents();
-
-    game->update();
-    game->render();
-
-    windowManager->refreshWindow();
-  }
-
-  windowManager->destroyWindow();
+  GameLoop(logger, this).loop();
 }

@@ -17,7 +17,7 @@ public:
   virtual void surfaceChanged(Dimension) = 0;
   virtual void pause() = 0;
   virtual void resume() = 0;
-  virtual void update() = 0;
+  virtual void update(double) = 0;
   virtual bool events(Point2D) = 0;
 
   Camera *camera = nullptr;
