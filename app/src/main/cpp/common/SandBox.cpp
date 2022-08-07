@@ -12,9 +12,6 @@
 using glm::mat4;
 using glm::vec3;
 
-float pov_in_degrees = 0.0f;
-unsigned int seed = time(NULL);
-
 SandBox::SandBox(FilesManager *filesManager) {
   const string vertexFileStr = filesManager->loadFile("simple.vert");
   const string fragmentFileStr = filesManager->loadFile("simple.frag");
@@ -22,6 +19,7 @@ SandBox::SandBox(FilesManager *filesManager) {
   shaderProg = new ShaderProg(vertexFileStr, fragmentFileStr);
   mesh = new Mesh(math->get_cube(), 8, math->get_cube_index(), 36);
 
+  unsigned int seed = time(NULL);
   for (auto &i : objects) {
     i = new Object(shaderProg, mesh);
     i->updateSize(Point3D(2, 1, 1));
@@ -77,11 +75,11 @@ void SandBox::resume() {}
 
 void SandBox::update(double dt) {
   for (auto &i : objects) {
-    i->set_rotation_angle(pov_in_degrees);
+    i->set_rotation_angle(povInDegrees);
   }
 }
 
 bool SandBox::events(Point2D point) {
-  pov_in_degrees += 5.0f;
+  povInDegrees += 5.0f;
   return true;
 }

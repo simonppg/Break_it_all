@@ -8,11 +8,13 @@
 #include "Math.hpp"
 #include "Renderer.hpp"
 
-class Test3 : public IScene {
+class Test3 final : public IScene {
 private:
   Renderer renderer;
   FilesManager *filesManager;
   Math *math = new Math();
+  float *circle;
+  int NUMBER_OF_VERTICES = 160;
 
 public:
   explicit Test3(FilesManager *filesManager);

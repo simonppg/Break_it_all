@@ -10,13 +10,10 @@
 #include "Point3D.hpp"
 #include "Renderer.hpp"
 
-#define NUMBER_OF_VERTICES 160
-float radius = 0.5;
-float *v;
-
 Test3::Test3(FilesManager *filesManager) {
+  float RADIUS = 0.5;
   camera = new Camera(Dimension(), Point3D());
-  v = math->get_circle(radius, NUMBER_OF_VERTICES);
+  circle = math->get_circle(RADIUS, NUMBER_OF_VERTICES);
   renderer = Renderer();
   this->filesManager = filesManager;
 }
@@ -51,7 +48,7 @@ void Test3::surfaceCreated() {
   programID = renderer.createProgram(vert, frag);
 
   glBindBuffer(GL_ARRAY_BUFFER, 0);
-  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, v);
+  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, circle);
 
   // if (vert)
   //   free(vert);

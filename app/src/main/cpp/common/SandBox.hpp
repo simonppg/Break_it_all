@@ -14,6 +14,7 @@
 class SandBox final : public IScene {
 private:
   Math *math = new Math();
+  float povInDegrees = 0.0f;
 
 public:
   explicit SandBox(FilesManager *filesManager);

@@ -11,24 +11,6 @@
 #include "Point3D.hpp"
 #include "Projection.hpp"
 
-static const float CAMERA_WIDTH = 450.0f;
-static const float CAMERA_HEIGHT = 800.0f;
-static float pov_in_degrees = 0.0f;
-static int NUMBER_OF_VERTICES = 15;
-static float radius = 1.0;
-
-static float h = CAMERA_HEIGHT / 2;
-static float x_size = 90.0f * (CAMERA_WIDTH / COL) / 100;
-static float y_size = 80.0f * (h / ROW) / 100;
-
-static float ball_size = CAMERA_WIDTH / 30;
-static float cube_x_size = (CAMERA_WIDTH / 2) / 3;
-static float cube_y_size = cube_x_size / 7;
-
-static clock_t last_time;
-static Point3D ballSize(ball_size, ball_size, 1);
-static int xDirection = 1;
-
 static bool hitRightLimit(Dimension dimension, Point3D point) {
   return point.getX() >= dimension.getWidth() / 2;
 }
@@ -51,6 +33,8 @@ Test4::Test4(FilesManager *filesManager) {
   shaderProgs[0] = new ShaderProg(simpleVert, simpleFrag);
   shaderProgs[1] = new ShaderProg(circleVert, circleFrag);
   meshes[0] = new Mesh(math->get_cube(), 16, math->get_cube_index(), 36);
+  int NUMBER_OF_VERTICES = 15;
+  float radius = 1.0;
   auto circle = math->get_circle(radius, NUMBER_OF_VERTICES);
   meshes[1] = new Mesh(circle, NUMBER_OF_VERTICES);
 
@@ -111,8 +95,6 @@ void Test4::surfaceChanged(Dimension dimension) {
   glViewport(0, 0, width, height);
   camera->updateDimension(dimension);
 
-  // h = (float)height/2;
-  // h = camera->top;
   Dimension gridDimension(width, camera->top);
 
   vPos = math->generateGrid(gridDimension, ROW, COL);
@@ -138,10 +120,6 @@ void Test4::surfaceChanged(Dimension dimension) {
 }
 
 void Test4::update(double dt) {
-  // dt = time_since last_update
-  // auto time = static_cast<double>(clock());
-  // float dt = static_cast<float>((time - last_time) / CLOCKS_PER_SEC);
-
   Point3D ballPosition = ball->getPosition();
   ball->velocity += ball->acceleration * dt;
 
@@ -155,8 +133,6 @@ void Test4::update(double dt) {
   ball->updatePosition(newBallPosition);
 
   // LOGI("%f, %f, %f, %f", dt, ball->velocity, ball->velocity * dt, ball->x);
-
-  last_time = clock();
 }
 
 bool Test4::events(Point2D point) {
@@ -166,7 +142,7 @@ bool Test4::events(Point2D point) {
   float newY = (-cameraDimension.getHeight() / 2) + cube_y_size * 2;
 
   paddle->updatePosition(Point3D(newX, newY, 0));
-  pov_in_degrees += 5.0f;
+  povInDegrees += 5.0f;
   return true;
 }
 

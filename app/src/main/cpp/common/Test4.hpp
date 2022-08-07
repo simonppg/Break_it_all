@@ -11,20 +11,33 @@
 #include "Renderer.hpp"
 #include "ShaderProg.hpp"
 
-class Test4 : public IScene {
+#define ROW 15
+#define COL 9
+static const float CAMERA_WIDTH = 450.0f;
+static const float CAMERA_HEIGHT = 800.0f;
+
+static float h = CAMERA_HEIGHT / 2;
+static float y_size = 80.0f * (h / ROW) / 100;
+
+static float ball_size = CAMERA_WIDTH / 30;
+static float cube_x_size = (CAMERA_WIDTH / 2) / 3;
+static float cube_y_size = cube_x_size / 7;
+
+static Point3D ballSize(ball_size, ball_size, 1);
+
+class Test4 final : public IScene {
 private:
   vector<float> vPos;
   Math *math = new Math();
-
-protected:
-#define ROW 15
-#define COL 9
   Mesh *meshes[2];
   ShaderProg *shaderProgs[2];
   Object *objects[ROW * COL];
   Object *ball;
   Object *paddle;
   Renderer *renderer;
+  int xDirection = 1;
+  float x_size = 90.0f * (CAMERA_WIDTH / COL) / 100;
+  float povInDegrees = 0.0f;
 
 public:
   explicit Test4(FilesManager *filesManager);
