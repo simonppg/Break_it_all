@@ -15,8 +15,8 @@ float pov_in_degrees = 0.0f;
 unsigned int seed = time(NULL);
 
 SandBox::SandBox(FilesManager *filesManager) {
-  const char *vertexFileStr = filesManager->loadFile("simple.vert");
-  const char *fragmentFileStr = filesManager->loadFile("simple.frag");
+  const string vertexFileStr = filesManager->loadFile("simple.vert");
+  const string fragmentFileStr = filesManager->loadFile("simple.frag");
   camera = new Camera(Dimension(), Point3D(0, 0, 40));
   shaderProg = new ShaderProg(vertexFileStr, fragmentFileStr);
   mesh = new Mesh(math->get_cube(), 8, math->get_cube_index(), 36);
