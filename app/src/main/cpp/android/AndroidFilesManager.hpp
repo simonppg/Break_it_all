@@ -2,8 +2,8 @@
 #ifndef APP_SRC_MAIN_CPP_ANDROID_ANDROIDFILESMANAGER_HPP_
 #define APP_SRC_MAIN_CPP_ANDROID_ANDROIDFILESMANAGER_HPP_
 
-#include <string>
 #include <android/asset_manager.h>
+#include <string>
 
 #include "../shared/FilesManager.hpp"
 

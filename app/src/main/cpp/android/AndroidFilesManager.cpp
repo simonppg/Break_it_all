@@ -9,7 +9,8 @@ AndroidFilesManager::AndroidFilesManager(AAssetManager *assetManager) {
 }
 
 const string AndroidFilesManager::loadFile(const string filePath) {
-  AAsset *file = AAssetManager_open(assetManager, filePath.c_str(), AASSET_MODE_BUFFER);
+  AAsset *file =
+      AAssetManager_open(assetManager, filePath.c_str(), AASSET_MODE_BUFFER);
 
   size_t fileLength = static_cast<size_t>(AAsset_getLength(file));
 
