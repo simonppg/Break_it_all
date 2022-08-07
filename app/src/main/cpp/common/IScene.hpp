@@ -12,7 +12,7 @@ protected:
   unsigned int programID;
 
 public:
-  virtual ~IScene(){};
+  virtual ~IScene() {}
 
   virtual void surfaceCreated() = 0;
   virtual void render() = 0;
