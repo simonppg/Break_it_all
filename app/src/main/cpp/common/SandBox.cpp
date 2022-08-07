@@ -2,6 +2,7 @@
 #include "SandBox.hpp"
 
 #include <cstdlib>
+#include <string>
 
 #include "../shared/FilesManager.hpp"
 #include "Dimension.hpp"

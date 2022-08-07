@@ -2,8 +2,9 @@
 #ifndef APP_SRC_MAIN_CPP_COMMON_SHADERPROG_HPP_
 #define APP_SRC_MAIN_CPP_COMMON_SHADERPROG_HPP_
 
-#include "Renderer.hpp"
 #include <string>
+
+#include "Renderer.hpp"
 
 using std::string;
 

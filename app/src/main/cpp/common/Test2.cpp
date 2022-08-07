@@ -2,6 +2,7 @@
 #include "Test2.hpp"
 
 #include <cstdlib>
+#include <string>
 
 #include "../shared/FilesManager.hpp"
 #include "Renderer.hpp"

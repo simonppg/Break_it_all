@@ -2,6 +2,7 @@
 #include "BreakItAll.hpp"
 #include <GLES3/gl3.h>
 #include <iostream>
+#include <string>
 
 using std::string;
 

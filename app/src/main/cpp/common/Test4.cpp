@@ -1,5 +1,8 @@
 // Copyright (c) 2021 Simon Puente
 #include "Test4.hpp"
+
+#include <string>
+
 #include "../shared/FilesManager.hpp"
 #include "Dimension.hpp"
 #include "Math.hpp"
