@@ -23,6 +23,17 @@ App::App() {
   keyMapper = new GLFWKeyMapper();
 }
 
+App::~App() {
+  delete keyMapper;
+  keyMapper = nullptr;
+  delete eventFactory;
+  eventFactory = nullptr;
+  delete platform;
+  platform = nullptr;
+  delete windowManager;
+  windowManager = nullptr;
+}
+
 void App::cursorCallback(void *appContext, double x, double y) {
   App *app = reinterpret_cast<App *>(appContext);
   app->publish(new CursorPositionChanged(x, y));

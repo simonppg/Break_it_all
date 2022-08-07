@@ -10,7 +10,7 @@
 #include "../shared/Logger.hpp"
 #include "../shared/Platform.hpp"
 
-class LinuxPlatform : public Platform {
+class LinuxPlatform final : public Platform {
 private:
   LinuxLogger *aLogger;
   LinuxFilesManager *aFilesManager;

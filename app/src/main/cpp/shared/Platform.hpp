@@ -9,6 +9,8 @@ class Platform {
 public:
   virtual Logger *logger() = 0;
   virtual FilesManager *filesManager() = 0;
+
+  virtual ~Platform() {};
 };
 
 #endif // APP_SRC_MAIN_CPP_SHARED_PLATFORM_HPP_
