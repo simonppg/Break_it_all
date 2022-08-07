@@ -11,12 +11,13 @@
 
 #include "../shared/FilesManager.hpp"
 
-class SandBox : public IScene {
+class SandBox final : public IScene {
 private:
   Math *math = new Math();
 
 public:
   explicit SandBox(FilesManager *filesManager);
+  ~SandBox();
 
   void surfaceCreated() override;
   void surfaceChanged(Dimension) override;
@@ -26,9 +27,9 @@ public:
   void update(double) override;
   bool events(Point2D) override;
 
-  Mesh *meshes[1];
+  Mesh *mesh;
   Object *objects[40];
-  ShaderProg *shaderProgs[1];
+  ShaderProg *shaderProg;
   Renderer *renderer;
 };
 

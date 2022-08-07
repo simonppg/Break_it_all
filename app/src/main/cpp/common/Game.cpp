@@ -38,6 +38,11 @@ Game::Game(int sceneNumber, Platform *platform) {
     this->pScene = new Test4(this->fileManager);
 }
 
+Game::~Game() {
+  delete pScene;
+  pScene = nullptr;
+}
+
 void Game::camera_forward() {
   Point3D cameraPosition = pScene->camera->getPosition();
   pScene->camera->updatePosition(cameraPosition.decrementZ(1));

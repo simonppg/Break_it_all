@@ -12,7 +12,7 @@
 #include "GLFWKeyMapper.hpp"
 #include "windowmanager/WindowManager.hpp"
 
-class App : public Iterable {
+class App final : public Iterable {
 private:
   Game *game;
   WindowManager *windowManager;
@@ -30,6 +30,7 @@ private:
 
 public:
   App();
+  ~App();
 
   void start(int sceneNumber);
 

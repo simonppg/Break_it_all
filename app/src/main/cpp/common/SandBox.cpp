@@ -18,11 +18,11 @@ SandBox::SandBox(FilesManager *filesManager) {
   const char *vertexFileStr = filesManager->loadFile("simple.vert");
   const char *fragmentFileStr = filesManager->loadFile("simple.frag");
   camera = new Camera(Dimension(), Point3D(0, 0, 40));
-  shaderProgs[0] = new ShaderProg(vertexFileStr, fragmentFileStr);
-  meshes[0] = new Mesh(math->get_cube(), 8, math->get_cube_index(), 36);
+  shaderProg = new ShaderProg(vertexFileStr, fragmentFileStr);
+  mesh = new Mesh(math->get_cube(), 8, math->get_cube_index(), 36);
 
   for (auto &i : objects) {
-    i = new Object(shaderProgs[0], meshes[0]);
+    i = new Object(shaderProg, mesh);
     i->updateSize(Point3D(2, 1, 1));
     float x = sin(rand_r(&seed) % 20 - 10) + rand_r(&seed) % 20 - 10;
     float y = cos(rand_r(&seed) % 36 - 18) + rand_r(&seed) % 36 - 18;
@@ -35,13 +35,24 @@ SandBox::SandBox(FilesManager *filesManager) {
   }
 }
 
+SandBox::~SandBox() {
+  for (auto &object : objects) {
+    delete object;
+    object = nullptr;
+  }
+  delete mesh;
+  mesh = nullptr;
+  delete shaderProg;
+  shaderProg = nullptr;
+  delete camera;
+  camera = nullptr;
+}
+
 void SandBox::surfaceCreated() {
   glEnable(GL_DEPTH_TEST);
 
-  shaderProgs[0]->createProgram();
-  for (auto &i : meshes) {
-    renderer->load_model(i);
-  }
+  shaderProg->createProgram();
+  renderer->load_model(mesh);
   // TODO(simonpp): free buffers
 }
 

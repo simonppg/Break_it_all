@@ -7,6 +7,8 @@
 
 class Platform {
 public:
+  virtual ~Platform() {}
+
   virtual Logger *logger() = 0;
   virtual FilesManager *filesManager() = 0;
 };
