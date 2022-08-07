@@ -146,6 +146,8 @@ void Test4::update(double dt) {
 bool Test4::events(Point2D point) {
   Dimension cameraDimension = camera->getDimension();
 
+  float cubeXSize = (CAMERA_WIDTH / 2) / 3;
+  float cubeYSize = cubeXSize / 7;
   float newX = (-cameraDimension.getWidth() / 2) + point.getX();
   float newY = (-cameraDimension.getHeight() / 2) + cubeYSize * 2;
 

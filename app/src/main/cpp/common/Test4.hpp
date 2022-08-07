@@ -27,8 +27,6 @@ private:
 
   const float CAMERA_WIDTH = 450.0f;
   const float CAMERA_HEIGHT = 800.0f;
-  float cubeXSize = (CAMERA_WIDTH / 2) / 3;
-  float cubeYSize = cubeXSize / 7;
   int xDirection = 1;
   float povInDegrees = 0.0f;
 
