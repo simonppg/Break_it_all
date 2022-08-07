@@ -6,6 +6,7 @@
 
 class Event {
 public:
+  virtual ~Event() {}
   virtual EventType type() = 0;
 };
 

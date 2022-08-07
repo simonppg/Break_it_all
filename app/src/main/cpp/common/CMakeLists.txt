@@ -5,7 +5,6 @@ add_library(common STATIC
         SurfaceChanged.cpp
         KeyPressed.cpp
         ScreenTouched.cpp
-        EventFactory.cpp
         BreakItAll.cpp
         SandBox.cpp
         Test1.cpp

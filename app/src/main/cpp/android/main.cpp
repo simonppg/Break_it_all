@@ -1,5 +1,4 @@
 // Copyright (c) 2021 Simon Puente
-#include "../common/EventFactory.hpp"
 #include "../common/Game.hpp"
 #include "../common/ScreenTouched.hpp"
 #include "../shared/FilesManager.hpp"
@@ -36,9 +35,9 @@ JNIEXPORT void JNICALL Java_com_example_game_jni_Game_drawFrame(JNIEnv *env,
 
 JNIEXPORT bool JNICALL Java_com_example_game_jni_Game_on_1touch_1event(
     JNIEnv *env, jclass cls, jdouble xpos, jdouble ypos) {
-  EventFactory eventFactory = EventFactory();
   ScreenTouched *event = new ScreenTouched(xpos, ypos);
   game->dispatchEvent(event);
+  delete event;
   return true;
 }
 

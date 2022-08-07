@@ -4,7 +4,6 @@
 #include <cstdlib>
 #include <map>
 
-#include "../common/EventFactory.hpp"
 #include "../common/Game.hpp"
 #include "../common/GameLoop.hpp"
 #include "../shared/FilesManager.hpp"
@@ -19,7 +18,6 @@ App::App() {
   platform = new LinuxPlatform();
   filesManager = platform->filesManager();
   logger = platform->logger();
-  eventFactory = new EventFactory();
   keyMapper = new GLFWKeyMapper();
 }
 
@@ -28,8 +26,6 @@ App::~App() {
   game = nullptr;
   delete keyMapper;
   keyMapper = nullptr;
-  delete eventFactory;
-  eventFactory = nullptr;
   delete platform;
   platform = nullptr;
   delete windowManager;
@@ -38,25 +34,29 @@ App::~App() {
 
 void App::cursorCallback(void *appContext, double x, double y) {
   App *app = reinterpret_cast<App *>(appContext);
-  app->publish(new CursorPositionChanged(x, y));
+  auto event = new CursorPositionChanged(x, y);
+  app->publish(event);
+  delete event;
 }
 
 void App::windowSizeCallback(void *appContext, int width, int height) {
   App *app = reinterpret_cast<App *>(appContext);
-  app->publish(new SurfaceChanged(width, height));
+  auto event = new SurfaceChanged(width, height);
+  app->publish(event);
+  delete event;
 }
 
 void App::keyCallback(void *appContext, int key, int scancode, int action,
                       int mods) {
   App *app = reinterpret_cast<App *>(appContext);
-  EventFactory *eventFactory = app->eventFactory;
   GLFWKeyMapper *keyMapper = app->keyMapper;
 
   Key myKey = keyMapper->mapKey(key);
   PressState pressState = keyMapper->mapPressState(action);
 
-  auto event = eventFactory->keyPressed(myKey, pressState);
+  auto event = new KeyPressed(myKey, pressState);
   app->publish(event);
+  delete event;
 }
 
 void App::publish(Event *event) { game->dispatchEvent(event); }
