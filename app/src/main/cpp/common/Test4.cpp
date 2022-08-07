@@ -71,26 +71,7 @@ Test4::Test4(FilesManager *filesManager, Camera *camera) {
 }
 
 Test4::~Test4() {
-  for (auto &object : objects) {
-    delete object;
-    object = nullptr;
-  }
-  for (auto &mesh : meshes) {
-    delete mesh;
-    mesh = nullptr;
-  }
-  for (auto &prog : shaderProgs) {
-    delete prog;
-    prog = nullptr;
-  }
-  delete ball;
-  ball = nullptr;
-  delete ball2;
-  ball2 = nullptr;
-  delete paddle;
-  paddle = nullptr;
-  delete renderer;
-  renderer = nullptr;
+  terminate();
 }
 
 void Test4::terminate() {
