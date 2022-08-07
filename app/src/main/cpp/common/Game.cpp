@@ -24,18 +24,18 @@ Game::Game(int sceneNumber, Platform *platform) {
   // NOTE: Don't call OpenGL functions here
   this->platform = platform;
   this->logger = platform->logger();
-  this->fileManager = platform->filesManager();
+  FilesManager *fileManager = platform->filesManager();
 
   if (sceneNumber == 0)
-    this->pScene = new SandBox(this->fileManager);
+    this->pScene = new SandBox(fileManager);
   else if (sceneNumber == 1)
     this->pScene = new Test1();
   else if (sceneNumber == 2)
-    this->pScene = new Test2(this->fileManager);
+    this->pScene = new Test2(fileManager);
   else if (sceneNumber == 3)
-    this->pScene = new Test3(this->fileManager);
+    this->pScene = new Test3(fileManager);
   else
-    this->pScene = new Test4(this->fileManager);
+    this->pScene = new Test4(fileManager);
 }
 
 Game::~Game() {
