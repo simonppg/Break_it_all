@@ -16,3 +16,8 @@ Mesh::Mesh(float *vertex, int v_size, int16_t *indices, int i_size) {
   this->numIndices = i_size;
   type = MeshType::ONE;
 }
+
+Mesh::~Mesh() {
+  free(vertex);
+  free(indices);
+}

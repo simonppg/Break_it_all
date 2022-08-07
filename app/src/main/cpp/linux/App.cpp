@@ -63,7 +63,7 @@ void App::publish(Event *event) { game->dispatchEvent(event); }
 
 bool App::isRunning() {
   auto shouldClose = windowManager->shouldClose();
-  if(shouldClose) {
+  if (shouldClose) {
     game->close();
   }
 

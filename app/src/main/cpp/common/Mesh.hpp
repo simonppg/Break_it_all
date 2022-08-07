@@ -17,6 +17,7 @@ class Mesh {
 public:
   Mesh(float *pDouble, int i);
   Mesh(float *vertex, int v_size, int16_t *indices, int i_size);
+  ~Mesh();
 
   MeshType type;
   float *vertex;

@@ -17,7 +17,7 @@ Object::Object(ShaderProg *pProg, Mesh *pMesh)
   draw_context = new DrawContext();
 }
 
-Object::~Object(){
+Object::~Object() {
   delete draw_context;
   draw_context = nullptr;
 }

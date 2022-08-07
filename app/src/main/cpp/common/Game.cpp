@@ -50,9 +50,7 @@ Game::~Game() {
   pScene = nullptr;
 }
 
-bool Game::isPlaying() {
-  return !isClosing;
-}
+bool Game::isPlaying() { return !isClosing; }
 
 void Game::close() {
   isClosing = true;
@@ -131,20 +129,27 @@ void Game::surfaceChangedHandler(SurfaceChanged *event) {
 }
 
 void Game::update(double dt) {
-  if(isClosing) { return; }
+  if (isClosing) {
+    return;
+  }
   pScene->update(dt);
 }
 
 void Game::render() {
-  if(isClosing) { return; }
-  pScene->render(); }
+  if (isClosing) {
+    return;
+  }
+  pScene->render();
+}
 
 void Game::pause() { pScene->pause(); }
 
 void Game::resume() { pScene->resume(); }
 
 void Game::dispatchEvent(Event *event) {
-  if(isClosing) { return; }
+  if (isClosing) {
+    return;
+  }
   EventType eventType = event->type();
 
   if (eventType == EventType::SURFACE_CHANGED) {
