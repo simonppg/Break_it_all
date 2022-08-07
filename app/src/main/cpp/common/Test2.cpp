@@ -7,8 +7,6 @@
 #include "../shared/FilesManager.hpp"
 #include "Renderer.hpp"
 
-static GLfloat vVertices[] = {0.0f, 0.5f, 0.0f,  -0.5f, -0.5f,
-                              0.0f, 0.5f, -0.5f, 0.0f};
 Test2::Test2(FilesManager *filesManager) {
   renderer = Renderer();
   this->filesManager = filesManager;

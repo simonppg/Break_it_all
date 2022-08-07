@@ -4,7 +4,7 @@
 
 #include "IScene.hpp"
 
-class Test1 : public IScene {
+class Test1 final : public IScene {
 public:
   Test1();
   void surfaceCreated() override;
