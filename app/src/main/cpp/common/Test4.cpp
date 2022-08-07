@@ -1,5 +1,8 @@
 // Copyright (c) 2021 Simon Puente
 #include "Test4.hpp"
+
+#include <string>
+
 #include "../shared/FilesManager.hpp"
 #include "Dimension.hpp"
 #include "Math.hpp"
@@ -40,10 +43,10 @@ Test4::Test4(FilesManager *filesManager) {
   camera->setProjection(Projection::ORTHOGRAPHIC);
   renderer = new Renderer();
 
-  const char *simpleVert = filesManager->loadFile("simple.vert");
-  const char *simpleFrag = filesManager->loadFile("simple.frag");
-  const char *circleVert = filesManager->loadFile("circle.vert");
-  const char *circleFrag = filesManager->loadFile("circle.frag");
+  const string simpleVert = filesManager->loadFile("simple.vert");
+  const string simpleFrag = filesManager->loadFile("simple.frag");
+  const string circleVert = filesManager->loadFile("circle.vert");
+  const string circleFrag = filesManager->loadFile("circle.frag");
 
   shaderProgs[0] = new ShaderProg(simpleVert, simpleFrag);
   shaderProgs[1] = new ShaderProg(circleVert, circleFrag);

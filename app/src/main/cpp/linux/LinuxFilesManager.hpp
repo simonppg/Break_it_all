@@ -1,16 +1,19 @@
 // Copyright (c) 2021 Simon Puente
 #ifndef APP_SRC_MAIN_CPP_LINUX_LINUXFILESMANAGER_HPP_
 #define APP_SRC_MAIN_CPP_LINUX_LINUXFILESMANAGER_HPP_
+
+#include <string>
+
 #include "../shared/FilesManager.hpp"
 
-class LinuxFilesManager : public FilesManager {
+class LinuxFilesManager final : public FilesManager {
 private:
-  const char *projectPath;
+  const string projectPath;
 
 public:
-  explicit LinuxFilesManager(const char *projectPath);
+  explicit LinuxFilesManager(const string projectPath);
 
-  char *loadFile(const char *filePath);
+  const string loadFile(const string filePath);
 };
 
 #endif // APP_SRC_MAIN_CPP_LINUX_LINUXFILESMANAGER_HPP_

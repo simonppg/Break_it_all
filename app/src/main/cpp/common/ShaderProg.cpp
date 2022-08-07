@@ -2,7 +2,7 @@
 #include "ShaderProg.hpp"
 #include "Renderer.hpp"
 
-ShaderProg::ShaderProg(const char *vertShaderStr, const char *fragShaderStr) {
+ShaderProg::ShaderProg(const string vertShaderStr, const string fragShaderStr) {
   vertex_file = vertShaderStr;
   fragment_file = fragShaderStr;
   renderer = Renderer();

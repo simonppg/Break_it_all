@@ -2,16 +2,20 @@
 #ifndef APP_SRC_MAIN_CPP_COMMON_SHADERPROG_HPP_
 #define APP_SRC_MAIN_CPP_COMMON_SHADERPROG_HPP_
 
+#include <string>
+
 #include "Renderer.hpp"
 
-class ShaderProg {
+using std::string;
+
+class ShaderProg final {
 private:
   Renderer renderer;
-  const char *vertex_file;
-  const char *fragment_file;
+  string vertex_file;
+  string fragment_file;
 
 public:
-  ShaderProg(const char *vertShaderStr, const char *fragShaderStr);
+  ShaderProg(const string vertShaderStr, const string fragShaderStr);
 
   void createProgram();
 

@@ -1,6 +1,7 @@
 // Copyright (c) 2021 Simon Puente
 #include "Test3.hpp"
 
+#include <string>
 #include <vector>
 
 #include "../shared/FilesManager.hpp"
@@ -45,19 +46,17 @@ void Test3::render() {
 }
 
 void Test3::surfaceCreated() {
-  char *vert, *frag;
-
-  vert = filesManager->loadFile("examples/triangle/triangle.vert");
-  frag = filesManager->loadFile("examples/triangle/triangle.frag");
+  const string vert = filesManager->loadFile("examples/triangle/triangle.vert");
+  const string frag = filesManager->loadFile("examples/triangle/triangle.frag");
   programID = renderer.createProgram(vert, frag);
 
   glBindBuffer(GL_ARRAY_BUFFER, 0);
   glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, v);
 
-  if (vert)
-    free(vert);
-  if (frag)
-    free(frag);
+  // if (vert)
+  //   free(vert);
+  // if (frag)
+  //   free(frag);
 }
 
 void Test3::surfaceChanged(Dimension dimension) {

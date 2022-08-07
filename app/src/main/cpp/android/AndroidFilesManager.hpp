@@ -3,17 +3,18 @@
 #define APP_SRC_MAIN_CPP_ANDROID_ANDROIDFILESMANAGER_HPP_
 
 #include <android/asset_manager.h>
+#include <string>
 
 #include "../shared/FilesManager.hpp"
 
-class AndroidFilesManager : public FilesManager {
+class AndroidFilesManager final : public FilesManager {
 private:
   AAssetManager *assetManager;
 
 public:
   explicit AndroidFilesManager(AAssetManager *);
 
-  char *loadFile(const char *filePath);
+  const string loadFile(const string filePath);
 };
 
 #endif // APP_SRC_MAIN_CPP_ANDROID_ANDROIDFILESMANAGER_HPP_

@@ -9,10 +9,10 @@
 
 using std::string;
 
-LinuxFilesManager::LinuxFilesManager(const char *projectPath)
+LinuxFilesManager::LinuxFilesManager(const string projectPath)
     : projectPath(projectPath) {}
 
-char *LinuxFilesManager::loadFile(const char *filePath) {
+const string LinuxFilesManager::loadFile(const string filePath) {
   FILE *pFile;
   string assetsDir("/../assets/");
   string absolutePath(projectPath + assetsDir + filePath);
@@ -27,12 +27,12 @@ char *LinuxFilesManager::loadFile(const char *filePath) {
   // same as rewind(f);
   fseek(pFile, 0, SEEK_SET);
 
-  auto dummy = malloc(sizeof(char) * fsize + 1);
-  char *pFileContent = reinterpret_cast<char *>(dummy);
-  fread(pFileContent, fsize, 1, pFile);
+  char *content = reinterpret_cast<char *>(malloc(sizeof(char) * fsize + 1));
+  fread(content, fsize, 1, pFile);
   fclose(pFile);
 
-  pFileContent[fsize] = 0;
+  content[fsize] = 0;
 
-  return pFileContent;
+  string str(content);
+  return str;
 }
