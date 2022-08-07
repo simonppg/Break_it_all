@@ -43,8 +43,17 @@ SandBox::~SandBox() {
   mesh = nullptr;
   delete shaderProg;
   shaderProg = nullptr;
-  delete camera;
-  camera = nullptr;
+}
+
+void SandBox::terminate() {
+  for (auto &object : objects) {
+    delete object;
+    object = nullptr;
+  }
+  delete mesh;
+  mesh = nullptr;
+  delete shaderProg;
+  shaderProg = nullptr;
 }
 
 void SandBox::surfaceCreated() {

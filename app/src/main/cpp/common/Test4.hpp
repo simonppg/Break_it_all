@@ -34,6 +34,8 @@ private:
 public:
   explicit Test4(FilesManager *, Camera *);
 
+  void terminate() override;
+
   void surfaceCreated() override;
   void surfaceChanged(Dimension) override;
   void render() override;

@@ -20,6 +20,8 @@ public:
   explicit SandBox(FilesManager *, Camera *);
   ~SandBox();
 
+  void terminate() override;
+
   void surfaceCreated() override;
   void surfaceChanged(Dimension) override;
   void render() override;

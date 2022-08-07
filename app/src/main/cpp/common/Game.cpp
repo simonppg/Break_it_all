@@ -24,6 +24,7 @@ Game::Game(int sceneNumber, Platform *platform) {
   // NOTE: Don't call OpenGL functions here
   logger = platform->logger();
   FilesManager *filesManager = platform->filesManager();
+  isClosing = false;
 
   if (sceneNumber == 0) {
     camera = Camera(Dimension(), Point3D(0, 0, 40));
@@ -45,6 +46,17 @@ Game::Game(int sceneNumber, Platform *platform) {
 }
 
 Game::~Game() {
+  delete pScene;
+  pScene = nullptr;
+}
+
+bool Game::isPlaying() {
+  return !isClosing;
+}
+
+void Game::close() {
+  isClosing = true;
+  pScene->terminate();
   delete pScene;
   pScene = nullptr;
 }
@@ -95,7 +107,8 @@ void Game::keyPressedHandler(KeyPressed *event) {
       camera_reset();
     } else if (key == Key::ESCAPE_KEY) {
       // TODO(simon): Should we save state before exit?
-      exit(0);
+      close();
+      // exit(0);
     }
   }
 }
@@ -117,15 +130,21 @@ void Game::surfaceChangedHandler(SurfaceChanged *event) {
   pScene->surfaceChanged(dimension);
 }
 
-void Game::update(double dt) { pScene->update(dt); }
+void Game::update(double dt) {
+  if(isClosing) { return; }
+  pScene->update(dt);
+}
 
-void Game::render() { pScene->render(); }
+void Game::render() {
+  if(isClosing) { return; }
+  pScene->render(); }
 
 void Game::pause() { pScene->pause(); }
 
 void Game::resume() { pScene->resume(); }
 
 void Game::dispatchEvent(Event *event) {
+  if(isClosing) { return; }
   EventType eventType = event->type();
 
   if (eventType == EventType::SURFACE_CHANGED) {

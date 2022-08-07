@@ -70,6 +70,8 @@ Test4::Test4(FilesManager *filesManager, Camera *camera) {
   ball2->animate_x();
 }
 
+void Test4::terminate() {}
+
 void Test4::render() {
   glClearColor(0.6f, 0.6f, 0.6f, 1.0f);
   glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);

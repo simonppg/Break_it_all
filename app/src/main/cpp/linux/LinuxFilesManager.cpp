@@ -34,5 +34,6 @@ const string LinuxFilesManager::loadFile(const string filePath) {
   content[fsize] = 0;
 
   string str(content);
+  free(content);
   return str;
 }

@@ -12,6 +12,8 @@ Test2::Test2(FilesManager *filesManager) {
   this->filesManager = filesManager;
 }
 
+void Test2::terminate() {}
+
 void Test2::render() {
   glUseProgram(programID);
   glClearColor(0.6f, 0.6f, 0.6f, 1.0f);

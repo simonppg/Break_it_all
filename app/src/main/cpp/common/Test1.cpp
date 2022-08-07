@@ -14,6 +14,8 @@ void Test1::render() {
   glClear(GL_COLOR_BUFFER_BIT);
 }
 
+void Test1::terminate() {}
+
 void Test1::pause() {}
 
 void Test1::resume() {}

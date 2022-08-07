@@ -19,6 +19,8 @@ private:
 public:
   explicit Test3(FilesManager *, Camera *);
 
+  void terminate() override;
+
   void surfaceCreated() override;
   void surfaceChanged(Dimension) override;
   void render() override;

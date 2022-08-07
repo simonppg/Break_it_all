@@ -17,6 +17,8 @@ private:
 public:
   explicit Test2(FilesManager *filesManager);
 
+  void terminate() override;
+
   void surfaceCreated() override;
   void surfaceChanged(Dimension) override;
   void render() override;

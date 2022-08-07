@@ -15,6 +15,8 @@ protected:
 public:
   virtual ~IScene() {}
 
+  virtual void terminate() = 0;
+
   virtual void surfaceCreated() = 0;
   virtual void render() = 0;
   virtual void surfaceChanged(Dimension) = 0;

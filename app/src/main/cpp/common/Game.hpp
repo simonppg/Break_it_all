@@ -17,6 +17,8 @@ private:
   Logger *logger;
   Camera camera;
 
+  bool isClosing;
+
   void camera_forward();
   void camera_back();
   void camera_left();
@@ -31,6 +33,8 @@ public:
   Game(int sceneNumber, Platform *platform);
   ~Game();
 
+  bool isPlaying();
+  void close();
   // OpenGL context is in this functions
   void surfaceCreated();
   void update(double);

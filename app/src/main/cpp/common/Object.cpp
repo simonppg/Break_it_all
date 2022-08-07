@@ -17,6 +17,11 @@ Object::Object(ShaderProg *pProg, Mesh *pMesh)
   draw_context = new DrawContext();
 }
 
+Object::~Object(){
+  delete draw_context;
+  draw_context = nullptr;
+}
+
 Point3D Object::getPosition() { return position; }
 
 void Object::draw(mat4 cameraTranslate) {
