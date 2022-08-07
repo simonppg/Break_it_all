@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Simon Puente
+// Copyright (c) 2021 - 2022 Simon Puente
 #ifndef APP_SRC_MAIN_CPP_COMMON_TEST4_HPP_
 #define APP_SRC_MAIN_CPP_COMMON_TEST4_HPP_
 
@@ -11,13 +11,8 @@
 #include "Renderer.hpp"
 #include "ShaderProg.hpp"
 
-#define ROW 15
-#define COL 9
-
-const float CAMERA_WIDTH = 450.0f;
-const float CAMERA_HEIGHT = 800.0f;
-static float ball_size = CAMERA_WIDTH / 30;
-static Point3D ballSize(ball_size, ball_size, 1);
+static const int ROW = 15;
+static const int COL = 9;
 
 class Test4 final : public IScene {
 private:
@@ -30,7 +25,10 @@ private:
   Object *paddle;
   Renderer *renderer;
 
+  const float CAMERA_WIDTH = 450.0f;
+  const float CAMERA_HEIGHT = 800.0f;
   float h = CAMERA_HEIGHT / 2;
+  float ball_size = CAMERA_WIDTH / 30;
 
   float cube_x_size = (CAMERA_WIDTH / 2) / 3;
   float cube_y_size = cube_x_size / 7;

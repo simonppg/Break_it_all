@@ -48,6 +48,7 @@ Test4::Test4(FilesManager *filesManager) {
   }
 
   ball = new Object(shaderProgs[1], meshes[1]);
+  Point3D ballSize(ball_size, ball_size, 1);
   ball->updateSize(ballSize);
   ball->updatePosition(Point3D(0, camera->bottom + camera->top / 3, 0));
   ball->animate_x();
@@ -110,6 +111,7 @@ void Test4::surfaceChanged(Dimension dimension) {
   cube_x_size = (static_cast<float>(width) / 2) / 3;
   cube_y_size = cube_x_size / 7;
 
+  Point3D ballSize(ball_size, ball_size, 1);
   ball->updateSize(ballSize);
   ball->updatePosition(Point3D(0, camera->bottom + camera->top / 3, 0));
 
