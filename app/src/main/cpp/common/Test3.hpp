@@ -17,7 +17,7 @@ private:
   int NUMBER_OF_VERTICES = 160;
 
 public:
-  explicit Test3(FilesManager*, Camera*);
+  explicit Test3(FilesManager *, Camera *);
 
   void surfaceCreated() override;
   void surfaceChanged(Dimension) override;

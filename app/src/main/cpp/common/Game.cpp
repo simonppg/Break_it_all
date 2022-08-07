@@ -28,16 +28,14 @@ Game::Game(int sceneNumber, Platform *platform) {
   if (sceneNumber == 0) {
     Camera *camera = new Camera(Dimension(), Point3D(0, 0, 40));
     pScene = new SandBox(filesManager, camera);
-  }
-  else if (sceneNumber == 1)
+  } else if (sceneNumber == 1) {
     pScene = new Test1();
-  else if (sceneNumber == 2)
+  } else if (sceneNumber == 2) {
     pScene = new Test2(filesManager);
-  else if (sceneNumber == 3) {
+  } else if (sceneNumber == 3) {
     Camera *camera = new Camera(Dimension(), Point3D(0, 0, 40));
     pScene = new Test3(filesManager, camera);
-  }
-  else {
+  } else {
     const float CAMERA_WIDTH = 450.0f;
     const float CAMERA_HEIGHT = 800.0f;
     Dimension cameraSize = Dimension(CAMERA_WIDTH, CAMERA_HEIGHT);

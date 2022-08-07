@@ -32,7 +32,7 @@ private:
   float povInDegrees = 0.0f;
 
 public:
-  explicit Test4(FilesManager*, Camera*);
+  explicit Test4(FilesManager *, Camera *);
 
   void surfaceCreated() override;
   void surfaceChanged(Dimension) override;
