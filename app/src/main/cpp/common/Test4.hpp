@@ -13,16 +13,10 @@
 
 #define ROW 15
 #define COL 9
-static const float CAMERA_WIDTH = 450.0f;
-static const float CAMERA_HEIGHT = 800.0f;
 
-static float h = CAMERA_HEIGHT / 2;
-static float y_size = 80.0f * (h / ROW) / 100;
-
+const float CAMERA_WIDTH = 450.0f;
+const float CAMERA_HEIGHT = 800.0f;
 static float ball_size = CAMERA_WIDTH / 30;
-static float cube_x_size = (CAMERA_WIDTH / 2) / 3;
-static float cube_y_size = cube_x_size / 7;
-
 static Point3D ballSize(ball_size, ball_size, 1);
 
 class Test4 final : public IScene {
@@ -35,9 +29,16 @@ private:
   Object *ball;
   Object *paddle;
   Renderer *renderer;
+
+  float h = CAMERA_HEIGHT / 2;
+
+  float cube_x_size = (CAMERA_WIDTH / 2) / 3;
+  float cube_y_size = cube_x_size / 7;
+
   int xDirection = 1;
   float x_size = 90.0f * (CAMERA_WIDTH / COL) / 100;
   float povInDegrees = 0.0f;
+  float y_size = 80.0f * (h / ROW) / 100;
 
 public:
   explicit Test4(FilesManager *filesManager);

@@ -20,8 +20,8 @@ static bool hitLeftLimit(Dimension dimension, Point3D point) {
 }
 
 Test4::Test4(FilesManager *filesManager) {
-  camera =
-      new Camera(Dimension(CAMERA_WIDTH, CAMERA_HEIGHT), Point3D(0, 0, 40));
+  auto cameraSize = Dimension(CAMERA_WIDTH, CAMERA_HEIGHT);
+  camera = new Camera(cameraSize, Point3D(0, 0, 40));
   camera->setProjection(Projection::ORTHOGRAPHIC);
   renderer = new Renderer();
 
