@@ -61,7 +61,14 @@ void App::keyCallback(void *appContext, int key, int scancode, int action,
 
 void App::publish(Event *event) { game->dispatchEvent(event); }
 
-bool App::isRunning() { return !windowManager->shouldClose(); }
+bool App::isRunning() {
+  auto shouldClose = windowManager->shouldClose();
+  if (shouldClose) {
+    game->close();
+  }
+
+  return !shouldClose && game->isPlaying();
+}
 
 void App::beforeLoop() {
   const int WINDOW_WIDTH = 450;

@@ -7,6 +7,7 @@
 class Test1 final : public IScene {
 public:
   Test1();
+
   void surfaceCreated() override;
   void surfaceChanged(Dimension) override;
   void render() override;

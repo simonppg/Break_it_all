@@ -31,10 +31,11 @@ Test4::Test4(FilesManager *filesManager, Camera *camera) {
 
   shaderProgs[0] = new ShaderProg(simpleVert, simpleFrag);
   shaderProgs[1] = new ShaderProg(circleVert, circleFrag);
-  meshes[0] = new Mesh(math->get_cube(), 16, math->get_cube_index(), 36);
+  meshes[0] =
+      new Mesh(math->generateCube(), 16, math->generateCubeIndexs(), 36);
   int NUMBER_OF_VERTICES = 15;
   float radius = 1.0;
-  auto circle = math->get_circle(radius, NUMBER_OF_VERTICES);
+  auto circle = math->generateCircle(radius, NUMBER_OF_VERTICES);
   meshes[1] = new Mesh(circle, NUMBER_OF_VERTICES);
 
   float h = cameraSize.getHeight() / 2;
@@ -68,6 +69,29 @@ Test4::Test4(FilesManager *filesManager, Camera *camera) {
   ball2->updateSize(ballSize);
   ball2->updatePosition(Point3D(camera->left, camera->top, 0));
   ball2->animate_x();
+}
+
+Test4::~Test4() {
+  for (auto &object : objects) {
+    delete object;
+    object = nullptr;
+  }
+  for (auto &mesh : meshes) {
+    delete mesh;
+    mesh = nullptr;
+  }
+  for (auto &prog : shaderProgs) {
+    delete prog;
+    prog = nullptr;
+  }
+  delete ball;
+  ball = nullptr;
+  delete ball2;
+  ball2 = nullptr;
+  delete paddle;
+  paddle = nullptr;
+  delete renderer;
+  renderer = nullptr;
 }
 
 void Test4::render() {

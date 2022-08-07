@@ -17,7 +17,7 @@ SandBox::SandBox(FilesManager *filesManager, Camera *camera) {
   const string fragmentFileStr = filesManager->loadFile("simple.frag");
   this->camera = camera;
   shaderProg = new ShaderProg(vertexFileStr, fragmentFileStr);
-  mesh = new Mesh(math->get_cube(), 8, math->get_cube_index(), 36);
+  mesh = new Mesh(math->generateCube(), 8, math->generateCubeIndexs(), 36);
 
   unsigned int seed = time(NULL);
   for (auto &i : objects) {
@@ -43,8 +43,6 @@ SandBox::~SandBox() {
   mesh = nullptr;
   delete shaderProg;
   shaderProg = nullptr;
-  delete camera;
-  camera = nullptr;
 }
 
 void SandBox::surfaceCreated() {

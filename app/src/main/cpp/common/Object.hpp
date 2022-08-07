@@ -24,6 +24,7 @@ protected:
 
 public:
   Object(ShaderProg *pProg, Mesh *pMesh);
+  ~Object();
 
   Point3D getPosition();
 

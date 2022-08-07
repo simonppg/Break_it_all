@@ -17,10 +17,11 @@ class Mesh {
 public:
   Mesh(float *pDouble, int i);
   Mesh(float *vertex, int v_size, int16_t *indices, int i_size);
+  ~Mesh();
 
   MeshType type;
-  float *vertex;
-  int16_t *indices;
+  float *vertex = nullptr;
+  int16_t *indices = nullptr;
   int numVertices;
   int numIndices;
   unsigned int vbo; // vertex buffer object

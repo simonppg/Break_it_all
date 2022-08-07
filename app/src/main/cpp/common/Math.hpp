@@ -11,9 +11,9 @@ using std::vector;
 class Math {
 public:
   vector<float> generateGrid(Dimension dimension, float row, float col);
-  float *get_circle(float radius, int number_of_vertices);
-  float *get_cube();
-  int16_t *get_cube_index();
+  float *generateCircle(float radius, int number_of_vertices);
+  float *generateCube();
+  int16_t *generateCubeIndexs();
 };
 
 #endif // APP_SRC_MAIN_CPP_COMMON_MATH_HPP_

@@ -33,6 +33,7 @@ private:
 
 public:
   explicit Test4(FilesManager *, Camera *);
+  ~Test4();
 
   void surfaceCreated() override;
   void surfaceChanged(Dimension) override;

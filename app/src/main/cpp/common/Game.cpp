@@ -24,49 +24,57 @@ Game::Game(int sceneNumber, Platform *platform) {
   // NOTE: Don't call OpenGL functions here
   logger = platform->logger();
   FilesManager *filesManager = platform->filesManager();
+  isClosing = false;
 
   if (sceneNumber == 0) {
-    camera = Camera(Dimension(), Point3D(0, 0, 40));
-    pScene = new SandBox(filesManager, &camera);
+    camera = new Camera(Dimension(), Point3D(0, 0, 40));
+    pScene = new SandBox(filesManager, camera);
   } else if (sceneNumber == 1) {
     pScene = new Test1();
   } else if (sceneNumber == 2) {
     pScene = new Test2(filesManager);
   } else if (sceneNumber == 3) {
-    camera = Camera(Dimension(), Point3D(0, 0, 40));
-    pScene = new Test3(filesManager, &camera);
+    camera = new Camera(Dimension(), Point3D(0, 0, 40));
+    pScene = new Test3(filesManager, camera);
   } else {
     const float CAMERA_WIDTH = 450.0f;
     const float CAMERA_HEIGHT = 800.0f;
     Dimension cameraSize = Dimension(CAMERA_WIDTH, CAMERA_HEIGHT);
-    camera = Camera(cameraSize, Point3D(0, 0, 40));
-    pScene = new Test4(filesManager, &camera);
+    camera = new Camera(cameraSize, Point3D(0, 0, 40));
+    pScene = new Test4(filesManager, camera);
   }
 }
 
-Game::~Game() {
+Game::~Game() { close(); }
+
+bool Game::isPlaying() { return !isClosing; }
+
+void Game::close() {
+  isClosing = true;
   delete pScene;
   pScene = nullptr;
+  delete camera;
+  camera = nullptr;
 }
 
 void Game::camera_forward() {
-  Point3D cameraPosition = camera.getPosition();
-  camera.updatePosition(cameraPosition.decrementZ(1));
+  Point3D cameraPosition = camera->getPosition();
+  camera->updatePosition(cameraPosition.decrementZ(1));
 }
 
 void Game::camera_back() {
-  Point3D cameraPosition = camera.getPosition();
-  camera.updatePosition(cameraPosition.incrementZ(1));
+  Point3D cameraPosition = camera->getPosition();
+  camera->updatePosition(cameraPosition.incrementZ(1));
 }
 
 void Game::camera_left() {
-  Point3D cameraPosition = camera.getPosition();
-  camera.updatePosition(cameraPosition.decrementX(1));
+  Point3D cameraPosition = camera->getPosition();
+  camera->updatePosition(cameraPosition.decrementX(1));
 }
 
 void Game::camera_right() {
-  Point3D cameraPosition = camera.getPosition();
-  camera.updatePosition(cameraPosition.incrementX(1));
+  Point3D cameraPosition = camera->getPosition();
+  camera->updatePosition(cameraPosition.incrementX(1));
 }
 
 void Game::cursorPositionChangedHandler(CursorPositionChanged *event) {
@@ -95,12 +103,13 @@ void Game::keyPressedHandler(KeyPressed *event) {
       camera_reset();
     } else if (key == Key::ESCAPE_KEY) {
       // TODO(simon): Should we save state before exit?
-      exit(0);
+      close();
+      // exit(0);
     }
   }
 }
 
-void Game::camera_reset() { camera.updatePosition(Point3D()); }
+void Game::camera_reset() { camera->updatePosition(Point3D()); }
 
 void Game::surfaceCreated() {
   // LOGE("OpenGL version: %s", glGetString(GL_VERSION));
@@ -117,15 +126,28 @@ void Game::surfaceChangedHandler(SurfaceChanged *event) {
   pScene->surfaceChanged(dimension);
 }
 
-void Game::update(double dt) { pScene->update(dt); }
+void Game::update(double dt) {
+  if (isClosing) {
+    return;
+  }
+  pScene->update(dt);
+}
 
-void Game::render() { pScene->render(); }
+void Game::render() {
+  if (isClosing) {
+    return;
+  }
+  pScene->render();
+}
 
 void Game::pause() { pScene->pause(); }
 
 void Game::resume() { pScene->resume(); }
 
 void Game::dispatchEvent(Event *event) {
+  if (isClosing) {
+    return;
+  }
   EventType eventType = event->type();
 
   if (eventType == EventType::SURFACE_CHANGED) {
