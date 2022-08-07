@@ -19,8 +19,8 @@ static bool hitLeftLimit(Dimension dimension, Point3D point) {
   return point.getX() <= -dimension.getWidth() / 2;
 }
 
-Test4::Test4(FilesManager *filesManager) {
-  camera = new Camera(cameraSize, Point3D(0, 0, 40));
+Test4::Test4(FilesManager *filesManager, Camera *camera) {
+  this->camera = camera;
   camera->setProjection(Projection::ORTHOGRAPHIC);
   renderer = new Renderer();
 

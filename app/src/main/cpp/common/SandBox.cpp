@@ -12,10 +12,10 @@
 using glm::mat4;
 using glm::vec3;
 
-SandBox::SandBox(FilesManager *filesManager) {
+SandBox::SandBox(FilesManager *filesManager, Camera *camera) {
   const string vertexFileStr = filesManager->loadFile("simple.vert");
   const string fragmentFileStr = filesManager->loadFile("simple.frag");
-  camera = new Camera(Dimension(), Point3D(0, 0, 40));
+  this->camera = camera;
   shaderProg = new ShaderProg(vertexFileStr, fragmentFileStr);
   mesh = new Mesh(math->get_cube(), 8, math->get_cube_index(), 36);
 
