@@ -28,22 +28,23 @@ vector<float> Math::generateGrid(Dimension dimension, float row, float col) {
   return grid;
 }
 
-float *Math::get_circle(float radius, int number_of_vertices) {
+float *Math::generateCircle(float radius, int numberOfVertices) {
   float *v;
+  int size = 3 * numberOfVertices;
 
-  v = reinterpret_cast<float *>(malloc(sizeof(float) * 3 * number_of_vertices));
-  int j = 0;
-
-  for (double i = 0; i < 2 * M_PI; i += 2 * M_PI / number_of_vertices) {
-    v[j++] = cos(i) * radius; // X coordinate
-    v[j++] = sin(i) * radius; // Y coordinate
-    v[j++] = 0.0;             // Z coordinate
+  v = reinterpret_cast<float *>(malloc(sizeof(float) * size));
+  double i = 0;
+  for (int index = 0; index < size; index += 3) {
+    i += 2 * M_PI / numberOfVertices;
+    v[index] = cos(i) * radius;     // X coordinate
+    v[index + 1] = sin(i) * radius; // Y coordinate
+    v[index + 2] = 0.0;             // Z coordinate
   }
 
   return v;
 }
 
-int16_t *Math::get_cube_index() {
+int16_t *Math::generateCubeIndexs() {
   int16_t *indices;
 #define size 36
   indices = reinterpret_cast<int16_t *>(malloc(sizeof(int16_t) * size));
@@ -74,7 +75,7 @@ int16_t *Math::get_cube_index() {
 #undef size
 }
 
-float *Math::get_cube() {
+float *Math::generateCube() {
   float *vertex;
 #define size 48
   vertex = reinterpret_cast<float *>(malloc(sizeof(float) * size));

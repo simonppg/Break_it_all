@@ -31,10 +31,10 @@ Test4::Test4(FilesManager *filesManager, Camera *camera) {
 
   shaderProgs[0] = new ShaderProg(simpleVert, simpleFrag);
   shaderProgs[1] = new ShaderProg(circleVert, circleFrag);
-  meshes[0] = new Mesh(math->get_cube(), 16, math->get_cube_index(), 36);
+  meshes[0] = new Mesh(math->generateCube(), 16, math->generateCubeIndexs(), 36);
   int NUMBER_OF_VERTICES = 15;
   float radius = 1.0;
-  auto circle = math->get_circle(radius, NUMBER_OF_VERTICES);
+  auto circle = math->generateCircle(radius, NUMBER_OF_VERTICES);
   meshes[1] = new Mesh(circle, NUMBER_OF_VERTICES);
 
   float h = cameraSize.getHeight() / 2;

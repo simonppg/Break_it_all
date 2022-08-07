@@ -27,7 +27,7 @@ const string LinuxFilesManager::loadFile(const string filePath) {
   // same as rewind(f);
   fseek(pFile, 0, SEEK_SET);
 
-  char *content = reinterpret_cast<char *>(malloc(sizeof(char) * fsize + 1));
+  char *content = reinterpret_cast<char *>(malloc(sizeof(char) * (fsize + 1)));
   fread(content, fsize, 1, pFile);
   fclose(pFile);
 

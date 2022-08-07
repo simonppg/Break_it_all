@@ -13,7 +13,7 @@
 Test3::Test3(FilesManager *filesManager, Camera *camera) {
   float RADIUS = 0.5;
   this->camera = camera;
-  circle = math->get_circle(RADIUS, NUMBER_OF_VERTICES);
+  circle = math->generateCircle(RADIUS, NUMBER_OF_VERTICES);
   renderer = Renderer();
   this->filesManager = filesManager;
 }
