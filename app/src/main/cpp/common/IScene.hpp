@@ -10,6 +10,7 @@
 class IScene {
 protected:
   unsigned int programID;
+  Camera *camera = nullptr;
 
 public:
   virtual ~IScene() {}
@@ -21,8 +22,6 @@ public:
   virtual void resume() = 0;
   virtual void update(double) = 0;
   virtual bool events(Point2D) = 0;
-
-  Camera *camera = nullptr;
 };
 
 #endif // APP_SRC_MAIN_CPP_COMMON_ISCENE_HPP_

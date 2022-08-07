@@ -26,21 +26,21 @@ Game::Game(int sceneNumber, Platform *platform) {
   FilesManager *filesManager = platform->filesManager();
 
   if (sceneNumber == 0) {
-    Camera *camera = new Camera(Dimension(), Point3D(0, 0, 40));
-    pScene = new SandBox(filesManager, camera);
+    camera = Camera(Dimension(), Point3D(0, 0, 40));
+    pScene = new SandBox(filesManager, &camera);
   } else if (sceneNumber == 1) {
     pScene = new Test1();
   } else if (sceneNumber == 2) {
     pScene = new Test2(filesManager);
   } else if (sceneNumber == 3) {
-    Camera *camera = new Camera(Dimension(), Point3D(0, 0, 40));
-    pScene = new Test3(filesManager, camera);
+    camera = Camera(Dimension(), Point3D(0, 0, 40));
+    pScene = new Test3(filesManager, &camera);
   } else {
     const float CAMERA_WIDTH = 450.0f;
     const float CAMERA_HEIGHT = 800.0f;
     Dimension cameraSize = Dimension(CAMERA_WIDTH, CAMERA_HEIGHT);
-    Camera *camera = new Camera(cameraSize, Point3D(0, 0, 40));
-    pScene = new Test4(filesManager, camera);
+    camera = Camera(cameraSize, Point3D(0, 0, 40));
+    pScene = new Test4(filesManager, &camera);
   }
 }
 
@@ -50,23 +50,23 @@ Game::~Game() {
 }
 
 void Game::camera_forward() {
-  Point3D cameraPosition = pScene->camera->getPosition();
-  pScene->camera->updatePosition(cameraPosition.decrementZ(1));
+  Point3D cameraPosition = camera.getPosition();
+  camera.updatePosition(cameraPosition.decrementZ(1));
 }
 
 void Game::camera_back() {
-  Point3D cameraPosition = pScene->camera->getPosition();
-  pScene->camera->updatePosition(cameraPosition.incrementZ(1));
+  Point3D cameraPosition = camera.getPosition();
+  camera.updatePosition(cameraPosition.incrementZ(1));
 }
 
 void Game::camera_left() {
-  Point3D cameraPosition = pScene->camera->getPosition();
-  pScene->camera->updatePosition(cameraPosition.decrementX(1));
+  Point3D cameraPosition = camera.getPosition();
+  camera.updatePosition(cameraPosition.decrementX(1));
 }
 
 void Game::camera_right() {
-  Point3D cameraPosition = pScene->camera->getPosition();
-  pScene->camera->updatePosition(cameraPosition.incrementX(1));
+  Point3D cameraPosition = camera.getPosition();
+  camera.updatePosition(cameraPosition.incrementX(1));
 }
 
 void Game::cursorPositionChangedHandler(CursorPositionChanged *event) {
@@ -100,7 +100,7 @@ void Game::keyPressedHandler(KeyPressed *event) {
   }
 }
 
-void Game::camera_reset() { pScene->camera->updatePosition(Point3D()); }
+void Game::camera_reset() { camera.updatePosition(Point3D()); }
 
 void Game::surfaceCreated() {
   // LOGE("OpenGL version: %s", glGetString(GL_VERSION));
