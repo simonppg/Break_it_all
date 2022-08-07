@@ -75,6 +75,14 @@ Test4::~Test4() {
     delete object;
     object = nullptr;
   }
+  for (auto &mesh : meshes) {
+    delete mesh;
+    mesh = nullptr;
+  }
+  for (auto &prog : shaderProgs) {
+    delete prog;
+    prog = nullptr;
+  }
   delete ball;
   ball = nullptr;
   delete ball2;
@@ -89,6 +97,14 @@ void Test4::terminate() {
   for (auto &object : objects) {
     delete object;
     object = nullptr;
+  }
+  for (auto &mesh : meshes) {
+    delete mesh;
+    mesh = nullptr;
+  }
+  for (auto &prog : shaderProgs) {
+    delete prog;
+    prog = nullptr;
   }
   delete ball;
   ball = nullptr;
