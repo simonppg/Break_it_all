@@ -10,9 +10,9 @@
 #include "Point3D.hpp"
 #include "Renderer.hpp"
 
-Test3::Test3(FilesManager *filesManager) {
+Test3::Test3(FilesManager *filesManager, Camera *camera) {
   float RADIUS = 0.5;
-  camera = new Camera(Dimension(), Point3D());
+  this->camera = camera;
   circle = math->get_circle(RADIUS, NUMBER_OF_VERTICES);
   renderer = Renderer();
   this->filesManager = filesManager;

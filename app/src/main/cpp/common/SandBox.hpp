@@ -17,7 +17,7 @@ private:
   float povInDegrees = 0.0f;
 
 public:
-  explicit SandBox(FilesManager *filesManager);
+  explicit SandBox(FilesManager*, Camera*);
   ~SandBox();
 
   void surfaceCreated() override;
