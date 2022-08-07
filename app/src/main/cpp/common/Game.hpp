@@ -15,7 +15,7 @@ class Game final {
 private:
   IScene *pScene;
   Logger *logger;
-  Camera *camera;
+  Camera camera;
 
   void camera_forward();
   void camera_back();
