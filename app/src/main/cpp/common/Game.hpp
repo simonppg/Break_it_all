@@ -2,7 +2,6 @@
 #ifndef APP_SRC_MAIN_CPP_COMMON_GAME_HPP_
 #define APP_SRC_MAIN_CPP_COMMON_GAME_HPP_
 
-#include "../shared/FilesManager.hpp"
 #include "../shared/Logger.hpp"
 #include "../shared/Platform.hpp"
 #include "CursorPositionChanged.hpp"
@@ -15,9 +14,7 @@
 class Game final {
 private:
   IScene *pScene;
-  Platform *platform;
   Logger *logger;
-  FilesManager *fileManager;
 
   void camera_forward();
   void camera_back();
