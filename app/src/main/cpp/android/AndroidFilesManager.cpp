@@ -8,8 +8,8 @@ AndroidFilesManager::AndroidFilesManager(AAssetManager *assetManager) {
   this->assetManager = assetManager;
 }
 
-char *AndroidFilesManager::loadFile(const char *filePath) {
-  AAsset *file = AAssetManager_open(assetManager, filePath, AASSET_MODE_BUFFER);
+const string AndroidFilesManager::loadFile(const string filePath) {
+  AAsset *file = AAssetManager_open(assetManager, filePath.c_str(), AASSET_MODE_BUFFER);
 
   size_t fileLength = static_cast<size_t>(AAsset_getLength(file));
 
@@ -23,5 +23,6 @@ char *AndroidFilesManager::loadFile(const char *filePath) {
 
   AAsset_close(file);
 
-  return fileContent;
+  string str(fileContent);
+  return str;
 }
