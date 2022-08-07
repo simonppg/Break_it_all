@@ -18,8 +18,6 @@ Test3::Test3(FilesManager *filesManager, Camera *camera) {
   this->filesManager = filesManager;
 }
 
-void Test3::terminate() {}
-
 void Test3::render() {
   GLint uniform;
   mat4 translate;

@@ -45,17 +45,6 @@ SandBox::~SandBox() {
   shaderProg = nullptr;
 }
 
-void SandBox::terminate() {
-  for (auto &object : objects) {
-    delete object;
-    object = nullptr;
-  }
-  delete mesh;
-  mesh = nullptr;
-  delete shaderProg;
-  shaderProg = nullptr;
-}
-
 void SandBox::surfaceCreated() {
   glEnable(GL_DEPTH_TEST);
 

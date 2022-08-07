@@ -71,9 +71,7 @@ Test4::Test4(FilesManager *filesManager, Camera *camera) {
   ball2->animate_x();
 }
 
-Test4::~Test4() { terminate(); }
-
-void Test4::terminate() {
+Test4::~Test4() {
   for (auto &object : objects) {
     delete object;
     object = nullptr;

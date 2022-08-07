@@ -20,8 +20,8 @@ public:
   ~Mesh();
 
   MeshType type;
-  float *vertex;
-  int16_t *indices;
+  float *vertex = nullptr;
+  int16_t *indices = nullptr;
   int numVertices;
   int numIndices;
   unsigned int vbo; // vertex buffer object
