@@ -27,6 +27,7 @@ private:
 
   const float CAMERA_WIDTH = 450.0f;
   const float CAMERA_HEIGHT = 800.0f;
+  Dimension cameraSize = Dimension(CAMERA_WIDTH, CAMERA_HEIGHT);
   int xDirection = 1;
   float povInDegrees = 0.0f;
 

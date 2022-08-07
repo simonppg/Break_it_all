@@ -20,7 +20,6 @@ static bool hitLeftLimit(Dimension dimension, Point3D point) {
 }
 
 Test4::Test4(FilesManager *filesManager) {
-  auto cameraSize = Dimension(CAMERA_WIDTH, CAMERA_HEIGHT);
   camera = new Camera(cameraSize, Point3D(0, 0, 40));
   camera->setProjection(Projection::ORTHOGRAPHIC);
   renderer = new Renderer();
@@ -38,11 +37,11 @@ Test4::Test4(FilesManager *filesManager) {
   auto circle = math->get_circle(radius, NUMBER_OF_VERTICES);
   meshes[1] = new Mesh(circle, NUMBER_OF_VERTICES);
 
-  float h = CAMERA_HEIGHT / 2;
-  Dimension gridDimension(CAMERA_WIDTH, h);
+  float h = cameraSize.getHeight() / 2;
+  Dimension gridDimension(cameraSize.getWidth(), h);
 
   float ySize = 80.0f * (h / ROW) / 100;
-  float xSize = 90.0f * (CAMERA_WIDTH / COL) / 100;
+  float xSize = 90.0f * (cameraSize.getWidth() / COL) / 100;
   vPos = math->generateGrid(gridDimension, ROW, COL);
   for (int i = 0; i < ROW * COL; i++) {
     objects[i] = new Object(shaderProgs[1], meshes[0]);
@@ -51,14 +50,14 @@ Test4::Test4(FilesManager *filesManager) {
   }
 
   ball = new Object(shaderProgs[1], meshes[1]);
-  float ball_size = CAMERA_WIDTH / 30;
+  float ball_size = cameraSize.getWidth() / 30;
   Point3D ballSize(ball_size, ball_size, 1);
   ball->updateSize(ballSize);
   ball->updatePosition(Point3D(0, camera->bottom + camera->top / 3, 0));
   ball->animate_x();
   ball->velocity = 0.01;
 
-  float cubeXSize = (CAMERA_WIDTH / 2) / 3;
+  float cubeXSize = (cameraSize.getWidth() / 2) / 3;
   float cubeYSize = cubeXSize / 7;
   paddle = new Object(shaderProgs[1], meshes[0]);
   paddle->updateSize(Point3D(cubeXSize, cubeYSize, 1));
@@ -146,7 +145,7 @@ void Test4::update(double dt) {
 bool Test4::events(Point2D point) {
   Dimension cameraDimension = camera->getDimension();
 
-  float cubeXSize = (CAMERA_WIDTH / 2) / 3;
+  float cubeXSize = (cameraSize.getWidth() / 2) / 3;
   float cubeYSize = cubeXSize / 7;
   float newX = (-cameraDimension.getWidth() / 2) + point.getX();
   float newY = (-cameraDimension.getHeight() / 2) + cubeYSize * 2;
