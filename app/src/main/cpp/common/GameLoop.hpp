@@ -12,7 +12,7 @@ private:
 
 public:
   void loop();
-  GameLoop(Logger*, Iterable*);
+  GameLoop(Logger *, Iterable *);
 };
 
 #endif // APP_SRC_MAIN_CPP_COMMON_GAMELOOP_HPP_

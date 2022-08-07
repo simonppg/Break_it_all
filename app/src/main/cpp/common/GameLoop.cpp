@@ -3,11 +3,11 @@
 
 #include <chrono>
 
-using std::chrono::milliseconds;
-using std::chrono::duration;
-using std::chrono::system_clock;
-using std::chrono::high_resolution_clock;
 using std::milli;
+using std::chrono::duration;
+using std::chrono::high_resolution_clock;
+using std::chrono::milliseconds;
+using std::chrono::system_clock;
 
 GameLoop::GameLoop(Logger *logger, Iterable *iterable) {
   this->logger = logger;
@@ -17,7 +17,7 @@ GameLoop::GameLoop(Logger *logger, Iterable *iterable) {
 void GameLoop::loop() {
   double ONE_BILLION_NANOSECONDS = 1'000'000'000;
 
-  float MAX_FRAMES_PER_SECOND = 60; // FPS
+  float MAX_FRAMES_PER_SECOND = 60;  // FPS
   float MAX_UPDATES_PER_SECOND = 60; // UPS
 
   double fOPTIMAL_TIME = ONE_BILLION_NANOSECONDS / MAX_FRAMES_PER_SECOND;
@@ -38,13 +38,13 @@ void GameLoop::loop() {
 
     iterable->beforeIteration();
 
-    if(uDeltaTime >= uOPTIMAL_TIME) {
+    if (uDeltaTime >= uOPTIMAL_TIME) {
       iterable->update(uDeltaTime / ONE_BILLION_NANOSECONDS);
       updates++;
       uDeltaTime -= uOPTIMAL_TIME;
     }
 
-    if(fDeltaTime >= fOPTIMAL_TIME) {
+    if (fDeltaTime >= fOPTIMAL_TIME) {
       iterable->draw();
       frames++;
       fDeltaTime -= fOPTIMAL_TIME;

@@ -76,7 +76,7 @@ void App::afterLoop() { windowManager->destroyWindow(); }
 
 void App::update(double dt) { game->update(dt); }
 
-void App::draw() {game->render();}
+void App::draw() { game->render(); }
 
 void App::start(int sceneNumber) {
   logger->logi("%d", sceneNumber);
