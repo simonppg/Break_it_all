@@ -12,7 +12,7 @@
 #include "ScreenTouched.hpp"
 #include "SurfaceChanged.hpp"
 
-class Game {
+class Game final {
 private:
   IScene *pScene;
   Platform *platform;
@@ -31,6 +31,7 @@ private:
 
 public:
   Game(int sceneNumber, Platform *platform);
+  ~Game();
 
   // OpenGL context is in this functions
   void surfaceCreated();

@@ -24,6 +24,8 @@ App::App() {
 }
 
 App::~App() {
+  delete game;
+  game = nullptr;
   delete keyMapper;
   keyMapper = nullptr;
   delete eventFactory;
