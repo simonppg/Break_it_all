@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Simon Puente
+// Copyright (c) 2021 - 2022 Simon Puente
 #include "Test4.hpp"
 
 #include <string>
@@ -38,25 +38,31 @@ Test4::Test4(FilesManager *filesManager) {
   auto circle = math->get_circle(radius, NUMBER_OF_VERTICES);
   meshes[1] = new Mesh(circle, NUMBER_OF_VERTICES);
 
+  float h = CAMERA_HEIGHT / 2;
   Dimension gridDimension(CAMERA_WIDTH, h);
 
+  float ySize = 80.0f * (h / ROW) / 100;
+  float xSize = 90.0f * (CAMERA_WIDTH / COL) / 100;
   vPos = math->generateGrid(gridDimension, ROW, COL);
   for (int i = 0; i < ROW * COL; i++) {
     objects[i] = new Object(shaderProgs[1], meshes[0]);
-    objects[i]->updateSize(Point3D(x_size / 2, y_size / 2, 1));
+    objects[i]->updateSize(Point3D(xSize / 2, ySize / 2, 1));
     objects[i]->updatePosition(Point3D(vPos[i * 2], vPos[i * 2 + 1], 0));
   }
 
   ball = new Object(shaderProgs[1], meshes[1]);
+  float ball_size = CAMERA_WIDTH / 30;
   Point3D ballSize(ball_size, ball_size, 1);
   ball->updateSize(ballSize);
   ball->updatePosition(Point3D(0, camera->bottom + camera->top / 3, 0));
   ball->animate_x();
   ball->velocity = 0.01;
 
+  float cubeXSize = (CAMERA_WIDTH / 2) / 3;
+  float cubeYSize = cubeXSize / 7;
   paddle = new Object(shaderProgs[1], meshes[0]);
-  paddle->updateSize(Point3D(cube_x_size, cube_y_size, 1));
-  paddle->updatePosition(Point3D(0, camera->bottom + cube_y_size * 2, 1));
+  paddle->updateSize(Point3D(cubeXSize, cubeYSize, 1));
+  paddle->updatePosition(Point3D(0, camera->bottom + cubeYSize * 2, 1));
   paddle->animate_y();
 
   ball2 = new Object(shaderProgs[1], meshes[1]);
@@ -99,24 +105,24 @@ void Test4::surfaceChanged(Dimension dimension) {
   Dimension gridDimension(width, camera->top);
 
   vPos = math->generateGrid(gridDimension, ROW, COL);
-  x_size = 90.0f * (static_cast<float>(width) / COL) / 100;
-  y_size = 80.0f * (camera->top / ROW) / 100;
+  float x_size = 90.0f * (static_cast<float>(width) / COL) / 100;
+  float y_size = 80.0f * (camera->top / ROW) / 100;
 
   for (int i = 0; i < ROW * COL; i++) {
     objects[i]->updateSize(Point3D(x_size / 2, y_size / 2, 1));
     objects[i]->updatePosition(Point3D(vPos[i * 2], vPos[i * 2 + 1], 0));
   }
 
-  ball_size = static_cast<float>(width) / 30;
-  cube_x_size = (static_cast<float>(width) / 2) / 3;
-  cube_y_size = cube_x_size / 7;
+  float ball_size = static_cast<float>(width) / 30;
+  float cubeXSize = (static_cast<float>(width) / 2) / 3;
+  float cubeYSize = cubeXSize / 7;
 
   Point3D ballSize(ball_size, ball_size, 1);
   ball->updateSize(ballSize);
   ball->updatePosition(Point3D(0, camera->bottom + camera->top / 3, 0));
 
-  paddle->updateSize(Point3D(cube_x_size, cube_y_size, 1));
-  paddle->updatePosition(Point3D(0, camera->bottom + cube_y_size * 2, 1));
+  paddle->updateSize(Point3D(cubeXSize, cubeYSize, 1));
+  paddle->updatePosition(Point3D(0, camera->bottom + cubeYSize * 2, 1));
 
   ball2->updatePosition(Point3D(camera->right, camera->bottom, 0));
 }
@@ -141,7 +147,7 @@ bool Test4::events(Point2D point) {
   Dimension cameraDimension = camera->getDimension();
 
   float newX = (-cameraDimension.getWidth() / 2) + point.getX();
-  float newY = (-cameraDimension.getHeight() / 2) + cube_y_size * 2;
+  float newY = (-cameraDimension.getHeight() / 2) + cubeYSize * 2;
 
   paddle->updatePosition(Point3D(newX, newY, 0));
   povInDegrees += 5.0f;
