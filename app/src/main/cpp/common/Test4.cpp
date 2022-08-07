@@ -31,7 +31,8 @@ Test4::Test4(FilesManager *filesManager, Camera *camera) {
 
   shaderProgs[0] = new ShaderProg(simpleVert, simpleFrag);
   shaderProgs[1] = new ShaderProg(circleVert, circleFrag);
-  meshes[0] = new Mesh(math->generateCube(), 16, math->generateCubeIndexs(), 36);
+  meshes[0] =
+      new Mesh(math->generateCube(), 16, math->generateCubeIndexs(), 36);
   int NUMBER_OF_VERTICES = 15;
   float radius = 1.0;
   auto circle = math->generateCircle(radius, NUMBER_OF_VERTICES);
@@ -70,9 +71,7 @@ Test4::Test4(FilesManager *filesManager, Camera *camera) {
   ball2->animate_x();
 }
 
-Test4::~Test4() {
-  terminate();
-}
+Test4::~Test4() { terminate(); }
 
 void Test4::terminate() {
   for (auto &object : objects) {
