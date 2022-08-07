@@ -12,7 +12,8 @@ private:
   FilesManager *filesManager;
 
   GLfloat vVertices[9] = {0.0f, 0.5f, 0.0f,  -0.5f, -0.5f,
-                              0.0f, 0.5f, -0.5f, 0.0f};
+                          0.0f, 0.5f, -0.5f, 0.0f};
+
 public:
   explicit Test2(FilesManager *filesManager);
 
