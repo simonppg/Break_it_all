@@ -16,7 +16,6 @@ static const int COL = 9;
 
 class Test4 final : public IScene {
 private:
-  vector<float> vPos;
   Math *math;
   Mesh *meshes[2];
   ShaderProg *shaderProgs[2];
