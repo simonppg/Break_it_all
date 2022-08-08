@@ -15,10 +15,11 @@ class Object {
 protected:
   ShaderProg *prog;
   Renderer *renderer;
-  DrawContext *draw_context;
+  DrawContext *drawContext;
+  Mesh *mesh;
+
   vec3 rotation;
   float angle;
-  Mesh *mesh;
   Point3D position;
   Point3D size;
 

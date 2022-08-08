@@ -8,18 +8,18 @@
 
 Object::Object(ShaderProg *pProg, Mesh *pMesh)
     : angle{0}, size{Point3D(2, 1, 1)} {
-  this->position = Point3D();
-  rotation = vec3(1);
   this->prog = pProg;
   this->mesh = pMesh;
+  position = Point3D();
+  rotation = vec3(1);
   acceleration = 0;
   velocity = 500.0;
-  draw_context = new DrawContext();
+  drawContext = new DrawContext();
 }
 
 Object::~Object() {
-  delete draw_context;
-  draw_context = nullptr;
+  delete drawContext;
+  drawContext = nullptr;
 }
 
 Point3D Object::getPosition() { return position; }
@@ -34,17 +34,17 @@ void Object::draw(mat4 cameraTranslate) {
   rotate = glm::rotate(translate, glm::radians(angle), rotation);
   scale = glm::scale(rotate, glm::vec3(size.getX(), size.getY(), size.getZ()));
 
-  draw_context->programID = prog->programID;
-  draw_context->type = mesh->type;
-  draw_context->vbo = mesh->vbo;
-  draw_context->iab = mesh->iab;
-  draw_context->vertex = mesh->vertex;
-  draw_context->numVertices = mesh->numVertices;
-  draw_context->indices = mesh->indices;
-  draw_context->numIndices = mesh->numIndices;
-  draw_context->matrix_transform = scale;
+  drawContext->programID = prog->programID;
+  drawContext->type = mesh->type;
+  drawContext->vbo = mesh->vbo;
+  drawContext->iab = mesh->iab;
+  drawContext->vertex = mesh->vertex;
+  drawContext->numVertices = mesh->numVertices;
+  drawContext->indices = mesh->indices;
+  drawContext->numIndices = mesh->numIndices;
+  drawContext->matrix_transform = scale;
 
-  renderer->draw(draw_context);
+  renderer->draw(drawContext);
 }
 
 void Object::updatePosition(Point3D position) { this->position = position; }
