@@ -11,7 +11,7 @@ Object::Object(ShaderProg *pProg, Mesh *pMesh)
   this->prog = pProg;
   this->mesh = pMesh;
   position = Point3D();
-  rotation = vec3(1);
+  rotation = Point3D(1,1,1);
   acceleration = 0;
   velocity = 500.0;
   drawContext = new DrawContext();
@@ -30,8 +30,8 @@ void Object::draw(Camera *camera) {
   mat4 scale;
 
   translate = camera->translate(position);
-  rotate = glm::rotate(translate, glm::radians(angle), rotation);
-  scale = glm::scale(rotate, glm::vec3(size.getX(), size.getY(), size.getZ()));
+  rotate = camera->rotate(translate, angle, rotation);
+  scale = camera->scale(rotate, size);
 
   drawContext->programID = prog->programID;
   drawContext->type = mesh->type;
@@ -52,8 +52,8 @@ void Object::updateSize(Point3D size) { this->size = size; }
 
 void Object::set_rotation_angle(float angle) { this->angle = angle; }
 
-void Object::animate_x() { rotation = vec3(1, 0, 0); }
+void Object::animate_x() { rotation = Point3D(1, 0, 0); }
 
-void Object::animate_y() { rotation = vec3(0, 1, 0); }
+void Object::animate_y() { rotation = Point3D(0, 1, 0); }
 
-void Object::animate_z() { rotation = vec3(0, 0, 1); }
+void Object::animate_z() { rotation = Point3D(0, 0, 1); }

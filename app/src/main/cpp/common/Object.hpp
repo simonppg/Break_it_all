@@ -18,9 +18,9 @@ protected:
   DrawContext *drawContext;
   Mesh *mesh;
 
-  vec3 rotation;
   float angle;
   Point3D position;
+  Point3D rotation;
   Point3D size;
 
 public:

@@ -34,6 +34,16 @@ mat4 Camera::translate(Point3D position) {
   return glm::translate(cameraTranslate, point);
 }
 
+mat4 Camera::rotate(mat4 translate, float angle, Point3D rotation){
+  auto point = vec3(rotation.getX(), rotation.getY(), rotation.getZ());
+  return glm::rotate(translate, glm::radians(angle), point);
+}
+
+mat4 Camera::scale(mat4 rotate, Point3D size) {
+  auto point = vec3(size.getX(), size.getY(), size.getZ());
+  return glm::scale(rotate, point);
+}
+
 Dimension Camera::getDimension() { return dimension; }
 Point3D Camera::getPosition() { return position; }
 float Camera::aspectRatio() { return dimension.aspectRatio(); }
