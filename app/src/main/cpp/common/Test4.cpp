@@ -23,6 +23,7 @@ Test4::Test4(FilesManager *filesManager, Camera *camera) {
   this->camera = camera;
   camera->setProjection(Projection::ORTHOGRAPHIC);
   renderer = new Renderer();
+  math = new Math();
 
   const string simpleVert = filesManager->loadFile("simple.vert");
   const string simpleFrag = filesManager->loadFile("simple.frag");
@@ -43,7 +44,7 @@ Test4::Test4(FilesManager *filesManager, Camera *camera) {
 
   float ySize = 80.0f * (h / ROW) / 100;
   float xSize = 90.0f * (cameraSize.getWidth() / COL) / 100;
-  vPos = math->generateGrid(gridDimension, ROW, COL);
+  vector<float> vPos = math->generateGrid(gridDimension, ROW, COL);
   for (int i = 0; i < ROW * COL; i++) {
     objects[i] = new Object(shaderProgs[1], meshes[0]);
     objects[i]->updateSize(Point3D(xSize / 2, ySize / 2, 1));
@@ -92,6 +93,8 @@ Test4::~Test4() {
   paddle = nullptr;
   delete renderer;
   renderer = nullptr;
+  delete math;
+  math = nullptr;
 }
 
 void Test4::render() {
@@ -127,7 +130,7 @@ void Test4::surfaceChanged(Dimension dimension) {
 
   Dimension gridDimension(width, camera->top);
 
-  vPos = math->generateGrid(gridDimension, ROW, COL);
+  vector<float> vPos = math->generateGrid(gridDimension, ROW, COL);
   float x_size = 90.0f * (static_cast<float>(width) / COL) / 100;
   float y_size = 80.0f * (camera->top / ROW) / 100;
 
