@@ -63,12 +63,12 @@ void SandBox::render() {
   glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
   for (auto &i : objects) {
-    i->draw(camera->cameraTranslate);
+    i->draw(camera);
   }
 }
 
 void SandBox::surfaceChanged(Dimension dimension) {
-  camera->updateDimension(dimension);
+  camera->resize(dimension);
   glViewport(0, 0, dimension.getWidth(), dimension.getHeight());
 }
 

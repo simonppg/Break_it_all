@@ -59,22 +59,22 @@ void Game::close() {
 
 void Game::camera_forward() {
   Point3D cameraPosition = camera->getPosition();
-  camera->updatePosition(cameraPosition.decrementZ(1));
+  camera->travel(cameraPosition.decrementZ(1));
 }
 
 void Game::camera_back() {
   Point3D cameraPosition = camera->getPosition();
-  camera->updatePosition(cameraPosition.incrementZ(1));
+  camera->travel(cameraPosition.incrementZ(1));
 }
 
 void Game::camera_left() {
   Point3D cameraPosition = camera->getPosition();
-  camera->updatePosition(cameraPosition.decrementX(1));
+  camera->travel(cameraPosition.decrementX(1));
 }
 
 void Game::camera_right() {
   Point3D cameraPosition = camera->getPosition();
-  camera->updatePosition(cameraPosition.incrementX(1));
+  camera->travel(cameraPosition.incrementX(1));
 }
 
 void Game::cursorPositionChangedHandler(CursorPositionChanged *event) {
@@ -109,7 +109,7 @@ void Game::keyPressedHandler(KeyPressed *event) {
   }
 }
 
-void Game::camera_reset() { camera->updatePosition(Point3D()); }
+void Game::camera_reset() { camera->travel(Point3D()); }
 
 void Game::surfaceCreated() {
   // LOGE("OpenGL version: %s", glGetString(GL_VERSION));

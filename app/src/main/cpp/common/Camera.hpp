@@ -19,23 +19,27 @@ private:
   Point3D position;
   FieldOfView fov;
 
+  mat4 cameraTranslate;
   // NOTE: MUST be called after change position, dimension or fov
   void updateProjection();
 
 public:
-  mat4 cameraTranslate;
-
   Camera();
   Camera(Dimension dimension, Point3D position);
   Camera(Dimension dimension, Point3D position, FieldOfView fov);
+
+  mat4 translate(Point3D);
+  mat4 rotate(mat4, float, Point3D);
+  mat4 scale(mat4, Point3D);
+  mat4 trasform(Point3D, float, Point3D, Point3D);
 
   Point3D getPosition();
   Dimension getDimension();
   float aspectRatio();
 
-  void updateDimension(Dimension dimension);
-  void updatePosition(Point3D position);
-  void setProjection(Projection projection);
+  void resize(Dimension dimension);
+  void travel(Point3D position);
+  void changeProjection(Projection projection);
 
   float top, bottom, right, left;
 };
