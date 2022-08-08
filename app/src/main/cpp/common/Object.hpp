@@ -29,7 +29,7 @@ public:
 
   Point3D getPosition();
 
-  void draw(mat4);
+  void draw(Camera *);
   void updatePosition(Point3D position);
   void updateSize(Point3D size);
   void set_rotation_angle(float angle);

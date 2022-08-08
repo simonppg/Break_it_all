@@ -24,13 +24,12 @@ Object::~Object() {
 
 Point3D Object::getPosition() { return position; }
 
-void Object::draw(mat4 cameraTranslate) {
+void Object::draw(Camera *camera) {
   mat4 translate;
   mat4 rotate;
   mat4 scale;
 
-  translate = glm::translate(
-      cameraTranslate, vec3(position.getX(), position.getY(), position.getZ()));
+  translate = camera->translate(position);
   rotate = glm::rotate(translate, glm::radians(angle), rotation);
   scale = glm::scale(rotate, glm::vec3(size.getX(), size.getY(), size.getZ()));
 

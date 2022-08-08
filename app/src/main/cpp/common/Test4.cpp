@@ -102,11 +102,11 @@ void Test4::render() {
   glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
   for (auto &i : objects) {
-    i->draw(camera->cameraTranslate);
+    i->draw(camera);
   }
-  ball->draw(camera->cameraTranslate);
-  paddle->draw(camera->cameraTranslate);
-  ball2->draw(camera->cameraTranslate);
+  ball->draw(camera);
+  paddle->draw(camera);
+  ball2->draw(camera);
 }
 
 void Test4::surfaceCreated() {

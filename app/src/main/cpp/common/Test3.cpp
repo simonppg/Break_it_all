@@ -32,7 +32,7 @@ void Test3::render() {
 
   glEnableVertexAttribArray(0);
 
-  translate = glm::translate(camera->cameraTranslate, vec3(0, 0, 0));
+  translate = camera->translate(Point3D(1, 0, 0));
   rotate = glm::rotate(translate, glm::radians(0.0f), vec3(1, 0, 0));
   scale = glm::scale(rotate, glm::vec3(5));
   glUniformMatrix4fv(uniform, 1, GL_FALSE, &scale[0][0]);

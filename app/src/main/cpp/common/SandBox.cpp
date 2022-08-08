@@ -63,7 +63,7 @@ void SandBox::render() {
   glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
   for (auto &i : objects) {
-    i->draw(camera->cameraTranslate);
+    i->draw(camera);
   }
 }
 

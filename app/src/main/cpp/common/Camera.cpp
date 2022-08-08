@@ -29,6 +29,11 @@ Camera::Camera(Dimension dimension, Point3D position, FieldOfView fov)
   updateProjection();
 }
 
+mat4 Camera::translate(Point3D position) {
+  auto point = vec3(position.getX(), position.getY(), position.getZ());
+  return glm::translate(cameraTranslate, point);
+}
+
 Dimension Camera::getDimension() { return dimension; }
 Point3D Camera::getPosition() { return position; }
 float Camera::aspectRatio() { return dimension.aspectRatio(); }

@@ -19,16 +19,17 @@ private:
   Point3D position;
   FieldOfView fov;
 
+  mat4 cameraTranslate;
   // NOTE: MUST be called after change position, dimension or fov
   void updateProjection();
 
 public:
-  mat4 cameraTranslate;
 
   Camera();
   Camera(Dimension dimension, Point3D position);
   Camera(Dimension dimension, Point3D position, FieldOfView fov);
 
+  mat4 translate(Point3D);
   Point3D getPosition();
   Dimension getDimension();
   float aspectRatio();
