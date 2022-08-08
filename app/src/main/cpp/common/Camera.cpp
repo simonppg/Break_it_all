@@ -62,7 +62,7 @@ void Camera::resize(Dimension dimension) {
   updateProjection();
 }
 
-void Camera::move(Point3D position) {
+void Camera::travel(Point3D position) {
   this->position = Point3D(position);
   updateProjection();
 }

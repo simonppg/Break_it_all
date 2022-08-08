@@ -38,7 +38,7 @@ public:
   float aspectRatio();
 
   void resize(Dimension dimension);
-  void move(Point3D position);
+  void travel(Point3D position);
   void changeProjection(Projection projection);
 
   float top, bottom, right, left;
