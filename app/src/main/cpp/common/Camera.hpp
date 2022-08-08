@@ -37,9 +37,9 @@ public:
   Dimension getDimension();
   float aspectRatio();
 
-  void updateDimension(Dimension dimension);
-  void updatePosition(Point3D position);
-  void setProjection(Projection projection);
+  void resize(Dimension dimension);
+  void move(Point3D position);
+  void changeProjection(Projection projection);
 
   float top, bottom, right, left;
 };

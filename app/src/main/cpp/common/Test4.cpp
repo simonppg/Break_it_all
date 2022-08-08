@@ -21,7 +21,7 @@ static bool hitLeftLimit(Dimension dimension, Point3D point) {
 
 Test4::Test4(FilesManager *filesManager, Camera *camera) {
   this->camera = camera;
-  camera->setProjection(Projection::ORTHOGRAPHIC);
+  camera->changeProjection(Projection::ORTHOGRAPHIC);
   renderer = new Renderer();
   math = new Math();
 
@@ -126,7 +126,7 @@ void Test4::surfaceChanged(Dimension dimension) {
   double height = dimension.getHeight();
 
   glViewport(0, 0, width, height);
-  camera->updateDimension(dimension);
+  camera->resize(dimension);
 
   Dimension gridDimension(width, camera->top);
 

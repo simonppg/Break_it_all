@@ -56,18 +56,18 @@ Dimension Camera::getDimension() { return dimension; }
 Point3D Camera::getPosition() { return position; }
 float Camera::aspectRatio() { return dimension.aspectRatio(); }
 
-void Camera::updateDimension(Dimension dimension) {
+void Camera::resize(Dimension dimension) {
   cout << "old: " << this->dimension << ",new: " << dimension << endl;
   this->dimension = Dimension(dimension);
   updateProjection();
 }
 
-void Camera::updatePosition(Point3D position) {
+void Camera::move(Point3D position) {
   this->position = Point3D(position);
   updateProjection();
 }
 
-void Camera::setProjection(Projection projection) {
+void Camera::changeProjection(Projection projection) {
   this->projection = projection;
   updateProjection();
 }
