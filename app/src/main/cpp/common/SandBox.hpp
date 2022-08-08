@@ -13,12 +13,11 @@
 
 class SandBox final : public IScene {
 private:
-  Math *math = new Math();
-  float povInDegrees = 0.0f;
   Mesh *mesh;
   Object *objects[40];
   ShaderProg *shaderProg;
   Renderer *renderer;
+  float povInDegrees = 0.0f;
 
 public:
   explicit SandBox(FilesManager *, Camera *);

@@ -17,8 +17,9 @@ SandBox::SandBox(FilesManager *filesManager, Camera *camera) {
   const string vertexFileStr = filesManager->loadFile("simple.vert");
   const string fragmentFileStr = filesManager->loadFile("simple.frag");
   this->camera = camera;
+  Math math = Math();
   shaderProg = new ShaderProg(vertexFileStr, fragmentFileStr);
-  mesh = new Mesh(math->generateCube(), 8, math->generateCubeIndexs(), 36);
+  mesh = new Mesh(math.generateCube(), 8, math.generateCubeIndexs(), 36);
   renderer = new Renderer();
 
   unsigned int seed = (unsigned int)time(NULL);
@@ -67,7 +68,7 @@ void SandBox::render() {
 }
 
 void SandBox::surfaceChanged(Dimension dimension) {
-  this->camera->updateDimension(dimension);
+  camera->updateDimension(dimension);
   glViewport(0, 0, dimension.getWidth(), dimension.getHeight());
 }
 
