@@ -24,7 +24,6 @@ private:
   void updateProjection();
 
 public:
-
   Camera();
   Camera(Dimension dimension, Point3D position);
   Camera(Dimension dimension, Point3D position, FieldOfView fov);
