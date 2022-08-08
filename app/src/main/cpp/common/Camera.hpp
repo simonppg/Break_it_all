@@ -31,6 +31,7 @@ public:
   mat4 translate(Point3D);
   mat4 rotate(mat4, float, Point3D);
   mat4 scale(mat4, Point3D);
+  mat4 trasform(Point3D, float, Point3D, Point3D);
 
   Point3D getPosition();
   Dimension getDimension();

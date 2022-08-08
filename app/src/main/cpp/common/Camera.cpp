@@ -44,6 +44,13 @@ mat4 Camera::scale(mat4 rotate, Point3D size) {
   return glm::scale(rotate, point);
 }
 
+mat4 Camera::trasform(Point3D position, float angle, Point3D rotation, Point3D size) {
+  mat4 translated = translate(position);
+  mat4 rotated = rotate(translated, angle, rotation);
+  mat4 scaled = scale(rotated, size);
+  return scaled;
+}
+
 Dimension Camera::getDimension() { return dimension; }
 Point3D Camera::getPosition() { return position; }
 float Camera::aspectRatio() { return dimension.aspectRatio(); }

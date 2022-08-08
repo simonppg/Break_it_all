@@ -25,13 +25,7 @@ Object::~Object() {
 Point3D Object::getPosition() { return position; }
 
 void Object::draw(Camera *camera) {
-  mat4 translate;
-  mat4 rotate;
-  mat4 scale;
-
-  translate = camera->translate(position);
-  rotate = camera->rotate(translate, angle, rotation);
-  scale = camera->scale(rotate, size);
+  mat4 trasformed = camera->trasform(position, angle, rotation, size);
 
   drawContext->programID = prog->programID;
   drawContext->type = mesh->type;
@@ -41,7 +35,7 @@ void Object::draw(Camera *camera) {
   drawContext->numVertices = mesh->numVertices;
   drawContext->indices = mesh->indices;
   drawContext->numIndices = mesh->numIndices;
-  drawContext->matrix_transform = scale;
+  drawContext->matrix_transform = trasformed;
 
   renderer->draw(drawContext);
 }
