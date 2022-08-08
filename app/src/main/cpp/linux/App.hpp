@@ -5,7 +5,6 @@
 #include "../common/Event.hpp"
 #include "../common/Game.hpp"
 #include "../common/Iterable.hpp"
-#include "../shared/FilesManager.hpp"
 #include "../shared/Logger.hpp"
 #include "../shared/Platform.hpp"
 #include "GLFWKeyMapper.hpp"
@@ -16,7 +15,6 @@ private:
   Game *game;
   WindowManager *windowManager;
   Platform *platform;
-  FilesManager *filesManager;
   Logger *logger;
   GLFWKeyMapper *keyMapper;
 

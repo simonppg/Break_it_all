@@ -16,7 +16,6 @@
 App::App() {
   windowManager = new WindowManager(this);
   platform = new LinuxPlatform();
-  filesManager = platform->filesManager();
   logger = platform->logger();
   keyMapper = new GLFWKeyMapper();
 }

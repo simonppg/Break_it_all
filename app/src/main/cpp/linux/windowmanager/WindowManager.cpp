@@ -51,34 +51,34 @@ void WindowManager::createWindow(int width, int height) {
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
 
-  this->window = glfwCreateWindow(width, height, __FILE__, NULL, NULL);
+  window = glfwCreateWindow(width, height, __FILE__, NULL, NULL);
 
-  if (!this->window) {
+  if (!window) {
     glfwTerminate();
     throw WindowCanNotBeCreated();
   }
 
-  glfwMakeContextCurrent(this->window);
+  glfwMakeContextCurrent(window);
   glfwSwapInterval(1);
 
-  glfwSetWindowUserPointer(this->window, this);
-  glfwSetCursorPosCallback(this->window, notifyCursorPosition);
-  glfwSetWindowSizeCallback(this->window, notifyWindowSize);
-  glfwSetKeyCallback(this->window, notifyKey);
-  glfwSetErrorCallback(this->errorCallback);
+  glfwSetWindowUserPointer(window, this);
+  glfwSetCursorPosCallback(window, notifyCursorPosition);
+  glfwSetWindowSizeCallback(window, notifyWindowSize);
+  glfwSetKeyCallback(window, notifyKey);
+  glfwSetErrorCallback(errorCallback);
 }
 
 void WindowManager::destroyWindow() {
-  glfwDestroyWindow(this->window);
+  glfwDestroyWindow(window);
   glfwTerminate();
 }
 
 bool WindowManager::shouldClose() {
-  return glfwWindowShouldClose(this->window);
+  return glfwWindowShouldClose(window);
 }
 
 void WindowManager::pollEvents() { glfwPollEvents(); }
-void WindowManager::refreshWindow() { glfwSwapBuffers(this->window); }
+void WindowManager::refreshWindow() { glfwSwapBuffers(window); }
 
 void WindowManager::setCursorCallback(CursorPosCallback callback) {
   cursorPosCallback = callback;
