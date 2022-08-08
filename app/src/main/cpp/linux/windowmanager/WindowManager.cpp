@@ -73,9 +73,7 @@ void WindowManager::destroyWindow() {
   glfwTerminate();
 }
 
-bool WindowManager::shouldClose() {
-  return glfwWindowShouldClose(window);
-}
+bool WindowManager::shouldClose() { return glfwWindowShouldClose(window); }
 
 void WindowManager::pollEvents() { glfwPollEvents(); }
 void WindowManager::refreshWindow() { glfwSwapBuffers(window); }
