@@ -23,6 +23,7 @@ Test4::Test4(FilesManager *filesManager, Camera *camera) {
   this->camera = camera;
   camera->setProjection(Projection::ORTHOGRAPHIC);
   renderer = new Renderer();
+  math = new Math();
 
   const string simpleVert = filesManager->loadFile("simple.vert");
   const string simpleFrag = filesManager->loadFile("simple.frag");
@@ -92,6 +93,8 @@ Test4::~Test4() {
   paddle = nullptr;
   delete renderer;
   renderer = nullptr;
+  delete math;
+  math = nullptr;
 }
 
 void Test4::render() {
