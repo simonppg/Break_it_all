@@ -34,7 +34,7 @@ mat4 Camera::translate(Point3D position) {
   return glm::translate(cameraTranslate, point);
 }
 
-mat4 Camera::rotate(mat4 translate, float angle, Point3D rotation){
+mat4 Camera::rotate(mat4 translate, float angle, Point3D rotation) {
   auto point = vec3(rotation.getX(), rotation.getY(), rotation.getZ());
   return glm::rotate(translate, glm::radians(angle), point);
 }
@@ -44,7 +44,8 @@ mat4 Camera::scale(mat4 rotate, Point3D size) {
   return glm::scale(rotate, point);
 }
 
-mat4 Camera::trasform(Point3D position, float angle, Point3D rotation, Point3D size) {
+mat4 Camera::trasform(Point3D position, float angle, Point3D rotation,
+                      Point3D size) {
   mat4 translated = translate(position);
   mat4 rotated = rotate(translated, angle, rotation);
   mat4 scaled = scale(rotated, size);

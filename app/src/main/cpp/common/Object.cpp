@@ -11,7 +11,7 @@ Object::Object(ShaderProg *pProg, Mesh *pMesh)
   this->prog = pProg;
   this->mesh = pMesh;
   position = Point3D();
-  rotation = Point3D(1,1,1);
+  rotation = Point3D(1, 1, 1);
   acceleration = 0;
   velocity = 500.0;
   drawContext = new DrawContext();
