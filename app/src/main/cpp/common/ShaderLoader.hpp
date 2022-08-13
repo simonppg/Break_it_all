@@ -2,8 +2,6 @@
 #ifndef APP_SRC_MAIN_CPP_COMMON_SHADERLOADER_HPP_
 #define APP_SRC_MAIN_CPP_COMMON_SHADERLOADER_HPP_
 
-#include <GLES3/gl3.h>
-
 class ShaderLoader {
 private:
   bool isCompilationOk(GLenum shader);
