@@ -8,6 +8,7 @@
 
 Object::Object(ShaderProg *pProg, Mesh *pMesh)
     : angle{0}, size{Point3D(2, 1, 1)} {
+  renderer = new Renderer();
   this->prog = pProg;
   this->mesh = pMesh;
   position = Point3D();
@@ -20,6 +21,8 @@ Object::Object(ShaderProg *pProg, Mesh *pMesh)
 Object::~Object() {
   delete drawContext;
   drawContext = nullptr;
+  delete renderer;
+  renderer = nullptr;
 }
 
 Point3D Object::getPosition() { return position; }
