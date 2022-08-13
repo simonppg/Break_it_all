@@ -8,6 +8,7 @@
 #include "IScene.hpp"
 #include "Math.hpp"
 #include "Object.hpp"
+#include "Object3D.hpp"
 #include "Renderer.hpp"
 #include "ShaderProg.hpp"
 
@@ -20,7 +21,10 @@ private:
   Mesh *meshes[2];
   ShaderProg *shaderProgs[2];
   Object *objects[ROW * COL];
+  Object3D *redBall;
+  Object3D *greenBall;
   Object *ball;
+  Object *ball2;
   Object *paddle;
   Renderer *renderer;
 
@@ -41,8 +45,6 @@ public:
   void resume() override;
   void update(double) override;
   bool events(Point2D) override;
-
-  Object *ball2;
 };
 
 #endif // APP_SRC_MAIN_CPP_COMMON_TEST4_HPP_

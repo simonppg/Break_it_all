@@ -4,6 +4,7 @@
 #include <string>
 
 #include "../shared/FilesManager.hpp"
+#include "Ball.hpp"
 #include "Dimension.hpp"
 #include "Math.hpp"
 #include "Object.hpp"
@@ -24,6 +25,10 @@ Test4::Test4(FilesManager *filesManager, Camera *camera) {
   camera->changeProjection(Projection::ORTHOGRAPHIC);
   renderer = new Renderer();
   math = new Math();
+  redBall = new Ball();
+  redBall->setPosition(camera->getPosition());
+  greenBall = new Ball();
+  greenBall->setPosition(camera->getPosition());
 
   const string simpleVert = filesManager->loadFile("simple.vert");
   const string simpleFrag = filesManager->loadFile("simple.frag");
@@ -73,6 +78,10 @@ Test4::Test4(FilesManager *filesManager, Camera *camera) {
 }
 
 Test4::~Test4() {
+  delete redBall;
+  redBall = nullptr;
+  delete greenBall;
+  greenBall = nullptr;
   for (auto &object : objects) {
     delete object;
     object = nullptr;
@@ -107,6 +116,8 @@ void Test4::render() {
   ball->draw(camera);
   paddle->draw(camera);
   ball2->draw(camera);
+  redBall->draw();
+  greenBall->draw();
 }
 
 void Test4::surfaceCreated() {
