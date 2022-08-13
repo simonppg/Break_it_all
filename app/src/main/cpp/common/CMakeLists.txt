@@ -1,3 +1,5 @@
+add_subdirectory(opengl)
+
 add_library(common STATIC
         Ball.cpp
         Dimension.cpp
@@ -29,6 +31,7 @@ add_library(common STATIC
 target_link_libraries(common
         Platform
         -lGLESv2
+        glWrapper
         glm)
 
 target_include_directories(common

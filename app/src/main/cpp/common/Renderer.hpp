@@ -7,14 +7,19 @@
 #include "DrawContext.hpp"
 #include "Mesh.hpp"
 #include "ShaderLoader.hpp"
+#include "opengl/Gl.hpp"
 
 using std::string;
 
 class Renderer {
 private:
   ShaderLoader shaderLoader;
+  Gl *gl;
 
 public:
+  Renderer();
+  ~Renderer();
+
   void load_model(Mesh *pMesh);
   void draw(DrawContext *pDrawContex);
   static unsigned int loadShader(unsigned int shaderType,
