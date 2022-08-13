@@ -1,5 +1,6 @@
 add_library(glWrapper STATIC
-        Gl.cpp)
+        Gl.cpp
+        ShaderLoader.cpp)
 
 target_link_libraries(glWrapper
         -lGLESv2)
