@@ -7,6 +7,7 @@
 class Object3D {
 private:
   Point3D pos;
+
 public:
   virtual ~Object3D();
 

@@ -3,8 +3,6 @@
 
 Object3D::~Object3D() {}
 
-void Object3D::setPosition(Point3D position) {
-  this->pos = position;
-}
+void Object3D::setPosition(Point3D position) { this->pos = position; }
 
 void Object3D::draw() {}
