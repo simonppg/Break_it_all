@@ -6,9 +6,7 @@
 
 #include "MeshType.hpp"
 
-Renderer::Renderer() {
-  gl = new Gl();
-}
+Renderer::Renderer() { gl = new Gl(); }
 
 Renderer::~Renderer() {
   delete gl;
