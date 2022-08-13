@@ -28,14 +28,8 @@ void Object::draw(Camera *camera) {
   mat4 trasformed = camera->trasform(position, angle, rotation, size);
 
   drawContext->programID = prog->programID;
-  drawContext->type = mesh->type;
-  drawContext->vbo = mesh->vbo;
-  drawContext->iab = mesh->iab;
-  drawContext->vertex = mesh->vertex;
-  drawContext->numVertices = mesh->numVertices;
-  drawContext->indices = mesh->indices;
-  drawContext->numIndices = mesh->numIndices;
   drawContext->matrix_transform = trasformed;
+  drawContext->mesh = mesh;
 
   renderer->draw(drawContext);
 }
