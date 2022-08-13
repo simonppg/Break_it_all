@@ -6,6 +6,15 @@
 
 #include "MeshType.hpp"
 
+Renderer::Renderer() {
+  gl = new Gl();
+}
+
+Renderer::~Renderer() {
+  delete gl;
+  gl = nullptr;
+}
+
 bool isProgramLinkOk(GLuint program) {
   GLint linkStatus = GL_FALSE;
   glGetProgramiv(program, GL_LINK_STATUS, &linkStatus);
@@ -52,7 +61,7 @@ void Renderer::draw(DrawContext *pDrawContex) {
   Mesh *mesh = pDrawContex->mesh;
   GLint uniform;
 
-  glUseProgram(pDrawContex->programID);
+  gl->useProgram(pDrawContex->programID);
   uniform = glGetUniformLocation(pDrawContex->programID, "matrix");
 
   if (mesh->type == MeshType::ONE) {

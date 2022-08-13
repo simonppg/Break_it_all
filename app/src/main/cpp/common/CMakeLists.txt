@@ -1,3 +1,5 @@
+add_subdirectory(opengl)
+
 add_library(common STATIC
         Dimension.cpp
         FieldOfView.cpp
@@ -27,6 +29,7 @@ add_library(common STATIC
 target_link_libraries(common
         Platform
         -lGLESv2
+        glWrapper
         glm)
 
 target_include_directories(common
