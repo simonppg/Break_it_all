@@ -1,4 +1,5 @@
 add_library(common STATIC
+        Ball.cpp
         Dimension.cpp
         FieldOfView.cpp
         CursorPositionChanged.cpp
@@ -13,6 +14,7 @@ add_library(common STATIC
         Test4.cpp
         Camera.cpp
         Object.cpp
+        Object3D.cpp
         ShaderProg.cpp
         Game.cpp
         Renderer.cpp
