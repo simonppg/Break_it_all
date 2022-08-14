@@ -14,7 +14,7 @@ using std::string;
 
 class Renderer {
 private:
-  ShaderLoader shaderLoader;
+  ShaderLoader *shaderLoader;
   Gl *gl;
 
   void showProgramInfoLog(uint32_t program);

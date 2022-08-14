@@ -5,12 +5,18 @@
 #include <cstdlib>
 
 #include "MeshType.hpp"
+#include "ShaderLoader.hpp"
 
-Renderer::Renderer() { gl = new Gl(); }
+Renderer::Renderer() {
+  gl = new Gl();
+  shaderLoader = new ShaderLoader();
+}
 
 Renderer::~Renderer() {
   delete gl;
   gl = nullptr;
+  delete shaderLoader;
+  shaderLoader = nullptr;
 }
 
 void Renderer::showProgramInfoLog(GLuint program) {
@@ -84,14 +90,14 @@ GLuint Renderer::createProgram(const string vertexSourceStr,
     return error;
   }
 
-  GLuint vertexShader = shaderLoader.loadShader(GL_VERTEX_SHADER, vertexSource);
+  GLuint vertexShader = shaderLoader->loadShader(GL_VERTEX_SHADER, vertexSource);
   if (!vertexShader) {
     // LOGE("Could not load vertexShader\n");
     return error;
   }
 
   GLuint fragmentShader =
-      shaderLoader.loadShader(GL_FRAGMENT_SHADER, fragmentSource);
+      shaderLoader->loadShader(GL_FRAGMENT_SHADER, fragmentSource);
   if (!fragmentShader) {
     // LOGE("Could not load fragmentShader\n");
     return error;
