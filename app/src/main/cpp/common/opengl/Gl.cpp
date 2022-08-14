@@ -23,7 +23,7 @@ int32_t Gl::getProgramInfoLength(uint32_t program) {
   return infoLogLength;
 }
 
-string Gl::getProgramInfoLog(uint32_t program, int32_t infoLogLength){
+string Gl::getProgramInfoLog(uint32_t program, int32_t infoLogLength) {
   vector<char> buffer(infoLogLength);
   glGetProgramInfoLog(program, infoLogLength, NULL, buffer.data());
   string infoLog(begin(buffer), end(buffer));

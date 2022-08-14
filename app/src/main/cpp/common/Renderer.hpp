@@ -18,6 +18,7 @@ private:
   Gl *gl;
 
   void showProgramInfoLog(uint32_t program);
+
 public:
   Renderer();
   ~Renderer();
