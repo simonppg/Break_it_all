@@ -76,17 +76,15 @@ void Renderer::draw(DrawContext *pDrawContex) {
   glUseProgram(0);
 }
 
-GLuint Renderer::createProgram(const string vertexSourceStr,
-                               const string fragmentSourceStr) {
-  const char *vertexSource = vertexSourceStr.c_str();
-  const char *fragmentSource = fragmentSourceStr.c_str();
+GLuint Renderer::createProgram(const string vertexSource,
+                               const string fragmentSource) {
   // In this function 0 is and error
   const int error = 0;
 
-  if (vertexSource == NULL) {
+  if (vertexSource.empty()) {
     return error;
   }
-  if (fragmentSource == NULL) {
+  if (fragmentSource.empty()) {
     return error;
   }
 
