@@ -1,7 +1,7 @@
 // Copyright (c) 2022 Simon Puente
 #include "ShaderLoader.hpp"
-#include <malloc.h>
 #include <GLES3/gl3.h>
+#include <malloc.h>
 
 bool ShaderLoader::isCompilationOk(int32_t shader) {
   int32_t compiled = 0;
@@ -30,7 +30,8 @@ void ShaderLoader::showShaderInfoLog(int32_t shader) {
   free(buf);
 }
 
-uint32_t ShaderLoader::loadShader(int32_t shaderType, const string shaderSourceStr) {
+uint32_t ShaderLoader::loadShader(int32_t shaderType,
+                                  const string shaderSourceStr) {
   const char *shaderSource = shaderSourceStr.c_str();
   // In this function 0 is and error
   int error = 0;

@@ -2,10 +2,10 @@
 #ifndef APP_SRC_MAIN_CPP_COMMON_BREAKITALL_HPP_
 #define APP_SRC_MAIN_CPP_COMMON_BREAKITALL_HPP_
 
+#include <GLES3/gl3.h>
 #include <iostream>
 #include <string>
 #include <vector>
-#include <GLES3/gl3.h>
 
 #include "ShaderLoader.hpp"
 
