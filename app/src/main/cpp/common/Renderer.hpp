@@ -27,8 +27,8 @@ public:
   void draw(DrawContext *pDrawContex);
   static unsigned int loadShader(unsigned int shaderType,
                                  const string shaderSource);
-  unsigned int createProgram(const string vertexSource,
-                             const string fragmentSource);
+  uint32_t createProgram(const string vertexSource,
+                         const string fragmentSource);
 };
 
 #endif // APP_SRC_MAIN_CPP_COMMON_RENDERER_HPP_

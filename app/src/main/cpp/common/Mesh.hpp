@@ -24,8 +24,8 @@ public:
   int16_t *indices = nullptr;
   int numVertices;
   int numIndices;
-  unsigned int vbo; // vertex buffer object
-  unsigned int iab; // index array buffer
+  uint32_t vbo; // vertex buffer object
+  uint32_t iab; // index array buffer
 };
 
 #endif // APP_SRC_MAIN_CPP_COMMON_MESH_HPP_
