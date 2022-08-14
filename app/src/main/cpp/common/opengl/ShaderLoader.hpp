@@ -2,17 +2,18 @@
 #ifndef APP_SRC_MAIN_CPP_COMMON_OPENGL_SHADERLOADER_HPP_
 #define APP_SRC_MAIN_CPP_COMMON_OPENGL_SHADERLOADER_HPP_
 
-#include <GLES3/gl3.h>
+#include <string>
+
+using std::string;
 
 class ShaderLoader {
 private:
-  bool isCompilationOk(GLenum shader);
-  int getInfoLogLength(GLenum shader);
-
-  void showShaderInfoLog(GLenum shader);
+  bool isCompilationOk(int32_t shader);
+  int getInfoLogLength(int32_t shader);
+  void showShaderInfoLog(int32_t shader);
 
 public:
-  GLuint loadShader(GLenum shaderType, const char *shaderSource);
+  uint32_t loadShader(int32_t shaderType, const string shaderSource);
 };
 
 #endif // APP_SRC_MAIN_CPP_COMMON_OPENGL_SHADERLOADER_HPP_

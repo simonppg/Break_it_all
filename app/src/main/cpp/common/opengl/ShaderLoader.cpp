@@ -1,20 +1,21 @@
 // Copyright (c) 2022 Simon Puente
 #include "ShaderLoader.hpp"
 #include <malloc.h>
+#include <GLES3/gl3.h>
 
-bool ShaderLoader::isCompilationOk(GLenum shader) {
-  GLint compiled = 0;
+bool ShaderLoader::isCompilationOk(int32_t shader) {
+  int32_t compiled = 0;
   glGetShaderiv(shader, GL_COMPILE_STATUS, &compiled);
   return compiled;
 }
 
-int ShaderLoader::getInfoLogLength(GLenum shader) {
-  GLint infoLen = 0;
+int ShaderLoader::getInfoLogLength(int32_t shader) {
+  int32_t infoLen = 0;
   glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &infoLen);
   return infoLen;
 }
 
-void ShaderLoader::showShaderInfoLog(GLenum shader) {
+void ShaderLoader::showShaderInfoLog(int32_t shader) {
   int infoLength = getInfoLogLength(shader);
   if (!infoLength) {
     return;
@@ -26,16 +27,16 @@ void ShaderLoader::showShaderInfoLog(GLenum shader) {
   }
 
   glGetShaderInfoLog(shader, infoLength, NULL, buf);
-  // LOGE("%s", buf);
   free(buf);
 }
 
-GLuint ShaderLoader::loadShader(GLenum shaderType, const char *shaderSource) {
+uint32_t ShaderLoader::loadShader(int32_t shaderType, const string shaderSourceStr) {
+  const char *shaderSource = shaderSourceStr.c_str();
   // In this function 0 is and error
   int error = 0;
 
   // glCreateShader return 0 when there is an error
-  GLuint shader = glCreateShader(shaderType);
+  uint32_t shader = glCreateShader(shaderType);
   if (!shader) {
     return error;
   }

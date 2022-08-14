@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <GLES3/gl3.h>
 
 #include "ShaderLoader.hpp"
 
