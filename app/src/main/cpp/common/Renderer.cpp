@@ -34,13 +34,13 @@ void Renderer::showProgramInfoLog(GLuint program) {
 void Renderer::load_model(Mesh *pMesh) {
   gl->genBuffer(&pMesh->vbo);
   gl->bindBuffer(GL_ARRAY_BUFFER, pMesh->vbo);
-  glBufferData(GL_ARRAY_BUFFER, VERTEX_BUFFER_SIZE(pMesh->numVertices),
+  gl->bufferData(GL_ARRAY_BUFFER, VERTEX_BUFFER_SIZE(pMesh->numVertices),
                pMesh->vertex, GL_STATIC_DRAW);
 
   if (pMesh->type == MeshType::ONE) {
     gl->genBuffer(&pMesh->iab);
     gl->bindBuffer(GL_ELEMENT_ARRAY_BUFFER, pMesh->iab);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, INDEX_BUFFER_SIZE(pMesh->numIndices),
+    gl->bufferData(GL_ELEMENT_ARRAY_BUFFER, INDEX_BUFFER_SIZE(pMesh->numIndices),
                  pMesh->indices, GL_STATIC_DRAW);
   }
 }

@@ -76,3 +76,7 @@ void Gl::genBuffer(uint32_t *buffer) {
 void Gl::bindBuffer(int32_t bufferBindingTarget, uint32_t buffer) {
   glBindBuffer(bufferBindingTarget, buffer);
 }
+
+void Gl::bufferData(int32_t bufferBindingTarget, uintptr_t size, const void * data, int32_t usage) {
+  glBufferData(bufferBindingTarget, size, data, usage);
+}
