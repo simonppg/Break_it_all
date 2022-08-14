@@ -5,40 +5,30 @@
 #include <cstdlib>
 
 #include "MeshType.hpp"
+#include "ShaderLoader.hpp"
 
-Renderer::Renderer() { gl = new Gl(); }
+Renderer::Renderer() {
+  gl = new Gl();
+  shaderLoader = new ShaderLoader();
+}
 
 Renderer::~Renderer() {
   delete gl;
   gl = nullptr;
+  delete shaderLoader;
+  shaderLoader = nullptr;
 }
 
-bool isProgramLinkOk(GLuint program) {
-  GLint linkStatus = GL_FALSE;
-  glGetProgramiv(program, GL_LINK_STATUS, &linkStatus);
-  return linkStatus;
-}
-
-int getProgramInfoLength(GLuint program) {
-  GLint bufLength = 0;
-  glGetProgramiv(program, GL_INFO_LOG_LENGTH, &bufLength);
-  return bufLength;
-}
-
-void showProgramInfoLog(GLuint program) {
-  int infoLength = getProgramInfoLength(program);
+void Renderer::showProgramInfoLog(GLuint program) {
+  int infoLength = gl->getProgramInfoLength(program);
   if (!infoLength) {
     return;
   }
 
-  char *buf = reinterpret_cast<char *>(malloc(sizeof(char) * infoLength));
-  if (!buf) {
-    return;
-  }
+  string log = gl->getProgramInfoLog(program, infoLength);
 
-  glGetProgramInfoLog(program, infoLength, NULL, buf);
-  // LOGE("%s", buf);
-  free(buf);
+  // TODO(Simon Puente): use shared/Logger
+  std::cout << log;
 }
 
 void Renderer::load_model(Mesh *pMesh) {
@@ -100,14 +90,15 @@ GLuint Renderer::createProgram(const string vertexSourceStr,
     return error;
   }
 
-  GLuint vertexShader = shaderLoader.loadShader(GL_VERTEX_SHADER, vertexSource);
+  GLuint vertexShader =
+      shaderLoader->loadShader(GL_VERTEX_SHADER, vertexSource);
   if (!vertexShader) {
     // LOGE("Could not load vertexShader\n");
     return error;
   }
 
   GLuint fragmentShader =
-      shaderLoader.loadShader(GL_FRAGMENT_SHADER, fragmentSource);
+      shaderLoader->loadShader(GL_FRAGMENT_SHADER, fragmentSource);
   if (!fragmentShader) {
     // LOGE("Could not load fragmentShader\n");
     return error;
@@ -122,7 +113,7 @@ GLuint Renderer::createProgram(const string vertexSourceStr,
   glAttachShader(program, fragmentShader);
   glLinkProgram(program);
 
-  if (!isProgramLinkOk(program)) {
+  if (!gl->isProgramLinkOk(program)) {
     showProgramInfoLog(program);
     glDeleteProgram(program);
     program = error;
