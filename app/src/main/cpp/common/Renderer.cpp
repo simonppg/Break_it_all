@@ -76,7 +76,7 @@ void Renderer::draw(DrawContext *pDrawContex) {
   glUseProgram(0);
 }
 
-GLuint Renderer::createProgram(const string vertexSource,
+uint32_t Renderer::createProgram(const string vertexSource,
                                const string fragmentSource) {
   // In this function 0 is and error
   const int error = 0;
@@ -88,24 +88,26 @@ GLuint Renderer::createProgram(const string vertexSource,
     return error;
   }
 
-  GLuint vertexShader =
+  uint32_t vertexShader =
       shaderLoader->loadShader(GL_VERTEX_SHADER, vertexSource);
   if (!vertexShader) {
     // LOGE("Could not load vertexShader\n");
     return error;
   }
 
-  GLuint fragmentShader =
+  uint32_t fragmentShader =
       shaderLoader->loadShader(GL_FRAGMENT_SHADER, fragmentSource);
   if (!fragmentShader) {
     // LOGE("Could not load fragmentShader\n");
     return error;
   }
 
-  GLuint program = glCreateProgram();
-  if (!program) {
+  auto programOrNull = gl->createProgram();
+  if (!programOrNull.has_value()) {
     return error;
   }
+
+  uint32_t program = programOrNull.value();
 
   glAttachShader(program, vertexShader);
   glAttachShader(program, fragmentShader);

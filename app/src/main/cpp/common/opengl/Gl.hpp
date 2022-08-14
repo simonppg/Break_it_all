@@ -14,6 +14,7 @@ public:
   Gl();
   ~Gl();
 
+  optional<uint32_t> createProgram();
   void useProgram(uint32_t program);
   bool isProgramLinkOk(uint32_t program);
   int32_t getProgramInfoLength(uint32_t program);

@@ -12,6 +12,15 @@ Gl::~Gl() {}
 
 void Gl::useProgram(uint32_t program) { glUseProgram(program); }
 
+optional<uint32_t> Gl::createProgram() {
+  auto program = glCreateProgram();
+  if(program == 0) {
+    return nullopt;
+  }
+
+  return program;
+}
+
 bool Gl::isProgramLinkOk(uint32_t program) {
   GLint linkStatus = GL_FALSE;
   glGetProgramiv(program, GL_LINK_STATUS, &linkStatus);

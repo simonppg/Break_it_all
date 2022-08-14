@@ -27,7 +27,7 @@ public:
   void draw(DrawContext *pDrawContex);
   static unsigned int loadShader(unsigned int shaderType,
                                  const string shaderSource);
-  unsigned int createProgram(const string vertexSource,
+  uint32_t createProgram(const string vertexSource,
                              const string fragmentSource);
 };
 
