@@ -6,20 +6,20 @@
 
 using std::string;
 
-bool isProgramLinkOk(GLuint program) {
-  GLint linkStatus = GL_FALSE;
-  glGetProgramiv(program, GL_LINK_STATUS, &linkStatus);
-  return linkStatus;
+BreakItAll::BreakItAll() {
+  gl = new Gl();
+  shaderLoader = new ShaderLoader();
 }
 
-int getProgramInfoLength(GLuint program) {
-  GLint bufLength = 0;
-  glGetProgramiv(program, GL_INFO_LOG_LENGTH, &bufLength);
-  return bufLength;
+BreakItAll::~BreakItAll() {
+  delete gl;
+  gl = nullptr;
+  delete shaderLoader;
+  shaderLoader = nullptr;
 }
 
-void showProgramInfoLog(GLuint program) {
-  int infoLength = getProgramInfoLength(program);
+void BreakItAll::showProgramInfoLog(uint32_t program) {
+  int infoLength = gl->getProgramInfoLength(program);
   if (!infoLength) {
     return;
   }
@@ -46,14 +46,14 @@ GLuint BreakItAll::createProgram(const char *vertexSource,
     return error;
   }
 
-  GLuint vertexShader = shaderLoader.loadShader(GL_VERTEX_SHADER, vertexSource);
+  GLuint vertexShader = shaderLoader->loadShader(GL_VERTEX_SHADER, vertexSource);
   if (!vertexShader) {
     // LOGE("Could not load vertexShader\n");
     return error;
   }
 
   GLuint fragmentShader =
-      shaderLoader.loadShader(GL_FRAGMENT_SHADER, fragmentSource);
+      shaderLoader->loadShader(GL_FRAGMENT_SHADER, fragmentSource);
   if (!fragmentShader) {
     // LOGE("Could not load fragmentShader\n");
     return error;
@@ -68,7 +68,7 @@ GLuint BreakItAll::createProgram(const char *vertexSource,
   glAttachShader(program, fragmentShader);
   glLinkProgram(program);
 
-  if (!isProgramLinkOk(program)) {
+  if (!gl->isProgramLinkOk(program)) {
     showProgramInfoLog(program);
     glDeleteProgram(program);
     program = error;
@@ -77,7 +77,7 @@ GLuint BreakItAll::createProgram(const char *vertexSource,
   return program;
 }
 
-unsigned int programID;
+uint32_t programID;
 
 void BreakItAll::init() {
   std::cout << std::endl << "Break it all" << std::endl << std::endl;
