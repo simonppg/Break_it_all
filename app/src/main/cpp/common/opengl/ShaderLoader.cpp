@@ -2,36 +2,34 @@
 #include "ShaderLoader.hpp"
 #include <GLES3/gl3.h>
 #include <malloc.h>
+#include "Gl.hpp"
+#include <iostream>
 
-bool ShaderLoader::isCompilationOk(int32_t shader) {
-  int32_t compiled = 0;
-  glGetShaderiv(shader, GL_COMPILE_STATUS, &compiled);
-  return compiled;
+ShaderLoader::ShaderLoader() {
+  gl = new Gl();
 }
 
-int ShaderLoader::getInfoLogLength(int32_t shader) {
-  int32_t infoLen = 0;
-  glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &infoLen);
-  return infoLen;
+ShaderLoader::~ShaderLoader(){
+  delete gl;
+  gl = nullptr;
 }
 
 void ShaderLoader::showShaderInfoLog(int32_t shader) {
-  int infoLength = getInfoLogLength(shader);
-  if (!infoLength) {
+  int32_t infoLength = gl->getInfoLogLength(shader);
+  if (infoLength <= 0) {
     return;
   }
 
-  char *buf = reinterpret_cast<char *>(malloc(sizeof(char) * infoLength));
-  if (!buf) {
-    return;
-  }
+  string log = gl->getInfoLog(shader, infoLength);
 
-  glGetShaderInfoLog(shader, infoLength, NULL, buf);
-  free(buf);
+  // TODO(Simon Puente): use shared/Logger
+  std::cout << log;
+
 }
 
 uint32_t ShaderLoader::loadShader(int32_t shaderType,
                                   const string shaderSourceStr) {
+  const int NUM_OF_SOURCES = 1;
   const char *shaderSource = shaderSourceStr.c_str();
   // In this function 0 is and error
   int error = 0;
@@ -42,10 +40,10 @@ uint32_t ShaderLoader::loadShader(int32_t shaderType,
     return error;
   }
 
-  glShaderSource(shader, 1, &shaderSource, NULL);
+  glShaderSource(shader, NUM_OF_SOURCES, &shaderSource, NULL);
   glCompileShader(shader);
 
-  if (isCompilationOk(shader)) {
+  if (gl->isShaderCompilationOk(shader)) {
     return shader;
   }
 

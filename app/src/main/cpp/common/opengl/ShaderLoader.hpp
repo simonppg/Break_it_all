@@ -3,16 +3,20 @@
 #define APP_SRC_MAIN_CPP_COMMON_OPENGL_SHADERLOADER_HPP_
 
 #include <string>
+#include "Gl.hpp"
 
 using std::string;
 
 class ShaderLoader {
 private:
-  bool isCompilationOk(int32_t shader);
-  int getInfoLogLength(int32_t shader);
+  Gl *gl;
+
   void showShaderInfoLog(int32_t shader);
 
 public:
+  ShaderLoader();
+  ~ShaderLoader();
+
   uint32_t loadShader(int32_t shaderType, const string shaderSource);
 };
 
