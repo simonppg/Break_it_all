@@ -1,7 +1,6 @@
 // Copyright (c) 2022 Simon Puente
 #include "ShaderLoader.hpp"
 
-#include <GLES3/gl3.h>
 #include <iostream>
 
 #include "Gl.hpp"
