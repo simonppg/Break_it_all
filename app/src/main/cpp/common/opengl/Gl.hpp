@@ -4,8 +4,10 @@
 
 #include <cstdint>
 #include <string>
+#include <optional>
 
 using std::string;
+using std::optional;
 
 class Gl {
 public:
@@ -17,6 +19,7 @@ public:
   int32_t getProgramInfoLength(uint32_t program);
   string getProgramInfoLog(uint32_t program, int32_t infoLogLength);
 
+  optional<uint32_t> createShader(int32_t shaderType);
   bool isShaderCompilationOk(uint32_t shader);
   int32_t getInfoLogLength(uint32_t shader);
   string getShaderInfoLog(uint32_t shader, int32_t infoLogLength);

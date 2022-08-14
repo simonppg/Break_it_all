@@ -3,6 +3,7 @@
 #include <GLES3/gl3.h>
 #include <vector>
 
+using std::nullopt;
 using std::vector;
 
 Gl::Gl() {}
@@ -28,6 +29,15 @@ string Gl::getProgramInfoLog(uint32_t program, int32_t infoLogLength) {
   glGetProgramInfoLog(program, infoLogLength, NULL, buffer.data());
   string infoLog(begin(buffer), end(buffer));
   return infoLog;
+}
+
+optional<uint32_t> Gl::createShader(int32_t shaderType) {
+  auto shader = glCreateShader(shaderType);
+  if(shader == 0) {
+    return nullopt;
+  }
+
+  return shader;
 }
 
 bool Gl::isShaderCompilationOk(uint32_t shader) {
