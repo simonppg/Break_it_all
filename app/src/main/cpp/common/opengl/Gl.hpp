@@ -27,7 +27,8 @@ public:
 
   void genBuffer(uint32_t *buffer);
   void bindBuffer(int32_t bufferBindingTarget, uint32_t buffer);
-  void bufferData(int32_t bufferBindingTarget, uintptr_t size, const void *data, int32_t usage);
+  void bufferData(int32_t bufferBindingTarget, uintptr_t size, const void *data,
+                  int32_t usage);
 };
 
 #endif // APP_SRC_MAIN_CPP_COMMON_OPENGL_GL_HPP_
