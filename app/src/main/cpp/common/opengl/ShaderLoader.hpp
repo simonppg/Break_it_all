@@ -2,8 +2,8 @@
 #ifndef APP_SRC_MAIN_CPP_COMMON_OPENGL_SHADERLOADER_HPP_
 #define APP_SRC_MAIN_CPP_COMMON_OPENGL_SHADERLOADER_HPP_
 
-#include <string>
 #include "Gl.hpp"
+#include <string>
 
 using std::string;
 

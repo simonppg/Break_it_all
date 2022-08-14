@@ -1,15 +1,13 @@
 // Copyright (c) 2022 Simon Puente
 #include "ShaderLoader.hpp"
-#include <GLES3/gl3.h>
-#include <malloc.h>
 #include "Gl.hpp"
+#include <GLES3/gl3.h>
 #include <iostream>
+#include <malloc.h>
 
-ShaderLoader::ShaderLoader() {
-  gl = new Gl();
-}
+ShaderLoader::ShaderLoader() { gl = new Gl(); }
 
-ShaderLoader::~ShaderLoader(){
+ShaderLoader::~ShaderLoader() {
   delete gl;
   gl = nullptr;
 }
@@ -24,7 +22,6 @@ void ShaderLoader::showShaderInfoLog(int32_t shader) {
 
   // TODO(Simon Puente): use shared/Logger
   std::cout << log;
-
 }
 
 uint32_t ShaderLoader::loadShader(int32_t shaderType,
