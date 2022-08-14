@@ -14,12 +14,17 @@ using std::vector;
 
 class BreakItAll {
 private:
-  ShaderLoader shaderLoader = ShaderLoader();
+  Gl *gl;
+  ShaderLoader *shaderLoader;
   vector<string> examples{"SandBox New", "Window", "Triangle", "Circle",
                           "orthographic"};
   GLuint createProgram(const char *vertexSource, const char *fragmentSource);
+  void showProgramInfoLog(uint32_t program);
 
 public:
+  BreakItAll();
+  ~BreakItAll();
+
   void init();
   void render();
   void resume();
