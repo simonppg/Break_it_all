@@ -1,9 +1,10 @@
 // Copyright (c) 2022 Simon Puente
 #include "ShaderLoader.hpp"
-#include "Gl.hpp"
+
 #include <GLES3/gl3.h>
 #include <iostream>
-#include <malloc.h>
+
+#include "Gl.hpp"
 
 ShaderLoader::ShaderLoader() { gl = new Gl(); }
 
