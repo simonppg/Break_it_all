@@ -32,10 +32,12 @@ uint32_t ShaderLoader::loadShader(int32_t shaderType,
   int error = 0;
 
   // glCreateShader return 0 when there is an error
-  uint32_t shader = glCreateShader(shaderType);
-  if (!shader) {
+  auto shaderOrNull = gl->createShader(shaderType);
+  if (!shaderOrNull.has_value()) {
     return error;
   }
+
+  uint32_t shader = shaderOrNull.value();
 
   glShaderSource(shader, NUM_OF_SOURCES, &shaderSource, NULL);
   glCompileShader(shader);

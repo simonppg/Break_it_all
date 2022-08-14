@@ -3,6 +3,7 @@
 #include <GLES3/gl3.h>
 #include <vector>
 
+using std::nullopt;
 using std::vector;
 
 Gl::Gl() {}
@@ -10,6 +11,15 @@ Gl::Gl() {}
 Gl::~Gl() {}
 
 void Gl::useProgram(uint32_t program) { glUseProgram(program); }
+
+optional<uint32_t> Gl::createProgram() {
+  auto program = glCreateProgram();
+  if (program == 0) {
+    return nullopt;
+  }
+
+  return program;
+}
 
 bool Gl::isProgramLinkOk(uint32_t program) {
   GLint linkStatus = GL_FALSE;
@@ -30,6 +40,15 @@ string Gl::getProgramInfoLog(uint32_t program, int32_t infoLogLength) {
   return infoLog;
 }
 
+optional<uint32_t> Gl::createShader(int32_t shaderType) {
+  auto shader = glCreateShader(shaderType);
+  if (shader == 0) {
+    return nullopt;
+  }
+
+  return shader;
+}
+
 bool Gl::isShaderCompilationOk(uint32_t shader) {
   GLint compilationStatus = GL_FALSE;
   glGetShaderiv(shader, GL_COMPILE_STATUS, &compilationStatus);
@@ -47,4 +66,18 @@ string Gl::getShaderInfoLog(uint32_t shader, int32_t infoLogLength) {
   glGetShaderInfoLog(shader, infoLogLength, NULL, buffer.data());
   string infoLog(begin(buffer), end(buffer));
   return infoLog;
+}
+
+void Gl::genBuffer(uint32_t *buffer) {
+  uint32_t numberOfBuffers = 1;
+  glGenBuffers(numberOfBuffers, buffer);
+}
+
+void Gl::bindBuffer(int32_t bufferBindingTarget, uint32_t buffer) {
+  glBindBuffer(bufferBindingTarget, buffer);
+}
+
+void Gl::bufferData(int32_t bufferBindingTarget, uintptr_t size,
+                    const void *data, int32_t usage) {
+  glBufferData(bufferBindingTarget, size, data, usage);
 }
