@@ -19,7 +19,7 @@ void ShaderLoader::showShaderInfoLog(int32_t shader) {
     return;
   }
 
-  string log = gl->getInfoLog(shader, infoLength);
+  string log = gl->getShaderInfoLog(shader, infoLength);
 
   // TODO(Simon Puente): use shared/Logger
   std::cout << log;

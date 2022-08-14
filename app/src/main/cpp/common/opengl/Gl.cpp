@@ -11,6 +11,25 @@ Gl::~Gl() {}
 
 void Gl::useProgram(unsigned int programID) { glUseProgram(programID); }
 
+bool Gl::isProgramLinkOk(uint32_t program) {
+  GLint linkStatus = GL_FALSE;
+  glGetProgramiv(program, GL_LINK_STATUS, &linkStatus);
+  return linkStatus == GL_TRUE;
+}
+
+int32_t Gl::getProgramInfoLength(uint32_t program) {
+  int32_t infoLogLength = 0;
+  glGetProgramiv(program, GL_INFO_LOG_LENGTH, &infoLogLength);
+  return infoLogLength;
+}
+
+string Gl::getProgramInfoLog(uint32_t program, int32_t infoLogLength){
+  vector<char> buffer(infoLogLength);
+  glGetProgramInfoLog(program, infoLogLength, NULL, buffer.data());
+  string infoLog(begin(buffer), end(buffer));
+  return infoLog;
+}
+
 bool Gl::isShaderCompilationOk(int32_t shader) {
   GLint compilationStatus = GL_FALSE;
   glGetShaderiv(shader, GL_COMPILE_STATUS, &compilationStatus);
@@ -23,7 +42,7 @@ int32_t Gl::getInfoLogLength(int32_t shader) {
   return infoLogLength;
 }
 
-string Gl::getInfoLog(int32_t shader, int32_t infoLogLength) {
+string Gl::getShaderInfoLog(int32_t shader, int32_t infoLogLength) {
   vector<char> buffer(infoLogLength);
   glGetShaderInfoLog(shader, infoLogLength, NULL, buffer.data());
   string infoLog(begin(buffer), end(buffer));

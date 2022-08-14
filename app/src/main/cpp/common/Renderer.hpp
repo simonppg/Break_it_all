@@ -2,6 +2,7 @@
 #ifndef APP_SRC_MAIN_CPP_COMMON_RENDERER_HPP_
 #define APP_SRC_MAIN_CPP_COMMON_RENDERER_HPP_
 
+#include <cstdint>
 #include <string>
 
 #include "DrawContext.hpp"
@@ -16,6 +17,7 @@ private:
   ShaderLoader shaderLoader;
   Gl *gl;
 
+  void showProgramInfoLog(uint32_t program);
 public:
   Renderer();
   ~Renderer();
