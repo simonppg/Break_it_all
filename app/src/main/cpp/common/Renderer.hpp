@@ -28,7 +28,7 @@ public:
   static unsigned int loadShader(unsigned int shaderType,
                                  const string shaderSource);
   uint32_t createProgram(const string vertexSource,
-                             const string fragmentSource);
+                         const string fragmentSource);
 };
 
 #endif // APP_SRC_MAIN_CPP_COMMON_RENDERER_HPP_

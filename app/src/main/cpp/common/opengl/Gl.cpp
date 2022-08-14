@@ -14,7 +14,7 @@ void Gl::useProgram(uint32_t program) { glUseProgram(program); }
 
 optional<uint32_t> Gl::createProgram() {
   auto program = glCreateProgram();
-  if(program == 0) {
+  if (program == 0) {
     return nullopt;
   }
 
@@ -42,7 +42,7 @@ string Gl::getProgramInfoLog(uint32_t program, int32_t infoLogLength) {
 
 optional<uint32_t> Gl::createShader(int32_t shaderType) {
   auto shader = glCreateShader(shaderType);
-  if(shader == 0) {
+  if (shader == 0) {
     return nullopt;
   }
 

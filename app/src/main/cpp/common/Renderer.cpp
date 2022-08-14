@@ -77,7 +77,7 @@ void Renderer::draw(DrawContext *pDrawContex) {
 }
 
 uint32_t Renderer::createProgram(const string vertexSource,
-                               const string fragmentSource) {
+                                 const string fragmentSource) {
   // In this function 0 is and error
   const int error = 0;
 

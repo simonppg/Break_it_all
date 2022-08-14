@@ -3,11 +3,11 @@
 #define APP_SRC_MAIN_CPP_COMMON_OPENGL_GL_HPP_
 
 #include <cstdint>
-#include <string>
 #include <optional>
+#include <string>
 
-using std::string;
 using std::optional;
+using std::string;
 
 class Gl {
 public:
