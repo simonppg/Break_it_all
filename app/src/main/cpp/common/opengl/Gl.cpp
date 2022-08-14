@@ -67,3 +67,12 @@ string Gl::getShaderInfoLog(uint32_t shader, int32_t infoLogLength) {
   string infoLog(begin(buffer), end(buffer));
   return infoLog;
 }
+
+void Gl::genBuffer(uint32_t *buffer) {
+  uint32_t numberOfBuffers = 1;
+  glGenBuffers(numberOfBuffers, buffer);
+}
+
+void Gl::bindBuffer(int32_t bufferBindingTarget, uint32_t buffer) {
+  glBindBuffer(bufferBindingTarget, buffer);
+}
