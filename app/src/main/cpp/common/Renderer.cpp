@@ -90,7 +90,8 @@ GLuint Renderer::createProgram(const string vertexSourceStr,
     return error;
   }
 
-  GLuint vertexShader = shaderLoader->loadShader(GL_VERTEX_SHADER, vertexSource);
+  GLuint vertexShader =
+      shaderLoader->loadShader(GL_VERTEX_SHADER, vertexSource);
   if (!vertexShader) {
     // LOGE("Could not load vertexShader\n");
     return error;

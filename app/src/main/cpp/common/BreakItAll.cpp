@@ -46,7 +46,8 @@ GLuint BreakItAll::createProgram(const char *vertexSource,
     return error;
   }
 
-  GLuint vertexShader = shaderLoader->loadShader(GL_VERTEX_SHADER, vertexSource);
+  GLuint vertexShader =
+      shaderLoader->loadShader(GL_VERTEX_SHADER, vertexSource);
   if (!vertexShader) {
     // LOGE("Could not load vertexShader\n");
     return error;
