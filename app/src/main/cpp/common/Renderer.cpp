@@ -73,7 +73,7 @@ void Renderer::draw(DrawContext *pDrawContex) {
     glDrawArrays(GL_TRIANGLE_FAN, 0, mesh->numVertices);
   }
 
-  glUseProgram(0);
+  gl->useProgram(0);
 }
 
 uint32_t Renderer::createProgram(const string vertexSource,
