@@ -3,8 +3,8 @@
 #define APP_SRC_MAIN_CPP_COMMON_DRAWCONTEXT_HPP_
 
 #include "Mesh.hpp"
-#include <glm/glm.hpp>
 #include "ShaderProg.hpp"
+#include <glm/glm.hpp>
 
 using glm::mat4;
 

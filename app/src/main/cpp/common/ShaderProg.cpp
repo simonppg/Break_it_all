@@ -21,9 +21,7 @@ void ShaderProg::createProgram() {
   programID = createProgramm(vertexFile, fragmentFile);
 }
 
-void ShaderProg::use() {
-  gl->useProgram(programID);
-}
+void ShaderProg::use() { gl->useProgram(programID); }
 
 uint32_t ShaderProg::getUniformLocation(string uniformName) {
   return gl->getuniformlocation(programID, uniformName);
@@ -42,7 +40,7 @@ void ShaderProg::showProgramInfoLog(GLuint program) {
 }
 
 uint32_t ShaderProg::createProgramm(const string vertexSource,
-                                 const string fragmentSource) {
+                                    const string fragmentSource) {
   // In this function 0 is and error
   const int error = 0;
 

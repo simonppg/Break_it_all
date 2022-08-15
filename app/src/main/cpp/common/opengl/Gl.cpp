@@ -109,4 +109,3 @@ void Gl::enable(int32_t capability) { glEnable(capability); }
 uint32_t Gl::getuniformlocation(uint32_t program, string name) {
   return glGetUniformLocation(program, name.c_str());
 }
-

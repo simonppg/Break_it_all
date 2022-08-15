@@ -16,7 +16,7 @@ private:
   string vertexFile;
   string fragmentFile;
   uint32_t createProgramm(const string vertexSource,
-                                 const string fragmentSource);
+                          const string fragmentSource);
   void showProgramInfoLog(uint32_t program);
 
 public:

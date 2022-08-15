@@ -75,14 +75,14 @@ void Renderer::draw(DrawContext *pDrawContex) {
     glDrawArrays(GL_TRIANGLE_FAN, 0, mesh->numVertices);
   }
 
-  //TODO(Simon Puente): move to ShaderProgram as static method
+  // TODO(Simon Puente): move to ShaderProgram as static method
   gl->useProgram(0);
 }
 
-//Deprecated DO NOT USE IT!
-[[deprecated("ShaderProgram should create it's own program")]]
-uint32_t Renderer::createProgram(const string vertexSource,
-                                 const string fragmentSource) {
+// Deprecated DO NOT USE IT!
+[[deprecated("ShaderProgram should create it's own program")]] uint32_t
+Renderer::createProgram(const string vertexSource,
+                        const string fragmentSource) {
   // In this function 0 is and error
   const int error = 0;
 
