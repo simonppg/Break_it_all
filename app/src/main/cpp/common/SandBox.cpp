@@ -5,6 +5,7 @@
 #include <string>
 
 #include "../shared/FilesManager.hpp"
+#include "Assets.hpp"
 #include "Dimension.hpp"
 #include "Math.hpp"
 #include "Point3D.hpp"
@@ -14,8 +15,8 @@ using glm::mat4;
 using glm::vec3;
 
 SandBox::SandBox(FilesManager *filesManager, Camera *camera) {
-  const string vertexFileStr = filesManager->loadFile("simple.vert");
-  const string fragmentFileStr = filesManager->loadFile("simple.frag");
+  const string vertexFileStr = filesManager->loadFile(Assets::SIMPLE_VERT);
+  const string fragmentFileStr = filesManager->loadFile(Assets::SIMPLE_FRAG);
   this->camera = camera;
   Math math = Math();
   shaderProg = new ShaderProg(vertexFileStr, fragmentFileStr);
