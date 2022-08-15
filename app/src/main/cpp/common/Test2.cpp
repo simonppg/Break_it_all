@@ -11,15 +11,21 @@
 Test2::Test2(FilesManager *filesManager) {
   renderer = Renderer();
   this->filesManager = filesManager;
+  gl = new Gl();
+}
+
+Test2::~Test2() {
+  delete gl;
+  gl = nullptr;
 }
 
 void Test2::render() {
-  glUseProgram(programID);
-  glClearColor(0.6f, 0.6f, 0.6f, 1.0f);
-  glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+  gl->useProgram(programID);
+  gl->clearColor(0.6f, 0.6f, 0.6f, 1.0f);
+  gl->clear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
   glDrawArrays(GL_TRIANGLES, 0, 3);
-  glUseProgram(0);
+  gl->useProgram(0);
 }
 
 void Test2::surfaceCreated() {
@@ -27,9 +33,9 @@ void Test2::surfaceCreated() {
   const string frag = filesManager->loadFile(Assets::TRIANGLE_FRAG);
 
   programID = renderer.createProgram(vert, frag);
-  glUseProgram(programID);
-  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, vVertices);
-  glEnableVertexAttribArray(0);
+  gl->useProgram(programID);
+  gl->vertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, vVertices);
+  gl->enableVertexAttribArray(0);
 
   // if (vert)
   //   free(vert);
@@ -38,12 +44,12 @@ void Test2::surfaceCreated() {
 }
 
 void Test2::surfaceChanged(Dimension dimension) {
-  glViewport(0, 0, dimension.getWidth(), dimension.getHeight());
+  gl->viewport(0, 0, dimension.getWidth(), dimension.getHeight());
 }
 
-void Test2::pause() { glDeleteProgram(programID); }
+void Test2::pause() { gl->deleteProgram(programID); }
 
-void Test2::resume() { glUseProgram(programID); }
+void Test2::resume() { gl->useProgram(programID); }
 
 void Test2::update(double dt) {}
 

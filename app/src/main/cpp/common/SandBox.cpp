@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Simon Puente
+// Copyright (c) 2021 - 2022 Simon Puente
 #include "SandBox.hpp"
 
 #include <cstdlib>
@@ -15,6 +15,7 @@ using glm::mat4;
 using glm::vec3;
 
 SandBox::SandBox(FilesManager *filesManager, Camera *camera) {
+  gl = new Gl();
   const string vertexFileStr = filesManager->loadFile(Assets::SIMPLE_VERT);
   const string fragmentFileStr = filesManager->loadFile(Assets::SIMPLE_FRAG);
   this->camera = camera;
@@ -49,10 +50,12 @@ SandBox::~SandBox() {
   shaderProg = nullptr;
   delete renderer;
   renderer = nullptr;
+  delete gl;
+  gl = nullptr;
 }
 
 void SandBox::surfaceCreated() {
-  glEnable(GL_DEPTH_TEST);
+  gl->enable(GL_DEPTH_TEST);
 
   shaderProg->createProgram();
   renderer->load_model(mesh);
@@ -60,8 +63,8 @@ void SandBox::surfaceCreated() {
 }
 
 void SandBox::render() {
-  glClearColor(0.6f, 0.6f, 0.6f, 1.0f);
-  glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+  gl->clearColor(0.6f, 0.6f, 0.6f, 1.0f);
+  gl->clear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
   for (auto &i : objects) {
     i->draw(camera);
@@ -70,7 +73,7 @@ void SandBox::render() {
 
 void SandBox::surfaceChanged(Dimension dimension) {
   camera->resize(dimension);
-  glViewport(0, 0, dimension.getWidth(), dimension.getHeight());
+  gl->viewport(0, 0, dimension.getWidth(), dimension.getHeight());
 }
 
 void SandBox::pause() {}
