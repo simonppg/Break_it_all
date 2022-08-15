@@ -7,14 +7,14 @@
 using std::string;
 
 namespace assets {
-const static string TRIANGLE_VERT = "examples/triangle/triangle.vert";
-const static string TRIANGLE_FRAG = "examples/triangle/triangle.frag";
-const static string SIMPLE_VERT = "simple.vert";
-const static string SIMPLE_FRAG = "simple.frag";
-const static string CIRCLE_VERT = "circle.vert";
-const static string CIRCLE_FRAG = "circle.frag";
-const static string CUBE_VERT = "cube/cube.vert";
-const static string CUBE_FRAG = "cube/cube.frag";
+constexpr static const char *TRIANGLE_VERT = "examples/triangle/triangle.vert";
+constexpr static const char *TRIANGLE_FRAG = "examples/triangle/triangle.frag";
+constexpr static const char *SIMPLE_VERT = "simple.vert";
+constexpr static const char *SIMPLE_FRAG = "simple.frag";
+constexpr static const char *CIRCLE_VERT = "circle.vert";
+constexpr static const char *CIRCLE_FRAG = "circle.frag";
+constexpr static const char *CUBE_VERT = "cube/cube.vert";
+constexpr static const char *CUBE_FRAG = "cube/cube.frag";
 } // namespace assets
 
 #endif // APP_SRC_MAIN_CPP_COMMON_ASSETS_HPP_
