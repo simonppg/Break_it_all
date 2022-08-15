@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "../shared/FilesManager.hpp"
+#include "Assets.hpp"
 #include "Dimension.hpp"
 #include "Math.hpp"
 #include "Point3D.hpp"
@@ -43,8 +44,8 @@ void Test3::render() {
 }
 
 void Test3::surfaceCreated() {
-  const string vert = filesManager->loadFile("examples/triangle/triangle.vert");
-  const string frag = filesManager->loadFile("examples/triangle/triangle.frag");
+  const string vert = filesManager->loadFile(Assets::TRIANGLE_VERT);
+  const string frag = filesManager->loadFile(Assets::TRIANGLE_FRAG);
   programID = renderer.createProgram(vert, frag);
 
   glBindBuffer(GL_ARRAY_BUFFER, 0);

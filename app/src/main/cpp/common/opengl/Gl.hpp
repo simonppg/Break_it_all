@@ -29,6 +29,12 @@ public:
   void bindBuffer(int32_t bufferBindingTarget, uint32_t buffer);
   void bufferData(int32_t bufferBindingTarget, uintptr_t size, const void *data,
                   int32_t usage);
+
+  void enableVertexAttribArray(uint32_t index);
+  void vertexAttribPointer(uint32_t index, int32_t size);
+  void vertexAttribPointer(uint32_t index, int32_t size, int32_t type,
+                           bool normalized, uint32_t stride,
+                           const void *pointer);
 };
 
 #endif // APP_SRC_MAIN_CPP_COMMON_OPENGL_GL_HPP_

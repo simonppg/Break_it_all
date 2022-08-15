@@ -4,6 +4,7 @@
 #include <string>
 
 #include "../shared/FilesManager.hpp"
+#include "Assets.hpp"
 #include "Ball.hpp"
 #include "Dimension.hpp"
 #include "Math.hpp"
@@ -30,10 +31,10 @@ Test4::Test4(FilesManager *filesManager, Camera *camera) {
   greenBall = new Ball();
   greenBall->setPosition(camera->getPosition());
 
-  const string simpleVert = filesManager->loadFile("simple.vert");
-  const string simpleFrag = filesManager->loadFile("simple.frag");
-  const string circleVert = filesManager->loadFile("circle.vert");
-  const string circleFrag = filesManager->loadFile("circle.frag");
+  const string simpleVert = filesManager->loadFile(Assets::SIMPLE_VERT);
+  const string simpleFrag = filesManager->loadFile(Assets::SIMPLE_FRAG);
+  const string circleVert = filesManager->loadFile(Assets::CIRCLE_VERT);
+  const string circleFrag = filesManager->loadFile(Assets::CIRCLE_FRAG);
 
   shaderProgs[0] = new ShaderProg(simpleVert, simpleFrag);
   shaderProgs[1] = new ShaderProg(circleVert, circleFrag);
