@@ -81,3 +81,13 @@ void Gl::bufferData(int32_t bufferBindingTarget, uintptr_t size,
                     const void *data, int32_t usage) {
   glBufferData(bufferBindingTarget, size, data, usage);
 }
+
+void Gl::enableVertexAttribArray(uint32_t index) {
+  glEnableVertexAttribArray(index);
+}
+
+void Gl::vertexAttribPointer(uint32_t index, int32_t size, int32_t type,
+                             bool normalized, uint32_t stride,
+                             const void *pointer) {
+  glVertexAttribPointer(index, size, type, normalized, stride, pointer);
+}
