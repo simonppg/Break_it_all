@@ -13,11 +13,6 @@
 #include "Point3D.hpp"
 #include "Projection.hpp"
 
-using assets::CIRCLE_FRAG;
-using assets::CIRCLE_VERT;
-using assets::SIMPLE_FRAG;
-using assets::SIMPLE_VERT;
-
 static bool hitRightLimit(Dimension dimension, Point3D point) {
   return point.getX() >= dimension.getWidth() / 2;
 }
@@ -36,10 +31,10 @@ Test4::Test4(FilesManager *filesManager, Camera *camera) {
   greenBall = new Ball();
   greenBall->setPosition(camera->getPosition());
 
-  const string simpleVert = filesManager->loadFile(SIMPLE_VERT);
-  const string simpleFrag = filesManager->loadFile(SIMPLE_FRAG);
-  const string circleVert = filesManager->loadFile(CIRCLE_VERT);
-  const string circleFrag = filesManager->loadFile(CIRCLE_FRAG);
+  const string simpleVert = filesManager->loadFile(Assets::SIMPLE_VERT);
+  const string simpleFrag = filesManager->loadFile(Assets::SIMPLE_FRAG);
+  const string circleVert = filesManager->loadFile(Assets::CIRCLE_VERT);
+  const string circleFrag = filesManager->loadFile(Assets::CIRCLE_FRAG);
 
   shaderProgs[0] = new ShaderProg(simpleVert, simpleFrag);
   shaderProgs[1] = new ShaderProg(circleVert, circleFrag);

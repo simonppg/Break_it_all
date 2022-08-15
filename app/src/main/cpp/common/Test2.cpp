@@ -8,9 +8,6 @@
 #include "Assets.hpp"
 #include "Renderer.hpp"
 
-using assets::TRIANGLE_FRAG;
-using assets::TRIANGLE_VERT;
-
 Test2::Test2(FilesManager *filesManager) {
   renderer = Renderer();
   this->filesManager = filesManager;
@@ -26,8 +23,8 @@ void Test2::render() {
 }
 
 void Test2::surfaceCreated() {
-  const string vert = filesManager->loadFile(TRIANGLE_VERT);
-  const string frag = filesManager->loadFile(TRIANGLE_FRAG);
+  const string vert = filesManager->loadFile(Assets::TRIANGLE_VERT);
+  const string frag = filesManager->loadFile(Assets::TRIANGLE_FRAG);
 
   programID = renderer.createProgram(vert, frag);
   glUseProgram(programID);

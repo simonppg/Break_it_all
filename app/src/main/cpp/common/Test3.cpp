@@ -11,9 +11,6 @@
 #include "Point3D.hpp"
 #include "Renderer.hpp"
 
-using assets::TRIANGLE_FRAG;
-using assets::TRIANGLE_VERT;
-
 Test3::Test3(FilesManager *filesManager, Camera *camera) {
   float RADIUS = 0.5;
   this->camera = camera;
@@ -47,8 +44,8 @@ void Test3::render() {
 }
 
 void Test3::surfaceCreated() {
-  const string vert = filesManager->loadFile(TRIANGLE_VERT);
-  const string frag = filesManager->loadFile(TRIANGLE_FRAG);
+  const string vert = filesManager->loadFile(Assets::TRIANGLE_VERT);
+  const string frag = filesManager->loadFile(Assets::TRIANGLE_FRAG);
   programID = renderer.createProgram(vert, frag);
 
   glBindBuffer(GL_ARRAY_BUFFER, 0);
