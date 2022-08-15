@@ -47,11 +47,12 @@ void Renderer::load_model(Mesh *pMesh) {
 }
 
 void Renderer::draw(DrawContext *pDrawContex) {
+  ShaderProg *program = pDrawContex->program;
   Mesh *mesh = pDrawContex->mesh;
-  GLint uniform;
+  GLint uniform = 0;
 
-  gl->useProgram(pDrawContex->programID);
-  uniform = glGetUniformLocation(pDrawContex->programID, "matrix");
+  program->use();
+  uniform = program->getUniformLocation("matrix");
 
   if (mesh->type == MeshType::ONE) {
     gl->bindBuffer(GL_ARRAY_BUFFER, mesh->vbo);
@@ -63,20 +64,22 @@ void Renderer::draw(DrawContext *pDrawContex) {
     gl->bindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->iab);
 
     glUniformMatrix4fv(uniform, 1, GL_FALSE,
-                       &pDrawContex->matrix_transform[0][0]);
+                       &pDrawContex->matrixTransform[0][0]);
     glDrawElements(GL_TRIANGLES, mesh->numIndices, GL_UNSIGNED_SHORT, 0);
   } else if (mesh->type == MeshType::TWO) {
     gl->bindBuffer(GL_ARRAY_BUFFER, mesh->vbo);
     gl->vertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 3, 0);
     gl->enableVertexAttribArray(0);
     glUniformMatrix4fv(uniform, 1, GL_FALSE,
-                       &pDrawContex->matrix_transform[0][0]);
+                       &pDrawContex->matrixTransform[0][0]);
     glDrawArrays(GL_TRIANGLE_FAN, 0, mesh->numVertices);
   }
 
+  //TODO(Simon Puente): move to ShaderProgram as static method
   gl->useProgram(0);
 }
 
+//Deprecated DO NOT USE IT!
 [[deprecated("ShaderProgram should create it's own program")]]
 uint32_t Renderer::createProgram(const string vertexSource,
                                  const string fragmentSource) {

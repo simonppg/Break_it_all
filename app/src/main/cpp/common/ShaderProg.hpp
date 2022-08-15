@@ -4,7 +4,7 @@
 
 #include <string>
 
-#include "Renderer.hpp"
+#include "ShaderLoader.hpp"
 #include "opengl/Gl.hpp"
 
 using std::string;
@@ -24,6 +24,8 @@ public:
   ~ShaderProg();
 
   void createProgram();
+  void use();
+  uint32_t getUniformLocation(string uniformName);
 
   // TODO(Simon Puente): make programID private
   uint32_t programID;

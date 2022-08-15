@@ -41,6 +41,8 @@ public:
   void clearColor(float red, float green, float blue, float alpha);
   void clear(uint32_t mask);
   void enable(int32_t capability);
+
+  uint32_t getuniformlocation(uint32_t program, string name);
 };
 
 #endif // APP_SRC_MAIN_CPP_COMMON_OPENGL_GL_HPP_

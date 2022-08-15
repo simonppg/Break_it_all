@@ -21,6 +21,14 @@ void ShaderProg::createProgram() {
   programID = createProgramm(vertexFile, fragmentFile);
 }
 
+void ShaderProg::use() {
+  gl->useProgram(programID);
+}
+
+uint32_t ShaderProg::getUniformLocation(string uniformName) {
+  return gl->getuniformlocation(programID, uniformName);
+}
+
 void ShaderProg::showProgramInfoLog(GLuint program) {
   int infoLength = gl->getProgramInfoLength(program);
   if (!infoLength) {

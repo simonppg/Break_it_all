@@ -9,7 +9,7 @@
 Object::Object(ShaderProg *pProg, Mesh *pMesh)
     : angle{0}, size{Point3D(2, 1, 1)} {
   renderer = new Renderer();
-  this->prog = pProg;
+  this->program = pProg;
   this->mesh = pMesh;
   position = Point3D();
   rotation = Point3D(1, 1, 1);
@@ -30,8 +30,8 @@ Point3D Object::getPosition() { return position; }
 void Object::draw(Camera *camera) {
   mat4 trasformed = camera->trasform(position, angle, rotation, size);
 
-  drawContext->programID = prog->programID;
-  drawContext->matrix_transform = trasformed;
+  drawContext->program = program;
+  drawContext->matrixTransform = trasformed;
   drawContext->mesh = mesh;
 
   renderer->draw(drawContext);
