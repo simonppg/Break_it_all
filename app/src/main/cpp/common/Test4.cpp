@@ -22,6 +22,7 @@ static bool hitLeftLimit(Dimension dimension, Point3D point) {
 }
 
 Test4::Test4(FilesManager *filesManager, Camera *camera) {
+  gl = new Gl();
   this->camera = camera;
   camera->changeProjection(Projection::ORTHOGRAPHIC);
   renderer = new Renderer();
@@ -105,11 +106,13 @@ Test4::~Test4() {
   renderer = nullptr;
   delete math;
   math = nullptr;
+  delete gl;
+  gl = nullptr;
 }
 
 void Test4::render() {
-  glClearColor(0.6f, 0.6f, 0.6f, 1.0f);
-  glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+  gl->clearColor(0.6f, 0.6f, 0.6f, 1.0f);
+  gl->clear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
   for (auto &i : objects) {
     i->draw(camera);
@@ -122,7 +125,7 @@ void Test4::render() {
 }
 
 void Test4::surfaceCreated() {
-  glEnable(GL_DEPTH_TEST);
+  gl->enable(GL_DEPTH_TEST);
 
   for (auto &i : shaderProgs) {
     i->createProgram();
@@ -137,7 +140,7 @@ void Test4::surfaceChanged(Dimension dimension) {
   double width = dimension.getWidth();
   double height = dimension.getHeight();
 
-  glViewport(0, 0, width, height);
+  gl->viewport(0, 0, width, height);
   camera->resize(dimension);
 
   Dimension gridDimension(width, camera->top);

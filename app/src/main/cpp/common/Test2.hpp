@@ -5,9 +5,11 @@
 #include "../shared/FilesManager.hpp"
 #include "IScene.hpp"
 #include "Renderer.hpp"
+#include "opengl/Gl.hpp"
 
 class Test2 final : public IScene {
 private:
+  Gl *gl;
   Renderer renderer;
   FilesManager *filesManager;
 
@@ -16,6 +18,7 @@ private:
 
 public:
   explicit Test2(FilesManager *filesManager);
+  ~Test2();
 
   void surfaceCreated() override;
   void surfaceChanged(Dimension) override;

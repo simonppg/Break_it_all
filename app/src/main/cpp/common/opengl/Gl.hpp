@@ -15,6 +15,7 @@ public:
   ~Gl();
 
   optional<uint32_t> createProgram();
+  void deleteProgram(uint32_t program);
   void useProgram(uint32_t program);
   bool isProgramLinkOk(uint32_t program);
   int32_t getProgramInfoLength(uint32_t program);
@@ -35,6 +36,11 @@ public:
   void vertexAttribPointer(uint32_t index, int32_t size, int32_t type,
                            bool normalized, uint32_t stride,
                            const void *pointer);
+
+  void viewport(int32_t x, int32_t y, uint32_t width, uint32_t height);
+  void clearColor(float red, float green, float blue, float alpha);
+  void clear(uint32_t mask);
+  void enable(int32_t capability);
 };
 
 #endif // APP_SRC_MAIN_CPP_COMMON_OPENGL_GL_HPP_

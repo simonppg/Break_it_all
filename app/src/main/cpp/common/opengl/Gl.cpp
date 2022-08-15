@@ -21,6 +21,8 @@ optional<uint32_t> Gl::createProgram() {
   return program;
 }
 
+void Gl::deleteProgram(uint32_t program) { glDeleteProgram(program); }
+
 bool Gl::isProgramLinkOk(uint32_t program) {
   GLint linkStatus = GL_FALSE;
   glGetProgramiv(program, GL_LINK_STATUS, &linkStatus);
@@ -91,3 +93,15 @@ void Gl::vertexAttribPointer(uint32_t index, int32_t size, int32_t type,
                              const void *pointer) {
   glVertexAttribPointer(index, size, type, normalized, stride, pointer);
 }
+
+void Gl::viewport(int32_t x, int32_t y, uint32_t width, uint32_t height) {
+  glViewport(x, y, width, height);
+}
+
+void Gl::clearColor(float red, float green, float blue, float alpha) {
+  glClearColor(red, green, blue, alpha);
+}
+
+void Gl::clear(uint32_t mask) { glClear(mask); }
+
+void Gl::enable(int32_t capability) { glEnable(capability); }
