@@ -1,7 +1,9 @@
 // Copyright (c) 2021 Simon Puente
 #include "ShaderProg.hpp"
-#include "Renderer.hpp"
+
 #include <GLES3/gl3.h>
+
+#include "Renderer.hpp"
 
 ShaderProg::ShaderProg(const string vertShaderStr, const string fragShaderStr) {
   vertexFile = vertShaderStr;
