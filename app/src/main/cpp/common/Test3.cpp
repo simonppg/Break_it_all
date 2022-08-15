@@ -17,6 +17,12 @@ Test3::Test3(FilesManager *filesManager, Camera *camera) {
   circle = math->generateCircle(RADIUS, NUMBER_OF_VERTICES);
   renderer = Renderer();
   this->filesManager = filesManager;
+  gl = new Gl();
+}
+
+Test3::~Test3() {
+  delete gl;
+  gl = nullptr;
 }
 
 void Test3::render() {
@@ -25,13 +31,13 @@ void Test3::render() {
   mat4 rotate;
   mat4 scale;
 
-  glUseProgram(programID);
+  gl->useProgram(programID);
   uniform = glGetUniformLocation(programID, "matrix");
 
-  glClearColor(0.6f, 0.6f, 0.6f, 1.0f);
-  glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+  gl->clearColor(0.6f, 0.6f, 0.6f, 1.0f);
+  gl->clear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
-  glEnableVertexAttribArray(0);
+  gl->enableVertexAttribArray(0);
 
   translate = camera->translate(Point3D(1, 0, 0));
   rotate = glm::rotate(translate, glm::radians(0.0f), vec3(1, 0, 0));
@@ -40,7 +46,7 @@ void Test3::render() {
 
   glDrawArrays(GL_TRIANGLE_FAN, 0, NUMBER_OF_VERTICES);
 
-  glUseProgram(0);
+  gl->useProgram(0);
 }
 
 void Test3::surfaceCreated() {
@@ -48,8 +54,8 @@ void Test3::surfaceCreated() {
   const string frag = filesManager->loadFile(Assets::TRIANGLE_FRAG);
   programID = renderer.createProgram(vert, frag);
 
-  glBindBuffer(GL_ARRAY_BUFFER, 0);
-  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, circle);
+  gl->bindBuffer(GL_ARRAY_BUFFER, 0);
+  gl->vertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, circle);
 
   // if (vert)
   //   free(vert);
@@ -58,12 +64,12 @@ void Test3::surfaceCreated() {
 }
 
 void Test3::surfaceChanged(Dimension dimension) {
-  glViewport(0, 0, dimension.getWidth(), dimension.getHeight());
+  gl->viewport(0, 0, dimension.getWidth(), dimension.getHeight());
 }
 
-void Test3::pause() { glDeleteProgram(programID); }
+void Test3::pause() { gl->deleteProgram(programID); }
 
-void Test3::resume() { glUseProgram(programID); }
+void Test3::resume() { gl->useProgram(programID); }
 
 void Test3::update(double dt) {}
 

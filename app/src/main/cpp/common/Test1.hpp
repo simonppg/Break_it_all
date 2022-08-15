@@ -3,10 +3,15 @@
 #define APP_SRC_MAIN_CPP_COMMON_TEST1_HPP_
 
 #include "IScene.hpp"
+#include "opengl/Gl.hpp"
 
 class Test1 final : public IScene {
+private:
+  Gl *gl;
+
 public:
   Test1();
+  ~Test1();
 
   void surfaceCreated() override;
   void surfaceChanged(Dimension) override;

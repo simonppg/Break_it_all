@@ -7,9 +7,11 @@
 #include "IScene.hpp"
 #include "Math.hpp"
 #include "Renderer.hpp"
+#include "opengl/Gl.hpp"
 
 class Test3 final : public IScene {
 private:
+  Gl *gl;
   Renderer renderer;
   FilesManager *filesManager;
   Math *math = new Math();
@@ -18,6 +20,7 @@ private:
 
 public:
   explicit Test3(FilesManager *, Camera *);
+  ~Test3();
 
   void surfaceCreated() override;
   void surfaceChanged(Dimension) override;
