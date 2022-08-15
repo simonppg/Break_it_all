@@ -5,17 +5,20 @@
 #include <string>
 
 #include "../shared/FilesManager.hpp"
+#include "Assets.hpp"
 #include "Dimension.hpp"
 #include "Math.hpp"
 #include "Point3D.hpp"
 #include "Renderer.hpp"
 
+using assets::SIMPLE_FRAG;
+using assets::SIMPLE_VERT;
 using glm::mat4;
 using glm::vec3;
 
 SandBox::SandBox(FilesManager *filesManager, Camera *camera) {
-  const string vertexFileStr = filesManager->loadFile("simple.vert");
-  const string fragmentFileStr = filesManager->loadFile("simple.frag");
+  const string vertexFileStr = filesManager->loadFile(SIMPLE_VERT);
+  const string fragmentFileStr = filesManager->loadFile(SIMPLE_FRAG);
   this->camera = camera;
   Math math = Math();
   shaderProg = new ShaderProg(vertexFileStr, fragmentFileStr);

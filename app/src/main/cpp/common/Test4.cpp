@@ -4,6 +4,7 @@
 #include <string>
 
 #include "../shared/FilesManager.hpp"
+#include "Assets.hpp"
 #include "Ball.hpp"
 #include "Dimension.hpp"
 #include "Math.hpp"
@@ -11,6 +12,11 @@
 #include "Point2D.hpp"
 #include "Point3D.hpp"
 #include "Projection.hpp"
+
+using assets::CIRCLE_FRAG;
+using assets::CIRCLE_VERT;
+using assets::SIMPLE_FRAG;
+using assets::SIMPLE_VERT;
 
 static bool hitRightLimit(Dimension dimension, Point3D point) {
   return point.getX() >= dimension.getWidth() / 2;
@@ -30,10 +36,10 @@ Test4::Test4(FilesManager *filesManager, Camera *camera) {
   greenBall = new Ball();
   greenBall->setPosition(camera->getPosition());
 
-  const string simpleVert = filesManager->loadFile("simple.vert");
-  const string simpleFrag = filesManager->loadFile("simple.frag");
-  const string circleVert = filesManager->loadFile("circle.vert");
-  const string circleFrag = filesManager->loadFile("circle.frag");
+  const string simpleVert = filesManager->loadFile(SIMPLE_VERT);
+  const string simpleFrag = filesManager->loadFile(SIMPLE_FRAG);
+  const string circleVert = filesManager->loadFile(CIRCLE_VERT);
+  const string circleFrag = filesManager->loadFile(CIRCLE_FRAG);
 
   shaderProgs[0] = new ShaderProg(simpleVert, simpleFrag);
   shaderProgs[1] = new ShaderProg(circleVert, circleFrag);

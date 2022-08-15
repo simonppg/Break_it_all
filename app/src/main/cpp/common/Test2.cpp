@@ -1,11 +1,15 @@
-// Copyright (c) 2021 Simon Puente
+// Copyright (c) 2021 - 2022 Simon Puente
 #include "Test2.hpp"
 
 #include <cstdlib>
 #include <string>
 
 #include "../shared/FilesManager.hpp"
+#include "Assets.hpp"
 #include "Renderer.hpp"
+
+using assets::TRIANGLE_FRAG;
+using assets::TRIANGLE_VERT;
 
 Test2::Test2(FilesManager *filesManager) {
   renderer = Renderer();
@@ -22,8 +26,8 @@ void Test2::render() {
 }
 
 void Test2::surfaceCreated() {
-  const string vert = filesManager->loadFile("examples/triangle/triangle.vert");
-  const string frag = filesManager->loadFile("examples/triangle/triangle.frag");
+  const string vert = filesManager->loadFile(TRIANGLE_VERT);
+  const string frag = filesManager->loadFile(TRIANGLE_FRAG);
 
   programID = renderer.createProgram(vert, frag);
   glUseProgram(programID);
