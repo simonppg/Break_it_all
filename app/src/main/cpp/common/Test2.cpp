@@ -3,6 +3,7 @@
 
 #include <cstdlib>
 #include <string>
+#include <GLES3/gl3.h>
 
 #include "../shared/FilesManager.hpp"
 #include "Assets.hpp"
@@ -22,7 +23,7 @@ Test2::~Test2() {
 void Test2::render() {
   gl->useProgram(programID);
   gl->clearColor(0.6f, 0.6f, 0.6f, 1.0f);
-  gl->clear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+  gl->clear();
 
   glDrawArrays(GL_TRIANGLES, 0, 3);
   gl->useProgram(0);

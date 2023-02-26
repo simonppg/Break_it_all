@@ -55,7 +55,7 @@ SandBox::~SandBox() {
 }
 
 void SandBox::surfaceCreated() {
-  gl->enable(GL_DEPTH_TEST);
+  gl->enable();
 
   shaderProg->createProgram();
   renderer->load_model(mesh);
@@ -64,7 +64,7 @@ void SandBox::surfaceCreated() {
 
 void SandBox::render() {
   gl->clearColor(0.6f, 0.6f, 0.6f, 1.0f);
-  gl->clear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+  gl->clear();
 
   for (auto &i : objects) {
     i->draw(camera);

@@ -5,6 +5,8 @@
 
 #include "Gl.hpp"
 
+#include "GLES3/gl3.h"
+
 ShaderLoader::ShaderLoader() { gl = new Gl(); }
 
 ShaderLoader::~ShaderLoader() {

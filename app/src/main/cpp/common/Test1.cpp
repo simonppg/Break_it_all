@@ -16,7 +16,7 @@ void Test1::surfaceChanged(Dimension dimension) {
 
 void Test1::render() {
   gl->clearColor(0.6f, 0.6f, 0.6f, 1.0f);
-  gl->clear(GL_COLOR_BUFFER_BIT);
+  gl->clear();
 }
 
 void Test1::pause() {}

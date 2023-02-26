@@ -112,7 +112,7 @@ Test4::~Test4() {
 
 void Test4::render() {
   gl->clearColor(0.6f, 0.6f, 0.6f, 1.0f);
-  gl->clear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+  gl->clear();
 
   for (auto &i : objects) {
     i->draw(camera);
@@ -125,7 +125,7 @@ void Test4::render() {
 }
 
 void Test4::surfaceCreated() {
-  gl->enable(GL_DEPTH_TEST);
+  gl->enable();
 
   for (auto &i : shaderProgs) {
     i->createProgram();
