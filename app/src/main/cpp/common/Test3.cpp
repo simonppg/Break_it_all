@@ -1,11 +1,11 @@
 // Copyright (c) 2021 Simon Puente
 #include "Test3.hpp"
 
+#include <GLES3/gl3.h>
+
 #include <cstdint>
 #include <string>
 #include <vector>
-
-#include <GLES3/gl3.h>
 
 #include "../shared/FilesManager.hpp"
 #include "Assets.hpp"
