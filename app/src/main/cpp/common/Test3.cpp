@@ -1,9 +1,9 @@
 // Copyright (c) 2021 Simon Puente
 #include "Test3.hpp"
 
+#include <cstdint>
 #include <string>
 #include <vector>
-#include <cstdint>
 
 #include <GLES3/gl3.h>
 
