@@ -103,5 +103,11 @@ void Gl::clearColor(float red, float green, float blue, float alpha) {
 }
 
 void Gl::clear(uint32_t mask) { glClear(mask); }
+void Gl::clear() { glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT); }
 
 void Gl::enable(int32_t capability) { glEnable(capability); }
+void Gl::enable() { glEnable(GL_DEPTH_TEST); }
+
+uint32_t Gl::getuniformlocation(uint32_t program, string name) {
+  return glGetUniformLocation(program, name.c_str());
+}

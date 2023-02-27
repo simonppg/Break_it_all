@@ -4,22 +4,31 @@
 
 #include <string>
 
-#include "Renderer.hpp"
+#include "ShaderLoader.hpp"
+#include "opengl/Gl.hpp"
 
 using std::string;
 
 class ShaderProg final {
 private:
-  Renderer renderer;
-  string vertex_file;
-  string fragment_file;
+  Gl *gl;
+  ShaderLoader *shaderLoader;
+  string vertexFile;
+  string fragmentFile;
+  uint32_t createProgramm(const string vertexSource,
+                          const string fragmentSource);
+  void showProgramInfoLog(uint32_t program);
 
 public:
   ShaderProg(const string vertShaderStr, const string fragShaderStr);
+  ~ShaderProg();
 
   void createProgram();
+  void use();
+  uint32_t getUniformLocation(string uniformName);
 
-  unsigned int programID;
+  // TODO(Simon Puente): make programID private
+  uint32_t programID;
 };
 
 #endif // APP_SRC_MAIN_CPP_COMMON_SHADERPROG_HPP_

@@ -25,7 +25,7 @@ jobs:
       run: sudo apt-get update -q -y
 
     - name: Install lcov, xorg-dev and libgles2-mesa-dev
-      run: sudo apt-get install -y lcov xorg-dev libglu1-mesa-dev
+      run: sudo apt-get install -y lcov xorg-dev libegl1-mesa-dev libgles2-mesa-dev libx11-dev
 
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.

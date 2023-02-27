@@ -1,6 +1,9 @@
 // Copyright (c) 2021 Simon Puente
 #include "Test3.hpp"
 
+#include <GLES3/gl3.h>
+
+#include <cstdint>
 #include <string>
 #include <vector>
 
@@ -26,7 +29,7 @@ Test3::~Test3() {
 }
 
 void Test3::render() {
-  GLint uniform;
+  int32_t uniform;
   mat4 translate;
   mat4 rotate;
   mat4 scale;
@@ -35,7 +38,7 @@ void Test3::render() {
   uniform = glGetUniformLocation(programID, "matrix");
 
   gl->clearColor(0.6f, 0.6f, 0.6f, 1.0f);
-  gl->clear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+  gl->clear();
 
   gl->enableVertexAttribArray(0);
 

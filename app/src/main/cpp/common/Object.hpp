@@ -13,7 +13,7 @@ using glm::mat4;
 
 class Object {
 protected:
-  ShaderProg *prog;
+  ShaderProg *program;
   Renderer *renderer;
   DrawContext *drawContext;
   Mesh *mesh;

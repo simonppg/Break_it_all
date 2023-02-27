@@ -2,8 +2,6 @@
 #ifndef APP_SRC_MAIN_CPP_COMMON_ISCENE_HPP_
 #define APP_SRC_MAIN_CPP_COMMON_ISCENE_HPP_
 
-#include <GLES3/gl3.h>
-
 #include "Camera.hpp"
 #include "Point2D.hpp"
 
