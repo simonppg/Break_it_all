@@ -15,7 +15,6 @@ class Game final {
 private:
   IScene *pScene;
   Logger *logger;
-  Camera *camera;
 
   bool isClosing;
 

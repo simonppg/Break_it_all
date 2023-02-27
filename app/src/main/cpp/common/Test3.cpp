@@ -9,16 +9,15 @@
 
 #include "../shared/FilesManager.hpp"
 #include "Assets.hpp"
+#include "Camera.hpp"
 #include "Dimension.hpp"
 #include "Math.hpp"
 #include "Point3D.hpp"
 #include "Renderer.hpp"
 
-Test3::Test3(FilesManager *filesManager, Camera *camera) {
+Test3::Test3(FilesManager *filesManager) {
   float RADIUS = 0.5;
-  this->camera = camera;
   circle = math->generateCircle(RADIUS, NUMBER_OF_VERTICES);
-  renderer = Renderer();
   this->filesManager = filesManager;
   gl = new Gl();
 }
@@ -29,23 +28,24 @@ Test3::~Test3() {
 }
 
 void Test3::render() {
-  int32_t uniform;
-  mat4 translate;
-  mat4 rotate;
-  mat4 scale;
+  // int32_t uniform;
+  // mat4 translate;
+  // mat4 rotate;
+  // mat4 scale;
 
   gl->useProgram(programID);
-  uniform = glGetUniformLocation(programID, "matrix");
+  // uniform = glGetUniformLocation(programID, "matrix");
 
   gl->clearColor(0.6f, 0.6f, 0.6f, 1.0f);
   gl->clear();
 
   gl->enableVertexAttribArray(0);
 
-  translate = camera->translate(Point3D(1, 0, 0));
-  rotate = glm::rotate(translate, glm::radians(0.0f), vec3(1, 0, 0));
-  scale = glm::scale(rotate, glm::vec3(5));
-  glUniformMatrix4fv(uniform, 1, GL_FALSE, &scale[0][0]);
+  // TODO(simonpp): Use render
+  //  translate = camera->translate(Point3D(1, 0, 0));
+  //  rotate = glm::rotate(translate, glm::radians(0.0f), vec3(1, 0, 0));
+  //  scale = glm::scale(rotate, glm::vec3(5));
+  //  glUniformMatrix4fv(uniform, 1, GL_FALSE, &scale[0][0]);
 
   glDrawArrays(GL_TRIANGLE_FAN, 0, NUMBER_OF_VERTICES);
 

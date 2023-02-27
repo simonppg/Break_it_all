@@ -5,6 +5,7 @@
 #include <cstdint>
 #include <string>
 
+#include "Camera.hpp"
 #include "DrawContext.hpp"
 #include "Mesh.hpp"
 #include "ShaderLoader.hpp"
@@ -16,13 +17,15 @@ class Renderer {
 private:
   ShaderLoader *shaderLoader;
   Gl *gl;
+  Camera *camera;
 
   void showProgramInfoLog(uint32_t program);
 
 public:
-  Renderer();
+  explicit Renderer(Camera *);
   ~Renderer();
 
+  mat4 trasform(Point3D, float, Point3D, Point3D);
   void load_model(Mesh *pMesh);
   void draw(DrawContext *pDrawContex);
   static unsigned int loadShader(unsigned int shaderType,

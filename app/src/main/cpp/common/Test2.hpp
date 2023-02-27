@@ -10,7 +10,7 @@
 class Test2 final : public IScene {
 private:
   Gl *gl;
-  Renderer renderer;
+  Renderer renderer = Renderer(new Camera());
   FilesManager *filesManager;
 
   float vVertices[9] = {0.0f, 0.5f, 0.0f,  -0.5f, -0.5f,

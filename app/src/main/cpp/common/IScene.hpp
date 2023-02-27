@@ -2,13 +2,12 @@
 #ifndef APP_SRC_MAIN_CPP_COMMON_ISCENE_HPP_
 #define APP_SRC_MAIN_CPP_COMMON_ISCENE_HPP_
 
-#include "Camera.hpp"
+#include "Dimension.hpp"
 #include "Point2D.hpp"
 
 class IScene {
 protected:
   unsigned int programID;
-  Camera *camera = nullptr;
 
 public:
   virtual ~IScene() {}

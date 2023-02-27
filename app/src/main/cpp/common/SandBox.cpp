@@ -14,19 +14,19 @@
 using glm::mat4;
 using glm::vec3;
 
-SandBox::SandBox(FilesManager *filesManager, Camera *camera) {
+SandBox::SandBox(FilesManager *filesManager) {
+  auto camera = new Camera(Dimension(), Point3D(0, 0, 40));
   gl = new Gl();
   const string vertexFileStr = filesManager->loadFile(Assets::SIMPLE_VERT);
   const string fragmentFileStr = filesManager->loadFile(Assets::SIMPLE_FRAG);
-  this->camera = camera;
   Math math = Math();
   shaderProg = new ShaderProg(vertexFileStr, fragmentFileStr);
   mesh = new Mesh(math.generateCube(), 8, math.generateCubeIndexs(), 36);
-  renderer = new Renderer();
+  renderer = new Renderer(camera);
 
   unsigned int seed = (unsigned int)time(NULL);
   for (auto &object : objects) {
-    object = new Object(shaderProg, mesh);
+    object = new Object(renderer, shaderProg, mesh);
     object->updateSize(Point3D(2, 1, 1));
     float x = sin(rand_r(&seed) % 20 - 10) + rand_r(&seed) % 20 - 10;
     float y = cos(rand_r(&seed) % 36 - 18) + rand_r(&seed) % 36 - 18;
@@ -67,12 +67,13 @@ void SandBox::render() {
   gl->clear();
 
   for (auto &i : objects) {
-    i->draw(camera);
+    i->draw();
   }
 }
 
 void SandBox::surfaceChanged(Dimension dimension) {
-  camera->resize(dimension);
+  // TODO(simonpp): send dimension to camera through render
+  //  camera->resize(dimension);
   gl->viewport(0, 0, dimension.getWidth(), dimension.getHeight());
 }
 

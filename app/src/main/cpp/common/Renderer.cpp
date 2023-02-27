@@ -4,12 +4,14 @@
 #include <GLES3/gl3.h>
 #include <cstdlib>
 
+#include "Camera.hpp"
 #include "MeshType.hpp"
 #include "ShaderLoader.hpp"
 
-Renderer::Renderer() {
+Renderer::Renderer(Camera *camera) {
   gl = new Gl();
   shaderLoader = new ShaderLoader();
+  this->camera = camera;
 }
 
 Renderer::~Renderer() {
@@ -46,9 +48,15 @@ void Renderer::load_model(Mesh *pMesh) {
   }
 }
 
+mat4 Renderer::trasform(Point3D point3D, float angle, Point3D rotation,
+                        Point3D size) {
+  return camera->trasform(point3D, angle, rotation, size);
+}
+
 void Renderer::draw(DrawContext *pDrawContex) {
-  ShaderProg *program = pDrawContex->program;
-  Mesh *mesh = pDrawContex->mesh;
+  ShaderProg *program = pDrawContex->getProgram();
+  Mesh *mesh = pDrawContex->getMesh();
+  mat4 matrixTransform = pDrawContex->getMatrixTransform();
   GLint uniform = 0;
 
   program->use();
@@ -63,15 +71,13 @@ void Renderer::draw(DrawContext *pDrawContex) {
                             reinterpret_cast<char *>((sizeof(float) * 3)));
     gl->bindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->iab);
 
-    glUniformMatrix4fv(uniform, 1, GL_FALSE,
-                       &pDrawContex->matrixTransform[0][0]);
+    glUniformMatrix4fv(uniform, 1, GL_FALSE, &matrixTransform[0][0]);
     glDrawElements(GL_TRIANGLES, mesh->numIndices, GL_UNSIGNED_SHORT, 0);
   } else if (mesh->type == MeshType::TWO) {
     gl->bindBuffer(GL_ARRAY_BUFFER, mesh->vbo);
     gl->vertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 3, 0);
     gl->enableVertexAttribArray(0);
-    glUniformMatrix4fv(uniform, 1, GL_FALSE,
-                       &pDrawContex->matrixTransform[0][0]);
+    glUniformMatrix4fv(uniform, 1, GL_FALSE, &matrixTransform[0][0]);
     glDrawArrays(GL_TRIANGLE_FAN, 0, mesh->numVertices);
   }
 

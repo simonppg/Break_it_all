@@ -2,8 +2,7 @@
 #ifndef APP_SRC_MAIN_CPP_COMMON_OBJECT_HPP_
 #define APP_SRC_MAIN_CPP_COMMON_OBJECT_HPP_
 
-#include "Camera.hpp"
-#include "DrawContext.hpp"
+// #include "DrawContext.hpp"
 #include "Mesh.hpp"
 #include "Point3D.hpp"
 #include "Renderer.hpp"
@@ -15,7 +14,6 @@ class Object {
 protected:
   ShaderProg *program;
   Renderer *renderer;
-  DrawContext *drawContext;
   Mesh *mesh;
 
   float angle;
@@ -24,12 +22,12 @@ protected:
   Point3D size;
 
 public:
-  Object(ShaderProg *pProg, Mesh *pMesh);
+  Object(Renderer *, ShaderProg *pProg, Mesh *pMesh);
   ~Object();
 
   Point3D getPosition();
 
-  void draw(Camera *);
+  void draw();
   void updatePosition(Point3D position);
   void updateSize(Point3D size);
   void set_rotation_angle(float angle);
