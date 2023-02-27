@@ -33,13 +33,10 @@ Test4::Test4(FilesManager *filesManager) {
   greenBall = new Ball(meshFactory);
   greenBall->moveTo(camera->getPosition());
 
-  const string simpleVert = filesManager->loadFile(Assets::SIMPLE_VERT);
-  const string simpleFrag = filesManager->loadFile(Assets::SIMPLE_FRAG);
-  const string circleVert = filesManager->loadFile(Assets::CIRCLE_VERT);
-  const string circleFrag = filesManager->loadFile(Assets::CIRCLE_FRAG);
-
-  shaderProgs[0] = new ShaderProg(simpleVert, simpleFrag);
-  shaderProgs[1] = new ShaderProg(circleVert, circleFrag);
+  shaderProgs[0] =
+      new ShaderProg(filesManager, Assets::SIMPLE_VERT, Assets::SIMPLE_FRAG);
+  shaderProgs[1] =
+      new ShaderProg(filesManager, Assets::CIRCLE_VERT, Assets::CIRCLE_FRAG);
   meshes[0] =
       new Mesh(math->generateCube(), 16, math->generateCubeIndexs(), 36);
   int NUMBER_OF_VERTICES = 15;

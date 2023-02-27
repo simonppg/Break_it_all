@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 
+#include "../shared/FilesManager.hpp"
 #include "ShaderLoader.hpp"
 #include "opengl/Gl.hpp"
 
@@ -21,7 +22,8 @@ private:
   void showProgramInfoLog(uint32_t program);
 
 public:
-  ShaderProg(const string vertShaderStr, const string fragShaderStr);
+  ShaderProg(FilesManager *, const string vertShaderStr,
+             const string fragShaderStr);
   ~ShaderProg();
 
   void createProgram();
