@@ -4,14 +4,14 @@
 #include "../shared/FilesManager.hpp"
 #include "../shared/Logger.hpp"
 #include "../shared/Platform.hpp"
-#include "CursorPositionChanged.hpp"
 #include "Dimension.hpp"
 #include "Game.hpp"
 #include "Key.hpp"
-#include "KeyPressed.hpp"
 #include "Point3D.hpp"
-#include "ScreenTouched.hpp"
-#include "SurfaceChanged.hpp"
+#include "event/CursorPositionChanged.hpp"
+#include "event/KeyPressed.hpp"
+#include "event/ScreenTouched.hpp"
+#include "event/SurfaceChanged.hpp"
 
 // Examples
 #include "SandBox.hpp"

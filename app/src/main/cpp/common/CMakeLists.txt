@@ -5,10 +5,10 @@ add_library(common STATIC
         Dimension.cpp
         DrawContext.cpp
         FieldOfView.cpp
-        CursorPositionChanged.cpp
-        SurfaceChanged.cpp
-        KeyPressed.cpp
-        ScreenTouched.cpp
+        event/CursorPositionChanged.cpp
+        event/SurfaceChanged.cpp
+        event/KeyPressed.cpp
+        event/ScreenTouched.cpp
         BreakItAll.cpp
         SandBox.cpp
         Test1.cpp
@@ -31,7 +31,6 @@ add_library(common STATIC
 
 target_link_libraries(common
         Platform
-        -lGLESv2
         glWrapper
         glm)
 

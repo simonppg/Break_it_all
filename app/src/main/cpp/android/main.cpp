@@ -1,6 +1,6 @@
 // Copyright (c) 2021 Simon Puente
 #include "../common/Game.hpp"
-#include "../common/ScreenTouched.hpp"
+#include "../common/event/ScreenTouched.hpp"
 #include "../shared/FilesManager.hpp"
 #include "../shared/Logger.hpp"
 #include "../shared/Platform.hpp"

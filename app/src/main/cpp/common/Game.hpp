@@ -4,12 +4,12 @@
 
 #include "../shared/Logger.hpp"
 #include "../shared/Platform.hpp"
-#include "CursorPositionChanged.hpp"
-#include "Event.hpp"
 #include "IScene.hpp"
-#include "KeyPressed.hpp"
-#include "ScreenTouched.hpp"
-#include "SurfaceChanged.hpp"
+#include "event/CursorPositionChanged.hpp"
+#include "event/Event.hpp"
+#include "event/KeyPressed.hpp"
+#include "event/ScreenTouched.hpp"
+#include "event/SurfaceChanged.hpp"
 
 class Game final {
 private:
