@@ -7,7 +7,6 @@ DrawContext::DrawContext(ShaderProg *program, mat4 trasformed, Mesh *mesh) {
   this->mesh = mesh;
 }
 
-
 ShaderProg *DrawContext::getProgram() { return program; }
 
 Mesh *DrawContext::getMesh() { return mesh; }
