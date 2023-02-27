@@ -7,11 +7,11 @@
 #include "../shared/FilesManager.hpp"
 #include "IScene.hpp"
 #include "Math.hpp"
+#include "MeshFactory.hpp"
 #include "Object.hpp"
 #include "Object3D.hpp"
 #include "Renderer.hpp"
 #include "ShaderProg.hpp"
-#include "MeshFactory.hpp"
 #include "opengl/Gl.hpp"
 
 static const int ROW = 15;
