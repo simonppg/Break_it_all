@@ -174,9 +174,9 @@ void Test4::update(double dt) {
   ball->velocity += ball->acceleration * dt;
 
   // if (hitRightLimit(camera->getDimension(), ballPosition))
-    // xDirection = -1;
+  // xDirection = -1;
   // if (hitLeftLimit(camera->getDimension(), ballPosition))
-    // xDirection = 1;
+  // xDirection = 1;
 
   Point3D newBallPosition =
       ballPosition.incrementX(ball->velocity * dt * xDirection);

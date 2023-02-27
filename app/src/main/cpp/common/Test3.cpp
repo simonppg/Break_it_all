@@ -9,11 +9,11 @@
 
 #include "../shared/FilesManager.hpp"
 #include "Assets.hpp"
+#include "Camera.hpp"
 #include "Dimension.hpp"
 #include "Math.hpp"
 #include "Point3D.hpp"
 #include "Renderer.hpp"
-#include "Camera.hpp"
 
 Test3::Test3(FilesManager *filesManager) {
   float RADIUS = 0.5;
@@ -41,11 +41,11 @@ void Test3::render() {
 
   gl->enableVertexAttribArray(0);
 
-  //TODO(simonpp): Use render
-  // translate = camera->translate(Point3D(1, 0, 0));
-  // rotate = glm::rotate(translate, glm::radians(0.0f), vec3(1, 0, 0));
-  // scale = glm::scale(rotate, glm::vec3(5));
-  // glUniformMatrix4fv(uniform, 1, GL_FALSE, &scale[0][0]);
+  // TODO(simonpp): Use render
+  //  translate = camera->translate(Point3D(1, 0, 0));
+  //  rotate = glm::rotate(translate, glm::radians(0.0f), vec3(1, 0, 0));
+  //  scale = glm::scale(rotate, glm::vec3(5));
+  //  glUniformMatrix4fv(uniform, 1, GL_FALSE, &scale[0][0]);
 
   glDrawArrays(GL_TRIANGLE_FAN, 0, NUMBER_OF_VERTICES);
 

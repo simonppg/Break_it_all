@@ -4,9 +4,9 @@
 #include <GLES3/gl3.h>
 #include <cstdlib>
 
+#include "Camera.hpp"
 #include "MeshType.hpp"
 #include "ShaderLoader.hpp"
-#include "Camera.hpp"
 
 Renderer::Renderer(Camera *camera) {
   gl = new Gl();
@@ -48,7 +48,8 @@ void Renderer::load_model(Mesh *pMesh) {
   }
 }
 
-mat4 Renderer::trasform(Point3D point3D, float angle, Point3D rotation, Point3D size){
+mat4 Renderer::trasform(Point3D point3D, float angle, Point3D rotation,
+                        Point3D size) {
   return camera->trasform(point3D, angle, rotation, size);
 }
 

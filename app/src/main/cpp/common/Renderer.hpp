@@ -5,11 +5,11 @@
 #include <cstdint>
 #include <string>
 
+#include "Camera.hpp"
 #include "DrawContext.hpp"
 #include "Mesh.hpp"
 #include "ShaderLoader.hpp"
 #include "opengl/Gl.hpp"
-#include "Camera.hpp"
 
 using std::string;
 
