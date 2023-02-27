@@ -8,6 +8,7 @@ class Ball final : public Object3D {
 public:
   explicit Ball();
   ~Ball();
+  void draw() override;
 };
 
 #endif // APP_SRC_MAIN_CPP_COMMON_BALL_HPP_
