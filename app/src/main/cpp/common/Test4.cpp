@@ -28,9 +28,9 @@ Test4::Test4(FilesManager *filesManager, Camera *camera) {
   renderer = new Renderer();
   math = new Math();
   redBall = new Ball();
-  redBall->setPosition(camera->getPosition());
+  redBall->moveTo(camera->getPosition());
   greenBall = new Ball();
-  greenBall->setPosition(camera->getPosition());
+  greenBall->moveTo(camera->getPosition());
 
   const string simpleVert = filesManager->loadFile(Assets::SIMPLE_VERT);
   const string simpleFrag = filesManager->loadFile(Assets::SIMPLE_FRAG);

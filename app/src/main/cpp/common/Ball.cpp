@@ -4,3 +4,5 @@
 Ball::Ball() {}
 
 Ball::~Ball() {}
+
+void Ball::draw() {}
