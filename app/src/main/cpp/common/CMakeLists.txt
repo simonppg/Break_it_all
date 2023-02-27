@@ -1,7 +1,6 @@
 add_subdirectory(opengl)
 
 add_library(common STATIC
-        Assets.cpp
         Ball.cpp
         Dimension.cpp
         DrawContext.cpp
