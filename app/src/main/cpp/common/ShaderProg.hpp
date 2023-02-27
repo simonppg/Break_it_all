@@ -3,6 +3,7 @@
 #define APP_SRC_MAIN_CPP_COMMON_SHADERPROG_HPP_
 
 #include <string>
+#include <iostream>
 
 #include "ShaderLoader.hpp"
 #include "opengl/Gl.hpp"

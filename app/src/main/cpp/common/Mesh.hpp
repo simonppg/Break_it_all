@@ -2,10 +2,9 @@
 #ifndef APP_SRC_MAIN_CPP_COMMON_MESH_HPP_
 #define APP_SRC_MAIN_CPP_COMMON_MESH_HPP_
 
-#include "Camera.hpp"
 #include "MeshType.hpp"
-
-using glm::vec3;
+#include <malloc.h>
+#include <stdint.h>
 
 #define NUM_ARRAY_ELEMENTS(a) (sizeof(a) / sizeof(*a))
 #define INDEX_BUFFER_SIZE(numIndices)                                          \

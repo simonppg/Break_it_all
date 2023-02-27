@@ -11,6 +11,7 @@
 #include "Object3D.hpp"
 #include "Renderer.hpp"
 #include "ShaderProg.hpp"
+#include "MeshFactory.hpp"
 #include "opengl/Gl.hpp"
 
 static const int ROW = 15;
@@ -19,6 +20,7 @@ static const int COL = 9;
 class Test4 final : public IScene {
 private:
   Gl *gl;
+  MeshFactory *meshFactory;
   Math *math;
   Mesh *meshes[2];
   ShaderProg *shaderProgs[2];
