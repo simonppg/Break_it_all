@@ -7,6 +7,7 @@
 #include "../shared/FilesManager.hpp"
 #include "IScene.hpp"
 #include "Math.hpp"
+#include "MeshFactory.hpp"
 #include "Object.hpp"
 #include "Object3D.hpp"
 #include "Renderer.hpp"
@@ -19,6 +20,7 @@ static const int COL = 9;
 class Test4 final : public IScene {
 private:
   Gl *gl;
+  MeshFactory *meshFactory;
   Math *math;
   Mesh *meshes[2];
   ShaderProg *shaderProgs[2];

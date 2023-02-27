@@ -2,6 +2,7 @@
 #ifndef APP_SRC_MAIN_CPP_COMMON_SHADERPROG_HPP_
 #define APP_SRC_MAIN_CPP_COMMON_SHADERPROG_HPP_
 
+#include <iostream>
 #include <string>
 
 #include "ShaderLoader.hpp"

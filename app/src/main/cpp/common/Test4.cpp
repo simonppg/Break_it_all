@@ -22,14 +22,15 @@ static bool hitLeftLimit(Dimension dimension, Point3D point) {
 }
 
 Test4::Test4(FilesManager *filesManager, Camera *camera) {
+  meshFactory = new MeshFactory();
   gl = new Gl();
   this->camera = camera;
   camera->changeProjection(Projection::ORTHOGRAPHIC);
   renderer = new Renderer();
   math = new Math();
-  redBall = new Ball();
+  redBall = new Ball(meshFactory);
   redBall->moveTo(camera->getPosition());
-  greenBall = new Ball();
+  greenBall = new Ball(meshFactory);
   greenBall->moveTo(camera->getPosition());
 
   const string simpleVert = filesManager->loadFile(Assets::SIMPLE_VERT);

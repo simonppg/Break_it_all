@@ -2,11 +2,16 @@
 #ifndef APP_SRC_MAIN_CPP_COMMON_BALL_HPP_
 #define APP_SRC_MAIN_CPP_COMMON_BALL_HPP_
 
+#include "Mesh.hpp"
+#include "MeshFactory.hpp"
 #include "Object3D.hpp"
 
 class Ball final : public Object3D {
+private:
+  Mesh *mesh;
+
 public:
-  explicit Ball();
+  explicit Ball(MeshFactory *);
   ~Ball();
   void draw() override;
 };
