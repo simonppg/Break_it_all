@@ -22,7 +22,7 @@ private:
   void showProgramInfoLog(uint32_t program);
 
 public:
-  Renderer(Camera *);
+  explicit Renderer(Camera *);
   ~Renderer();
 
   mat4 trasform(Point3D, float, Point3D, Point3D);
