@@ -1,3 +1,4 @@
+// Copyright (c) 2023 Simon Puente
 #include "MeshFactory.hpp"
 #include "Math.hpp"
 
