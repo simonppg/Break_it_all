@@ -5,9 +5,10 @@
 
 #include "Renderer.hpp"
 
-ShaderProg::ShaderProg(const string vertShaderStr, const string fragShaderStr) {
-  vertexFile = vertShaderStr;
-  fragmentFile = fragShaderStr;
+ShaderProg::ShaderProg(FilesManager *filesManager, const string vertShaderPath,
+                       const string fragShaderPath) {
+  vertexFile = filesManager->loadFile(vertShaderPath);
+  fragmentFile = filesManager->loadFile(fragShaderPath);
   shaderLoader = new ShaderLoader();
   gl = new Gl();
 }

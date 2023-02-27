@@ -17,10 +17,9 @@ using glm::vec3;
 SandBox::SandBox(FilesManager *filesManager) {
   auto camera = new Camera(Dimension(), Point3D(0, 0, 40));
   gl = new Gl();
-  const string vertexFileStr = filesManager->loadFile(Assets::SIMPLE_VERT);
-  const string fragmentFileStr = filesManager->loadFile(Assets::SIMPLE_FRAG);
   Math math = Math();
-  shaderProg = new ShaderProg(vertexFileStr, fragmentFileStr);
+  shaderProg =
+      new ShaderProg(filesManager, Assets::SIMPLE_VERT, Assets::SIMPLE_FRAG);
   mesh = new Mesh(math.generateCube(), 8, math.generateCubeIndexs(), 36);
   renderer = new Renderer(camera);
 
