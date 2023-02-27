@@ -1,6 +1,6 @@
 // Copyright (c) 2022 Simon Puente
-#ifndef APP_SRC_MAIN_CPP_COMMON_EVENT_HPP_
-#define APP_SRC_MAIN_CPP_COMMON_EVENT_HPP_
+#ifndef APP_SRC_MAIN_CPP_COMMON_EVENT_EVENT_HPP_
+#define APP_SRC_MAIN_CPP_COMMON_EVENT_EVENT_HPP_
 
 #include "EventType.hpp"
 
@@ -10,4 +10,4 @@ public:
   virtual EventType type() = 0;
 };
 
-#endif // APP_SRC_MAIN_CPP_COMMON_EVENT_HPP_
+#endif // APP_SRC_MAIN_CPP_COMMON_EVENT_EVENT_HPP_

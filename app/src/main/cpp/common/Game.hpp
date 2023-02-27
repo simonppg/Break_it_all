@@ -4,9 +4,9 @@
 
 #include "../shared/Logger.hpp"
 #include "../shared/Platform.hpp"
+#include "IScene.hpp"
 #include "event/CursorPositionChanged.hpp"
 #include "event/Event.hpp"
-#include "IScene.hpp"
 #include "event/KeyPressed.hpp"
 #include "event/ScreenTouched.hpp"
 #include "event/SurfaceChanged.hpp"
