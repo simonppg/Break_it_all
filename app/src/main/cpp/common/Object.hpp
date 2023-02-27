@@ -15,7 +15,6 @@ class Object {
 protected:
   ShaderProg *program;
   Renderer *renderer;
-  DrawContext *drawContext;
   Mesh *mesh;
 
   float angle;

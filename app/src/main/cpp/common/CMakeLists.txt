@@ -3,6 +3,7 @@ add_subdirectory(opengl)
 add_library(common STATIC
         Ball.cpp
         Dimension.cpp
+        DrawContext.cpp
         FieldOfView.cpp
         CursorPositionChanged.cpp
         SurfaceChanged.cpp
