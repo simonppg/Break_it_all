@@ -47,10 +47,11 @@ jobs:
       run: make coverage && ls -l && pwd
 
     - name: Report code coverage
-      uses: zgosalvez/github-actions-report-lcov@v1
+      uses: zgosalvez/github-actions-report-lcov@v3
       with:
         coverage-files: lcov.coverage.info
         minimum-coverage: 5
         artifact-name: code-coverage-report
         github-token: ${{ secrets.GITHUB_TOKEN }}
         working-directory: ${{github.workspace}}
+        update-comment: true
