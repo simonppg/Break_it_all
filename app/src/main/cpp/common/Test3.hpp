@@ -12,14 +12,14 @@
 class Test3 final : public IScene {
 private:
   Gl *gl;
-  Renderer renderer;
+  Renderer renderer = Renderer(new Camera(Dimension(), Point3D(0, 0, 40)));
   FilesManager *filesManager;
   Math *math = new Math();
   float *circle;
   int NUMBER_OF_VERTICES = 160;
 
 public:
-  explicit Test3(FilesManager *, Camera *);
+  explicit Test3(FilesManager *);
   ~Test3();
 
   void surfaceCreated() override;

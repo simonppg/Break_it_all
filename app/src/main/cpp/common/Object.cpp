@@ -6,9 +6,9 @@
 #include "Object.hpp"
 #include "Point3D.hpp"
 
-Object::Object(ShaderProg *pProg, Mesh *pMesh)
+Object::Object(Renderer *renderer, ShaderProg *pProg, Mesh *pMesh)
     : angle{0}, size{Point3D(2, 1, 1)} {
-  renderer = new Renderer();
+  this->renderer = renderer;
   this->program = pProg;
   this->mesh = pMesh;
   position = Point3D();
@@ -24,8 +24,8 @@ Object::~Object() {
 
 Point3D Object::getPosition() { return position; }
 
-void Object::draw(Camera *camera) {
-  mat4 trasformed = camera->trasform(position, angle, rotation, size);
+void Object::draw() {
+  mat4 trasformed = renderer->trasform(position, angle, rotation, size);
 
   auto *drawContext = new DrawContext(program, trasformed, mesh);
 

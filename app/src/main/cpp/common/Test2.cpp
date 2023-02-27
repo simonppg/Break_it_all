@@ -10,7 +10,6 @@
 #include "Renderer.hpp"
 
 Test2::Test2(FilesManager *filesManager) {
-  renderer = Renderer();
   this->filesManager = filesManager;
   gl = new Gl();
 }

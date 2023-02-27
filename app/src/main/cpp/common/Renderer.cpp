@@ -6,10 +6,12 @@
 
 #include "MeshType.hpp"
 #include "ShaderLoader.hpp"
+#include "Camera.hpp"
 
-Renderer::Renderer() {
+Renderer::Renderer(Camera *camera) {
   gl = new Gl();
   shaderLoader = new ShaderLoader();
+  this->camera = camera;
 }
 
 Renderer::~Renderer() {
@@ -44,6 +46,10 @@ void Renderer::load_model(Mesh *pMesh) {
                    INDEX_BUFFER_SIZE(pMesh->numIndices), pMesh->indices,
                    GL_STATIC_DRAW);
   }
+}
+
+mat4 Renderer::trasform(Point3D point3D, float angle, Point3D rotation, Point3D size){
+  return camera->trasform(point3D, angle, rotation, size);
 }
 
 void Renderer::draw(DrawContext *pDrawContex) {
