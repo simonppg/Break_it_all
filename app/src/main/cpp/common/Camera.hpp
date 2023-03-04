@@ -3,6 +3,7 @@
 #define APP_SRC_MAIN_CPP_COMMON_CAMERA_HPP_
 
 #include "Dimension.hpp"
+#include "Math.hpp"
 #include "FieldOfView.hpp"
 #include "Point3D.hpp"
 #include "Projection.hpp"
@@ -18,6 +19,7 @@ private:
   Dimension dimension;
   Point3D position;
   FieldOfView fov;
+  Math math;
 
   mat4 cameraTranslate;
   // NOTE: MUST be called after change position, dimension or fov
