@@ -40,8 +40,6 @@ public:
   void resize(Dimension dimension);
   void travel(Point3D position);
   void changeProjection(Projection projection);
-
-  float top, bottom, right, left;
 };
 
 #endif // APP_SRC_MAIN_CPP_COMMON_CAMERA_HPP_
