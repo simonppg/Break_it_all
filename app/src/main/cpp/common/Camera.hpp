@@ -37,7 +37,6 @@ public:
 
   Point3D getPosition();
   Dimension getDimension();
-  float aspectRatio();
 
   void resize(Dimension dimension);
   void travel(Point3D position);

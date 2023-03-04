@@ -54,7 +54,6 @@ mat4 Camera::trasform(Point3D position, float angle, Point3D rotation,
 
 Dimension Camera::getDimension() { return dimension; }
 Point3D Camera::getPosition() { return position; }
-float Camera::aspectRatio() { return dimension.aspectRatio(); }
 
 void Camera::resize(Dimension dimension) {
   cout << "old: " << this->dimension << ",new: " << dimension << endl;
