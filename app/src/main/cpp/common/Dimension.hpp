@@ -20,6 +20,8 @@ public:
   bool isLandscape();
   bool isSquare();
 
+  Dimension flip();
+
 private:
   float width, height;
   friend ostream &operator<<(ostream &strm, const Dimension &dimension);
