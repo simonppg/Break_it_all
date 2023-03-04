@@ -1,8 +1,14 @@
 // Copyright (c) 2022 Simon Puente
+#include "Math.hpp"
+
 #include <cmath>
 
 #include "Dimension.hpp"
-#include "Math.hpp"
+
+mat4 Math::perspective(FieldOfView fov, Dimension dimension) {
+  return glm::perspective(glm::radians(fov.getFov()), dimension.aspectRatio(),
+                          fov.getNcp(), fov.getFcp());
+}
 
 vector<float> Math::generateGrid(Dimension dimension, float row, float col) {
   float width = dimension.getWidth();

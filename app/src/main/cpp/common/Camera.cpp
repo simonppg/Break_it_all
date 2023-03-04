@@ -74,11 +74,10 @@ void Camera::changeProjection(Projection projection) {
 
 // NOTE: MUST be called after change position, dimension or fov
 void Camera::updateProjection() {
-  mat4 perspective;
+  mat4 aPerspective;
 
   if (projection == Projection::PERSPECTIVE) {
-    perspective = glm::perspective(glm::radians(fov.getFov()), aspectRatio(),
-                                   fov.getNcp(), fov.getFcp());
+    aPerspective = math.perspective(fov, dimension);
   } else {
     if (dimension.getWidth() > dimension.getHeight()) {
       top = dimension.getWidth() / 2;
@@ -91,10 +90,10 @@ void Camera::updateProjection() {
       top = right / aspectRatio();
       bottom = -top;
     }
-    perspective =
+    aPerspective =
         glm::ortho(left, right, bottom, top, fov.getNcp(), fov.getFcp());
   }
 
   cameraTranslate = glm::translate(
-      perspective, vec3(-position.getX(), -position.getY(), -position.getZ()));
+      aPerspective, vec3(-position.getX(), -position.getY(), -position.getZ()));
 }

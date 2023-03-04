@@ -4,6 +4,7 @@
 
 #include "Dimension.hpp"
 #include "FieldOfView.hpp"
+#include "Math.hpp"
 #include "Point3D.hpp"
 #include "Projection.hpp"
 #include <glm/glm.hpp>
@@ -18,6 +19,7 @@ private:
   Dimension dimension;
   Point3D position;
   FieldOfView fov;
+  Math math;
 
   mat4 cameraTranslate;
   // NOTE: MUST be called after change position, dimension or fov
