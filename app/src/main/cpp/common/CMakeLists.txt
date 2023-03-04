@@ -18,6 +18,7 @@ add_library(common STATIC
         Camera.cpp
         Object.cpp
         Object3D.cpp
+        ObjectDrawer.cpp
         ShaderProg.cpp
         Game.cpp
         Renderer.cpp

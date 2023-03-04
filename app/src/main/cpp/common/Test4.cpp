@@ -9,6 +9,7 @@
 #include "Dimension.hpp"
 #include "Math.hpp"
 #include "Object.hpp"
+#include "ObjectDrawer.hpp"
 #include "Point2D.hpp"
 #include "Point3D.hpp"
 #include "Projection.hpp"
@@ -75,6 +76,16 @@ Test4::Test4(FilesManager *filesManager) {
   ball2->updateSize(ballSize);
   ball2->updatePosition(Point3D(camera->left, camera->top, 0));
   ball2->animate_x();
+
+  objectList.push_back(ball2);
+  objectList.push_back(ball);
+  objectList.push_back(paddle);
+  for (auto &i : objects) {
+    objectList.push_back(i);
+  }
+
+  object3DList.push_back(redBall);
+  object3DList.push_back(greenBall);
 }
 
 Test4::~Test4() {
@@ -112,14 +123,8 @@ void Test4::render() {
   gl->clearColor(0.6f, 0.6f, 0.6f, 1.0f);
   gl->clear();
 
-  for (auto &i : objects) {
-    i->draw();
-  }
-  ball->draw();
-  paddle->draw();
-  ball2->draw();
-  redBall->draw();
-  greenBall->draw();
+  ObjectDrawer::draw(objectList);
+  ObjectDrawer::draw(object3DList);
 }
 
 void Test4::surfaceCreated() {

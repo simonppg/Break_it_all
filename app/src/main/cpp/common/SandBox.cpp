@@ -8,6 +8,7 @@
 #include "Assets.hpp"
 #include "Dimension.hpp"
 #include "Math.hpp"
+#include "ObjectDrawer.hpp"
 #include "Point3D.hpp"
 #include "Renderer.hpp"
 
@@ -35,6 +36,8 @@ SandBox::SandBox(FilesManager *filesManager) {
 
     object->updatePosition(position);
     object->animate_y();
+
+    objectList.push_back(object);
   }
 }
 
@@ -65,9 +68,7 @@ void SandBox::render() {
   gl->clearColor(0.6f, 0.6f, 0.6f, 1.0f);
   gl->clear();
 
-  for (auto &i : objects) {
-    i->draw();
-  }
+  ObjectDrawer::draw(objectList);
 }
 
 void SandBox::surfaceChanged(Dimension dimension) {
