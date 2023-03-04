@@ -71,7 +71,7 @@ Test4::Test4(FilesManager *filesManager) {
   paddle->updateSize(Point3D(cubeXSize, cubeYSize, 1));
   paddle->updatePosition(Point3D(0, camera->bottom + cubeYSize * 2, 1));
   paddle->updatePosition(
-      Point3D(0, -camera->getDimension().getHeight() / 2 + cubeYSize * 2, 1));
+      Point3D(0, -viewportDimension.getHeight() / 2 + cubeYSize * 2, 1));
   paddle->animate_y();
 
   ball2 = new Object(renderer, shaderProgs[1], meshes[1]);
@@ -142,6 +142,7 @@ void Test4::surfaceCreated() {
 }
 
 void Test4::surfaceChanged(Dimension dimension) {
+  viewportDimension = dimension;
   double width = dimension.getWidth();
   double height = dimension.getHeight();
 

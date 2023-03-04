@@ -52,7 +52,6 @@ mat4 Camera::trasform(Point3D position, float angle, Point3D rotation,
   return scaled;
 }
 
-Dimension Camera::getDimension() { return dimension; }
 Point3D Camera::getPosition() { return position; }
 
 void Camera::resize(Dimension dimension) {
