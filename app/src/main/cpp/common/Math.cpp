@@ -3,8 +3,6 @@
 
 #include <cmath>
 
-#include "Dimension.hpp"
-
 mat4 Math::perspectiveView(FieldOfView fov, Dimension dimension) {
   return glm::perspective(glm::radians(fov.getFov()), dimension.aspectRatio(),
                           fov.getNcp(), fov.getFcp());

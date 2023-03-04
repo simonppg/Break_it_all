@@ -9,6 +9,7 @@
 
 #include "Dimension.hpp"
 #include "FieldOfView.hpp"
+#include "Point3D.hpp"
 
 using glm::mat4;
 using std::vector;

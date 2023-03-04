@@ -24,6 +24,34 @@ TEST(GameTest, Dimension) {
   ASSERT_TRUE(square.isSquare());
 }
 
+TEST(GameTest, collisionBetweenPointAndDimension) {
+  Dimension box(400, 800);
+
+  Point3D point3DInside(0, 0, 0);
+  ASSERT_TRUE(box.isInside(point3DInside));
+  ASSERT_FALSE(box.isOutside(point3DInside));
+
+  Point3D point3DOutside(401, 801, 0);
+  ASSERT_TRUE(box.isOutside(point3DOutside));
+  ASSERT_FALSE(box.isInside(point3DOutside));
+
+  Point3D outsideRight(201, 0, 0);
+  ASSERT_TRUE(box.isOutside(outsideRight));
+  ASSERT_FALSE(box.isInside(outsideRight));
+
+  Point3D outsideLeft(-201, 0, 0);
+  ASSERT_TRUE(box.isOutside(outsideLeft));
+  ASSERT_FALSE(box.isInside(outsideLeft));
+
+  Point3D outsideTop(0, 401, 0);
+  ASSERT_TRUE(box.isOutside(outsideTop));
+  ASSERT_FALSE(box.isInside(outsideTop));
+
+  Point3D outsideBottom(0, -401, 0);
+  ASSERT_TRUE(box.isOutside(outsideBottom));
+  ASSERT_FALSE(box.isInside(outsideBottom));
+}
+
 // TEST(GameTest, getSectionsSize) {
 //     float size;
 //     Math math = Math();
