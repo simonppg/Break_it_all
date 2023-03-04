@@ -5,6 +5,17 @@
 #include "../common/Math.hpp"
 #include "../common/Vector.hpp"
 
+TEST(GameTest, orientation) {
+  Dimension portrait(400, 800);
+  ASSERT_TRUE(portrait.isPortrait());
+
+  Dimension landscape(800, 400);
+  ASSERT_TRUE(landscape.isLandscape());
+
+  Dimension square(800, 800);
+  ASSERT_TRUE(square.isSquare());
+}
+
 // TEST(GameTest, getSectionsSize) {
 //     float size;
 //     Math math = Math();

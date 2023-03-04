@@ -16,6 +16,10 @@ public:
   float getHeight();
   float aspectRatio();
 
+  bool isPortrait();
+  bool isLandscape();
+  bool isSquare();
+
 private:
   float width, height;
   friend ostream &operator<<(ostream &strm, const Dimension &dimension);

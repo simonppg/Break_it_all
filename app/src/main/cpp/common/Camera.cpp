@@ -77,21 +77,9 @@ void Camera::updateProjection() {
   mat4 aPerspective;
 
   if (projection == Projection::PERSPECTIVE) {
-    aPerspective = math.perspective(fov, dimension);
+    aPerspective = math.perspectiveView(fov, dimension);
   } else {
-    if (dimension.getWidth() > dimension.getHeight()) {
-      top = dimension.getWidth() / 2;
-      bottom = -top;
-      right = top * aspectRatio();
-      left = -right;
-    } else {
-      right = dimension.getWidth() / 2;
-      left = -right;
-      top = right / aspectRatio();
-      bottom = -top;
-    }
-    aPerspective =
-        glm::ortho(left, right, bottom, top, fov.getNcp(), fov.getFcp());
+    aPerspective = math.orthographicView(fov, dimension);
   }
 
   cameraTranslate = glm::translate(
