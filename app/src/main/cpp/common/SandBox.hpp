@@ -2,6 +2,8 @@
 #ifndef APP_SRC_MAIN_CPP_COMMON_SANDBOX_HPP_
 #define APP_SRC_MAIN_CPP_COMMON_SANDBOX_HPP_
 
+#include <vector>
+
 #include "Camera.hpp"
 #include "IScene.hpp"
 #include "Math.hpp"
@@ -12,6 +14,8 @@
 
 #include "../shared/FilesManager.hpp"
 
+using std::vector;
+
 class SandBox final : public IScene {
 private:
   Gl *gl;
@@ -20,6 +24,7 @@ private:
   ShaderProg *shaderProg;
   Renderer *renderer;
   float povInDegrees = 0.0f;
+  vector<Object *> objectList;
 
 public:
   explicit SandBox(FilesManager *);

@@ -31,6 +31,8 @@ private:
   Object *ball2;
   Object *paddle;
   Renderer *renderer;
+  vector<Object *> objectList;
+  vector<Object3D *> object3DList;
 
   const float CAMERA_WIDTH = 450.0f;
   const float CAMERA_HEIGHT = 800.0f;
