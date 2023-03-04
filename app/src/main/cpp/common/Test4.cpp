@@ -14,14 +14,6 @@
 #include "Point3D.hpp"
 #include "Projection.hpp"
 
-static bool hitRightLimit(Dimension dimension, Point3D point) {
-  return point.getX() >= dimension.getWidth() / 2;
-}
-
-static bool hitLeftLimit(Dimension dimension, Point3D point) {
-  return point.getX() <= -dimension.getWidth() / 2;
-}
-
 Test4::Test4(FilesManager *filesManager) {
   meshFactory = new MeshFactory();
   gl = new Gl();
@@ -178,10 +170,8 @@ void Test4::update(double dt) {
   Point3D ballPosition = ball->getPosition();
   ball->velocity += ball->acceleration * dt;
 
-  if (hitRightLimit(viewportDimension, ballPosition))
-    xDirection = -1;
-  if (hitLeftLimit(viewportDimension, ballPosition))
-    xDirection = 1;
+  if (viewportDimension.isOutside(ballPosition))
+    xDirection *= -1;
 
   Point3D newBallPosition =
       ballPosition.incrementX(ball->velocity * dt * xDirection);
