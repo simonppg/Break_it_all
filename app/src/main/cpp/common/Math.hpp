@@ -3,14 +3,15 @@
 #define APP_SRC_MAIN_CPP_COMMON_MATH_HPP_
 
 #include <vector>
+
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
 #include "Dimension.hpp"
 #include "FieldOfView.hpp"
 
-using std::vector;
 using glm::mat4;
+using std::vector;
 
 class Math {
 public:

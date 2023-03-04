@@ -3,8 +3,8 @@
 #define APP_SRC_MAIN_CPP_COMMON_CAMERA_HPP_
 
 #include "Dimension.hpp"
-#include "Math.hpp"
 #include "FieldOfView.hpp"
+#include "Math.hpp"
 #include "Point3D.hpp"
 #include "Projection.hpp"
 #include <glm/glm.hpp>

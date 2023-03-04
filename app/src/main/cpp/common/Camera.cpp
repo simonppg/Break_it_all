@@ -97,4 +97,3 @@ void Camera::updateProjection() {
   cameraTranslate = glm::translate(
       aPerspective, vec3(-position.getX(), -position.getY(), -position.getZ()));
 }
-
