@@ -14,13 +14,13 @@
 #include "Point3D.hpp"
 #include "Projection.hpp"
 
-// static bool hitRightLimit(Dimension dimension, Point3D point) {
-//   return point.getX() >= dimension.getWidth() / 2;
-// }
-//
-// static bool hitLeftLimit(Dimension dimension, Point3D point) {
-//   return point.getX() <= -dimension.getWidth() / 2;
-// }
+static bool hitRightLimit(Dimension dimension, Point3D point) {
+  return point.getX() >= dimension.getWidth() / 2;
+}
+
+static bool hitLeftLimit(Dimension dimension, Point3D point) {
+  return point.getX() <= -dimension.getWidth() / 2;
+}
 
 Test4::Test4(FilesManager *filesManager) {
   meshFactory = new MeshFactory();
@@ -151,13 +151,13 @@ void Test4::surfaceChanged(Dimension dimension) {
 
   Dimension gridDimension(width, top);
 
-  // vector<float> vPos = math->generateGrid(gridDimension, ROW, COL);
-  // float x_size = 90.0f * (static_cast<float>(width) / COL) / 100;
-  // float y_size = 80.0f * (camera->top / ROW) / 100;
+  vector<float> vPos = math->generateGrid(gridDimension, ROW, COL);
+  float x_size = 90.0f * (static_cast<float>(width) / COL) / 100;
+  float y_size = 80.0f * (top / ROW) / 100;
 
   for (int i = 0; i < ROW * COL; i++) {
-    // objects[i]->updateSize(Point3D(x_size / 2, y_size / 2, 1));
-    // objects[i]->updatePosition(Point3D(vPos[i * 2], vPos[i * 2 + 1], 0));
+    objects[i]->updateSize(Point3D(x_size / 2, y_size / 2, 1));
+    objects[i]->updatePosition(Point3D(vPos[i * 2], vPos[i * 2 + 1], 0));
   }
 
   float ball_size = static_cast<float>(width) / 30;
@@ -166,22 +166,22 @@ void Test4::surfaceChanged(Dimension dimension) {
 
   Point3D ballSize(ball_size, ball_size, 1);
   ball->updateSize(ballSize);
-  // ball->updatePosition(Point3D(0, camera->bottom + camera->top / 3, 0));
+  ball->updatePosition(Point3D(0, bottom + top / 3, 0));
 
   paddle->updateSize(Point3D(cubeXSize, cubeYSize, 1));
-  // paddle->updatePosition(Point3D(0, camera->bottom + cubeYSize * 2, 1));
+  paddle->updatePosition(Point3D(0, bottom + cubeYSize * 2, 1));
 
-  // ball2->updatePosition(Point3D(camera->right, camera->bottom, 0));
+  ball2->updatePosition(Point3D(right, bottom, 0));
 }
 
 void Test4::update(double dt) {
   Point3D ballPosition = ball->getPosition();
   ball->velocity += ball->acceleration * dt;
 
-  // if (hitRightLimit(camera->getDimension(), ballPosition))
-  // xDirection = -1;
-  // if (hitLeftLimit(camera->getDimension(), ballPosition))
-  // xDirection = 1;
+  if (hitRightLimit(viewportDimension, ballPosition))
+  xDirection = -1;
+  if (hitLeftLimit(viewportDimension, ballPosition))
+  xDirection = 1;
 
   Point3D newBallPosition =
       ballPosition.incrementX(ball->velocity * dt * xDirection);
@@ -191,14 +191,12 @@ void Test4::update(double dt) {
 }
 
 bool Test4::events(Point2D point) {
-  // Dimension cameraDimension = camera->getDimension();
+  float cubeXSize = (cameraSize.getWidth() / 2) / 3;
+  float cubeYSize = cubeXSize / 7;
+  float newX = (-viewportDimension.getWidth() / 2) + point.getX();
+  float newY = (-viewportDimension.getHeight() / 2) + cubeYSize * 2;
 
-  // float cubeXSize = (cameraSize.getWidth() / 2) / 3;
-  // float cubeYSize = cubeXSize / 7;
-  // float newX = (-cameraDimension.getWidth() / 2) + point.getX();
-  // float newY = (-cameraDimension.getHeight() / 2) + cubeYSize * 2;
-
-  // paddle->updatePosition(Point3D(newX, newY, 0));
+  paddle->updatePosition(Point3D(newX, newY, 0));
   povInDegrees += 5.0f;
   return true;
 }
