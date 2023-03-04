@@ -4,6 +4,8 @@
 
 #include <iostream>
 
+#include "Point3D.hpp"
+
 using std::ostream;
 
 class Dimension {
@@ -21,10 +23,14 @@ public:
   bool isSquare();
 
   Dimension flip();
+  bool isOutside(Point3D point);
+  bool isInside(Point3D point);
 
 private:
   float width, height;
+  float top, bottom, right, left;
   friend ostream &operator<<(ostream &strm, const Dimension &dimension);
+  void setUpBorders();
 };
 
 #endif // APP_SRC_MAIN_CPP_COMMON_DIMENSION_HPP_
