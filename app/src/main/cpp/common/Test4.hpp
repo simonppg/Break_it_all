@@ -40,7 +40,7 @@ private:
   Dimension cameraSize = Dimension(CAMERA_WIDTH, CAMERA_HEIGHT);
   int xDirection = 1;
   float povInDegrees = 0.0f;
-
+  float top, bottom, right, left;
 public:
   explicit Test4(FilesManager *);
   ~Test4();

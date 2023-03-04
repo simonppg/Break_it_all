@@ -61,7 +61,7 @@ Test4::Test4(FilesManager *filesManager) {
   float ball_size = cameraSize.getWidth() / 30;
   Point3D ballSize(ball_size, ball_size, 1);
   ball->updateSize(ballSize);
-  ball->updatePosition(Point3D(0, camera->bottom + camera->top / 3, 0));
+  ball->updatePosition(Point3D(0, bottom + top / 3, 0));
   ball->animate_x();
   ball->velocity = 0.01;
 
@@ -69,14 +69,14 @@ Test4::Test4(FilesManager *filesManager) {
   float cubeYSize = cubeXSize / 7;
   paddle = new Object(renderer, shaderProgs[1], meshes[0]);
   paddle->updateSize(Point3D(cubeXSize, cubeYSize, 1));
-  paddle->updatePosition(Point3D(0, camera->bottom + cubeYSize * 2, 1));
+  paddle->updatePosition(Point3D(0, bottom + cubeYSize * 2, 1));
   paddle->updatePosition(
       Point3D(0, -viewportDimension.getHeight() / 2 + cubeYSize * 2, 1));
   paddle->animate_y();
 
   ball2 = new Object(renderer, shaderProgs[1], meshes[1]);
   ball2->updateSize(ballSize);
-  ball2->updatePosition(Point3D(camera->left, camera->top, 0));
+  ball2->updatePosition(Point3D(left, top, 0));
   ball2->animate_x();
 
   objectList.push_back(ball2);
@@ -149,7 +149,7 @@ void Test4::surfaceChanged(Dimension dimension) {
   gl->viewport(0, 0, width, height);
   // camera->resize(dimension);
 
-  // Dimension gridDimension(width, camera->top);
+  Dimension gridDimension(width, top);
 
   // vector<float> vPos = math->generateGrid(gridDimension, ROW, COL);
   // float x_size = 90.0f * (static_cast<float>(width) / COL) / 100;
