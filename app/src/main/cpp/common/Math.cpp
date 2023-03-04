@@ -5,9 +5,25 @@
 
 #include "Dimension.hpp"
 
-mat4 Math::perspective(FieldOfView fov, Dimension dimension) {
+mat4 Math::perspectiveView(FieldOfView fov, Dimension dimension) {
   return glm::perspective(glm::radians(fov.getFov()), dimension.aspectRatio(),
                           fov.getNcp(), fov.getFcp());
+}
+
+mat4 Math::orthographicView(FieldOfView fov, Dimension dimension) {
+  float top, bottom, right, left;
+  if (dimension.isLandscape()) {
+    top = dimension.getWidth() / 2;
+    bottom = -top;
+    right = top * dimension.aspectRatio();
+    left = -right;
+  } else {
+    right = dimension.getWidth() / 2;
+    left = -right;
+    top = right / dimension.aspectRatio();
+    bottom = -top;
+  }
+  return glm::ortho(left, right, bottom, top, fov.getNcp(), fov.getFcp());
 }
 
 vector<float> Math::generateGrid(Dimension dimension, float row, float col) {

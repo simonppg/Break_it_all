@@ -5,6 +5,25 @@
 #include "../common/Math.hpp"
 #include "../common/Vector.hpp"
 
+TEST(GameTest, Dimension) {
+  Dimension portrait(400, 800);
+  Dimension flipedPortrait = portrait.flip();
+  ASSERT_TRUE(portrait.isPortrait());
+  ASSERT_FALSE(flipedPortrait.isPortrait());
+  ASSERT_EQ(400, flipedPortrait.getHeight());
+  ASSERT_EQ(800, flipedPortrait.getWidth());
+
+  Dimension landscape(800, 400);
+  Dimension flipedLandscape = landscape.flip();
+  ASSERT_TRUE(landscape.isLandscape());
+  ASSERT_FALSE(flipedLandscape.isLandscape());
+  ASSERT_EQ(800, flipedLandscape.getHeight());
+  ASSERT_EQ(400, flipedLandscape.getWidth());
+
+  Dimension square(800, 800);
+  ASSERT_TRUE(square.isSquare());
+}
+
 // TEST(GameTest, getSectionsSize) {
 //     float size;
 //     Math math = Math();

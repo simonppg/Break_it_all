@@ -70,6 +70,8 @@ Test4::Test4(FilesManager *filesManager) {
   paddle = new Object(renderer, shaderProgs[1], meshes[0]);
   paddle->updateSize(Point3D(cubeXSize, cubeYSize, 1));
   paddle->updatePosition(Point3D(0, camera->bottom + cubeYSize * 2, 1));
+  paddle->updatePosition(
+      Point3D(0, -camera->getDimension().getHeight() / 2 + cubeYSize * 2, 1));
   paddle->animate_y();
 
   ball2 = new Object(renderer, shaderProgs[1], meshes[1]);

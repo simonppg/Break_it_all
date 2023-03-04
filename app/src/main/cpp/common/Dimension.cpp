@@ -19,3 +19,9 @@ ostream &operator<<(ostream &strm, const Dimension &dimension) {
   return strm << "Dimension(width:" << dimension.width
               << ",height:" << dimension.height << ")";
 }
+
+bool Dimension::isPortrait() { return height > width; }
+bool Dimension::isLandscape() { return height < width; }
+bool Dimension::isSquare() { return height == width; }
+
+Dimension Dimension::flip() { return Dimension(height, width); }

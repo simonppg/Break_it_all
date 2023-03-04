@@ -19,7 +19,8 @@ public:
   float *generateCircle(float radius, int number_of_vertices);
   float *generateCube();
   int16_t *generateCubeIndexs();
-  mat4 perspective(FieldOfView fov, Dimension dimension);
+  mat4 perspectiveView(FieldOfView fov, Dimension dimension);
+  mat4 orthographicView(FieldOfView fov, Dimension dimension);
 };
 
 #endif // APP_SRC_MAIN_CPP_COMMON_MATH_HPP_
