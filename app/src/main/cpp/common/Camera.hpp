@@ -36,7 +36,6 @@ public:
   mat4 trasform(Point3D, float, Point3D, Point3D);
 
   Point3D getPosition();
-  Dimension getDimension();
 
   void resize(Dimension dimension);
   void travel(Point3D position);
