@@ -8,9 +8,9 @@
 #include "Assets.hpp"
 #include "Dimension.hpp"
 #include "Math.hpp"
+#include "ObjectDrawer.hpp"
 #include "Point3D.hpp"
 #include "Renderer.hpp"
-#include "ObjectDrawer.hpp"
 
 using glm::mat4;
 using glm::vec3;

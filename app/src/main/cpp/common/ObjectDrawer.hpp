@@ -13,4 +13,4 @@ public:
   static void draw(vector<Object *>);
   static void draw(vector<Object3D *>);
 };
-#endif //APP_SRC_MAIN_CPP_COMMON_OBJECTDRAWER_HPP_
+#endif // APP_SRC_MAIN_CPP_COMMON_OBJECTDRAWER_HPP_

@@ -9,10 +9,10 @@
 #include "Dimension.hpp"
 #include "Math.hpp"
 #include "Object.hpp"
+#include "ObjectDrawer.hpp"
 #include "Point2D.hpp"
 #include "Point3D.hpp"
 #include "Projection.hpp"
-#include "ObjectDrawer.hpp"
 
 // static bool hitRightLimit(Dimension dimension, Point3D point) {
 //   return point.getX() >= dimension.getWidth() / 2;
