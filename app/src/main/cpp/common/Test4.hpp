@@ -41,6 +41,7 @@ private:
   int xDirection = 1;
   float povInDegrees = 0.0f;
   float top, bottom, right, left;
+
 public:
   explicit Test4(FilesManager *);
   ~Test4();
