@@ -9,6 +9,8 @@
 #include "Object3D.hpp"
 #include "Point2D.hpp"
 
+#include <vector>
+
 class Scene {
 private:
   Gl gl;
@@ -21,7 +23,7 @@ public:
   virtual ~Scene() {}
 
   virtual void surfaceCreated() = 0;
-  virtual void render() final;
+  void render();
   virtual void surfaceChanged(Dimension) = 0;
   virtual void pause() = 0;
   virtual void resume() = 0;
