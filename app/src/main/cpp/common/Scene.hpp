@@ -1,16 +1,16 @@
 // Copyright (c) 2022 Simon Puente
-#ifndef APP_SRC_MAIN_CPP_COMMON_ISCENE_HPP_
-#define APP_SRC_MAIN_CPP_COMMON_ISCENE_HPP_
+#ifndef APP_SRC_MAIN_CPP_COMMON_SCENE_HPP_
+#define APP_SRC_MAIN_CPP_COMMON_SCENE_HPP_
 
 #include "Dimension.hpp"
 #include "Point2D.hpp"
 
-class IScene {
+class Scene {
 protected:
   unsigned int programID;
 
 public:
-  virtual ~IScene() {}
+  virtual ~Scene() {}
 
   virtual void surfaceCreated() = 0;
   virtual void render() = 0;
@@ -21,4 +21,4 @@ public:
   virtual bool events(Point2D) = 0;
 };
 
-#endif // APP_SRC_MAIN_CPP_COMMON_ISCENE_HPP_
+#endif // APP_SRC_MAIN_CPP_COMMON_SCENE_HPP_

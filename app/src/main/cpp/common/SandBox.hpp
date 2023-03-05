@@ -5,7 +5,7 @@
 #include <vector>
 
 #include "Camera.hpp"
-#include "IScene.hpp"
+#include "Scene.hpp"
 #include "Math.hpp"
 #include "Mesh.hpp"
 #include "Object.hpp"
@@ -16,7 +16,7 @@
 
 using std::vector;
 
-class SandBox final : public IScene {
+class SandBox final : public Scene {
 private:
   Gl *gl;
   Mesh *mesh;

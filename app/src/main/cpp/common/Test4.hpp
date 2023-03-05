@@ -5,7 +5,7 @@
 #include <vector>
 
 #include "../shared/FilesManager.hpp"
-#include "IScene.hpp"
+#include "Scene.hpp"
 #include "Math.hpp"
 #include "MeshFactory.hpp"
 #include "Object.hpp"
@@ -17,7 +17,7 @@
 static const int ROW = 15;
 static const int COL = 9;
 
-class Test4 final : public IScene {
+class Test4 final : public Scene {
 private:
   Gl *gl;
   MeshFactory *meshFactory;
