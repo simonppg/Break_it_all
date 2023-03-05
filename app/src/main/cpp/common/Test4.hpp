@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "../shared/FilesManager.hpp"
+#include "Ball.hpp"
 #include "Scene.hpp"
 #include "Math.hpp"
 #include "MeshFactory.hpp"
@@ -25,14 +26,12 @@ private:
   Mesh *meshes[2];
   ShaderProg *shaderProgs[2];
   Object *objects[ROW * COL];
-  Object3D *redBall;
-  Object3D *greenBall;
+  Ball *redBall;
+  Ball *greenBall;
   Object *ball;
   Object *ball2;
   Object *paddle;
   Renderer *renderer;
-  vector<Object *> objectList;
-  vector<Object3D *> object3DList;
   Dimension viewportDimension;
 
   const float CAMERA_WIDTH = 450.0f;
@@ -48,7 +47,6 @@ public:
 
   void surfaceCreated() override;
   void surfaceChanged(Dimension) override;
-  void render() override;
   void pause() override;
   void resume() override;
   void update(double) override;

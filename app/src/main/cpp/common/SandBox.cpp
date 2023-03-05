@@ -37,7 +37,7 @@ SandBox::SandBox(FilesManager *filesManager) {
     object->updatePosition(position);
     object->animate_y();
 
-    objectList.push_back(object);
+    this->enterScene(object);
   }
 }
 
@@ -62,13 +62,6 @@ void SandBox::surfaceCreated() {
   shaderProg->createProgram();
   renderer->load_model(mesh);
   // TODO(simonpp): free buffers
-}
-
-void SandBox::render() {
-  gl->clearColor(0.6f, 0.6f, 0.6f, 1.0f);
-  gl->clear();
-
-  ObjectDrawer::draw(objectList);
 }
 
 void SandBox::surfaceChanged(Dimension dimension) {

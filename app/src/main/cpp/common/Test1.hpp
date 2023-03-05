@@ -15,7 +15,6 @@ public:
 
   void surfaceCreated() override;
   void surfaceChanged(Dimension) override;
-  void render() override;
   void pause() override;
   void resume() override;
   void update(double) override;

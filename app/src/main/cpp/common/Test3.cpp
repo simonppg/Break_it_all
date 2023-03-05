@@ -27,30 +27,30 @@ Test3::~Test3() {
   gl = nullptr;
 }
 
-void Test3::render() {
-  // int32_t uniform;
-  // mat4 translate;
-  // mat4 rotate;
-  // mat4 scale;
-
-  gl->useProgram(programID);
-  // uniform = glGetUniformLocation(programID, "matrix");
-
-  gl->clearColor(0.6f, 0.6f, 0.6f, 1.0f);
-  gl->clear();
-
-  gl->enableVertexAttribArray(0);
-
-  // TODO(simonpp): Use render
-  //  translate = camera->translate(Point3D(1, 0, 0));
-  //  rotate = glm::rotate(translate, glm::radians(0.0f), vec3(1, 0, 0));
-  //  scale = glm::scale(rotate, glm::vec3(5));
-  //  glUniformMatrix4fv(uniform, 1, GL_FALSE, &scale[0][0]);
-
-  glDrawArrays(GL_TRIANGLE_FAN, 0, NUMBER_OF_VERTICES);
-
-  gl->useProgram(0);
-}
+// void Test3::render() {
+//   // int32_t uniform;
+//   // mat4 translate;
+//   // mat4 rotate;
+//   // mat4 scale;
+//
+//   gl->useProgram(programID);
+//   // uniform = glGetUniformLocation(programID, "matrix");
+//
+//   gl->clearColor(0.6f, 0.6f, 0.6f, 1.0f);
+//   gl->clear();
+//
+//   gl->enableVertexAttribArray(0);
+//
+//   // TODO(simonpp): Use render
+//   //  translate = camera->translate(Point3D(1, 0, 0));
+//   //  rotate = glm::rotate(translate, glm::radians(0.0f), vec3(1, 0, 0));
+//   //  scale = glm::scale(rotate, glm::vec3(5));
+//   //  glUniformMatrix4fv(uniform, 1, GL_FALSE, &scale[0][0]);
+//
+//   glDrawArrays(GL_TRIANGLE_FAN, 0, NUMBER_OF_VERTICES);
+//
+//   gl->useProgram(0);
+// }
 
 void Test3::surfaceCreated() {
   const string vert = filesManager->loadFile(Assets::TRIANGLE_VERT);

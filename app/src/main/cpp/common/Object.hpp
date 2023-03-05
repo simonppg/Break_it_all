@@ -2,7 +2,7 @@
 #ifndef APP_SRC_MAIN_CPP_COMMON_OBJECT_HPP_
 #define APP_SRC_MAIN_CPP_COMMON_OBJECT_HPP_
 
-// #include "DrawContext.hpp"
+#include "DrawableObject.hpp"
 #include "Mesh.hpp"
 #include "Point3D.hpp"
 #include "Renderer.hpp"
@@ -10,7 +10,7 @@
 
 using glm::mat4;
 
-class Object {
+class Object : public DrawableObject {
 protected:
   ShaderProg *program;
   Renderer *renderer;
@@ -23,11 +23,11 @@ protected:
 
 public:
   Object(Renderer *, ShaderProg *pProg, Mesh *pMesh);
-  ~Object();
+  virtual ~Object();
 
   Point3D getPosition();
 
-  void draw();
+  void draw() override;
   void updatePosition(Point3D position);
   void updateSize(Point3D size);
   void set_rotation_angle(float angle);

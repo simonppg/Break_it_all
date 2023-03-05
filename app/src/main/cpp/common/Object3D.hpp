@@ -12,7 +12,6 @@ public:
   virtual ~Object3D();
 
   void moveTo(Point3D);
-  virtual void draw() = 0;
 };
 
 #endif // APP_SRC_MAIN_CPP_COMMON_OBJECT3D_HPP_
