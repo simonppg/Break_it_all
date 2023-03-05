@@ -12,7 +12,7 @@ BUILD_DIR=linux-build
 if [ -d "$BUILD_DIR" ]; then rm -Rf $BUILD_DIR; fi
 
 # Create folder, move inside, build and run
-mkdir -pv $BUILD_DIR && cd $BUILD_DIR && cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=1 && make run
+mkdir -pv $BUILD_DIR && cd $BUILD_DIR && cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_CXX_FLAGS="-isystem /usr/include/c++/11/ -isystem /usr/include/x86_64-linux-gnu/c++/11/" && make run
 
 # NOTE: tell cmake to export compile commands and make the syslink is not really needed
 # I use it to help the SLP (Server Language Protocol) to find the included headers files
