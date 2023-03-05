@@ -1,4 +1,6 @@
 // Copyright (c) 2021 Simon Puente
+#include <cassert>
+
 #include "../common/Game.hpp"
 #include "../common/event/ScreenTouched.hpp"
 #include "../shared/FilesManager.hpp"
@@ -11,7 +13,6 @@ extern "C" {
 #endif
 
 #include <android/asset_manager_jni.h>
-#include <cassert>
 #include <jni.h>
 
 static Game *game = nullptr;
