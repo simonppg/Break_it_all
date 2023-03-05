@@ -2,14 +2,14 @@
 #ifndef APP_SRC_MAIN_CPP_COMMON_SCENE_HPP_
 #define APP_SRC_MAIN_CPP_COMMON_SCENE_HPP_
 
+#include <vector>
+
 #include "Dimension.hpp"
 #include "DrawableObject.hpp"
 #include "Gl.hpp"
 #include "Object.hpp"
 #include "Object3D.hpp"
 #include "Point2D.hpp"
-
-#include <vector>
 
 class Scene {
 private:
