@@ -16,6 +16,7 @@ extern "C" {
 
 #include <android/asset_manager_jni.h>
 #include <jni.h>
+#include <cassert>
 
 JNIEXPORT void JNICALL
 Java_com_example_game_jni_BreakItAll_surfaceCreated(JNIEnv *env, jclass cls) {
