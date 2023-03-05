@@ -3,8 +3,8 @@
 #define APP_SRC_MAIN_CPP_COMMON_TEST2_HPP_
 
 #include "../shared/FilesManager.hpp"
-#include "Scene.hpp"
 #include "Renderer.hpp"
+#include "Scene.hpp"
 #include "opengl/Gl.hpp"
 
 class Test2 final : public Scene {

@@ -5,10 +5,10 @@
 #include <vector>
 
 #include "Camera.hpp"
-#include "Scene.hpp"
 #include "Math.hpp"
 #include "Mesh.hpp"
 #include "Object.hpp"
+#include "Scene.hpp"
 #include "ShaderProg.hpp"
 #include "opengl/Gl.hpp"
 

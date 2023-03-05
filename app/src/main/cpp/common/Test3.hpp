@@ -4,9 +4,9 @@
 
 #include "../shared/FilesManager.hpp"
 
-#include "Scene.hpp"
 #include "Math.hpp"
 #include "Renderer.hpp"
+#include "Scene.hpp"
 #include "opengl/Gl.hpp"
 
 class Test3 final : public Scene {

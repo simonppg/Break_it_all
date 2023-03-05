@@ -3,9 +3,9 @@
 #define APP_SRC_MAIN_CPP_COMMON_OBJECTDRAWER_HPP_
 #include <vector>
 
+#include "DrawableObject.hpp"
 #include "Object.hpp"
 #include "Object3D.hpp"
-#include "DrawableObject.hpp"
 
 using std::vector;
 

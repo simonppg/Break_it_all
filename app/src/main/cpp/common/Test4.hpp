@@ -6,12 +6,12 @@
 
 #include "../shared/FilesManager.hpp"
 #include "Ball.hpp"
-#include "Scene.hpp"
 #include "Math.hpp"
 #include "MeshFactory.hpp"
 #include "Object.hpp"
 #include "Object3D.hpp"
 #include "Renderer.hpp"
+#include "Scene.hpp"
 #include "ShaderProg.hpp"
 #include "opengl/Gl.hpp"
 

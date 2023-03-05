@@ -8,7 +8,6 @@
 #include "Object.hpp"
 #include "Object3D.hpp"
 #include "Point2D.hpp"
-#include <variant>
 
 class Scene {
 private:

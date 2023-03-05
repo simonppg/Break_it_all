@@ -9,6 +9,6 @@ void Scene::render() {
   ObjectDrawer::draw(drawableObjects);
 }
 
-void Scene::enterScene(DrawableObject * drawableObject) {
+void Scene::enterScene(DrawableObject *drawableObject) {
   drawableObjects.push_back(drawableObject);
 }
