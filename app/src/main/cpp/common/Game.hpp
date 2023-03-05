@@ -4,7 +4,7 @@
 
 #include "../shared/Logger.hpp"
 #include "../shared/Platform.hpp"
-#include "IScene.hpp"
+#include "Scene.hpp"
 #include "event/CursorPositionChanged.hpp"
 #include "event/Event.hpp"
 #include "event/KeyPressed.hpp"
@@ -13,7 +13,7 @@
 
 class Game final {
 private:
-  IScene *pScene;
+  Scene *pScene;
   Logger *logger;
 
   bool isClosing;

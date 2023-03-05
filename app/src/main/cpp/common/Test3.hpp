@@ -4,12 +4,12 @@
 
 #include "../shared/FilesManager.hpp"
 
-#include "IScene.hpp"
 #include "Math.hpp"
 #include "Renderer.hpp"
+#include "Scene.hpp"
 #include "opengl/Gl.hpp"
 
-class Test3 final : public IScene {
+class Test3 final : public Scene {
 private:
   Gl *gl;
   Renderer renderer = Renderer(new Camera(Dimension(), Point3D(0, 0, 40)));
@@ -24,7 +24,6 @@ public:
 
   void surfaceCreated() override;
   void surfaceChanged(Dimension) override;
-  void render() override;
   void pause() override;
   void resume() override;
   void update(double) override;

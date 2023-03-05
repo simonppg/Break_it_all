@@ -5,10 +5,10 @@
 #include <vector>
 
 #include "Camera.hpp"
-#include "IScene.hpp"
 #include "Math.hpp"
 #include "Mesh.hpp"
 #include "Object.hpp"
+#include "Scene.hpp"
 #include "ShaderProg.hpp"
 #include "opengl/Gl.hpp"
 
@@ -16,7 +16,7 @@
 
 using std::vector;
 
-class SandBox final : public IScene {
+class SandBox final : public Scene {
 private:
   Gl *gl;
   Mesh *mesh;
@@ -32,7 +32,6 @@ public:
 
   void surfaceCreated() override;
   void surfaceChanged(Dimension) override;
-  void render() override;
   void pause() override;
   void resume() override;
   void update(double) override;

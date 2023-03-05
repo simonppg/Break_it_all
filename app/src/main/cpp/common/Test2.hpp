@@ -3,11 +3,11 @@
 #define APP_SRC_MAIN_CPP_COMMON_TEST2_HPP_
 
 #include "../shared/FilesManager.hpp"
-#include "IScene.hpp"
 #include "Renderer.hpp"
+#include "Scene.hpp"
 #include "opengl/Gl.hpp"
 
-class Test2 final : public IScene {
+class Test2 final : public Scene {
 private:
   Gl *gl;
   Renderer renderer = Renderer(new Camera());
@@ -22,7 +22,6 @@ public:
 
   void surfaceCreated() override;
   void surfaceChanged(Dimension) override;
-  void render() override;
   void pause() override;
   void resume() override;
   void update(double) override;

@@ -11,6 +11,7 @@ add_library(common STATIC
         event/ScreenTouched.cpp
         BreakItAll.cpp
         SandBox.cpp
+        Scene.cpp
         Test1.cpp
         Test2.cpp
         Test3.cpp

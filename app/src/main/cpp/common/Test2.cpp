@@ -19,15 +19,6 @@ Test2::~Test2() {
   gl = nullptr;
 }
 
-void Test2::render() {
-  gl->useProgram(programID);
-  gl->clearColor(0.6f, 0.6f, 0.6f, 1.0f);
-  gl->clear();
-
-  glDrawArrays(GL_TRIANGLES, 0, 3);
-  gl->useProgram(0);
-}
-
 void Test2::surfaceCreated() {
   const string vert = filesManager->loadFile(Assets::TRIANGLE_VERT);
   const string frag = filesManager->loadFile(Assets::TRIANGLE_FRAG);

@@ -38,7 +38,7 @@ add_custom_target(runNew
   WORKING_DIRECTORY ${CMAKE_PROJECT_DIR})
 
 add_custom_target(run
-  COMMAND linuxLauncher
+  COMMAND linuxLauncher ${CMD_ARGS}
   DEPENDS linuxLauncher
   WORKING_DIRECTORY ${CMAKE_PROJECT_DIR})
 
