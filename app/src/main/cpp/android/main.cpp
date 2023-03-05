@@ -11,8 +11,8 @@ extern "C" {
 #endif
 
 #include <android/asset_manager_jni.h>
-#include <jni.h>
 #include <cassert>
+#include <jni.h>
 
 static Game *game = nullptr;
 static Platform *platform = nullptr;
