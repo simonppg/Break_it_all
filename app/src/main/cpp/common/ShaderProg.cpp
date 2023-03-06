@@ -21,7 +21,7 @@ uint32_t ShaderProg::getUniformLocation(string uniformName) {
   return gl.getuniformlocation(programID, uniformName);
 }
 
-void ShaderProg::showProgramInfoLog(GLuint program) {
+void ShaderProg::showProgramInfoLog(uint32_t program) {
   int infoLength = gl.getProgramInfoLength(program);
   if (!infoLength) {
     return;
