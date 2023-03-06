@@ -18,6 +18,14 @@ void ShaderLoader::showShaderInfoLog(int32_t shader) {
   std::cout << log;
 }
 
+uint32_t ShaderLoader::loadVertexShader(const string shaderSource) {
+  return loadShader(GL_VERTEX_SHADER, shaderSource);
+}
+
+uint32_t ShaderLoader::loadFragmentShader(const string shaderSource) {
+  return loadShader(GL_FRAGMENT_SHADER, shaderSource);
+}
+
 uint32_t ShaderLoader::loadShader(int32_t shaderType,
                                   const string shaderSourceStr) {
   const int NUM_OF_SOURCES = 1;

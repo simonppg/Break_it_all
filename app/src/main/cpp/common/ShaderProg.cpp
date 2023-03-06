@@ -1,9 +1,5 @@
 #include "ShaderProg.hpp"
 
-#include <GLES3/gl3.h>
-
-#include "Renderer.hpp"
-
 Gl ShaderProg::gl;
 
 ShaderProg::ShaderProg(FilesManager *filesManager, const string vertShaderPath,
@@ -23,7 +19,7 @@ uint32_t ShaderProg::getUniformLocation(string uniformName) {
   return gl.getuniformlocation(programID, uniformName);
 }
 
-void ShaderProg::showProgramInfoLog(GLuint program) {
+void ShaderProg::showProgramInfoLog(uint32_t program) {
   int infoLength = gl.getProgramInfoLength(program);
   if (!infoLength) {
     return;
@@ -47,15 +43,13 @@ uint32_t ShaderProg::createProgramm(const string vertexSource,
     return error;
   }
 
-  uint32_t vertexShader =
-      shaderLoader.loadShader(GL_VERTEX_SHADER, vertexSource);
+  uint32_t vertexShader = shaderLoader.loadVertexShader(vertexSource);
   if (!vertexShader) {
     // LOGE("Could not load vertexShader\n");
     return error;
   }
 
-  uint32_t fragmentShader =
-      shaderLoader.loadShader(GL_FRAGMENT_SHADER, fragmentSource);
+  uint32_t fragmentShader = shaderLoader.loadFragmentShader(fragmentSource);
   if (!fragmentShader) {
     // LOGE("Could not load fragmentShader\n");
     return error;
@@ -68,13 +62,13 @@ uint32_t ShaderProg::createProgramm(const string vertexSource,
 
   uint32_t program = programOrNull.value();
 
-  glAttachShader(program, vertexShader);
-  glAttachShader(program, fragmentShader);
-  glLinkProgram(program);
+  gl.attachShader(program, vertexShader);
+  gl.attachShader(program, fragmentShader);
+  gl.linkProgram(program);
 
   if (!gl.isProgramLinkOk(program)) {
     showProgramInfoLog(program);
-    glDeleteProgram(program);
+    gl.deleteProgram(program);
     program = error;
   }
 
