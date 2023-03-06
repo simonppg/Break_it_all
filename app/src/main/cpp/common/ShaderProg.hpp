@@ -16,6 +16,8 @@ private:
   ShaderLoader shaderLoader;
   string vertexFile;
   string fragmentFile;
+  uint32_t programID;
+
   uint32_t createProgramm(const string vertexSource,
                           const string fragmentSource);
   void showProgramInfoLog(uint32_t program);
@@ -28,8 +30,6 @@ public:
   void use();
   uint32_t getUniformLocation(string uniformName);
 
-  // TODO(Simon Puente): make programID private
-  uint32_t programID;
   static void clearProgram();
 };
 
