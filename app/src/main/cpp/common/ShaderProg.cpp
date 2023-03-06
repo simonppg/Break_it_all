@@ -1,7 +1,5 @@
 #include "ShaderProg.hpp"
 
-#include <GLES3/gl3.h>
-
 #include "Renderer.hpp"
 
 Gl ShaderProg::gl;
