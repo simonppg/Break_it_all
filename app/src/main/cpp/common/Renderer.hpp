@@ -16,7 +16,7 @@ using std::string;
 class Renderer {
 private:
   ShaderLoader *shaderLoader;
-  Gl *gl;
+  Gl gl;
   Camera *camera;
 
   void showProgramInfoLog(uint32_t program);
