@@ -47,7 +47,7 @@ optional<uint32_t> Gl::createShader(int32_t shaderType) {
   return shader;
 }
 
-void Gl::attachShader(uint32_t programID,uint32_t shaderId) {
+void Gl::attachShader(uint32_t programID, uint32_t shaderId) {
   glAttachShader(programID, shaderId);
 }
 
