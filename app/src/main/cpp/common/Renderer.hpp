@@ -11,6 +11,7 @@
 #include "opengl/Gl.hpp"
 
 using std::string;
+using glm::mat4;
 
 class Renderer {
 private:
@@ -19,6 +20,8 @@ private:
   Camera *camera;
 
   void showProgramInfoLog(uint32_t program);
+  void typeOneMesh(Mesh *&mesh, mat4 &matrixTransform, int32_t &uniform);
+  void typeTwoMesh(Mesh *&mesh, mat4 &matrixTransform, int32_t &uniform);
 
 public:
   explicit Renderer(Camera *);

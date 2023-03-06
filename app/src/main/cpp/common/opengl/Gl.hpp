@@ -16,6 +16,7 @@ public:
   optional<uint32_t> createProgram();
   void deleteProgram(uint32_t program);
   void useProgram(uint32_t program);
+  void clearProgram();
   bool isProgramLinkOk(uint32_t program);
   int32_t getProgramInfoLength(uint32_t program);
   string getProgramInfoLog(uint32_t program, int32_t infoLogLength);

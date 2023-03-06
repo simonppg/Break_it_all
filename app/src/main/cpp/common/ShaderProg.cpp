@@ -4,19 +4,18 @@
 
 #include "Renderer.hpp"
 
+ Gl *ShaderProg::gl = new Gl();
+
 ShaderProg::ShaderProg(FilesManager *filesManager, const string vertShaderPath,
                        const string fragShaderPath) {
   vertexFile = filesManager->loadFile(vertShaderPath);
   fragmentFile = filesManager->loadFile(fragShaderPath);
   shaderLoader = new ShaderLoader();
-  gl = new Gl();
 }
 
 ShaderProg::~ShaderProg() {
   delete shaderLoader;
   shaderLoader = nullptr;
-  delete gl;
-  gl = nullptr;
 }
 
 void ShaderProg::createProgram() {
@@ -24,6 +23,7 @@ void ShaderProg::createProgram() {
 }
 
 void ShaderProg::use() { gl->useProgram(programID); }
+void ShaderProg::clearProgram() { gl->clearProgram(); }
 
 uint32_t ShaderProg::getUniformLocation(string uniformName) {
   return gl->getuniformlocation(programID, uniformName);
