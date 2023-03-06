@@ -9,14 +9,11 @@ using std::string;
 
 class ShaderLoader {
 private:
-  Gl *gl;
+  Gl gl;
 
   void showShaderInfoLog(int32_t shader);
 
 public:
-  ShaderLoader();
-  ~ShaderLoader();
-
   uint32_t loadShader(int32_t shaderType, const string shaderSource);
 };
 

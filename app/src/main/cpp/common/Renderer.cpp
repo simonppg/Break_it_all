@@ -7,43 +7,31 @@
 #include "MeshType.hpp"
 #include "ShaderLoader.hpp"
 
-Renderer::Renderer(Camera *camera) {
-  gl = new Gl();
-  shaderLoader = new ShaderLoader();
-  this->camera = camera;
-}
-
-Renderer::~Renderer() {
-  delete gl;
-  gl = nullptr;
-  delete shaderLoader;
-  shaderLoader = nullptr;
-}
+Renderer::Renderer(Camera *camera) { this->camera = camera; }
 
 void Renderer::showProgramInfoLog(GLuint program) {
-  int infoLength = gl->getProgramInfoLength(program);
+  int infoLength = gl.getProgramInfoLength(program);
   if (!infoLength) {
     return;
   }
 
-  string log = gl->getProgramInfoLog(program, infoLength);
+  string log = gl.getProgramInfoLog(program, infoLength);
 
   // TODO(Simon Puente): use shared/Logger
   std::cout << log;
 }
 
 void Renderer::load_model(Mesh *pMesh) {
-  gl->genBuffer(&pMesh->vbo);
-  gl->bindBuffer(GL_ARRAY_BUFFER, pMesh->vbo);
-  gl->bufferData(GL_ARRAY_BUFFER, VERTEX_BUFFER_SIZE(pMesh->numVertices),
-                 pMesh->vertex, GL_STATIC_DRAW);
+  gl.genBuffer(&pMesh->vbo);
+  gl.bindBuffer(GL_ARRAY_BUFFER, pMesh->vbo);
+  gl.bufferData(GL_ARRAY_BUFFER, VERTEX_BUFFER_SIZE(pMesh->numVertices),
+                pMesh->vertex, GL_STATIC_DRAW);
 
   if (pMesh->type == MeshType::ONE) {
-    gl->genBuffer(&pMesh->iab);
-    gl->bindBuffer(GL_ELEMENT_ARRAY_BUFFER, pMesh->iab);
-    gl->bufferData(GL_ELEMENT_ARRAY_BUFFER,
-                   INDEX_BUFFER_SIZE(pMesh->numIndices), pMesh->indices,
-                   GL_STATIC_DRAW);
+    gl.genBuffer(&pMesh->iab);
+    gl.bindBuffer(GL_ELEMENT_ARRAY_BUFFER, pMesh->iab);
+    gl.bufferData(GL_ELEMENT_ARRAY_BUFFER, INDEX_BUFFER_SIZE(pMesh->numIndices),
+                  pMesh->indices, GL_STATIC_DRAW);
   }
 }
 
@@ -54,13 +42,13 @@ mat4 Renderer::trasform(Point3D point3D, float angle, Point3D rotation,
 
 void Renderer::typeOneMesh(const Mesh *mesh, const mat4 matrixTransform,
                            const int32_t uniform) {
-  gl->bindBuffer(GL_ARRAY_BUFFER, mesh->vbo);
-  gl->enableVertexAttribArray(0);
-  gl->enableVertexAttribArray(1);
-  gl->vertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 6, 0);
-  gl->vertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 6,
-                          reinterpret_cast<char *>((sizeof(float) * 3)));
-  gl->bindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->iab);
+  gl.bindBuffer(GL_ARRAY_BUFFER, mesh->vbo);
+  gl.enableVertexAttribArray(0);
+  gl.enableVertexAttribArray(1);
+  gl.vertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 6, 0);
+  gl.vertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 6,
+                         reinterpret_cast<char *>((sizeof(float) * 3)));
+  gl.bindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->iab);
 
   glUniformMatrix4fv(uniform, 1, GL_FALSE, &matrixTransform[0][0]);
   glDrawElements(GL_TRIANGLES, mesh->numIndices, GL_UNSIGNED_SHORT, 0);
@@ -68,9 +56,9 @@ void Renderer::typeOneMesh(const Mesh *mesh, const mat4 matrixTransform,
 
 void Renderer::typeTwoMesh(const Mesh *mesh, const mat4 matrixTransform,
                            const int32_t uniform) {
-  gl->bindBuffer(GL_ARRAY_BUFFER, mesh->vbo);
-  gl->vertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 3, 0);
-  gl->enableVertexAttribArray(0);
+  gl.bindBuffer(GL_ARRAY_BUFFER, mesh->vbo);
+  gl.vertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 3, 0);
+  gl.enableVertexAttribArray(0);
   glUniformMatrix4fv(uniform, 1, GL_FALSE, &matrixTransform[0][0]);
   glDrawArrays(GL_TRIANGLE_FAN, 0, mesh->numVertices);
 }
@@ -108,20 +96,20 @@ Renderer::createProgram(const string vertexSource,
   }
 
   uint32_t vertexShader =
-      shaderLoader->loadShader(GL_VERTEX_SHADER, vertexSource);
+      shaderLoader.loadShader(GL_VERTEX_SHADER, vertexSource);
   if (!vertexShader) {
     // LOGE("Could not load vertexShader\n");
     return error;
   }
 
   uint32_t fragmentShader =
-      shaderLoader->loadShader(GL_FRAGMENT_SHADER, fragmentSource);
+      shaderLoader.loadShader(GL_FRAGMENT_SHADER, fragmentSource);
   if (!fragmentShader) {
     // LOGE("Could not load fragmentShader\n");
     return error;
   }
 
-  auto programOrNull = gl->createProgram();
+  auto programOrNull = gl.createProgram();
   if (!programOrNull.has_value()) {
     return error;
   }
@@ -132,7 +120,7 @@ Renderer::createProgram(const string vertexSource,
   glAttachShader(program, fragmentShader);
   glLinkProgram(program);
 
-  if (!gl->isProgramLinkOk(program)) {
+  if (!gl.isProgramLinkOk(program)) {
     showProgramInfoLog(program);
     glDeleteProgram(program);
     program = error;

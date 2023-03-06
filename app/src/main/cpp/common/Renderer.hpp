@@ -15,8 +15,8 @@ using std::string;
 
 class Renderer {
 private:
-  ShaderLoader *shaderLoader;
-  Gl *gl;
+  ShaderLoader shaderLoader;
+  Gl gl;
   Camera *camera;
 
   void showProgramInfoLog(uint32_t program);
@@ -25,7 +25,6 @@ private:
 
 public:
   explicit Renderer(Camera *);
-  ~Renderer();
 
   mat4 trasform(Point3D, float, Point3D, Point3D);
   void load_model(Mesh *pMesh);
