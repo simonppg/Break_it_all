@@ -1,4 +1,3 @@
-// Copyright (c) 2023 Simon Puente
 #include "Scene.hpp"
 #include "ObjectDrawer.hpp"
 

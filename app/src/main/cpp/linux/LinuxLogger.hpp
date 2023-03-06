@@ -1,4 +1,3 @@
-// Copyright (c) 2021 Simon Puente
 #ifndef APP_SRC_MAIN_CPP_LINUX_LINUXLOGGER_HPP_
 #define APP_SRC_MAIN_CPP_LINUX_LINUXLOGGER_HPP_
 

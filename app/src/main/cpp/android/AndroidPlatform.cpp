@@ -1,4 +1,3 @@
-// Copyright (c) 2021 Simon Puente
 #include "AndroidPlatform.hpp"
 
 #include "AndroidFilesManager.hpp"

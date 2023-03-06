@@ -1,4 +1,3 @@
-// Copyright (c) 2023 Simon Puente
 #include "DrawContext.hpp"
 
 DrawContext::DrawContext(ShaderProg *program, mat4 trasformed, Mesh *mesh) {

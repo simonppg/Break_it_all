@@ -1,4 +1,3 @@
-// Copyright (c) 2021 Simon Puente
 #include "Renderer.hpp"
 
 #include <GLES3/gl3.h>

@@ -1,4 +1,3 @@
-// Copyright (c) 2022 Simon Puente
 #include "Test1.hpp"
 
 Test1::Test1() { gl = new Gl(); }

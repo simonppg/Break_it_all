@@ -1,4 +1,3 @@
-// Copyright (c) 2022 Simon Puente
 #ifndef APP_SRC_MAIN_CPP_SHARED_PLATFORM_HPP_
 #define APP_SRC_MAIN_CPP_SHARED_PLATFORM_HPP_
 

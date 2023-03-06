@@ -1,4 +1,3 @@
-// Copyright (c) 2021 Simon Puente
 #include "GLFWKeyMapper.hpp"
 
 #include <GLFW/glfw3.h>

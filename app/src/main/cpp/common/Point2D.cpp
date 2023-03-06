@@ -1,4 +1,3 @@
-// Copyright (c) 2022 Simon Puente
 #include "Point2D.hpp"
 
 Point2D::Point2D(void) : x(0.0), y(0.0) {}
