@@ -4,7 +4,7 @@
 
 #include "Renderer.hpp"
 
-Gl *ShaderProg::gl = new Gl();
+Gl ShaderProg::gl;
 
 ShaderProg::ShaderProg(FilesManager *filesManager, const string vertShaderPath,
                        const string fragShaderPath) {
@@ -22,20 +22,20 @@ void ShaderProg::createProgram() {
   programID = createProgramm(vertexFile, fragmentFile);
 }
 
-void ShaderProg::use() { gl->useProgram(programID); }
-void ShaderProg::clearProgram() { gl->clearProgram(); }
+void ShaderProg::use() { gl.useProgram(programID); }
+void ShaderProg::clearProgram() { gl.clearProgram(); }
 
 uint32_t ShaderProg::getUniformLocation(string uniformName) {
-  return gl->getuniformlocation(programID, uniformName);
+  return gl.getuniformlocation(programID, uniformName);
 }
 
 void ShaderProg::showProgramInfoLog(GLuint program) {
-  int infoLength = gl->getProgramInfoLength(program);
+  int infoLength = gl.getProgramInfoLength(program);
   if (!infoLength) {
     return;
   }
 
-  string log = gl->getProgramInfoLog(program, infoLength);
+  string log = gl.getProgramInfoLog(program, infoLength);
 
   // TODO(Simon Puente): use shared/Logger
   std::cout << log;
@@ -67,7 +67,7 @@ uint32_t ShaderProg::createProgramm(const string vertexSource,
     return error;
   }
 
-  auto programOrNull = gl->createProgram();
+  auto programOrNull = gl.createProgram();
   if (!programOrNull.has_value()) {
     return error;
   }
@@ -78,7 +78,7 @@ uint32_t ShaderProg::createProgramm(const string vertexSource,
   glAttachShader(program, fragmentShader);
   glLinkProgram(program);
 
-  if (!gl->isProgramLinkOk(program)) {
+  if (!gl.isProgramLinkOk(program)) {
     showProgramInfoLog(program);
     glDeleteProgram(program);
     program = error;

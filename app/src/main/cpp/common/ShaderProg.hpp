@@ -12,7 +12,7 @@ using std::string;
 
 class ShaderProg final {
 private:
-  static Gl *gl;
+  static Gl gl;
   ShaderLoader *shaderLoader;
   string vertexFile;
   string fragmentFile;
