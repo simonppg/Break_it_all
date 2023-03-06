@@ -7,9 +7,7 @@
 #include "MeshType.hpp"
 #include "ShaderLoader.hpp"
 
-Renderer::Renderer(Camera *camera) {
-  this->camera = camera;
-}
+Renderer::Renderer(Camera *camera) { this->camera = camera; }
 
 void Renderer::showProgramInfoLog(GLuint program) {
   int infoLength = gl.getProgramInfoLength(program);
@@ -27,14 +25,13 @@ void Renderer::load_model(Mesh *pMesh) {
   gl.genBuffer(&pMesh->vbo);
   gl.bindBuffer(GL_ARRAY_BUFFER, pMesh->vbo);
   gl.bufferData(GL_ARRAY_BUFFER, VERTEX_BUFFER_SIZE(pMesh->numVertices),
-                 pMesh->vertex, GL_STATIC_DRAW);
+                pMesh->vertex, GL_STATIC_DRAW);
 
   if (pMesh->type == MeshType::ONE) {
     gl.genBuffer(&pMesh->iab);
     gl.bindBuffer(GL_ELEMENT_ARRAY_BUFFER, pMesh->iab);
-    gl.bufferData(GL_ELEMENT_ARRAY_BUFFER,
-                   INDEX_BUFFER_SIZE(pMesh->numIndices), pMesh->indices,
-                   GL_STATIC_DRAW);
+    gl.bufferData(GL_ELEMENT_ARRAY_BUFFER, INDEX_BUFFER_SIZE(pMesh->numIndices),
+                  pMesh->indices, GL_STATIC_DRAW);
   }
 }
 
@@ -50,7 +47,7 @@ void Renderer::typeOneMesh(const Mesh *mesh, const mat4 matrixTransform,
   gl.enableVertexAttribArray(1);
   gl.vertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 6, 0);
   gl.vertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 6,
-                          reinterpret_cast<char *>((sizeof(float) * 3)));
+                         reinterpret_cast<char *>((sizeof(float) * 3)));
   gl.bindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->iab);
 
   glUniformMatrix4fv(uniform, 1, GL_FALSE, &matrixTransform[0][0]);
