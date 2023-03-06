@@ -6,10 +6,6 @@
 
 #include "GLES3/gl3.h"
 
-ShaderLoader::ShaderLoader() {}
-
-ShaderLoader::~ShaderLoader() { }
-
 void ShaderLoader::showShaderInfoLog(int32_t shader) {
   int32_t infoLength = gl.getInfoLogLength(shader);
   if (infoLength <= 0) {
