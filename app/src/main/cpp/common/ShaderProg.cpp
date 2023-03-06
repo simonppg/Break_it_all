@@ -4,7 +4,7 @@
 
 #include "Renderer.hpp"
 
- Gl *ShaderProg::gl = new Gl();
+Gl *ShaderProg::gl = new Gl();
 
 ShaderProg::ShaderProg(FilesManager *filesManager, const string vertShaderPath,
                        const string fragShaderPath) {

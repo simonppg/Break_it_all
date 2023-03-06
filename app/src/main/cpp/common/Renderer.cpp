@@ -53,7 +53,7 @@ mat4 Renderer::trasform(Point3D point3D, float angle, Point3D rotation,
 }
 
 void Renderer::typeOneMesh(Mesh *&mesh, mat4 &matrixTransform,
-                         int32_t &uniform) {
+                           int32_t &uniform) {
   gl->bindBuffer(GL_ARRAY_BUFFER, mesh->vbo);
   gl->enableVertexAttribArray(0);
   gl->enableVertexAttribArray(1);
@@ -66,8 +66,7 @@ void Renderer::typeOneMesh(Mesh *&mesh, mat4 &matrixTransform,
   glDrawElements(GL_TRIANGLES, mesh->numIndices, GL_UNSIGNED_SHORT, 0);
 }
 
-void Renderer::typeTwoMesh(Mesh *&mesh, mat4 &matrixTransform,
-                         GLint &uniform) {
+void Renderer::typeTwoMesh(Mesh *&mesh, mat4 &matrixTransform, GLint &uniform) {
   gl->bindBuffer(GL_ARRAY_BUFFER, mesh->vbo);
   gl->vertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 3, 0);
   gl->enableVertexAttribArray(0);

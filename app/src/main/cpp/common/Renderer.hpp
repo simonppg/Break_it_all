@@ -10,8 +10,8 @@
 #include "ShaderLoader.hpp"
 #include "opengl/Gl.hpp"
 
-using std::string;
 using glm::mat4;
+using std::string;
 
 class Renderer {
 private:
