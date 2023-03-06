@@ -45,15 +45,13 @@ uint32_t ShaderProg::createProgramm(const string vertexSource,
     return error;
   }
 
-  uint32_t vertexShader =
-      shaderLoader.loadShader(GL_VERTEX_SHADER, vertexSource);
+  uint32_t vertexShader = shaderLoader.loadVertexShader(vertexSource);
   if (!vertexShader) {
     // LOGE("Could not load vertexShader\n");
     return error;
   }
 
-  uint32_t fragmentShader =
-      shaderLoader.loadShader(GL_FRAGMENT_SHADER, fragmentSource);
+  uint32_t fragmentShader = shaderLoader.loadFragmentShader(fragmentSource);
   if (!fragmentShader) {
     // LOGE("Could not load fragmentShader\n");
     return error;
