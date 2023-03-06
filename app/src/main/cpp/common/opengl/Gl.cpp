@@ -5,10 +5,6 @@
 using std::nullopt;
 using std::vector;
 
-Gl::Gl() {}
-
-Gl::~Gl() {}
-
 void Gl::useProgram(uint32_t program) { glUseProgram(program); }
 void Gl::clearProgram() { glUseProgram(0); }
 optional<uint32_t> Gl::createProgram() {

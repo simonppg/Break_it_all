@@ -52,8 +52,8 @@ mat4 Renderer::trasform(Point3D point3D, float angle, Point3D rotation,
   return camera->trasform(point3D, angle, rotation, size);
 }
 
-void Renderer::typeOneMesh(Mesh *&mesh, mat4 &matrixTransform,
-                           int32_t &uniform) {
+void Renderer::typeOneMesh(const Mesh *mesh, const mat4 matrixTransform,
+                           const int32_t uniform) {
   gl->bindBuffer(GL_ARRAY_BUFFER, mesh->vbo);
   gl->enableVertexAttribArray(0);
   gl->enableVertexAttribArray(1);
@@ -66,7 +66,8 @@ void Renderer::typeOneMesh(Mesh *&mesh, mat4 &matrixTransform,
   glDrawElements(GL_TRIANGLES, mesh->numIndices, GL_UNSIGNED_SHORT, 0);
 }
 
-void Renderer::typeTwoMesh(Mesh *&mesh, mat4 &matrixTransform, GLint &uniform) {
+void Renderer::typeTwoMesh(const Mesh *mesh, const mat4 matrixTransform,
+                           const int32_t uniform) {
   gl->bindBuffer(GL_ARRAY_BUFFER, mesh->vbo);
   gl->vertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 3, 0);
   gl->enableVertexAttribArray(0);
@@ -78,7 +79,7 @@ void Renderer::draw(DrawContext *pDrawContex) {
   ShaderProg *program = pDrawContex->getProgram();
   Mesh *mesh = pDrawContex->getMesh();
   mat4 matrixTransform = pDrawContex->getMatrixTransform();
-  GLint uniform = 0;
+  int32_t uniform = 0;
 
   program->use();
   uniform = program->getUniformLocation("matrix");

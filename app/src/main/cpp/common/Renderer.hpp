@@ -20,8 +20,8 @@ private:
   Camera *camera;
 
   void showProgramInfoLog(uint32_t program);
-  void typeOneMesh(Mesh *&mesh, mat4 &matrixTransform, int32_t &uniform);
-  void typeTwoMesh(Mesh *&mesh, mat4 &matrixTransform, int32_t &uniform);
+  void typeOneMesh(const Mesh *, const mat4, const int32_t);
+  void typeTwoMesh(const Mesh *, const mat4, const int32_t);
 
 public:
   explicit Renderer(Camera *);

@@ -10,9 +10,6 @@ using std::string;
 
 class Gl {
 public:
-  Gl();
-  ~Gl();
-
   optional<uint32_t> createProgram();
   void deleteProgram(uint32_t program);
   void useProgram(uint32_t program);
