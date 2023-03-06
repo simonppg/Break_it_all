@@ -6,20 +6,17 @@
 
 #include "GLES3/gl3.h"
 
-ShaderLoader::ShaderLoader() { gl = new Gl(); }
+ShaderLoader::ShaderLoader() {}
 
-ShaderLoader::~ShaderLoader() {
-  delete gl;
-  gl = nullptr;
-}
+ShaderLoader::~ShaderLoader() { }
 
 void ShaderLoader::showShaderInfoLog(int32_t shader) {
-  int32_t infoLength = gl->getInfoLogLength(shader);
+  int32_t infoLength = gl.getInfoLogLength(shader);
   if (infoLength <= 0) {
     return;
   }
 
-  string log = gl->getShaderInfoLog(shader, infoLength);
+  string log = gl.getShaderInfoLog(shader, infoLength);
 
   // TODO(Simon Puente): use shared/Logger
   std::cout << log;
@@ -33,7 +30,7 @@ uint32_t ShaderLoader::loadShader(int32_t shaderType,
   int error = 0;
 
   // glCreateShader return 0 when there is an error
-  auto shaderOrNull = gl->createShader(shaderType);
+  auto shaderOrNull = gl.createShader(shaderType);
   if (!shaderOrNull.has_value()) {
     return error;
   }
@@ -43,7 +40,7 @@ uint32_t ShaderLoader::loadShader(int32_t shaderType,
   glShaderSource(shader, NUM_OF_SOURCES, &shaderSource, NULL);
   glCompileShader(shader);
 
-  if (gl->isShaderCompilationOk(shader)) {
+  if (gl.isShaderCompilationOk(shader)) {
     return shader;
   }
 

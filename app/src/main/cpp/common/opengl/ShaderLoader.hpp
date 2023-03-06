@@ -9,7 +9,7 @@ using std::string;
 
 class ShaderLoader {
 private:
-  Gl *gl;
+  Gl gl;
 
   void showShaderInfoLog(int32_t shader);
 
