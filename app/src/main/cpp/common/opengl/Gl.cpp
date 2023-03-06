@@ -16,6 +16,7 @@ optional<uint32_t> Gl::createProgram() {
   return program;
 }
 
+void Gl::linkProgram(uint32_t programId) { glLinkProgram(programId); }
 void Gl::deleteProgram(uint32_t program) { glDeleteProgram(program); }
 
 bool Gl::isProgramLinkOk(uint32_t program) {
@@ -44,6 +45,10 @@ optional<uint32_t> Gl::createShader(int32_t shaderType) {
   }
 
   return shader;
+}
+
+void Gl::attachShader(uint32_t programID,uint32_t shaderId) {
+  glAttachShader(programID, shaderId);
 }
 
 bool Gl::isShaderCompilationOk(uint32_t shader) {

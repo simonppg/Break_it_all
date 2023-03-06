@@ -44,15 +44,13 @@ GLuint BreakItAll::createProgram(const char *vertexSource,
     return error;
   }
 
-  GLuint vertexShader =
-      shaderLoader->loadShader(GL_VERTEX_SHADER, vertexSource);
+  GLuint vertexShader = shaderLoader->loadVertexShader(vertexSource);
   if (!vertexShader) {
     // LOGE("Could not load vertexShader\n");
     return error;
   }
 
-  GLuint fragmentShader =
-      shaderLoader->loadShader(GL_FRAGMENT_SHADER, fragmentSource);
+  GLuint fragmentShader = shaderLoader->loadFragmentShader(fragmentSource);
   if (!fragmentShader) {
     // LOGE("Could not load fragmentShader\n");
     return error;

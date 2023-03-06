@@ -1,7 +1,5 @@
 #include "ShaderProg.hpp"
 
-#include "Renderer.hpp"
-
 Gl ShaderProg::gl;
 
 ShaderProg::ShaderProg(FilesManager *filesManager, const string vertShaderPath,
@@ -64,13 +62,13 @@ uint32_t ShaderProg::createProgramm(const string vertexSource,
 
   uint32_t program = programOrNull.value();
 
-  glAttachShader(program, vertexShader);
-  glAttachShader(program, fragmentShader);
-  glLinkProgram(program);
+  gl.attachShader(program, vertexShader);
+  gl.attachShader(program, fragmentShader);
+  gl.linkProgram(program);
 
   if (!gl.isProgramLinkOk(program)) {
     showProgramInfoLog(program);
-    glDeleteProgram(program);
+    gl.deleteProgram(program);
     program = error;
   }
 
