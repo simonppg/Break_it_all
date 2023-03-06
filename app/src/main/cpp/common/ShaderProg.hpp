@@ -12,10 +12,12 @@ using std::string;
 
 class ShaderProg final {
 private:
-  static Gl *gl;
-  ShaderLoader *shaderLoader;
+  static Gl gl;
+  ShaderLoader shaderLoader;
   string vertexFile;
   string fragmentFile;
+  uint32_t programID;
+
   uint32_t createProgramm(const string vertexSource,
                           const string fragmentSource);
   void showProgramInfoLog(uint32_t program);
@@ -23,14 +25,11 @@ private:
 public:
   ShaderProg(FilesManager *, const string vertShaderStr,
              const string fragShaderStr);
-  ~ShaderProg();
 
   void createProgram();
   void use();
   uint32_t getUniformLocation(string uniformName);
 
-  // TODO(Simon Puente): make programID private
-  uint32_t programID;
   static void clearProgram();
 };
 
