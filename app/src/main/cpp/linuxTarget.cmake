@@ -32,6 +32,10 @@ target_link_libraries(linuxVersion
 target_link_libraries(linuxLauncher
   common)
 
+set_target_properties(linuxLauncher linuxVersion
+  PROPERTIES
+  RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
+
 add_custom_target(runNew
   COMMAND linuxVersion
   DEPENDS linuxVersion
