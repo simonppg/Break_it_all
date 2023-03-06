@@ -52,36 +52,45 @@ mat4 Renderer::trasform(Point3D point3D, float angle, Point3D rotation,
   return camera->trasform(point3D, angle, rotation, size);
 }
 
+void Renderer::typeOneMesh(const Mesh *mesh, const mat4 matrixTransform,
+                           const int32_t uniform) {
+  gl->bindBuffer(GL_ARRAY_BUFFER, mesh->vbo);
+  gl->enableVertexAttribArray(0);
+  gl->enableVertexAttribArray(1);
+  gl->vertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 6, 0);
+  gl->vertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 6,
+                          reinterpret_cast<char *>((sizeof(float) * 3)));
+  gl->bindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->iab);
+
+  glUniformMatrix4fv(uniform, 1, GL_FALSE, &matrixTransform[0][0]);
+  glDrawElements(GL_TRIANGLES, mesh->numIndices, GL_UNSIGNED_SHORT, 0);
+}
+
+void Renderer::typeTwoMesh(const Mesh *mesh, const mat4 matrixTransform,
+                           const int32_t uniform) {
+  gl->bindBuffer(GL_ARRAY_BUFFER, mesh->vbo);
+  gl->vertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 3, 0);
+  gl->enableVertexAttribArray(0);
+  glUniformMatrix4fv(uniform, 1, GL_FALSE, &matrixTransform[0][0]);
+  glDrawArrays(GL_TRIANGLE_FAN, 0, mesh->numVertices);
+}
+
 void Renderer::draw(DrawContext *pDrawContex) {
   ShaderProg *program = pDrawContex->getProgram();
   Mesh *mesh = pDrawContex->getMesh();
   mat4 matrixTransform = pDrawContex->getMatrixTransform();
-  GLint uniform = 0;
+  int32_t uniform = 0;
 
   program->use();
   uniform = program->getUniformLocation("matrix");
 
   if (mesh->type == MeshType::ONE) {
-    gl->bindBuffer(GL_ARRAY_BUFFER, mesh->vbo);
-    gl->enableVertexAttribArray(0);
-    gl->enableVertexAttribArray(1);
-    gl->vertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 6, 0);
-    gl->vertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 6,
-                            reinterpret_cast<char *>((sizeof(float) * 3)));
-    gl->bindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->iab);
-
-    glUniformMatrix4fv(uniform, 1, GL_FALSE, &matrixTransform[0][0]);
-    glDrawElements(GL_TRIANGLES, mesh->numIndices, GL_UNSIGNED_SHORT, 0);
+    typeOneMesh(mesh, matrixTransform, uniform);
   } else if (mesh->type == MeshType::TWO) {
-    gl->bindBuffer(GL_ARRAY_BUFFER, mesh->vbo);
-    gl->vertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 3, 0);
-    gl->enableVertexAttribArray(0);
-    glUniformMatrix4fv(uniform, 1, GL_FALSE, &matrixTransform[0][0]);
-    glDrawArrays(GL_TRIANGLE_FAN, 0, mesh->numVertices);
+    typeTwoMesh(mesh, matrixTransform, uniform);
   }
 
-  // TODO(Simon Puente): move to ShaderProgram as static method
-  gl->useProgram(0);
+  ShaderProg::clearProgram();
 }
 
 // Deprecated DO NOT USE IT!

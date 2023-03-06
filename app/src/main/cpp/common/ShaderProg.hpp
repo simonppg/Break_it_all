@@ -12,7 +12,7 @@ using std::string;
 
 class ShaderProg final {
 private:
-  Gl *gl;
+  static Gl *gl;
   ShaderLoader *shaderLoader;
   string vertexFile;
   string fragmentFile;
@@ -31,6 +31,7 @@ public:
 
   // TODO(Simon Puente): make programID private
   uint32_t programID;
+  static void clearProgram();
 };
 
 #endif // APP_SRC_MAIN_CPP_COMMON_SHADERPROG_HPP_

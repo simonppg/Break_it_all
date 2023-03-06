@@ -10,6 +10,7 @@
 #include "ShaderLoader.hpp"
 #include "opengl/Gl.hpp"
 
+using glm::mat4;
 using std::string;
 
 class Renderer {
@@ -19,6 +20,8 @@ private:
   Camera *camera;
 
   void showProgramInfoLog(uint32_t program);
+  void typeOneMesh(const Mesh *, const mat4, const int32_t);
+  void typeTwoMesh(const Mesh *, const mat4, const int32_t);
 
 public:
   explicit Renderer(Camera *);
