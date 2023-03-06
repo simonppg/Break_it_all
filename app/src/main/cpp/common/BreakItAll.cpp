@@ -1,4 +1,3 @@
-// Copyright (c) 2022 Simon Puente
 #include "BreakItAll.hpp"
 #include <iostream>
 #include <string>

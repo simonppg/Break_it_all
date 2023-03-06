@@ -1,4 +1,3 @@
-// Copyright (c) 2021 - 2022 Simon Puente
 #include "Test4.hpp"
 
 #include <string>

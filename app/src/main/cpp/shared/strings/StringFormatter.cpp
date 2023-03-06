@@ -1,4 +1,3 @@
-// Copyright (c) 2022 Simon Puente
 #include <cstdarg>
 #include <sstream>
 #include <string>

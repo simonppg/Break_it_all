@@ -1,4 +1,3 @@
-// Copyright (c) 2021 Simon Puente
 #include <android/asset_manager.h>
 #include <malloc.h>
 

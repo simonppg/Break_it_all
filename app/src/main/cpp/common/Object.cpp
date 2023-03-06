@@ -1,4 +1,3 @@
-// Copyright (c) 2022 Simon Puente
 #include <GLES3/gl3.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>

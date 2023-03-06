@@ -1,4 +1,3 @@
-// Copyright (c) 2021 Simon Puente
 #ifndef APP_SRC_MAIN_CPP_COMMON_TEST3_HPP_
 #define APP_SRC_MAIN_CPP_COMMON_TEST3_HPP_
 

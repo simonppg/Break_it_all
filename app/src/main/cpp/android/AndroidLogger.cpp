@@ -1,4 +1,3 @@
-// Copyright (c) 2021 Simon Puente
 #include "AndroidLogger.hpp"
 
 #include <android/log.h>

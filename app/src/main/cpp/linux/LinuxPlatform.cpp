@@ -1,4 +1,3 @@
-// Copyright (c) 2021 Simon Puente
 #include "LinuxPlatform.hpp"
 
 #include "LinuxFilesManager.hpp"

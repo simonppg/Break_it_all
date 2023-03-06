@@ -1,4 +1,3 @@
-// Copyright (c) 2022 Simon Puente
 #ifndef APP_SRC_MAIN_CPP_COMMON_POINT2D_HPP_
 #define APP_SRC_MAIN_CPP_COMMON_POINT2D_HPP_
 
