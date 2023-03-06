@@ -11,8 +11,6 @@ Renderer::Renderer(Camera *camera) {
   this->camera = camera;
 }
 
-Renderer::~Renderer() { }
-
 void Renderer::showProgramInfoLog(GLuint program) {
   int infoLength = gl.getProgramInfoLength(program);
   if (!infoLength) {

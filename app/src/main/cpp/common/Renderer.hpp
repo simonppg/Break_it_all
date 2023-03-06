@@ -25,7 +25,6 @@ private:
 
 public:
   explicit Renderer(Camera *);
-  ~Renderer();
 
   mat4 trasform(Point3D, float, Point3D, Point3D);
   void load_model(Mesh *pMesh);
