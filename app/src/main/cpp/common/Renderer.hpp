@@ -15,7 +15,7 @@ using std::string;
 
 class Renderer {
 private:
-  ShaderLoader *shaderLoader;
+  ShaderLoader shaderLoader;
   Gl gl;
   Camera *camera;
 

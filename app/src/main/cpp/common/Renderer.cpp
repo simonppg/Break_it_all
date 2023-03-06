@@ -8,14 +8,10 @@
 #include "ShaderLoader.hpp"
 
 Renderer::Renderer(Camera *camera) {
-  shaderLoader = new ShaderLoader();
   this->camera = camera;
 }
 
-Renderer::~Renderer() {
-  delete shaderLoader;
-  shaderLoader = nullptr;
-}
+Renderer::~Renderer() { }
 
 void Renderer::showProgramInfoLog(GLuint program) {
   int infoLength = gl.getProgramInfoLength(program);
@@ -105,14 +101,14 @@ Renderer::createProgram(const string vertexSource,
   }
 
   uint32_t vertexShader =
-      shaderLoader->loadShader(GL_VERTEX_SHADER, vertexSource);
+      shaderLoader.loadShader(GL_VERTEX_SHADER, vertexSource);
   if (!vertexShader) {
     // LOGE("Could not load vertexShader\n");
     return error;
   }
 
   uint32_t fragmentShader =
-      shaderLoader->loadShader(GL_FRAGMENT_SHADER, fragmentSource);
+      shaderLoader.loadShader(GL_FRAGMENT_SHADER, fragmentSource);
   if (!fragmentShader) {
     // LOGE("Could not load fragmentShader\n");
     return error;
