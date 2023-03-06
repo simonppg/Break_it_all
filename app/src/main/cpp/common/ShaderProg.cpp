@@ -10,12 +10,6 @@ ShaderProg::ShaderProg(FilesManager *filesManager, const string vertShaderPath,
                        const string fragShaderPath) {
   vertexFile = filesManager->loadFile(vertShaderPath);
   fragmentFile = filesManager->loadFile(fragShaderPath);
-  shaderLoader = new ShaderLoader();
-}
-
-ShaderProg::~ShaderProg() {
-  delete shaderLoader;
-  shaderLoader = nullptr;
 }
 
 void ShaderProg::createProgram() {
@@ -54,14 +48,14 @@ uint32_t ShaderProg::createProgramm(const string vertexSource,
   }
 
   uint32_t vertexShader =
-      shaderLoader->loadShader(GL_VERTEX_SHADER, vertexSource);
+      shaderLoader.loadShader(GL_VERTEX_SHADER, vertexSource);
   if (!vertexShader) {
     // LOGE("Could not load vertexShader\n");
     return error;
   }
 
   uint32_t fragmentShader =
-      shaderLoader->loadShader(GL_FRAGMENT_SHADER, fragmentSource);
+      shaderLoader.loadShader(GL_FRAGMENT_SHADER, fragmentSource);
   if (!fragmentShader) {
     // LOGE("Could not load fragmentShader\n");
     return error;

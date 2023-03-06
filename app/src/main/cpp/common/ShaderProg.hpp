@@ -13,7 +13,7 @@ using std::string;
 class ShaderProg final {
 private:
   static Gl gl;
-  ShaderLoader *shaderLoader;
+  ShaderLoader shaderLoader;
   string vertexFile;
   string fragmentFile;
   uint32_t createProgramm(const string vertexSource,
@@ -23,7 +23,6 @@ private:
 public:
   ShaderProg(FilesManager *, const string vertShaderStr,
              const string fragShaderStr);
-  ~ShaderProg();
 
   void createProgram();
   void use();
