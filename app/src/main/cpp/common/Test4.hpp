@@ -20,8 +20,8 @@ static const int COL = 9;
 class Test4 final : public Scene {
 private:
   Gl *gl;
-  MeshFactory *meshFactory;
-  Math *math;
+  MeshFactory meshFactory;
+  Math math;
   Mesh *meshes[2];
   ShaderProg *shaderProgs[2];
   Object *objects[ROW * COL];
