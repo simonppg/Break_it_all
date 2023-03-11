@@ -14,7 +14,6 @@
 #include "Projection.hpp"
 
 Test4::Test4(FilesManager *filesManager) : Scene() {
-  gl = new Gl();
   auto camera = new Camera(cameraSize, Point3D(0, 0, 40));
   camera->changeProjection(Projection::ORTHOGRAPHIC);
   renderer = new Renderer(camera);
@@ -102,12 +101,10 @@ Test4::~Test4() {
   paddle = nullptr;
   delete renderer;
   renderer = nullptr;
-  delete gl;
-  gl = nullptr;
 }
 
 void Test4::surfaceCreated() {
-  gl->enable();
+  gl.enable();
 
   for (auto &i : shaderProgs) {
     i->createProgram();
@@ -123,7 +120,7 @@ void Test4::surfaceChanged(Dimension dimension) {
   double width = dimension.getWidth();
   double height = dimension.getHeight();
 
-  gl->viewport(0, 0, width, height);
+  gl.viewport(0, 0, width, height);
   // camera->resize(dimension);
 
   Dimension gridDimension(width, top);
