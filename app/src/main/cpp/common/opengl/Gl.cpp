@@ -16,7 +16,6 @@ optional<uint32_t> Gl::createProgram() {
   return program;
 }
 
-
 void Gl::linkProgram(uint32_t programId) { glLinkProgram(programId); }
 void Gl::deleteProgram(uint32_t program) { glDeleteProgram(program); }
 
@@ -60,7 +59,8 @@ void Gl::deleteShader(uint32_t shaderId) { glDeleteShader(shaderId); }
 
 void Gl::compileShader(uint32_t shaderId) { glCompileShader(shaderId); }
 
-void Gl::shaderSource(uint32_t shaderId, int32_t numberOfShaders, string shaderSource) {
+void Gl::shaderSource(uint32_t shaderId, int32_t numberOfShaders,
+                      string shaderSource) {
   const char *pShaderSource = shaderSource.c_str();
   glShaderSource(shaderId, numberOfShaders, &pShaderSource, NULL);
 }
