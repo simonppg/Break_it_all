@@ -12,7 +12,7 @@ private:
   Gl gl;
 
   void showShaderInfoLog(int32_t shader);
-  uint32_t loadShader(int32_t shaderType, const string shaderSource);
+  uint32_t loadShader(uint32_t shaderId, const string shaderSource);
 
 public:
   uint32_t loadVertexShader(const string shaderSource);

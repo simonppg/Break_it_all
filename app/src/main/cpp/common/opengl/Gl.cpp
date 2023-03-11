@@ -38,13 +38,31 @@ string Gl::getProgramInfoLog(uint32_t program, int32_t infoLogLength) {
   return infoLog;
 }
 
+optional<uint32_t> Gl::createVertextShader() {
+  return createShader(GL_VERTEX_SHADER);
+}
+
+optional<uint32_t> Gl::createFragmentShader() {
+  return createShader(GL_FRAGMENT_SHADER);
+}
+
 optional<uint32_t> Gl::createShader(int32_t shaderType) {
-  auto shader = glCreateShader(shaderType);
-  if (shader == 0) {
+  auto shaderId = glCreateShader(shaderType);
+  if (shaderId == 0) {
     return nullopt;
   }
 
-  return shader;
+  return shaderId;
+}
+
+void Gl::deleteShader(uint32_t shaderId) { glDeleteShader(shaderId); }
+
+void Gl::compileShader(uint32_t shaderId) { glCompileShader(shaderId); }
+
+void Gl::shaderSource(uint32_t shaderId, int32_t numberOfShaders,
+                      string shaderSource) {
+  const char *pShaderSource = shaderSource.c_str();
+  glShaderSource(shaderId, numberOfShaders, &pShaderSource, NULL);
 }
 
 void Gl::attachShader(uint32_t programID, uint32_t shaderId) {

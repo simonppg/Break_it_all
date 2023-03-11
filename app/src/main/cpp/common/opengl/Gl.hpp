@@ -20,6 +20,12 @@ public:
   string getProgramInfoLog(uint32_t programId, int32_t infoLogLength);
 
   optional<uint32_t> createShader(int32_t shaderType);
+  optional<uint32_t> createVertextShader();
+  optional<uint32_t> createFragmentShader();
+  void deleteShader(uint32_t shaderId);
+  void compileShader(uint32_t shaderId);
+  void shaderSource(uint32_t shaderId, int32_t numberOfShaders,
+                    string shaderSource);
   void attachShader(uint32_t programId, uint32_t shaderId);
   bool isShaderCompilationOk(uint32_t shaderId);
   int32_t getInfoLogLength(uint32_t shaderId);
