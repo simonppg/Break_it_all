@@ -14,15 +14,13 @@
 #include "Projection.hpp"
 
 Test4::Test4(FilesManager *filesManager) : Scene() {
-  meshFactory = new MeshFactory();
   gl = new Gl();
   auto camera = new Camera(cameraSize, Point3D(0, 0, 40));
   camera->changeProjection(Projection::ORTHOGRAPHIC);
   renderer = new Renderer(camera);
-  math = new Math();
-  redBall = new Ball(meshFactory);
+  redBall = new Ball(&meshFactory);
   redBall->moveTo(camera->getPosition());
-  greenBall = new Ball(meshFactory);
+  greenBall = new Ball(&meshFactory);
   greenBall->moveTo(camera->getPosition());
 
   shaderProgs[0] =
@@ -30,10 +28,10 @@ Test4::Test4(FilesManager *filesManager) : Scene() {
   shaderProgs[1] =
       new ShaderProg(filesManager, Assets::CIRCLE_VERT, Assets::CIRCLE_FRAG);
   meshes[0] =
-      new Mesh(math->generateCube(), 16, math->generateCubeIndexs(), 36);
+      new Mesh(math.generateCube(), 16, math.generateCubeIndexs(), 36);
   int NUMBER_OF_VERTICES = 15;
   float radius = 1.0;
-  auto circle = math->generateCircle(radius, NUMBER_OF_VERTICES);
+  auto circle = math.generateCircle(radius, NUMBER_OF_VERTICES);
   meshes[1] = new Mesh(circle, NUMBER_OF_VERTICES);
 
   float h = cameraSize.getHeight() / 2;
@@ -41,7 +39,7 @@ Test4::Test4(FilesManager *filesManager) : Scene() {
 
   float ySize = 80.0f * (h / ROW) / 100;
   float xSize = 90.0f * (cameraSize.getWidth() / COL) / 100;
-  vector<float> vPos = math->generateGrid(gridDimension, ROW, COL);
+  vector<float> vPos = math.generateGrid(gridDimension, ROW, COL);
   for (int i = 0; i < ROW * COL; i++) {
     objects[i] = new Object(renderer, shaderProgs[1], meshes[0]);
     objects[i]->updateSize(Point3D(xSize / 2, ySize / 2, 1));
@@ -105,8 +103,6 @@ Test4::~Test4() {
   paddle = nullptr;
   delete renderer;
   renderer = nullptr;
-  delete math;
-  math = nullptr;
   delete gl;
   gl = nullptr;
 }
@@ -133,7 +129,7 @@ void Test4::surfaceChanged(Dimension dimension) {
 
   Dimension gridDimension(width, top);
 
-  vector<float> vPos = math->generateGrid(gridDimension, ROW, COL);
+  vector<float> vPos = math.generateGrid(gridDimension, ROW, COL);
   float x_size = 90.0f * (static_cast<float>(width) / COL) / 100;
   float y_size = 80.0f * (top / ROW) / 100;
 
