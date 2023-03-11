@@ -27,8 +27,7 @@ Test4::Test4(FilesManager *filesManager) : Scene() {
       new ShaderProg(filesManager, Assets::SIMPLE_VERT, Assets::SIMPLE_FRAG);
   shaderProgs[1] =
       new ShaderProg(filesManager, Assets::CIRCLE_VERT, Assets::CIRCLE_FRAG);
-  meshes[0] =
-      new Mesh(math.generateCube(), 16, math.generateCubeIndexs(), 36);
+  meshes[0] = new Mesh(math.generateCube(), 16, math.generateCubeIndexs(), 36);
   int NUMBER_OF_VERTICES = 15;
   float radius = 1.0;
   auto circle = math.generateCircle(radius, NUMBER_OF_VERTICES);
