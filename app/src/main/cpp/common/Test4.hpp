@@ -19,7 +19,7 @@ static const int COL = 9;
 
 class Test4 final : public Scene {
 private:
-  Gl *gl;
+  Gl gl;
   MeshFactory meshFactory;
   Math math;
   Mesh *meshes[2];
