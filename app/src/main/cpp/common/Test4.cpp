@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "../shared/FilesManager.hpp"
+#include "../shared/platform/FilesManager.hpp"
 #include "Assets.hpp"
 #include "Ball.hpp"
 #include "Dimension.hpp"
@@ -13,7 +13,7 @@
 #include "Point3D.hpp"
 #include "Projection.hpp"
 
-Test4::Test4(FilesManager *filesManager) : Scene() {
+Test4::Test4(Platform *platform, FilesManager *filesManager) : Scene(platform) {
   auto camera = new Camera(cameraSize, Point3D(0, 0, 40));
   camera->changeProjection(Projection::ORTHOGRAPHIC);
   renderer = new Renderer(camera);

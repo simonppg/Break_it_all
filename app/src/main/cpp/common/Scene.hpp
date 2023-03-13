@@ -9,16 +9,22 @@
 #include "Object.hpp"
 #include "Object3D.hpp"
 #include "Point2D.hpp"
+#include "../shared/platform/Platform.hpp"
+#include "../shared/platform/Platform.hpp"
+#include "../shared/events/EventBus.hpp"
 
 class Scene {
 private:
   Gl gl;
   vector<DrawableObject *> drawableObjects;
+  Platform *platform;
 
 protected:
+  EventBus *bus;
   unsigned int programID;
 
 public:
+  Scene(Platform *);
   virtual ~Scene() {}
 
   virtual void surfaceCreated() = 0;

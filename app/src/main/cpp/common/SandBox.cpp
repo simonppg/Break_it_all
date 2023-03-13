@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <string>
 
-#include "../shared/FilesManager.hpp"
+#include "../shared/platform/FilesManager.hpp"
 #include "Assets.hpp"
 #include "Dimension.hpp"
 #include "Math.hpp"
@@ -14,7 +14,12 @@
 using glm::mat4;
 using glm::vec3;
 
-SandBox::SandBox(FilesManager *filesManager) {
+// void SandBox::cursorPositionChangedHandler(Event *e) {
+//   CursorPositionChanged *event = (CursorPositionChanged *) e;
+//   povInDegrees += 5.0f;
+// }
+
+SandBox::SandBox(Platform *platform,FilesManager *filesManager) : Scene(platform) {
   auto camera = new Camera(Dimension(), Point3D(0, 0, 40));
   gl = new Gl();
   Math math = Math();
@@ -38,7 +43,13 @@ SandBox::SandBox(FilesManager *filesManager) {
 
     this->enterScene(object);
   }
+
+  bus = platform->bus();
+  bus->subcribe(EventType::CURSOR_POSITION_CHANGED, [=](Event *event) -> void {
+      povInDegrees += 5.0f;
+      });
 }
+
 
 SandBox::~SandBox() {
   for (auto &object : objects) {

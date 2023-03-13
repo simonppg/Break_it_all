@@ -5,6 +5,8 @@ include(cmake/glm.cmake)
 include(cmake/glfw.cmake)
 
 add_subdirectory(shared/strings)
+add_subdirectory(shared/events)
+add_subdirectory(shared/platform)
 add_subdirectory(common)
 add_subdirectory(linux/windowmanager)
 
@@ -15,6 +17,7 @@ add_library(Platform
   linux/LinuxLogger.cpp)
 
 target_link_libraries(Platform
+  PlatformBase
   StringFormatter
   WindowManager)
 

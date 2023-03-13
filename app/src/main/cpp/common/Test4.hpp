@@ -3,7 +3,7 @@
 
 #include <vector>
 
-#include "../shared/FilesManager.hpp"
+#include "../shared/platform/FilesManager.hpp"
 #include "Ball.hpp"
 #include "Math.hpp"
 #include "MeshFactory.hpp"
@@ -41,7 +41,7 @@ private:
   float top, bottom, right, left;
 
 public:
-  explicit Test4(FilesManager *);
+  explicit Test4(Platform *, FilesManager *);
   ~Test4();
 
   void surfaceCreated() override;

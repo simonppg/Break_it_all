@@ -3,7 +3,7 @@
 
 #include <map>
 
-#include "../common/Key.hpp"
+#include "../shared/events/Key.hpp"
 
 using std::map;
 

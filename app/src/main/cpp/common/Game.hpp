@@ -1,19 +1,21 @@
 #ifndef APP_SRC_MAIN_CPP_COMMON_GAME_HPP_
 #define APP_SRC_MAIN_CPP_COMMON_GAME_HPP_
 
-#include "../shared/Logger.hpp"
-#include "../shared/Platform.hpp"
+#include "../shared/platform/Logger.hpp"
+#include "../shared/platform/Platform.hpp"
 #include "Scene.hpp"
-#include "event/CursorPositionChanged.hpp"
-#include "event/Event.hpp"
-#include "event/KeyPressed.hpp"
-#include "event/ScreenTouched.hpp"
-#include "event/SurfaceChanged.hpp"
+#include "../shared/events/CursorPositionChanged.hpp"
+#include "../shared/events/Event.hpp"
+#include "../shared/events/EventBus.hpp"
+#include "../shared/events/KeyPressed.hpp"
+#include "../shared/events/ScreenTouched.hpp"
+#include "../shared/events/SurfaceChanged.hpp"
 
 class Game final {
 private:
   Scene *pScene;
   Logger *logger;
+  EventBus *bus;
 
   bool isClosing;
 

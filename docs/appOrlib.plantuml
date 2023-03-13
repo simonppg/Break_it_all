@@ -2,12 +2,12 @@
 
 [AppOrLib] ..> [Game] : use
 [AppOrLib] ..> [Platform] : use
-[AppOrLib] ..> [Utils] : use
+[AppOrLib] ..> [Shared] : use
 
 [Game] ..> [Platform] : use
-[Game] ..> [Utils] : use
+[Game] ..> [Shared] : use
 
-[Platform] .right.> [Utils] : use
+[Platform] .right.> [Shared] : use
 
 note left of [AppOrLib]
   Android JNI native library
@@ -25,7 +25,7 @@ note left of [Platform]
   but same API
 end note
 
-note right of [Utils]
+note right of [Shared]
   Multi-platform
   zero dependencies
 end note

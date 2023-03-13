@@ -5,9 +5,9 @@
 
 #include "../common/Game.hpp"
 #include "../common/GameLoop.hpp"
-#include "../shared/FilesManager.hpp"
-#include "../shared/Logger.hpp"
-#include "../shared/Platform.hpp"
+#include "../shared/platform/FilesManager.hpp"
+#include "../shared/platform/Logger.hpp"
+#include "../shared/platform/Platform.hpp"
 #include "GLFWKeyMapper.hpp"
 #include "LinuxPlatform.hpp"
 #include "windowmanager/WindowManager.hpp"

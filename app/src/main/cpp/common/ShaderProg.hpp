@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 
-#include "../shared/FilesManager.hpp"
+#include "../shared/platform/FilesManager.hpp"
 #include "ShaderLoader.hpp"
 #include "opengl/Gl.hpp"
 

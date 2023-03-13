@@ -3,11 +3,11 @@
 #include "LinuxFilesManager.hpp"
 #include "LinuxLogger.hpp"
 
-#include "../shared/FilesManager.hpp"
-#include "../shared/Logger.hpp"
-#include "../shared/Platform.hpp"
+// #include "../shared/platform/FilesManager.hpp"
+// #include "../shared/platform/Logger.hpp"
+// #include "../shared/platform/Platform.hpp"
 
-LinuxPlatform::LinuxPlatform() {
+LinuxPlatform::LinuxPlatform() : Platform() {
 #ifdef PROJECT_DIR
   const char *projectPath = PROJECT_DIR;
 #else

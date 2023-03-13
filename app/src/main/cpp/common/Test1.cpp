@@ -1,6 +1,6 @@
 #include "Test1.hpp"
 
-Test1::Test1() { gl = new Gl(); }
+Test1::Test1(Platform *platform) : Scene(platform) { gl = new Gl(); }
 
 Test1::~Test1() {
   delete gl;

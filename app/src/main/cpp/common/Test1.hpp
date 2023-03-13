@@ -9,7 +9,7 @@ private:
   Gl *gl;
 
 public:
-  Test1();
+  Test1(Platform *);
   ~Test1();
 
   void surfaceCreated() override;

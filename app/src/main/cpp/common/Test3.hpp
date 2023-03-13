@@ -1,7 +1,7 @@
 #ifndef APP_SRC_MAIN_CPP_COMMON_TEST3_HPP_
 #define APP_SRC_MAIN_CPP_COMMON_TEST3_HPP_
 
-#include "../shared/FilesManager.hpp"
+#include "../shared/platform/FilesManager.hpp"
 
 #include "Math.hpp"
 #include "Renderer.hpp"
@@ -18,7 +18,7 @@ private:
   int NUMBER_OF_VERTICES = 160;
 
 public:
-  explicit Test3(FilesManager *);
+  explicit Test3(Platform *, FilesManager *);
   ~Test3();
 
   void surfaceCreated() override;

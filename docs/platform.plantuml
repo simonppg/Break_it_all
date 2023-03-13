@@ -6,16 +6,26 @@ abstract class Platform
 abstract class Logger
 abstract class FilesManager
 
-package AndroidPlatform {
+package android {
     Platform <|-- AndroidPlatform
     Logger <|-- AndroidLogger
     FilesManager <|-- AndroidFilesManager
+
+    AndroidPlatform *-- AndroidFilesManager
+    AndroidPlatform *-- AndroidLogger
 }
 
-package LinuxPlatform {
+package linux {
     Platform <|-- LinuxPlatform
     Logger <|-- LinuxLogger
     FilesManager <|-- LinuxFilesManager
+
+    LinuxPlatform *-- LinuxFilesManager
+    LinuxPlatform *-- LinuxLogger
+}
+
+package shared {
+  Platform *-- EventBus
 }
 
 @enduml

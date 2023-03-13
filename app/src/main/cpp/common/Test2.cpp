@@ -4,11 +4,11 @@
 #include <cstdlib>
 #include <string>
 
-#include "../shared/FilesManager.hpp"
+#include "../shared/platform/FilesManager.hpp"
 #include "Assets.hpp"
 #include "Renderer.hpp"
 
-Test2::Test2(FilesManager *filesManager) {
+Test2::Test2(Platform *platform, FilesManager *filesManager) : Scene(platform) {
   this->filesManager = filesManager;
   gl = new Gl();
 }

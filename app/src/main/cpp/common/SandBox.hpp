@@ -9,9 +9,10 @@
 #include "Object.hpp"
 #include "Scene.hpp"
 #include "ShaderProg.hpp"
+#include "../shared/events/CursorPositionChanged.hpp"
 #include "opengl/Gl.hpp"
 
-#include "../shared/FilesManager.hpp"
+#include "../shared/platform/FilesManager.hpp"
 
 using std::vector;
 
@@ -24,9 +25,10 @@ private:
   Renderer *renderer;
   float povInDegrees = 0.0f;
   vector<Object *> objectList;
+  // void cursorPositionChangedHandler(Event *e);
 
 public:
-  explicit SandBox(FilesManager *);
+  explicit SandBox(Platform *, FilesManager *);
   ~SandBox();
 
   void surfaceCreated() override;

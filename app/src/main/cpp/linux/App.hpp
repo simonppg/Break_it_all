@@ -3,10 +3,11 @@
 
 #include "../common/Game.hpp"
 #include "../common/Iterable.hpp"
-#include "../common/event/Event.hpp"
-#include "../shared/Logger.hpp"
-#include "../shared/Platform.hpp"
+#include "../shared/events/Event.hpp"
+#include "../shared/platform/Logger.hpp"
+#include "../shared/platform/Platform.hpp"
 #include "GLFWKeyMapper.hpp"
+#include "Platform.hpp"
 #include "windowmanager/WindowManager.hpp"
 
 class App final : public Iterable {
