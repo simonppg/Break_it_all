@@ -5,7 +5,7 @@ include(cmake/glm.cmake)
 include(cmake/glfw.cmake)
 
 add_subdirectory(shared/strings)
-add_subdirectory(shared/events)
+add_subdirectory(shared/eventbus)
 add_subdirectory(shared/platform)
 add_subdirectory(common)
 add_subdirectory(linux/windowmanager)

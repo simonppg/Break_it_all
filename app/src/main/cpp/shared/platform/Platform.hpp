@@ -1,7 +1,7 @@
 #ifndef APP_SRC_MAIN_CPP_SHARED_PLATFORM_PLATFORM_HPP_
 #define APP_SRC_MAIN_CPP_SHARED_PLATFORM_PLATFORM_HPP_
 
-#include "../events/EventBus.hpp"
+#include "../eventbus/EventBus.hpp"
 #include "FilesManager.hpp"
 #include "Logger.hpp"
 

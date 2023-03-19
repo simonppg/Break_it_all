@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "../shared/events/CursorPositionChanged.hpp"
+#include "../shared/eventbus/CursorPositionChanged.hpp"
 #include "../shared/platform/FilesManager.hpp"
 #include "Assets.hpp"
 #include "Ball.hpp"

@@ -7,7 +7,7 @@ title: App components
 classDiagram
 direction BT
   StringsFormatter <-- Shared
-  Events <-- Shared
+  EventBus <-- Shared
   Platform <-- Shared
   Shared <-- LinuxPlatform
   Shared <-- Game
