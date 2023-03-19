@@ -5,7 +5,7 @@
 #include "../shared/platform/Platform.hpp"
 #include "Dimension.hpp"
 #include "Game.hpp"
-#include "Key.hpp"
+#include "../shared/events/Key.hpp"
 #include "Point3D.hpp"
 #include "../shared/events/CursorPositionChanged.hpp"
 #include "../shared/events/KeyPressed.hpp"
@@ -76,7 +76,7 @@ void Game::cursorPositionChangedHandler(CursorPositionChanged *event) {
 }
 
 void Game::screenTouchedHandler(ScreenTouched *event) {
-  pScene->events(Point2D(event->getXPosition(), event->getYPosition()));
+  // pScene->events(Point2D(event->getXPosition(), event->getYPosition()));
 }
 
 void Game::keyPressedHandler(KeyPressed *event) {

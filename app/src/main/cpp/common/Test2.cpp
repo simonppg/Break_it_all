@@ -43,4 +43,4 @@ void Test2::resume() { gl->useProgram(programID); }
 
 void Test2::update(double dt) {}
 
-bool Test2::events(Point2D point) { return false; }
+// bool Test2::events(Point2D point) { return false; }

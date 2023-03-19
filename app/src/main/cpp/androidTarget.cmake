@@ -2,6 +2,8 @@ include(cmake/DownloadProject.cmake)
 include(cmake/glm.cmake)
 
 add_subdirectory(shared/strings)
+add_subdirectory(shared/events)
+add_subdirectory(shared/platform)
 add_subdirectory(common)
 
 add_library(Platform
@@ -11,6 +13,7 @@ add_library(Platform
   android/AndroidLogger.cpp)
 
 target_link_libraries(Platform
+  PlatformBase
   StringFormatter
   -landroid
   -llog)

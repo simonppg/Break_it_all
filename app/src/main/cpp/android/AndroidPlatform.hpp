@@ -6,9 +6,9 @@
 #include "AndroidFilesManager.hpp"
 #include "AndroidLogger.hpp"
 
-#include "../shared/FilesManager.hpp"
-#include "../shared/Logger.hpp"
-#include "../shared/Platform.hpp"
+#include "../shared/platform/FilesManager.hpp"
+#include "../shared/platform/Logger.hpp"
+#include "../shared/platform/Platform.hpp"
 
 class AndroidPlatform : public Platform {
 private:

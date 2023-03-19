@@ -5,6 +5,7 @@
 #include "../shared/platform/FilesManager.hpp"
 #include "Assets.hpp"
 #include "Ball.hpp"
+#include "../shared/events/CursorPositionChanged.hpp"
 #include "Dimension.hpp"
 #include "Math.hpp"
 #include "Object.hpp"
@@ -74,6 +75,19 @@ Test4::Test4(Platform *platform, FilesManager *filesManager) : Scene(platform) {
   }
   this->enterScene(redBall);
   this->enterScene(greenBall);
+
+  bus = platform->bus();
+  bus->subcribe(EventType::CURSOR_POSITION_CHANGED, [=](Event *event) -> void {
+      CursorPositionChanged *point = (CursorPositionChanged *) event;
+
+      float cubeXSize = (cameraSize.getWidth() / 2) / 3;
+      float cubeYSize = cubeXSize / 7;
+      float newX = (-viewportDimension.getWidth() / 2) + point->getXPosition();
+      float newY = (-viewportDimension.getHeight() / 2) + cubeYSize * 2;
+
+      paddle->updatePosition(Point3D(newX, newY, 0));
+      povInDegrees += 5.0f;
+      });
 }
 
 Test4::~Test4() {
@@ -162,16 +176,16 @@ void Test4::update(double dt) {
   // LOGI("%f, %f, %f, %f", dt, ball->velocity, ball->velocity * dt, ball->x);
 }
 
-bool Test4::events(Point2D point) {
-  float cubeXSize = (cameraSize.getWidth() / 2) / 3;
-  float cubeYSize = cubeXSize / 7;
-  float newX = (-viewportDimension.getWidth() / 2) + point.getX();
-  float newY = (-viewportDimension.getHeight() / 2) + cubeYSize * 2;
-
-  paddle->updatePosition(Point3D(newX, newY, 0));
-  povInDegrees += 5.0f;
-  return true;
-}
+// bool Test4::events(Point2D point) {
+//   float cubeXSize = (cameraSize.getWidth() / 2) / 3;
+//   float cubeYSize = cubeXSize / 7;
+//   float newX = (-viewportDimension.getWidth() / 2) + point.getX();
+//   float newY = (-viewportDimension.getHeight() / 2) + cubeYSize * 2;
+//
+//   paddle->updatePosition(Point3D(newX, newY, 0));
+//   povInDegrees += 5.0f;
+//   return true;
+// }
 
 void Test4::pause() {}
 void Test4::resume() {}

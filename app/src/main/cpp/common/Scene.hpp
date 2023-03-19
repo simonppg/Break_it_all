@@ -33,7 +33,7 @@ public:
   virtual void pause() = 0;
   virtual void resume() = 0;
   virtual void update(double) = 0;
-  virtual bool events(Point2D) = 0;
+  // virtual bool events(Point2D) = 0;
   void enterScene(DrawableObject *);
 };
 

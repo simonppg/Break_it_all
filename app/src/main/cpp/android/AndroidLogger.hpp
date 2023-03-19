@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include "../shared/Logger.hpp"
+#include "../shared/platform/Logger.hpp"
 #include "../shared/strings/StringFormatter.hpp"
 
 using std::string;

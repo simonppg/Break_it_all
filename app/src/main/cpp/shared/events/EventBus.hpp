@@ -8,8 +8,6 @@
 #include <list>
 
 using std::map;
-using std::hash;
-using std::unordered_map;
 using std::function;
 using std::list;
 using Subscriber = function<void(Event *)>;
@@ -18,7 +16,6 @@ using SubMap = map<EventType, list<Subscriber> *>;
 class EventBus {
 private:
   SubMap subMap;
-  // map <int, int> map1;
 public:
   EventBus();
   void publish(Event *);

@@ -90,7 +90,7 @@ void SandBox::update(double dt) {
   }
 }
 
-bool SandBox::events(Point2D point) {
-  povInDegrees += 5.0f;
-  return true;
-}
+// bool SandBox::events(Point2D point) {
+//   povInDegrees += 5.0f;
+//   return true;
+// }

@@ -1,10 +1,10 @@
 #include <cassert>
 
 #include "../common/Game.hpp"
-#include "../common/event/ScreenTouched.hpp"
-#include "../shared/FilesManager.hpp"
-#include "../shared/Logger.hpp"
-#include "../shared/Platform.hpp"
+#include "../shared/events/ScreenTouched.hpp"
+#include "../shared/platform/FilesManager.hpp"
+#include "../shared/platform/Logger.hpp"
+#include "../shared/platform/Platform.hpp"
 #include "AndroidPlatform.hpp"
 
 #ifdef __cplusplus
