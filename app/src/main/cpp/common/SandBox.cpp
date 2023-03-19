@@ -45,6 +45,10 @@ SandBox::SandBox(Platform *platform,FilesManager *filesManager) : Scene(platform
   }
 
   bus = platform->bus();
+
+bus->subcribe(EventType::SCREEN_TOUCHED, [=](Event *event) -> void {
+    povInDegrees += 5.0f;
+});
   bus->subcribe(EventType::CURSOR_POSITION_CHANGED, [=](Event *event) -> void {
       povInDegrees += 5.0f;
       });

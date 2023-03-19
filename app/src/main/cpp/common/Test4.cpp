@@ -88,6 +88,18 @@ Test4::Test4(Platform *platform, FilesManager *filesManager) : Scene(platform) {
       paddle->updatePosition(Point3D(newX, newY, 0));
       povInDegrees += 5.0f;
       });
+
+bus->subcribe(EventType::SCREEN_TOUCHED, [=](Event *event) -> void {
+      CursorPositionChanged *point = (CursorPositionChanged *) event;
+
+      float cubeXSize = (cameraSize.getWidth() / 2) / 3;
+      float cubeYSize = cubeXSize / 7;
+      float newX = (-viewportDimension.getWidth() / 2) + point->getXPosition();
+      float newY = (-viewportDimension.getHeight() / 2) + cubeYSize * 2;
+
+      paddle->updatePosition(Point3D(newX, newY, 0));
+      povInDegrees += 5.0f;
+});
 }
 
 Test4::~Test4() {
