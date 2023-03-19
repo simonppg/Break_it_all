@@ -10,14 +10,14 @@ add_subdirectory(shared/platform)
 add_subdirectory(common)
 add_subdirectory(linux/windowmanager)
 
-add_library(Platform
+add_library(LinuxPlatform
   STATIC
   linux/LinuxFilesManager.cpp
   linux/LinuxPlatform.cpp
   linux/LinuxLogger.cpp)
 
-target_link_libraries(Platform
-  PlatformBase
+target_link_libraries(LinuxPlatform
+  Platform
   StringFormatter
   WindowManager)
 
@@ -30,10 +30,12 @@ add_executable(linuxLauncher
   linux/main.cpp)
 
 target_link_libraries(linuxVersion
-  common)
+  common
+  LinuxPlatform)
 
 target_link_libraries(linuxLauncher
-  common)
+  common
+  LinuxPlatform)
 
 set_target_properties(linuxLauncher linuxVersion
   PROPERTIES
