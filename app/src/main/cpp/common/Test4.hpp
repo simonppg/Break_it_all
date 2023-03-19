@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "../shared/platform/FilesManager.hpp"
+#include "../shared/events/CursorPositionChanged.hpp"
 #include "Ball.hpp"
 #include "Math.hpp"
 #include "MeshFactory.hpp"
@@ -39,6 +40,8 @@ private:
   int xDirection = 1;
   float povInDegrees = 0.0f;
   float top, bottom, right, left;
+
+  void movePaddle(CursorPositionChanged);
 
 public:
   explicit Test4(Platform *, FilesManager *);
