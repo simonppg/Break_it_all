@@ -3,7 +3,7 @@
 
 #include "../common/Game.hpp"
 #include "../common/Iterable.hpp"
-#include "../shared/events/Event.hpp"
+#include "../shared/eventbus/Event.hpp"
 #include "../shared/platform/Logger.hpp"
 #include "../shared/platform/Platform.hpp"
 #include "GLFWKeyMapper.hpp"

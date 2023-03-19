@@ -3,7 +3,7 @@
 
 #include <vector>
 
-#include "../shared/events/CursorPositionChanged.hpp"
+#include "../shared/eventbus/CursorPositionChanged.hpp"
 #include "Camera.hpp"
 #include "Math.hpp"
 #include "Mesh.hpp"

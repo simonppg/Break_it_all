@@ -1,10 +1,10 @@
 #include <sstream>
 
-#include "../shared/events/CursorPositionChanged.hpp"
-#include "../shared/events/Key.hpp"
-#include "../shared/events/KeyPressed.hpp"
-#include "../shared/events/ScreenTouched.hpp"
-#include "../shared/events/SurfaceChanged.hpp"
+#include "../shared/eventbus/CursorPositionChanged.hpp"
+#include "../shared/eventbus/Key.hpp"
+#include "../shared/eventbus/KeyPressed.hpp"
+#include "../shared/eventbus/ScreenTouched.hpp"
+#include "../shared/eventbus/SurfaceChanged.hpp"
 #include "../shared/platform/FilesManager.hpp"
 #include "../shared/platform/Logger.hpp"
 #include "../shared/platform/Platform.hpp"

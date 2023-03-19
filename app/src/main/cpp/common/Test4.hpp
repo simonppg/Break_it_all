@@ -3,7 +3,7 @@
 
 #include <vector>
 
-#include "../shared/events/CursorPositionChanged.hpp"
+#include "../shared/eventbus/CursorPositionChanged.hpp"
 #include "../shared/platform/FilesManager.hpp"
 #include "Ball.hpp"
 #include "Math.hpp"

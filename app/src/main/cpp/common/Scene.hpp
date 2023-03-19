@@ -3,7 +3,7 @@
 
 #include <vector>
 
-#include "../shared/events/EventBus.hpp"
+#include "../shared/eventbus/EventBus.hpp"
 #include "../shared/platform/Platform.hpp"
 #include "Dimension.hpp"
 #include "DrawableObject.hpp"
