@@ -1,3 +1,5 @@
+# App components
+
 ```mermaid
 ---
 title: App components
