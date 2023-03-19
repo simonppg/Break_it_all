@@ -23,7 +23,7 @@ protected:
   unsigned int programID;
 
 public:
-  Scene(Platform *);
+  explicit Scene(Platform *);
   virtual ~Scene() {}
 
   virtual void surfaceCreated() = 0;

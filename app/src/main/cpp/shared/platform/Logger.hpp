@@ -1,5 +1,5 @@
-#ifndef APP_SRC_MAIN_CPP_SHARED_LOGGER_HPP_
-#define APP_SRC_MAIN_CPP_SHARED_LOGGER_HPP_
+#ifndef APP_SRC_MAIN_CPP_SHARED_PLATFORM_LOGGER_HPP_
+#define APP_SRC_MAIN_CPP_SHARED_PLATFORM_LOGGER_HPP_
 
 #include <string>
 
@@ -18,4 +18,4 @@ public:
   virtual void logi(string aString) = 0;
 };
 
-#endif // APP_SRC_MAIN_CPP_SHARED_LOGGER_HPP_
+#endif // APP_SRC_MAIN_CPP_SHARED_PLATFORM_LOGGER_HPP_

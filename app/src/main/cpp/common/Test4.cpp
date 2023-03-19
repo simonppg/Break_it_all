@@ -78,7 +78,8 @@ Test4::Test4(Platform *platform, FilesManager *filesManager) : Scene(platform) {
 
   bus = platform->bus();
   bus->subcribe(EventType::CURSOR_POSITION_CHANGED, [=](Event *event) -> void {
-    CursorPositionChanged *point = (CursorPositionChanged *)event;
+    CursorPositionChanged *point =
+        reinterpret_cast<CursorPositionChanged *>(event);
 
     float cubeXSize = (cameraSize.getWidth() / 2) / 3;
     float cubeYSize = cubeXSize / 7;
@@ -90,7 +91,8 @@ Test4::Test4(Platform *platform, FilesManager *filesManager) : Scene(platform) {
   });
 
   bus->subcribe(EventType::SCREEN_TOUCHED, [=](Event *event) -> void {
-    CursorPositionChanged *point = (CursorPositionChanged *)event;
+    CursorPositionChanged *point =
+        reinterpret_cast<CursorPositionChanged *>(event);
 
     float cubeXSize = (cameraSize.getWidth() / 2) / 3;
     float cubeYSize = cubeXSize / 7;

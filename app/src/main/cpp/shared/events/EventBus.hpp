@@ -1,11 +1,12 @@
-#ifndef APP_SRC_MAIN_CPP_COMMON_EVENT_EVENTBUS_HPP_
-#define APP_SRC_MAIN_CPP_COMMON_EVENT_EVENTBUS_HPP_
+#ifndef APP_SRC_MAIN_CPP_SHARED_EVENTS_EVENTBUS_HPP_
+#define APP_SRC_MAIN_CPP_SHARED_EVENTS_EVENTBUS_HPP_
 
-#include "Event.hpp"
-#include "EventType.hpp"
 #include <functional>
 #include <list>
 #include <map>
+
+#include "Event.hpp"
+#include "EventType.hpp"
 
 using std::function;
 using std::list;
@@ -23,4 +24,4 @@ public:
   void subcribe(EventType, Subscriber);
 };
 
-#endif // APP_SRC_MAIN_CPP_COMMON_EVENT_EVENTBUS_HPP_
+#endif // APP_SRC_MAIN_CPP_SHARED_EVENTS_EVENTBUS_HPP_

@@ -1,5 +1,5 @@
-#ifndef APP_SRC_MAIN_CPP_SHARED_PLATFORM_HPP_
-#define APP_SRC_MAIN_CPP_SHARED_PLATFORM_HPP_
+#ifndef APP_SRC_MAIN_CPP_SHARED_PLATFORM_PLATFORM_HPP_
+#define APP_SRC_MAIN_CPP_SHARED_PLATFORM_PLATFORM_HPP_
 
 #include "../events/EventBus.hpp"
 #include "FilesManager.hpp"
@@ -17,4 +17,4 @@ public:
   EventBus *bus();
 };
 
-#endif // APP_SRC_MAIN_CPP_SHARED_PLATFORM_HPP_
+#endif // APP_SRC_MAIN_CPP_SHARED_PLATFORM_PLATFORM_HPP_
