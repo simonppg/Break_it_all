@@ -5,10 +5,15 @@
 title: App components
 ---
 classDiagram
-  Shared <-- Game : use
-  Shared <-- AppOrLib : use
-  Game <-- AppOrLib : use
-  Platform <-- AppOrLib : use
-  Platform <-- Game : use
-  Shared <-- Platform : use
+direction BT
+  StringsFormatter <-- Shared
+  Events <-- Shared
+  Platform <-- Shared
+  Shared <-- LinuxPlatform
+  Shared <-- Game
+  Shared <-- AndroidPlatform
+  Game <-- LinuxApp
+  Game <-- AndroidLib
+  LinuxPlatform <-- LinuxApp
+  AndroidPlatform <-- AndroidLib
 ```
