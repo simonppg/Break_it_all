@@ -1,7 +1,7 @@
 #ifndef APP_SRC_MAIN_CPP_COMMON_GAMELOOP_HPP_
 #define APP_SRC_MAIN_CPP_COMMON_GAMELOOP_HPP_
 
-#include "../shared/Logger.hpp"
+#include "../shared/platform/Logger.hpp"
 #include "Iterable.hpp"
 
 class GameLoop {

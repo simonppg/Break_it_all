@@ -1,16 +1,16 @@
 #include <sstream>
 
-#include "../shared/FilesManager.hpp"
-#include "../shared/Logger.hpp"
-#include "../shared/Platform.hpp"
+#include "../shared/events/CursorPositionChanged.hpp"
+#include "../shared/events/Key.hpp"
+#include "../shared/events/KeyPressed.hpp"
+#include "../shared/events/ScreenTouched.hpp"
+#include "../shared/events/SurfaceChanged.hpp"
+#include "../shared/platform/FilesManager.hpp"
+#include "../shared/platform/Logger.hpp"
+#include "../shared/platform/Platform.hpp"
 #include "Dimension.hpp"
 #include "Game.hpp"
-#include "Key.hpp"
 #include "Point3D.hpp"
-#include "event/CursorPositionChanged.hpp"
-#include "event/KeyPressed.hpp"
-#include "event/ScreenTouched.hpp"
-#include "event/SurfaceChanged.hpp"
 
 // Examples
 #include "SandBox.hpp"
@@ -23,18 +23,19 @@ Game::Game(int sceneNumber, Platform *platform) {
   // NOTE: Don't call OpenGL functions here
   logger = platform->logger();
   FilesManager *filesManager = platform->filesManager();
+  bus = platform->bus();
   isClosing = false;
 
   if (sceneNumber == 0) {
-    pScene = new SandBox(filesManager);
+    pScene = new SandBox(platform, filesManager);
   } else if (sceneNumber == 1) {
-    pScene = new Test1();
+    pScene = new Test1(platform);
   } else if (sceneNumber == 2) {
-    pScene = new Test2(filesManager);
+    pScene = new Test2(platform, filesManager);
   } else if (sceneNumber == 3) {
-    pScene = new Test3(filesManager);
+    pScene = new Test3(platform, filesManager);
   } else {
-    pScene = new Test4(filesManager);
+    pScene = new Test4(platform, filesManager);
   }
 }
 
@@ -71,11 +72,11 @@ void Game::camera_right() {
 }
 
 void Game::cursorPositionChangedHandler(CursorPositionChanged *event) {
-  pScene->events(Point2D(event->getXPosition(), event->getYPosition()));
+  // pScene->events(Point2D(event->getXPosition(), event->getYPosition()));
 }
 
 void Game::screenTouchedHandler(ScreenTouched *event) {
-  pScene->events(Point2D(event->getXPosition(), event->getYPosition()));
+  // pScene->events(Point2D(event->getXPosition(), event->getYPosition()));
 }
 
 void Game::keyPressedHandler(KeyPressed *event) {
@@ -150,7 +151,7 @@ void Game::dispatchEvent(Event *event) {
 
     auto realEvent = reinterpret_cast<SurfaceChanged *>(event);
     surfaceChangedHandler(realEvent);
-    return;
+    // return;
   }
 
   if (eventType == EventType::CURSOR_POSITION_CHANGED) {
@@ -158,22 +159,24 @@ void Game::dispatchEvent(Event *event) {
 
     auto realEvent = reinterpret_cast<CursorPositionChanged *>(event);
     cursorPositionChangedHandler(realEvent);
-    return;
+    // return;
   }
 
   if (eventType == EventType::KEY_PRESSED) {
     logger->logi("KEY_PRESSED");
 
     keyPressedHandler(reinterpret_cast<KeyPressed *>(event));
-    return;
+    // return;
   }
 
   if (eventType == EventType::SCREEN_TOUCHED) {
     logger->logi("SCREEN_TOUCHED");
 
     screenTouchedHandler(reinterpret_cast<ScreenTouched *>(event));
-    return;
+    // return;
   }
 
   logger->logi("Event type: %d, was not handled", event->type());
+
+  bus->publish(event);
 }

@@ -1,6 +1,6 @@
 #include "Test1.hpp"
 
-Test1::Test1() { gl = new Gl(); }
+Test1::Test1(Platform *platform) : Scene(platform) { gl = new Gl(); }
 
 Test1::~Test1() {
   delete gl;
@@ -19,4 +19,4 @@ void Test1::resume() {}
 
 void Test1::update(double dt) {}
 
-bool Test1::events(Point2D point) { return false; }
+// bool Test1::events(Point2D point) { return false; }

@@ -3,7 +3,8 @@
 
 #include <vector>
 
-#include "../shared/FilesManager.hpp"
+#include "../shared/events/CursorPositionChanged.hpp"
+#include "../shared/platform/FilesManager.hpp"
 #include "Ball.hpp"
 #include "Math.hpp"
 #include "MeshFactory.hpp"
@@ -40,8 +41,10 @@ private:
   float povInDegrees = 0.0f;
   float top, bottom, right, left;
 
+  void movePaddle(CursorPositionChanged);
+
 public:
-  explicit Test4(FilesManager *);
+  explicit Test4(Platform *, FilesManager *);
   ~Test4();
 
   void surfaceCreated() override;
@@ -49,7 +52,7 @@ public:
   void pause() override;
   void resume() override;
   void update(double) override;
-  bool events(Point2D) override;
+  // bool events(Point2D) override;
 };
 
 #endif // APP_SRC_MAIN_CPP_COMMON_TEST4_HPP_

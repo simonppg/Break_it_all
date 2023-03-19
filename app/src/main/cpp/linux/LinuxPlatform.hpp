@@ -5,9 +5,10 @@
 #include "LinuxFilesManager.hpp"
 #include "LinuxLogger.hpp"
 
-#include "../shared/FilesManager.hpp"
-#include "../shared/Logger.hpp"
-#include "../shared/Platform.hpp"
+#include "../shared/platform/FilesManager.hpp"
+#include "../shared/platform/Logger.hpp"
+#include "../shared/platform/Platform.hpp"
+#include "Platform.hpp"
 
 class LinuxPlatform final : public Platform {
 private:

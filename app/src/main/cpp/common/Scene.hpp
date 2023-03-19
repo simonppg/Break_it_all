@@ -3,6 +3,8 @@
 
 #include <vector>
 
+#include "../shared/events/EventBus.hpp"
+#include "../shared/platform/Platform.hpp"
 #include "Dimension.hpp"
 #include "DrawableObject.hpp"
 #include "Gl.hpp"
@@ -14,11 +16,14 @@ class Scene {
 private:
   Gl gl;
   vector<DrawableObject *> drawableObjects;
+  Platform *platform;
 
 protected:
+  EventBus *bus;
   unsigned int programID;
 
 public:
+  explicit Scene(Platform *);
   virtual ~Scene() {}
 
   virtual void surfaceCreated() = 0;
@@ -27,7 +32,7 @@ public:
   virtual void pause() = 0;
   virtual void resume() = 0;
   virtual void update(double) = 0;
-  virtual bool events(Point2D) = 0;
+  // virtual bool events(Point2D) = 0;
   void enterScene(DrawableObject *);
 };
 

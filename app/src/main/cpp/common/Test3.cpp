@@ -6,7 +6,7 @@
 #include <string>
 #include <vector>
 
-#include "../shared/FilesManager.hpp"
+#include "../shared/platform/FilesManager.hpp"
 #include "Assets.hpp"
 #include "Camera.hpp"
 #include "Dimension.hpp"
@@ -14,7 +14,7 @@
 #include "Point3D.hpp"
 #include "Renderer.hpp"
 
-Test3::Test3(FilesManager *filesManager) {
+Test3::Test3(Platform *platform, FilesManager *filesManager) : Scene(platform) {
   float RADIUS = 0.5;
   circle = math->generateCircle(RADIUS, NUMBER_OF_VERTICES);
   this->filesManager = filesManager;
@@ -75,4 +75,4 @@ void Test3::resume() { gl->useProgram(programID); }
 
 void Test3::update(double dt) {}
 
-bool Test3::events(Point2D point) { return false; }
+// bool Test3::events(Point2D point) { return false; }

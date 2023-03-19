@@ -2,8 +2,6 @@
 
 #include <GLFW/glfw3.h>
 
-#include "../common/Key.hpp"
-
 GLFWKeyMapper::GLFWKeyMapper() {
   keyMap = {{GLFW_KEY_W, Key::W_KEY}, {GLFW_KEY_A, Key::A_KEY},
             {GLFW_KEY_S, Key::S_KEY}, {GLFW_KEY_D, Key::D_KEY},

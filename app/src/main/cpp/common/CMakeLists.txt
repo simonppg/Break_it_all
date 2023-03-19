@@ -5,10 +5,6 @@ add_library(common STATIC
         Dimension.cpp
         DrawContext.cpp
         FieldOfView.cpp
-        event/CursorPositionChanged.cpp
-        event/SurfaceChanged.cpp
-        event/KeyPressed.cpp
-        event/ScreenTouched.cpp
         BreakItAll.cpp
         SandBox.cpp
         Scene.cpp
@@ -32,6 +28,7 @@ add_library(common STATIC
         Point3D.cpp)
 
 target_link_libraries(common
+        EventBus
         Platform
         glWrapper
         glm)
