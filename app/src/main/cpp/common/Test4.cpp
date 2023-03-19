@@ -118,13 +118,13 @@ Test4::~Test4() {
 }
 
 void Test4::movePaddle(CursorPositionChanged point) {
-    float cubeXSize = (cameraSize.getWidth() / 2) / 3;
-    float cubeYSize = cubeXSize / 7;
-    float newX = (-viewportDimension.getWidth() / 2) + point.getXPosition();
-    float newY = (-viewportDimension.getHeight() / 2) + cubeYSize * 2;
+  float cubeXSize = (cameraSize.getWidth() / 2) / 3;
+  float cubeYSize = cubeXSize / 7;
+  float newX = (-viewportDimension.getWidth() / 2) + point.getXPosition();
+  float newY = (-viewportDimension.getHeight() / 2) + cubeYSize * 2;
 
-    paddle->updatePosition(Point3D(newX, newY, 0));
-    povInDegrees += 5.0f;
+  paddle->updatePosition(Point3D(newX, newY, 0));
+  povInDegrees += 5.0f;
 }
 
 void Test4::surfaceCreated() {

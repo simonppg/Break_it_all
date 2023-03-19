@@ -3,8 +3,8 @@
 
 #include <vector>
 
-#include "../shared/platform/FilesManager.hpp"
 #include "../shared/events/CursorPositionChanged.hpp"
+#include "../shared/platform/FilesManager.hpp"
 #include "Ball.hpp"
 #include "Math.hpp"
 #include "MeshFactory.hpp"
