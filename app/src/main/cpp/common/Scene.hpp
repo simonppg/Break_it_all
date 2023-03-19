@@ -3,15 +3,14 @@
 
 #include <vector>
 
+#include "../shared/events/EventBus.hpp"
+#include "../shared/platform/Platform.hpp"
 #include "Dimension.hpp"
 #include "DrawableObject.hpp"
 #include "Gl.hpp"
 #include "Object.hpp"
 #include "Object3D.hpp"
 #include "Point2D.hpp"
-#include "../shared/platform/Platform.hpp"
-#include "../shared/platform/Platform.hpp"
-#include "../shared/events/EventBus.hpp"
 
 class Scene {
 private:

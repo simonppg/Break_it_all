@@ -1,16 +1,16 @@
 #include <sstream>
 
+#include "../shared/events/CursorPositionChanged.hpp"
+#include "../shared/events/Key.hpp"
+#include "../shared/events/KeyPressed.hpp"
+#include "../shared/events/ScreenTouched.hpp"
+#include "../shared/events/SurfaceChanged.hpp"
 #include "../shared/platform/FilesManager.hpp"
 #include "../shared/platform/Logger.hpp"
 #include "../shared/platform/Platform.hpp"
 #include "Dimension.hpp"
 #include "Game.hpp"
-#include "../shared/events/Key.hpp"
 #include "Point3D.hpp"
-#include "../shared/events/CursorPositionChanged.hpp"
-#include "../shared/events/KeyPressed.hpp"
-#include "../shared/events/ScreenTouched.hpp"
-#include "../shared/events/SurfaceChanged.hpp"
 
 // Examples
 #include "SandBox.hpp"

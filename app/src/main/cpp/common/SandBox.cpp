@@ -19,7 +19,8 @@ using glm::vec3;
 //   povInDegrees += 5.0f;
 // }
 
-SandBox::SandBox(Platform *platform,FilesManager *filesManager) : Scene(platform) {
+SandBox::SandBox(Platform *platform, FilesManager *filesManager)
+    : Scene(platform) {
   auto camera = new Camera(Dimension(), Point3D(0, 0, 40));
   gl = new Gl();
   Math math = Math();
@@ -46,14 +47,11 @@ SandBox::SandBox(Platform *platform,FilesManager *filesManager) : Scene(platform
 
   bus = platform->bus();
 
-bus->subcribe(EventType::SCREEN_TOUCHED, [=](Event *event) -> void {
-    povInDegrees += 5.0f;
-});
-  bus->subcribe(EventType::CURSOR_POSITION_CHANGED, [=](Event *event) -> void {
-      povInDegrees += 5.0f;
-      });
+  bus->subcribe(EventType::SCREEN_TOUCHED,
+                [=](Event *event) -> void { povInDegrees += 5.0f; });
+  bus->subcribe(EventType::CURSOR_POSITION_CHANGED,
+                [=](Event *event) -> void { povInDegrees += 5.0f; });
 }
-
 
 SandBox::~SandBox() {
   for (auto &object : objects) {

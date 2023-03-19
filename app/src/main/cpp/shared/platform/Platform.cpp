@@ -1,5 +1,3 @@
 #include "Platform.hpp"
 
-EventBus *Platform::bus() {
-  return &aBus;
-}
+EventBus *Platform::bus() { return &aBus; }

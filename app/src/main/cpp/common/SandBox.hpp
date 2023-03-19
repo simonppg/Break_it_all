@@ -3,13 +3,13 @@
 
 #include <vector>
 
+#include "../shared/events/CursorPositionChanged.hpp"
 #include "Camera.hpp"
 #include "Math.hpp"
 #include "Mesh.hpp"
 #include "Object.hpp"
 #include "Scene.hpp"
 #include "ShaderProg.hpp"
-#include "../shared/events/CursorPositionChanged.hpp"
 #include "opengl/Gl.hpp"
 
 #include "../shared/platform/FilesManager.hpp"
