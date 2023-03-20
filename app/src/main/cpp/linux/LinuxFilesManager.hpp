@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include "../shared/platform/FilesManager.hpp"
+#include "../platform/FilesManager.hpp"
 
 class LinuxFilesManager final : public FilesManager {
 private:

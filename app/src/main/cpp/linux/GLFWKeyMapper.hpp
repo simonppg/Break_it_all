@@ -3,7 +3,7 @@
 
 #include <map>
 
-#include "../shared/eventbus/Key.hpp"
+#include "../eventbus/Key.hpp"
 
 using std::map;
 

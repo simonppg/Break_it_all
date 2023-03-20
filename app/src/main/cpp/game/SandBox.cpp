@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <string>
 
-#include "../shared/platform/FilesManager.hpp"
+#include "../platform/FilesManager.hpp"
 #include "Assets.hpp"
 #include "Dimension.hpp"
 #include "Math.hpp"

@@ -8,7 +8,7 @@
 #include "DrawContext.hpp"
 #include "Mesh.hpp"
 #include "ShaderLoader.hpp"
-#include "opengl/Gl.hpp"
+#include "../glwrapper/Gl.hpp"
 
 using glm::mat4;
 using std::string;

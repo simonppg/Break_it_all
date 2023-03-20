@@ -3,9 +3,9 @@
 #include "AndroidFilesManager.hpp"
 #include "AndroidLogger.hpp"
 
-#include "../shared/platform/FilesManager.hpp"
-#include "../shared/platform/Logger.hpp"
-#include "../shared/platform/Platform.hpp"
+#include "../platform/FilesManager.hpp"
+#include "../platform/Logger.hpp"
+#include "../platform/Platform.hpp"
 
 AndroidPlatform::AndroidPlatform(AAssetManager *assetManager) {
   aLogger = new AndroidLogger();

@@ -2,8 +2,8 @@
 
 #include <string>
 
-#include "../shared/eventbus/CursorPositionChanged.hpp"
-#include "../shared/platform/FilesManager.hpp"
+#include "../eventbus/CursorPositionChanged.hpp"
+#include "../platform/FilesManager.hpp"
 #include "Assets.hpp"
 #include "Ball.hpp"
 #include "Dimension.hpp"

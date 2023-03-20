@@ -1,10 +1,10 @@
 #ifndef APP_SRC_MAIN_CPP_COMMON_TEST2_HPP_
 #define APP_SRC_MAIN_CPP_COMMON_TEST2_HPP_
 
-#include "../shared/platform/FilesManager.hpp"
+#include "../platform/FilesManager.hpp"
 #include "Renderer.hpp"
 #include "Scene.hpp"
-#include "opengl/Gl.hpp"
+#include "../glwrapper/Gl.hpp"
 
 class Test2 final : public Scene {
 private:

@@ -3,11 +3,11 @@
 
 #include <vector>
 
-#include "../shared/eventbus/EventBus.hpp"
-#include "../shared/platform/Platform.hpp"
+#include "../eventbus/EventBus.hpp"
+#include "../platform/Platform.hpp"
 #include "Dimension.hpp"
 #include "DrawableObject.hpp"
-#include "Gl.hpp"
+#include "../glwrapper/Gl.hpp"
 #include "Object.hpp"
 #include "Object3D.hpp"
 #include "Point2D.hpp"

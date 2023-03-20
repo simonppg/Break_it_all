@@ -6,7 +6,7 @@
 #include <string>
 #include <vector>
 
-#include "../shared/platform/FilesManager.hpp"
+#include "../platform/FilesManager.hpp"
 #include "Assets.hpp"
 #include "Camera.hpp"
 #include "Dimension.hpp"

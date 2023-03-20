@@ -1,8 +1,8 @@
 #include <gtest/gtest.h>
 
-#include "../common/Dimension.hpp"
-#include "../common/Math.hpp"
-#include "../common/Vector.hpp"
+#include "../game/Dimension.hpp"
+#include "../game/Math.hpp"
+#include "../game/Vector.hpp"
 
 TEST(GameTest, Dimension) {
   Dimension portrait(400, 800);

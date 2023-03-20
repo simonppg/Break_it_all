@@ -3,11 +3,11 @@
 #include <cstdlib>
 #include <map>
 
-#include "../common/Game.hpp"
-#include "../common/GameLoop.hpp"
-#include "../shared/platform/FilesManager.hpp"
-#include "../shared/platform/Logger.hpp"
-#include "../shared/platform/Platform.hpp"
+#include "../game/Game.hpp"
+#include "../game/GameLoop.hpp"
+#include "../platform/FilesManager.hpp"
+#include "../platform/Logger.hpp"
+#include "../platform/Platform.hpp"
 #include "GLFWKeyMapper.hpp"
 #include "LinuxPlatform.hpp"
 #include "windowmanager/WindowManager.hpp"

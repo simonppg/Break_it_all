@@ -3,8 +3,8 @@
 
 #include <vector>
 
-#include "../shared/eventbus/CursorPositionChanged.hpp"
-#include "../shared/platform/FilesManager.hpp"
+#include "../eventbus/CursorPositionChanged.hpp"
+#include "../platform/FilesManager.hpp"
 #include "Ball.hpp"
 #include "Math.hpp"
 #include "MeshFactory.hpp"
@@ -13,7 +13,7 @@
 #include "Renderer.hpp"
 #include "Scene.hpp"
 #include "ShaderProg.hpp"
-#include "opengl/Gl.hpp"
+#include "../glwrapper/Gl.hpp"
 
 static const int ROW = 15;
 static const int COL = 9;

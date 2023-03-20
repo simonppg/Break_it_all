@@ -1,14 +1,14 @@
 #ifndef APP_SRC_MAIN_CPP_COMMON_GAME_HPP_
 #define APP_SRC_MAIN_CPP_COMMON_GAME_HPP_
 
-#include "../shared/eventbus/CursorPositionChanged.hpp"
-#include "../shared/eventbus/Event.hpp"
-#include "../shared/eventbus/EventBus.hpp"
-#include "../shared/eventbus/KeyPressed.hpp"
-#include "../shared/eventbus/ScreenTouched.hpp"
-#include "../shared/eventbus/SurfaceChanged.hpp"
-#include "../shared/platform/Logger.hpp"
-#include "../shared/platform/Platform.hpp"
+#include "../eventbus/CursorPositionChanged.hpp"
+#include "../eventbus/Event.hpp"
+#include "../eventbus/EventBus.hpp"
+#include "../eventbus/KeyPressed.hpp"
+#include "../eventbus/ScreenTouched.hpp"
+#include "../eventbus/SurfaceChanged.hpp"
+#include "../platform/Logger.hpp"
+#include "../platform/Platform.hpp"
 #include "Scene.hpp"
 
 class Game final {

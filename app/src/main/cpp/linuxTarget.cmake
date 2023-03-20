@@ -4,10 +4,11 @@ include(cmake/DownloadProject.cmake)
 include(cmake/glm.cmake)
 include(cmake/glfw.cmake)
 
-add_subdirectory(shared/strings)
-add_subdirectory(shared/eventbus)
-add_subdirectory(shared/platform)
-add_subdirectory(common)
+add_subdirectory(stringformatter)
+add_subdirectory(eventbus)
+add_subdirectory(platform)
+add_subdirectory(glwrapper)
+add_subdirectory(game)
 add_subdirectory(linux/windowmanager)
 
 add_library(LinuxPlatform

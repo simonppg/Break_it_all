@@ -3,16 +3,16 @@
 
 #include <vector>
 
-#include "../shared/eventbus/CursorPositionChanged.hpp"
+#include "../eventbus/CursorPositionChanged.hpp"
 #include "Camera.hpp"
 #include "Math.hpp"
 #include "Mesh.hpp"
 #include "Object.hpp"
 #include "Scene.hpp"
 #include "ShaderProg.hpp"
-#include "opengl/Gl.hpp"
+#include "../glwrapper/Gl.hpp"
 
-#include "../shared/platform/FilesManager.hpp"
+#include "../platform/FilesManager.hpp"
 
 using std::vector;
 

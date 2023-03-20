@@ -3,9 +3,9 @@
 
 #include <string>
 
-#include "../shared/platform/Logger.hpp"
+#include "../platform/Logger.hpp"
 
-#include "../shared/strings/StringFormatter.hpp"
+#include "../stringformatter/StringFormatter.hpp"
 
 using std::string;
 

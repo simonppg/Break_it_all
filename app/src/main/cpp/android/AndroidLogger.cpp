@@ -5,7 +5,7 @@
 #include <iostream>
 #include <sstream>
 
-#include "../shared/strings/StringFormatter.hpp"
+#include "../stringformatter/StringFormatter.hpp"
 
 using std::string;
 using std::stringstream;

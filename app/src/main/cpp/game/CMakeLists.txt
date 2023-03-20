@@ -1,4 +1,4 @@
-add_subdirectory(opengl)
+# add_subdirectory(opengl)
 
 add_library(common STATIC
         Ball.cpp

@@ -1,7 +1,7 @@
 #include <cassert>
 #include <iostream>
 
-#include "../common/BreakItAll.hpp"
+#include "../game/BreakItAll.hpp"
 #include "AndroidLogger.hpp"
 
 Logger *logger = new AndroidLogger();

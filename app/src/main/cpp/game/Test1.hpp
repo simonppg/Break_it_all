@@ -2,7 +2,7 @@
 #define APP_SRC_MAIN_CPP_COMMON_TEST1_HPP_
 
 #include "Scene.hpp"
-#include "opengl/Gl.hpp"
+#include "../glwrapper/Gl.hpp"
 
 class Test1 final : public Scene {
 private:
