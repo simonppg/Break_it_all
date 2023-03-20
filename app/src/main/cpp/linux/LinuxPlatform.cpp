@@ -3,9 +3,9 @@
 #include "LinuxFilesManager.hpp"
 #include "LinuxLogger.hpp"
 
-// #include "../shared/platform/FilesManager.hpp"
-// #include "../shared/platform/Logger.hpp"
-// #include "../shared/platform/Platform.hpp"
+// #include "../platform/FilesManager.hpp"
+// #include "../platform/Logger.hpp"
+// #include "../platform/Platform.hpp"
 
 LinuxPlatform::LinuxPlatform() : Platform() {
 #ifdef PROJECT_DIR

@@ -1,11 +1,11 @@
 #ifndef APP_SRC_MAIN_CPP_LINUX_APP_HPP_
 #define APP_SRC_MAIN_CPP_LINUX_APP_HPP_
 
-#include "../common/Game.hpp"
-#include "../common/Iterable.hpp"
-#include "../shared/eventbus/Event.hpp"
-#include "../shared/platform/Logger.hpp"
-#include "../shared/platform/Platform.hpp"
+#include "../eventbus/Event.hpp"
+#include "../game/Game.hpp"
+#include "../game/Iterable.hpp"
+#include "../platform/Logger.hpp"
+#include "../platform/Platform.hpp"
 #include "GLFWKeyMapper.hpp"
 #include "Platform.hpp"
 #include "windowmanager/WindowManager.hpp"

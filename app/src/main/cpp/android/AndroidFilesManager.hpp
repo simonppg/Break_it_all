@@ -4,7 +4,7 @@
 #include <android/asset_manager.h>
 #include <string>
 
-#include "../shared/platform/FilesManager.hpp"
+#include "../platform/FilesManager.hpp"
 
 class AndroidFilesManager final : public FilesManager {
 private:

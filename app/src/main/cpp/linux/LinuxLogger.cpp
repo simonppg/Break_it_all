@@ -7,7 +7,7 @@
 #include <sstream>
 #include <string>
 
-#include "../shared/strings/StringFormatter.hpp"
+#include "../stringformatter/StringFormatter.hpp"
 #include "LinuxLogger.hpp"
 
 using std::cout;
