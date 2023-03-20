@@ -6,14 +6,36 @@ title: App components
 ---
 classDiagram
 direction BT
-  StringsFormatter <-- Shared
-  EventBus <-- Shared
-  Platform <-- Shared
-  Shared <-- LinuxPlatform
-  Shared <-- Game
-  Shared <-- AndroidPlatform
-  Game <-- LinuxApp
-  Game <-- AndroidLib
-  LinuxPlatform <-- LinuxApp
-  AndroidPlatform <-- AndroidLib
+  WindowManager --* LinuxApp
+  LinuxPlatform --* LinuxApp
+  Game --* LinuxApp
+  Game --* AndroidLib
+  AndroidPlatform --* AndroidLib
+
+  EventBus2 --* AndroidPlatform
+  AndroidLogger --* AndroidPlatform
+  AndroidFilesManager --* AndroidPlatform
+  Platform <-- Game
+  LinuxFilesManager --* LinuxPlatform
+  LinuxLogger --* LinuxPlatform
+  EventBus2 --* LinuxPlatform
+
+  StringsFormatter --* LinuxLogger
+  StringsFormatter --* AndroidLogger
+  LinuxPlatform ..|> Platform
+  Logger --* Platform
+  FilesManager --* Platform
+  EventBus --* Platform
+  AndroidPlatform ..|> Platform
+
+  <<Interface>> Logger
+  <<Interface>> EventBus
+  <<Interface>> FilesManager
+
+  class Platform {
+  <<Interface>>
+        +eventBus()
+        +filesManager()
+        +logger()
+    }
 ```
