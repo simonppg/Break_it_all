@@ -1,5 +1,5 @@
-#ifndef APP_SRC_MAIN_CPP_COMMON_DIMENSION_HPP_
-#define APP_SRC_MAIN_CPP_COMMON_DIMENSION_HPP_
+#ifndef APP_SRC_MAIN_CPP_GAME_DIMENSION_HPP_
+#define APP_SRC_MAIN_CPP_GAME_DIMENSION_HPP_
 
 #include <iostream>
 
@@ -32,4 +32,4 @@ private:
   void setUpBorders();
 };
 
-#endif // APP_SRC_MAIN_CPP_COMMON_DIMENSION_HPP_
+#endif // APP_SRC_MAIN_CPP_GAME_DIMENSION_HPP_

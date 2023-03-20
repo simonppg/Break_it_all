@@ -1,5 +1,5 @@
-#ifndef APP_SRC_MAIN_CPP_COMMON_MATH_HPP_
-#define APP_SRC_MAIN_CPP_COMMON_MATH_HPP_
+#ifndef APP_SRC_MAIN_CPP_GAME_MATH_HPP_
+#define APP_SRC_MAIN_CPP_GAME_MATH_HPP_
 
 #include <vector>
 
@@ -23,4 +23,4 @@ public:
   mat4 orthographicView(FieldOfView fov, Dimension dimension);
 };
 
-#endif // APP_SRC_MAIN_CPP_COMMON_MATH_HPP_
+#endif // APP_SRC_MAIN_CPP_GAME_MATH_HPP_

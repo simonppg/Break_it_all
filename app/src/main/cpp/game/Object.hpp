@@ -1,5 +1,5 @@
-#ifndef APP_SRC_MAIN_CPP_COMMON_OBJECT_HPP_
-#define APP_SRC_MAIN_CPP_COMMON_OBJECT_HPP_
+#ifndef APP_SRC_MAIN_CPP_GAME_OBJECT_HPP_
+#define APP_SRC_MAIN_CPP_GAME_OBJECT_HPP_
 
 #include "DrawableObject.hpp"
 #include "Mesh.hpp"
@@ -38,4 +38,4 @@ public:
   float acceleration = 0;
 };
 
-#endif // APP_SRC_MAIN_CPP_COMMON_OBJECT_HPP_
+#endif // APP_SRC_MAIN_CPP_GAME_OBJECT_HPP_

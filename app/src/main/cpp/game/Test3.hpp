@@ -1,5 +1,5 @@
-#ifndef APP_SRC_MAIN_CPP_COMMON_TEST3_HPP_
-#define APP_SRC_MAIN_CPP_COMMON_TEST3_HPP_
+#ifndef APP_SRC_MAIN_CPP_GAME_TEST3_HPP_
+#define APP_SRC_MAIN_CPP_GAME_TEST3_HPP_
 
 #include "../platform/FilesManager.hpp"
 
@@ -29,4 +29,4 @@ public:
   // bool events(Point2D) override;
 };
 
-#endif // APP_SRC_MAIN_CPP_COMMON_TEST3_HPP_
+#endif // APP_SRC_MAIN_CPP_GAME_TEST3_HPP_

@@ -1,5 +1,5 @@
-#ifndef APP_SRC_MAIN_CPP_COMMON_ITERABLE_HPP_
-#define APP_SRC_MAIN_CPP_COMMON_ITERABLE_HPP_
+#ifndef APP_SRC_MAIN_CPP_GAME_ITERABLE_HPP_
+#define APP_SRC_MAIN_CPP_GAME_ITERABLE_HPP_
 
 class Iterable {
 public:
@@ -12,4 +12,4 @@ public:
   virtual bool isRunning() = 0;
 };
 
-#endif // APP_SRC_MAIN_CPP_COMMON_ITERABLE_HPP_
+#endif // APP_SRC_MAIN_CPP_GAME_ITERABLE_HPP_

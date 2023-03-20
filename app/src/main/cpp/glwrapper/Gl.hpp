@@ -1,5 +1,5 @@
-#ifndef APP_SRC_MAIN_CPP_COMMON_OPENGL_GL_HPP_
-#define APP_SRC_MAIN_CPP_COMMON_OPENGL_GL_HPP_
+#ifndef APP_SRC_MAIN_CPP_GLWRAPPER_GL_HPP_
+#define APP_SRC_MAIN_CPP_GLWRAPPER_GL_HPP_
 
 #include <cstdint>
 #include <optional>
@@ -52,4 +52,4 @@ public:
   uint32_t getuniformlocation(uint32_t program, string name);
 };
 
-#endif // APP_SRC_MAIN_CPP_COMMON_OPENGL_GL_HPP_
+#endif // APP_SRC_MAIN_CPP_GLWRAPPER_GL_HPP_

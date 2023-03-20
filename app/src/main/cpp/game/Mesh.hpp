@@ -1,5 +1,5 @@
-#ifndef APP_SRC_MAIN_CPP_COMMON_MESH_HPP_
-#define APP_SRC_MAIN_CPP_COMMON_MESH_HPP_
+#ifndef APP_SRC_MAIN_CPP_GAME_MESH_HPP_
+#define APP_SRC_MAIN_CPP_GAME_MESH_HPP_
 
 #include <malloc.h>
 #include <stdint.h>
@@ -27,4 +27,4 @@ public:
   uint32_t iab; // index array buffer
 };
 
-#endif // APP_SRC_MAIN_CPP_COMMON_MESH_HPP_
+#endif // APP_SRC_MAIN_CPP_GAME_MESH_HPP_

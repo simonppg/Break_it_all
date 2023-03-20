@@ -1,5 +1,5 @@
-#ifndef APP_SRC_MAIN_CPP_COMMON_BREAKITALL_HPP_
-#define APP_SRC_MAIN_CPP_COMMON_BREAKITALL_HPP_
+#ifndef APP_SRC_MAIN_CPP_GAME_BREAKITALL_HPP_
+#define APP_SRC_MAIN_CPP_GAME_BREAKITALL_HPP_
 
 #include <GLES3/gl3.h>
 #include <iostream>
@@ -32,4 +32,4 @@ public:
   void exampleList(vector<string> *);
 };
 
-#endif // APP_SRC_MAIN_CPP_COMMON_BREAKITALL_HPP_
+#endif // APP_SRC_MAIN_CPP_GAME_BREAKITALL_HPP_

@@ -1,5 +1,5 @@
-#ifndef APP_SRC_MAIN_CPP_COMMON_DRAWCONTEXT_HPP_
-#define APP_SRC_MAIN_CPP_COMMON_DRAWCONTEXT_HPP_
+#ifndef APP_SRC_MAIN_CPP_GAME_DRAWCONTEXT_HPP_
+#define APP_SRC_MAIN_CPP_GAME_DRAWCONTEXT_HPP_
 
 #include "Mesh.hpp"
 #include "ShaderProg.hpp"
@@ -21,4 +21,4 @@ public:
   mat4 getMatrixTransform();
 };
 
-#endif // APP_SRC_MAIN_CPP_COMMON_DRAWCONTEXT_HPP_
+#endif // APP_SRC_MAIN_CPP_GAME_DRAWCONTEXT_HPP_

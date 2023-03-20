@@ -1,5 +1,5 @@
-#ifndef APP_SRC_MAIN_CPP_COMMON_TEST4_HPP_
-#define APP_SRC_MAIN_CPP_COMMON_TEST4_HPP_
+#ifndef APP_SRC_MAIN_CPP_GAME_TEST4_HPP_
+#define APP_SRC_MAIN_CPP_GAME_TEST4_HPP_
 
 #include <vector>
 
@@ -55,4 +55,4 @@ public:
   // bool events(Point2D) override;
 };
 
-#endif // APP_SRC_MAIN_CPP_COMMON_TEST4_HPP_
+#endif // APP_SRC_MAIN_CPP_GAME_TEST4_HPP_

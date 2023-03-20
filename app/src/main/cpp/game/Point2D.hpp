@@ -1,5 +1,5 @@
-#ifndef APP_SRC_MAIN_CPP_COMMON_POINT2D_HPP_
-#define APP_SRC_MAIN_CPP_COMMON_POINT2D_HPP_
+#ifndef APP_SRC_MAIN_CPP_GAME_POINT2D_HPP_
+#define APP_SRC_MAIN_CPP_GAME_POINT2D_HPP_
 
 class Point2D {
 public:
@@ -19,4 +19,4 @@ private:
   float x, y;
 };
 
-#endif // APP_SRC_MAIN_CPP_COMMON_POINT2D_HPP_
+#endif // APP_SRC_MAIN_CPP_GAME_POINT2D_HPP_

@@ -1,5 +1,5 @@
-#ifndef APP_SRC_MAIN_CPP_COMMON_SCENE_HPP_
-#define APP_SRC_MAIN_CPP_COMMON_SCENE_HPP_
+#ifndef APP_SRC_MAIN_CPP_GAME_SCENE_HPP_
+#define APP_SRC_MAIN_CPP_GAME_SCENE_HPP_
 
 #include <vector>
 
@@ -36,4 +36,4 @@ public:
   void enterScene(DrawableObject *);
 };
 
-#endif // APP_SRC_MAIN_CPP_COMMON_SCENE_HPP_
+#endif // APP_SRC_MAIN_CPP_GAME_SCENE_HPP_

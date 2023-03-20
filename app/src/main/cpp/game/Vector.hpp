@@ -1,5 +1,5 @@
-#ifndef APP_SRC_MAIN_CPP_COMMON_VECTOR_HPP_
-#define APP_SRC_MAIN_CPP_COMMON_VECTOR_HPP_
+#ifndef APP_SRC_MAIN_CPP_GAME_VECTOR_HPP_
+#define APP_SRC_MAIN_CPP_GAME_VECTOR_HPP_
 
 class Vector {
 public:
@@ -9,4 +9,4 @@ public:
   float length();
 };
 
-#endif // APP_SRC_MAIN_CPP_COMMON_VECTOR_HPP_
+#endif // APP_SRC_MAIN_CPP_GAME_VECTOR_HPP_

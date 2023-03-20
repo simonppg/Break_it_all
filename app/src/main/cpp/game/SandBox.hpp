@@ -1,5 +1,5 @@
-#ifndef APP_SRC_MAIN_CPP_COMMON_SANDBOX_HPP_
-#define APP_SRC_MAIN_CPP_COMMON_SANDBOX_HPP_
+#ifndef APP_SRC_MAIN_CPP_GAME_SANDBOX_HPP_
+#define APP_SRC_MAIN_CPP_GAME_SANDBOX_HPP_
 
 #include <vector>
 
@@ -39,4 +39,4 @@ public:
   // bool events(Point2D) override;
 };
 
-#endif // APP_SRC_MAIN_CPP_COMMON_SANDBOX_HPP_
+#endif // APP_SRC_MAIN_CPP_GAME_SANDBOX_HPP_

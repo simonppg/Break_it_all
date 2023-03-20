@@ -1,5 +1,5 @@
-#ifndef APP_SRC_MAIN_CPP_COMMON_ASSETS_HPP_
-#define APP_SRC_MAIN_CPP_COMMON_ASSETS_HPP_
+#ifndef APP_SRC_MAIN_CPP_GAME_ASSETS_HPP_
+#define APP_SRC_MAIN_CPP_GAME_ASSETS_HPP_
 
 #include <string>
 
@@ -17,4 +17,4 @@ public:
   inline static const string CUBE_FRAG = "cube/cube.frag";
 };
 
-#endif // APP_SRC_MAIN_CPP_COMMON_ASSETS_HPP_
+#endif // APP_SRC_MAIN_CPP_GAME_ASSETS_HPP_

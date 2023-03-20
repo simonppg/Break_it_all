@@ -1,5 +1,5 @@
-#ifndef APP_SRC_MAIN_CPP_COMMON_RENDERER_HPP_
-#define APP_SRC_MAIN_CPP_COMMON_RENDERER_HPP_
+#ifndef APP_SRC_MAIN_CPP_GAME_RENDERER_HPP_
+#define APP_SRC_MAIN_CPP_GAME_RENDERER_HPP_
 
 #include <cstdint>
 #include <string>
@@ -35,4 +35,4 @@ public:
                          const string fragmentSource);
 };
 
-#endif // APP_SRC_MAIN_CPP_COMMON_RENDERER_HPP_
+#endif // APP_SRC_MAIN_CPP_GAME_RENDERER_HPP_

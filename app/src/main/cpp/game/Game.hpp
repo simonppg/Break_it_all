@@ -1,5 +1,5 @@
-#ifndef APP_SRC_MAIN_CPP_COMMON_GAME_HPP_
-#define APP_SRC_MAIN_CPP_COMMON_GAME_HPP_
+#ifndef APP_SRC_MAIN_CPP_GAME_GAME_HPP_
+#define APP_SRC_MAIN_CPP_GAME_GAME_HPP_
 
 #include "../eventbus/CursorPositionChanged.hpp"
 #include "../eventbus/Event.hpp"
@@ -45,4 +45,4 @@ public:
   void dispatchEvent(Event *event);
 };
 
-#endif // APP_SRC_MAIN_CPP_COMMON_GAME_HPP_
+#endif // APP_SRC_MAIN_CPP_GAME_GAME_HPP_

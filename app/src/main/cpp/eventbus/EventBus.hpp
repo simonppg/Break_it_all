@@ -1,5 +1,5 @@
-#ifndef APP_SRC_MAIN_CPP_SHARED_EVENTBUS_EVENTBUS_HPP_
-#define APP_SRC_MAIN_CPP_SHARED_EVENTBUS_EVENTBUS_HPP_
+#ifndef APP_SRC_MAIN_CPP_EVENTBUS_EVENTBUS_HPP_
+#define APP_SRC_MAIN_CPP_EVENTBUS_EVENTBUS_HPP_
 
 #include <functional>
 #include <list>
@@ -24,4 +24,4 @@ public:
   void subcribe(EventType, Subscriber);
 };
 
-#endif // APP_SRC_MAIN_CPP_SHARED_EVENTBUS_EVENTBUS_HPP_
+#endif // APP_SRC_MAIN_CPP_EVENTBUS_EVENTBUS_HPP_
