@@ -1,7 +1,7 @@
 #include <cassert>
 
-#include "../game/Game.hpp"
 #include "../eventbus/ScreenTouched.hpp"
+#include "../game/Game.hpp"
 #include "../platform/FilesManager.hpp"
 #include "../platform/Logger.hpp"
 #include "../platform/Platform.hpp"

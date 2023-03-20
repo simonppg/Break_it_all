@@ -4,9 +4,9 @@
 #include <iostream>
 #include <string>
 
+#include "../glwrapper/Gl.hpp"
 #include "../platform/FilesManager.hpp"
 #include "ShaderLoader.hpp"
-#include "../glwrapper/Gl.hpp"
 
 using std::string;
 

@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "../eventbus/CursorPositionChanged.hpp"
+#include "../glwrapper/Gl.hpp"
 #include "../platform/FilesManager.hpp"
 #include "Ball.hpp"
 #include "Math.hpp"
@@ -13,7 +14,6 @@
 #include "Renderer.hpp"
 #include "Scene.hpp"
 #include "ShaderProg.hpp"
-#include "../glwrapper/Gl.hpp"
 
 static const int ROW = 15;
 static const int COL = 9;

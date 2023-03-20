@@ -3,10 +3,10 @@
 
 #include "../platform/FilesManager.hpp"
 
+#include "../glwrapper/Gl.hpp"
 #include "Math.hpp"
 #include "Renderer.hpp"
 #include "Scene.hpp"
-#include "../glwrapper/Gl.hpp"
 
 class Test3 final : public Scene {
 private:

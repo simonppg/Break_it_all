@@ -4,13 +4,13 @@
 #include <vector>
 
 #include "../eventbus/CursorPositionChanged.hpp"
+#include "../glwrapper/Gl.hpp"
 #include "Camera.hpp"
 #include "Math.hpp"
 #include "Mesh.hpp"
 #include "Object.hpp"
 #include "Scene.hpp"
 #include "ShaderProg.hpp"
-#include "../glwrapper/Gl.hpp"
 
 #include "../platform/FilesManager.hpp"
 

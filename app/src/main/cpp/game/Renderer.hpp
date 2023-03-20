@@ -4,11 +4,11 @@
 #include <cstdint>
 #include <string>
 
+#include "../glwrapper/Gl.hpp"
 #include "Camera.hpp"
 #include "DrawContext.hpp"
 #include "Mesh.hpp"
 #include "ShaderLoader.hpp"
-#include "../glwrapper/Gl.hpp"
 
 using glm::mat4;
 using std::string;

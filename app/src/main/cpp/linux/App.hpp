@@ -1,9 +1,9 @@
 #ifndef APP_SRC_MAIN_CPP_LINUX_APP_HPP_
 #define APP_SRC_MAIN_CPP_LINUX_APP_HPP_
 
+#include "../eventbus/Event.hpp"
 #include "../game/Game.hpp"
 #include "../game/Iterable.hpp"
-#include "../eventbus/Event.hpp"
 #include "../platform/Logger.hpp"
 #include "../platform/Platform.hpp"
 #include "GLFWKeyMapper.hpp"

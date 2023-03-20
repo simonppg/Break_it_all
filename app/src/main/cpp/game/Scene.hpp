@@ -4,10 +4,10 @@
 #include <vector>
 
 #include "../eventbus/EventBus.hpp"
+#include "../glwrapper/Gl.hpp"
 #include "../platform/Platform.hpp"
 #include "Dimension.hpp"
 #include "DrawableObject.hpp"
-#include "../glwrapper/Gl.hpp"
 #include "Object.hpp"
 #include "Object3D.hpp"
 #include "Point2D.hpp"
