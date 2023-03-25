@@ -9,9 +9,9 @@ add_subdirectory(game)
 
 add_library(AndroidPlatform
   STATIC
-  android/AndroidFilesManager.cpp
-  android/AndroidPlatform.cpp
-  android/AndroidLogger.cpp)
+  androidlib/AndroidFilesManager.cpp
+  androidlib/AndroidPlatform.cpp
+  androidlib/AndroidLogger.cpp)
 
 target_link_libraries(AndroidPlatform
   Platform
@@ -21,11 +21,11 @@ target_link_libraries(AndroidPlatform
 
 add_library(BreakItAll
   SHARED
-  android/androidLib.cpp)
+  androidlib/androidLib.cpp)
 
 add_library(Game
   SHARED
-  android/main.cpp)
+  androidlib/main.cpp)
 
 target_link_libraries(BreakItAll
   common

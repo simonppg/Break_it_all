@@ -9,13 +9,13 @@ add_subdirectory(eventbus)
 add_subdirectory(platform)
 add_subdirectory(glwrapper)
 add_subdirectory(game)
-add_subdirectory(linux/windowmanager)
+add_subdirectory(linuxapp/windowmanager)
 
 add_library(LinuxPlatform
   STATIC
-  linux/LinuxFilesManager.cpp
-  linux/LinuxPlatform.cpp
-  linux/LinuxLogger.cpp)
+  linuxapp/LinuxFilesManager.cpp
+  linuxapp/LinuxPlatform.cpp
+  linuxapp/LinuxLogger.cpp)
 
 target_link_libraries(LinuxPlatform
   Platform
@@ -23,12 +23,12 @@ target_link_libraries(LinuxPlatform
   WindowManager)
 
 add_executable(linuxVersion
-  linux/linuxBin.cpp)
+  linuxapp/linuxBin.cpp)
 
 add_executable(linuxLauncher
-  linux/GLFWKeyMapper.cpp
-  linux/App.cpp
-  linux/main.cpp)
+  linuxapp/GLFWKeyMapper.cpp
+  linuxapp/App.cpp
+  linuxapp/main.cpp)
 
 target_link_libraries(linuxVersion
   common
