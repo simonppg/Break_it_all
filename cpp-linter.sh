@@ -9,5 +9,5 @@ cd "$SCRIPT_PATH" || exit 1
 CPP_SRC_DIR=./app/src/main/cpp
 REGEX='.*\.\(cpp\|hpp\)'
 
-find $CPP_SRC_DIR -regex $REGEX -exec clang-format -i {} \;
-find $CPP_SRC_DIR -regex $REGEX -exec cpplint {} \;
+find $CPP_SRC_DIR -regex "$REGEX" -exec clang-format -i {} \;
+find $CPP_SRC_DIR -regex "$REGEX" -exec cpplint {} \;
