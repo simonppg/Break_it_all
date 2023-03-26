@@ -5,8 +5,6 @@
 
 #include "../game/Game.hpp"
 #include "../game/GameLoop.hpp"
-#include "../platform/FilesManager.hpp"
-#include "../platform/Logger.hpp"
 #include "../platform/Platform.hpp"
 #include "GLFWKeyMapper.hpp"
 #include "LinuxPlatform.hpp"
