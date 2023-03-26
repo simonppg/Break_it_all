@@ -26,12 +26,13 @@ Scene::Scene(Platform *platform) {
   this->bus->subcribe(EventType::SURFACE_CHANGED, [=](Event *event) -> void {
     auto realEvent = reinterpret_cast<SurfaceChanged *>(event);
 
-    Dimension dimension = Dimension(realEvent->width(), realEvent->height());
+    viewport = Dimension(realEvent->width(), realEvent->height());
     std::stringstream sstream;
-    sstream << dimension;
+    sstream << viewport;
     logger->logi(sstream.str());
+    gl.viewport(0, 0, viewport.getWidth(), viewport.getHeight());
 
-    surfaceChanged(dimension);
+    surfaceChanged();
   });
 }
 
@@ -45,3 +46,9 @@ void Scene::render() {
 void Scene::enterScene(DrawableObject *drawableObject) {
   drawableObjects.push_back(drawableObject);
 }
+
+float Scene::viewportWidth() { return viewport.getWidth(); }
+
+float Scene::viewportHeight() { return viewport.getHeight(); }
+
+Dimension Scene::viewportDimension() { return viewport; }

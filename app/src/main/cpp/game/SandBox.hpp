@@ -32,7 +32,7 @@ public:
   ~SandBox();
 
   void surfaceCreated() override;
-  void surfaceChanged(Dimension) override;
+  void surfaceChanged() override;
   void pause() override;
   void resume() override;
   void update(double) override;

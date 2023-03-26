@@ -17,11 +17,16 @@ private:
   Gl gl;
   vector<DrawableObject *> drawableObjects;
   Platform *platform;
+  Dimension viewport;
 
 protected:
   EventBus *bus;
   Logger *logger;
   unsigned int programID;
+
+  float viewportWidth();
+  float viewportHeight();
+  Dimension viewportDimension();
 
 public:
   explicit Scene(Platform *);
@@ -29,7 +34,7 @@ public:
 
   virtual void surfaceCreated() = 0;
   void render();
-  virtual void surfaceChanged(Dimension) = 0;
+  virtual void surfaceChanged() = 0;
   virtual void pause() = 0;
   virtual void resume() = 0;
   virtual void update(double) = 0;
