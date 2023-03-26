@@ -24,12 +24,6 @@ private:
                           int mods);
   void publish(Event *e);
 
-public:
-  App();
-  ~App();
-
-  void start(int sceneNumber);
-
   // Iterable
   void beforeLoop() override;
   void beforeIteration() override;
@@ -38,6 +32,12 @@ public:
   void update(double) override;
   void draw() override;
   bool isRunning() override;
+
+public:
+  App();
+  ~App();
+
+  void start(int sceneNumber);
 };
 
 #endif // APP_SRC_MAIN_CPP_LINUXAPP_APP_HPP_
