@@ -18,6 +18,8 @@ class EventBus {
 private:
   SubMap subMap;
 
+  void logEvent(Event *);
+
 public:
   EventBus();
   void publish(Event *);

@@ -1,10 +1,14 @@
-#include "Scene.hpp"
+#include <sstream>
+
 #include "../eventbus/KeyPressed.hpp"
+#include "../eventbus/SurfaceChanged.hpp"
 #include "ObjectDrawer.hpp"
+#include "Scene.hpp"
 
 Scene::Scene(Platform *platform) {
   this->platform = platform;
   this->bus = platform->bus();
+  this->logger = platform->logger();
 
   this->bus->subcribe(EventType::KEY_PRESSED, [=](Event *event) -> void {
     KeyPressed *keyPressed = reinterpret_cast<KeyPressed *>(event);
@@ -17,6 +21,17 @@ Scene::Scene(Platform *platform) {
         // close();
       }
     }
+  });
+
+  this->bus->subcribe(EventType::SURFACE_CHANGED, [=](Event *event) -> void {
+    auto realEvent = reinterpret_cast<SurfaceChanged *>(event);
+
+    Dimension dimension = Dimension(realEvent->width(), realEvent->height());
+    std::stringstream sstream;
+    sstream << dimension;
+    logger->logi(sstream.str());
+
+    surfaceChanged(dimension);
   });
 }
 

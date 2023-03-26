@@ -1,8 +1,8 @@
 add_library(AndroidPlatform
   STATIC
-  androidlib/AndroidFilesManager.cpp
-  androidlib/AndroidPlatform.cpp
-  androidlib/AndroidLogger.cpp)
+  AndroidFilesManager.cpp
+  AndroidPlatform.cpp
+  AndroidLogger.cpp)
 
 target_link_libraries(AndroidPlatform
   Platform
@@ -12,11 +12,11 @@ target_link_libraries(AndroidPlatform
 
 add_library(BreakItAll
   SHARED
-  androidlib/androidLib.cpp)
+  androidLib.cpp)
 
 add_library(Game
   SHARED
-  androidlib/main.cpp)
+  main.cpp)
 
 target_link_libraries(BreakItAll
   common
