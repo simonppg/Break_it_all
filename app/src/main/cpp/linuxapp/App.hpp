@@ -1,5 +1,5 @@
-#ifndef APP_SRC_MAIN_CPP_LINUX_APP_HPP_
-#define APP_SRC_MAIN_CPP_LINUX_APP_HPP_
+#ifndef APP_SRC_MAIN_CPP_LINUXAPP_APP_HPP_
+#define APP_SRC_MAIN_CPP_LINUXAPP_APP_HPP_
 
 #include "../eventbus/Event.hpp"
 #include "../game/Game.hpp"
@@ -40,4 +40,4 @@ public:
   bool isRunning() override;
 };
 
-#endif // APP_SRC_MAIN_CPP_LINUX_APP_HPP_
+#endif // APP_SRC_MAIN_CPP_LINUXAPP_APP_HPP_
