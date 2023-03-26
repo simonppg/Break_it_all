@@ -47,28 +47,6 @@ void Game::close() {
   isClosing = true;
   delete pScene;
   pScene = nullptr;
-  // delete camera;
-  // camera = nullptr;
-}
-
-void Game::camera_forward() {
-  // Point3D cameraPosition = camera->getPosition();
-  // camera->travel(cameraPosition.decrementZ(1));
-}
-
-void Game::camera_back() {
-  // Point3D cameraPosition = camera->getPosition();
-  // camera->travel(cameraPosition.incrementZ(1));
-}
-
-void Game::camera_left() {
-  // Point3D cameraPosition = camera->getPosition();
-  // camera->travel(cameraPosition.decrementX(1));
-}
-
-void Game::camera_right() {
-  // Point3D cameraPosition = camera->getPosition();
-  // camera->travel(cameraPosition.incrementX(1));
 }
 
 void Game::cursorPositionChangedHandler(CursorPositionChanged *event) {
@@ -77,30 +55,6 @@ void Game::cursorPositionChangedHandler(CursorPositionChanged *event) {
 
 void Game::screenTouchedHandler(ScreenTouched *event) {
   // pScene->events(Point2D(event->getXPosition(), event->getYPosition()));
-}
-
-void Game::keyPressedHandler(KeyPressed *event) {
-  Key key = event->key();
-  PressState pressState = event->pressState();
-
-  if (pressState == PressState::KEY_PRESSED ||
-      pressState == PressState::KEY_HOLDED) {
-    if (key == Key::W_KEY) {
-      camera_forward();
-    } else if (key == Key::S_KEY) {
-      camera_back();
-    } else if (key == Key::D_KEY) {
-      camera_right();
-    } else if (key == Key::A_KEY) {
-      camera_left();
-    } else if (key == Key::L_KEY) {
-      camera_reset();
-    } else if (key == Key::ESCAPE_KEY) {
-      // TODO(simon): Should we save state before exit?
-      close();
-      // exit(0);
-    }
-  }
 }
 
 void Game::camera_reset() {
@@ -165,7 +119,7 @@ void Game::dispatchEvent(Event *event) {
   if (eventType == EventType::KEY_PRESSED) {
     logger->logi("KEY_PRESSED");
 
-    keyPressedHandler(reinterpret_cast<KeyPressed *>(event));
+    // keyPressedHandler(reinterpret_cast<KeyPressed *>(event));
     // return;
   }
 
