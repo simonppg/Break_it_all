@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <string>
 
+#include "../eventbus/KeyPressed.hpp"
 #include "../platform/FilesManager.hpp"
 #include "Assets.hpp"
 #include "Dimension.hpp"
@@ -13,11 +14,6 @@
 
 using glm::mat4;
 using glm::vec3;
-
-// void SandBox::cursorPositionChangedHandler(Event *e) {
-//   CursorPositionChanged *event = (CursorPositionChanged *) e;
-//   povInDegrees += 5.0f;
-// }
 
 SandBox::SandBox(Platform *platform, FilesManager *filesManager)
     : Scene(platform) {
@@ -51,6 +47,30 @@ SandBox::SandBox(Platform *platform, FilesManager *filesManager)
                 [=](Event *event) -> void { povInDegrees += 5.0f; });
   bus->subcribe(EventType::CURSOR_POSITION_CHANGED,
                 [=](Event *event) -> void { povInDegrees += 5.0f; });
+  bus->subcribe(EventType::KEY_PRESSED, [=](Event *event2) -> void {
+    KeyPressed *event = reinterpret_cast<KeyPressed *>(event2);
+    Key key = event->key();
+    PressState pressState = event->pressState();
+
+    if (pressState == PressState::KEY_PRESSED ||
+        pressState == PressState::KEY_HOLDED) {
+      if (key == Key::W_KEY) {
+        Point3D cameraPosition = camera->getPosition();
+        camera->travel(cameraPosition.decrementZ(1));
+      } else if (key == Key::S_KEY) {
+        Point3D cameraPosition = camera->getPosition();
+        camera->travel(cameraPosition.incrementZ(1));
+      } else if (key == Key::D_KEY) {
+        Point3D cameraPosition = camera->getPosition();
+        camera->travel(cameraPosition.incrementX(1));
+      } else if (key == Key::A_KEY) {
+        Point3D cameraPosition = camera->getPosition();
+        camera->travel(cameraPosition.decrementX(1));
+      } else if (key == Key::L_KEY) {
+        camera->travel(Point3D());
+      }
+    }
+  });
 }
 
 SandBox::~SandBox() {
@@ -91,8 +111,3 @@ void SandBox::update(double dt) {
     i->set_rotation_angle(povInDegrees);
   }
 }
-
-// bool SandBox::events(Point2D point) {
-//   povInDegrees += 5.0f;
-//   return true;
-// }
