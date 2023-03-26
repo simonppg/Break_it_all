@@ -58,8 +58,7 @@ Test4::Test4(Platform *platform, FilesManager *filesManager) : Scene(platform) {
   paddle = new Object(renderer, shaderProgs[1], meshes[0]);
   paddle->updateSize(Point3D(cubeXSize, cubeYSize, 1));
   paddle->updatePosition(Point3D(0, bottom + cubeYSize * 2, 1));
-  paddle->updatePosition(
-      Point3D(0, -viewportDimension.getHeight() / 2 + cubeYSize * 2, 1));
+  paddle->updatePosition(Point3D(0, -viewportHeight() / 2 + cubeYSize * 2, 1));
   paddle->animate_y();
 
   ball2 = new Object(renderer, shaderProgs[1], meshes[1]);
@@ -120,8 +119,8 @@ Test4::~Test4() {
 void Test4::movePaddle(CursorPositionChanged point) {
   float cubeXSize = (cameraSize.getWidth() / 2) / 3;
   float cubeYSize = cubeXSize / 7;
-  float newX = (-viewportDimension.getWidth() / 2) + point.getXPosition();
-  float newY = (-viewportDimension.getHeight() / 2) + cubeYSize * 2;
+  float newX = (-viewportWidth() / 2) + point.getXPosition();
+  float newY = (-viewportHeight() / 2) + cubeYSize * 2;
 
   paddle->updatePosition(Point3D(newX, newY, 0));
   povInDegrees += 5.0f;
@@ -139,12 +138,9 @@ void Test4::surfaceCreated() {
   }
 }
 
-void Test4::surfaceChanged(Dimension dimension) {
-  viewportDimension = dimension;
-  double width = dimension.getWidth();
-  double height = dimension.getHeight();
+void Test4::surfaceChanged() {
+  double width = viewportWidth();
 
-  gl.viewport(0, 0, width, height);
   // camera->resize(dimension);
 
   Dimension gridDimension(width, top);
@@ -176,7 +172,7 @@ void Test4::update(double dt) {
   Point3D ballPosition = ball->getPosition();
   ball->velocity += ball->acceleration * dt;
 
-  if (viewportDimension.isOutside(ballPosition))
+  if (viewportDimension().isOutside(ballPosition))
     xDirection *= -1;
 
   Point3D newBallPosition =
@@ -185,17 +181,6 @@ void Test4::update(double dt) {
 
   // LOGI("%f, %f, %f, %f", dt, ball->velocity, ball->velocity * dt, ball->x);
 }
-
-// bool Test4::events(Point2D point) {
-//   float cubeXSize = (cameraSize.getWidth() / 2) / 3;
-//   float cubeYSize = cubeXSize / 7;
-//   float newX = (-viewportDimension.getWidth() / 2) + point.getX();
-//   float newY = (-viewportDimension.getHeight() / 2) + cubeYSize * 2;
-//
-//   paddle->updatePosition(Point3D(newX, newY, 0));
-//   povInDegrees += 5.0f;
-//   return true;
-// }
 
 void Test4::pause() {}
 void Test4::resume() {}

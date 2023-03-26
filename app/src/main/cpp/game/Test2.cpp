@@ -33,8 +33,8 @@ void Test2::surfaceCreated() {
   //   free(frag);
 }
 
-void Test2::surfaceChanged(Dimension dimension) {
-  gl->viewport(0, 0, dimension.getWidth(), dimension.getHeight());
+void Test2::surfaceChanged() {
+  // gl->viewport(0, 0, dimension.getWidth(), dimension.getHeight());
 }
 
 void Test2::pause() { gl->deleteProgram(programID); }

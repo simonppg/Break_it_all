@@ -96,10 +96,10 @@ void SandBox::surfaceCreated() {
   // TODO(simonpp): free buffers
 }
 
-void SandBox::surfaceChanged(Dimension dimension) {
+void SandBox::surfaceChanged() {
   // TODO(simonpp): send dimension to camera through render
   //  camera->resize(dimension);
-  gl->viewport(0, 0, dimension.getWidth(), dimension.getHeight());
+  // gl->viewport(0, 0, dimension.getWidth(), dimension.getHeight());
 }
 
 void SandBox::pause() {}
