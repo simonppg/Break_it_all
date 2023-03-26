@@ -19,8 +19,6 @@ private:
 
   bool isClosing;
 
-  void cursorPositionChangedHandler(CursorPositionChanged *event);
-  void screenTouchedHandler(ScreenTouched *event);
   void surfaceChangedHandler(SurfaceChanged *event);
 
 public:

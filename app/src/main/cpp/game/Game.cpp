@@ -49,18 +49,6 @@ void Game::close() {
   pScene = nullptr;
 }
 
-void Game::cursorPositionChangedHandler(CursorPositionChanged *event) {
-  // pScene->events(Point2D(event->getXPosition(), event->getYPosition()));
-}
-
-void Game::screenTouchedHandler(ScreenTouched *event) {
-  // pScene->events(Point2D(event->getXPosition(), event->getYPosition()));
-}
-
-void Game::camera_reset() {
-  // camera->travel(Point3D());
-}
-
 void Game::surfaceCreated() {
   // LOGE("OpenGL version: %s", glGetString(GL_VERSION));
   // LOGE("GLSL version: %s", glGetString(GL_SHADING_LANGUAGE_VERSION));
@@ -111,8 +99,8 @@ void Game::dispatchEvent(Event *event) {
   if (eventType == EventType::CURSOR_POSITION_CHANGED) {
     logger->logi("CURSOR_POSITION_CHANGED");
 
-    auto realEvent = reinterpret_cast<CursorPositionChanged *>(event);
-    cursorPositionChangedHandler(realEvent);
+    // auto realEvent = reinterpret_cast<CursorPositionChanged *>(event);
+    // cursorPositionChangedHandler(realEvent);
     // return;
   }
 
@@ -126,7 +114,7 @@ void Game::dispatchEvent(Event *event) {
   if (eventType == EventType::SCREEN_TOUCHED) {
     logger->logi("SCREEN_TOUCHED");
 
-    screenTouchedHandler(reinterpret_cast<ScreenTouched *>(event));
+    // screenTouchedHandler(reinterpret_cast<ScreenTouched *>(event));
     // return;
   }
 
