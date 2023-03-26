@@ -15,7 +15,7 @@
 #include "Projection.hpp"
 
 Test4::Test4(Platform *platform, FilesManager *filesManager) : Scene(platform) {
-  auto camera = new Camera(cameraSize, Point3D(0, 0, 40));
+  auto camera = new Camera(viewportDimension(), Point3D(0, 0, 40));
   camera->changeProjection(Projection::ORTHOGRAPHIC);
   renderer = new Renderer(camera);
   redBall = new Ball(&meshFactory);
@@ -28,16 +28,14 @@ Test4::Test4(Platform *platform, FilesManager *filesManager) : Scene(platform) {
   shaderProgs[1] =
       new ShaderProg(filesManager, Assets::CIRCLE_VERT, Assets::CIRCLE_FRAG);
   meshes[0] = new Mesh(math.generateCube(), 16, math.generateCubeIndexs(), 36);
-  int NUMBER_OF_VERTICES = 15;
-  float radius = 1.0;
   auto circle = math.generateCircle(radius, NUMBER_OF_VERTICES);
   meshes[1] = new Mesh(circle, NUMBER_OF_VERTICES);
 
-  float h = cameraSize.getHeight() / 2;
-  Dimension gridDimension(cameraSize.getWidth(), h);
+  float h = viewportHeight() / 2;
+  Dimension gridDimension(viewportWidth(), h);
 
   float ySize = 80.0f * (h / ROW) / 100;
-  float xSize = 90.0f * (cameraSize.getWidth() / COL) / 100;
+  float xSize = 90.0f * (viewportWidth() / COL) / 100;
   vector<float> vPos = math.generateGrid(gridDimension, ROW, COL);
   for (int i = 0; i < ROW * COL; i++) {
     objects[i] = new Object(renderer, shaderProgs[1], meshes[0]);
@@ -46,14 +44,14 @@ Test4::Test4(Platform *platform, FilesManager *filesManager) : Scene(platform) {
   }
 
   ball = new Object(renderer, shaderProgs[1], meshes[1]);
-  float ball_size = cameraSize.getWidth() / 30;
+  float ball_size = viewportWidth() / 30;
   Point3D ballSize(ball_size, ball_size, 1);
   ball->updateSize(ballSize);
   ball->updatePosition(Point3D(0, bottom + top / 3, 0));
   ball->animate_x();
   ball->velocity = 0.01;
 
-  float cubeXSize = (cameraSize.getWidth() / 2) / 3;
+  float cubeXSize = (viewportWidth() / 2) / 3;
   float cubeYSize = cubeXSize / 7;
   paddle = new Object(renderer, shaderProgs[1], meshes[0]);
   paddle->updateSize(Point3D(cubeXSize, cubeYSize, 1));
@@ -117,7 +115,7 @@ Test4::~Test4() {
 }
 
 void Test4::movePaddle(CursorPositionChanged point) {
-  float cubeXSize = (cameraSize.getWidth() / 2) / 3;
+  float cubeXSize = (viewportWidth() / 2) / 3;
   float cubeYSize = cubeXSize / 7;
   float newX = (-viewportWidth() / 2) + point.getXPosition();
   float newY = (-viewportHeight() / 2) + cubeYSize * 2;
