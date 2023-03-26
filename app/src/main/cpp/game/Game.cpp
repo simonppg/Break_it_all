@@ -55,15 +55,6 @@ void Game::surfaceCreated() {
   pScene->surfaceCreated();
 }
 
-void Game::surfaceChangedHandler(SurfaceChanged *event) {
-  Dimension dimension = Dimension(event->width(), event->height());
-  std::stringstream sstream;
-  sstream << dimension;
-  logger->logi(sstream.str());
-
-  pScene->surfaceChanged(dimension);
-}
-
 void Game::update(double dt) {
   if (isClosing) {
     return;
@@ -86,39 +77,6 @@ void Game::dispatchEvent(Event *event) {
   if (isClosing) {
     return;
   }
-  EventType eventType = event->type();
-
-  if (eventType == EventType::SURFACE_CHANGED) {
-    logger->logi("SURFACE_CHANGED");
-
-    auto realEvent = reinterpret_cast<SurfaceChanged *>(event);
-    surfaceChangedHandler(realEvent);
-    // return;
-  }
-
-  if (eventType == EventType::CURSOR_POSITION_CHANGED) {
-    logger->logi("CURSOR_POSITION_CHANGED");
-
-    // auto realEvent = reinterpret_cast<CursorPositionChanged *>(event);
-    // cursorPositionChangedHandler(realEvent);
-    // return;
-  }
-
-  if (eventType == EventType::KEY_PRESSED) {
-    logger->logi("KEY_PRESSED");
-
-    // keyPressedHandler(reinterpret_cast<KeyPressed *>(event));
-    // return;
-  }
-
-  if (eventType == EventType::SCREEN_TOUCHED) {
-    logger->logi("SCREEN_TOUCHED");
-
-    // screenTouchedHandler(reinterpret_cast<ScreenTouched *>(event));
-    // return;
-  }
-
-  logger->logi("Event type: %d, was not handled", event->type());
 
   bus->publish(event);
 }

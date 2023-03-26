@@ -20,6 +20,7 @@ private:
 
 protected:
   EventBus *bus;
+  Logger *logger;
   unsigned int programID;
 
 public:

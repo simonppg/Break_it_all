@@ -6,4 +6,5 @@ add_subdirectory(eventbus)
 add_subdirectory(platform)
 add_subdirectory(glwrapper)
 add_subdirectory(game)
+add_subdirectory(androidlib)
 
