@@ -19,13 +19,7 @@ private:
 
   bool isClosing;
 
-  // void camera_forward();
-  // void camera_back();
-  // void camera_left();
-  // void camera_right();
-
   void cursorPositionChangedHandler(CursorPositionChanged *event);
-  // void keyPressedHandler(KeyPressed *event);
   void screenTouchedHandler(ScreenTouched *event);
   void surfaceChangedHandler(SurfaceChanged *event);
 
