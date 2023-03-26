@@ -68,10 +68,6 @@ SandBox::SandBox(Platform *platform, FilesManager *filesManager)
         camera->travel(cameraPosition.decrementX(1));
       } else if (key == Key::L_KEY) {
         camera->travel(Point3D());
-      } else if (key == Key::ESCAPE_KEY) {
-        // TODO(simon): Should we save state before exit?
-        // TODO(simon): Should Scene handled close?
-        // close();
       }
     }
   });
@@ -115,8 +111,3 @@ void SandBox::update(double dt) {
     i->set_rotation_angle(povInDegrees);
   }
 }
-
-// bool SandBox::events(Point2D point) {
-//   povInDegrees += 5.0f;
-//   return true;
-// }
