@@ -25,7 +25,6 @@ private:
   Renderer *renderer;
   float povInDegrees = 0.0f;
   vector<Object *> objectList;
-  // void cursorPositionChangedHandler(Event *e);
 
 public:
   explicit SandBox(Platform *, FilesManager *);
