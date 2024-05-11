@@ -55,7 +55,8 @@ Test4::Test4(Platform *platform, FilesManager *filesManager) : Scene(platform) {
   paddle->updatePosition(Point3D(0, -viewportHeight() / 2 + cubeYSize * 2, 1));
   paddle->animate_y();
 
-  ball2 = new Object(renderer, shaderProgs[1], meshFactory.circle(radius, NUMBER_OF_VERTICES));
+  ball2 = new Object(renderer, shaderProgs[1],
+                     meshFactory.circle(radius, NUMBER_OF_VERTICES));
   ball2->updateSize(ballSize);
   ball2->updatePosition(Point3D(left, top, 0));
   ball2->animate_x();

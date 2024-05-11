@@ -8,7 +8,7 @@ Ball::Ball(MeshFactory *meshFactory, Renderer *renderer, ShaderProg *pProg) {
   mesh = meshFactory->circle(radius, numberOfVertices);
   position = Point3D();
   rotation = Point3D(1, 1, 1);
-  size =  Point3D(15,15,1);
+  size = Point3D(15, 15, 1);
 }
 
 Ball::~Ball() {}
