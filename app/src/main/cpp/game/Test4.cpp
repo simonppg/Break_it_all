@@ -18,10 +18,6 @@ Test4::Test4(Platform *platform, FilesManager *filesManager) : Scene(platform) {
   auto camera = new Camera(viewportDimension(), Point3D(0, 0, 40));
   camera->changeProjection(Projection::ORTHOGRAPHIC);
   renderer = new Renderer(camera);
-  redBall = new Ball(&meshFactory);
-  redBall->moveTo(camera->getPosition());
-  greenBall = new Ball(&meshFactory);
-  greenBall->moveTo(camera->getPosition());
 
   shaderProgs[0] =
       new ShaderProg(filesManager, Assets::SIMPLE_VERT, Assets::SIMPLE_FRAG);
@@ -59,10 +55,15 @@ Test4::Test4(Platform *platform, FilesManager *filesManager) : Scene(platform) {
   paddle->updatePosition(Point3D(0, -viewportHeight() / 2 + cubeYSize * 2, 1));
   paddle->animate_y();
 
-  ball2 = new Object(renderer, shaderProgs[1], meshes[1]);
+  ball2 = new Object(renderer, shaderProgs[1], meshFactory.circle(radius, NUMBER_OF_VERTICES));
   ball2->updateSize(ballSize);
   ball2->updatePosition(Point3D(left, top, 0));
   ball2->animate_x();
+
+  redBall = new Ball(&meshFactory, renderer, shaderProgs[1]);
+  redBall->moveTo(camera->getPosition());
+  greenBall = new Ball(&meshFactory, renderer, shaderProgs[1]);
+  greenBall->moveTo(camera->getPosition());
 
   this->enterScene(ball2);
   this->enterScene(ball);
