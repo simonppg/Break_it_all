@@ -5,13 +5,22 @@
 #include "Mesh.hpp"
 #include "MeshFactory.hpp"
 #include "Object3D.hpp"
+#include "Renderer.hpp"
+#include "ShaderProg.hpp"
 
 class Ball final : public Object3D, virtual public DrawableObject {
 private:
+  ShaderProg *program;
+  Renderer *renderer;
   Mesh *mesh;
 
+  float angle;
+  Point3D position;
+  Point3D rotation;
+  Point3D size;
+
 public:
-  explicit Ball(MeshFactory *);
+  explicit Ball(MeshFactory *, Renderer *, ShaderProg *pProg);
   ~Ball();
   void draw() override;
 };
