@@ -1,10 +1,10 @@
 #ifndef APP_SRC_MAIN_CPP_GAME_PROGRAMFACTORY_HPP_
 #define APP_SRC_MAIN_CPP_GAME_PROGRAMFACTORY_HPP_
 
+#include <map>
+
 #include "FilesManager.hpp"
 #include "ShaderProg.hpp"
-
-#include <map>
 
 enum class Program { CIRCLE };
 
@@ -13,7 +13,7 @@ using ProgramMap = map<Program, ShaderProg *>;
 
 class ProgramFactory {
 public:
-  ProgramFactory(FilesManager *);
+  explicit ProgramFactory(FilesManager *);
   ShaderProg *circle();
 
 private:
