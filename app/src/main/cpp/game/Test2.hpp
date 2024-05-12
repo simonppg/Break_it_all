@@ -16,7 +16,7 @@ private:
                         0.0f, 0.5f, -0.5f, 0.0f};
 
 public:
-  explicit Test2(Platform *, FilesManager *);
+  explicit Test2(Platform *);
   ~Test2();
 
   void surfaceCreated() override;

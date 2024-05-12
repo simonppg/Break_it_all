@@ -15,13 +15,13 @@
 using glm::mat4;
 using glm::vec3;
 
-SandBox::SandBox(Platform *platform, FilesManager *filesManager)
+SandBox::SandBox(Platform *platform)
     : Scene(platform) {
   auto camera = new Camera(Dimension(), Point3D(0, 0, 40));
   gl = new Gl();
   Math math = Math();
   shaderProg =
-      new ShaderProg(filesManager, Assets::SIMPLE_VERT, Assets::SIMPLE_FRAG);
+      new ShaderProg(platform->filesManager(), Assets::SIMPLE_VERT, Assets::SIMPLE_FRAG);
   mesh = new Mesh(math.generateCube(), 8, math.generateCubeIndexs(), 36);
   renderer = new Renderer(camera);
 

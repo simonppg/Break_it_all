@@ -27,7 +27,7 @@ private:
   vector<Object *> objectList;
 
 public:
-  explicit SandBox(Platform *, FilesManager *);
+  explicit SandBox(Platform *);
   ~SandBox();
 
   void surfaceCreated() override;

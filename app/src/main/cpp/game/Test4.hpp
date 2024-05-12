@@ -42,7 +42,7 @@ private:
   void movePaddle(CursorPositionChanged);
 
 public:
-  explicit Test4(Platform *, FilesManager *);
+  explicit Test4(Platform *);
   ~Test4();
 
   void surfaceCreated() override;

@@ -22,20 +22,21 @@
 Game::Game(int sceneNumber, Platform *platform) {
   // NOTE: Don't call OpenGL functions here
   logger = platform->logger();
-  FilesManager *filesManager = platform->filesManager();
   bus = platform->bus();
   isClosing = false;
 
+  // sceneNumber = 5;
+
   if (sceneNumber == 0) {
-    pScene = new SandBox(platform, filesManager);
+    pScene = new SandBox(platform);
   } else if (sceneNumber == 1) {
     pScene = new Test1(platform);
   } else if (sceneNumber == 2) {
-    pScene = new Test2(platform, filesManager);
+    pScene = new Test2(platform);
   } else if (sceneNumber == 3) {
-    pScene = new Test3(platform, filesManager);
+    pScene = new Test3(platform);
   } else {
-    pScene = new Test4(platform, filesManager);
+    pScene = new Test4(platform);
   }
 }
 

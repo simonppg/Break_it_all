@@ -14,10 +14,11 @@
 #include "Point3D.hpp"
 #include "Projection.hpp"
 
-Test4::Test4(Platform *platform, FilesManager *filesManager) : Scene(platform) {
+Test4::Test4(Platform *platform) : Scene(platform) {
   auto camera = new Camera(viewportDimension(), Point3D(0, 0, 40));
   camera->changeProjection(Projection::ORTHOGRAPHIC);
   renderer = new Renderer(camera);
+  FilesManager *filesManager = platform->filesManager();
   auto programManager = new ProgramFactory(filesManager);
 
   shaderProgs[0] =
