@@ -3,7 +3,7 @@
 Ball::Ball(MeshFactory *meshFactory, Renderer *renderer,
            ProgramFactory *programFactory) {
   this->renderer = renderer;
-  this->program = programFactory->circle();
+  this->program = programFactory->get(Program::CIRCLE);
   float radius = 1.0;
   int numberOfVertices = 15;
   mesh = meshFactory->circle(radius, numberOfVertices);

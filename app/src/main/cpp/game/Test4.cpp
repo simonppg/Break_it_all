@@ -19,12 +19,11 @@ Test4::Test4(Platform *platform) : Scene(platform) {
   camera->changeProjection(Projection::ORTHOGRAPHIC);
   renderer = new Renderer(camera);
   FilesManager *filesManager = platform->filesManager();
-  auto programManager = new ProgramFactory(filesManager);
+  auto programFactory = ProgramFactory(filesManager);
 
-  shaderProgs[0] =
-      new ShaderProg(filesManager, Assets::SIMPLE_VERT, Assets::SIMPLE_FRAG);
-  shaderProgs[1] =
-      new ShaderProg(filesManager, Assets::CIRCLE_VERT, Assets::CIRCLE_FRAG);
+  shaderProgs[0] = programFactory.get(Program::SIMPLE);
+  shaderProgs[1] = programFactory.get(Program::CIRCLE);
+
   meshes[0] = new Mesh(math.generateCube(), 16, math.generateCubeIndexs(), 36);
   auto circle = math.generateCircle(radius, NUMBER_OF_VERTICES);
   meshes[1] = new Mesh(circle, NUMBER_OF_VERTICES);
@@ -63,9 +62,9 @@ Test4::Test4(Platform *platform) : Scene(platform) {
   ball2->updatePosition(Point3D(left, top, 0));
   ball2->animate_x();
 
-  redBall = new Ball(&meshFactory, renderer, programManager);
+  redBall = new Ball(&meshFactory, renderer, &programFactory);
   redBall->moveTo(camera->getPosition());
-  greenBall = new Ball(&meshFactory, renderer, programManager);
+  greenBall = new Ball(&meshFactory, renderer, &programFactory);
   greenBall->moveTo(camera->getPosition());
 
   this->enterScene(ball2);

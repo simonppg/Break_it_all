@@ -6,7 +6,7 @@
 #include "FilesManager.hpp"
 #include "ShaderProg.hpp"
 
-enum class Program { CIRCLE };
+enum class Program { CIRCLE, SIMPLE };
 
 using std::map;
 using ProgramMap = map<Program, ShaderProg *>;
@@ -14,7 +14,7 @@ using ProgramMap = map<Program, ShaderProg *>;
 class ProgramFactory {
 public:
   explicit ProgramFactory(FilesManager *);
-  ShaderProg *circle();
+  ShaderProg *get(Program);
 
 private:
   FilesManager *filesManager;
