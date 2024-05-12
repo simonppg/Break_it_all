@@ -14,10 +14,12 @@
 #include "Point3D.hpp"
 #include "Projection.hpp"
 
-Test4::Test4(Platform *platform, FilesManager *filesManager) : Scene(platform) {
+Test4::Test4(Platform *platform) : Scene(platform) {
   auto camera = new Camera(viewportDimension(), Point3D(0, 0, 40));
   camera->changeProjection(Projection::ORTHOGRAPHIC);
   renderer = new Renderer(camera);
+  FilesManager *filesManager = platform->filesManager();
+  auto programManager = new ProgramFactory(filesManager);
 
   shaderProgs[0] =
       new ShaderProg(filesManager, Assets::SIMPLE_VERT, Assets::SIMPLE_FRAG);
@@ -61,9 +63,9 @@ Test4::Test4(Platform *platform, FilesManager *filesManager) : Scene(platform) {
   ball2->updatePosition(Point3D(left, top, 0));
   ball2->animate_x();
 
-  redBall = new Ball(&meshFactory, renderer, shaderProgs[1]);
+  redBall = new Ball(&meshFactory, renderer, programManager);
   redBall->moveTo(camera->getPosition());
-  greenBall = new Ball(&meshFactory, renderer, shaderProgs[1]);
+  greenBall = new Ball(&meshFactory, renderer, programManager);
   greenBall->moveTo(camera->getPosition());
 
   this->enterScene(ball2);

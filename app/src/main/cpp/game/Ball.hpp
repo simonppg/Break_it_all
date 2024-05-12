@@ -5,6 +5,7 @@
 #include "Mesh.hpp"
 #include "MeshFactory.hpp"
 #include "Object3D.hpp"
+#include "ProgramFactory.hpp"
 #include "Renderer.hpp"
 #include "ShaderProg.hpp"
 
@@ -20,7 +21,7 @@ private:
   Point3D size;
 
 public:
-  explicit Ball(MeshFactory *, Renderer *, ShaderProg *pProg);
+  explicit Ball(MeshFactory *, Renderer *, ProgramFactory *);
   ~Ball();
   void draw() override;
 };

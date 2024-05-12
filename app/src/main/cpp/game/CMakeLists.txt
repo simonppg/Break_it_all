@@ -21,6 +21,7 @@ add_library(common STATIC
         Renderer.cpp
         Mesh.cpp
         MeshFactory.cpp
+        ProgramFactory.cpp
         Math.cpp
         Vector.cpp
         GameLoop.cpp

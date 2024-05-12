@@ -1,8 +1,9 @@
 #include "Ball.hpp"
 
-Ball::Ball(MeshFactory *meshFactory, Renderer *renderer, ShaderProg *pProg) {
+Ball::Ball(MeshFactory *meshFactory, Renderer *renderer,
+           ProgramFactory *programFactory) {
   this->renderer = renderer;
-  this->program = pProg;
+  this->program = programFactory->circle();
   float radius = 1.0;
   int numberOfVertices = 15;
   mesh = meshFactory->circle(radius, numberOfVertices);

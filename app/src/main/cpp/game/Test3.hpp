@@ -18,7 +18,7 @@ private:
   int NUMBER_OF_VERTICES = 160;
 
 public:
-  explicit Test3(Platform *, FilesManager *);
+  explicit Test3(Platform *);
   ~Test3();
 
   void surfaceCreated() override;

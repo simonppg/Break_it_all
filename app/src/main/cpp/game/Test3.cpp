@@ -14,10 +14,10 @@
 #include "Point3D.hpp"
 #include "Renderer.hpp"
 
-Test3::Test3(Platform *platform, FilesManager *filesManager) : Scene(platform) {
+Test3::Test3(Platform *platform) : Scene(platform) {
   float RADIUS = 0.5;
   circle = math->generateCircle(RADIUS, NUMBER_OF_VERTICES);
-  this->filesManager = filesManager;
+  this->filesManager = platform->filesManager();
   gl = new Gl();
 }
 

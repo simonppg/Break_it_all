@@ -8,8 +8,8 @@
 #include "Assets.hpp"
 #include "Renderer.hpp"
 
-Test2::Test2(Platform *platform, FilesManager *filesManager) : Scene(platform) {
-  this->filesManager = filesManager;
+Test2::Test2(Platform *platform) : Scene(platform) {
+  this->filesManager = platform->filesManager();
   gl = new Gl();
 }
 
