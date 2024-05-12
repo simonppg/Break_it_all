@@ -7,6 +7,9 @@ ProgramFactory::ProgramFactory(FilesManager *filesManager) {
 
   programMap[Program::CIRCLE] =
       new ShaderProg(filesManager, Assets::CIRCLE_VERT, Assets::CIRCLE_FRAG);
+
+  programMap[Program::SIMPLE] =
+      new ShaderProg(filesManager, Assets::SIMPLE_VERT, Assets::SIMPLE_FRAG);
 }
 
-ShaderProg *ProgramFactory::circle() { return programMap[Program::CIRCLE]; }
+ShaderProg *ProgramFactory::get(Program program) { return programMap[program]; }
